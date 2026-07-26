@@ -1,9 +1,102 @@
 [gd_scene format=3 uid="uid://bn6oc55gryn7"]
 
-[node name="CombatPrototype" type="Control" unique_id=1130827251]
+[ext_resource type="Script" uid="uid://c7el54cat8hob" path="res://scripts/combat/combat_prototype.gd" id="1_r2kua"]
+
+[node name="CombatPrototype" type="Control" unique_id=2068377608]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_r2kua")
+
+[node name="Background" type="ColorRect" parent="." unique_id=431380960]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMargin" type="MarginContainer" parent="." unique_id=511246282]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 30
+
+[node name="MainVBox" type="VBoxContainer" parent="MainMargin" unique_id=1677311996]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MainMargin/MainVBox" unique_id=513124893]
+layout_mode = 2
+text = "WANDERER — COMBAT PROTOTYPE"
+horizontal_alignment = 1
+
+[node name="BattleRow" type="HBoxContainer" parent="MainMargin/MainVBox" unique_id=1305215973]
+layout_mode = 2
+
+[node name="AlliesPanel" type="VBoxContainer" parent="MainMargin/MainVBox/BattleRow" unique_id=1955947393]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AlliesTitle" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel" unique_id=712994465]
+layout_mode = 2
+text = "ฝ่ายเรา"
+
+[node name="PlayerLabel" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel" unique_id=1803815808]
+layout_mode = 2
+text = "Player HP: 30"
+
+[node name="NpcALabel" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel" unique_id=530299848]
+layout_mode = 2
+text = "NPC A HP: 20"
+
+[node name="NpcBLabel" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel" unique_id=1047100755]
+layout_mode = 2
+text = "NPC B HP: 20"
+
+[node name="NpcCLabel" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel" unique_id=894493098]
+layout_mode = 2
+text = "NPC C HP: 20"
+
+[node name="EnemiesPanel" type="VBoxContainer" parent="MainMargin/MainVBox/BattleRow" unique_id=2050878647]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EnemiesTitle" type="Label" parent="MainMargin/MainVBox/BattleRow/EnemiesPanel" unique_id=299678655]
+layout_mode = 2
+text = "ฝ่ายศัตรู"
+
+[node name="EnemyALabel" type="Label" parent="MainMargin/MainVBox/BattleRow/EnemiesPanel" unique_id=1598278326]
+layout_mode = 2
+text = "Enemy A HP: 15"
+
+[node name="EnemyBLabel" type="Label" parent="MainMargin/MainVBox/BattleRow/EnemiesPanel" unique_id=405565005]
+layout_mode = 2
+text = "Enemy B HP: 15"
+
+[node name="CombatLog" type="RichTextLabel" parent="MainMargin/MainVBox" unique_id=1741777773]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+size_flags_vertical = 3
+text = "การต่อสู้เริ่มต้น"
+
+[node name="ActionRow" type="HBoxContainer" parent="MainMargin/MainVBox" unique_id=1867455997]
+layout_mode = 2
+
+[node name="AttackButton" type="Button" parent="MainMargin/MainVBox/ActionRow" unique_id=1513328937]
+custom_minimum_size = Vector2(160, 50)
+layout_mode = 2
+text = "โจมตี"
+
+[node name="DefendButton" type="Button" parent="MainMargin/MainVBox/ActionRow" unique_id=647065446]
+custom_minimum_size = Vector2(160, 50)
+layout_mode = 2
+text = "ตั้งรับ"
