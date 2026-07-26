@@ -18,6 +18,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+color = Color(0.055, 0.065, 0.09, 1)
 
 [node name="MainMargin" type="MarginContainer" parent="." unique_id=511246282]
 layout_mode = 1
@@ -26,77 +28,115 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 30
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 36
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 36
 
 [node name="MainVBox" type="VBoxContainer" parent="MainMargin" unique_id=1677311996]
 layout_mode = 2
+theme_override_constants/separation = 18
 
 [node name="TitleLabel" type="Label" parent="MainMargin/MainVBox" unique_id=513124893]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.82, 0.35, 1)
+theme_override_font_sizes/font_size = 28
 text = "WANDERER — COMBAT PROTOTYPE"
 horizontal_alignment = 1
 
 [node name="BattleRow" type="HBoxContainer" parent="MainMargin/MainVBox" unique_id=1305215973]
 layout_mode = 2
+theme_override_constants/separation = 80
 
 [node name="AlliesPanel" type="VBoxContainer" parent="MainMargin/MainVBox/BattleRow" unique_id=1955947393]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 8
 
 [node name="AlliesTitle" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel" unique_id=712994465]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 22
 text = "ฝ่ายเรา"
 
 [node name="PlayerLabel" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel" unique_id=1803815808]
 layout_mode = 2
-text = "Player HP: 30"
+theme_override_colors/font_color = Color(0.95, 0.97, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "Player HP: 30 / 30"
 
 [node name="NpcALabel" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel" unique_id=530299848]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.82, 0.9, 1)
+theme_override_font_sizes/font_size = 18
 text = "NPC A HP: 20"
 
 [node name="NpcBLabel" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel" unique_id=1047100755]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.82, 0.9, 1)
+theme_override_font_sizes/font_size = 18
 text = "NPC B HP: 20"
 
 [node name="NpcCLabel" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel" unique_id=894493098]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.82, 0.9, 1)
+theme_override_font_sizes/font_size = 18
 text = "NPC C HP: 20"
 
 [node name="EnemiesPanel" type="VBoxContainer" parent="MainMargin/MainVBox/BattleRow" unique_id=2050878647]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 8
 
 [node name="EnemiesTitle" type="Label" parent="MainMargin/MainVBox/BattleRow/EnemiesPanel" unique_id=299678655]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.45, 0.45, 1)
+theme_override_font_sizes/font_size = 22
 text = "ฝ่ายศัตรู"
 
 [node name="EnemyALabel" type="Label" parent="MainMargin/MainVBox/BattleRow/EnemiesPanel" unique_id=1598278326]
 layout_mode = 2
-text = "Enemy A HP: 15"
+theme_override_colors/font_color = Color(1, 0.88, 0.88, 1)
+theme_override_font_sizes/font_size = 18
+text = "Enemy A HP: 15 / 15"
 
 [node name="EnemyBLabel" type="Label" parent="MainMargin/MainVBox/BattleRow/EnemiesPanel" unique_id=405565005]
 layout_mode = 2
-text = "Enemy B HP: 15"
+theme_override_colors/font_color = Color(0.78, 0.82, 0.9, 1)
+theme_override_font_sizes/font_size = 18
+text = "Enemy B HP: 15 (ยังไม่เข้าร่วมการต่อสู้)"
 
 [node name="CombatLog" type="RichTextLabel" parent="MainMargin/MainVBox" unique_id=1741777773]
-custom_minimum_size = Vector2(0, 180)
+custom_minimum_size = Vector2(0, 260)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.92, 0.94, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.65)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/normal_font_size = 18
+scroll_following = true
 text = "การต่อสู้เริ่มต้น"
 
 [node name="ActionRow" type="HBoxContainer" parent="MainMargin/MainVBox" unique_id=1867455997]
 layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
 
 [node name="AttackButton" type="Button" parent="MainMargin/MainVBox/ActionRow" unique_id=1513328937]
-custom_minimum_size = Vector2(160, 50)
+custom_minimum_size = Vector2(180, 56)
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
 text = "โจมตี"
 
 [node name="DefendButton" type="Button" parent="MainMargin/MainVBox/ActionRow" unique_id=647065446]
-custom_minimum_size = Vector2(160, 50)
+custom_minimum_size = Vector2(180, 56)
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
 text = "ตั้งรับ"
+
+[node name="RestartButton" type="Button" parent="MainMargin/MainVBox/ActionRow"]
+custom_minimum_size = Vector2(180, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "เริ่มใหม่"
