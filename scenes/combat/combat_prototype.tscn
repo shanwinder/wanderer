@@ -115,8 +115,8 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.65)
 theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_font_sizes/normal_font_size = 18
-scroll_following = true
 text = "การต่อสู้เริ่มต้น"
+scroll_following = true
 
 [node name="ActionRow" type="HBoxContainer" parent="MainMargin/MainVBox" unique_id=1867455997]
 layout_mode = 2
@@ -135,7 +135,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "ตั้งรับ"
 
-[node name="RestartButton" type="Button" parent="MainMargin/MainVBox/ActionRow"]
+[node name="RestartButton" type="Button" parent="MainMargin/MainVBox/ActionRow" unique_id=1415283406]
 custom_minimum_size = Vector2(180, 56)
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
