@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://bn6oc55gryn7"]
 
 [ext_resource type="Script" uid="uid://c7el54cat8hob" path="res://scripts/combat/combat_prototype.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://Sprites/player/atk_idle_0001.png" id="2_player_1"]
-[ext_resource type="Texture2D" path="res://Sprites/player/atk_idle_0002.png" id="3_player_2"]
-[ext_resource type="Texture2D" path="res://Sprites/npc1/idle/npc1_idle.png" id="4_npc1"]
-[ext_resource type="Texture2D" path="res://Sprites/npc2/idle/npc2_atk_idle.png" id="5_npc2"]
-[ext_resource type="Texture2D" path="res://Sprites/npc3/idle/npc3_atk_idle.png" id="6_npc3"]
-[ext_resource type="Texture2D" path="res://Sprites/enemie1/enemy_1.png" id="7_enemy1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/player/battle/idle/player_idle_01.png" id="2_player_1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/player/battle/idle/player_idle_02.png" id="3_player_2"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/npc_01/battle/idle/npc_01_idle.png" id="4_npc1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/npc_02/battle/idle/npc_02_idle.png" id="5_npc2"]
+[ext_resource type="Texture2D" path="res://assets/sprites/characters/npc_03/battle/idle/npc_03_idle.png" id="6_npc3"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemies/enemy_01/battle/idle/enemy_01_idle.png" id="7_enemy1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_player"]
 animations = [{
