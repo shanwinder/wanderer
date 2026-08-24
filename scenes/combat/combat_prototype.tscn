@@ -1,22 +1,28 @@
-[gd_scene load_steps=8 format=3 uid="uid://bn6oc55gryn7"]
+[gd_scene format=3 uid="uid://bn6oc55gryn7"]
 
 [ext_resource type="Script" uid="uid://c7el54cat8hob" path="res://scripts/combat/combat_prototype.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/sprites/characters/player/battle/idle/player_idle_01.png" id="2_player_1"]
-[ext_resource type="Texture2D" path="res://assets/sprites/characters/player/battle/idle/player_idle_02.png" id="3_player_2"]
-[ext_resource type="Texture2D" path="res://assets/sprites/characters/npc_01/battle/idle/npc_01_idle.png" id="4_npc1"]
-[ext_resource type="Texture2D" path="res://assets/sprites/characters/npc_02/battle/idle/npc_02_idle.png" id="5_npc2"]
-[ext_resource type="Texture2D" path="res://assets/sprites/characters/npc_03/battle/idle/npc_03_idle.png" id="6_npc3"]
-[ext_resource type="Texture2D" path="res://assets/sprites/enemies/enemy_01/battle/idle/enemy_01_idle.png" id="7_enemy1"]
+[ext_resource type="Texture2D" uid="uid://n7y2opnapgil" path="res://assets/sprites/characters/player/battle/idle/player_idle_01.png" id="2_player_1"]
+[ext_resource type="Texture2D" uid="uid://xudhfk22w6ri" path="res://assets/sprites/characters/player/battle/idle/player_idle_02.png" id="3_player_2"]
+[ext_resource type="Texture2D" uid="uid://bfdny3yfcj6qy" path="res://assets/sprites/characters/npc_01/battle/idle/npc_01_idle.png" id="4_npc1"]
+[ext_resource type="Texture2D" uid="uid://b0rwuiq5wpcqi" path="res://assets/sprites/characters/npc_02/battle/idle/npc_02_idle.png" id="5_npc2"]
+[ext_resource type="Texture2D" uid="uid://bd8sdrl26cb24" path="res://assets/sprites/characters/npc_03/battle/idle/npc_03_idle.png" id="6_npc3"]
+[ext_resource type="Texture2D" uid="uid://1rgylruffx45" path="res://assets/sprites/enemies/enemy_01/battle/idle/enemy_01_idle.png" id="7_enemy1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_player"]
 animations = [{
-"frames": [{"duration": 1.0, "texture": ExtResource("2_player_1")}, {"duration": 1.0, "texture": ExtResource("3_player_2")}],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_player_1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_player_2")
+}],
+"loop": 1,
 "name": &"idle",
 "speed": 3.0
 }]
 
-[node name="CombatPrototype" type="Control"]
+[node name="CombatPrototype" type="Control" unique_id=849180832]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +31,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=1426182317]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,66 +39,66 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.10, 0.12, 0.14, 1)
+color = Color(0.1, 0.12, 0.14, 1)
 
-[node name="SkyBand" type="ColorRect" parent="."]
+[node name="SkyBand" type="ColorRect" parent="." unique_id=428434888]
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 430.0
 mouse_filter = 2
-color = Color(0.20, 0.25, 0.25, 1)
+color = Color(0.2, 0.25, 0.25, 1)
 
-[node name="FarGround" type="ColorRect" parent="."]
+[node name="FarGround" type="ColorRect" parent="." unique_id=357346474]
 layout_mode = 0
-offset_top = 330.0
+offset_top = 143.0
 offset_right = 1280.0
-offset_bottom = 520.0
+offset_bottom = 343.0
 mouse_filter = 2
 color = Color(0.16, 0.19, 0.16, 1)
 
-[node name="Ground" type="ColorRect" parent="."]
+[node name="Ground" type="ColorRect" parent="." unique_id=975505626]
 layout_mode = 0
-offset_top = 455.0
+offset_top = 343.0
 offset_right = 1280.0
-offset_bottom = 540.0
+offset_bottom = 543.0
 mouse_filter = 2
 color = Color(0.19, 0.16, 0.13, 1)
 
-[node name="Battlefield" type="Node2D" parent="."]
+[node name="Battlefield" type="Node2D" parent="." unique_id=202512223]
 
-[node name="Npc1" type="Sprite2D" parent="Battlefield"]
+[node name="Npc1" type="Sprite2D" parent="Battlefield" unique_id=1421812779]
 texture_filter = 1
-position = Vector2(155, 418)
-scale = Vector2(4, 4)
+position = Vector2(212.00002, 470)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("4_npc1")
 
-[node name="Player" type="AnimatedSprite2D" parent="Battlefield"]
+[node name="Player" type="AnimatedSprite2D" parent="Battlefield" unique_id=141029305]
 texture_filter = 1
-position = Vector2(315, 422)
-scale = Vector2(4, 4)
+position = Vector2(479, 412)
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_player")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="Npc2" type="Sprite2D" parent="Battlefield"]
+[node name="Npc2" type="Sprite2D" parent="Battlefield" unique_id=917054219]
 texture_filter = 1
-position = Vector2(475, 420)
-scale = Vector2(4, 4)
+position = Vector2(299, 390)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("5_npc2")
 
-[node name="Npc3" type="Sprite2D" parent="Battlefield"]
+[node name="Npc3" type="Sprite2D" parent="Battlefield" unique_id=679747556]
 texture_filter = 1
-position = Vector2(635, 420)
-scale = Vector2(4, 4)
+position = Vector2(375, 474)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("6_npc3")
 
-[node name="EnemyA" type="Sprite2D" parent="Battlefield"]
+[node name="EnemyA" type="Sprite2D" parent="Battlefield" unique_id=1393338436]
 texture_filter = 1
-position = Vector2(985, 420)
-scale = Vector2(4, 4)
+position = Vector2(945, 461)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("7_enemy1")
 
-[node name="TitleLabel" type="Label" parent="."]
+[node name="TitleLabel" type="Label" parent="." unique_id=1955448986]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 20.0
@@ -103,7 +109,7 @@ theme_override_font_sizes/font_size = 22
 text = "WANDERER — VISUAL COMBAT TEST 1"
 horizontal_alignment = 1
 
-[node name="MainMargin" type="MarginContainer" parent="."]
+[node name="MainMargin" type="MarginContainer" parent="." unique_id=2047073220]
 layout_mode = 0
 offset_left = 30.0
 offset_top = 535.0
@@ -114,59 +120,59 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 10
 
-[node name="MainVBox" type="VBoxContainer" parent="MainMargin"]
+[node name="MainVBox" type="VBoxContainer" parent="MainMargin" unique_id=352394201]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="BattleRow" type="HBoxContainer" parent="MainMargin/MainVBox"]
+[node name="BattleRow" type="HBoxContainer" parent="MainMargin/MainVBox" unique_id=1152935419]
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="AlliesPanel" type="VBoxContainer" parent="MainMargin/MainVBox/BattleRow"]
+[node name="AlliesPanel" type="VBoxContainer" parent="MainMargin/MainVBox/BattleRow" unique_id=1538975628]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 2
 
-[node name="AlliesTitle" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel"]
+[node name="AlliesTitle" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel" unique_id=423084152]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.55, 0.85, 1, 1)
 text = "ฝ่ายเรา"
 
-[node name="PlayerLabel" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel"]
+[node name="PlayerLabel" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel" unique_id=996025110]
 layout_mode = 2
 text = "Player HP: 30 / 30"
 
-[node name="NpcALabel" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel"]
+[node name="NpcALabel" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel" unique_id=1940055509]
 layout_mode = 2
 text = "NPC1 — visual only"
 
-[node name="NpcBLabel" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel"]
+[node name="NpcBLabel" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel" unique_id=648608578]
 layout_mode = 2
 text = "NPC2 — visual only"
 
-[node name="NpcCLabel" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel"]
+[node name="NpcCLabel" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel" unique_id=1924699664]
 layout_mode = 2
 text = "NPC3 — visual only"
 
-[node name="EnemiesPanel" type="VBoxContainer" parent="MainMargin/MainVBox/BattleRow"]
+[node name="EnemiesPanel" type="VBoxContainer" parent="MainMargin/MainVBox/BattleRow" unique_id=1185414856]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 2
 
-[node name="EnemiesTitle" type="Label" parent="MainMargin/MainVBox/BattleRow/EnemiesPanel"]
+[node name="EnemiesTitle" type="Label" parent="MainMargin/MainVBox/BattleRow/EnemiesPanel" unique_id=404696010]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.55, 0.55, 1)
 text = "ฝ่ายศัตรู"
 
-[node name="EnemyALabel" type="Label" parent="MainMargin/MainVBox/BattleRow/EnemiesPanel"]
+[node name="EnemyALabel" type="Label" parent="MainMargin/MainVBox/BattleRow/EnemiesPanel" unique_id=199510186]
 layout_mode = 2
 text = "Enemy A HP: 15 / 15"
 
-[node name="EnemyBLabel" type="Label" parent="MainMargin/MainVBox/BattleRow/EnemiesPanel"]
+[node name="EnemyBLabel" type="Label" parent="MainMargin/MainVBox/BattleRow/EnemiesPanel" unique_id=705654534]
 layout_mode = 2
 text = "Enemy B — not included in this test"
 
-[node name="CombatLog" type="RichTextLabel" parent="MainMargin/MainVBox"]
+[node name="CombatLog" type="RichTextLabel" parent="MainMargin/MainVBox" unique_id=2102754491]
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
 size_flags_vertical = 3
@@ -175,22 +181,22 @@ theme_override_font_sizes/normal_font_size = 14
 text = "การต่อสู้เริ่มต้น"
 scroll_following = true
 
-[node name="ActionRow" type="HBoxContainer" parent="MainMargin/MainVBox"]
+[node name="ActionRow" type="HBoxContainer" parent="MainMargin/MainVBox" unique_id=553290662]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="AttackButton" type="Button" parent="MainMargin/MainVBox/ActionRow"]
+[node name="AttackButton" type="Button" parent="MainMargin/MainVBox/ActionRow" unique_id=45462366]
 custom_minimum_size = Vector2(150, 38)
 layout_mode = 2
 text = "โจมตี"
 
-[node name="DefendButton" type="Button" parent="MainMargin/MainVBox/ActionRow"]
+[node name="DefendButton" type="Button" parent="MainMargin/MainVBox/ActionRow" unique_id=232293062]
 custom_minimum_size = Vector2(150, 38)
 layout_mode = 2
 text = "ตั้งรับ"
 
-[node name="RestartButton" type="Button" parent="MainMargin/MainVBox/ActionRow"]
+[node name="RestartButton" type="Button" parent="MainMargin/MainVBox/ActionRow" unique_id=88241546]
 custom_minimum_size = Vector2(150, 38)
 layout_mode = 2
 text = "เริ่มใหม่"
