@@ -102,6 +102,14 @@ position = Vector2(945, 461)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("7_enemy1")
 
+[node name="PlayerRoot" type="Node2D" parent="Battlefield" unique_id=2062452648]
+
+[node name="Npc2Root" type="Node2D" parent="Battlefield" unique_id=81900588]
+
+[node name="Npc3Root" type="Node2D" parent="Battlefield" unique_id=229338228]
+
+[node name="EnemyARoot" type="Node2D" parent="Battlefield" unique_id=2034793958]
+
 [node name="TitleLabel" type="Label" parent="." unique_id=1955448986]
 layout_mode = 0
 offset_left = 32.0
