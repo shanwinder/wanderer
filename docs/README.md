@@ -15,6 +15,7 @@
 | **[07 — Thailand-Region Worldbuilding v0.1](07_Wanderer_Thailand_Region_Worldbuilding_v0.1.md)** | 7 ภูมิภาคในอดีตไทย, การเปลี่ยนภูมิประเทศ, นครรัฐ/วัฒนธรรม, corridor, แนวสร้าง Atlas, Vertical Slice | **ข้อเสนอแผนที่โลก**; ยังไม่ล็อกชื่อ/พรมแดน/ภูมิประเทศ; ไม่เปลี่ยน Active Milestone |
 | **[08 — Stonegate City MAP-02A v0.1](08_Wanderer_Stonegate_City_Design_MAP-02A_v0.1.md)** | เมืองนครประตูหิน: ผังเมือง เขตเมือง สภา กลุ่มอำนาจ NPC 6 คน เควส 3 เส้นทาง 2 และเกณฑ์ Vertical Slice | **ข้อเสนอ City Bible** ภายใต้ [07]; ยังไม่ implement และไม่แทน M1.5B |
 | **[09 — Stonegate MAP-02B v0.1](09_Wanderer_Stonegate_MAP-02B_City_Cartography_v0.1.md)** | ผังภูมิประเทศ แหล่งน้ำ 9 เขต เส้นทาง A/B และข้อกำหนดการวาด; [แผนผัง SVG แก้ไขได้](maps/stonegate_map02b_layout_v0.1.svg) | **Rough City Cartography**; ยังไม่ใช่ GIS, scale หรือภาพ Final; ไม่เปลี่ยน gameplay roadmap |
+| **[10 — MAP-03 Regional Civilizations & Trade v0.1](10_Wanderer_MAP-03_Regional_Civilizations_and_Trade_v0.1.md)** | 7 ภูมิภาค, 7 เมืองหลักชั่วคราว, เศรษฐกิจ, ข้อตกลงทางการเมือง, วัฒนธรรม, เส้นทาง C1–C8 และข้อเสนออารยธรรม | **Regional cultural-political proposal**; ไม่ใช่ 7 อาณาจักรถาวร และไม่ใช่แผนที่ที่ตรวจมาตราส่วนแล้ว |
 | [Pixelorama Handoff](Wanderer_Pixelorama_Training_Handoff.md) | บันทึกทักษะวาดและ asset | อ้างอิงการเรียนรู้/ประวัติ |
 
 ### Conflict resolution (ต้องอ่าน)
@@ -28,7 +29,8 @@
 5. **Original game vision:** v0.1 ยังมีผลกับ Player control, NPC autonomy, post-post-apocalypse, quests, journeys, class progression, Permadeath และมิติอื่นนอกเหนือข้อแก้ชัดเจน
 6. **Thailand-region geography & world map proposal:** [07] เพิ่มสมมติฐานแผนที่และพื้นที่เล่นที่ตั้งอยู่ในอดีตประเทศไทยภายใต้ v0.1 และ v0.5; เป็น [PROPOSED] ไม่แทน gameplay milestone หรือ canon ที่ล็อกแล้ว
 7. **Stonegate City Design / MAP-02A:** [08] เพิ่มรายละเอียดเมืองและตัวละครโดยต่อยอด [07] §14; ข้อมูลใหม่ทั้งหมดเป็น [PROPOSED] และต้องอ่านควบคู่ข้อจำกัดการเล่นจาก v0.1, Starstone v0.5 และ Learning Workflow v0.4
-8. สถานะ **[LOCKED — INTENT]** ใน v0.5 หมายถึงเจตนาที่ผู้สร้างระบุ; **[DESIGN BASELINE]** เป็นข้อเสนอทำงาน, **[OPEN]** ยังไม่ตัดสิน และ **[LATER]** เก็บไว้ภายหลัง
+8. **Regional political and cultural design / MAP-03:** [10] ขยายมิติประชากร เศรษฐกิจและความสัมพันธ์ของ 7 ภูมิภาคจาก [07]; เมือง Stonegate และ Route A/B ให้ยึด [08]–[09] เมื่อรายละเอียดขัดกัน; ทุกชื่อใหม่ [PROPOSED]
+9. สถานะ **[LOCKED — INTENT]** ใน v0.5 หมายถึงเจตนาที่ผู้สร้างระบุ; **[DESIGN BASELINE]** เป็นข้อเสนอทำงาน, **[OPEN]** ยังไม่ตัดสิน และ **[LATER]** เก็บไว้ภายหลัง
 
 หากความขัดแย้งกระทบระบบหลัก: บันทึก decision และให้ผู้สร้างทบทวนก่อนแก้ อย่าข้ามไป implement เพราะเห็นชื่อไฟล์ v0.5
 
@@ -69,11 +71,15 @@
 - สร้าง Atlas rough map (MAP-01) แยกจากแผนที่เล่นจริง (MAP-05) และแยกแผนที่ลับเรื่องดาราศิลา
 - ใช้โครงเส้นทางแบบ **node-based**; ไม่เปลี่ยน Wanderer เป็น open world
 - การทำ worldbuilding เป็น track คู่ขนานเพื่อแรงบันดาลใจเท่านั้น; **M1.5B ยังคงเป็น milestone ที่ลงมือพัฒนาเกมต่อไป**
-- แผนยังไม่ได้สร้างรูปแผนที่จริง และยังไม่ได้เขียนระบบ Journey ใน Godot
+- มีภาพแผนที่แนวคิดและผังเมือง SVG แล้ว แต่ยังไม่มี atlas ภูมิประเทศซึ่งตรวจตำแหน่งและมาตราส่วนจริง; ยังไม่ได้เขียนระบบ Journey ใน Godot
 
 ## MAP-02B — Stonegate rough map
 
 ผังเชิงความสัมพันธ์สำหรับนักออกแบบเมืองอยู่ที่ [MAP-02B SVG](maps/stonegate_map02b_layout_v0.1.svg) (D1–D9, R3/R4 และ Route A/B); คำอธิบายและข้อควรระวังอยู่ที่ [09_Wanderer_Stonegate_MAP-02B_City_Cartography_v0.1.md](09_Wanderer_Stonegate_MAP-02B_City_Cartography_v0.1.md). ยังไม่ถือเป็นภูมิศาสตร์ที่ล็อกถาวร ไม่มีการระบุระยะทางจริง และยังไม่ทำ Town UI
+
+## MAP-03 — Regional civilizations and trade
+
+เอกสาร [10_Wanderer_MAP-03_Regional_Civilizations_and_Trade_v0.1.md](10_Wanderer_MAP-03_Regional_Civilizations_and_Trade_v0.1.md) ขยาย 7 ภูมิภาคจาก [07] เป็นเครือข่ายการเมืองที่ **ไม่จำเป็นต้องมีหนึ่งประเทศต่อหนึ่งภูมิภาค** และกำหนดชื่อเมืองตัวอย่างกับ C1–C8 แบบ [PROPOSED]; ยังไม่มีภาพ MAP-03A political overlay หรือการพัฒนาเศรษฐกิจใน Godot. จุดเริ่ม M7 ยังคงเมือง Stonegate 1 เมือง จาก [08]–[09] เท่านั้น
 
 ## Learning-first workflow
 
