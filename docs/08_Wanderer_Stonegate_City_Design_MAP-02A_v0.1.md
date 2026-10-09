@@ -651,7 +651,7 @@ Q1 เป็นจุดเข้าสู่วงจรเมือง/ข่�
 | [06] v0.5 | Magic prototype optional after M4 | §22, §28 |
 | [07] R3/R4, C1, Q1–Q3, atlas layers | Stonegate city baseline | ทุกส่วน |
 
-**งานถัดไปเฉพาะสาย Worldbuilding:** MAP-02B — ทำผังเมืองและพื้นที่โดยรอบแบบ rough ที่ตรวจ topographic logic ได้, แสดง 2 routes และเขตเมืองหลัก; **ยังไม่สร้างภาพเมืองฉบับสุดท้าย** ก่อนตรวจรูปแบบภูมิประเทศ  
+**งาน MAP-02B ฉบับร่าง:** มี [09 — City Cartography](09_Wanderer_Stonegate_MAP-02B_City_Cartography_v0.1.md) และ [SVG layout](maps/stonegate_map02b_layout_v0.1.svg) แล้ว เป็น rough plan สำหรับทบทวนตรรกะเมืองและเส้นทาง **ยังไม่ได้ล็อกเป็น Canon** ก่อนผู้สร้างตรวจภาพและการวางภูมิประเทศ  
 **งานถัดไปสาย Gameplay:** M1.5B (ไม่เปลี่ยน)
 
 ---
