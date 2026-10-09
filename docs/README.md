@@ -18,6 +18,7 @@
 | **[10 — MAP-03 Regional Civilizations & Trade v0.1](10_Wanderer_MAP-03_Regional_Civilizations_and_Trade_v0.1.md)** | 7 ภูมิภาค, 7 เมืองหลักชั่วคราว, เศรษฐกิจ, ข้อตกลงทางการเมือง, วัฒนธรรม, เส้นทาง C1–C8 และข้อเสนออารยธรรม | **Regional cultural-political proposal**; ไม่ใช่ 7 อาณาจักรถาวร และไม่ใช่แผนที่ที่ตรวจมาตราส่วนแล้ว |
 | **[11 — Delayed World Reveal v0.1](11_Wanderer_Delayed_World_Reveal_and_Spoiler_Policy_v0.1.md)** | Audit จุดเผยสถานที่จริง, alias ผู้เล่น, กฎ R0–R4, แผนที่/บทพูด/การตลาด และ QA | **Spoiler policy / proposed**; ไม่เผยตำแหน่งภูมิศาสตร์ตรง ๆ ในช่วงต้นเกม |
 | **[12 — Player-Safe Opening Content v0.1](12_Wanderer_Player_Safe_Opening_Content_v0.1.md)** | คำโปรยเปิดเกม, Town UI mock, เควส Q1–Q3, บทพูด NPC และแผนที่เส้นทางช่วง R0 | **Early-game copy draft**; เขียนให้ไม่เฉลยโลกเก่าก่อนเวลา |
+| **[Player R0 Route Map (SVG)](maps/stonegate_player_route_R0_v0.1.svg)** | แผนที่เริ่มต้นแสดงเฉพาะนครประตูหินและทางใกล้เมือง ไม่เผยแผนที่เจ็ดภูมิภาค | **Concept only / player-safe reference**; ไม่ใช่มาตราส่วนจริง |
 | [Pixelorama Handoff](Wanderer_Pixelorama_Training_Handoff.md) | บันทึกทักษะวาดและ asset | อ้างอิงการเรียนรู้/ประวัติ |
 
 ### Conflict resolution (ต้องอ่าน)
