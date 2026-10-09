@@ -9,7 +9,7 @@ Previous development notes report:
 - **M1.5A Visual Combat Test 1** passed: Player + 3 NPC sprites + Enemy A shown, baseline integer scale ×4, art and runtime sprites separated.
 - **Next task: M1.5B Combat Staging.** M1.5C/D and M2–M7 are not reported finished. This cleanup did not rerun Godot, so the entries above are reports from prior development notes, not newly verified runtime results.
 
-Active files: \`res://scenes/combat/combat_prototype.tscn\`, \`res://scripts/combat/combat_prototype.gd\`.
+Active files: `res://scenes/combat/combat_prototype.tscn`, `res://scripts/combat/combat_prototype.gd`.
 
 ## 2. Visual Combat 1.5
 
@@ -19,7 +19,7 @@ Active files: \`res://scenes/combat/combat_prototype.tscn\`, \`res://scripts/com
 | M1.5C | Add active indicator, lunge/step, hit flash, recoil, floating damage, HP change, return, enemy action, using Tween/placeholder sprites | Motion and result are readable; no sluggish pacing |
 | M1.5D | Show deterministic NPC actions one by one, test action focus and pacing | Player stays central; NPC actions read as meaningful; informs future turn-system choice |
 
-**First hands-on task (M1.5B-01):** inspect \`Node2D\`/\`Sprite2D\`/\`Control\` positions and transform spaces; adjust existing character positions in Godot Inspector; run scene at 1280×720; compare before/after; commit only an understood improvement. Do **not** start full NPC AI, Starstone, quests, new towns or final animation sets here.
+**First hands-on task (M1.5B-01):** inspect `Node2D`/`Sprite2D`/`Control` positions and transform spaces; adjust existing character positions in Godot Inspector; run scene at 1280×720; compare before/after; commit only an understood improvement. Do **not** start full NPC AI, Starstone, quests, new towns or final animation sets here.
 
 ## 3. Roadmap after 1.5
 
@@ -47,13 +47,35 @@ This project is meant to teach the developer Godot through hands-on work; AI is 
 - Keep Git commits small; use branches for risky experiments and examine diffs before merge.
 - A feature is “learned” only if the developer understands its function, reasons, tunable values, failure cases and recovery.
 
+### 4.1 GDScript learning checkpoint — ผู้พัฒนาเรียนถึงไหนแล้ว
+
+**บันทึก ณ 10 ต.ค. 2026 (รายงานโดยผู้พัฒนา ไม่ใช่ผลสอบ):** ผู้พัฒนาเรียน GDScript **มาถึงเรื่องการใช้งาน `function` (`func`)** แล้ว และประสงค์จะ **เรียนภาษาไปพร้อมกับเขียน Wanderer จริง** ไม่แยกเรียนหลักสูตรยาวให้จบก่อนลงมือทำเกม
+
+- **[REPORTED CURRENT TOPIC]** `function`: กำลังเรียนรู้การประกาศและเรียกใช้ฟังก์ชัน; ยัง **ไม่ได้ยืนยัน** ว่าคล่องเรื่อง parameters, `return`, return types หรือ scope แค่ไหน
+- **[NOT YET VERIFIED]** เนื้อหาก่อนหน้านี้ เช่น ตัวแปร/ชนิดข้อมูล, `if/else`, loop, Array/Dictionary, การใช้งาน `Node` และ signal: **ห้ามสรุปว่าเรียนครบแล้ว** เพียงเพราะเปิดโค้ดเกมเดิมได้หรือพบคำสั่งเหล่านั้นใน repository
+- **[LEARNING MODE]** ทุกครั้งที่งานเกมต้องใช้ syntax ใหม่ ให้สอนแนวคิดเท่าที่จำเป็น → ผู้พัฒนาเขียนเอง → รัน/สังเกต → อธิบายโค้ดและผลลัพธ์ → ปรับ → commit
+- **[BOUNDARY]** โค้ดที่มีอยู่ใน GitHub หรือที่ AI ช่วยเขียนในอดีต **ไม่ใช่หลักฐานว่าเจ้าของโปรเจกต์เข้าใจ syntax ทั้งหมด**; ก่อนสั่งให้เขียนฟังก์ชันซับซ้อน ให้สำรวจความเข้าใจจากตัวอย่างเล็กที่สัมพันธ์กับงานที่กำลังทำ
+
+**Micro-lesson ถัดไปที่เหมาะกับระดับปัจจุบัน (ยังไม่อ้างว่าเรียนผ่าน):** อ่าน `func` หนึ่งตัวที่อยู่ใน `combat_prototype.gd`, บอกให้ได้ว่า *ชื่อฟังก์ชัน/พารามิเตอร์/ส่วนคำสั่ง/จุดที่ถูกเรียก/ผลลัพธ์* คืออะไร จากนั้นลองเขียนฟังก์ชันสั้น ๆ ในงานเกมเมื่อถึงจุดที่จำเป็นจริง; ถ้าพบ `return` หรือ type annotation ให้เรียนเพิ่มจากตัวอย่างนั้นก่อนต่อขั้นถัดไป
+
+| ช่วงพัฒนา | ความรู้ที่หยิบมาเรียนตามงานจริง | เกณฑ์สังเกตความเข้าใจ |
+|---|---|---|
+| **M1.5B (ปัจจุบัน)** | Scene tree, `Node2D`, `Sprite2D`, local/global position; อ่านฟังก์ชันเดิมใน script โดยยังไม่ต้องแก้โค้ด | จัดตัวละครใน Inspector ได้และอธิบายว่า script เรียกฟังก์ชันตรงไหน |
+| **M1.5C** | การเขียน/เรียก `func`, parameter, `return` เมื่อจำเป็น, method calls และ Tween | สร้างการเคลื่อนไหวเล็ก ๆ ได้เองและอธิบายคำสั่งทีละบรรทัด |
+| **M1.5D** | แยกฟังก์ชันสำหรับการแสดง action, เงื่อนไขพื้นฐาน, การส่งข้อมูลระหว่างฟังก์ชัน | NPC แสดง action ที่กำหนดได้โดยไม่ใช้โค้ดคัดลอกซ้ำ |
+| **M2 เป็นต้นไป** | `if/match`, Arrays/Dictionaries, state, references, signals และการดีบัก **ตามลำดับความจำเป็นจริง** | ผู้พัฒนาอ่าน/แก้โค้ด AI ของ NPC ได้และบอกผลเมื่อเปลี่ยนค่าหรือเงื่อนไข |
+
+**รูปแบบบันทึกความก้าวหน้า (สั้น ไม่สร้างไฟล์ใหม่):** หลังแต่ละบทเรียน อัปเดตบรรทัดสถานะในหัวข้อนี้ด้วย **วันที่ | หัวข้อ | ทดลองทำเองอะไร | ผลที่สังเกต/อธิบายได้ | ยังติดอะไร/หัวข้อถัดไป**. เปลี่ยนเป็น **[PRACTICED]** เมื่อผู้พัฒนาลงมือทำจริง และ **[UNDERSTOOD]** เฉพาะเมื่ออธิบายและปรับแก้เองได้ ไม่เลื่อนสถานะจากการอ่านอย่างเดียว
+
+**หมายเหตุ:** การเรียน GDScript เป็นเป้าหมายร่วมของทุก Milestone ไม่ใช่ Milestone ใหม่ ไม่ต้องเร่งขึ้นหัวข้อขั้นสูงหรือให้ AI เขียนแทนจนผู้พัฒนาไม่ได้ฝึก
+
 ## 5. Pixel-art learning notes worth retaining
 
 - Reference / character concept → compact guide & direct color blocking → base colors → shadow/highlight → detail cleanup → inspect at actual gameplay size. **A solid silhouette study is optional**, not mandatory.
 - Octopath-like inspiration means readable stylized pixel people and coherent staging; don't claim a precise production process of another studio. Don't shrink HD art automatically as the main pixel-art method.
-- **Old practice guide** (not a mandatory asset spec): canvas **64×96**, origin top-left \`(0,0)\`; compact character guide \`x=20..43, y=16..59\`, center x=32, height about 40–46 px. Horizontal anchors \`y=16/26/30/36/41/45/51/55/59\` broadly map to hair/chin/shoulder/chest/waist/hips/knee/boots/soles. Hair/cloak/weapons may extend outside the guide.
+- **Old practice guide** (not a mandatory asset spec): canvas **64×96**, origin top-left `(0,0)`; compact character guide `x=20..43, y=16..59`, center x=32, height about 40–46 px. Horizontal anchors `y=16/26/30/36/41/45/51/55/59` broadly map to hair/chin/shoulder/chest/waist/hips/knee/boots/soles. Hair/cloak/weapons may extend outside the guide.
 - Concept for one practice character: tousled dark hair, muted navy shoulder cape, lighter tunic, diagonal strap, belt, gloves, tall boots, slim sword and sheath. **Training reference, not a mandatory Player class or appearance**.
-- Keep \`art/\` originals and \`assets/sprites/\` game exports separate. Avoid overly tall sprites, unnecessary dark outlines, crowded details, and art production that outruns gameplay proof.
+- Keep `art/` originals and `assets/sprites/` game exports separate. Avoid overly tall sprites, unnecessary dark outlines, crowded details, and art production that outruns gameplay proof.
 - Small drawing breaks can restore motivation; bring relevant new art back into a running scene rather than creating dozens of unused assets.
 
 ## 6. Working rules
