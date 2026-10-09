@@ -46,6 +46,7 @@ People know that rare supernatural effects exist, but most never see them firsth
 - [World lore & Starstone canon v0.5](docs/05_Wanderer_Starstone_World_Lore_v0.5.md)
 - [Resonance gameplay integration & future tests v0.5](docs/06_Wanderer_Resonance_Gameplay_Integration_v0.5.md)
 - [Thailand-region world atlas & future cultures v0.1 — proposal](docs/07_Wanderer_Thailand_Region_Worldbuilding_v0.1.md)
+- [Stonegate city design — MAP-02A v0.1 (proposal)](docs/08_Wanderer_Stonegate_City_Design_MAP-02A_v0.1.md)
 - [Documentation index and precedence](docs/README.md)
 
 Development continues **learning-first** per v0.4; the next active milestone remains **1.5B combat staging** (v0.3). No new magic systems have been scheduled for immediate implementation.
