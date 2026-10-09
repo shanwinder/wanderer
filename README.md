@@ -1,60 +1,21 @@
 # WANDERER
 
-Solo-developed Godot RPG prototype focused on a party where the player controls only their own adventurer while NPC companions decide for themselves.
+Solo-developed Godot pixel-art RPG prototype. The player controls one adventurer; NPC companions make their own decisions. Side-view combat, meaningful injuries/permadeath, and a world formed long after a forgotten civilization.
 
-## Repository layout
+**Current playable work:** \`res://scenes/combat/combat_prototype.tscn\` (Player + 3 NPC visuals + Enemy; current basic logic still limited).  
+**Next milestone:** **M1.5B Combat Staging** — formation, battlefield depth and UI readability. Future worldbuilding and item-mediated low-magic mechanics are **not implemented**.
 
-```text
-assets/                  Runtime assets used by Godot
-  sprites/
-    characters/
-    enemies/
-art/                     Development art; ignored by Godot via .gdignore
-  source/                Aseprite and legacy Pixelorama source files
-  references/            Generated concepts, references, and screenshots
-docs/                    Design plans and project handoffs
-scenes/                  Godot scenes
-scripts/                 GDScript source
-project.godot            Godot project configuration
-```
+## Read only what you need
 
-## Asset naming
+- [Game design and core rules](docs/GAME.md)
+- [World bible, city and spoiler policy — development spoilers](docs/WORLD.md)
+- [Current roadmap, Godot learning and sprite notes](docs/WORKFLOW.md)
+- [Documentation guide](docs/README.md)
 
-- Use lowercase `snake_case`.
-- Number reusable NPCs/enemies with two digits: `npc_01`, `enemy_01`.
-- Keep runtime PNGs under `assets/`.
-- Keep editable art sources and reference material under `art/`.
-- Do not place screenshots, AI references, Aseprite files, or Pixelorama training files at repository root.
+## Layout
 
-## Current prototype
+\`scenes/\` Godot scenes · \`scripts/\` GDScript · \`assets/sprites/\` runtime PNGs · \`art/source/\` editable artwork · \`art/references/\` concepts/screenshots · \`docs/\` three canonical plans and optional map sketches.
 
-The active development scene is:
+Asset naming: lowercase \`snake_case\`, reusable NPC/enemy IDs \`npc_01\`/\`enemy_01\`; don't put source artwork or training screenshots under \`assets/\` or repository root.
 
-`res://scenes/combat/combat_prototype.tscn`
-
-Current visual test uses Player + NPC01 + NPC02 + NPC03 versus Enemy01 while retaining the original simple 1v1 combat logic for Player versus Enemy01.
-
-
-## Game world — low-magic direction (design v0.5)
-
-> **World mystery:** Early story and public presentation intentionally avoid identifying the geographic origin of the setting. Linked development documents contain spoilers about the ancient world; do not use them as player-facing lore or promotional copy.
-
-Wanderer takes place thousands of years after the collapse of present-day civilization. Its new societies resemble a late-medieval / early-modern world built among misunderstood ancient ruins. The game remains a **low-magic, party-based RPG with consequential injuries, permadeath, and autonomous NPC companions**.
-
-People know that rare supernatural effects exist, but most never see them firsthand. Special weapons, tools, and ornaments depend on **Starstone**, an unusual meteorite-derived material used through crafted devices and **Resonance**. These powers have strict costs, limitations, and risks. An ancient meteorite event may have contributed to the old world's collapse; its actual causal role remains unresolved in the lore.
-
-**These are worldbuilding and future feature plans, not implemented gameplay.** The current visual combat test still uses basic Player-versus-Enemy logic, with NPCs shown visually.
-
-- [World lore & Starstone canon v0.5](docs/05_Wanderer_Starstone_World_Lore_v0.5.md)
-- [Resonance gameplay integration & future tests v0.5](docs/06_Wanderer_Resonance_Gameplay_Integration_v0.5.md)
-- [Regional world atlas & future cultures v0.1 — development spoilers](docs/07_Wanderer_Fallen_World_Regional_Atlas_v0.1.md)
-- [Stonegate city design — MAP-02A v0.1 (proposal)](docs/08_Wanderer_Stonegate_City_Design_MAP-02A_v0.1.md)
-- [Stonegate MAP-02B — editable city layout SVG](docs/maps/stonegate_map02b_layout_v0.1.svg)
-- [Stonegate MAP-02B — cartography brief](docs/09_Wanderer_Stonegate_MAP-02B_City_Cartography_v0.1.md)
-- [MAP-03 — Regional civilizations, cultures and trade v0.1](docs/10_Wanderer_MAP-03_Regional_Civilizations_and_Trade_v0.1.md)
-- [Delayed-world-reveal design policy (contains spoilers)](docs/11_Wanderer_Delayed_World_Reveal_and_Spoiler_Policy_v0.1.md)
-- [Player-safe opening content and route UI copy (draft)](docs/12_Wanderer_Player_Safe_Opening_Content_v0.1.md)
-- [Player-safe early route map concept (SVG)](docs/maps/stonegate_player_route_R0_v0.1.svg)
-- [Documentation index and precedence](docs/README.md)
-
-Development continues **learning-first** per v0.4; the next active milestone remains **1.5B combat staging** (v0.3). No new magic systems have been scheduled for immediate implementation.
+**Spoiler note:** Wanderer's setting contains a delayed world-identity discovery. Developer documents may contain geographic spoilers; don't copy them into early game text, screenshots, store descriptions or public-facing announcements.
