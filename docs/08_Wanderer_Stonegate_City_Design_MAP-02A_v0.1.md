@@ -653,6 +653,7 @@ Q1 เป็นจุดเข้าสู่วงจรเมือง/ข่�
 | [07] R3/R4, C1, Q1–Q3, atlas layers | Stonegate city baseline | ทุกส่วน |
 
 **งาน MAP-02B ฉบับร่าง:** มี [09 — City Cartography](09_Wanderer_Stonegate_MAP-02B_City_Cartography_v0.1.md) และ [SVG layout](maps/stonegate_map02b_layout_v0.1.svg) แล้ว เป็น rough plan สำหรับทบทวนตรรกะเมืองและเส้นทาง **ยังไม่ได้ล็อกเป็น Canon** ก่อนผู้สร้างตรวจภาพและการวางภูมิประเทศ  
+**ต้นแบบข้อความที่ไม่สปอยล์:** ใช้ [12_Wanderer_Player_Safe_Opening_Content_v0.1.md](12_Wanderer_Player_Safe_Opening_Content_v0.1.md) สำหรับ Town UI, บทสนทนาและ Q1–Q3 ช่วงต้น ห้ามคัดลอกพิกัดจริงจาก City Bible ลงเกมโดยตรง
 **งานถัดไปสาย Gameplay:** M1.5B (ไม่เปลี่ยน)
 
 ---
