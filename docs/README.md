@@ -12,10 +12,11 @@
 | [04 — Learning Workflow v0.4](04_Wanderer_Learning_Development_Workflow_v0.4.md) | ผู้พัฒนาเรียนรู้ Godot ด้วยตัวเอง; AI เป็นโค้ช | **ล่าสุดสำหรับวิธีลงมือพัฒนาเสมอ** |
 | **[05 — Starstone World Lore v0.5](05_Wanderer_Starstone_World_Lore_v0.5.md)** | คืนฟ้าแตก, ดาราศิลา, การพ้องพลัง, ความหายาก, สังคม, ความตาย, ความลับโลกเก่า | **ล่าสุดสำหรับ Low-Magic/Lore**; แทนความไม่ชัดใน v0.1 §5.5 |
 | **[06 — Resonance Gameplay v0.5](06_Wanderer_Resonance_Gameplay_Integration_v0.5.md)** | กฎอุปกรณ์, NPC, ต้นทุน, MRE-1, acceptance tests, roadmap integration | **ล่าสุดสำหรับ proposed magic gameplay**; ยังไม่ implement |
-| **[07 — Thailand-Region Worldbuilding v0.1](07_Wanderer_Thailand_Region_Worldbuilding_v0.1.md)** | 7 ภูมิภาคในอดีตไทย, การเปลี่ยนภูมิประเทศ, นครรัฐ/วัฒนธรรม, corridor, แนวสร้าง Atlas, Vertical Slice | **ข้อเสนอแผนที่โลก**; ยังไม่ล็อกชื่อ/พรมแดน/ภูมิประเทศ; ไม่เปลี่ยน Active Milestone |
+| **[07 — Fallen World Regional Atlas v0.1](07_Wanderer_Fallen_World_Regional_Atlas_v0.1.md)** | 7 ภูมิภาคของโลกใหม่, การเปลี่ยนภูมิประเทศ, นครรัฐ/วัฒนธรรม, corridor, แนวสร้าง Atlas, Vertical Slice | **ข้อเสนอแผนที่โลก**; ยังไม่ล็อกชื่อ/พรมแดน/ภูมิประเทศ; ไม่เปลี่ยน Active Milestone |
 | **[08 — Stonegate City MAP-02A v0.1](08_Wanderer_Stonegate_City_Design_MAP-02A_v0.1.md)** | เมืองนครประตูหิน: ผังเมือง เขตเมือง สภา กลุ่มอำนาจ NPC 6 คน เควส 3 เส้นทาง 2 และเกณฑ์ Vertical Slice | **ข้อเสนอ City Bible** ภายใต้ [07]; ยังไม่ implement และไม่แทน M1.5B |
 | **[09 — Stonegate MAP-02B v0.1](09_Wanderer_Stonegate_MAP-02B_City_Cartography_v0.1.md)** | ผังภูมิประเทศ แหล่งน้ำ 9 เขต เส้นทาง A/B และข้อกำหนดการวาด; [แผนผัง SVG แก้ไขได้](maps/stonegate_map02b_layout_v0.1.svg) | **Rough City Cartography**; ยังไม่ใช่ GIS, scale หรือภาพ Final; ไม่เปลี่ยน gameplay roadmap |
 | **[10 — MAP-03 Regional Civilizations & Trade v0.1](10_Wanderer_MAP-03_Regional_Civilizations_and_Trade_v0.1.md)** | 7 ภูมิภาค, 7 เมืองหลักชั่วคราว, เศรษฐกิจ, ข้อตกลงทางการเมือง, วัฒนธรรม, เส้นทาง C1–C8 และข้อเสนออารยธรรม | **Regional cultural-political proposal**; ไม่ใช่ 7 อาณาจักรถาวร และไม่ใช่แผนที่ที่ตรวจมาตราส่วนแล้ว |
+| **[11 — Delayed World Reveal v0.1](11_Wanderer_Delayed_World_Reveal_and_Spoiler_Policy_v0.1.md)** | Audit จุดเผยสถานที่จริง, alias ผู้เล่น, กฎ R0–R4, แผนที่/บทพูด/การตลาด และ QA | **Spoiler policy / proposed**; ไม่เผยตำแหน่งภูมิศาสตร์ตรง ๆ ในช่วงต้นเกม |
 | [Pixelorama Handoff](Wanderer_Pixelorama_Training_Handoff.md) | บันทึกทักษะวาดและ asset | อ้างอิงการเรียนรู้/ประวัติ |
 
 ### Conflict resolution (ต้องอ่าน)
@@ -27,12 +28,16 @@
 3. **Low-magic/world canon:** v0.5 [05] กำหนดกฎโลกเหนือธรรมชาติแทน v0.1 §5.5 เฉพาะหัวข้อนั้น
 4. **Magic gameplay integration:** v0.5 [06] เสนอวิธีทำงานและ *จุดที่จะเพิ่มได้เมื่อพร้อม*; ไม่แก้สถานะ milestone เดิม
 5. **Original game vision:** v0.1 ยังมีผลกับ Player control, NPC autonomy, post-post-apocalypse, quests, journeys, class progression, Permadeath และมิติอื่นนอกเหนือข้อแก้ชัดเจน
-6. **Thailand-region geography & world map proposal:** [07] เพิ่มสมมติฐานแผนที่และพื้นที่เล่นที่ตั้งอยู่ในอดีตประเทศไทยภายใต้ v0.1 และ v0.5; เป็น [PROPOSED] ไม่แทน gameplay milestone หรือ canon ที่ล็อกแล้ว
+6. **Regional geography & world map proposal:** [07] เพิ่มสมมติฐานแผนที่และพื้นที่เล่นของโลกหลังการล่มสลายภายใต้ v0.1 และ v0.5; เป็น [PROPOSED] ไม่แทน gameplay milestone หรือ canon ที่ล็อกแล้ว
 7. **Stonegate City Design / MAP-02A:** [08] เพิ่มรายละเอียดเมืองและตัวละครโดยต่อยอด [07] §14; ข้อมูลใหม่ทั้งหมดเป็น [PROPOSED] และต้องอ่านควบคู่ข้อจำกัดการเล่นจาก v0.1, Starstone v0.5 และ Learning Workflow v0.4
 8. **Regional political and cultural design / MAP-03:** [10] ขยายมิติประชากร เศรษฐกิจและความสัมพันธ์ของ 7 ภูมิภาคจาก [07]; เมือง Stonegate และ Route A/B ให้ยึด [08]–[09] เมื่อรายละเอียดขัดกัน; ทุกชื่อใหม่ [PROPOSED]
 9. สถานะ **[LOCKED — INTENT]** ใน v0.5 หมายถึงเจตนาที่ผู้สร้างระบุ; **[DESIGN BASELINE]** เป็นข้อเสนอทำงาน, **[OPEN]** ยังไม่ตัดสิน และ **[LATER]** เก็บไว้ภายหลัง
 
 หากความขัดแย้งกระทบระบบหลัก: บันทึก decision และให้ผู้สร้างทบทวนก่อนแก้ อย่าข้ามไป implement เพราะเห็นชื่อไฟล์ v0.5
+
+## Spoiler-sensitive world design
+
+**[11 — Delayed World Reveal & Spoiler Control v0.1](11_Wanderer_Delayed_World_Reveal_and_Spoiler_Policy_v0.1.md)** กำหนดช่วงเปิดเผยความจริงของโลกเก่า ชื่อ player-facing ที่ไม่เฉลยภูมิศาสตร์ และข้อห้ามนำข้อมูล designer-only ไปใช้ใน UI/Assets/Marketing. **Repository นี้เป็น public**: ป้าย SPOILER ไม่ได้ซ่อนข้อมูลจากคนที่ตั้งใจอ่าน Git history
 
 ## Current direction — สิ่งที่ทำถัดไปจริง
 
@@ -62,9 +67,9 @@
 
 ## Parallel worldbuilding track (Atlas v0.1)
 
-แผนที่โลกใหม่ครอบคลุมดินแดนที่เคยเป็นประเทศไทยและชายขอบที่สัมพันธ์กัน ใช้ลุ่มแม่น้ำ ที่ราบสูงโคราช เทือกเขา ชายฝั่ง และคาบสมุทรเป็นฐาน ขณะที่ชื่อต่าง ๆ และการเปลี่ยนแปลงในอนาคตเป็นสมมติฐานของโลกเกม
+Atlas ของผู้สร้างมีฐานภูมิประเทศยุคก่อนหายนะและชั้นสมมติทางภูมิศาสตร์ แต่แผนที่ **สำหรับผู้เล่นช่วงต้น** ต้องแสดงเพียงนครประตูหินกับเส้นทางที่รู้จัก ห้ามนำแผนที่ใหญ่หรือพิกัดอ้างอิงไปใช้ก่อนผ่านเกณฑ์เปิดเผยใน [11]
 
-- อ่าน [07_Wanderer_Thailand_Region_Worldbuilding_v0.1.md](07_Wanderer_Thailand_Region_Worldbuilding_v0.1.md) ก่อนสร้างแผนที่หรือออกแบบเมือง
+- อ่าน [07_Wanderer_Fallen_World_Regional_Atlas_v0.1.md](07_Wanderer_Fallen_World_Regional_Atlas_v0.1.md) ก่อนสร้างแผนที่หรือออกแบบเมือง
 - อ่าน [08_Wanderer_Stonegate_City_Design_MAP-02A_v0.1.md](08_Wanderer_Stonegate_City_Design_MAP-02A_v0.1.md) สำหรับผังเมือง นครรัฐ สภา NPC/เควสและข้อจำกัด Town UI;
   **ชื่อ NPC กลุ่มการเมือง ประวัติและตำแหน่งเมืองยังเป็นข้อเสนอ**
 - การแบ่ง 7 ภูมิภาคและชื่อ เช่น นครประตูหิน **ยังไม่ใช่ Final Canon**
