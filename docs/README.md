@@ -14,6 +14,7 @@
 | **[06 — Resonance Gameplay v0.5](06_Wanderer_Resonance_Gameplay_Integration_v0.5.md)** | กฎอุปกรณ์, NPC, ต้นทุน, MRE-1, acceptance tests, roadmap integration | **ล่าสุดสำหรับ proposed magic gameplay**; ยังไม่ implement |
 | **[07 — Thailand-Region Worldbuilding v0.1](07_Wanderer_Thailand_Region_Worldbuilding_v0.1.md)** | 7 ภูมิภาคในอดีตไทย, การเปลี่ยนภูมิประเทศ, นครรัฐ/วัฒนธรรม, corridor, แนวสร้าง Atlas, Vertical Slice | **ข้อเสนอแผนที่โลก**; ยังไม่ล็อกชื่อ/พรมแดน/ภูมิประเทศ; ไม่เปลี่ยน Active Milestone |
 | **[08 — Stonegate City MAP-02A v0.1](08_Wanderer_Stonegate_City_Design_MAP-02A_v0.1.md)** | เมืองนครประตูหิน: ผังเมือง เขตเมือง สภา กลุ่มอำนาจ NPC 6 คน เควส 3 เส้นทาง 2 และเกณฑ์ Vertical Slice | **ข้อเสนอ City Bible** ภายใต้ [07]; ยังไม่ implement และไม่แทน M1.5B |
+| **[09 — Stonegate MAP-02B v0.1](09_Wanderer_Stonegate_MAP-02B_City_Cartography_v0.1.md)** | ผังภูมิประเทศ แหล่งน้ำ 9 เขต เส้นทาง A/B และข้อกำหนดการวาด; [แผนผัง SVG แก้ไขได้](maps/stonegate_map02b_layout_v0.1.svg) | **Rough City Cartography**; ยังไม่ใช่ GIS, scale หรือภาพ Final; ไม่เปลี่ยน gameplay roadmap |
 | [Pixelorama Handoff](Wanderer_Pixelorama_Training_Handoff.md) | บันทึกทักษะวาดและ asset | อ้างอิงการเรียนรู้/ประวัติ |
 
 ### Conflict resolution (ต้องอ่าน)
@@ -69,6 +70,10 @@
 - ใช้โครงเส้นทางแบบ **node-based**; ไม่เปลี่ยน Wanderer เป็น open world
 - การทำ worldbuilding เป็น track คู่ขนานเพื่อแรงบันดาลใจเท่านั้น; **M1.5B ยังคงเป็น milestone ที่ลงมือพัฒนาเกมต่อไป**
 - แผนยังไม่ได้สร้างรูปแผนที่จริง และยังไม่ได้เขียนระบบ Journey ใน Godot
+
+## MAP-02B — Stonegate rough map
+
+ผังเชิงความสัมพันธ์สำหรับนักออกแบบเมืองอยู่ที่ [MAP-02B SVG](maps/stonegate_map02b_layout_v0.1.svg) (D1–D9, R3/R4 และ Route A/B); คำอธิบายและข้อควรระวังอยู่ที่ [09_Wanderer_Stonegate_MAP-02B_City_Cartography_v0.1.md](09_Wanderer_Stonegate_MAP-02B_City_Cartography_v0.1.md). ยังไม่ถือเป็นภูมิศาสตร์ที่ล็อกถาวร ไม่มีการระบุระยะทางจริง และยังไม่ทำ Town UI
 
 ## Learning-first workflow
 
