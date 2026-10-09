@@ -13,6 +13,7 @@
 | **[05 — Starstone World Lore v0.5](05_Wanderer_Starstone_World_Lore_v0.5.md)** | คืนฟ้าแตก, ดาราศิลา, การพ้องพลัง, ความหายาก, สังคม, ความตาย, ความลับโลกเก่า | **ล่าสุดสำหรับ Low-Magic/Lore**; แทนความไม่ชัดใน v0.1 §5.5 |
 | **[06 — Resonance Gameplay v0.5](06_Wanderer_Resonance_Gameplay_Integration_v0.5.md)** | กฎอุปกรณ์, NPC, ต้นทุน, MRE-1, acceptance tests, roadmap integration | **ล่าสุดสำหรับ proposed magic gameplay**; ยังไม่ implement |
 | **[07 — Thailand-Region Worldbuilding v0.1](07_Wanderer_Thailand_Region_Worldbuilding_v0.1.md)** | 7 ภูมิภาคในอดีตไทย, การเปลี่ยนภูมิประเทศ, นครรัฐ/วัฒนธรรม, corridor, แนวสร้าง Atlas, Vertical Slice | **ข้อเสนอแผนที่โลก**; ยังไม่ล็อกชื่อ/พรมแดน/ภูมิประเทศ; ไม่เปลี่ยน Active Milestone |
+| **[08 — Stonegate City MAP-02A v0.1](08_Wanderer_Stonegate_City_Design_MAP-02A_v0.1.md)** | เมืองนครประตูหิน: ผังเมือง เขตเมือง สภา กลุ่มอำนาจ NPC 6 คน เควส 3 เส้นทาง 2 และเกณฑ์ Vertical Slice | **ข้อเสนอ City Bible** ภายใต้ [07]; ยังไม่ implement และไม่แทน M1.5B |
 | [Pixelorama Handoff](Wanderer_Pixelorama_Training_Handoff.md) | บันทึกทักษะวาดและ asset | อ้างอิงการเรียนรู้/ประวัติ |
 
 ### Conflict resolution (ต้องอ่าน)
@@ -25,7 +26,8 @@
 4. **Magic gameplay integration:** v0.5 [06] เสนอวิธีทำงานและ *จุดที่จะเพิ่มได้เมื่อพร้อม*; ไม่แก้สถานะ milestone เดิม
 5. **Original game vision:** v0.1 ยังมีผลกับ Player control, NPC autonomy, post-post-apocalypse, quests, journeys, class progression, Permadeath และมิติอื่นนอกเหนือข้อแก้ชัดเจน
 6. **Thailand-region geography & world map proposal:** [07] เพิ่มสมมติฐานแผนที่และพื้นที่เล่นที่ตั้งอยู่ในอดีตประเทศไทยภายใต้ v0.1 และ v0.5; เป็น [PROPOSED] ไม่แทน gameplay milestone หรือ canon ที่ล็อกแล้ว
-7. สถานะ **[LOCKED — INTENT]** ใน v0.5 หมายถึงเจตนาที่ผู้สร้างระบุ; **[DESIGN BASELINE]** เป็นข้อเสนอทำงาน, **[OPEN]** ยังไม่ตัดสิน และ **[LATER]** เก็บไว้ภายหลัง
+7. **Stonegate City Design / MAP-02A:** [08] เพิ่มรายละเอียดเมืองและตัวละครโดยต่อยอด [07] §14; ข้อมูลใหม่ทั้งหมดเป็น [PROPOSED] และต้องอ่านควบคู่ข้อจำกัดการเล่นจาก v0.1, Starstone v0.5 และ Learning Workflow v0.4
+8. สถานะ **[LOCKED — INTENT]** ใน v0.5 หมายถึงเจตนาที่ผู้สร้างระบุ; **[DESIGN BASELINE]** เป็นข้อเสนอทำงาน, **[OPEN]** ยังไม่ตัดสิน และ **[LATER]** เก็บไว้ภายหลัง
 
 หากความขัดแย้งกระทบระบบหลัก: บันทึก decision และให้ผู้สร้างทบทวนก่อนแก้ อย่าข้ามไป implement เพราะเห็นชื่อไฟล์ v0.5
 
@@ -60,6 +62,8 @@
 แผนที่โลกใหม่ครอบคลุมดินแดนที่เคยเป็นประเทศไทยและชายขอบที่สัมพันธ์กัน ใช้ลุ่มแม่น้ำ ที่ราบสูงโคราช เทือกเขา ชายฝั่ง และคาบสมุทรเป็นฐาน ขณะที่ชื่อต่าง ๆ และการเปลี่ยนแปลงในอนาคตเป็นสมมติฐานของโลกเกม
 
 - อ่าน [07_Wanderer_Thailand_Region_Worldbuilding_v0.1.md](07_Wanderer_Thailand_Region_Worldbuilding_v0.1.md) ก่อนสร้างแผนที่หรือออกแบบเมือง
+- อ่าน [08_Wanderer_Stonegate_City_Design_MAP-02A_v0.1.md](08_Wanderer_Stonegate_City_Design_MAP-02A_v0.1.md) สำหรับผังเมือง นครรัฐ สภา NPC/เควสและข้อจำกัด Town UI;
+  **ชื่อ NPC กลุ่มการเมือง ประวัติและตำแหน่งเมืองยังเป็นข้อเสนอ**
 - การแบ่ง 7 ภูมิภาคและชื่อ เช่น นครประตูหิน **ยังไม่ใช่ Final Canon**
 - สร้าง Atlas rough map (MAP-01) แยกจากแผนที่เล่นจริง (MAP-05) และแยกแผนที่ลับเรื่องดาราศิลา
 - ใช้โครงเส้นทางแบบ **node-based**; ไม่เปลี่ยน Wanderer เป็น open world
