@@ -49,6 +49,7 @@ People know that rare supernatural effects exist, but most never see them firsth
 - [Stonegate city design — MAP-02A v0.1 (proposal)](docs/08_Wanderer_Stonegate_City_Design_MAP-02A_v0.1.md)
 - [Stonegate MAP-02B — editable city layout SVG](docs/maps/stonegate_map02b_layout_v0.1.svg)
 - [Stonegate MAP-02B — cartography brief](docs/09_Wanderer_Stonegate_MAP-02B_City_Cartography_v0.1.md)
+- [MAP-03 — Regional civilizations, cultures and trade v0.1](docs/10_Wanderer_MAP-03_Regional_Civilizations_and_Trade_v0.1.md)
 - [Documentation index and precedence](docs/README.md)
 
 Development continues **learning-first** per v0.4; the next active milestone remains **1.5B combat staging** (v0.3). No new magic systems have been scheduled for immediate implementation.
