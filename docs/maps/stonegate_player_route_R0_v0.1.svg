@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 730" width="1100" height="730" role="img" aria-label="Early game player-safe map: Stonegate and two nearby routes, without old-world geographic names or regional borders.">
+<title>Wanderer — แผนที่การเดินทางบริเวณนครประตูหิน</title>
+<desc>R0 player-facing concept. Shows only Stonegate, the guarded upper road, and the abandoned lower road. No country silhouette, province labels, real-world highways or designer codes.</desc>
+<defs>
+<pattern id="paper" width="84" height="84" patternUnits="userSpaceOnUse"><rect width="84" height="84" fill="#f5ead2"/><path d="M0 63Q36 54 84 65 M6 20Q58 5 83 27" fill="none" stroke="#baa07c" stroke-width="1.6" opacity=".2"/></pattern>
+<linearGradient id="fog" x1="0" x2="1"><stop offset="0" stop-color="#f5ead2" stop-opacity="0"/><stop offset="1" stop-color="#f5ead2" stop-opacity=".9"/></linearGradient>
+</defs>
+<rect width="1100" height="730" fill="url(#paper)"/>
+<rect x="20" y="20" width="1060" height="690" rx="22" fill="none" stroke="#796247" stroke-width="5"/>
+<rect x="32" y="32" width="1036" height="666" rx="14" fill="none" stroke="#aa936c" stroke-width="2"/>
+<g fill="#51402c" font-family="Noto Sans Thai, Tahoma, sans-serif">
+<text x="70" y="85" font-size="32" font-weight="700">แผนที่เส้นทางที่รู้จัก</text>
+<text x="72" y="118" font-size="18" opacity=".75">บันทึกจากนักเดินทาง — ข้อมูลบางส่วนยังไม่ยืนยัน</text>
+</g>
+<!-- Only local terrain hints; no wide geographic outline -->
+<path d="M70 200Q182 148 297 205T515 201" stroke="#a6a183" stroke-width="15" opacity=".2" fill="none"/>
+<path d="M706 158Q815 120 1021 175" stroke="#98977f" stroke-width="22" opacity=".18" fill="none"/>
+<path d="M715 568Q873 518 1028 592" stroke="#ac9c82" stroke-width="18" opacity=".2" fill="none"/>
+<path d="M130 400Q192 380 274 416T429 402" fill="none" stroke="#7ca6ad" stroke-width="19" stroke-linecap="round" opacity=".65"/>
+<!-- Stonegate and only two routes -->
+<path d="M531 405Q670 320 742 253T917 211" fill="none" stroke="#a8753d" stroke-width="13" stroke-linecap="round" stroke-dasharray="24 12"/>
+<path d="M531 405Q668 465 748 514T940 592" fill="none" stroke="#8b776b" stroke-width="10" stroke-linecap="round" stroke-dasharray="12 15"/>
+<!-- upper gate -->
+<g transform="translate(836 237)">
+<rect x="-39" y="-22" width="78" height="58" rx="3" fill="#c4ac82" stroke="#69563b" stroke-width="5"/>
+<rect x="-12" y="0" width="24" height="36" fill="#7a5e46" stroke="#69563b" stroke-width="3"/>
+<path d="M-47 -22L0 -52L47 -22" fill="#7e6851" stroke="#5e4e39" stroke-width="4"/>
+</g>
+<!-- old path marker -->
+<g transform="translate(837 551)" fill="none" stroke="#746b60" stroke-width="8" stroke-linecap="round">
+<path d="M-37 28V-6Q0-59 37-6V28"/><path d="M-15 24V-7Q0-25 15-7V24" stroke-width="10"/><path d="M-42 -4L-58 -18 M33 6L55-9" stroke-width="4"/>
+</g>
+<!-- city -->
+<g transform="translate(508 406)">
+<ellipse ry="35" rx="70" fill="#b7a07d" opacity=".3"/>
+<path d="M-70 -6L-34 -27L-4 -6L31 -29L70-6V31H-70Z" fill="#b79b73" stroke="#6d573f" stroke-width="5"/>
+<path d="M-75 -9H75M-75 31H75" stroke="#6e5841" stroke-width="5"/>
+<rect x="-12" y="-1" width="24" height="32" fill="#7a5c43" stroke="#6b5037" stroke-width="3"/>
+<path d="M-49 -14L-35 -48L-21 -14 M27 -14L40 -49L53 -14" fill="#785e4b"/>
+</g>
+<g font-family="Noto Sans Thai, Tahoma, sans-serif" fill="#4b3d2f" text-anchor="middle">
+<text x="504" y="478" font-size="28" font-weight="700">นครประตูหิน</text>
+<text x="504" y="505" font-size="16">เมืองที่พักและแลกข่าว</text>
+<text x="831" y="312" font-size="23" font-weight="700">ทางประตูบน</text>
+<text x="831" y="338" font-size="17">มีผู้ดูแล / ค่าผ่านทาง</text>
+<text x="831" y="621" font-size="23" font-weight="700">รอยทางเก่า</text>
+<text x="831" y="646" font-size="17">ไม่รับรองความปลอดภัย</text>
+</g>
+<!-- unknown beyond local routes -->
+<rect x="939" y="145" width="100" height="125" fill="url(#fog)"/>
+<rect x="955" y="538" width="92" height="106" fill="url(#fog)"/>
+<g font-family="Noto Sans Thai, Tahoma, sans-serif" fill="#7e6a54" font-size="17">
+<text x="70" y="658">ไม่แสดงดินแดนที่ยังไม่มีข้อมูล</text>
+<text x="70" y="683" font-size="14">ฉบับแนวคิด R0 — ไม่มีมาตราส่วนหรือพิกัดจริง</text>
+</g>
+<g transform="translate(1010 85)" font-family="serif" font-size="20" fill="#6d5741" text-anchor="middle">
+<circle r="35" fill="none" stroke="#a28a68" stroke-width="3"/><path d="M0 -24L-9 9L0 24L9 9Z" fill="#b49362" stroke="#806447" stroke-width="2"/>
+<text y="-47" font-weight="700">N</text>
+</g>
+</svg>
