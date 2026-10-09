@@ -409,6 +409,8 @@ R2 แนวกำแพงป่า ── C4 ─ R3 สี่สายน้�
 
 **เอกสารขยาย MAP-02A:** [08_Wanderer_Stonegate_City_Design_MAP-02A_v0.1.md](08_Wanderer_Stonegate_City_Design_MAP-02A_v0.1.md) ออกแบบนครประตูหินอย่างละเอียด รวมประวัติ เมือง 9 เขต สภาห้าฝ่าย อำนาจท้องถิ่น สมาชิกทีม 6 คน เส้นทาง A/B และ Q1–Q3 โดยทั้งหมดเป็น **[PROPOSED]** ยังไม่ล็อกเป็น Canon และไม่เปลี่ยน Milestone ที่กำลังทำใน Godot
 
+**เอกสารขยาย MAP-03:** [10_Wanderer_MAP-03_Regional_Civilizations_and_Trade_v0.1.md](10_Wanderer_MAP-03_Regional_Civilizations_and_Trade_v0.1.md) ขยายรายละเอียด 7 ภูมิภาค การเมือง เศรษฐกิจ เมืองตัวอย่าง และเส้นทาง C1–C8 โดยทุกชื่อ/ข้อตกลงใหม่เป็น [PROPOSED]; ไม่เพิ่มเมืองเล่นจริงเกิน Stonegate ใน Milestone 7
+
 # 15. ตัวอย่าง Event Seeds 10 อย่าง (ยังไม่ implement)
 
 1. ฝนตกทำให้ด่านต้องจำกัดผู้ผ่าน — จ่ายเวลา/เสบียงหรือเสี่ยงทางโบราณ
