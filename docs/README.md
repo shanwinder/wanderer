@@ -17,6 +17,7 @@
 | **[09 — Stonegate MAP-02B v0.1](09_Wanderer_Stonegate_MAP-02B_City_Cartography_v0.1.md)** | ผังภูมิประเทศ แหล่งน้ำ 9 เขต เส้นทาง A/B และข้อกำหนดการวาด; [แผนผัง SVG แก้ไขได้](maps/stonegate_map02b_layout_v0.1.svg) | **Rough City Cartography**; ยังไม่ใช่ GIS, scale หรือภาพ Final; ไม่เปลี่ยน gameplay roadmap |
 | **[10 — MAP-03 Regional Civilizations & Trade v0.1](10_Wanderer_MAP-03_Regional_Civilizations_and_Trade_v0.1.md)** | 7 ภูมิภาค, 7 เมืองหลักชั่วคราว, เศรษฐกิจ, ข้อตกลงทางการเมือง, วัฒนธรรม, เส้นทาง C1–C8 และข้อเสนออารยธรรม | **Regional cultural-political proposal**; ไม่ใช่ 7 อาณาจักรถาวร และไม่ใช่แผนที่ที่ตรวจมาตราส่วนแล้ว |
 | **[11 — Delayed World Reveal v0.1](11_Wanderer_Delayed_World_Reveal_and_Spoiler_Policy_v0.1.md)** | Audit จุดเผยสถานที่จริง, alias ผู้เล่น, กฎ R0–R4, แผนที่/บทพูด/การตลาด และ QA | **Spoiler policy / proposed**; ไม่เผยตำแหน่งภูมิศาสตร์ตรง ๆ ในช่วงต้นเกม |
+| **[12 — Player-Safe Opening Content v0.1](12_Wanderer_Player_Safe_Opening_Content_v0.1.md)** | คำโปรยเปิดเกม, Town UI mock, เควส Q1–Q3, บทพูด NPC และแผนที่เส้นทางช่วง R0 | **Early-game copy draft**; เขียนให้ไม่เฉลยโลกเก่าก่อนเวลา |
 | [Pixelorama Handoff](Wanderer_Pixelorama_Training_Handoff.md) | บันทึกทักษะวาดและ asset | อ้างอิงการเรียนรู้/ประวัติ |
 
 ### Conflict resolution (ต้องอ่าน)
@@ -38,6 +39,8 @@
 ## Spoiler-sensitive world design
 
 **[11 — Delayed World Reveal & Spoiler Control v0.1](11_Wanderer_Delayed_World_Reveal_and_Spoiler_Policy_v0.1.md)** กำหนดช่วงเปิดเผยความจริงของโลกเก่า ชื่อ player-facing ที่ไม่เฉลยภูมิศาสตร์ และข้อห้ามนำข้อมูล designer-only ไปใช้ใน UI/Assets/Marketing. **Repository นี้เป็น public**: ป้าย SPOILER ไม่ได้ซ่อนข้อมูลจากคนที่ตั้งใจอ่าน Git history
+
+ผู้เขียนข้อความ UI และบทสนทนาสำหรับฉากเริ่มต้นควรเริ่มจาก [12 — Player-Safe Opening Content](12_Wanderer_Player_Safe_Opening_Content_v0.1.md) แทนการคัดลอกข้อความภูมิศาสตร์จริงจาก [07]–[10] โดยตรง
 
 ## Current direction — สิ่งที่ทำถัดไปจริง
 
