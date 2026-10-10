@@ -13,6 +13,44 @@ Read alongside [GAME.md](GAME.md) and [WORKFLOW.md](WORKFLOW.md).
 - **Resonance / การพ้องพลัง:** item-gated activation, with risk to user (**Strain**) and item (**Stress / Integrity**). Skilled handling helps; craftsmen and counterfeiters exist. No generic bare-handed spellcasting, free magic economy or ordinary revival of Dead. Resurrection remains a separate [LATER/OPEN] mystery.
 - NPCs use or decline these devices according to their own decisions. In a prototype, a Pulse Pendant might stabilize Alive/Down but cannot revive Dead. No magic feature needs implementing before its milestone.
 
+## 1A. International-first identity & cultural synthesis [DESIGN DIRECTION]
+
+**เป้าหมายที่ผู้สร้างกำหนด [LOCKED INTENT]:** ภูมิศาสตร์จริงใต้โลกยังอ้างอิงดินแดนไทยและเพื่อนบ้าน แต่ **อัตลักษณ์ที่ผู้เล่นรับรู้ในช่วงใหญ่ของเกมต้องเป็น original, international-facing fantasy world** ไม่ใช่ “เกมย้อนยุคไทยที่เปลี่ยนชื่อสถานที่”. ความหลากหลายและภาษา/ภาพที่เข้าถึงผู้เล่นต่างประเทศเป็นเป้าหมายด้านการออกแบบ **ไม่ใช่คำรับประกันยอดขาย**. รักษาเบาะแสไทยจาง ๆ เพื่อให้ผู้เล่นไทยค้นพบเองเมื่อเวลาผ่านไป ตาม §5.
+
+**หลักการผสมวัฒนธรรม — ไม่ยกประเทศปัจจุบันไปวางทั้งประเทศในอนาคต:** หลังการล่มสลายหลายพันปี การย้ายถิ่น การแต่งงาน การค้าระยะไกล การรับช่างและตำราเก่าทำให้ประเพณีและภาษาผสม/เปลี่ยนไป. ใช้ *functional inspirations* จากเทคโนโลยี วัสดุ ภูมิอากาศ อาชีพ สถาบัน และคติชีวิต แล้วสร้างสังคมใหม่ที่มีประวัติของตัวเอง; **หนึ่ง region ≠ หนึ่งประเทศ/หนึ่งเชื้อสาย**.
+
+| แหล่งแรงบันดาลใจ (ไม่ใช่ประเทศที่ยังดำรงอยู่ตรง ๆ) | สิ่งที่นำมาแปรรูปเป็นวัฒนธรรมใหม่ได้ | สิ่งที่ไม่ควรทำ |
+|---|---|---|
+| **เอเชียตะวันออกเฉียงใต้** — พื้นที่ไทยเดิมและชุมชนเกี่ยวเนื่องกับลาว กัมพูชา เมียนมา เวียดนาม มาเลย์ | อาคารรับฝน/น้ำท่วม, ตลาดท่า, เรือและงานไม้, ลายทอแบบนามธรรม, เครือญาติ/เส้นทางข้ามน้ำ, อาหารจากพืชท้องถิ่น | ยกวัด/ชุดประจำชาติ/พิธีศาสนาที่ระบุประเทศตรง ๆ มาเป็นการตกแต่งทุกเมือง |
+| **จีนและญี่ปุ่น** | การฝึกงานช่างหลายรุ่น, งานเข้าไม้และการดูแลเครื่องมือ, ตรารับรองของสินค้า, สถานีพักทาง, รูปทรงอุปกรณ์/ชุดเดินทางที่ผ่านการดัดแปลง | ให้ทุกคนเป็นซามูไร/นินจา, ใช้สัญลักษณ์จักรพรรดิหรือชื่อเมืองจริงโดยไร้ประวัติ |
+| **ตะวันออกกลางและเครือข่ายเอเชียกลาง** | กติกาคาราวาน, โรงพักทางในพื้นที่ร้อน/แห้งเมื่อเหมาะกับภูมิอากาศ, การค้า ความรู้ดาวและการแพทย์ที่เดินทางผ่านผู้คน | เหมารวมเป็น “ชาวทะเลทราย”, สลับศาสนาจริงเป็นตัวร้าย หรือใส่อาคารทะเลทรายกลางป่าฝน |
+| **ยุโรปหลายยุค** | ธรรมนูญนครการค้า, สมาคมช่าง, สะพานหิน/กังหัน/เครื่องกลพื้นฐานที่ซ่อมได้, เครื่องแต่งกายสำหรับหนาว/เดินทางบางกลุ่ม | ทุกเมืองมีปราสาทโกธิก, ขุนนางสวมเกราะยุโรปเหมือนกัน หรือยึดความเป็นยุโรปเป็นมาตรฐาน “อารยะ” |
+
+**ตัวอย่างการผสมที่มีเหตุผล:** Stonegate เป็นเมืองด่านฝนสลับแล้งหลังคาระบายน้ำได้ดีและอาคารไม้/ดิน/หินท้องถิ่น; มีสภาสัญญาแบบเมืองการค้า ระบบบันทึกพ่อค้าและการฝึกช่างหลายสาย บางครอบครัวใช้ผ้าทอหรือเครื่องรางที่คนต่างภูมิภาคนำมา — **ไม่ต้องติดป้ายว่าบ้านหลังไหนเป็น “ไทย/จีน/ญี่ปุ่น/ยุโรป”**. รูปแบบที่อยู่ได้เกิดจากทรัพยากร อุณหภูมิ ฝน ประวัติการค้า และคนจริงในเมือง
+
+### ภาษา ชื่อผู้คน และการสื่อสารสากล
+
+- **Presentation [PROPOSED]:** รองรับข้อความที่แปลเป็นภาษาอังกฤษและไทยได้โดยรักษาความหมายเดียวกัน; ใช้ชื่อ proper nouns ที่สั้น ออกเสียงได้ และจำได้ในหลายภาษา (เช่น **Stonegate**), ส่วนชื่อภาษาไทยในเอกสารบางรายการอาจเป็นเพียง **คำแปลทำงาน** ไม่ใช่ชื่อที่ชาวโลกใหม่ออกเสียงจริง
+- **In-world languages [OPEN]:** ผู้คนอาจมีภาษาท้องถิ่นหลายสายและภาษากลางการค้า แต่ผู้เล่นไม่ต้องเรียนภาษาจริงก่อนเล่น; dialog/UI เป็นการแปลเพื่อการนำเสนอและควรอธิบายอาชีพ/ความสัมพันธ์ชัดกว่าสำเนียงเลียนแบบประเทศจริง
+- ชื่อ NPC ทั้งหกและเมือง R1–R7 ยัง **[PROPOSED]**; ทบทวนการอ่านในอังกฤษ/ไทยเมื่อทำบทสนทนาและ localization จริง **ไม่บังคับเปลี่ยนทั้งหมดตอนนี้**
+- อย่าสื่อว่าความเก่ง ความเมตตา เวทมนตร์ ความเชื่อฟัง หรือ Class ติดมากับเชื้อสาย/สำเนียง/หน้าตา
+
+### สังคม เครื่องแต่งกาย และความรู้
+
+- **การปกครอง:** นครรัฐ เครือเมืองแม่น้ำ สมาคมช่าง ผู้ดูแลเส้นทางและตลาดมีโครงสร้างผสม ขัดแย้งตามน้ำ เสบียง สัญญาและความปลอดภัย ไม่จำลองจักรวรรดิปัจจุบันตามชื่อเดิม
+- **เครื่องแต่งกาย:** ตัดสินจากอาชีพ การเคลื่อนไหว ฝน/แดด/หนาว การหาวัสดุ และการซ่อมซ้ำก่อนการอ้างวัฒนธรรม; ใช้รูปเงาที่น่าจดจำหลายแบบแต่คง art direction pixel-art เดียวกัน และหลีกเลี่ยงชุดประจำชาติครบชุด
+- **ความรู้:** ช่างตีเหล็ก ผู้รักษา ช่างเรือ นักแผนที่ นักบันทึก และนักศึกษาซากพึ่งความรู้ที่เรียน/สืบต่อ/พิสูจน์ ไม่ให้กลุ่มเดียวผูกขาดภูมิปัญญาโลก; ตำราบางบทอาจข้ามทวีปผ่านการค้าและมีการแปลผิด
+- **ความเชื่อ:** ให้มีความหลากหลายภายในเมืองเดียว ใช้จริยธรรมของชุมชน การไว้ทุกข์ และพิธีท้องถิ่นที่เกิดจากประสบการณ์โลกใหม่; ไม่ใช้ศาสนาร่วมสมัยจริงเป็นสัญลักษณ์ฝ่ายดี/ฝ่ายชั่วแบบง่าย
+
+### ร่องรอยไทยที่ค่อย ๆ ค้นพบ [REVEAL-GATED]
+
+- **Early R0/R1:** รายละเอียดที่ไม่จำเพาะประเทศ เช่น การยกพื้นรับน้ำ เครื่องจักสาน/ผ้าทอรูปเรขาคณิต ภาชนะอาหารจากพืชท้องถิ่น วิถีเรือในเขตร้อน **ใช้เพียงบางฉาก** และผสมกับวัฒนธรรมอื่นจนไม่ใช่ชุดเบาะแสพร้อมเฉลย
+- **R2:** เบาะแสด้านภูมิประเทศ ซากคมนาคม และเศษอักขระจากคนละที่เริ่มสอดคล้องกัน; เครื่องแต่งกายหรืออาหารอย่างเดียว **ไม่เป็นหลักฐานพอ**
+- **R3/R4:** จึงค่อยมีวัตถุ/ป้ายเก่าที่ระบุพื้นที่ชัดเมื่อผู้เล่นสืบจนถึงจุดนั้น ผู้เล่นไทยที่รู้จักสถานที่อาจเชื่อมโยงเอง; ผู้เล่นประเทศอื่นยังเข้าใจคุณค่าของการค้นพบโลกเก่าได้โดยไม่ต้องรู้ภูมิศาสตร์ไทยมาก่อน
+- **ห้ามก่อน reveal:** ธงไทยหรือธงประเทศปัจจุบัน, ชื่อจังหวัด/ประเทศ, ชุดประจำชาติชุดเดียวครบทุกองค์ประกอบ, วัด/แลนด์มาร์กจำเพาะแบบสมบูรณ์, แผนที่ silhouette ประเทศ, และข้อความการตลาดที่ประกาศว่าเป็นประเทศไทยอนาคต
+
+**International accessibility:** ทำให้เหตุผลของ NPC, ผลลัพธ์เควส และอารมณ์เข้าใจง่ายสำหรับผู้เล่นทุกประเทศโดยไม่ต้องรู้ความหมายพิธี/สุภาษิตไทย; สำนวนท้องถิ่นใช้เท่าที่มีบริบทให้เข้าใจ การรองรับภาษาและการตลาดเป็นแผนระยะผลิต ไม่เพิ่มระบบ localization ใน M1.5B.
+
 ## 2. Grounded geography [DESIGNER ONLY]
 
 The playable heart is land corresponding to **parts of present-day Thailand and nearby connected territory**, thousands of years transformed. Stonegate is a fictional pass settlement inspired in broad geographic terms by the **western edge of the Korat Plateau, near today's Pak Chong–Lam Takhong corridor**. This is a design reference, **not a claim of exact future town coordinates**. Mountains and basin relationships remain plausible; river courses, coastlines, vegetation and populations may change where given environmental reasons. Scenario B (“changed substantially but still geographically legible”) remains [PROPOSED]. Generated concept art is not a GIS base.
@@ -21,7 +59,7 @@ The playable heart is land corresponding to **parts of present-day Thailand and 
 
 ## 3. Regional atlas [PROPOSED]
 
-These are **seven ecological-cultural planning zones**, not seven modern-style countries. Peoples, borders and authorities overlap. IDs are for developers, not for player UI.
+These are **seven ecological-cultural planning zones**, not seven modern-style countries or seven fixed national cultures. Peoples, fashions, languages, knowledge and institutions mix across corridors. IDs are for developers, not player UI. **The Thai terms below are provisional designer-facing/localized working names; player-facing English labels and pronunciation will be reviewed in localization, not locked here.**
 
 | ID | Early player-facing name | Anchor settlement | Economic and social tension |
 |---|---|---|---|
@@ -67,7 +105,7 @@ They are individual characters, **not fixed commands**: fear, trust, injuries, c
 
 ## 5. Delayed identity revelation [LOCKED INTENT for pacing]
 
-**Desired player experience:** spend a substantial portion of the game exploring an apparently original world, then combine real geographic clues into an unsolicited “Wait, I recognize this place!” moment. Do not explain the location in title, trailer, opening city or NPC exposition.
+**Desired player experience:** spend a substantial portion of the game exploring an **original, culturally blended, internationally accessible fantasy world**, then combine real geographic clues into an unsolicited “Wait, I recognize this place!” moment. Do not explain the location in title, trailer, opening city or NPC exposition.
 
 | Gate | Player can learn | Still withheld |
 |---|---|---|
@@ -87,9 +125,9 @@ Reveal gates follow **progress and evidence, not a fixed hour count**. Thai UI i
 
 ## 6. Open decisions and scope boundaries
 
-**[PROPOSED]:** place names, city factions, six recruitable cast, Stonegate district positions, quests, transformed-terrain scenario, council structure.  
+**[PROPOSED]:** local naming and bilingual presentation conventions, specific cultural combinations/visual motifs, place names, city factions, six recruitable cast, Stonegate district positions, quests, transformed-terrain scenario, council structure.  
 **[OPEN]:** number of years, exact coast/river changes, boundaries, economy/prices, how the caravan vanished, impact cause and actual Starstone source, resurrection mechanism, which specific clue confirms geography.  
 **[LATER]:** playable cities beyond Stonegate, full regional diplomacy/economy, deep crafting/mining, whole-world atlas, full invented languages.  
-**[LOCKED]:** NPC autonomy, permadeath, rare item-gated power, slow discovery of the old geographic identity.
+**[LOCKED INTENT]:** internationally legible and culturally diverse *new* civilizations above a grounded real-world geography, NPC autonomy, permadeath, rare item-gated power, slow discovery of the old geographic identity.
 
 The worldbuilding supports the game; it **does not change the active combat milestone**.
