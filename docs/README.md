@@ -5,9 +5,9 @@
 
 | อ่านเมื่อ | เอกสาร |
 |---|---|
-| แก้ Combat, NPC, ความตาย, Progression, ระบบพลัง | **[GAME.md](GAME.md)** — ข้อกำหนดและเกมเพลย์ |
+| แก้ Combat, NPC, ความตาย, Progression, ระบบพลัง | **[GAME.md](GAME.md)** — ข้อกำหนดและเกมเพลย์ รวม Management/Survival/Progression |
 | เขียนเมือง เควส แผนที่ ตัวละคร Lore และจังหวะซ่อนที่ตั้งโลกเก่า | **[WORLD.md](WORLD.md)** — World Bible (มี **developer spoilers**) |
-| ทำงานใน Godot เรียน GDScript ตรวจ Milestone/Art/ขั้นตอนถัดไป | **[WORKFLOW.md](WORKFLOW.md)** — Roadmap, Learning และบันทึก GDScript (ล่าสุด: เรียนถึง `function`) |
+| ทำงานใน Godot เรียน GDScript ตรวจ Milestone/Art/ขั้นตอนถัดไป | **[WORKFLOW.md](WORKFLOW.md)** — Roadmap M1.5B–M10, Risk Gates, Learning และบันทึก GDScript (ล่าสุด: เรียนถึง `function`) |
 
 **งานพัฒนาเกมที่ทำถัดไป:** **M1.5B Combat Staging** ใน `res://scenes/combat/combat_prototype.tscn`. โลก/เมือง/Starstone เป็นงานออกแบบ ไม่ได้ implement จากการเพิ่มเอกสาร
 
@@ -15,7 +15,7 @@
 
 ## คู่มือเรียน GDScript แบบพกพา
 
-[คู่มือ GDScript สำหรับสร้าง Wanderer พร้อมสคริปต์ส่งต่อ AI ตัวใหม่](../learning/GDSCRIPT_WANDERER_SELF_STUDY.md) — **17 บท**; อ่านเฉพาะบทที่กำลังฝึก ไม่ต้องป้อนทั้งหมดทุกครั้ง เป็นหลักสูตรประกอบ ไม่เพิ่มเอกสารออกแบบหลัก
+[คู่มือ GDScript สำหรับสร้าง Wanderer พร้อมสคริปต์ส่งต่อ AI ตัวใหม่](../learning/GDSCRIPT_WANDERER_SELF_STUDY.md) — **23 บท**; อ่านเฉพาะบทที่กำลังฝึก ไม่ต้องป้อนทั้งหมดทุกครั้ง เป็นหลักสูตรประกอบ ไม่เพิ่มเอกสารออกแบบหลัก
 
 ## Map sketches (ไฟล์ภาพ ไม่ต้องโหลดเป็นข้อความ)
 
