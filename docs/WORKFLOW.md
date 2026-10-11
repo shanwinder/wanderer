@@ -47,6 +47,8 @@ This project is meant to teach the developer Godot through hands-on work; AI is 
 - Keep Git commits small; use branches for risky experiments and examine diffs before merge.
 - A feature is “learned” only if the developer understands its function, reasons, tunable values, failure cases and recovery.
 
+**คู่มือเรียนฉบับละเอียดสำหรับใช้กับ AI ใดก็ได้:** [learning/GDSCRIPT_WANDERER_SELF_STUDY.md](../learning/GDSCRIPT_WANDERER_SELF_STUDY.md) — แผน 17 บท พร้อมโจทย์ Godot, เกณฑ์ผ่าน, Debugging, prompt ส่งต่อ และเช็กลิสต์; เป็นไฟล์เรียนประกอบ **ไม่ใช่ canonical game design ฉบับที่สี่**. เปิดอ่านเฉพาะบทที่กำลังฝึกเพื่อประหยัด token
+
 ### 4.1 GDScript learning checkpoint — ผู้พัฒนาเรียนถึงไหนแล้ว
 
 **บันทึก ณ 10 ต.ค. 2026 (รายงานโดยผู้พัฒนา ไม่ใช่ผลสอบ):** ผู้พัฒนาเรียน GDScript **มาถึงเรื่องการใช้งาน `function` (`func`)** แล้ว และประสงค์จะ **เรียนภาษาไปพร้อมกับเขียน Wanderer จริง** ไม่แยกเรียนหลักสูตรยาวให้จบก่อนลงมือทำเกม
