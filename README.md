@@ -11,6 +11,7 @@ Solo-developed Godot pixel-art RPG prototype. The player controls one adventurer
 - [World bible, city and spoiler policy — development spoilers](docs/WORLD.md)
 - [Current roadmap, Godot learning and sprite notes](docs/WORKFLOW.md)
 - [Documentation guide](docs/README.md)
+- [Portable GDScript self-study plan and AI tutor handoff](learning/GDSCRIPT_WANDERER_SELF_STUDY.md)
 
 ## Layout
 
