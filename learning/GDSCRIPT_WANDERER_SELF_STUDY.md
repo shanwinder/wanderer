@@ -76,7 +76,7 @@
 | 21 | Demo, content, release | ทดสอบคนภายนอก/ส่งขาย | M8–M10 |
 | 22 | Rare-item Resonance | ทดลอง 1 item | M4.R optional |
 
-**ลำดับไม่ได้แข็งตัว:** งาน M1.5B สามารถจัดฉากด้วย Inspector ก่อนเรียน chapter 07–17; M2A ทดลอง AI แบบเล็กด้วย state ขั้นต่ำ ส่วน Resource/data foundation ที่ใช้ร่วมทั้งเกมอยู่ใน M2B. ผู้เรียนอยู่ที่บท 02 เรื่อง \`function\` ตามรายงาน ยังไม่ถือว่าผ่านการทดสอบ F1–F4
+**ลำดับไม่ได้แข็งตัว:** งาน M1.5B สามารถจัดฉากด้วย Inspector ก่อนเรียน chapter 07–17; M2A ทดลอง AI แบบเล็กด้วย state ขั้นต่ำ ส่วน Resource/data foundation ที่ใช้ร่วมทั้งเกมอยู่ใน M2B. ผู้เรียนอยู่ที่บท 02 เรื่อง `function` ตามรายงาน ยังไม่ถือว่าผ่านการทดสอบ F1–F4
 
 ---
 
@@ -187,9 +187,9 @@ func safe_damage(base_damage: int, reduction: int) -> int:
 
 **เป้าหมาย:** หลังพิสูจน์ NPC Autonomy แบบขนาดเล็กแล้ว สร้าง Actor data, Item definition, Equipment slot และ Inventory model ที่ระบบอื่นอ่านร่วมกันได้ โดย **ไม่ผูกค่าจริงกับ Label.text**
 
-**แนวคิด:** ความต่าง \`Resource\` = นิยาม item/actor template, instance data = สถานะปัจจุบันของตัวละคร; ownership, data validation, typed \`Array\`, \`Dictionary\`, ID และ reference. ไม่ต้องเขียน class inheritance จำนวนมาก
-**แบบฝึก A:** สร้างข้อมูล Player และ NPC อย่างละหนึ่งชุด มี \`actor_id\`, \`max_hp\`, \`current_hp\`, \`weapon_id\`; เปลี่ยน Player HP ต้องไม่เปลี่ยน NPC
-**แบบฝึก B:** นิยาม Potion และ Sword แบบ item ID + \`weight\` + kind; สร้าง Inventory เล็กสองรายการโดย UI ยังเป็นปุ่ม/label ชั่วคราว
+**แนวคิด:** ความต่าง `Resource` = นิยาม item/actor template, instance data = สถานะปัจจุบันของตัวละคร; ownership, data validation, typed `Array`, `Dictionary`, ID และ reference. ไม่ต้องเขียน class inheritance จำนวนมาก
+**แบบฝึก A:** สร้างข้อมูล Player และ NPC อย่างละหนึ่งชุด มี `actor_id`, `max_hp`, `current_hp`, `weapon_id`; เปลี่ยน Player HP ต้องไม่เปลี่ยน NPC
+**แบบฝึก B:** นิยาม Potion และ Sword แบบ item ID + `weight` + kind; สร้าง Inventory เล็กสองรายการโดย UI ยังเป็นปุ่ม/label ชั่วคราว
 **แบบฝึก C:** ร่างภาพความเป็นเจ้าของข้อมูล: actor/party/world/base; เมื่อ Player ตาย ของที่ถือกับของฝากในฐานควรเดินคนละกฎ
 **ทดสอบ:** empty inventory, item ID ไม่รู้จัก, shared Resource เปลี่ยนกระทบอีก actor, item จำนวนติดลบ, actor ถูกลบแต่ UI ยังมี reference
 **ผ่านเมื่อ:** ผู้เรียนแยก Model ↔ UI ↔ saved state ได้ อธิบายได้ว่า item definition กับ item instance ต่างกันเมื่อมี Durability; ยืนยันว่า Data นี้พอทำระบบ M2C โดยยังไม่สร้างทุก item type
@@ -212,21 +212,21 @@ func safe_damage(base_damage: int, reduction: int) -> int:
 
 **เป้าหมาย:** กระเป๋าที่มีผลกับการตัดสินใจในเกมจริง ไม่ใช่แค่รายการไอเทม
 
-**GDScript ที่ใช้:** \`Array\`/\`Dictionary\`, typed function, \`Resource\`, \`filter\`/การวน \`for\`, guard/early \`return\`, \`signal\` เพื่ออัปเดต UI. ให้ Inventory มี owner ID และรายการ item stack/unique item ชัดเจน
-**แบบฝึก A:** สร้างของ 3 ชิ้น (อาหาร 2 หน่วย, ดาบ 1, ยา 1) ระบุน้ำหนัก/จำนวน; เขียนฟังก์ชัน \`get_total_weight()\` ให้ทายผลด้วยตนเองก่อนรัน
-**แบบฝึก B:** \`can_add_item\` ตรวจน้ำหนักเกินและชนิด/จำนวน; \`transfer_item\` จาก Player → NPC → คลังเมื่อเงื่อนไขอนุญาต; ป้องกันการแบ่งจำนวนเกินของที่มี
+**GDScript ที่ใช้:** `Array`/`Dictionary`, typed function, `Resource`, `filter`/การวน `for`, guard/early `return`, `signal` เพื่ออัปเดต UI. ให้ Inventory มี owner ID และรายการ item stack/unique item ชัดเจน
+**แบบฝึก A:** สร้างของ 3 ชิ้น (อาหาร 2 หน่วย, ดาบ 1, ยา 1) ระบุน้ำหนัก/จำนวน; เขียนฟังก์ชัน `get_total_weight()` ให้ทายผลด้วยตนเองก่อนรัน
+**แบบฝึก B:** `can_add_item` ตรวจน้ำหนักเกินและชนิด/จำนวน; `transfer_item` จาก Player → NPC → คลังเมื่อเงื่อนไขอนุญาต; ป้องกันการแบ่งจำนวนเกินของที่มี
 **แบบฝึก C:** ทดสอบกรณีคนเจ็บต้องถูกแบกและอุปกรณ์ที่เก็บได้มีน้ำหนักสูง ทำให้การเลือกว่าจะนำอะไรกลับแตกต่างกัน
 **ทดสอบ:** capacity = 0, หนักเท่าค่าสูงสุด, หนักเกิน, quantity เป็น 0/ติดลบ, รายการว่าง, transfer คืนเมื่อปลายทางเต็ม, item ซ้ำหลังโหลด
-**ผ่านเมื่อ:** ผู้เรียนเขียนกฎตรวจน้ำหนักเองและอธิบายว่าทำไมข้อมูล Inventory ต้องไม่ถูกผูกกับ UI Button หรือ \`Label\` และรับมือธุรกรรมล้มเหลวโดยไม่ทำของหาย/ซ้ำ
+**ผ่านเมื่อ:** ผู้เรียนเขียนกฎตรวจน้ำหนักเองและอธิบายว่าทำไมข้อมูล Inventory ต้องไม่ถูกผูกกับ UI Button หรือ `Label` และรับมือธุรกรรมล้มเหลวโดยไม่ทำของหาย/ซ้ำ
 
 ## บท 13 — Equipment, Stat Effects & Durability (M3B-2)
 
 **เป้าหมาย:** อาวุธ เกราะและอุปกรณ์เสริมกระทบ Combat และสึกหรอโดยไม่เพิ่มงานจุกจิก
 
-**GDScript ที่ใช้:** enum item type/equipment slot, typed \`Dictionary\`, pure function คำนวณ stat, validation guard, signals on equipment changed, item unique instance state
+**GDScript ที่ใช้:** enum item type/equipment slot, typed `Dictionary`, pure function คำนวณ stat, validation guard, signals on equipment changed, item unique instance state
 **แบบฝึก A:** อุปกรณ์ 2 ชิ้น (Sword, Shield) กับช่อง weapon/offhand: ตรวจว่าใส่ผิดประเภทไม่ได้; สวม/ถอดแล้ว Attack/Defense ที่คำนวณเปลี่ยนจริง
-**แบบฝึก B:** แยก \`base_stat\` จาก \`equipment_bonus\`; อธิบายว่าทำไมถอดแล้วไม่ควรบันทึกโบนัสทับเป็นค่าถาวร
-**แบบฝึก C:** เพิ่ม \`durability\` ให้ item หนึ่งชิ้น และซ่อมโดยมีต้นทุน **แต่ยังไม่สร้างระบบร้านเต็มรูปแบบ**; หากพังให้มีผลที่ผู้เล่นอ่านได้ ไม่แอบหักอุปกรณ์โดยไม่แจ้ง
+**แบบฝึก B:** แยก `base_stat` จาก `equipment_bonus`; อธิบายว่าทำไมถอดแล้วไม่ควรบันทึกโบนัสทับเป็นค่าถาวร
+**แบบฝึก C:** เพิ่ม `durability` ให้ item หนึ่งชิ้น และซ่อมโดยมีต้นทุน **แต่ยังไม่สร้างระบบร้านเต็มรูปแบบ**; หากพังให้มีผลที่ผู้เล่นอ่านได้ ไม่แอบหักอุปกรณ์โดยไม่แจ้ง
 **ทดสอบ:** equip slot ไม่ตรง, เปลี่ยนอาวุธกลาง action, เสื่อมต่ำกว่า 0, durability เต็มแล้วซ่อม, NPC ตายพร้อมของสวม, shared item instance ถูกสวมสองคน
 **ผ่านเมื่อ:** คำนวณค่าจาก item จริงและพิสูจน์ได้ว่าการสวม/ถอด/ซ่อมไม่ทำ item ซ้ำหรือทำค่า actor เสีย
 
@@ -235,7 +235,7 @@ func safe_damage(base_damage: int, reduction: int) -> int:
 **เป้าหมาย:** ความชำนาญเฉพาะอาวุธและปลดอาชีพจากการกระทำ/เงื่อนไข โดยไม่บังคับ Skill Tree จำนวนมากก่อนทดลอง
 
 **[LOCKED INTENT]** ต้องมี **Weapon Mastery** และ **Profession Unlock**. **[OPEN]** Skill Tree จะอิงอาวุธหรืออาชีพเป็นหลัก; ทดลอง **Hybrid 1 weapon group + 1 profession** เป็นตัวอย่างเพื่อเปรียบเทียบ ไม่ตั้งเป็นกฎถาวร
-**GDScript ที่ใช้:** \`Dictionary\` เก็บ mastery per weapon group, condition check ใน \`func\`, progress events, threshold data/Resource, enums, separation of calculation and UI
+**GDScript ที่ใช้:** `Dictionary` เก็บ mastery per weapon group, condition check ใน `func`, progress events, threshold data/Resource, enums, separation of calculation and UI
 **แบบฝึก A:** สร้าง Mastery ของอาวุธหอก เมื่อใช้ในการต่อสู้ที่สำเร็จจริงตามเงื่อนไขจึงเพิ่ม progress; โจมตี dummy โดยไม่มีต้นทุนไม่ควร grind ได้ไม่จำกัด
 **แบบฝึก B:** ตั้งเงื่อนไข Profession “Guardian” ต้องมี Mastery และการช่วยป้องกันทีมครบจำนวนหนึ่ง (ตัวเลขเป็นตัวอย่าง); ทดสอบถึงระดับ/ขาดอีกหนึ่งเงื่อนไข
 **แบบฝึก C:** ลองเสนอทักษะ 1 อย่างของหอก และ 1 อย่างของอาชีพ เปรียบเทียบความเข้าใจและการเลือก Build ก่อนออกแบบทั้ง tree
@@ -260,8 +260,8 @@ func safe_damage(base_damage: int, reduction: int) -> int:
 
 **เป้าหมาย:** เงิน รางวัล ไอเทม ของในคลังและค่าซ่อมเป็นการตัดสินใจอยู่รอด ไม่ใช่ราคาติดป้ายเฉย ๆ
 
-**GDScript ที่ใช้:** atomic-like transaction function (validate→apply→report), \`Dictionary\` สำหรับ price/stock, signals สำหรับ refresh UI, save data ID, conditional flows; ยังไม่สร้างระบบ market simulation
-**แบบฝึก A:** เงินเริ่มต้น 20 เหรียญ ซื้อยา 8 เหรียญ; \`try_purchase(item_id, price)\` ต้องคืนผลสำเร็จ/ล้มเหลว และ **ไม่หักเงินถ้ารับของไม่ได้เพราะน้ำหนักเต็ม**
+**GDScript ที่ใช้:** atomic-like transaction function (validate→apply→report), `Dictionary` สำหรับ price/stock, signals สำหรับ refresh UI, save data ID, conditional flows; ยังไม่สร้างระบบ market simulation
+**แบบฝึก A:** เงินเริ่มต้น 20 เหรียญ ซื้อยา 8 เหรียญ; `try_purchase(item_id, price)` ต้องคืนผลสำเร็จ/ล้มเหลว และ **ไม่หักเงินถ้ารับของไม่ได้เพราะน้ำหนักเต็ม**
 **แบบฝึก B:** กำหนด Loot 2 ชิ้นหลัง encounter; ผู้เล่นเลือกเก็บ/ขาย/ทิ้งและเปรียบเทียบว่าแบกไหวหรือไม่
 **แบบฝึก C:** ช่างซ่อมเรียกเงิน/วัสดุ; ผู้เล่นต้องเลือกระหว่างค่าซ่อม ค่ายา ค่าอาหาร; ฝากของใน Personal Base ก่อนเดินทางและหยิบกลับได้
 **แบบฝึก D:** เงินจ่ายค่าที่พัก/รักษา; ทดลองตั้งราคาเปลี่ยนตามเรื่องเล่าหนึ่งเหตุการณ์แบบ explicit quest flag แต่ไม่ทำ economy real-time
@@ -292,8 +292,8 @@ func safe_damage(base_damage: int, reduction: int) -> int:
 
 ## บท 21 — Demo Feedback, Content Pipeline & Release Readiness (M8–M10)
 
-**M8:** จัดชุด playtest คนที่ไม่เคยเห็นเกม: ดูว่าการปฏิเสธของ NPC อ่านเข้าใจหรือไม่, ผู้เล่นเลือกเรื่องเสบียง/เงิน/น้ำหนักด้วยเหตุผลอะไร, เควสมี failure path หรือไม่. เรียนใช้ \`print\`/Debugger และบันทึก playtest data แบบไม่ละเมิดความเป็นส่วนตัว; เป้าหมายคือ **วัดพฤติกรรม ไม่เดายอดขาย**
-**M9:** ฝึกสร้างข้อมูล item/enemy/quest แบบเพิ่มจาก Resource/scene ที่ใช้ซ้ำได้; อย่าเขียน \`if item == "sword_07"\` แยกอยู่ใน scripts หลายสิบไฟล์. เพิ่มเนื้อหา **เฉพาะเมื่อ core สนุกผ่านจริง**
+**M8:** จัดชุด playtest คนที่ไม่เคยเห็นเกม: ดูว่าการปฏิเสธของ NPC อ่านเข้าใจหรือไม่, ผู้เล่นเลือกเรื่องเสบียง/เงิน/น้ำหนักด้วยเหตุผลอะไร, เควสมี failure path หรือไม่. เรียนใช้ `print`/Debugger และบันทึก playtest data แบบไม่ละเมิดความเป็นส่วนตัว; เป้าหมายคือ **วัดพฤติกรรม ไม่เดายอดขาย**
+**M9:** ฝึกสร้างข้อมูล item/enemy/quest แบบเพิ่มจาก Resource/scene ที่ใช้ซ้ำได้; อย่าเขียน `if item == "sword_07"` แยกอยู่ใน scripts หลายสิบไฟล์. เพิ่มเนื้อหา **เฉพาะเมื่อ core สนุกผ่านจริง**
 **M10:** ศึกษา Settings, localization, input mapping, accessibility, error handling, save migration, test build/export ตาม Godot เวอร์ชันจริง, release QA และ Steam tools ตามข้อกำหนดที่ตรวจ ณ วันทำงาน
 **แบบฝึก:** (A) เพิ่ม item ใหม่จาก data 1 ชิ้นโดยไม่แก้ combat logic (B) ทดลองโหลดเซฟเดิมหลังเพิ่ม field ใหม่ (C) เปลี่ยนภาษา/UI text โดยไม่มีข้อความสถานที่จริงหลุดก่อน reveal gate
 **ทดสอบ:** clean install, load old/invalid save, restart หลัง Player ตาย, เลือกภาษา, ไม่มีไอเทม, input กดซ้ำ, game pause/resume, performance บนเครื่องเป้าหมาย
