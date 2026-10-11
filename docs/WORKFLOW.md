@@ -27,7 +27,7 @@ Active files: `res://scenes/combat/combat_prototype.tscn`, `res://scripts/combat
 | M1.5C | Tween/AnimationPlayer สำหรับ lunge, hit flash, recoil, damage UI, return position | feedback อ่านได้, ไม่ทำให้ input/scene ค้าง, จัดการกรณี enemy ตายกลาง animation |
 | M1.5D | แสดง Action ของ NPC ทีละตัวจาก scripted/deterministic order **ไม่ใช่ AI decision system ที่เสร็จแล้ว** | Player ยังคงเป็นจุดสนใจ และ NPC action มีภาพ/ข้อความอ่านง่าย |
 
-**M1.5B-01:** เปิด \`res://scenes/combat/combat_prototype.tscn\` ใน Godot → สำรวจ \`Node2D\`/\`Sprite2D\`/\`Control\` และ parent/local/global position → ขยับตำแหน่งใน Inspector → รันดูจริงและเปรียบเทียบ screenshot → commit เมื่อผลผ่าน. ยังไม่สร้างระบบไอเทมหรือ Skill Tree ระหว่างจัดฉาก
+**M1.5B-01:** เปิด `res://scenes/combat/combat_prototype.tscn` ใน Godot → สำรวจ `Node2D`/`Sprite2D`/`Control` และ parent/local/global position → ขยับตำแหน่งใน Inspector → รันดูจริงและเปรียบเทียบ screenshot → commit เมื่อผลผ่าน. ยังไม่สร้างระบบไอเทมหรือ Skill Tree ระหว่างจัดฉาก
 
 ## 3. Roadmap ฉบับปรับโครงสร้าง (แผนสำหรับลงมือ ไม่ใช่ฟีเจอร์ที่เสร็จแล้ว)
 
@@ -35,7 +35,7 @@ Active files: `res://scenes/combat/combat_prototype.tscn`, `res://scripts/combat
 
 | Milestone | Proof to build | วิธีประเมินสำเร็จ / ความรู้ GDScript ที่ต้องฝึก |
 |---|---|---|
-| **M2A — NPC Autonomy Proof** | Player + **NPC 1** + Enemy 1; NPC เลือก Attack/Defend/Help จากเหตุการณ์และอธิบายเหตุผล แยกการตัดสินใจจาก animation | สถานการณ์เพื่อนเจ็บ/ผู้เล่นเสี่ยง/ไม่มี target ให้ผลเข้าใจได้; \`func\`, \`if\`, basic Actor state |
+| **M2A — NPC Autonomy Proof** | Player + **NPC 1** + Enemy 1; NPC เลือก Attack/Defend/Help จากเหตุการณ์และอธิบายเหตุผล แยกการตัดสินใจจาก animation | สถานการณ์เพื่อนเจ็บ/ผู้เล่นเสี่ยง/ไม่มี target ให้ผลเข้าใจได้; `func`, `if`, basic Actor state |
 | **M2B — Shared Data Foundation** | Actor/Stats/Item/Equipment/Inventory แบบเล็ก **แยกจาก UI**, อิง HP/role/action data ร่วมกัน; ยังไม่ทำ catalogue | Actor 2 ตัวมีข้อมูลไม่ปน, item ส่งผลต่อ action จริง; class/Resource, typed data, ownership |
 | **M2C — Full Party Combat** | Player + NPC สูงสุด 3 คน, ลำดับ action และเลือกเป้าหมาย, ใช้ item/Stats ขั้นต่ำจาก M2B | สมาชิกเพิ่ม/ตาย/ไม่มี target ไม่ทำลาย turn; Array, loops, states |
 | **M3A — Guidance & Trust** | คำชี้นำเป็นข้อเสนอ ไม่บังคับ; NPC รับ/ปฏิเสธและมีเหตุผล; Trust ผูกเฉพาะ Player character | กรณีเหตุผลสวนคำชี้นำ/Trust ต่างกันผ่าน; signals, decisions, logging |
@@ -83,7 +83,7 @@ This project is meant to teach the developer Godot through hands-on work; AI is 
 - Keep Git commits small; use branches for risky experiments and examine diffs before merge.
 - A feature is “learned” only if the developer understands its function, reasons, tunable values, failure cases and recovery.
 
-**คู่มือเรียนฉบับละเอียดสำหรับใช้กับ AI ใดก็ได้:** [learning/GDSCRIPT_WANDERER_SELF_STUDY.md](../learning/GDSCRIPT_WANDERER_SELF_STUDY.md) — แผน 17 บท พร้อมโจทย์ Godot, เกณฑ์ผ่าน, Debugging, prompt ส่งต่อ และเช็กลิสต์; เป็นไฟล์เรียนประกอบ **ไม่ใช่ canonical game design ฉบับที่สี่**. เปิดอ่านเฉพาะบทที่กำลังฝึกเพื่อประหยัด token
+**คู่มือเรียนฉบับละเอียดสำหรับใช้กับ AI ใดก็ได้:** [learning/GDSCRIPT_WANDERER_SELF_STUDY.md](../learning/GDSCRIPT_WANDERER_SELF_STUDY.md) — แผน 23 บท พร้อมโจทย์ Godot, เกณฑ์ผ่าน, Debugging, prompt ส่งต่อ และเช็กลิสต์; เป็นไฟล์เรียนประกอบ **ไม่ใช่ canonical game design ฉบับที่สี่**. เปิดอ่านเฉพาะบทที่กำลังฝึกเพื่อประหยัด token
 
 ### 4.1 GDScript learning checkpoint — ผู้พัฒนาเรียนถึงไหนแล้ว
 
@@ -101,7 +101,10 @@ This project is meant to teach the developer Godot through hands-on work; AI is 
 | **M1.5B (ปัจจุบัน)** | Scene tree, `Node2D`, `Sprite2D`, local/global position; อ่านฟังก์ชันเดิมใน script โดยยังไม่ต้องแก้โค้ด | จัดตัวละครใน Inspector ได้และอธิบายว่า script เรียกฟังก์ชันตรงไหน |
 | **M1.5C** | การเขียน/เรียก `func`, parameter, `return` เมื่อจำเป็น, method calls และ Tween | สร้างการเคลื่อนไหวเล็ก ๆ ได้เองและอธิบายคำสั่งทีละบรรทัด |
 | **M1.5D** | แยกฟังก์ชันสำหรับการแสดง action, เงื่อนไขพื้นฐาน, การส่งข้อมูลระหว่างฟังก์ชัน | NPC แสดง action ที่กำหนดได้โดยไม่ใช้โค้ดคัดลอกซ้ำ |
-| **M2 เป็นต้นไป** | `if/match`, Arrays/Dictionaries, state, references, signals และการดีบัก **ตามลำดับความจำเป็นจริง** | ผู้พัฒนาอ่าน/แก้โค้ด AI ของ NPC ได้และบอกผลเมื่อเปลี่ยนค่าหรือเงื่อนไข |
+| **M2A–M2C** | `if/match`, Array/Dictionary, `class_name`, `Resource`, actor state, NPC decisions และ Party action | NPC เลือกเองได้และข้อมูล Actor ไม่ผูกติด Label/UI |
+| **M3A–M3C** | signals, Trust, item ownership, น้ำหนัก, Equipment, Durability, conditions ของ Mastery/Profession | ผู้พัฒนาเขียนตรวจการโอนของ/สวมใส่และการปลดทักษะอย่างน้อยหนึ่งกรณีได้เอง |
+| **M4–M5** | enum/state, FileAccess/JSON, transactions, loot, route graph, resource use | ทดสอบบาดเจ็บ/ตายแล้ว save ถูก, ซื้อของผิดเงื่อนไขไม่ทำเงินหาย, เสบียงลดตาม Journey |
+| **M6–M10** | Town UI, quest states, data-driven content, QA, localization, export | เล่นวนลูปได้ก่อนขยายเนื้อหาและตรวจ build ได้จริง |
 
 **รูปแบบบันทึกความก้าวหน้า (สั้น ไม่สร้างไฟล์ใหม่):** หลังแต่ละบทเรียน อัปเดตบรรทัดสถานะในหัวข้อนี้ด้วย **วันที่ | หัวข้อ | ทดลองทำเองอะไร | ผลที่สังเกต/อธิบายได้ | ยังติดอะไร/หัวข้อถัดไป**. เปลี่ยนเป็น **[PRACTICED]** เมื่อผู้พัฒนาลงมือทำจริง และ **[UNDERSTOOD]** เฉพาะเมื่ออธิบายและปรับแก้เองได้ ไม่เลื่อนสถานะจากการอ่านอย่างเดียว
 
