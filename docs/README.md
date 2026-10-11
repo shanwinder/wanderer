@@ -13,6 +13,10 @@
 
 **คำกำกับสถานะ:** [LOCKED] หลักที่ตกลง; [PROTOTYPE] สำหรับทดสอบ; [PROPOSED] ยังไม่ล็อก; [OPEN] รอข้อสรุป; [LATER] ไม่ทำในช่วงนี้
 
+## คู่มือเรียน GDScript แบบพกพา
+
+[คู่มือ GDScript สำหรับสร้าง Wanderer พร้อมสคริปต์ส่งต่อ AI ตัวใหม่](../learning/GDSCRIPT_WANDERER_SELF_STUDY.md) — **17 บท**; อ่านเฉพาะบทที่กำลังฝึก ไม่ต้องป้อนทั้งหมดทุกครั้ง เป็นหลักสูตรประกอบ ไม่เพิ่มเอกสารออกแบบหลัก
+
 ## Map sketches (ไฟล์ภาพ ไม่ต้องโหลดเป็นข้อความ)
 
 - [Stonegate designer schematic](maps/stonegate_map02b_layout_v0.1.svg) — ผัง 9 เขตและเส้นทาง, ไม่ใช่มาตราส่วนจริง
