@@ -82,7 +82,17 @@ They are individual characters, **not fixed commands**: fear, trust, injuries, c
 
 **Three candidate quests for Vertical Slice:** Q1 send message across pass (choose route, report outcome); Q2 trace missing caravan and aid survivors or recover evidence; Q3 investigate reported lights near closed route (distinguish rumors from observations, **no guaranteed Starstone encounter**). Failure can produce information or partial reward, not just a softlock.
 
-**Event pool** (pick only when journey exists): seasonal gate closure, injured traveler, conflicting maps, old pillars, medicine request, animal danger rumors, confiscated map, tunnel sound, alleged magic trinket, belonging from missing caravan. **Four proposed enemy archetypes:** startled boar, feral dog pack, fake gate bandits, guards/escorts in conflict. City implementation remains **one Town UI** grouped into quests/recruiting, supplies, repair, healing, gate business and route selection.
+**Event pool** (pick only when journey exists): seasonal gate closure, injured traveler, conflicting maps, old pillars, medicine request, animal danger rumors, confiscated map, tunnel sound, alleged magic trinket, belonging from missing caravan. **Four proposed enemy archetypes:** startled boar, feral dog pack, fake gate bandits, guards/escorts in conflict. City implementation remains **one Town UI** grouped into quests/recruiting, supplies, repair, healing, **personal rest base/storage**, gate business and route selection.
+
+### Character, party, rest base and survival context [NEW GAMEPLAY INTENT — 11 Oct 2026]
+
+**Stonegate [PROPOSED]:** ในเมืองมีที่พัก/ห้องเช่าส่วนตัวที่ผู้เล่นใช้เป็น **ฐานพัก (Personal Rest Base)** มีคลังของส่วนกลาง จุดจัดอุปกรณ์/ปาร์ตี้ และพื้นที่พักรักษา; เป็น **สถานที่สำหรับเตรียมออกเดินทาง** ไม่ใช่กิลด์ของผู้เล่น ไม่บริหารลูกจ้าง ไม่สร้างอาคารหรืออัปเกรดสิ่งปลูกสร้างในรุ่นแรก. ตำแหน่งจะใช้ย่าน D8 หรือเชื่อมผ่านเมนูเมืองตามความเหมาะสม [OPEN]; ไม่จำเป็นต้องสร้างเขต D10 หรือฉากเดินเมืองเพิ่ม
+
+**ทำให้เศรษฐกิจและข่าวมีผลกับเรื่องเล่า [LOCKED INTENT]:** ผู้เดินทางต้องหาเงินซื้อยา จ่ายค่าผ่านทาง ซ่อมเครื่องมือ พักแรม หรือทดแทนเสบียงที่ขาด; คนในทีมอาจเห็นต่างเมื่อเลือกขายของมีค่าเพื่อรักษาคนเจ็บ หรือแบกของหนักจนช่วยพาคนกลับไม่ไหว. ไม่จำลองตลาด 7 ภูมิภาคแบบ real-time; ใช้เหตุการณ์และราคา/สินค้าในจุดที่ผู้เล่นพบจริง
+
+**เมนูและผลตามเรื่อง:** Town UI จะมีการเข้าถึงสถานที่พัก/คลังส่วนตัว, ตลาด/ร้านซ่อม, จัดสมาชิกทีมและเครื่องสวมใส่ (ตาม [GAME.md](GAME.md)). เควส Q1–Q3 เดิมทดสอบ cost/choice ได้โดยไม่เพิ่มเควสใหม่: Q1 เลือกใช้เสบียง/ค่าผ่าน, Q2 เสี่ยงน้ำหนักบรรทุกเพื่อช่วยผู้บาดเจ็บ, Q3 ต้องตัดสินใจว่าควรซ่อมอุปกรณ์สำรวจก่อนเข้าทางพังหรือไม่. **ทั้งหมดเป็นแนวตัวอย่าง [PROPOSED], ยังไม่ได้ implement**
+
+**ความเป็นอิสระของ NPC:** ผู้เล่นจัดของและชักชวนได้ แต่สมาชิกอาจไม่พอใจการแบ่งเสบียงหรือปฏิเสธทางเสี่ยง; NPC ไม่ใช่ช่องเก็บของที่ควบคุมได้โดยไม่มีผลทางความสัมพันธ์. ค่าบุคลิก/ความไว้ใจต้องสะท้อนการตัดสินใจที่สังเกตได้ ไม่ใช่แค่บทพูด
 
 ## 5. Delayed identity revelation [LOCKED INTENT for pacing]
 
@@ -108,7 +118,7 @@ Reveal gates follow **progress and evidence, not a fixed hour count**. Thai UI i
 
 **[PROPOSED]:** local naming and bilingual presentation conventions, specific cultural combinations/visual motifs, place names, city factions, six recruitable cast, Stonegate district positions, quests, transformed-terrain scenario, council structure.  
 **[OPEN]:** number of years, exact coast/river changes, boundaries, economy/prices, how the caravan vanished, impact cause and actual Starstone source, resurrection mechanism, which specific clue confirms geography.  
-**[LATER]:** playable cities beyond Stonegate, full regional diplomacy/economy, deep crafting/mining, whole-world atlas, full invented languages.  
+**[LATER]:** playable cities beyond Stonegate, full regional diplomacy/economy, deep crafting/mining, **base building/upgraded facilities**, whole-world atlas, full invented languages.  
 **[LOCKED INTENT]:** internationally legible and culturally diverse *new* civilizations above a grounded real-world geography, NPC autonomy, permadeath, rare item-gated power, slow discovery of the old geographic identity.
 
 The worldbuilding supports the game; it **does not change the active combat milestone**.
