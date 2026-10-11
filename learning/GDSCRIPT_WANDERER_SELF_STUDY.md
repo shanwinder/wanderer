@@ -42,39 +42,41 @@
 
 ---
 
-# 1. แผนที่การเรียน: เรียนตามระบบที่จะสร้าง ไม่ใช่ตามจำนวนสัปดาห์
+# 1. แผนที่การเรียนฉบับใหม่ — 23 บท เชื่อม Roadmap ที่ปรับแล้ว
 
-**ไม่มี deadline บังคับ** — คนมีเวลา 20 นาทีหรือ 2 ชั่วโมงต่อครั้งใช้หลักสูตรเดียวกันได้. แต่ละหัวข้อมีป้ายสถานะ:
+**ไม่มี deadline บังคับ** — คนมีเวลา 20 นาทีหรือ 2 ชั่วโมงต่อครั้งใช้หลักสูตรเดียวกันได้. เน้น GDScript เท่าที่จำเป็นเพื่อสร้างเกมตามความเสี่ยงและ dependency ไม่ทำ 3D หรือ AI ขั้นสูงก่อนมีเหตุจำเป็น
 
-- **[NEW]** ยังไม่ได้ลอง
-- **[SEEN]** เคยพบหรืออ่านได้บางส่วน แต่ยังไม่ผ่านการฝึก
-- **[PRACTICED]** ทดลองเขียน/แก้และรันด้วยตนเอง
-- **[UNDERSTOOD]** อธิบายด้วยคำตนเอง ดัดแปลงโจทย์ และแก้ error ตัวอย่างได้
-- **[BUILT]** ใช้กับงานเกมจริงที่รันทดสอบและตรวจ Git diff แล้ว
+**ป้ายสถานะ:** [NEW] ยังไม่ได้ลอง • [SEEN] เคยอ่าน/พบ • [PRACTICED] เขียน/รันเอง • [UNDERSTOOD] อธิบาย/ดัดแปลง/แก้ error เองได้ • [BUILT] ใช้กับฟีเจอร์เกมและตรวจ diff แล้ว
 
-**เกณฑ์ผ่านบท:** (1) อธิบายแนวคิดโดยไม่อ่านตามตำรา (2) ลงมือสร้าง/แก้ตัวอย่างเล็กโดยไม่คัดลอกทั้งหมด (3) ทดสอบกรณีปกติและผิดเงื่อนไขอย่างน้อยอย่างละหนึ่ง (4) อธิบายผลเมื่อเปลี่ยนค่าหนึ่งตัว (5) ระบุความเข้าใจที่ยังขาดได้
+**เกณฑ์ผ่านบท:** อธิบายด้วยภาษาตนเอง → เขียนหรือแก้ด้วยตนเอง → ทดสอบกรณีปกติและผิดเงื่อนไข → คาดผลเมื่อเปลี่ยนค่า → บันทึกสิ่งที่ยังไม่เข้าใจ
 
-| กลุ่มบท | หัวข้อ | เกมที่นำไปใช้ | Milestone |
+**คำตัดสินจากผู้สร้าง (11 Oct 2026):** Wanderer เน้น **Combat + NPC Autonomy + Management & Survival + Character Progression**; Inventory/น้ำหนัก/อุปกรณ์/ความทนทาน/เสบียง/เงินมีผลมาก, Player จัดการตัวละคร/Party และมีที่พัก/คลังส่วนตัว (**ไม่มีการสร้างหรืออัปเกรดอาคาร**); ต้องมี Weapon Mastery + Profession Unlock, Skill Tree ว่าจะอิงอาวุธหรืออาชีพยัง [OPEN] ให้ทดสอบ Hybrid ขนาดเล็กก่อน. แผนหลักดู [WORKFLOW.md](../docs/WORKFLOW.md) §2–3
+
+| บท | หัวข้อ | การใช้จริง | Milestone |
 |---|---|---|---|
-| 00 | ตั้งค่าและวิธีอ่านโปรเจกต์ | แกะ scene/script เดิม ไม่ทำลายงาน | ก่อน M1.5B |
-| 01 | ตัวแปร ชนิดข้อมูล ค่าคงที่ เงื่อนไข | HP / Defend / ตรวจจบศึก | เตรียม M1.5B/C |
-| **02 (เริ่มจริง)** | **ฟังก์ชัน params, return, scope** | แยก logic ลด HP / combat log | M1.5B→C |
-| 03 | Node, scene, lifecycle, signal | กดปุ่มแล้วฟังก์ชันทำงาน | M1.5B/C |
-| 04 | Vector2, transform, node path | จัด formation บนหน้าจอ | **M1.5B** |
-| 05 | Tween, await, feedback & animation | ขยับโจมตีและกลับตำแหน่ง | M1.5C |
-| 06 | Array, Dictionary, for, match | จัดลำดับ combat actions / actors | M1.5D→M2 |
-| 07 | Script class, Resource, object reference | แยกข้อมูลตัวละครจาก UI | M2 |
-| 08 | State machine, turn flow | Actor เลือกแล้ว resolve ทีละคน | M2 |
-| 09 | NPC decision rules & tests | ตัดสินใจ Attack/Help/Retreat | M2 |
-| 10 | Guidance, signals, UI messaging | Player แนะนำได้แต่ไม่บังคับ | M3 |
-| 11 | Injury, Down, Death, Retreat | ระบบแพ้/ช่วย/สูญเสียที่มีเหตุผล | M4 |
-| 12 | Persistence & serialization | World memory ต่างจาก player trust | M4–M6 เมื่อพร้อม |
-| 13 | Journey graph, events & data | เส้นทาง A/B และเหตุการณ์ | M5 |
-| 14 | Town UI, quests, party | Stonegate เมืองเดียว | M6 |
-| 15 | Integration & regression | Vertical Slice 1 town/2 routes | M7 |
-| 16 (optional) | Resource item & Resonance | Pulse Pendant 1 ชิ้น | M4.R **เมื่อได้รับอนุญาต** |
+| 00 | สภาพแวดล้อม, Git, Godot Inspector | หา scene/script และรันได้ | เตรียม M1.5B |
+| 01 | variables, types, if | คำนวณ HP/defend | ตรวจพื้นฐาน |
+| 02 ★ | functions, params, return, scope | อธิบายและปรับฟังก์ชัน Combat | เรียนถึงหัวข้อนี้ |
+| 03 | Node, scene, signals | กดปุ่มแล้ว callback ทำงาน | M1.5B–C |
+| 04 | Vector2/transform | จัดฉาก party | M1.5B |
+| 05 | Tween/await/action feedback | attack animation ขั้นต้น | M1.5C |
+| 06 | Array/Dictionary/loop | ลำดับ action ของหลาย actor | M1.5D |
+| 07 | NPC action rule micro-proof | NPC 1 คนเลือกเหตุผลได้ | M2A |
+| 08–09 | Class/Resource และ shared actor/item data | ข้อมูล Actor/Item ไม่ปนกับ UI | M2B |
+| 10 | combat state & 1+3 | Party Action flow | M2C |
+| 11 | Guidance & Trust | NPC ปฏิเสธคำชี้นำได้มีเหตุผล | M3A |
+| 12–13 | Inventory/Weight + Equipment/Durability | ของส่งผล Combat/ข้อจำกัดจริง | M3B |
+| 14 | Weapon Mastery / Profession | ทดสอบ Hybrid 1+1 แบบยังไม่ล็อก tree | M3C |
+| 15 | Down, Help, Death, Retreat | Permadeath ไม่ softlock | M4 |
+| 16 | Save/load & persistent ownership | แยก world/character/base state | M4–M4.5 |
+| 17 | เงิน, Loot, ร้านค้า, คลัง | transactions ถูกและไม่ทำของซ้ำ | M4.5 |
+| 18 | Journey/resources/events | เสบียง/ความเสี่ยงใน Route A/B | M5 |
+| 19 | Town, quest, personal rest base | เมือง→ฐาน→ทาง→กลับเมือง | M6 |
+| 20 | Integration/regression | Vertical Slice เล่นวนลูปได้ | M7 |
+| 21 | Demo, content, release | ทดสอบคนภายนอก/ส่งขาย | M8–M10 |
+| 22 | Rare-item Resonance | ทดลอง 1 item | M4.R optional |
 
-*ลำดับ 01/02/03/04 ยืดหยุ่นตามงานจริง; ไม่จำเป็นต้องเรียนทุกคำสั่งก่อนจัดฉาก M1.5B ซึ่งใช้ Inspector ได้*
+**ลำดับไม่ได้แข็งตัว:** งาน M1.5B สามารถจัดฉากด้วย Inspector ก่อนเรียน chapter 07–17; M2A ทดลอง AI แบบเล็กด้วย state ขั้นต่ำ ส่วน Resource/data foundation ที่ใช้ร่วมทั้งเกมอยู่ใน M2B. ผู้เรียนอยู่ที่บท 02 เรื่อง \`function\` ตามรายงาน ยังไม่ถือว่าผ่านการทดสอบ F1–F4
 
 ---
 
@@ -88,7 +90,7 @@
 **ทดสอบ:** รันต้นแบบได้, Attack/Defend/Restart ยังทำงานตามเดิม; เช็กว่าไม่มี uncommitted files ที่ไม่ตั้งใจ  
 **ผ่านเมื่อ:** บอกความต่าง scene, script, node, property, method และ signal ได้; บอกวิธีกลับ commit ล่าสุดโดยไม่ทำลายงานอื่นได้
 
-## บท 01 — ตัวแปร ชนิดข้อมูล ค่าคงที่ และเงื่อนไข (ตรวจพื้นฐานก่อน)
+## บท 01 — ตัวแปร ชนิดข้อมูล ค่าคงที่ และเงื่อนไข
 
 **รู้จัก:** `var`, `const`, `int`, `float`, `bool`, `String`, `=`, `+=`, `-=`, comparison, `and/or/not`, `if/elif/else`, indentation, type hints `var hp: int`.  
 **ของจริงใน repo:** `PLAYER_MAX_HP`, `ENEMY_MAX_HP`, `player_hp`, `enemy_hp`, `player_is_defending`, `battle_is_over`.  
@@ -97,7 +99,7 @@
 **แบบฝึก C:** อธิบายว่า `=` กับ `==` ต่างกันอย่างไร และทำไม `const` ไม่ควรเปลี่ยนระหว่างเกม  
 **ผ่านเมื่อ:** อธิบาย flow ของ `_on_attack_button_pressed()` และ `_enemy_turn()` ได้; แยก compile/syntax กับ bug ตรรกะได้
 
-## บท 02 — FUNCTIONS: บทปัจจุบันของผู้เรียน [START HERE]
+## บท 02 — FUNCTIONS: จุดเริ่มเรียนจริง [START HERE]
 
 **อ่านในโค้ดจริง:** `_ready()` (ประมาณบรรทัด 67), `_start_new_battle()` (81), `_on_attack_button_pressed()` (107), `_enemy_turn()` (163), `_update_ui()` (208), `_add_log(message: String)` (223), `_end_battle(player_won: bool)` (230). หมายเลขบรรทัดจาก revision ที่ตรวจ อาจเปลี่ยนภายหลัง
 
@@ -142,7 +144,7 @@ func safe_damage(base_damage: int, reduction: int) -> int:
 **โจทย์:** ใช้ UI sandbox เล็กหรือ Node ใหม่ชั่วคราว สร้างปุ่ม Test 1 อันกดแล้ว Output มีข้อความ; ทดลอง path ผิดแล้วอ่าน debugger; **อย่าทำสัญญาณซ้ำสองทาง** (เชื่อมใน editor และ script ซ้ำโดยไม่ตั้งใจ)  
 **ผ่านเมื่อ:** อธิบาย Node ownership, signal sender/receiver, และ `@onready` ที่จับ node หลังเข้า tree ได้
 
-## บท 04 — Transform, Vector2 & M1.5B Combat Staging [ACTIVE MILESTONE]
+## บท 04 — Transform, Vector2 & M1.5B Combat Staging
 
 **รู้จัก:** position vs global_position, local parent space, `Vector2(x,y)`, z_index, Sprite2D scale, Control anchors/margins, aspect/readability.  
 **งานจริง:** **เริ่มด้วย Inspector ก่อนเขียน GDScript** จัด Player + NPC 3 คนให้มีหน้า–หลังแบบอ่านชัด, Enemy A อยู่บนสนามอย่างสมเหตุผล, เว้น action space, debug panel ไม่กินส่วนสำคัญ, ตรวจ viewport 1280×720  
@@ -166,75 +168,144 @@ func safe_damage(base_damage: int, reduction: int) -> int:
 **เชื่อมเกม:** M1.5D ให้ NPC visual action แยกคนและมี log ที่อ่านได้ **ยังไม่ใช่ NPC AI ที่ตัดสินเองทั้งหมด**  
 **ผ่านเมื่อ:** แก้โจทย์วนรายชื่อด้วยตนเองได้และไม่ใช้ loop ไม่รู้จบ
 
-## บท 07 — Classes, Resources & ownership
+## บท 07 — NPC Autonomy Micro-Proof (M2A)
+
+**รู้จัก:** input→candidate actions→guard→score/priority→choice→reason; `RandomNumberGenerator` พร้อม seed หากใช้สุ่ม; แยก logic ออกจาก animation  
+**แบบฝึก A:** actor ตัวอย่างเลือก Help เมื่อเพื่อนใกล้หมด HP และมีเงื่อนไขช่วยได้, ไม่เช่นนั้น Defend/Attack ตามสถานการณ์  
+**แบบฝึก B:** ใส่ความกล้า เมตตา วินัย และ survival instinct แบบค่าต้นแบบ **ไม่ล็อก AI design ถาวร**; log ว่าเลือกเพราะอะไร  
+**ทดสอบ:** เพื่อนบาดเจ็บ, ไม่มีเพื่อนบาดเจ็บ, NPC บาดเจ็บเอง, ไม่มี target, ทางเลือกไม่ถูกกฎหมาย, ทุก action ถูกปิด  
+**ผ่านเมื่อ:** เห็น NPC 1 คนในต้นแบบเลือกทำเอง และผู้เรียนอธิบายเหตุผลของแต่ละการตัดสินใจได้ ไม่ใช่เพียงสุ่มคำสั่ง
+
+## บท 08 — Classes, Resources & ownership (M2B)
 
 **รู้จัก:** script เป็น class, `class_name`, `extends`, `Resource`, `RefCounted`, `Node`, `@export`, typed references, instance vs shared resource, `is_instance_valid()`  
 **ฝึก:** แยก model ข้อมูล actor อย่างเล็กใน sandbox (ชื่อ, max HP, current HP, defending); UI เป็นผู้แสดง ไม่ใช่แหล่งความจริงของ HP  
 **ทดสอบ:** actor 2 ตัวเปลี่ยน HP แยกกัน, scene reset ไม่ทิ้ง reference ชี้ node เก่า, resource ถูก share โดยไม่ได้ตั้งใจหรือไม่  
 **ผ่านเมื่อ:** อธิบาย “ข้อมูลหนึ่งชุดมีเจ้าของหนึ่งที่” และความต่างระหว่าง Node กับ Resource ได้. **อย่าทำ framework class ซับซ้อนก่อนมี actor มากพอ**
 
-## บท 08 — Combat turn/state flow
+## บท 09 — Minimal Actor/Item Data Foundation (M2B)
+
+**เป้าหมาย:** หลังพิสูจน์ NPC Autonomy แบบขนาดเล็กแล้ว สร้าง Actor data, Item definition, Equipment slot และ Inventory model ที่ระบบอื่นอ่านร่วมกันได้ โดย **ไม่ผูกค่าจริงกับ Label.text**
+
+**แนวคิด:** ความต่าง \`Resource\` = นิยาม item/actor template, instance data = สถานะปัจจุบันของตัวละคร; ownership, data validation, typed \`Array\`, \`Dictionary\`, ID และ reference. ไม่ต้องเขียน class inheritance จำนวนมาก
+**แบบฝึก A:** สร้างข้อมูล Player และ NPC อย่างละหนึ่งชุด มี \`actor_id\`, \`max_hp\`, \`current_hp\`, \`weapon_id\`; เปลี่ยน Player HP ต้องไม่เปลี่ยน NPC
+**แบบฝึก B:** นิยาม Potion และ Sword แบบ item ID + \`weight\` + kind; สร้าง Inventory เล็กสองรายการโดย UI ยังเป็นปุ่ม/label ชั่วคราว
+**แบบฝึก C:** ร่างภาพความเป็นเจ้าของข้อมูล: actor/party/world/base; เมื่อ Player ตาย ของที่ถือกับของฝากในฐานควรเดินคนละกฎ
+**ทดสอบ:** empty inventory, item ID ไม่รู้จัก, shared Resource เปลี่ยนกระทบอีก actor, item จำนวนติดลบ, actor ถูกลบแต่ UI ยังมี reference
+**ผ่านเมื่อ:** ผู้เรียนแยก Model ↔ UI ↔ saved state ได้ อธิบายได้ว่า item definition กับ item instance ต่างกันเมื่อมี Durability; ยืนยันว่า Data นี้พอทำระบบ M2C โดยยังไม่สร้างทุก item type
+
+## บท 10 — Combat Turn/State Flow — Full Party (M2C)
 
 **รู้จัก:** state diagram, `enum`, guard conditions, queue, action intent, resolve, end condition, determinism  
 **ฝึก:** วาด flow ก่อน: `START → PLAYER_CHOICE → ACTION_RESOLVE → ENEMY_ACTION → CHECK_END → NEXT_TURN`; เพิ่ม NPC เพียงเท่าที่ระบบ M2 ต้องพิสูจน์  
 **กรณีทดสอบ:** เลือกโจมตีเมื่อ battle over, HP ถึง 0 ก่อน enemy attack, กด action สองครั้งติด, action target หาย, Restart ระหว่างเฟส  
 **ผ่านเมื่อ:** สามารถบอกว่า state อยู่ตรงไหนและเหตุใด action ถูกปฏิเสธได้; UI ไม่เป็นตัวกำหนด state หลัก
 
-## บท 09 — Rule-based NPC decision making (M2)
-
-**รู้จัก:** input→candidate actions→guard→score/priority→choice→reason; `RandomNumberGenerator` พร้อม seed หากใช้สุ่ม; แยก logic ออกจาก animation  
-**แบบฝึก A:** actor ตัวอย่างเลือก Help เมื่อเพื่อนใกล้หมด HP และมีเงื่อนไขช่วยได้, ไม่เช่นนั้น Defend/Attack ตามสถานการณ์  
-**แบบฝึก B:** ใส่ความกล้า เมตตา วินัย และ survival instinct แบบค่าต้นแบบ **ไม่ล็อก AI design ถาวร**; log ว่าเลือกเพราะอะไร  
-**ทดสอบ:** เพื่อนบาดเจ็บ, ไม่มีเพื่อนบาดเจ็บ, NPC บาดเจ็บเอง, ไม่มี target, ทางเลือกไม่ถูกกฎหมาย, ทุก action ถูกปิด  
-**ผ่านเมื่อ:** เห็น NPC เลือกทำเอง และผู้เรียนอธิบายเหตุผลของแต่ละการตัดสินใจได้ ไม่ใช่เพียงสุ่มคำสั่ง
-
-## บท 10 — Guidance & trust (M3)
+## บท 11 — Guidance & Trust (M3A)
 
 **รู้จัก:** state data per NPC, player input, signal to controller, requested action ≠ forced action, trust linked to **specific player character**, transparent reason log  
 **แบบฝึก:** ส่งคำชี้นำ Attack ให้ NPC ที่ Compassion สูงแต่มีคนกำลัง Down; ให้ NPC มีสิทธิเห็นต่างและแจ้งเหตุผล ไม่ใช่เขียน if บังคับเชื่อฟังเสมอ  
 **ทดสอบ:** trust ต่ำ/สูง, คำสั่งขัดกับความปลอดภัย, leader ตายแล้วสร้างตัวละครใหม่, log ไม่หลอกว่าทำตามเมื่อปฏิเสธ  
 **ผ่านเมื่อ:** เขียน/อธิบายระบบคำแนะนำหนึ่งคำสั่งได้ด้วยตนเอง โดยไม่แปลง NPC เป็นตัวละครที่ Player คุมโดยตรง
 
-## บท 11 — Down, help, retreat, death (M4)
+## บท 12 — Inventory, Weight & Ownership (M3B-1)
+
+**เป้าหมาย:** กระเป๋าที่มีผลกับการตัดสินใจในเกมจริง ไม่ใช่แค่รายการไอเทม
+
+**GDScript ที่ใช้:** \`Array\`/\`Dictionary\`, typed function, \`Resource\`, \`filter\`/การวน \`for\`, guard/early \`return\`, \`signal\` เพื่ออัปเดต UI. ให้ Inventory มี owner ID และรายการ item stack/unique item ชัดเจน
+**แบบฝึก A:** สร้างของ 3 ชิ้น (อาหาร 2 หน่วย, ดาบ 1, ยา 1) ระบุน้ำหนัก/จำนวน; เขียนฟังก์ชัน \`get_total_weight()\` ให้ทายผลด้วยตนเองก่อนรัน
+**แบบฝึก B:** \`can_add_item\` ตรวจน้ำหนักเกินและชนิด/จำนวน; \`transfer_item\` จาก Player → NPC → คลังเมื่อเงื่อนไขอนุญาต; ป้องกันการแบ่งจำนวนเกินของที่มี
+**แบบฝึก C:** ทดสอบกรณีคนเจ็บต้องถูกแบกและอุปกรณ์ที่เก็บได้มีน้ำหนักสูง ทำให้การเลือกว่าจะนำอะไรกลับแตกต่างกัน
+**ทดสอบ:** capacity = 0, หนักเท่าค่าสูงสุด, หนักเกิน, quantity เป็น 0/ติดลบ, รายการว่าง, transfer คืนเมื่อปลายทางเต็ม, item ซ้ำหลังโหลด
+**ผ่านเมื่อ:** ผู้เรียนเขียนกฎตรวจน้ำหนักเองและอธิบายว่าทำไมข้อมูล Inventory ต้องไม่ถูกผูกกับ UI Button หรือ \`Label\` และรับมือธุรกรรมล้มเหลวโดยไม่ทำของหาย/ซ้ำ
+
+## บท 13 — Equipment, Stat Effects & Durability (M3B-2)
+
+**เป้าหมาย:** อาวุธ เกราะและอุปกรณ์เสริมกระทบ Combat และสึกหรอโดยไม่เพิ่มงานจุกจิก
+
+**GDScript ที่ใช้:** enum item type/equipment slot, typed \`Dictionary\`, pure function คำนวณ stat, validation guard, signals on equipment changed, item unique instance state
+**แบบฝึก A:** อุปกรณ์ 2 ชิ้น (Sword, Shield) กับช่อง weapon/offhand: ตรวจว่าใส่ผิดประเภทไม่ได้; สวม/ถอดแล้ว Attack/Defense ที่คำนวณเปลี่ยนจริง
+**แบบฝึก B:** แยก \`base_stat\` จาก \`equipment_bonus\`; อธิบายว่าทำไมถอดแล้วไม่ควรบันทึกโบนัสทับเป็นค่าถาวร
+**แบบฝึก C:** เพิ่ม \`durability\` ให้ item หนึ่งชิ้น และซ่อมโดยมีต้นทุน **แต่ยังไม่สร้างระบบร้านเต็มรูปแบบ**; หากพังให้มีผลที่ผู้เล่นอ่านได้ ไม่แอบหักอุปกรณ์โดยไม่แจ้ง
+**ทดสอบ:** equip slot ไม่ตรง, เปลี่ยนอาวุธกลาง action, เสื่อมต่ำกว่า 0, durability เต็มแล้วซ่อม, NPC ตายพร้อมของสวม, shared item instance ถูกสวมสองคน
+**ผ่านเมื่อ:** คำนวณค่าจาก item จริงและพิสูจน์ได้ว่าการสวม/ถอด/ซ่อมไม่ทำ item ซ้ำหรือทำค่า actor เสีย
+
+## บท 14 — Weapon Mastery + Profession Unlock (M3C)
+
+**เป้าหมาย:** ความชำนาญเฉพาะอาวุธและปลดอาชีพจากการกระทำ/เงื่อนไข โดยไม่บังคับ Skill Tree จำนวนมากก่อนทดลอง
+
+**[LOCKED INTENT]** ต้องมี **Weapon Mastery** และ **Profession Unlock**. **[OPEN]** Skill Tree จะอิงอาวุธหรืออาชีพเป็นหลัก; ทดลอง **Hybrid 1 weapon group + 1 profession** เป็นตัวอย่างเพื่อเปรียบเทียบ ไม่ตั้งเป็นกฎถาวร
+**GDScript ที่ใช้:** \`Dictionary\` เก็บ mastery per weapon group, condition check ใน \`func\`, progress events, threshold data/Resource, enums, separation of calculation and UI
+**แบบฝึก A:** สร้าง Mastery ของอาวุธหอก เมื่อใช้ในการต่อสู้ที่สำเร็จจริงตามเงื่อนไขจึงเพิ่ม progress; โจมตี dummy โดยไม่มีต้นทุนไม่ควร grind ได้ไม่จำกัด
+**แบบฝึก B:** ตั้งเงื่อนไข Profession “Guardian” ต้องมี Mastery และการช่วยป้องกันทีมครบจำนวนหนึ่ง (ตัวเลขเป็นตัวอย่าง); ทดสอบถึงระดับ/ขาดอีกหนึ่งเงื่อนไข
+**แบบฝึก C:** ลองเสนอทักษะ 1 อย่างของหอก และ 1 อย่างของอาชีพ เปรียบเทียบความเข้าใจและการเลือก Build ก่อนออกแบบทั้ง tree
+**ทดสอบ:** progress ซ้ำจาก action เดียว, master data ปนของ NPC อีกคน, unlock ซ้ำ, level/weapon เปลี่ยน, permadeath แล้ว world-level unlock กับ character-level progression แยกกัน
+**ผ่านเมื่อ:** ผู้เรียนอธิบาย why/when skill unlock และปรับเกณฑ์ได้เอง พร้อมบันทึกข้อดี/ข้อเสียของ Weapon Tree vs Profession Tree ก่อนตัดสิน
+
+## บท 15 — Down, Help, Retreat, Death (M4)
 
 **รู้จัก:** alive/down/dead states, bleed-out counter, separate combat vs persistent data, guard & event sequence, edge-case state transitions  
 **ฝึก:** HP 0 → Down; Help ภายในเงื่อนไขก่อนตาย; Dead แล้ว Help แบบธรรมดาไม่ฟื้น; retreat แบบมีความเสี่ยง/ผลตามสถานการณ์  
 **ทดสอบ:** Down แล้วถูกซ้ำ, ถูกช่วยทันเวลา, NPC เลือกช่วยหรือหนี, ไม่มีผู้รอด, Player ตายแล้วโลกยังดำเนิน, double-death bug  
 **ผ่านเมื่อ:** สถานะไม่ขัดแย้งกันและแยก **combat rescue** จาก **future resurrection mystery** ชัด. ไม่ implement เวทชุบฟรี
 
-## บท 12 — Persistence & safe saves (เมื่อระบบต้องจำผลจริง)
+## บท 16 — Persistence & Safe Saves (M4 / M4.5)
 
 **รู้จัก:** `user://`, `FileAccess`, `JSON`, schema version, dictionaries, data validation, save/load, world vs character ownership  
 **ฝึก:** sandbox เก็บ–โหลดเพียง `visited_route` กับ `death_ledger` แล้วโหลดกลับได้. **อย่าทำระบบเซฟเต็มรูปแบบก่อน M4/M5 ต้องใช้**  
 **กรณีทดสอบ:** ไฟล์ยังไม่มี, JSON เสีย, version ไม่ตรง, save หลังตัวละครตาย, trust ของตัวละครใหม่ไม่รับของเดิม, ชื่อ key หาย  
 **ผ่านเมื่อ:** รู้ว่าไฟล์จริงอยู่ใน user data path และมีวิธีสำรอง/กู้ โดยไม่เขียนทับ progression ในทุกกรณีผิดพลาด
 
-## บท 13 — Journey nodes & events (M5)
+## บท 17 — Currency, Loot, Trade, Repairs & Personal Storage (M4.5)
+
+**เป้าหมาย:** เงิน รางวัล ไอเทม ของในคลังและค่าซ่อมเป็นการตัดสินใจอยู่รอด ไม่ใช่ราคาติดป้ายเฉย ๆ
+
+**GDScript ที่ใช้:** atomic-like transaction function (validate→apply→report), \`Dictionary\` สำหรับ price/stock, signals สำหรับ refresh UI, save data ID, conditional flows; ยังไม่สร้างระบบ market simulation
+**แบบฝึก A:** เงินเริ่มต้น 20 เหรียญ ซื้อยา 8 เหรียญ; \`try_purchase(item_id, price)\` ต้องคืนผลสำเร็จ/ล้มเหลว และ **ไม่หักเงินถ้ารับของไม่ได้เพราะน้ำหนักเต็ม**
+**แบบฝึก B:** กำหนด Loot 2 ชิ้นหลัง encounter; ผู้เล่นเลือกเก็บ/ขาย/ทิ้งและเปรียบเทียบว่าแบกไหวหรือไม่
+**แบบฝึก C:** ช่างซ่อมเรียกเงิน/วัสดุ; ผู้เล่นต้องเลือกระหว่างค่าซ่อม ค่ายา ค่าอาหาร; ฝากของใน Personal Base ก่อนเดินทางและหยิบกลับได้
+**แบบฝึก D:** เงินจ่ายค่าที่พัก/รักษา; ทดลองตั้งราคาเปลี่ยนตามเรื่องเล่าหนึ่งเหตุการณ์แบบ explicit quest flag แต่ไม่ทำ economy real-time
+**ทดสอบ:** เงินน้อยกว่าราคา, inventory เต็ม, ซื้อ/ขายแล้วกดย้ำ, reward ถูกจ่ายซ้ำ, item ฝากแล้วอยู่ทั้งคลังและกระเป๋า, save/load แล้วจำนวนไม่ตรง, item ผู้ตายต้องไปตามกฎ loot/corpse
+**ผ่านเมื่อ:** สามารถทำรายการที่ล้มเหลวโดยเงินและของไม่หาย/ไม่เพิ่ม และอธิบายว่าทำไมคลังส่วนตัวคงอยู่แม้ Player character คนปัจจุบันตาย
+
+## บท 18 — Journey Nodes & Survival Resources (M5)
 
 **รู้จัก:** graph nodes/edges, route data, simple event selection, basic randomness, path availability, separation of UI and travel state  
 **ฝึก:** แผนที่ทดสอบ **Stonegate → Route A / Route B** แต่ละเส้นมีความเสี่ยงและข่าวที่อาจไม่แน่นอน; เปิด event pool แรกเพียง 3–5 เรื่อง  
 **ทดสอบ:** route ถูกปิด, ผู้เล่นถอยกลับ, event ซ้ำ, ข่าวเก่าไม่ใช่ข้อมูลจริง, ไม่มีเสบียง, ตัวละครในปาร์ตี้ไม่ยอมเสี่ยง  
 **ผ่านเมื่อ:** Player เลือกทางได้และเหตุผล NPC แสดงได้; ไม่ต้องทำ open world หรือ network C1–C8 จริง
 
-## บท 14 — Town UI, quest & party (M6)
+## บท 19 — Town UI, Quest & Personal Base (M6)
 
 **รู้จัก:** `Control` layout, containers, signals, data binding แบบง่าย, scene transitions, quest states, recruitment UI, inventory แบบจำกัด  
+**Personal Base ไม่ใช่ base-building:** ที่พัก/คลังมีหน้าจอฝากถอนและพักฟื้น ไม่มีการอัปเกรดสิ่งปลูกสร้าง. ทดสอบทรัพย์สินคงอยู่หลัง Permadeath
 **ฝึก:** เมือง Stonegate หน้าจอเดียว/เมนูง่าย ๆ มี รับงาน, ชักชวน NPC, เตรียมเสบียง, รักษา, เลือก Route A/B  
 **กรณีทดสอบ:** ปาร์ตี้เต็ม 3 NPC, NPC ปฏิเสธเข้าร่วม, quest accepted/completed, ไม่สามารถรับรางวัลซ้ำ, กลับเมืองหลังล้มเหลว, โลจิสติกส์พื้นฐานไม่ softlock  
 **ผ่านเมื่อ:** เมือง→ทาง→เหตุการณ์→กลับเมืองวนลูปได้ และไม่มี walkable town ที่ต้องสร้างเพิ่ม
 
-## บท 15 — Vertical Slice integration (M7)
+## บท 20 — Vertical Slice Integration (M7)
 
 **ขอบเขตเดิม ห้ามขยายเอง:** 1 Town, 6 recruitable NPC candidates, 3 Quests, 2 Routes, 8–10 events, 4 enemy archetypes รวมระบบต่อสู้และความทรงจำที่จำเป็น  
 **แบบฝึกเชิงวิศวกรรม:** รวมระบบแบบ **ครั้งละส่วน**, แยก state/model/UI, จัด main menu/load-safe, ติดตาม bugs, เขียน test checklist โดยเน้น game loop  
 **End-to-end tests:** รับงาน→ร่วมทีม→ออกทาง A/B→เลือก event→combat→Down/Help/Retreat→กลับเมือง→save/load→ตรวจข่าว/ความไว้ใจ/การตาย; test เล่นซ้ำ, input ผิด, แพ้ และกดปุ่มรัว  
 **ผ่านเมื่อ:** ผู้เรียนสามารถอธิบายลำดับการทำงานข้ามอย่างน้อย 3 scripts และแก้ bug ที่เจอจริงได้โดยไม่ให้ AI เดาตอบล้วน ๆ. **อย่าเรียกว่า “เสร็จ M7” จนมีผลรันและ playtest จริง**
 
-## บท 16 — Rare item Resonance [OPTIONAL, NOT CURRENT]
+## บท 21 — Demo Feedback, Content Pipeline & Release Readiness (M8–M10)
+
+**M8:** จัดชุด playtest คนที่ไม่เคยเห็นเกม: ดูว่าการปฏิเสธของ NPC อ่านเข้าใจหรือไม่, ผู้เล่นเลือกเรื่องเสบียง/เงิน/น้ำหนักด้วยเหตุผลอะไร, เควสมี failure path หรือไม่. เรียนใช้ \`print\`/Debugger และบันทึก playtest data แบบไม่ละเมิดความเป็นส่วนตัว; เป้าหมายคือ **วัดพฤติกรรม ไม่เดายอดขาย**
+**M9:** ฝึกสร้างข้อมูล item/enemy/quest แบบเพิ่มจาก Resource/scene ที่ใช้ซ้ำได้; อย่าเขียน \`if item == "sword_07"\` แยกอยู่ใน scripts หลายสิบไฟล์. เพิ่มเนื้อหา **เฉพาะเมื่อ core สนุกผ่านจริง**
+**M10:** ศึกษา Settings, localization, input mapping, accessibility, error handling, save migration, test build/export ตาม Godot เวอร์ชันจริง, release QA และ Steam tools ตามข้อกำหนดที่ตรวจ ณ วันทำงาน
+**แบบฝึก:** (A) เพิ่ม item ใหม่จาก data 1 ชิ้นโดยไม่แก้ combat logic (B) ทดลองโหลดเซฟเดิมหลังเพิ่ม field ใหม่ (C) เปลี่ยนภาษา/UI text โดยไม่มีข้อความสถานที่จริงหลุดก่อน reveal gate
+**ทดสอบ:** clean install, load old/invalid save, restart หลัง Player ตาย, เลือกภาษา, ไม่มีไอเทม, input กดซ้ำ, game pause/resume, performance บนเครื่องเป้าหมาย
+**ผ่านเมื่อ:** มี checklist และผลทดสอบจริง (ไม่เพียงติ๊ก [x] ตามแผน) และบอกได้ว่า demo/release blocker สำคัญคืออะไร
+
+## บท 22 — Rare Item Resonance [OPTIONAL / M4.R]
 
 เรียน `Resource`, enum Ready/Spent, target validation, signal feedback และเงื่อนไขการใช้เฉพาะเมื่อ M4 พร้อมแล้ว หรือเลื่อนไปหลัง M7  
 **ต้นแบบที่อนุญาตให้ลอง:** Pulse Pendant 1 ชิ้นช่วย Alive/Down ใน encounter แบบมีต้นทุน/ครั้งเดียว; **ไม่คืน Dead**  
 **ห้าม:** ระบบเวทหลายสาย, เหมือง, craft economy, Full Starstone skill tree ใน M1.5B
+
+---
 
 ---
 
@@ -344,7 +415,7 @@ Branch / Commit / ไฟล์ที่เกี่ยวข้อง:
 
 สถานะที่ผมแจ้งล่าสุด: ผมเรียน GDScript มาถึงเรื่อง function (func)
 อย่าเหมาว่าผมคล่อง parameter, return, var, if, loop, array, signal หรือ class; ขอทดสอบทีละน้อย
-งานพัฒนาเกมถัดไปคือ M1.5B Combat Staging; ยังไม่ต้องสร้าง AI NPC หรือระบบ magic
+งานพัฒนาเกมถัดไปคือ M1.5B Combat Staging; ต่อจากนั้น M1.5C/D → M2A NPC Proof → M2B Data Foundation → M2C Party → M3A Guidance → M3B Inventory/Equipment → M3C Mastery/Profession → M4 Death → M4.5 Economy → M5–M10 ตาม WORKFLOW. ยังไม่ต้องสร้าง AI NPC หรือ magic ใน M1.5B
 โค้ดเดิมสำคัญ: scripts/combat/combat_prototype.gd
 ฉากเดิม: scenes/combat/combat_prototype.tscn
 
