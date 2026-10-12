@@ -6,7 +6,7 @@
 | อ่านเมื่อ | เอกสาร |
 |---|---|
 | แก้ Combat, NPC, ความตาย, Progression, ระบบพลัง | **[GAME.md](GAME.md)** — ข้อกำหนดและเกมเพลย์ รวม Management/Survival/Progression |
-| เขียนเมือง เควส แผนที่ ตัวละคร Lore ประวัติศาสตร์/ระดับเทคโนโลยีและจังหวะซ่อนที่ตั้งโลกเก่า | **[WORLD.md](WORLD.md)** — World Bible; §1B **The Broken Ladder + Energy Bottleneck** และ §4B **Stonegate: สภา เศรษฐกิจ พลังงาน วัฒนธรรม** เป็นร่างที่ยังไม่ล็อก Canon; มี **developer spoilers** |
+| ออกแบบโลก ภูมิภาค เมือง ผู้คน อัตลักษณ์ วัฒนธรรม เครื่องแต่งกาย ประวัติศาสตร์ และการเปิดเผยโลกเก่า | **[WORLD.md](WORLD.md)** — World Bible: §1B เทคโนโลยี, §1C อารยธรรม, §3A อัตลักษณ์ทั้ง 7 ภูมิภาค, §4B พลังงานเมือง, §4C สังคม/วัฒนธรรม Stonegate; **รายละเอียดใหม่ยังเป็นร่าง NOT CANON** และมี developer spoilers |
 | ทำงานใน Godot เรียน GDScript ตรวจ Milestone/Art/ขั้นตอนถัดไป | **[WORKFLOW.md](WORKFLOW.md)** — Roadmap M1.5B–M10, Risk Gates, Learning และบันทึก GDScript (ล่าสุด: เรียนถึง `function`) |
 
 **งานพัฒนาเกมที่ทำถัดไป:** **M1.5B Combat Staging** ใน `res://scenes/combat/combat_prototype.tscn`. โลก/เมือง/Starstone เป็นงานออกแบบ ไม่ได้ implement จากการเพิ่มเอกสาร
