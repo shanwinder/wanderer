@@ -50,7 +50,7 @@ Active files: `res://scenes/combat/combat_prototype.tscn`, `res://scripts/combat
 | **M9 — Content Production** | เพิ่มศัตรู อาวุธ อาชีพ/ทักษะ/เควส/เมืองตามระบบที่ผ่าน playtest; บาลานซ์น้ำหนัก/เงิน/ความทนทาน | เพิ่มข้อมูลได้โดยไม่ต้องแก้โค้ดหลายที่, ตรวจลูปการเล่นซ้ำ |
 | **M10 — Polish & Release** | Localization อังกฤษ/ไทย, UI accessibility, sound/settings, save migration, performance, regression, export, Steam readiness | Release checklist ผ่านจริง; ทดลอง clean install/load/แพ้/ชนะ/กดซ้ำ/เปลี่ยนภาษา |
 
-**M4.R [OPTIONAL / DEFERRED]** หลัง M4 มั่นคงหรือหลัง M7: ทดลอง **Pulse Pendant** ชิ้นเดียว (Ready→Spent, ช่วย Alive/Down ไม่ชุบ Dead); อาจเลื่อนออกหากรบกวน core. ห้ามแทรกใน M1.5B หรือทำเหมือง/ระบบเวทเต็ม
+**M4.R [OPTIONAL / DEFERRED]** หลัง M4 มั่นคงหรือหลัง M7: ทดลอง **Pulse Pendant** ชิ้นเดียว (Ready→Spent, ช่วย Alive/Down ไม่ชุบ Dead, หนึ่งครั้ง/encounter เพื่อทดสอบ); อาจเลื่อนออกหากรบกวน core. **การ reset fixture ระหว่าง encounter ในการทดสอบไม่ใช่กฎชาร์จพลังของโลก**. ห้ามแทรกใน M1.5B หรือทำเหมือง/ระบบเวทเต็ม
 
 ### 3.1 Risk gates ก่อนลงทุนทำ content เพิ่ม
 
@@ -132,9 +132,11 @@ This project is meant to teach the developer Godot through hands-on work; AI is 
 
 **Dark Stonegate story handoff [APPROVED PREMISE / FUTURE CONTENT]:** [WORLD.md §4D–§4E](WORLD.md) ล็อกเพียงความจริงว่าเครือข่ายความผิด S1/S5/S7 มีอยู่ มีผู้รับเหมาหรือกลุ่มอิทธิพลใหม่รับผิดชอบหลัก โดย **ยังไม่ระบุชื่อ/ความผิดรายคนของ NPC เดิม**. **C0** ขบวนเก่ามีเบาะแสบางส่วนเชื่อมถึงเรื่อง แต่เหตุจริงยัง [OPEN]; **C1** ขบวนที่กลับมาไม่ครบตอนเริ่มเป็นคนละเหตุ; **Route B** ปิดทางคาราวานตามกฎแต่ลอบเดินได้. ผลระยะยาวควรคงอยู่หลัง permadeath เมื่อสร้างระบบรองรับ. S2/S3/S4/S6/S8 ยังเป็น proposal; ยังไม่เลือก Main/Side Arc และ **ไม่เพิ่มเควส/ระบบ/Milestone ใน M7 อัตโนมัติ**. ก่อนทำ content ให้ตรวจ relationship/knowledge matrix, evidence, world flags และต้นทุน production. **M1.5B ยัง active**
 
+**Starstone/Resonance design handoff [APPROVED WORLD FRAMEWORK; OPTIONAL IMPLEMENTATION]:** [WORLD.md §1D / §4F / §7](WORLD.md) และ [GAME.md §7](GAME.md) วางกฎอุปกรณ์ (Core/Housing/User), ห้าแขนง Impulse/Binding/Temper/Trace/Vital **ตามผล ไม่ใช่ Class**, Strain ต่อผู้ใช้, Stress/Integrity ต่ออุปกรณ์, สัญญาณเตือนการฝืน, ไม่มีเวทฟรี/ไฟฟ้าไร้ขีดจำกัดหรือคืนชีพ Dead แบบปกติ. **แหล่งพลังงาน/Recharge/การซ่อม Core/สูตรและค่าตัวเลข/กฎหมายครอบครองยัง [OPEN]**. อีกห้าอุปกรณ์เป็น Lore concepts เท่านั้น; **M4.R ยัง optional Pulse Pendant ชิ้นเดียว, ไม่เพิ่ม Magic Milestone, ไม่เปลี่ยน M1.5B**. หากเริ่มทำ M4.R ค่อยกำหนดเกณฑ์ทดสอบและแยก prototype reset ออกจาก in-world recharge
+
 ## 7. Open choices
 
-Final combat turn model, presentation camera/real-3D depth, damage/balance formulas, NPC behavior weight, detailed magic cost, **exact** geography/reveal evidence, **historical years/causes and technology distribution beyond agreed Stonegate baseline**, and economic simulation remain open for prototype/playtest or worldbuilding review. **The broad world directions are approved, not fully specified or implemented.** None should delay M1.5B.
+Final combat turn model, presentation camera/real-3D depth, damage/balance formulas, NPC behavior weight, **Resonance energy/recharge/Strain–Stress balance and item-specific costs**, **exact** geography/reveal evidence, **historical years/causes and technology distribution beyond agreed Stonegate baseline**, and economic simulation remain open for prototype/playtest or worldbuilding review. **The broad world and five-family magic design directions are approved, not fully specified or implemented.** None should delay M1.5B.
 
 **Next playable work:** M1.5B-01 — เรียน Node/Inspector แล้วจัด Combat Party Staging; อย่าแทรก Inventory/Skills ก่อนขั้นพิสูจน์ NPC Autonomy
 
