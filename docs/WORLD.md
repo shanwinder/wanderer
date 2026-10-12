@@ -112,6 +112,8 @@ Read alongside [GAME.md](GAME.md) and [WORKFLOW.md](WORKFLOW.md).
 - **ความหายากหลายชั้น:** จุดตก/การค้นพบ → การยืนยันว่าเป็น Starstone จริง → ความสมบูรณ์ของแกน → การขึ้นรูป/บรรจุ Housing → ผู้ใช้ที่ฝึกได้. ข่าวลือและของปลอมเกิดง่าย; **การตรวจไม่เท่ากับมีวัสดุเหลือไม่จำกัด**. ไม่จำเป็นต้องให้ Stonegate เป็นเหมืองดาราศิลาหรือศูนย์กระจายเวททั่วโลก
 - **แหล่งความรู้:** ช่างบางสำนักมีวิธีตรวจ ความเข้ากันได้ การเก็บข้อมูลทดลอง และมาตรฐานความปลอดภัยที่ได้จากประสบการณ์; ไม่มีสำนักใดจำเป็นต้องเข้าใจทฤษฎีอันแท้จริงทั้งหมด. งานช่างที่ดี **ลดความเสี่ยง** แต่ไม่ทำให้พลังไร้ต้นทุน
 - **ฝังแกนในอาวุธ เครื่องมือ เครื่องประดับ:** ชิ้นวัสดุเปล่าหรือปลอมไม่เป็น “คาถาพกติดตัว” โดยทั่วไป. การประกอบที่ผิดอาจไม่ทำงาน เสียทรัพย์ หรือเกิดอันตราย. การถอดหรือเปลี่ยนแกนต้องมีฝีมือและต้นทุนจริง
+- **การทดสอบคุณภาพ [PROPOSED]:** ผู้ช่างอาจประเมิน `Quality / Stability / Integrity` แยกจาก `Stress` ระหว่างใช้งาน, ดูรอยแตกร้าว ปฏิกิริยาต่อการกระตุ้นซ้ำและความเที่ยงตรงของ Housing. **ไม่กำหนดว่าต้องเป็นสถิติ 4 ช่องใน UI** และไม่สมมติว่าช่างทุกคนตรวจได้แม่นยำ; ของปลอม/ผลผิดพลาดยังเกิดได้
+- **วัสดุจากอุกกาบาตหรือได้รับอิทธิพลจากมัน:** “meteorite-derived” ในเอกสารคือ **ความสัมพันธ์ของวัสดุกับเหตุอุกกาบาตที่รับรองแล้ว**; รายละเอียดว่าแกนเกิดในตัวอุกกาบาตหรือจากวัสดุบริเวณที่ถูกเปลี่ยนสภาพบางแบบยัง [OPEN]. ไม่เปิดให้หินธรรมดาทุกก้อนเป็น Starstone
 
 ### 1D-2. กลไกเชิงสังเกตสี่องค์ประกอบ [WORKING MODEL]
 
@@ -188,6 +190,12 @@ Read alongside [GAME.md](GAME.md) and [WORKFLOW.md](WORKFLOW.md).
 - **ความเชื่อ:** ช่าง นักสืบ นักปราชญ์ ผู้ศรัทธาและคนธรรมดาอาจให้ความหมายต่อดาราศิลาต่างกัน โดยไม่มีกลุ่มใดถือกุญแจไขคืนฟ้าแตกที่เกมยืนยัน. ไม่เชื่อมพลังกับประเทศ/เชื้อชาติ/ศาสนาหนึ่งแบบตายตัว
 - **ภูมิภาค:** R1–R7 แตกต่างกันตามการเข้าถึงช่าง/ข่าว/วัสดุ; **ไม่ให้ทุกเมืองมีเวทเป็นของใช้บ้านเรือน** และไม่ล็อกตำแหน่งแหล่งอุกกาบาต/ผู้เชี่ยวชาญต่างเขตโดยไม่มีหลักฐาน
 
+### 1D-8A. สิ่งแวดล้อมผิดปกติและผู้คนที่อาศัยอยู่ใกล้ [LEGACY LORE RECONCILIATION / PROPOSED]
+
+แนวคิดจากเอกสาร Starstone รุ่นเก่า: บางบริเวณที่เกี่ยวข้องกับวัสดุตกฟ้า **อาจ** มีปรากฏการณ์เฉพาะจุด (*micro-zones*) เช่น เสียงสะท้อนหรือแสงผิดเวลา สัญญาณเข็มทิศคลาดเคลื่อน หรือสิ่งมีชีวิตที่ปรับตัวตามสภาพแวดล้อม. **ทั้งหมดเป็นสมมติฐานเนื้อเรื่อง ไม่ใช่กฎว่าทุกจุดตกมีพลังหรือทุกสัตว์กลายเป็นมอนสเตอร์เวท**. บางกรณีอาจเป็นเพียงปรากฏการณ์ธรรมชาติ/ข่าวลือ ผู้คนอาจสืบทอดข้อห้ามท้องถิ่นโดยไม่รู้สาเหตุ
+
+**ขอบเขต:** micro-zone ≠ เหมือง Starstone, ≠ อุปกรณ์เวทที่ใช้ได้ทันที, ≠ หลักฐานเฉลยภูมิศาสตร์โลกเก่า, ≠ free ambient energy. หากจะวางพื้นที่จริง ต้องตรวจฤดูกาล/ระบบนิเวศ/ต้นทุนเดินทาง และ Reveal R0–R4 ตาม §5 ก่อน; **ไม่บังคับให้ Q3 ข่าวแสงเป็น micro-zone** หรือเพิ่มระดับเกมใน M7
+
 ### 1D-9. จังหวะเปิดเผยต่อผู้เล่นและขอบเขตการผลิต
 
 **R0/ช่วงเริ่มต้น:** ข่าวลือ เครื่องรางที่อาจปลอม คนอ้างว่ารู้จักผู้ใช้; **ไม่บังคับได้ Starstone/เวทในเควสแรก**. **เมื่อเกมพร้อมขยาย:** พบอุปกรณ์จริงผ่านการช่วยชีวิต/งานช่างก่อนขยายสู่การต่อสู้; เรียนรู้ต้นทุน ผู้ฝึก และความเสี่ยง. **R2–R4:** อาจเชื่อมหลักฐานวัสดุ/ซากโลกเก่า แต่ **ต้องไม่ใช่เบาะแสเดียวที่เฉลยประเทศไทยและคืนฟ้าแตก**. ลำดับนี้เป็น guidance ไม่ใช่ checklist ที่ต้องใส่ Scene เพิ่มให้ M7
@@ -196,7 +204,7 @@ Read alongside [GAME.md](GAME.md) and [WORKFLOW.md](WORKFLOW.md).
 
 ### 1D-10. Decision checklist — ยังไม่เฉลย/ไม่แต่งแทนผู้สร้าง
 
-**[LOCKED INTENT]:** item-gated Starstone-derived Resonance; rare but real; user Strain / device Stress–Integrity; no common bare-handed spells, no free industrial magic, no ordinary Dead revival. **[APPROVED DESIGN DIRECTION]:** seven constraints, Core/Focus/User/Effect model, five effect-based families as working taxonomy, skill by equipment/profession, differentiated failure with warning, restrained reveal and civic inequity. **[OPEN]:** underlying energy source and conservation mechanism, how Core gets Ready after Spent, whether there is separate charge pool, Strain–Stress math and rest rules, repair vs permanent Core degradation, user compatibility range, exact effect ranges and combat costs, crafting/testing certification/ownership laws, visual signatures and whether any of five families needs reclassification. **Resurrection [LATER/OPEN]**, Sundering Sky causes [OPEN], Starstone ultimate provenance [OPEN] within meteorite-derived premise
+**[LOCKED INTENT]:** item-gated Starstone-derived Resonance; rare but real; user Strain / device Stress–Integrity; no common bare-handed spells, no free industrial magic, no ordinary Dead revival. **[APPROVED DESIGN DIRECTION]:** seven constraints, Core/Focus/User/Effect model, five effect-based families as working taxonomy, skill by equipment/profession, differentiated failure with warning, restrained reveal and civic inequity. **[OPEN]:** confirmed frequency/cause of ecological micro-zones, whether Starstone can form from impact-altered surroundings, underlying energy source and conservation mechanism, how Core gets Ready after Spent, whether there is separate charge pool, Strain–Stress math and rest rules, repair vs permanent Core degradation, user compatibility range, exact effect ranges and combat costs, crafting/testing certification/ownership laws, visual signatures and whether any of five families needs reclassification. **Resurrection [LATER/OPEN]**, Sundering Sky causes [OPEN], Starstone ultimate provenance [OPEN] within meteorite-derived premise
 
 ## 2. Grounded geography [DESIGNER ONLY]
 
