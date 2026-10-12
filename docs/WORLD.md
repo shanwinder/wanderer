@@ -667,6 +667,7 @@ Stonegate รับรายได้จากด่าน คลังสิน
 | **ST-WEAPONS** | **อาวุธดินปืน/อาวุธปืนไม่แพร่หลายในการดำรงชีพและกำลังรักษาเมือง Stonegate ช่วงต้น**; ดาบ หอก ธนู หน้าไม้และเกราะทำมือยังเป็นภาพหลัก | มีดินปืนจำนวนน้อยหรือไม่, เทคโนโลยีอาวุธใน R1–R7/นอกแผนที่ และผลต่อ combat balance |
 | **ST-VISUAL** | **อัตลักษณ์เมืองด่าน/คาราวาน/งานซ่อม/คำสัตย์** เป็นหลัก: หลังคารับฝน ชายคา ผ้าเดินทาง ตรารับรอง ลายเส้นทาง/ทางแยก และเครื่องแต่งกายตามอาชีพ/ฐานะ; ไม่แปะแบบประเทศปัจจุบันเป็นโซน | Shape language/Sprite palette/ตราเมืองแบบสุดท้าย และแบบเสื้อผ้าตัวละครรายคน |
 | **ST-FAITH** | มี **ความเชื่อหลากหลาย ไม่มีศาสนาทางการที่บังคับคนทั้งเมือง**; คำสัตย์ ความทรงจำผู้เดินทาง และประเพณีจากฤดูกาลใช้เป็นวัฒนธรรมร่วมได้ | รายชื่อความเชื่อ พิธีเฉพาะ วันเทศกาล และท่าทักทายที่เป็น Canon |
+| **ST-MAGIC** | อุปกรณ์ดาราศิลาหายากและไม่แก้ต้นทุนพลังงาน/แร่/แรงงานของเมือง; ภาพการใช้งานจริงมีน้อยตาม §1D/§4F | อำนาจตรวจ D1/D2, มาตรฐานช่าง D4, อุปกรณ์ Vital ที่มีจริงใน D8 และสิทธิกรรมสิทธิ์ |
 
 **ภาพสังคมที่ต้องรักษา:** เมืองมีชีวิตชีวา คนส่วนใหญ่ดำเนินชีวิตจริง ๆ ไม่เป็นเมืองไร้ศีลธรรมทั้งเมือง; ความยากจน/โรค/เด็กถูกเอาเปรียบไม่ใช่แค่ภาพช็อก. สภาห้าฝ่ายและความขัดแย้งต้องสอดคล้องข้อจำกัดแรงงาน วัสดุ พลังงาน การค้า และความเป็นสากลของ §1C/§3A
 
@@ -703,6 +704,23 @@ Stonegate รับรายได้จากด่าน คลังสิน
 
 **[SPOILER SECURITY DECISION PENDING]:** \`WORLD.md §2\` ใน repository สาธารณะมี crosswalk ไปพื้นที่ไทยสมัยใหม่ จึงอ่าน/ค้นหาได้จริงแม้เขียน “developer only”. **อย่าสับสนว่า source เป็น private**. ถ้าต้องการปิดความลับจากคนอ่าน GitHub ต้องเก็บข้อมูลดังกล่าวในพื้นที่ private ที่ควบคุมสิทธิและพิจารณาประวัติ commit ที่เผยไปแล้วแยกต่างหาก; **ยังไม่ได้ย้ายหรือลบอะไรใน public repo โดยการแก้ครั้งนี้**
 
+## 4F. Starstone in Stonegate — เวทมนตร์ของหายากในเมืองที่ยังต้องกินและซ่อม [APPROVED FRAMEWORK / DETAILS OPEN]
+
+**อ่านร่วม §1D, §4B–§4E, §7.** Starstone ไม่เป็นหัวใจของเศรษฐกิจ Stonegate; เมืองมีรายได้หลักจากอาหาร ด่าน งานซ่อมเกวียน สัญญาและข่าวทาง. การมีเวทไม่ได้แก้ The Broken Ladder: **ช่างที่รู้วิธีใช้อุปกรณ์หนึ่งชิ้น ≠ โรงงานผลิตอุปกรณ์นั้นเป็นร้อยชิ้น**, และการใช้งานมี Strain, Stress, Integrity, งานซ่อม/คนชำนาญเป็นต้นทุน. อย่าสร้างโรงไฟฟ้าดาราศิลาหรือเครือข่ายน้ำ/การขนส่งเวทไร้ต้นทุน
+
+| เขต/สถาบัน | บทบาทที่เป็นไปได้ [PROPOSED DETAIL] | ผลต่อสังคมและความรับผิด |
+|---|---|---|
+| **D1 ด่าน** | มีวิธีให้ผู้เดินทางรายงานอุปกรณ์เสี่ยงสูงบางแบบ | ตรวจเพื่อความปลอดภัยโดยไม่ยึดของเวททุกชิ้น; กฎตรวจยัง [OPEN] |
+| **D2 ตลาดสองตรา** | ตรวจวัสดุ ราคาแพงหรือการประกอบ Housing บางชนิด; อาจมีของปลอม | **สองตราใช้กับสินค้าที่เข้าข่ายเท่านั้น**; ใบรับรองไม่ได้หมายความว่าไม่มีทางล้มเหลว |
+| **D4 ย่านช่าง** | ช่างเฉพาะทางจำนวนน้อยตรวจรอยแตก แยก Housing ที่ซ่อมได้จากแกนที่เสื่อม | ไม่ต้องมีโรงงานหรือ Starstone Shop ในเกมแรก; ช่างส่วนใหญ่ซ่อมของธรรมดา |
+| **D8 เรือนรักษา** | มีเรื่องเล่าของอุปกรณ์ Vital ที่ช่วยประคองผู้บาดเจ็บได้บางกรณี | **ไม่จัดว่าโรงรักษาต้องมี Pulse Pendant เสมอ** และไม่ให้เวทแทนผ้า น้ำ ยาและผู้รักษา |
+| **D6 หอคำสัตย์** | ข้อพิพาทกรรมสิทธิ์ การประเมินของปลอม การทดสอบที่เกิดอุบัติเหตุ | พยาน/สิทธิคนจนต้องมีน้ำหนัก ไม่สร้างคดีเฉพาะ Starstone ทุกครั้ง |
+| **D7/D9** | ข่าวลืออุปกรณ์ของผู้เดินทางและสิ่งที่ยามสังเกต | ข่าวแสงที่ Route B/Q3 **ไม่ยืนยันว่าเป็น Resonance**; การสืบต้องมีหลักฐาน |
+
+**ตัวอย่างผลต่อโครงเรื่องมืด [OPTIONAL SCENE]:** อุปกรณ์รักษาจากทรัพย์ผู้หายอาจกลายเป็นข้อพิพาทว่าจะคืนเจ้าของ/ช่วยผู้ป่วยก่อนอย่างไร, แต่เรื่องความผิด **S1/S5/S7 มีอยู่โดยไม่ต้องมี Starstone**. ความเกี่ยวข้องจริงกับบัญชีเงา **[OPEN]** และไม่ทำให้ตัวละครเดิมถูกกล่าวหาทุจริตอุปกรณ์โดยพลการ
+
+**Reveal discipline:** ชาวบ้านรู้ชื่ออุปกรณ์แต่ไม่รู้แหล่งตกของอุกกาบาต. รูปร่างแกน ข่าวลือหรือคนขายของปลอมไม่ใช่ทางลัดสปอยล์ภูมิศาสตร์โลกเก่า; รักษา Reveal R0–R4 ตาม §5. **Game scope:** ในการผลิตต้นแบบ เวทมีแค่ optional M4.R Pulse Pendant เมื่อถึงเวลา; ไม่แปลง D1–D9 เป็นฉากเดินจริง ไม่เพิ่ม Starstone economy, mining, crafting หรือผู้ใช้ Mage ทุกพื้นที่
+
 ## 5. Delayed identity revelation [LOCKED INTENT for pacing]
 
 **Desired player experience:** spend a substantial portion of the game exploring an **original, culturally blended, internationally accessible fantasy world**, then combine real geographic clues into an unsolicited “Wait, I recognize this place!” moment. Do not explain the location in title, trailer, opening city or NPC exposition.
@@ -726,9 +744,9 @@ Reveal gates follow **progress and evidence, not a fixed hour count**. Thai UI i
 ## 6. Open decisions and scope boundaries
 
 **[LOCKED / APPROVED DESIGN DIRECTIONS]:** Stonegate governed by a **five-interest council**, a **lively trade city with underlying social problems**, and **late-medieval/early-modern everyday technology**. After the user's approval of the World Audit on 12 Oct 2026, §4E and §7 record the accepted civic/technology/route/story premises, including the **true core S1/S5/S7 wrongdoing** and permanent-world narrative consequences. **[DETAILS OPEN]:** the names/extent of guilty parties, council election/voting, final population, coinage, market prices and seals enforcement, art motifs, NPC backstories, quest specifics and geography; other scenarios in §4D are not automatically established. §1C/§3A remain world design frameworks rather than finalized local cultures.  
-**[OPEN]:** number of years, precise timing/geography of the 2–3 major reconstruction crises, extractable energy/mineral availability, gunpowder/printing/electricity **outside Stonegate** or as rare experiments, exact coast/river changes, population and production beyond planning ranges, boundaries, prices, **full cause/fate** of the older missing caravan C0 and opening C1, Sundering Sky's full causes, actual Starstone source, resurrection mechanism, and which combined clues reveal old-world geography. **[APPROVED]:** C0/C1 distinct, core missing-ledger network true, limited C0 evidence link; see §4E/§7.  
+**[OPEN]:** number of years, precise timing/geography of the 2–3 major reconstruction crises, extractable energy/mineral availability, gunpowder/printing/electricity **outside Stonegate** or as rare experiments, exact coast/river changes, population and production beyond planning ranges, boundaries, prices, **full cause/fate** of the older missing caravan C0 and opening C1, Sundering Sky's full causes, underlying Starstone provenance **beyond established meteorite-derived material**, Resonance energy/recharge/repair mechanism, resurrection mechanism, and which combined clues reveal old-world geography. **[APPROVED]:** C0/C1 distinct, core missing-ledger network true, limited C0 evidence link; see §4E/§7.  
 **[LATER]:** playable cities beyond Stonegate, full regional diplomacy/economy, deep crafting/mining, **base building/upgraded facilities**, whole-world atlas, full invented languages.  
-**[LOCKED INTENT]:** internationally legible and culturally diverse *new* civilizations above a grounded real-world geography, NPC autonomy, permadeath, rare item-gated power, slow discovery of the old geographic identity.
+**[LOCKED INTENT]:** internationally legible and culturally diverse *new* civilizations above a grounded real-world geography, NPC autonomy, permadeath, **rare meteorite-derived item-gated power with Strain/Stress/Integrity and no ordinary Dead revival**, slow discovery of the old geographic identity. **[APPROVED DIRECTION]:** §1D equipment-based five-family Resonance taxonomy and seven design rules; math, physical energy origin, readiness recovery and exact item catalogue remain [OPEN].
 
 The worldbuilding supports the game; it **does not change the active combat milestone**.
 
@@ -741,6 +759,11 @@ The worldbuilding supports the game; it **does not change the active combat mile
 | **W-01** | **[LOCKED INTENT]** | อารยธรรมใหม่หลายพันปีหลังโลกเดิม; วัฒนธรรมหลากหลาย ค่อยเปิดตัวตนไทยตาม Reveal R0–R4 | หลักฐานเฉพาะของการเฉลยและเรื่องความลับใน repo |
 | **W-02** | **[APPROVED DIRECTION]** | The Broken Ladder + Energy Bottleneck: การฟื้น/เสื่อมหลายระลอกและต้นทุนพลังงาน/แร่ที่เข้าถึงง่ายสูง | ระยะปี 2–3 วิกฤตสำคัญ สาเหตุแท้จริง พลังงานแต่ละที่ |
 | **W-03** | **[APPROVED DIRECTION]** | บางเมืองมีเทคโนโลยีเหนือ Stonegate ในบางด้าน; ไม่จัดอันดับทุกภูมิภาคบนเส้นเดียว | นคร/แขนง/เครือข่ายจริง |
+| **M-01** | **[LOCKED INTENT]** | Starstone เป็นวัสดุจากอุกกาบาตหายาก; เวททั่วไปต้องผ่านอุปกรณ์เหมาะสม; Resonance มี Strain / Stress–Integrity; ไม่ชุบ Dead โดยปกติ | ต้นกำเนิดลึกกว่าอุกกาบาต/เหตุ Sundering Sky และ Resurrection ระดับลึกยัง [LATER/OPEN] |
+| **M-02** | **[APPROVED DESIGN FRAMEWORK]** | §1D: Core+Focus/Housing+User→Resonance, เจ็ดข้อจำกัด, ห้าแขนง Impulse/Binding/Temper/Trace/Vital ตามผลของอุปกรณ์ **ไม่ใช่ Class** | ชื่อสุดท้าย ขอบเขต/สมการ ความเข้ากันและการฝึก ใช้ห้าแขนงในเกมจริงแค่ไหน |
+| **M-03** | **[OPEN MECHANICS / APPROVED COST PRINCIPLE]** | Strain ผู้ใช้, Stress/Integrity อุปกรณ์, ต้องมีคำเตือนก่อนฝืน; บางชิ้น Ready→Spent โดยไม่ทำให้ทุกอุปกรณ์ใช้ Reserve เดียวกัน | พลังงานมาจากไหน การชาร์จ/ซ่อม Core ฟื้นอย่างไร UI ทรัพยากร/ค่าตัวเลข/เกณฑ์เสี่ยง |
+| **M-04** | **[OPTIONAL PROTOTYPE ONLY]** | Pulse Pendant เพียงหนึ่งตัวอย่างใน M4.R: ช่วย Alive/Down ไม่ Dead, Ready→Spent หนึ่งครั้ง/encounter *ในต้นแบบ* | โลกจริงต้องฟื้นอุปกรณ์อย่างไร; รายการอีกห้าชิ้นยัง Lore concept; เลื่อนหลัง M7 ได้ |
+| **M-05** | **[APPROVED WORLD BOUNDARY]** | ไม่มีอุตสาหกรรม Starstone ไร้ต้นทุน เวทเสกน้ำ/อาหาร/เหล็กไม่จำกัดหรือ teleport ฟรี; ช่าง/ตลาด/ความเชื่ออาจแตกต่างตามภูมิภาค | กฎหมายซื้อขายและทะเบียนอุปกรณ์ การตรวจของปลอม สิทธิกรรมสิทธิ์และเศรษฐกิจเวท Stonegate |
 | **ST-01** | **[LOCKED DIRECTION]** | Stonegate สภาห้าฝ่าย เมืองมีชีวิตชีวาแต่ซ่อนปัญหา เทคโนโลยีปลายยุคกลาง–ต้นยุคใหม่ | มติ/วาระ/กฎและภาพสุดท้าย |
 | **ST-02** | **[APPROVED DIRECTION]** | ตัวแทนแต่ละกลุ่มอำนาจมีวาระ มีช่องรับคำร้อง ตรวจสอบ/อุทธรณ์ได้ | กฎเลือกแทน การถอดถอน ความคุ้มครองคนนอกระบบ |
 | **ST-03** | **[APPROVED PLANNING RANGE]** | เมืองด่านเล็ก ใช้ 2,000–4,000 คนเป็นกรอบประเมินก่อนตรวจเกษตร/น้ำ | คนจริงในเมือง/รอบนอก ที่ดินและผลผลิต |
@@ -753,7 +776,7 @@ The worldbuilding supports the game; it **does not change the active combat mile
 | **D-03** | **[APPROVED NARRATIVE INTENT]** | ผลการจัดการเมืองหลายเส้นทางมีต้นทุนและ **คงอยู่หลัง Permadeath** | รูปแบบ quest/world flags และขอบเขตเนื้อหาใน M7/M9 |
 | **C-01** | **[APPROVED METHOD]** | ใช้ความสัมพันธ์และ Knowledge Matrix ของ NPC ก่อนล็อกบทสืบสวน; ตรวจสมดุลภูมิศาสตร์/น้ำ/อาหารก่อนเลขประชากร | ข้อมูลจริงรายคน และภูมิประเทศเชิงกายภาพ |
 | **C-02** | **[OPEN SECURITY DECISION]** | \`WORLD.md §2\` ใน public repo เปิดเผยพิกัดอ้างอิงกว้างของอดีต | จะเก็บ spoiler เบื้องหลังในที่ private ด้วยหรือไม่ |
-| **G-01** | **[UNCHANGED SCOPE]** | ยัง **M1.5B Combat Staging**; Town UI หนึ่งเมือง Q1–Q3 สองเส้นทางตาม M7; ไม่เพิ่มสภา simulation หรือค่ายงานหลายฉากในโปรโตไทป์ | จะนำ dark arc ขนาดใดเข้าสู่ M7 หรือเลื่อนเป็น M9 |
+| **G-01** | **[UNCHANGED SCOPE]** | ยัง **M1.5B Combat Staging**; Town UI หนึ่งเมือง Q1–Q3 สองเส้นทางตาม M7; ไม่เพิ่มสภา simulation ค่ายงานหลายฉาก หรือระบบเวทเต็มในโปรโตไทป์ | จะนำ dark arc ขนาดใดเข้าสู่ M7 หรือเลื่อนเป็น M9; M4.R ยัง optional |
  
-**หลักการทำงานต่อ:** เมื่ออนุมัติคำตอบใหม่ ให้แก้ **แถวทะเบียน** และย่อหน้า Canon ที่เกี่ยวข้องใน §1–§5 พร้อมกัน; ไม่อัปสถานะไอเดียรองทั้งตารางโดยอัตโนมัติ. รายการ [OPEN] ที่ยังไม่ต้องตอบทันที ได้แก่ ชื่อตัวร้ายรายคน, ระยะปีหายนะ, ปฏิทิน, เหรียญ/ราคา, ระบบศาสนารายสำนัก, เทคโนโลยี R1–R7, ความจริง Starstone และการสืบหาความลับโลกเดิมตามแผน.
+**หลักการทำงานต่อ:** เมื่ออนุมัติคำตอบใหม่ ให้แก้ **แถวทะเบียน** และย่อหน้า Canon ที่เกี่ยวข้องใน §1–§5 พร้อมกัน; ไม่อัปสถานะไอเดียรองทั้งตารางโดยอัตโนมัติ. รายการ [OPEN] ที่ยังไม่ต้องตอบทันที ได้แก่ ชื่อตัวร้ายรายคน, ระยะปีหายนะ, ปฏิทิน, เหรียญ/ราคา, ระบบศาสนารายสำนัก, เทคโนโลยี R1–R7, กลไกแท้จริงของ Starstone/Resonance และการสืบหาความลับโลกเดิมตามแผน (ความสัมพันธ์กับอุกกาบาตเป็นกฎเดิมแล้ว).
 
