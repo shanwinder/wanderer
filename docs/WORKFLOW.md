@@ -128,9 +128,11 @@ This project is meant to teach the developer Godot through hands-on work; AI is 
 - For any specific task, read the relevant single file plus code/scene under change; **do not load the entire docs directory**, which wastes context.
 - Public GitHub is not a private spoiler vault; restrict player-visible and shipped content per WORLD.md.
 
+**Worldbuilding handoff [PROPOSED, NOT CANON — 12 Oct 2026]:** [WORLD.md §1B](WORLD.md) เพิ่มเหตุผลการดำรงอยู่ของสังคมหลังหายนะที่มีเครื่องมือคล้ายยุคกลางผ่าน *The Broken Ladder + Energy Bottleneck*, เส้นเวลาสมมติ, ข้อจำกัดการผลิตและความต่างเทคโนโลยีระหว่างภูมิภาค. ยังไม่ล็อกจำนวนปี วิกฤตแต่ละยุค พลังงาน/แร่ ดินปืน ไฟฟ้า หรือสถานะการปฏิวัติอุตสาหกรรม. **ไม่เปลี่ยน Active M1.5B หรือ Milestone อื่น**, ไม่ implement เป็นระบบเกมตอนนี้
+
 ## 7. Open choices
 
-Final combat turn model, presentation camera/real-3D depth, damage/balance formulas, NPC behavior weight, detailed magic cost, geography/reveal evidence and economic simulation remain decisions for prototype/playtest stages. None should delay M1.5B.
+Final combat turn model, presentation camera/real-3D depth, damage/balance formulas, NPC behavior weight, detailed magic cost, geography/reveal evidence, **technology distribution / historical reconstruction cycles / industrial energy limits**, and economic simulation remain decisions for prototype/playtest or worldbuilding review stages. None should delay M1.5B.
 
 **Next playable work:** M1.5B-01 — เรียน Node/Inspector แล้วจัด Combat Party Staging; อย่าแทรก Inventory/Skills ก่อนขั้นพิสูจน์ NPC Autonomy
 
