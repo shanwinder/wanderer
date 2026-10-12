@@ -130,6 +130,8 @@ This project is meant to teach the developer Godot through hands-on work; AI is 
 
 **Worldbuilding handoff [PROPOSED, NOT CANON — 12 Oct 2026]:** [WORLD.md §1B](WORLD.md) เพิ่มเหตุผลการดำรงอยู่ของสังคมหลังหายนะที่มีเครื่องมือคล้ายยุคกลางผ่าน *The Broken Ladder + Energy Bottleneck*, เส้นเวลาสมมติ, ข้อจำกัดการผลิตและความต่างเทคโนโลยีระหว่างภูมิภาค. ยังไม่ล็อกจำนวนปี วิกฤตแต่ละยุค พลังงาน/แร่ ดินปืน ไฟฟ้า หรือสถานะการปฏิวัติอุตสาหกรรม. **ไม่เปลี่ยน Active M1.5B หรือ Milestone อื่น**, ไม่ implement เป็นระบบเกมตอนนี้
 
+**Dark Stonegate content handoff [NOT CANON / FUTURE CONTENT]:** [WORLD.md §4D](WORLD.md) บันทึกความลับใต้เมือง/บัญชีผู้ไม่กลับ/ปมแปดเรื่อง พร้อมเบาะแสและผลต่อ Town UI/Quest/NPC/โลกในอนาคต. **ไม่ล็อกว่าขบวนเดิมหายเพราะปมนี้ ไม่กำหนดความผิดของ NPC ใดจริง และไม่เพิ่ม Quest/ระบบ/Milestone ใหม่จากการบันทึกแนวเรื่อง**. หากตัดสินใจนำมาใช้ ให้ตรวจความสอดคล้องกับ Q1–Q3, scope M7, เนื้อหาสำหรับผู้เล่น และ persistence ก่อนเข้าสู่ขั้น content/production. **M1.5B ยัง active**
+
 ## 7. Open choices
 
 Final combat turn model, presentation camera/real-3D depth, damage/balance formulas, NPC behavior weight, detailed magic cost, geography/reveal evidence, **technology distribution / historical reconstruction cycles / industrial energy limits**, and economic simulation remain decisions for prototype/playtest or worldbuilding review stages. None should delay M1.5B.
