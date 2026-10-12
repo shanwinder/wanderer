@@ -95,9 +95,19 @@
 
 **กฎโลกที่ต้องรักษา [LOCKED INTENT]:** พลังพิเศษมีจริง คนทั่วไปทราบว่ามีแต่พบเห็นจริงยาก; ต้องอาศัยวัสดุจากอุกกาบาตที่ผ่านการฝัง/ขึ้นรูปเป็นอาวุธ เครื่องมือ หรือเครื่องประดับ; ไม่ร่ายมือเปล่าทั่วไป, ไม่มีสกิลเวทฟรีซึ่งแทนการช่วย/โจมตีธรรมดาทุกสถานการณ์
 
-**รายละเอียดเชิงกลไก [DESIGN BASELINE/PROPOSED]:** ใช้การพ้องพลัง (Resonance) พร้อมค่าเหนื่อย **User Strain**, และความเสื่อม/ความเครียดของแกนวัสดุ **Material Stress/Integrity**. ต้องมีสัญญาณเตือนก่อนความเสี่ยงหนัก; NPC ตัดสินใจใช้/ไม่ใช้โดยอิสระ; ไม่ชุบ Dead ด้วยอุปกรณ์รักษาทั่วไป. ต้นกำเนิดหายนะและความเกี่ยวข้องของอุกกาบาตยัง [OPEN]
+**กรอบที่ผู้สร้างรับรอง [APPROVED DESIGN FRAMEWORK — ดู WORLD.md §1D และทะเบียน §7]:** Resonance ผ่าน **Starstone Core + Focus/Housing + User**, ให้ผลจำกัดชนิด/ระยะ/เวลา/ปริมาณ; อุปกรณ์กำหนดสิ่งที่ทำได้ ไม่ใช่ให้ทุกคนร่ายคาถามือเปล่าหรือเปลี่ยนทักษะได้อิสระ. Starstone เป็นวัสดุจากอุกกาบาตบางชนิดตามกฎโลก; **คำอธิบายการเกิดพลังงานแท้จริงและบทบาทต่อ Sundering Sky ยัง [OPEN]**. สังคมใช้เวทเป็นของหายาก ไม่ใช่พลังงานอุตสาหกรรมฟรี
 
-**เมื่อพร้อมทดลอง [OPTIONAL M4.R; ห้ามแทรก M1.5B]:** MRE-1 อุปกรณ์ตัวอย่าง **Pulse Pendant** ช่วยชะลอ bleed-out/ประคอง Alive หรือ Down เพียงครั้งเดียวต่อ encounter ในต้นแบบ แล้วเข้าสู่ Spent; ไม่คืนชีพ; ไม่มีระบบคราฟต์เหมือง ตลาดผลึกหรือ rarity economy. ทดสอบ no-item, equipped, spent, invalid/dead target, NPC เลือกใช้/ไม่ใช้, guidance conflict, reset/end combat. ถ้ารบกวน Core Loop ให้เลื่อนออกไปหลัง M7 ได้
+**ห้าแขนงตามผล [WORKING TAXONOMY, NOT CLASSES]:** **Impulse** (เบี่ยงแรง/กระแทกสั้น), **Binding** (กระจายแรง/ค้ำชั่วคราว), **Temper** (ถ่ายเทความร้อนโดยมีข้อจำกัดพลังงาน), **Trace** (ตรวจความผิดปกติแบบต้องตีความ), **Vital** (ประคอง Alive/Down). ไม่ใช่ห้าอาชีพ ห้าธาตุ หรือ Skill Trees ที่อนุมัติ implement แล้ว. ความชำนาญอาจโยงกับอุปกรณ์, Weapon Mastery และ Profession แต่สูตรการฝึก/Compatibility **[OPEN]**
+
+**ต้นทุน [LOCKED PRINCIPLE; FORMULA OPEN]:** User **Strain** สะสมและมีอาการเตือน; device **Stress** และสภาพ **Integrity** กระทบความเสถียร/ความทนทาน; อุปกรณ์ *บางชิ้น* มี Ready→Spent. การเตือนก่อนภาวะอันตรายร้ายแรงต้องอ่านออกและให้สิทธิหยุด; **ห้าม random instant death โดยไม่มีสัญญาณ**. การซ่อม Housing อาจง่ายกว่า Core แต่สูตรการซ่อม/การเติมกำลัง/ความถาวรของความเสียหาย **[OPEN]**. ไม่เพิ่มระบบ Mana/Reserve อีกหลอดโดยอัตโนมัติ และอย่าสมมติว่า End Encounter ฟื้น Core ทันที
+
+**Non-goals:** ไม่ชุบ **Dead** ด้วยไอเทมธรรมดา, ไม่ให้ teleport ไร้ต้นทุน อ่านใจควบคุม NPC ตามใจ เสกน้ำ/อาหาร/โลหะไม่จำกัด หรือสร้างโล่/โรงงานพลังไร้จุดสิ้นสุด. การคืนชีพที่อาจเกิดขึ้นจริงระดับลึกยัง [LATER/OPEN] และไม่ลบล้าง Permadeath ปัจจุบัน
+
+**อุปกรณ์ตัวอย่าง [ONE OPTIONAL PROTOTYPE, OTHERS LORE-ONLY]:** **Pulse Pendant (Vital)** = กรณีทดสอบ M4.R เท่านั้น; **Ward Bracer (Binding), Recoil Blade (Impulse), Fault Needle (Trace), Step Ring (Impulse), Ember Focus (Temper)** = แนวคิดใน WORLD.md §1D ยังไม่อยู่ใน backlog เกมหรือของที่เมืองต้องขาย. **Q3 ข่าวแสง** ไม่บังคับพบ Starstone หรือเฉลยคืนฟ้าแตก
+
+
+
+**เมื่อพร้อมทดลอง [OPTIONAL M4.R; ห้ามแทรก M1.5B]:** MRE-1 อุปกรณ์ตัวอย่าง **Pulse Pendant** ช่วยชะลอ bleed-out/ประคอง Alive หรือ Down **หนึ่งครั้งต่อ encounter ในต้นแบบ** แล้วเป็น Spent; ไม่คืนชีพ. **การรีเซ็ต/เตรียม fixture สำหรับการทดสอบ encounter ถัดไป ไม่เท่ากับข้อสรุปว่า Core ชาร์จกลับเองตาม lore**; การคืน Ready ในโลกจริงยัง [OPEN]. ไม่มีระบบคราฟต์เหมือง ตลาดผลึกหรือ rarity economy. ทดสอบ no-item, equipped, spent, invalid/dead target, warning/overuse where relevant, NPC ใช้/ไม่ใช้, guidance conflict, reset/end combat. ถ้ารบกวน Core Loop ให้เลื่อนออกหลัง M7 ได้
 
 **World technology context [APPROVED WORLD DIRECTION; IMPLEMENTATION OPEN]:** [WORLD.md §1B, §4E และ §7](WORLD.md) รับกรอบ *The Broken Ladder + Energy Bottleneck* เพื่ออธิบายความรู้ที่พัฒนาได้แต่ถูกจำกัดด้วยต้นทุนอุตสาหกรรมและการฟื้นตัวหลายระลอก. **Stonegate ไม่มีโครงข่ายไฟฟ้าทั่วเมือง และอาวุธดินปืนไม่ใช่อาวุธแพร่หลายในช่วงต้น**; ที่อื่นและเทคโนโลยีหายากยัง [OPEN]. **ไม่เพิ่มโรงงาน ไฟฟ้า เหมืองหรืออาวุธปืนเป็นระบบ Combat/Vertical Slice จาก world lore นี้**
 
