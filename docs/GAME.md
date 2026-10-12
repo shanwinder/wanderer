@@ -99,6 +99,8 @@
 
 **เมื่อพร้อมทดลอง [OPTIONAL M4.R; ห้ามแทรก M1.5B]:** MRE-1 อุปกรณ์ตัวอย่าง **Pulse Pendant** ช่วยชะลอ bleed-out/ประคอง Alive หรือ Down เพียงครั้งเดียวต่อ encounter ในต้นแบบ แล้วเข้าสู่ Spent; ไม่คืนชีพ; ไม่มีระบบคราฟต์เหมือง ตลาดผลึกหรือ rarity economy. ทดสอบ no-item, equipped, spent, invalid/dead target, NPC เลือกใช้/ไม่ใช้, guidance conflict, reset/end combat. ถ้ารบกวน Core Loop ให้เลื่อนออกไปหลัง M7 ได้
 
+**World technology context [PROPOSED, NOT CANON]:** ภาพโลกคล้ายปลายยุคกลาง–ต้นยุคใหม่ไม่ได้แปลว่าผู้คนหยุดพัฒนาหลายพันปี; [WORLD.md §1B](WORLD.md) เสนอ *The Broken Ladder + Energy Bottleneck* (การฟื้นตัวหลายระลอก + ข้อจำกัดอุตสาหกรรม/พลังงาน/เครือข่าย), โดยเทคโนโลยีต่างกันตามภูมิภาค. **ไม่เพิ่มระบบโรงงาน ไฟฟ้า การทำเหมือง หรืออาวุธปืนลงใน Combat/Vertical Slice จากข้อเสนอนี้**; ดินปืนและเทคโนโลยีขั้นสูงยัง [OPEN]
+
 ## 8. Scope rules
 
 - **Prototype ปัจจุบัน ≠ เกมเสร็จแล้ว**; เอกสาร lore ไม่ยืนยันว่ามีระบบนั้นในโค้ด
