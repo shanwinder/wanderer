@@ -145,7 +145,7 @@ R1–R7 ใน §3 เป็น **ภูมิภาคนิเวศและ�
 
 ## 4. Stonegate — starting hub [PROPOSED]
 
-A relatively small town at a trade pass between lowland routes west and higher caravan paths east, on ground safer than the nearby seasonal creek. Merchants arrive for food, protection, wheel repair, healers, jobs and news. An earlier caravan disappeared near an abandoned route, which has remained closed. **Why it disappeared is [OPEN] and need not involve Starstone.**
+A relatively small town at a trade pass between lowland routes west and higher caravan paths east, on ground safer than the nearby seasonal creek. Merchants arrive for food, protection, wheel repair, healers, jobs and news. **C0 = older missing caravan**, which vanished near an abandoned route some time before the opening. Its ultimate fate/cause is **[OPEN]** and need not involve Starstone. **C1 = the separate caravan that returns with people missing or hurt during the proposed opening §4A**. Some records may connect the two, but **C0 and C1 are NOT the same event**. The **old route is officially closed/unauthorized for ordinary caravans**, yet concealed foot access or illicit traffic may still exist; access is **not equivalent to legal clearance or safety**. See the approved continuity rules §4E.
 
 **Developer districts (not nine playable scenes):** D1 western gate; D2 two-seal market; D3 caravan yard; D4 smith/wheel repair; D5 well and grain store; D6 oath-hall/council; D7 adventurer exchange; D8 rest and healer; D9 upper watch post. Place water away from animal waste/smithing, and make the healer accessible to returning injured travelers. See [editable developer layout](maps/stonegate_map02b_layout_v0.1.svg), which is a **rough schematic, not scaled or scientifically geolocated**.
 
@@ -165,7 +165,7 @@ They are individual characters, **not fixed commands**: fear, trust, injuries, c
 
 **Routes:**
 - **A / early player label “ทางประตูบน”:** gate pass → remnants of bridge → resting settlement; staffed, cost/tolls, seasonal restrictions.
-- **B / early player label “รอยทางเก่า”:** broken raised road → collapsed tunnel entrance → missing survey marker; uncertain shortcuts, cave-ins, possibility of retreat. Not confirmed magic.
+- **B / early player label “รอยทางเก่า”:** broken raised road → collapsed tunnel entrance → missing survey marker. **[APPROVED DESIGN DIRECTION]** Closed for authorized caravan passage, but possible unofficial/dangerous pedestrian access; gate permissions and real consequences remain [OPEN]. Cave-ins and retreat matter; not confirmed magic. **The player can attempt it, not treat it as an endorsed route**.
 
 **Three candidate quests for Vertical Slice:** Q1 send message across pass (choose route, report outcome); Q2 trace missing caravan and aid survivors or recover evidence; Q3 investigate reported lights near closed route (distinguish rumors from observations, **no guaranteed Starstone encounter**). Failure can produce information or partial reward, not just a softlock.
 
@@ -191,7 +191,7 @@ They are individual characters, **not fixed commands**: fear, trust, injuries, c
 
 **หลังเหตุการณ์:** เนตราบันทึกผู้เดินทางที่กลับ/ไม่กลับ; วารินต้องการข่าวเส้นทาง; พรรณราต้องการยา; หาญช่างประเมินอุปกรณ์ที่พัง. การช่วยหรือไม่ช่วยสร้างความรู้จัก/ข่าวและต้นทุนทรัพยากรอย่างอ่านออก แต่ **ไม่ล็อกความสัมพันธ์/รางวัลตายตัว**. เมืองมี UI ศูนย์รับงาน ตลาด/ช่าง เรือนพัก/คลัง และข่าวเส้นทาง แทนการบังคับเดินฉากเมืองเก้าเขต
 
-**First proper contract:** ใช้ **Q1 ส่งข่าวข้ามประตู** ตาม §4 เพื่อให้ผู้เล่นเลือกเตรียมเสบียง/ผู้ร่วมทาง/เส้น A ที่มีคนดูแลหรือเส้น B ที่ไม่มีใครรับรอง (แต่ **อย่าให้ Route B ปลอดภัยกว่าโดยอัตโนมัติ**). Q2 คนหายและ Q3 ข่าวแสงเป็นเมล็ดเรื่องที่พัฒนาจากหลักฐานในทาง ไม่เพิ่มเควสบังคับใหม่. หากกลับโดยงานไม่สำเร็จบางส่วนก็ได้ข่าว/ผลตามพยานและเหตุการณ์ ไม่ทำให้เกม softlock
+**First proper contract:** ใช้ **Q1 ส่งข่าวข้ามประตู** ตาม §4 โดยเส้น A มีการดูแลและอาจมีค่าผ่านทาง ส่วนเส้น B **ถูกปิดสำหรับคาราวานที่ได้รับอนุญาตแต่ยังมีทางเข้าอย่างไม่เป็นทางการ**; ผู้เล่นอาจพยายามเดินผ่านได้หากยอมรับความไม่ปลอดภัยและผลของการฝ่าฝืนที่จะแจ้งให้เข้าใจ **[รายละเอียดโทษ/ค่าผ่าน OPEN]**. อย่าให้ Route B ปลอดภัยกว่าโดยอัตโนมัติ. **C1 ขบวนกลับไม่ครบในฉากเปิดแยกจาก C0 ขบวนสูญหายเก่า**; Q2 อาจตามรอย C0 และพบเบาะแสบางส่วนจาก C1 แต่ไม่บังคับให้สองเหตุเป็นสาเหตุเดียว. Q3 ข่าวแสงยังไม่เฉลยล่วงหน้า. งานล้มเหลวบางส่วนให้ข้อมูล/ผล ไม่ softlock; ไม่เพิ่มเควสบังคับใหม่
 
 ### Opening sequence — ใช้เป็น mood/pacing guide ไม่ใช่คำสั่งตัดคัตซีน
 
@@ -441,17 +441,17 @@ Stonegate รับรายได้จากด่าน คลังสิน
 
 **Scope firewall:** §4C เป็นข้อมูลสำหรับออกแบบโลก/บทสนทนา/ภาพ ไม่ใช่ task เพิ่มเมือง 9 ฉาก จำลองสภา/เศรษฐกิจ/หนี้ ตารางเดิน NPC ระบบสร้างฐานหรือโรงงาน. **Milestone ถัดไปยัง M1.5B Combat Staging** ตาม WORKFLOW; world identity ต้องไม่เฉลยประเทศไทยหรือภูมิศาสตร์จริงก่อน Reveal §5
 
-## 4D. Stonegate's buried crimes — ความเน่าเฟะใต้รอยยิ้มเมืองการค้า [DARK STORY PROPOSAL / NOT CANON — 12 Oct 2026]
+## 4D. Stonegate's buried crimes — ความเน่าเฟะใต้รอยยิ้มเมืองการค้า [APPROVED CORE TRUTH / DETAILS PROPOSED — 12 Oct 2026]
 
-**เนื้อหา/คำเตือนสำหรับทีมออกแบบ:** การใช้แรงงานบังคับ การเอาเปรียบเด็ก หนี้ที่ไม่มีวันหมด คนสูญหาย โรคที่ป้องกันได้ การทอดทิ้งผู้ป่วย การปลอมเอกสาร การทุจริตและการปลุกระดม. ทั้งหมดเป็น **โครงเรื่องสมมติที่รอตรวจทาน ไม่ใช่เหตุการณ์ Canon และไม่ใช่ระบบที่พัฒนาแล้ว**. โทนมืดมีไว้ให้ผู้เล่นเผชิญคำถามทางศีลธรรม ไม่ใช้ความทุกข์เป็นฉากโชว์ความโหดไร้ความหมาย
+**เนื้อหา/คำเตือนสำหรับทีมออกแบบ:** การใช้แรงงานบังคับ การเอาเปรียบเด็ก หนี้ที่ไม่มีวันหมด คนสูญหาย โรคที่ป้องกันได้ การทอดทิ้งผู้ป่วย การปลอมเอกสาร การทุจริตและการปลุกระดม. **[APPROVED WORLD TRUTH]** มีความผิดจริงในแกน **S1 (ทำให้คนบางส่วนถูกนับว่าหาย/ตายผิดจริง), S5 (หนี้/การฝึกงานที่เอารัดเอาเปรียบ) และ S7 (เงิน/ค่าชดเชยถูกเบี่ยงไปใช้ผิดทาง)** โดยมีเครือข่ายผู้รับเหมาหรือผู้มีอิทธิพล *ชุดใหม่ที่ยังไม่ตั้งชื่อ* เป็นผู้ขับเคลื่อนหลัก. **รายละเอียดขอบเขต ผู้ผิดรายคน จำนวนเหยื่อ ปีเกิดเหตุ หลักฐาน และ S2/S3/S4/S6/S8 ยังเป็น [PROPOSED/OPEN]**. ไม่ใช่ระบบที่พัฒนาแล้ว. โทนมืดตั้งคำถามทางศีลธรรม ไม่โชว์ความโหดโดยไร้ความหมาย
 
 **หัวใจเรื่อง:** เมืองนี้น่าอยู่สำหรับคนจำนวนมาก เพราะความมั่งคั่งบางส่วนอาจได้มาจากคนที่ไม่มีสิทธิพูด. Stonegate ยังมีเสียงหัวเราะ ตลาด เพลง ครอบครัวและคนดีจาก §4C; ไม่กำหนดว่าชาวเมืองหรือสภาห้าฝ่ายทั้งชุดเป็นตัวร้าย. **คนก่อเหตุ ผู้สั่ง ผู้ได้ผลประโยชน์โดยรู้เห็น ผู้ถูกขู่ ผู้สงสัย และคนไม่รู้เรื่องมีความรับผิดไม่เท่ากัน**
 
-### 4D-1. แกนเรื่องใหญ่: บัญชีผู้ไม่กลับ / The Ledger of the Unreturned [CENTRAL PROPOSAL]
+### 4D-1. แกนเรื่องใหญ่: บัญชีผู้ไม่กลับ / The Ledger of the Unreturned [APPROVED PREMISE / DETAILS OPEN]
 
 **พื้นหลังที่อาจใช้:** หลายปีก่อน (ยังไม่ล็อกปี) วิกฤตสะพานพัง ค่าถ่าน/เหล็กแพง คาราวานขาดและเสบียงตึงตัวทำให้สภาต้องอนุมัติงานบูรณะทางเก่าและกู้วัสดุ. โครงการเริ่มจากความจำเป็นจริง อาจรับแรงงานที่เป็นลูกหนี้หรือคนไม่มีหลักแหล่งโดยสัญญาว่าจ่ายค่าแรงหรือปลดหนี้
 
-**จุดเสื่อม:** ผู้รับเหมาบางกลุ่มอาศัยระบบสัญญาและช่องว่างการตรวจสอบกักคนไว้ทำงาน จ่ายค่าจ้างต่ำกว่าที่ตกลง แก้ตัวเลขค่าอาหาร/ค่าเครื่องมือให้หนี้เพิ่ม และย้ายคนระหว่างจุดงานโดยไม่แจ้งครอบครัว. เพื่อหลบการตรวจ อาจบันทึกบางคนว่า **สูญหายหรือเสียชีวิต ทั้งที่ยังอยู่ในค่ายพักงาน** แล้วนำเงินชดเชยหรือทรัพย์ที่ถูกถือว่าไร้ผู้รับไปยักยอก
+**จุดเสื่อม [APPROVED PREMISE]:** มีผู้รับเหมาหรือผู้มีอิทธิพลกลุ่มใหม่ที่ยังไม่ระบุตัวตนใช้ช่องว่างสัญญา/การตรวจสอบแสวงประโยชน์จากคนงานและหนี้ที่ไม่เป็นธรรม ทำให้สถานะของ **คนบางคน** กลายเป็นสูญหาย/เสียชีวิตทั้งที่ยังมีชีวิต และเบี่ยงทรัพย์สินหรือค่าชดเชยผิดทาง. การข่มขู่ การกักงาน การแก้ค่าอาหาร/เครื่องมือ และวิธีขนย้ายในย่อหน้าเดิมยังเป็น **ตัวอย่างกลไก [PROPOSED]** ต้องตรวจระยะทาง ต้นทุนและบุคคลที่มีอำนาจจริงก่อนใช้; ไม่กำหนดให้ทุกผู้รับเหมาหรือทุกเจ้าหน้าที่เป็นผู้กระทำผิด
 
 **บัญชีสองแหล่ง [PROPOSED]:** (1) *สมุดสาธารณะ* ของคนออกเดินทาง/กลับ/หายที่ D1–D7 และเนตราเกี่ยวข้อง เป็นบันทึกที่อาจเชื่อข่าวผิดโดยสุจริต; (2) *บัญชีเงา* อาจไม่ได้เป็นสมุดเล่มเดียว แต่เป็นสัญญาแรงงาน ใบส่งเสบียง ใบผ่านทาง ใบเบิกค่าชดเชยและทะเบียนค่ายพักที่คนกลางเก็บไว้. **สมุดของเนตราไม่ใช่อุปกรณ์ชั่วโดยตัวมันเอง**; ความเลวคือมีคนจงใจทำให้ข้อมูลที่ระบบได้รับคลาดเคลื่อน
 
@@ -459,7 +459,7 @@ Stonegate รับรายได้จากด่าน คลังสิน
 
 **คราบสกปรกที่ย้อนสู่เมือง:** รายได้จากการยักยอกอาจถูกส่งเข้ากองทุนอาหาร เรือนรักษา หรือค่าซ่อมทาง ทำให้ผู้บริจาคบางคนได้รับความนับถือ. เมื่อเปิดโปง ผู้เสียหายต้องได้ความยุติธรรมพร้อมกับแก้ปัญหาบริการที่คนบริสุทธิ์พึ่งพาอยู่
 
-### 4D-2. ความลับแปดเรื่องที่อาจซ่อนอยู่ใต้พรม [ALL PROPOSED]
+### 4D-2. ความลับแปดเรื่องที่อาจซ่อนอยู่ใต้พรม [CORE S1/S5/S7 APPROVED; OTHERS PROPOSED]
 
 | ID/ปม | ความผิดและผู้มีส่วนได้เสีย | เบาะแสอิสระ | ผลสะเทือนต่อเมือง |
 |---|---|---|---|
@@ -472,7 +472,7 @@ Stonegate รับรายได้จากด่าน คลังสิน
 | **S7 เงินทำบุญเปื้อนเลือด** | ทรัพย์คนหายและเงินชดเชยถูกฟอกเป็นกองทุนช่วยเหลือ | เส้นทางจ่ายเงิน ใบมรดก คำรับรองผู้บริจาค | คืนทรัพย์สินเจ้าของแต่กองทุนอาหาร/เรือนรักษาอาจหยุดชะงัก |
 | **S8 ผู้เปิดโปงที่อยากเผาเมือง** | กลุ่มต่อต้านบางรายนำหลักฐานจริงไปบิดเบือน โทษคนต่างถิ่นหรือสภาทั้งชุดเพื่อยึดอำนาจ | สำเนาตัดต่อกับต้นฉบับ พยานถูกขู่ ข่าวลือที่เปลี่ยนคำ | การจลาจล/ปราบปรามอาจทำร้ายผู้ไม่เกี่ยวข้อง |
 
-**ความสมเหตุผลสำคัญ:** ปมไม่จำเป็นต้องเชื่อมกันทั้งหมดหรือเกิดพร้อมกัน; S2–S4 อาจเป็นการทุจริตเฉพาะกลุ่มที่ต่างจากเครือข่าย S1/S5/S7. **สาเหตุของขบวนเดิมที่สูญหายใน §4 ยังคง [OPEN]** และข่าวแสง Q3 ไม่ถูกเฉลยว่าเป็นเวทหรือคนล้วนจากตารางนี้
+**[APPROVED CONNECTION MODEL]:** S1/S5/S7 ผูกกันเป็นเครือข่ายหลัก. S2/S3/S4/S6/S8 อาจเป็นความผิดอิสระหรือเชื่อมบางส่วนแต่ยัง [PROPOSED]; **ไม่กำหนดจอมบงการทุกเรื่อง**. มี **เบาะแสบางอย่างจาก C0 ขบวนสูญหายเก่า** เชื่อมถึงเครือข่ายจริง แต่ **สาเหตุแท้จริงและชะตาขบวนส่วนที่เหลือยัง [OPEN]**; C1 ฉากเปิดเป็นคนละเหตุการณ์. ข่าวแสง Q3 ยังไม่ถูกเฉลยว่าเป็นเวทหรือคนล้วน
 
 ### 4D-3. สภาห้าฝ่ายกับเก้าเขต — ใครได้และเสียประโยชน์
 
@@ -540,11 +540,71 @@ Stonegate รับรายได้จากด่าน คลังสิน
 
 ### 4D-9. ขอบเขตและคำถามเปิดก่อนตัดสิน Canon
 
-**[OPEN]:** เคยมีบัญชีเงาจริงหรือไม่ ผู้รับเหมา/สมาชิกสภาคนใดรู้เรื่องและรู้แค่ไหน คนงานรอดกี่คน สาเหตุขบวนหายจริงเกี่ยวหรือไม่ เหตุข่าวแสงมีอะไรอยู่เบื้องหลัง รายงานน้ำ/ยา/สะพานเป็นเหตุการณ์เดียวหรือคนละกลุ่ม ช่องทางคืนทรัพย์และคุ้มครองพยานทำได้อย่างไร ฝ่ายปลุกระดมรุนแรงแค่ไหน และเนื้อเรื่องนี้เป็น Main Arc หรือ Side Arc
+**[APPROVED]:** เครือข่ายความผิด S1/S5/S7 มีจริง, ผู้มีอิทธิพล/ผู้รับเหมาที่เพิ่มใหม่เป็นตัวรับผิดชอบหลัก, และเบาะแสจาก C0 เชื่อมถึงเครือข่ายบางส่วน. **[OPEN]:** ชื่อ/ตัวตนผู้กระทำผิดรายคน สมาชิกสภาใดรู้เรื่องมากน้อยแค่ไหน สถานที่และจำนวนผู้เสียหาย/ผู้รอด สาเหตุหลักของ C0 รายละเอียด C1–C0 ที่สัมพันธ์กัน เหตุแสง Q3 ความจริงของ S2/S3/S4/S6/S8 การชดเชย/คุ้มครองพยาน ฝ่ายปลุกระดมทำอะไรจริง และจะนำแกนนี้เป็น Main Arc หรือเป็น Major Stonegate Arc ระดับรอง
 
 **กติกาโทน:** เหยื่อมีความต้องการ ความสัมพันธ์ และสิทธิเลือก ไม่ใช้ความโหดเป็นเครื่องประดับ; ปัญหาการเอารัดเอาเปรียบเด็กเล่าผ่านสัญญาและผลต่อชีวิตอย่างมีศักดิ์ศรี ไม่ต้องมีภาพล่วงละเมิดรุนแรงโจ่งแจ้ง. เมืองและ NPC ที่บริสุทธิ์ต้องยังมีพื้นที่อบอุ่น ไม่ตัดสินกลุ่มชาติพันธุ์/ศาสนาเป็นผู้ร้ายโดยรวม
 
 **Scope:** ทั้งหมดเป็น **Story Bible proposal** สำหรับระยะขยายเนื้อหา ไม่ใช่ข้อกำหนดเพิ่มค่ายงานหลายฉาก สภา simulation คดีแบบ realtime การจำลองหนี้/ประปา การจลาจลหลายร้อย NPC หรือระบบต่อสู้ใหม่. **งาน Godot ถัดไปยัง M1.5B**. ก่อนนำเข้าคอนเทนต์ของ M7/M9 ต้องให้ผู้สร้างทบทวน ล็อกเฉพาะความจริงที่ต้องการและประเมินต้นทุน production ก่อน
+
+## 4E. Approved Stonegate continuity and design decisions — กรอบที่ผู้สร้างรับรอง [APPROVED DIRECTION — 12 Oct 2026]
+
+**ที่มา:** ผลตรวจ WORLD/GAME/WORKFLOW และแผนที่วันที่ 12 Oct 2026; ผู้สร้างยืนยันว่า **เห็นด้วยกับข้อเสนอทั้งหมด** จาก Audit. ส่วนนี้จึงเป็น **แหล่งอ้างอิงลำดับแรกสำหรับคำตัดสินที่เจาะจง**. ข้อเสนอเดิมใน §4A–4D ที่ใช้คำ [PROPOSED]/[OPEN] ขัดกับผลอนุมัติให้ตีความตาม §4E และทะเบียน §7; รายละเอียดที่ไม่ได้เลือกยังไม่ล็อก. ห้ามเปลี่ยนขอบเขตเกมจากการอนุมัติ **worldbuilding** เพียงอย่างเดียว
+
+### 4E-1. แกนประวัติศาสตร์มืดและชนวนเมือง [APPROVED STORY DIRECTIONS]
+
+1. **ความผิดมีจริง ไม่ใช่ลวงทั้งหมด:** “บัญชีผู้ไม่กลับ” เป็นกรอบปริศนาที่มีผู้เดือดร้อนจริง โดยบางข้อกล่าวหา/ข่าวอาจเกินจริงหรือจงใจใส่ร้าย; ต้องมีหลักฐานหลายแหล่งแยกข้อเท็จจริงกับโฆษณาชวนเชื่อ
+2. **เครือข่ายหลักคือ S1 + S5 + S7:** การบิดเบือนสถานะคนสูญหาย/ตาย, การเอารัดเอาเปรียบผู้มีหนี้รวมถึงผู้ฝึกงาน, การยักยอกทรัพย์หรือค่าชดเชยเชื่อมถึงกัน. น้ำ ยา สะพาน โจรและฝ่ายปลุกระดม **ยังไม่ถูกยืนยันว่าเป็นโครงการเดียวกัน**; มีผู้ทำผิดต่างกลุ่มได้
+3. **เจ้าภาพความผิดหลักเป็นผู้มีอิทธิพล/ผู้รับเหมาใหม่:** ไม่กล่าวหาสภาทั้งชุดหรือ NPC ชุดเดิมโดยอัตโนมัติ. ยังต้องสร้างองค์กร/ตัวละครใหม่พร้อมแรงจูงใจ โครงสร้างเงิน สายเอกสารและพยาน **[TBD]**; ชื่อ อัตลักษณ์ ความผิดรายคนยัง [OPEN]
+4. **C0 ขบวนที่หายเก่าเชื่อมกับเครือข่ายผ่านหลักฐานบางชิ้น:** แต่ไม่กำหนดว่าทุกคนถูกจับ เหตุต้นทางทั้งหมดเกิดจากเครือข่าย หรือแสง Q3 ต้องเป็นคบไฟล้วน. **C1 ขบวนกลับไม่ครบในบทเปิดเป็นเหตุการณ์อีกครั้ง**; จะเกี่ยวข้องลึกหรือไม่ยัง [OPEN]
+5. **เมืองเปลี่ยนได้ถาวรและไม่ใช่จบแค่บทพูด:** การช่วยผู้เสียหายหรือการเลือกเปิดโปงส่งผลต่อเจ้าหน้าที่/บริการ/ราคา/เส้นทาง/ความเชื่อมั่น/Trust ของ NPC และสถานะโลกที่คงอยู่หลัง Player permadeath. ต้องมีหลายวิธีจัดการที่แต่ละวิธีมีต้นทุน และไม่บังคับ Good/Bad binary. **นี่เป็นเป้าหมายการออกแบบอนาคต ไม่ใช่ระบบที่ implement แล้ว**
+
+### 4E-2. Stonegate ที่เห็นและดำรงอยู่ได้ [APPROVED WORLD DIRECTIONS]
+
+| รหัส | สิ่งที่รับรองแล้ว | ส่วนที่ยังไม่ล็อก |
+|---|---|---|
+| **ST-POL** | **สภาห้าฝ่ายคุมเมือง** และตัวแทนมาจากแต่ละกลุ่มผลประโยชน์/ชุมชนของตน มี **วาระและช่องร้องเรียนต่อสาธารณะ**, มีหลักตรวจสอบหรืออุทธรณ์เพื่อไม่ให้กลุ่มเดียวตัดสินคดีของตัวเอง | วิธีเลือก vs แต่งตั้งในแต่ละฝ่าย, ระยะวาระ, การถอดถอน, สัดส่วนเสียง (3/5 และ 4/5 ยังตัวอย่าง), กลไกคุ้มครองคนไม่มีสังกัด |
+| **ST-SCALE** | เป็น **เมืองด่านขนาดเล็ก**; ใช้ **ราว 2,000–4,000 คนภายในเมืองเป็นช่วงตั้งต้นสำหรับการตรวจสมดุล** แล้วพึ่งชุมชนเกษตร/สวน/สัตว์รอบเมือง | จำนวนจริง, จำนวนคนรอบนอก (5,000–10,000 เคยเป็นตัวอย่าง), ความจุน้ำ/เสบียง, ขนาดอาคารและพื้นที่เพาะปลูก; *อย่าอ้างว่า 2,000–4,000 คือสำมะโนจริง* |
+| **ST-SEALS** | **ตลาดสองตรา** ตั้งต้นจาก **ตราผู้ขาย/ผู้ทำสัญญา + ตราผู้ตรวจของเมือง** สำหรับสินค้าหรือสัญญาที่มีความเสี่ยง/ต้องรับรอง ไม่ใช่ทุกสินค้า; ระบบนี้อาจถูกปลอมและเป็นเบาะแส S4 | ข้อกฎหมายจริง ค่าใช้ตรา ตัวอย่างสินค้าที่เข้าข่าย การต่อต้าน/ป้องกันปลอม และผลเชิง gameplay |
+| **ST-TECH** | ช่างซ่อมเก่ง มีเกจ/แม่แบบ รอก/เฟืองและเครื่องกลพื้นฐาน งานสุขาภิบาลและฝึกช่างบางแขนงอาจก้าวหน้ากว่ายุคกลางจริง; **ไม่มีโครงข่ายจ่ายไฟทั่วไปใน Stonegate** และมีข้อจำกัดวัสดุ/เชื้อเพลิงจาก §1B/§4B | โรงสีพลังน้ำทำได้จริงที่ใด, เครื่องสูบผลิตได้กี่เครื่อง, ขนาดงานพิมพ์ และไฟฟ้าท้องถิ่นเชิงทดลอง |
+| **ST-WEAPONS** | **อาวุธดินปืน/อาวุธปืนไม่แพร่หลายในการดำรงชีพและกำลังรักษาเมือง Stonegate ช่วงต้น**; ดาบ หอก ธนู หน้าไม้และเกราะทำมือยังเป็นภาพหลัก | มีดินปืนจำนวนน้อยหรือไม่, เทคโนโลยีอาวุธใน R1–R7/นอกแผนที่ และผลต่อ combat balance |
+| **ST-VISUAL** | **อัตลักษณ์เมืองด่าน/คาราวาน/งานซ่อม/คำสัตย์** เป็นหลัก: หลังคารับฝน ชายคา ผ้าเดินทาง ตรารับรอง ลายเส้นทาง/ทางแยก และเครื่องแต่งกายตามอาชีพ/ฐานะ; ไม่แปะแบบประเทศปัจจุบันเป็นโซน | Shape language/Sprite palette/ตราเมืองแบบสุดท้าย และแบบเสื้อผ้าตัวละครรายคน |
+| **ST-FAITH** | มี **ความเชื่อหลากหลาย ไม่มีศาสนาทางการที่บังคับคนทั้งเมือง**; คำสัตย์ ความทรงจำผู้เดินทาง และประเพณีจากฤดูกาลใช้เป็นวัฒนธรรมร่วมได้ | รายชื่อความเชื่อ พิธีเฉพาะ วันเทศกาล และท่าทักทายที่เป็น Canon |
+
+**ภาพสังคมที่ต้องรักษา:** เมืองมีชีวิตชีวา คนส่วนใหญ่ดำเนินชีวิตจริง ๆ ไม่เป็นเมืองไร้ศีลธรรมทั้งเมือง; ความยากจน/โรค/เด็กถูกเอาเปรียบไม่ใช่แค่ภาพช็อก. สภาห้าฝ่ายและความขัดแย้งต้องสอดคล้องข้อจำกัดแรงงาน วัสดุ พลังงาน การค้า และความเป็นสากลของ §1C/§3A
+
+### 4E-3. สถานะเส้นทางและเหตุการณ์สองขบวน [APPROVED CONTINUITY]
+
+| รายการ | สถานะที่เลือก | รายละเอียดเปิด |
+|---|---|---|
+| **Route A “ทางประตูบน”** | เส้นทางได้รับการดูแลและมีค่าผ่านตามข้อตกลง; อาจถูกระงับช่วงสะพาน/ฤดูอันตราย | จุดเก็บค่าผ่านและต้นทุนจริง |
+| **Route B “รอยทางเก่า”** | **ทางราชการห้ามขบวนคาราวานผ่าน** เพราะอันตราย/ไม่มีการรับประกัน แต่คนเดินเท้า ผู้รู้ทางหรือผู้ฝ่าฝืนอาจเข้าไปได้; การเข้าถึงไม่เท่ากับมีใบอนุญาต | วิธีบอกความเสี่ยง ผลทางกฎหมาย การหลีกยาม ความยากของแต่ละจุด; ไม่ทำให้ปลอดภัยกว่า A |
+| **C0: Old missing caravan** | ขบวนสูญหายก่อนเปิดเกม เป็นฐาน Q2 และมี **หลักฐานบางส่วน** เชื่อมกับ S1/S5/S7 | ชะตาแท้จริงของทุกคน สาเหตุหลักและวันเกิดเหตุ |
+| **C1: Incomplete returning caravan** | ขบวนกลับมาไม่ครบในฉากเปิด §4A เป็น **อีกเหตุการณ์** ที่ทำให้ผู้เล่นสัมผัสความเสี่ยงและความช่วยเหลือ | ความเกี่ยวข้องกับ C0, ใครเจ็บ/หาย, รายละเอียด O2/O3 |
+
+**Quest consistency:** Q1 ยังส่งสารและเลือกเส้นทางได้ (การใช้ B คือการยอมรับความเสี่ยง/การเดินทางที่ไม่ได้รับอนุญาต), Q2 สืบ C0 และอาจพบเบาะแสจากเครือข่าย, Q3 แสงยังมีคำอธิบายหลายความเป็นไปได้; *ไม่บังคับเปลี่ยนสามเควสของ M7 ให้เป็น Story Arc ขนาดใหญ่ก่อนผ่าน playtest*
+
+### 4E-4. ตัวละครและความรู้ที่แตกต่าง [DESIGN STRUCTURE / INDIVIDUAL TRUTH OPEN]
+
+ก่อนเขียนบทสืบสวนให้มี **Relationship + Knowledge Matrix** อย่างน้อย: ชื่อตัวละคร/ตำแหน่ง, ความสัมพันธ์กับ 2–3 คนสำคัญ, สิ่งที่พบด้วยตนเอง, ข่าวที่ได้ยิน, ความเชื่อผิด, หลักฐานที่ถือ, สิ่งที่จะยอมเสี่ยงเพื่อเปิดเผย, สิ่งที่ไม่รู้, และวิธีที่ความเชื่อเปลี่ยนเมื่อมีหลักฐาน. **ยังไม่บรรจุคำเฉลยหรือคนทรยศรายตัว**
+
+| กลุ่มตัวละครเดิม | แนวสัมพันธ์/ข้อมูลที่ต้องกำหนดต่อ [NOT A CONFESSION] |
+|---|---|
+| **ธานิน–วาริน–ศิลัน** | ความขัดแย้งเปิด/ปิดทาง, ข่าวจากคนขับ, ความปลอดภัยและสัญญาทางผ่าน |
+| **อัยยา–พรรณรา–หาญช่าง** | น้ำ/ยา/เหล็ก/งบซ่อมที่แข่งขันกัน; ใครพบรายงานฉบับใดก่อน |
+| **เนตรา–มลย์–อาริน** | เอกสารคนหาย, ของจากทางเก่า, ข้อมูลภูมิศาสตร์ที่บันทึกไม่ตรง |
+| **คีริน–รอนโด–ลาเวน** | ความปลอดภัยสัญญาคุ้มกันและผลของหนี้/ค่าจ้าง |
+| **เมียร่า–คอล** | ความจำเป็นในการช่วยชีวิตกับมาตรฐานชิ้นส่วน/เครื่องมือ |
+
+**เพื่อนร่วมทีมยังมี autonomy/trust ตามตัวละคร ไม่ใช่เลือกฝ่ายศีลธรรมจาก Class**. Matrix นี้เป็นงานการเขียน/ข้อมูลอ้างอิง ไม่ใช่ requirement ให้ Godot สร้าง social-network AI
+
+### 4E-5. ภูมิศาสตร์–พลังงาน และกฎความเป็นจริงที่ต้องตรวจต่อ
+
+**[APPROVED METHOD]:** ทำ **แบบจำลองหยาบเชิงกายภาพ** ของที่ดอน ลำห้วยตามฤดู จุดน้ำ/คลัง ตำแหน่งคอกสัตว์ โรงช่าง แหล่งอาหารชุมชนบริวาร การเข้าถึงไม้/ถ่าน/เหล็ก และระยะทางโดยคร่าว ก่อนล็อกประชากร การผลิตหรือภาพเมืองระดับ Final. แผนที่ SVG ของเมืองและ R0 ยังเป็น **schematic ไม่ใช่ระยะทางจริง**. ไม่เดาปริมาณแร่จากตำแหน่งจริงปัจจุบันเพราะโลกเปลี่ยนไปหลายพันปี
+
+**[APPROVED TECH HISTORY DIRECTION]:** เหตุ Sundering Sky อาจมีสาเหตุหลายปัจจัย (ผลกระทบวัตถุฟากฟ้า + วิกฤตเครือข่าย/สิ่งแวดล้อม ฯลฯ) **ยังไม่ล็อกคำตอบแท้จริง**. ใช้ **สองถึงสามช่วงวิกฤต/ฟื้นตัวที่มีหลักฐานสำคัญ** เป็นโครงประวัติศาสตร์เพื่อเขียนเบาะแส แทนการทำ chronology หลายพันปีแบบสมบูรณ์; วันเกิดและสาเหตุของแต่ละระลอกยัง [OPEN]. เมืองหรือนครรัฐบางแห่งอาจก้าวหน้ากว่า Stonegate จริงใน **บางแขนง** (ยังไม่ระบุสถานที่หรือเทคโนโลยี) โดยไม่ทำให้ทุกภูมิภาคเจริญเท่ากัน. การเปิดเผยประเทศไทยตาม R0–R4 ให้ใช้หลักฐานอิสระอย่างน้อย **ภูมิประเทศ + ซากคมนาคม + อักขระ/วัตถุ** ก่อนเฉลย ไม่ให้ผู้รู้คนเดียวบอกความลับ
+
+**[SPOILER SECURITY DECISION PENDING]:** \`WORLD.md §2\` ใน repository สาธารณะมี crosswalk ไปพื้นที่ไทยสมัยใหม่ จึงอ่าน/ค้นหาได้จริงแม้เขียน “developer only”. **อย่าสับสนว่า source เป็น private**. ถ้าต้องการปิดความลับจากคนอ่าน GitHub ต้องเก็บข้อมูลดังกล่าวในพื้นที่ private ที่ควบคุมสิทธิและพิจารณาประวัติ commit ที่เผยไปแล้วแยกต่างหาก; **ยังไม่ได้ย้ายหรือลบอะไรใน public repo โดยการแก้ครั้งนี้**
+
 ## 5. Delayed identity revelation [LOCKED INTENT for pacing]
 
 **Desired player experience:** spend a substantial portion of the game exploring an **original, culturally blended, internationally accessible fantasy world**, then combine real geographic clues into an unsolicited “Wait, I recognize this place!” moment. Do not explain the location in title, trailer, opening city or NPC exposition.
@@ -567,9 +627,35 @@ Reveal gates follow **progress and evidence, not a fixed hour count**. Thai UI i
 
 ## 6. Open decisions and scope boundaries
 
-**[SELECTED DIRECTION]:** Stonegate governed by a **five-interest council**, a **lively trade city with underlying social problems**, and **late-medieval/early-modern everyday technology**. **[PROPOSED / NOT CANON]:** §1C civilization identity and cultural mixing, §3A seven regions, §4B resource/industry constraints, §4C Stonegate daily society, and §4D the **buried crimes / Ledger of the Unreturned / possible exploitation and crisis arc**. §4D is not established history, does not assign guilt to named NPCs, and is not approved gameplay content. Details of council appointment/voting, population, currency, market stamps, culture, motifs, NPC cast, districts, quests and transformed terrain remain reviewable proposals.  
-**[OPEN]:** number of years, precise recurrence/timing and geographic reach of reconstruction crises, extractable energy/mineral availability, local differences in printing/electricity/gunpowder, exact coast/river changes, boundaries, economy/prices, how the caravan vanished, impact cause and actual Starstone source, resurrection mechanism, which specific clue confirms geography.  
+**[LOCKED / APPROVED DESIGN DIRECTIONS]:** Stonegate governed by a **five-interest council**, a **lively trade city with underlying social problems**, and **late-medieval/early-modern everyday technology**. After the user's approval of the World Audit on 12 Oct 2026, §4E and §7 record the accepted civic/technology/route/story premises, including the **true core S1/S5/S7 wrongdoing** and permanent-world narrative consequences. **[DETAILS OPEN]:** the names/extent of guilty parties, council election/voting, final population, coinage, market prices and seals enforcement, art motifs, NPC backstories, quest specifics and geography; other scenarios in §4D are not automatically established. §1C/§3A remain world design frameworks rather than finalized local cultures.  
+**[OPEN]:** number of years, precise timing/geography of the 2–3 major reconstruction crises, extractable energy/mineral availability, gunpowder/printing/electricity **outside Stonegate** or as rare experiments, exact coast/river changes, population and production beyond planning ranges, boundaries, prices, **full cause/fate** of the older missing caravan C0 and opening C1, Sundering Sky's full causes, actual Starstone source, resurrection mechanism, and which combined clues reveal old-world geography. **[APPROVED]:** C0/C1 distinct, core missing-ledger network true, limited C0 evidence link; see §4E/§7.  
 **[LATER]:** playable cities beyond Stonegate, full regional diplomacy/economy, deep crafting/mining, **base building/upgraded facilities**, whole-world atlas, full invented languages.  
 **[LOCKED INTENT]:** internationally legible and culturally diverse *new* civilizations above a grounded real-world geography, NPC autonomy, permadeath, rare item-gated power, slow discovery of the old geographic identity.
 
 The worldbuilding supports the game; it **does not change the active combat milestone**.
+
+## 7. World Decision Register — ทะเบียนกลางเพื่อกัน Canon ขัดกัน [UPDATED 12 Oct 2026]
+
+**แหล่งอ้างอิงหลัก:** ตารางนี้และ §4E สรุป **การตัดสินใจ Worldbuilding ที่ผู้สร้างอนุมัติ** หลัง Audit. ข้อความเก่าใน §1B/§4A/§4B/§4C/§4D ที่ยังใช้ถ้อยคำ “might / proposed / not canon” ในเรื่องซึ่งทะเบียนระบุ [APPROVED] ให้ถือว่าเป็น **ไอเดียรุ่นก่อน** เฉพาะจุดนั้น ไม่ใช่การถอนการอนุมัติ. ยังคงความแตกต่างระหว่าง **โลกที่กำหนดแล้ว** กับ **กลไกเกมที่ยังไม่สร้าง**
+
+| ID | สถานะ | คำตัดสินหรือเป้าหมายที่ได้รับการรับรอง | สิ่งที่ต้องปิดก่อนล็อกรายละเอียด |
+|---|---|---|---|
+| **W-01** | **[LOCKED INTENT]** | อารยธรรมใหม่หลายพันปีหลังโลกเดิม; วัฒนธรรมหลากหลาย ค่อยเปิดตัวตนไทยตาม Reveal R0–R4 | หลักฐานเฉพาะของการเฉลยและเรื่องความลับใน repo |
+| **W-02** | **[APPROVED DIRECTION]** | The Broken Ladder + Energy Bottleneck: การฟื้น/เสื่อมหลายระลอกและต้นทุนพลังงาน/แร่ที่เข้าถึงง่ายสูง | ระยะปี 2–3 วิกฤตสำคัญ สาเหตุแท้จริง พลังงานแต่ละที่ |
+| **W-03** | **[APPROVED DIRECTION]** | บางเมืองมีเทคโนโลยีเหนือ Stonegate ในบางด้าน; ไม่จัดอันดับทุกภูมิภาคบนเส้นเดียว | นคร/แขนง/เครือข่ายจริง |
+| **ST-01** | **[LOCKED DIRECTION]** | Stonegate สภาห้าฝ่าย เมืองมีชีวิตชีวาแต่ซ่อนปัญหา เทคโนโลยีปลายยุคกลาง–ต้นยุคใหม่ | มติ/วาระ/กฎและภาพสุดท้าย |
+| **ST-02** | **[APPROVED DIRECTION]** | ตัวแทนแต่ละกลุ่มอำนาจมีวาระ มีช่องรับคำร้อง ตรวจสอบ/อุทธรณ์ได้ | กฎเลือกแทน การถอดถอน ความคุ้มครองคนนอกระบบ |
+| **ST-03** | **[APPROVED PLANNING RANGE]** | เมืองด่านเล็ก ใช้ 2,000–4,000 คนเป็นกรอบประเมินก่อนตรวจเกษตร/น้ำ | คนจริงในเมือง/รอบนอก ที่ดินและผลผลิต |
+| **ST-04** | **[APPROVED DIRECTION]** | ตลาดสองตราคือผู้ขาย/ผู้ตรวจ เฉพาะสินค้าสำคัญ; ช่างคุณภาพดีแต่ผลิตจำนวนมากไม่ได้; ไม่มีไฟฟ้าทั่วเมือง | กฎใช้ตรา พลังน้ำ ดินปืน/การพิมพ์จริง |
+| **ST-05** | **[APPROVED DIRECTION]** | อาวุธดินปืนไม่แพร่หลายต้นเกม; อัตลักษณ์คาราวาน/งานซ่อม/คำสัตย์; ความเชื่อหลากหลายไม่บังคับศาสนาเดียว | ตราสัญลักษณ์ รูปทรงเสื้อผ้า ประเพณี/ชื่อต่าง ๆ |
+| **ST-06** | **[APPROVED CONTINUITY]** | Route B ปิดการเดินคาราวานที่ได้รับอนุญาต แต่เข้าทางลับ/คนเดินเท้าอาจได้พร้อมความเสี่ยง | ผลผิดกฎ เส้นที่เข้าถึงได้ ราคาเวลา |
+| **ST-07** | **[APPROVED CONTINUITY]** | C0 ขบวนหายเก่า และ C1 ขบวนกลับไม่ครบฉากเปิด **เป็นสองเหตุการณ์** | ลำดับเวลา รายชื่อ ชะตา ขอบเขตความเกี่ยวข้อง |
+| **D-01** | **[APPROVED STORY TRUTH]** | เครือข่ายความผิดจริง S1/S5/S7; มีผู้รับเหมาหรือผู้มีอิทธิพลใหม่เป็นแกน ไม่กล่าวหาทุกฝ่ายและ NPC เก่า | ผู้กระทำผิดที่มีชื่อ กลไกเอกสาร เหยื่อ พยาน |
+| **D-02** | **[APPROVED DIRECTION]** | C0 มีหลักฐานบางส่วนเชื่อมกับเครือข่าย; เหตุจริงของ C0/Q3 ยังไม่เฉลย | ข้อมูลเฉพาะที่จะเปิด R0–R4 |
+| **D-03** | **[APPROVED NARRATIVE INTENT]** | ผลการจัดการเมืองหลายเส้นทางมีต้นทุนและ **คงอยู่หลัง Permadeath** | รูปแบบ quest/world flags และขอบเขตเนื้อหาใน M7/M9 |
+| **C-01** | **[APPROVED METHOD]** | ใช้ความสัมพันธ์และ Knowledge Matrix ของ NPC ก่อนล็อกบทสืบสวน; ตรวจสมดุลภูมิศาสตร์/น้ำ/อาหารก่อนเลขประชากร | ข้อมูลจริงรายคน และภูมิประเทศเชิงกายภาพ |
+| **C-02** | **[OPEN SECURITY DECISION]** | \`WORLD.md §2\` ใน public repo เปิดเผยพิกัดอ้างอิงกว้างของอดีต | จะเก็บ spoiler เบื้องหลังในที่ private ด้วยหรือไม่ |
+| **G-01** | **[UNCHANGED SCOPE]** | ยัง **M1.5B Combat Staging**; Town UI หนึ่งเมือง Q1–Q3 สองเส้นทางตาม M7; ไม่เพิ่มสภา simulation หรือค่ายงานหลายฉากในโปรโตไทป์ | จะนำ dark arc ขนาดใดเข้าสู่ M7 หรือเลื่อนเป็น M9 |
+ 
+**หลักการทำงานต่อ:** เมื่ออนุมัติคำตอบใหม่ ให้แก้ **แถวทะเบียน** และย่อหน้า Canon ที่เกี่ยวข้องใน §1–§5 พร้อมกัน; ไม่อัปสถานะไอเดียรองทั้งตารางโดยอัตโนมัติ. รายการ [OPEN] ที่ยังไม่ต้องตอบทันที ได้แก่ ชื่อตัวร้ายรายคน, ระยะปีหายนะ, ปฏิทิน, เหรียญ/ราคา, ระบบศาสนารายสำนัก, เทคโนโลยี R1–R7, ความจริง Starstone และการสืบหาความลับโลกเดิมตามแผน.
+
