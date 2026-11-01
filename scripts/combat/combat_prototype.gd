@@ -24,6 +24,14 @@ const ENEMY_HIT_TIME: float = 0.14
 const HIT_HOLD_TIME: float = 0.08
 const ATTACK_RETURN_TIME: float = 0.34
 
+# M1.5C-02: จังหวะโต้กลับของ Enemy A
+const ENEMY_COUNTER_STEP_DISTANCE: float = 96.0
+const ENEMY_COUNTER_LUNGE_TIME: float = 0.26
+const PLAYER_HIT_RECOIL_DISTANCE: float = 14.0
+const PLAYER_HIT_TIME: float = 0.14
+const ENEMY_COUNTER_HOLD_TIME: float = 0.08
+const ENEMY_COUNTER_RETURN_TIME: float = 0.30
+
 
 # -----------------------------------------------------------------------------
 # ตัวแปรสถานะปัจจุบันของการต่อสู้
@@ -41,9 +49,9 @@ var battle_is_over: bool = false
 # ใช้แสดงหมายเลขรอบใน Combat Log
 var turn_number: int = 1
 
-# ล็อกคำสั่งระหว่าง Tween เพื่อไม่ให้กด Attack ซ้ำจน HP คลาดเคลื่อน
+# ล็อกคำสั่งระหว่าง Motion ทั้งสองฝ่าย เพื่อไม่ให้ HP คลาดเคลื่อน
 var action_in_progress: bool = false
-var attack_tween: Tween
+var action_tween: Tween
 var player_home: Vector2
 var enemy_home: Vector2
 
@@ -106,10 +114,10 @@ func _ready() -> void:
 # เริ่มการต่อสู้ใหม่
 # -----------------------------------------------------------------------------
 func _start_new_battle() -> void:
-	# กด Restart ระหว่าง Motion ได้อย่างปลอดภัย: ยกเลิก Tween และคืน Sprite
-	if attack_tween != null and attack_tween.is_valid():
-		attack_tween.kill()
-	attack_tween = null
+	# กด Restart ระหว่าง Motion ของฝ่ายใดก็ได้: ยกเลิก Tween และคืน Sprite
+	if action_tween != null and action_tween.is_valid():
+		action_tween.kill()
+	action_tween = null
 	action_in_progress = false
 	player_root.position = player_home
 	enemy_root.position = enemy_home
@@ -153,36 +161,36 @@ func _on_attack_button_pressed() -> void:
 	_add_log("--- รอบที่ %d ---" % turn_number)
 
 	# Tween เป็นเพียง Presentation; ความเสียหายยังใช้ค่าเดิม
-	attack_tween = create_tween()
-	attack_tween.set_trans(Tween.TRANS_SINE)
-	attack_tween.tween_property(
+	action_tween = create_tween()
+	action_tween.set_trans(Tween.TRANS_SINE)
+	action_tween.tween_property(
 		player_root, "position", Vector2(
 			player_home.x + (enemy_home.x - player_home.x) * ATTACK_APPROACH_RATIO,
 			player_home.y
 		), ATTACK_LUNGE_TIME
 	).set_ease(Tween.EASE_OUT)
-	attack_tween.parallel().tween_property(
+	action_tween.parallel().tween_property(
 		player_sprite, "modulate", Color(1.25, 1.15, 1.05, 1.0), ATTACK_LUNGE_TIME
 	)
 
 	# เมื่อ Player ก้าวถึงจุดโจมตี จึงหัก HP และแสดง Hit Feedback
-	attack_tween.tween_callback(_apply_player_hit)
-	attack_tween.tween_property(
+	action_tween.tween_callback(_apply_player_hit)
+	action_tween.tween_property(
 		enemy_root, "position", enemy_home + Vector2(ENEMY_RECOIL_DISTANCE, 0), ENEMY_HIT_TIME
 	)
-	attack_tween.parallel().tween_property(
+	action_tween.parallel().tween_property(
 		enemy_sprite, "modulate", Color(1.0, 0.55, 0.55, 1.0), ENEMY_HIT_TIME
 	)
 
 	# ค้าง Hit Pose สั้น ๆ ให้ตาเห็นการปะทะ ก่อนถอยกลับเข้าที่
-	attack_tween.tween_interval(HIT_HOLD_TIME)
+	action_tween.tween_interval(HIT_HOLD_TIME)
 
 	# คืน Actor ไปตำแหน่งเดิมก่อนอนุญาตให้เล่นเทิร์นถัดไป
-	attack_tween.tween_property(enemy_root, "position", enemy_home, ATTACK_RETURN_TIME)
-	attack_tween.parallel().tween_property(enemy_sprite, "modulate", Color.WHITE, ATTACK_RETURN_TIME)
-	attack_tween.parallel().tween_property(player_root, "position", player_home, ATTACK_RETURN_TIME)
-	attack_tween.parallel().tween_property(player_sprite, "modulate", Color.WHITE, ATTACK_RETURN_TIME)
-	attack_tween.tween_callback(_finish_player_attack)
+	action_tween.tween_property(enemy_root, "position", enemy_home, ATTACK_RETURN_TIME)
+	action_tween.parallel().tween_property(enemy_sprite, "modulate", Color.WHITE, ATTACK_RETURN_TIME)
+	action_tween.parallel().tween_property(player_root, "position", player_home, ATTACK_RETURN_TIME)
+	action_tween.parallel().tween_property(player_sprite, "modulate", Color.WHITE, ATTACK_RETURN_TIME)
+	action_tween.tween_callback(_finish_player_attack)
 
 
 func _apply_player_hit() -> void:
@@ -199,22 +207,19 @@ func _apply_player_hit() -> void:
 
 
 func _finish_player_attack() -> void:
-	# ทุกครั้งต้องกลับ Home แม้เป็นการโจมตีปิดฉาก
+	# คงตำแหน่งเดิม แม้การโจมตีครั้งนี้กำจัดศัตรูได้
 	player_root.position = player_home
 	enemy_root.position = enemy_home
 	player_sprite.modulate = Color.WHITE
 	enemy_sprite.modulate = Color.WHITE
-	attack_tween = null
-	action_in_progress = false
+	action_tween = null
 
 	if battle_is_over:
+		action_in_progress = false
 		return
 
-	_enemy_turn()
-	turn_number += 1
-	if not battle_is_over:
-		attack_button.disabled = false
-		defend_button.disabled = false
+	# รอให้ศัตรูแสดงการโต้กลับและหัก HP ก่อนเปิดคำสั่งรอบถัดไป
+	_start_enemy_counteraction()
 
 
 # -----------------------------------------------------------------------------
@@ -230,15 +235,69 @@ func _on_defend_button_pressed() -> void:
 	player_is_defending = true
 	_add_log("Player ตั้งรับ เตรียมลดความเสียหายจาก Enemy A")
 
-	# เมื่อตั้งรับแล้ว ผู้เล่นไม่โจมตี และศัตรูจะได้เล่นต่อทันที
-	_enemy_turn()
-	turn_number += 1
+	# การตั้งรับข้ามการโจมตีของ Player และเข้าสู่ Motion ของศัตรู
+	_start_enemy_counteraction()
 
 
 # -----------------------------------------------------------------------------
-# เทิร์นของศัตรู
+# เริ่ม Motion โต้กลับของศัตรู (ทั้งกรณีผู้เล่นโจมตีและตั้งรับ)
 # -----------------------------------------------------------------------------
-func _enemy_turn() -> void:
+func _start_enemy_counteraction() -> void:
+	if battle_is_over:
+		return
+
+	action_in_progress = true
+	attack_button.disabled = true
+	defend_button.disabled = true
+
+	# เลือกสี Hit Feedback ก่อนคำนวณ Damage เพราะสถานะ Defend จะถูกรีเซ็ต
+	var hit_color: Color = (
+		Color(0.75, 0.88, 1.0, 1.0) if player_is_defending
+		else Color(1.0, 0.55, 0.55, 1.0)
+	)
+
+	action_tween = create_tween()
+	action_tween.set_trans(Tween.TRANS_SINE)
+	action_tween.tween_property(
+		enemy_root, "position", enemy_home + Vector2(-ENEMY_COUNTER_STEP_DISTANCE, 0),
+		ENEMY_COUNTER_LUNGE_TIME
+	).set_ease(Tween.EASE_OUT)
+	action_tween.parallel().tween_property(
+		enemy_sprite, "modulate", Color(1.25, 0.95, 0.80, 1.0),
+		ENEMY_COUNTER_LUNGE_TIME
+	)
+
+	# ลด HP หลังศัตรูพุ่งถึงจุดโต้กลับ ไม่หัก HP ทันทีตอนเริ่มเทิร์น
+	action_tween.tween_callback(_apply_enemy_hit)
+	action_tween.tween_property(
+		player_root, "position", player_home + Vector2(-PLAYER_HIT_RECOIL_DISTANCE, 0),
+		PLAYER_HIT_TIME
+	)
+	action_tween.parallel().tween_property(
+		player_sprite, "modulate", hit_color, PLAYER_HIT_TIME
+	)
+	action_tween.tween_interval(ENEMY_COUNTER_HOLD_TIME)
+
+	# Shadow ของทั้งสอง Actor จะกลับไปพร้อม Root ที่เป็น Parent
+	action_tween.tween_property(
+		enemy_root, "position", enemy_home, ENEMY_COUNTER_RETURN_TIME
+	)
+	action_tween.parallel().tween_property(
+		enemy_sprite, "modulate", Color.WHITE, ENEMY_COUNTER_RETURN_TIME
+	)
+	action_tween.parallel().tween_property(
+		player_root, "position", player_home, ENEMY_COUNTER_RETURN_TIME
+	)
+	action_tween.parallel().tween_property(
+		player_sprite, "modulate", Color.WHITE, ENEMY_COUNTER_RETURN_TIME
+	)
+	action_tween.tween_callback(_finish_enemy_counteraction)
+
+
+# -----------------------------------------------------------------------------
+# คำนวณผลโต้กลับของศัตรู ณ จังหวะปะทะ
+# -----------------------------------------------------------------------------
+func _apply_enemy_hit() -> void:
 	# เริ่มจากความเสียหายปกติของศัตรู
 	var damage: int = ENEMY_ATTACK_DAMAGE
 
@@ -271,6 +330,21 @@ func _enemy_turn() -> void:
 	# หาก HP ผู้เล่นหมด ให้จบการต่อสู้
 	if player_hp <= 0:
 		_end_battle(false)
+
+
+func _finish_enemy_counteraction() -> void:
+	# คืนตำแหน่งก่อนเปิดการเล่นรอบต่อไป หรือหลังแพ้
+	enemy_root.position = enemy_home
+	player_root.position = player_home
+	enemy_sprite.modulate = Color.WHITE
+	player_sprite.modulate = Color.WHITE
+	action_tween = null
+	action_in_progress = false
+	turn_number += 1
+
+	if not battle_is_over:
+		attack_button.disabled = false
+		defend_button.disabled = false
 
 
 # -----------------------------------------------------------------------------
