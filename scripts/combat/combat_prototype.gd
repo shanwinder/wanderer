@@ -14,7 +14,8 @@ const ENEMY_ATTACK_DAMAGE: int = 3
 const DEFEND_REDUCTION: int = 2
 
 # M1.5C: ระยะเคลื่อนที่ใช้หน่วยเป็นพิกเซล ส่วนเวลาของ Tween ใช้หน่วยเป็นวินาที
-const ATTACK_STEP_DISTANCE: float = 300.0
+# Player พุ่งไปครึ่งหนึ่งของระยะ X ระหว่างจุดยืน Player กับ Enemy
+const ATTACK_APPROACH_RATIO: float = 0.5
 const ENEMY_RECOIL_DISTANCE: float = 18.0
 
 # แยกเวลาของแต่ละจังหวะไว้ให้ปรับความเร็วได้โดยไม่แตะระบบ HP
@@ -155,7 +156,10 @@ func _on_attack_button_pressed() -> void:
 	attack_tween = create_tween()
 	attack_tween.set_trans(Tween.TRANS_SINE)
 	attack_tween.tween_property(
-		player_root, "position", player_home + Vector2(ATTACK_STEP_DISTANCE, 0), ATTACK_LUNGE_TIME
+		player_root, "position", Vector2(
+			player_home.x + (enemy_home.x - player_home.x) * ATTACK_APPROACH_RATIO,
+			player_home.y
+		), ATTACK_LUNGE_TIME
 	).set_ease(Tween.EASE_OUT)
 	attack_tween.parallel().tween_property(
 		player_sprite, "modulate", Color(1.25, 1.15, 1.05, 1.0), ATTACK_LUNGE_TIME
