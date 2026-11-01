@@ -70,6 +70,11 @@ y_sort_enabled = true
 [node name="Npc1Root" type="Node2D" parent="Battlefield" unique_id=167162357]
 position = Vector2(183.00002, 491)
 
+[node name="Npc1Shadow" type="Polygon2D" parent="Battlefield/Npc1Root"]
+position = Vector2(0, -4)
+color = Color(0.035, 0.029, 0.023, 0.42)
+polygon = PackedVector2Array(-34, 0, -28.56, -4.2, -15.3, -6.3, 0, -7, 15.3, -6.3, 28.56, -4.2, 34, 0, 28.56, 4.2, 15.3, 6.3, 0, 7, -15.3, 6.3, -28.56, 4.2)
+
 [node name="Npc1" type="Sprite2D" parent="Battlefield/Npc1Root" unique_id=1421812779]
 texture_filter = 1
 position = Vector2(0, -52.5)
@@ -77,44 +82,64 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("4_npc1")
 
 [node name="PlayerRoot" type="Node2D" parent="Battlefield" unique_id=2062452648]
-position = Vector2(479, 412)
+position = Vector2(479, 466)
 
+
+[node name="PlayerShadow" type="Polygon2D" parent="Battlefield/PlayerRoot"]
+position = Vector2(0, -4)
+color = Color(0.035, 0.029, 0.023, 0.42)
+polygon = PackedVector2Array(-36, 0, -30.24, -4.2, -16.2, -6.3, 0, -7, 16.2, -6.3, 30.24, -4.2, 36, 0, 30.24, 4.2, 16.2, 6.3, 0, 7, -16.2, 6.3, -30.24, 4.2)
 
 [node name="Player" type="AnimatedSprite2D" parent="Battlefield/PlayerRoot" unique_id=141029305]
 texture_filter = 1
-position = Vector2(0, 0)
+position = Vector2(0, -54)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_player")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="Npc2Root" type="Node2D" parent="Battlefield" unique_id=81900588]
-position = Vector2(299, 390)
+position = Vector2(299, 448)
 
+
+[node name="Npc2Shadow" type="Polygon2D" parent="Battlefield/Npc2Root"]
+position = Vector2(0, -4)
+color = Color(0.035, 0.029, 0.023, 0.42)
+polygon = PackedVector2Array(-34, 0, -28.56, -4.2, -15.3, -6.3, 0, -7, 15.3, -6.3, 28.56, -4.2, 34, 0, 28.56, 4.2, 15.3, 6.3, 0, 7, -15.3, 6.3, -28.56, 4.2)
 
 [node name="Npc2" type="Sprite2D" parent="Battlefield/Npc2Root" unique_id=917054219]
 texture_filter = 1
-position = Vector2(0, 0)
+position = Vector2(0, -58)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("5_npc2")
 
 [node name="Npc3Root" type="Node2D" parent="Battlefield" unique_id=229338228]
-position = Vector2(375, 474)
+position = Vector2(375, 532)
 
+
+[node name="Npc3Shadow" type="Polygon2D" parent="Battlefield/Npc3Root"]
+position = Vector2(0, -4)
+color = Color(0.035, 0.029, 0.023, 0.42)
+polygon = PackedVector2Array(-34, 0, -28.56, -4.2, -15.3, -6.3, 0, -7, 15.3, -6.3, 28.56, -4.2, 34, 0, 28.56, 4.2, 15.3, 6.3, 0, 7, -15.3, 6.3, -28.56, 4.2)
 
 [node name="Npc3" type="Sprite2D" parent="Battlefield/Npc3Root" unique_id=679747556]
 texture_filter = 1
-position = Vector2(0, 0)
+position = Vector2(0, -58)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("6_npc3")
 
 [node name="EnemyARoot" type="Node2D" parent="Battlefield" unique_id=2034793958]
-position = Vector2(945, 461)
+position = Vector2(945, 514)
 
+
+[node name="EnemyAShadow" type="Polygon2D" parent="Battlefield/EnemyARoot"]
+position = Vector2(0, -4)
+color = Color(0.035, 0.029, 0.023, 0.42)
+polygon = PackedVector2Array(-68, 0, -57.12, -6, -30.6, -9, 0, -10, 30.6, -9, 57.12, -6, 68, 0, 57.12, 6, 30.6, 9, 0, 10, -30.6, 9, -57.12, 6)
 
 [node name="EnemyA" type="Sprite2D" parent="Battlefield/EnemyARoot" unique_id=1393338436]
 texture_filter = 1
-position = Vector2(0, 0)
+position = Vector2(0, -53)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("7_enemy1")
 
