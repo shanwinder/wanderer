@@ -56,6 +56,14 @@ offset_bottom = 343.0
 mouse_filter = 2
 color = Color(0.16, 0.19, 0.16, 1)
 
+[node name="DistantRidge" type="Polygon2D" parent="."]
+color = Color(0.137, 0.163, 0.156, 1)
+polygon = PackedVector2Array(0, 297, 80, 281, 175, 291, 272, 269, 358, 285, 457, 263, 552, 277, 660, 256, 753, 273, 846, 252, 946, 269, 1050, 251, 1150, 284, 1230, 272, 1280, 288, 1280, 343, 0, 343)
+
+[node name="MidgroundShelf" type="Polygon2D" parent="."]
+color = Color(0.125, 0.149, 0.136, 1)
+polygon = PackedVector2Array(0, 331, 100, 320, 215, 327, 314, 311, 435, 320, 535, 312, 655, 329, 764, 314, 883, 324, 993, 309, 1114, 324, 1200, 316, 1280, 324, 1280, 343, 0, 343)
+
 [node name="Ground" type="ColorRect" parent="." unique_id=975505626]
 layout_mode = 0
 offset_top = 343.0
@@ -63,6 +71,14 @@ offset_right = 1280.0
 offset_bottom = 543.0
 mouse_filter = 2
 color = Color(0.19, 0.16, 0.13, 1)
+
+[node name="StageFloor" type="Polygon2D" parent="."]
+color = Color(0.208, 0.177, 0.146, 1)
+polygon = PackedVector2Array(100, 361, 1180, 361, 1280, 535, 0, 535)
+
+[node name="GroundRim" type="Polygon2D" parent="."]
+color = Color(0.151, 0.148, 0.124, 1)
+polygon = PackedVector2Array(0, 343, 1280, 343, 1280, 350, 0, 350)
 
 [node name="Battlefield" type="Node2D" parent="." unique_id=202512223]
 y_sort_enabled = true
@@ -114,7 +130,7 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("5_npc2")
 
 [node name="Npc3Root" type="Node2D" parent="Battlefield" unique_id=229338228]
-position = Vector2(375, 532)
+position = Vector2(375, 512)
 
 
 [node name="Npc3Shadow" type="Polygon2D" parent="Battlefield/Npc3Root"]
@@ -142,6 +158,14 @@ texture_filter = 1
 position = Vector2(0, -53)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("7_enemy1")
+
+[node name="ForegroundLeft" type="Polygon2D" parent="."]
+color = Color(0.143, 0.129, 0.114, 1)
+polygon = PackedVector2Array(0, 478, 23, 468, 52, 476, 69, 492, 55, 509, 84, 535, 0, 535)
+
+[node name="ForegroundRight" type="Polygon2D" parent="."]
+color = Color(0.143, 0.129, 0.114, 1)
+polygon = PackedVector2Array(1280, 470, 1261, 462, 1237, 478, 1222, 493, 1242, 507, 1203, 535, 1280, 535)
 
 [node name="TitleLabel" type="Label" parent="." unique_id=1955448986]
 layout_mode = 0
