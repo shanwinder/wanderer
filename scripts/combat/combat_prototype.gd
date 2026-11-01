@@ -14,14 +14,14 @@ const ENEMY_ATTACK_DAMAGE: int = 3
 const DEFEND_REDUCTION: int = 2
 
 # M1.5C: ระยะเคลื่อนที่ใช้หน่วยเป็นพิกเซล ส่วนเวลาของ Tween ใช้หน่วยเป็นวินาที
-const ATTACK_STEP_DISTANCE: float = 48.0
+const ATTACK_STEP_DISTANCE: float = 300.0
 const ENEMY_RECOIL_DISTANCE: float = 18.0
 
 # แยกเวลาของแต่ละจังหวะไว้ให้ปรับความเร็วได้โดยไม่แตะระบบ HP
-const ATTACK_LUNGE_TIME: float = 0.26
+const ATTACK_LUNGE_TIME: float = 0.42
 const ENEMY_HIT_TIME: float = 0.14
 const HIT_HOLD_TIME: float = 0.08
-const ATTACK_RETURN_TIME: float = 0.28
+const ATTACK_RETURN_TIME: float = 0.34
 
 
 # -----------------------------------------------------------------------------
