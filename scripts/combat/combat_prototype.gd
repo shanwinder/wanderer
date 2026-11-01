@@ -251,10 +251,9 @@ func _start_enemy_counteraction() -> void:
 	defend_button.disabled = true
 
 	# เลือกสี Hit Feedback ก่อนคำนวณ Damage เพราะสถานะ Defend จะถูกรีเซ็ต
-	var hit_color: Color = (
-		Color(0.75, 0.88, 1.0, 1.0) if player_is_defending
-		else Color(1.0, 0.55, 0.55, 1.0)
-	)
+	var hit_color: Color = Color(1.0, 0.55, 0.55, 1.0)
+	if player_is_defending:
+		hit_color = Color(0.75, 0.88, 1.0, 1.0)
 
 	action_tween = create_tween()
 	action_tween.set_trans(Tween.TRANS_SINE)
