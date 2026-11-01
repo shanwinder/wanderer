@@ -25,12 +25,13 @@ const HIT_HOLD_TIME: float = 0.08
 const ATTACK_RETURN_TIME: float = 0.34
 
 # M1.5C-02: จังหวะโต้กลับของ Enemy A
-const ENEMY_COUNTER_STEP_DISTANCE: float = 96.0
-const ENEMY_COUNTER_LUNGE_TIME: float = 0.26
+# พุ่งไปยังจุดกึ่งกลางเดียวกับที่ Player ใช้ โดยคำนวณจากตำแหน่งจริง
+const ENEMY_COUNTER_APPROACH_RATIO: float = 0.5
+const ENEMY_COUNTER_LUNGE_TIME: float = 0.42
 const PLAYER_HIT_RECOIL_DISTANCE: float = 14.0
 const PLAYER_HIT_TIME: float = 0.14
 const ENEMY_COUNTER_HOLD_TIME: float = 0.08
-const ENEMY_COUNTER_RETURN_TIME: float = 0.30
+const ENEMY_COUNTER_RETURN_TIME: float = 0.38
 
 
 # -----------------------------------------------------------------------------
@@ -258,8 +259,10 @@ func _start_enemy_counteraction() -> void:
 	action_tween = create_tween()
 	action_tween.set_trans(Tween.TRANS_SINE)
 	action_tween.tween_property(
-		enemy_root, "position", enemy_home + Vector2(-ENEMY_COUNTER_STEP_DISTANCE, 0),
-		ENEMY_COUNTER_LUNGE_TIME
+		enemy_root, "position", Vector2(
+			enemy_home.x + (player_home.x - enemy_home.x) * ENEMY_COUNTER_APPROACH_RATIO,
+			enemy_home.y
+		), ENEMY_COUNTER_LUNGE_TIME
 	).set_ease(Tween.EASE_OUT)
 	action_tween.parallel().tween_property(
 		enemy_sprite, "modulate", Color(1.25, 0.95, 0.80, 1.0),
