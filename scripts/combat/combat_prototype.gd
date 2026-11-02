@@ -81,10 +81,8 @@ const NPC_STAGE_HOLD_TIME: float = 0.10
 const NPC_ATTACK_HIT_TIME: float = 0.14
 const NPC_ACTIVE_TINT: Color = Color(1.12, 1.08, 1.02, 1.0)
 
-# M1.5D-05: เจตนาของ NPC ถูกวางไว้ล่วงหน้าก่อน Resolve Action
-# ขณะนี้ทุกคนเป็น ATK แบบ deterministic (ยังไม่เพิ่ม AI หรือเปลี่ยน Damage)
-const NPC_INTENT_ATTACK: String = "ATK"
-const NPC_INTENT_GUARD: String = "GUARD"
+# M1.6A: นิยาม ATK/GUARD และกฎเลือก Intent อยู่ใน CombatTurnFlow
+# ที่นี่เก็บเฉพาะค่าเชิงการต่อสู้/การนำเสนอของ Guard
 const NPC_GUARD_REDUCTION: int = 1
 const NPC_GUARD_ACTIVE_TINT: Color = Color(0.76, 0.90, 1.0, 1.0)
 const NPC_INTENT_QUEUED_COLOR: Color = Color(0.72, 0.82, 0.80, 0.95)
@@ -578,7 +576,7 @@ func _start_next_npc_action() -> void:
 	_set_action_status("รอบที่ %d · NPC%d: %s" % [
 		turn_number, npc_action_index + 1, intent
 	])
-	var is_attack: bool = intent == NPC_INTENT_ATTACK
+	var is_attack: bool = intent == CombatTurnFlow.INTENT_ATTACK
 	npc_intent_labels[npc_action_index].add_theme_color_override(
 		"font_color", NPC_INTENT_ACTIVE_COLOR
 	)
