@@ -1,5 +1,9 @@
 extends Control
 
+# 1.0 = จังหวะเดิม, 0.70 = Motion/Feedback ใช้เวลานานขึ้นประมาณ 43%
+# ใช้ค่ากลางเดียวกันทุก Tween เพื่อปรับความเร็วในการทดลองได้จาก Inspector
+@export_range(0.45, 1.0, 0.05) var combat_speed_scale: float = 0.70
+
 
 # -----------------------------------------------------------------------------
 # ค่าคงที่ของการต่อสู้
@@ -21,6 +25,8 @@ const DEFEND_REDUCTION: int = 2
 const SHORT_LUNGE_DISTANCE: float = 44.0
 const SHORT_LUNGE_TIME: float = 0.18
 const SHORT_LUNGE_RETURN_TIME: float = 0.22
+# เว้นจังหวะเล็กน้อยหลังแต่ละ Action เพื่อให้ผู้เล่นอ่านลำดับเทิร์นทัน
+const ACTION_HANDOFF_PAUSE: float = 0.16
 const GUARD_POSE_RAISE_TIME: float = 0.12
 const GUARD_POSE_RETURN_TIME: float = 0.18
 
@@ -203,6 +209,12 @@ func _ready() -> void:
 
 # เรียกเมื่อ Root พุ่งจาก Formation สั้น ๆ แล้วคำนวณ Hit ตอน Sprite ออกท่า
 # Player/NPC โจมตีไปทางขวา (+1), Enemy โจมตีไปทางซ้าย (-1)
+# ปรับความเร็ว Tween ทั้ง Motion และ Feedback ให้สอดคล้องกัน
+func _pace_tween(tween: Tween) -> Tween:
+	tween.set_speed_scale(clampf(combat_speed_scale, 0.45, 1.0))
+	return tween
+
+
 func _queue_attack_pose(
 	actor_sprite: Node2D, base_position: Vector2, facing_direction: float
 ) -> void:
@@ -304,7 +316,7 @@ func _on_attack_button_pressed() -> void:
 	_set_action_status("รอบที่ %d · Player: ATK" % turn_number)
 
 	# Tween เป็นเพียง Presentation; ความเสียหายยังใช้ค่าเดิม
-	action_tween = create_tween()
+	action_tween = _pace_tween(create_tween())
 	action_tween.set_trans(Tween.TRANS_SINE)
 	action_tween.tween_property(
 		player_root, "position", player_home + Vector2(SHORT_LUNGE_DISTANCE, 0.0),
@@ -354,6 +366,7 @@ func _on_attack_button_pressed() -> void:
 	action_tween.parallel().tween_property(
 		enemy_sprite, "scale", enemy_sprite_base_scale, SHORT_LUNGE_RETURN_TIME
 	)
+	action_tween.tween_interval(ACTION_HANDOFF_PAUSE)
 	action_tween.tween_callback(_finish_player_attack)
 
 
@@ -414,7 +427,7 @@ func _on_defend_button_pressed() -> void:
 	_set_action_status("รอบที่ %d · Player: GUARD" % turn_number)
 
 	# ท่าตั้งรับไม่เคลื่อน Root หรือ Shadow และไม่สร้างเอฟเฟกต์ใหม่
-	action_tween = create_tween()
+	action_tween = _pace_tween(create_tween())
 	action_tween.set_trans(Tween.TRANS_SINE)
 	action_tween.tween_property(
 		player_sprite, "position",
@@ -444,6 +457,7 @@ func _on_defend_button_pressed() -> void:
 		player_sprite, "modulate", Color.WHITE,
 		PLAYER_DEFEND_RECOVER_TIME
 	)
+	action_tween.tween_interval(ACTION_HANDOFF_PAUSE)
 	action_tween.tween_callback(_finish_player_defend_pose)
 
 
@@ -548,7 +562,7 @@ func _start_next_npc_action() -> void:
 	else:
 		_add_log("NPC%d ตั้งใจ %s: ป้องกัน Player" % [npc_action_index + 1, intent])
 
-	action_tween = create_tween()
+	action_tween = _pace_tween(create_tween())
 	action_tween.set_trans(Tween.TRANS_SINE)
 	if is_attack:
 		# โจมตี: ขยับจาก Formation เพียง 44px และยืนออกท่าที่จุดนั้น
@@ -613,6 +627,7 @@ func _start_next_npc_action() -> void:
 		action_tween.parallel().tween_property(
 			player_sprite, "modulate", Color.WHITE, GUARD_POSE_RETURN_TIME
 		)
+	action_tween.tween_interval(ACTION_HANDOFF_PAUSE)
 	action_tween.tween_callback(_finish_npc_action)
 
 
@@ -647,7 +662,7 @@ func _show_npc_guard_feedback() -> void:
 	battlefield.add_child(popup)
 	damage_popups.append(popup)
 
-	var float_tween: Tween = create_tween().bind_node(popup)
+	var float_tween: Tween = _pace_tween(create_tween().bind_node(popup))
 	float_tween.set_trans(Tween.TRANS_SINE)
 	float_tween.set_ease(Tween.EASE_OUT)
 	float_tween.tween_property(
@@ -727,7 +742,7 @@ func _start_enemy_counteraction() -> void:
 		recoil_distance = GUARDED_HIT_RECOIL_DISTANCE
 		hit_squash = GUARDED_HIT_SQUASH
 
-	action_tween = create_tween()
+	action_tween = _pace_tween(create_tween())
 	action_tween.set_trans(Tween.TRANS_SINE)
 	action_tween.tween_property(
 		enemy_root, "position", enemy_home + Vector2(-SHORT_LUNGE_DISTANCE, 0.0),
@@ -783,6 +798,7 @@ func _start_enemy_counteraction() -> void:
 	action_tween.parallel().tween_property(
 		player_sprite, "scale", player_sprite_base_scale, SHORT_LUNGE_RETURN_TIME
 	)
+	action_tween.tween_interval(ACTION_HANDOFF_PAUSE)
 	action_tween.tween_callback(_finish_enemy_counteraction)
 
 
@@ -909,7 +925,7 @@ func _show_hit_spark(hit_position: Vector2, spark_color: Color) -> void:
 	hit_sparks.append(spark)
 
 	# Tween ผูกกับ Polygon: เมื่อ Restart ลบ Effect แล้ว Motion หยุดตาม
-	var effect_tween: Tween = create_tween().bind_node(spark)
+	var effect_tween: Tween = _pace_tween(create_tween().bind_node(spark))
 	effect_tween.set_trans(Tween.TRANS_SINE)
 	effect_tween.set_ease(Tween.EASE_OUT)
 	effect_tween.tween_property(
@@ -959,7 +975,7 @@ func _show_floating_damage(
 	damage_popups.append(popup)
 
 	# Tween ผูกกับ Label: เมื่อ Restart ลบ Label แล้ว Tween หยุดตาม
-	var float_tween: Tween = create_tween().bind_node(popup)
+	var float_tween: Tween = _pace_tween(create_tween().bind_node(popup))
 	float_tween.set_trans(Tween.TRANS_SINE)
 	float_tween.set_ease(Tween.EASE_OUT)
 	float_tween.tween_property(
@@ -989,7 +1005,7 @@ func _flash_hp_label(label: Label, color: Color, is_player: bool) -> void:
 		previous_tween.kill()
 
 	label.modulate = color
-	var flash_tween: Tween = create_tween()
+	var flash_tween: Tween = _pace_tween(create_tween())
 	flash_tween.tween_property(label, "modulate", Color.WHITE, HP_FLASH_TIME)
 	if is_player:
 		player_hp_flash_tween = flash_tween
