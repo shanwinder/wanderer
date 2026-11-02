@@ -17,7 +17,10 @@ func reset() -> void:
 	_next_index = 0
 
 
-func plan_round(player_defending: bool, npc_count: int, enemy_target_id: String) -> void:
+func plan_round(
+	player_defending: bool, npc_count: int,
+	enemy_target_id: String, enemy_ids: Array[String]
+) -> void:
 	reset()
 
 	var player_intent: String = INTENT_ATTACK
@@ -47,12 +50,15 @@ func plan_round(player_defending: bool, npc_count: int, enemy_target_id: String)
 			"target_id": npc_target_id
 		})
 
-	_actions.append({
-		"actor": ACTOR_ENEMY,
-		"actor_index": 0,
-		"intent": INTENT_ATTACK,
-		"target_id": "player"
-	})
+	# ศัตรูแต่ละตัวที่ยังมีชีวิตจะได้คิวโต้กลับของตัวเอง
+	for i in range(enemy_ids.size()):
+		_actions.append({
+			"actor": ACTOR_ENEMY,
+			"actor_index": i,
+			"enemy_id": enemy_ids[i],
+			"intent": INTENT_ATTACK,
+			"target_id": "player"
+		})
 
 
 func take_next_action() -> Dictionary:
