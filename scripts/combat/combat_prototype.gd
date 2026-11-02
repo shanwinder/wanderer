@@ -99,6 +99,10 @@ var enemy_hp: int = ENEMY_MAX_HP
 # ใช้ตรวจว่าผู้เล่นเลือกตั้งรับในรอบนี้หรือไม่
 var player_is_defending: bool = false
 
+# ผลการต่อสู้เก็บไว้จนกว่า Action สุดท้ายจะเล่นจบแล้วค่อยแสดงแผง
+var battle_result_player_won: bool = false
+var battle_result_tween: Tween
+
 # ใช้ป้องกันไม่ให้กดโจมตีต่อ หลังจากการต่อสู้จบแล้ว
 var battle_is_over: bool = false
 
@@ -150,6 +154,9 @@ var enemy_hp_flash_tween: Tween
 	$MainMargin/MainVBox/CombatLog
 )
 @onready var action_status_label: Label = $ActionStatusLabel
+@onready var battle_result_panel: PanelContainer = $BattleResultPanel
+@onready var battle_result_title: Label = $BattleResultPanel/ResultMargin/ResultVBox/ResultTitle
+@onready var battle_result_detail: Label = $BattleResultPanel/ResultMargin/ResultVBox/ResultDetail
 
 @onready var attack_button: Button = (
 	$MainMargin/MainVBox/ActionRow/AttackButton
@@ -238,6 +245,13 @@ func _start_new_battle() -> void:
 	if action_tween != null and action_tween.is_valid():
 		action_tween.kill()
 	action_tween = null
+	# กด Restart ระหว่างแผงผล Fade ก็ต้องหยุด Tween และซ่อนแผงทันที
+	if battle_result_tween != null and battle_result_tween.is_valid():
+		battle_result_tween.kill()
+	battle_result_tween = null
+	battle_result_panel.hide()
+	battle_result_panel.modulate.a = 1.0
+
 	# ล้าง Cue ที่เกาะกับ NPC เมื่อ Restart ระหว่างเดินทางหรือรับ Hit
 	_clear_npc_intents()
 	action_in_progress = false
@@ -280,6 +294,7 @@ func _start_new_battle() -> void:
 	player_is_defending = false
 	npc_guard_bonus = 0
 	battle_is_over = false
+	battle_result_player_won = false
 	turn_number = 1
 
 	# เปิดปุ่มการกระทำอีกครั้ง
@@ -401,6 +416,7 @@ func _finish_player_attack() -> void:
 	action_tween = null
 
 	if battle_is_over:
+		_show_battle_result()
 		action_in_progress = false
 		return
 
@@ -712,6 +728,7 @@ func _finish_npc_action() -> void:
 
 	if battle_is_over:
 		_clear_npc_intents()
+		_show_battle_result()
 		action_in_progress = false
 		return
 
@@ -874,12 +891,16 @@ func _finish_enemy_counteraction() -> void:
 	player_sprite.position = player_sprite_base_position
 	action_tween = null
 	action_in_progress = false
-	turn_number += 1
 
-	if not battle_is_over:
-		_set_action_status("รอบที่ %d · เลือกคำสั่ง" % turn_number)
-		attack_button.disabled = false
-		defend_button.disabled = false
+	if battle_is_over:
+		# เมื่อแพ้ ใช้หมายเลขรอบที่ HP หมดจริง ไม่ใช่รอบถัดไป
+		_show_battle_result()
+		return
+
+	turn_number += 1
+	_set_action_status("รอบที่ %d · เลือกคำสั่ง" % turn_number)
+	attack_button.disabled = false
+	defend_button.disabled = false
 
 
 # -----------------------------------------------------------------------------
@@ -1027,8 +1048,36 @@ func _add_log(message: String) -> void:
 # -----------------------------------------------------------------------------
 # จบการต่อสู้
 # -----------------------------------------------------------------------------
+func _show_battle_result() -> void:
+	# เรียกเฉพาะตอน Action สุดท้ายกลับ Formation แล้ว ไม่ทับช่วง Hit
+	if not battle_is_over or battle_result_panel.visible:
+		return
+
+	battle_result_title.text = "ชัยชนะ" if battle_result_player_won else "พ่ายแพ้"
+	if battle_result_player_won:
+		battle_result_title.add_theme_color_override(
+			"font_color", Color(0.96, 0.85, 0.55, 1.0)
+		)
+	else:
+		battle_result_title.add_theme_color_override(
+			"font_color", Color(1.0, 0.64, 0.60, 1.0)
+		)
+	battle_result_detail.text = "รอบที่ %d · Player HP %d/%d · Enemy HP %d/%d" % [
+		turn_number, player_hp, PLAYER_MAX_HP, enemy_hp, ENEMY_MAX_HP
+	]
+	battle_result_panel.modulate.a = 0.0
+	battle_result_panel.show()
+	battle_result_tween = _pace_tween(create_tween())
+	battle_result_tween.tween_property(
+		battle_result_panel, "modulate:a", 1.0, 0.22
+	)
+
+
 func _end_battle(player_won: bool) -> void:
+	if battle_is_over:
+		return
 	battle_is_over = true
+	battle_result_player_won = player_won
 	npc_guard_bonus = 0
 
 	# ปิดปุ่มโจมตีและตั้งรับ แต่ยังคงเปิดปุ่มเริ่มใหม่ไว้
