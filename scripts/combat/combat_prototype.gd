@@ -41,6 +41,11 @@ const ENEMY_DAMAGE_COLOR: Color = Color(1.0, 0.78, 0.42, 1.0)
 const PLAYER_DAMAGE_COLOR: Color = Color(1.0, 0.48, 0.48, 1.0)
 const DEFEND_DAMAGE_COLOR: Color = Color(0.53, 0.84, 1.0, 1.0)
 
+# M1.5C-04: ขยายตัวผู้ลงมือเล็กน้อย และบีบ-ขยายเป้าหมายเมื่อถูกปะทะ
+# ปรับขนาดที่ Sprite เท่านั้น ไม่เปลี่ยน Root, Contact Shadow หรือระยะพุ่ง
+const ACTIVE_SPRITE_SCALE_FACTOR: float = 1.07
+const IMPACT_SPRITE_SQUASH: Vector2 = Vector2(1.10, 0.90)
+
 
 # -----------------------------------------------------------------------------
 # ตัวแปรสถานะปัจจุบันของการต่อสู้
@@ -63,6 +68,8 @@ var action_in_progress: bool = false
 var action_tween: Tween
 var player_home: Vector2
 var enemy_home: Vector2
+var player_sprite_base_scale: Vector2
+var enemy_sprite_base_scale: Vector2
 
 # เก็บ Feedback ที่ยังแสดงอยู่ เพื่อให้ Restart ล้างได้อย่างปลอดภัย
 var damage_popups: Array[Label] = []
@@ -120,6 +127,8 @@ func _ready() -> void:
 	# จดตำแหน่งที่จัดฉากไว้ เพื่อให้ทุก Action กลับเข้ากลุ่มเดิมได้
 	player_home = player_root.position
 	enemy_home = enemy_root.position
+	player_sprite_base_scale = player_sprite.scale
+	enemy_sprite_base_scale = enemy_sprite.scale
 
 	# เริ่มการต่อสู้รอบแรก
 	_start_new_battle()
@@ -138,6 +147,8 @@ func _start_new_battle() -> void:
 	enemy_root.position = enemy_home
 	player_sprite.modulate = Color.WHITE
 	enemy_sprite.modulate = Color.WHITE
+	player_sprite.scale = player_sprite_base_scale
+	enemy_sprite.scale = enemy_sprite_base_scale
 
 	# ล้างตัวเลข Damage และ HP Flash ที่อาจยังแสดงอยู่ตอน Restart
 	for popup in damage_popups:
@@ -201,6 +212,11 @@ func _on_attack_button_pressed() -> void:
 	action_tween.parallel().tween_property(
 		player_sprite, "modulate", Color(1.25, 1.15, 1.05, 1.0), ATTACK_LUNGE_TIME
 	)
+	# Player ชัดขึ้นในฐานะ Active Character ขณะพุ่งโจมตี
+	action_tween.parallel().tween_property(
+		player_sprite, "scale", player_sprite_base_scale * ACTIVE_SPRITE_SCALE_FACTOR,
+		ATTACK_LUNGE_TIME
+	)
 
 	# เมื่อ Player ก้าวถึงจุดโจมตี จึงหัก HP และแสดง Hit Feedback
 	action_tween.tween_callback(_apply_player_hit)
@@ -209,6 +225,11 @@ func _on_attack_button_pressed() -> void:
 	)
 	action_tween.parallel().tween_property(
 		enemy_sprite, "modulate", Color(1.0, 0.55, 0.55, 1.0), ENEMY_HIT_TIME
+	)
+	# Impact Punch ของเป้าหมายใช้ทิศทางกว้าง-เตี้ย แทนการย้าย Root เพิ่ม
+	action_tween.parallel().tween_property(
+		enemy_sprite, "scale", enemy_sprite_base_scale * IMPACT_SPRITE_SQUASH,
+		ENEMY_HIT_TIME
 	)
 
 	# ค้าง Hit Pose สั้น ๆ ให้ตาเห็นการปะทะ ก่อนถอยกลับเข้าที่
@@ -219,6 +240,12 @@ func _on_attack_button_pressed() -> void:
 	action_tween.parallel().tween_property(enemy_sprite, "modulate", Color.WHITE, ATTACK_RETURN_TIME)
 	action_tween.parallel().tween_property(player_root, "position", player_home, ATTACK_RETURN_TIME)
 	action_tween.parallel().tween_property(player_sprite, "modulate", Color.WHITE, ATTACK_RETURN_TIME)
+	action_tween.parallel().tween_property(
+		player_sprite, "scale", player_sprite_base_scale, ATTACK_RETURN_TIME
+	)
+	action_tween.parallel().tween_property(
+		enemy_sprite, "scale", enemy_sprite_base_scale, ATTACK_RETURN_TIME
+	)
 	action_tween.tween_callback(_finish_player_attack)
 
 
@@ -240,11 +267,13 @@ func _apply_player_hit() -> void:
 
 
 func _finish_player_attack() -> void:
-	# คงตำแหน่งเดิม แม้การโจมตีครั้งนี้กำจัดศัตรูได้
+	# คงตำแหน่งและขนาดเดิม แม้การโจมตีครั้งนี้กำจัดศัตรูได้
 	player_root.position = player_home
 	enemy_root.position = enemy_home
 	player_sprite.modulate = Color.WHITE
 	enemy_sprite.modulate = Color.WHITE
+	player_sprite.scale = player_sprite_base_scale
+	enemy_sprite.scale = enemy_sprite_base_scale
 	action_tween = null
 
 	if battle_is_over:
@@ -300,6 +329,11 @@ func _start_enemy_counteraction() -> void:
 		enemy_sprite, "modulate", Color(1.25, 0.95, 0.80, 1.0),
 		ENEMY_COUNTER_LUNGE_TIME
 	)
+	# Enemy เป็น Active Character ระหว่าง Counteraction
+	action_tween.parallel().tween_property(
+		enemy_sprite, "scale", enemy_sprite_base_scale * ACTIVE_SPRITE_SCALE_FACTOR,
+		ENEMY_COUNTER_LUNGE_TIME
+	)
 
 	# ลด HP หลังศัตรูพุ่งถึงจุดโต้กลับ ไม่หัก HP ทันทีตอนเริ่มเทิร์น
 	action_tween.tween_callback(_apply_enemy_hit)
@@ -309,6 +343,11 @@ func _start_enemy_counteraction() -> void:
 	)
 	action_tween.parallel().tween_property(
 		player_sprite, "modulate", hit_color, PLAYER_HIT_TIME
+	)
+	# Player มีปฏิกิริยาต่อแรงกระแทก ไม่ว่าจะโดนโจมตีปกติหรือตั้งรับ
+	action_tween.parallel().tween_property(
+		player_sprite, "scale", player_sprite_base_scale * IMPACT_SPRITE_SQUASH,
+		PLAYER_HIT_TIME
 	)
 	action_tween.tween_interval(ENEMY_COUNTER_HOLD_TIME)
 
@@ -324,6 +363,12 @@ func _start_enemy_counteraction() -> void:
 	)
 	action_tween.parallel().tween_property(
 		player_sprite, "modulate", Color.WHITE, ENEMY_COUNTER_RETURN_TIME
+	)
+	action_tween.parallel().tween_property(
+		enemy_sprite, "scale", enemy_sprite_base_scale, ENEMY_COUNTER_RETURN_TIME
+	)
+	action_tween.parallel().tween_property(
+		player_sprite, "scale", player_sprite_base_scale, ENEMY_COUNTER_RETURN_TIME
 	)
 	action_tween.tween_callback(_finish_enemy_counteraction)
 
@@ -375,11 +420,13 @@ func _apply_enemy_hit() -> void:
 
 
 func _finish_enemy_counteraction() -> void:
-	# คืนตำแหน่งก่อนเปิดการเล่นรอบต่อไป หรือหลังแพ้
+	# คืนตำแหน่งและขนาดก่อนเปิดการเล่นรอบต่อไป หรือหลังแพ้
 	enemy_root.position = enemy_home
 	player_root.position = player_home
 	enemy_sprite.modulate = Color.WHITE
 	player_sprite.modulate = Color.WHITE
+	enemy_sprite.scale = enemy_sprite_base_scale
+	player_sprite.scale = player_sprite_base_scale
 	action_tween = null
 	action_in_progress = false
 	turn_number += 1
