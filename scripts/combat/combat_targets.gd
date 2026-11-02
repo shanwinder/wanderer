@@ -1,8 +1,9 @@
 extends RefCounted
 
 # M1.6B-01: รายชื่อเป้าหมายฝ่ายศัตรู แยกจาก UI และ Animation
-# ยังลงทะเบียน Enemy A เพียงตัวเดียว; ศัตรูใหม่สามารถเพิ่มด้วย register_enemy()
+# ลงทะเบียนศัตรู 2 ตัวที่มี ID ต่างกัน
 const ENEMY_A_ID: String = "enemy_a"
+const ENEMY_B_ID: String = "enemy_b"
 const PLAYER_ID: String = "player"
 
 var _enemies: Array[Dictionary] = []
@@ -33,6 +34,21 @@ func available_enemy_targets() -> Array[Dictionary]:
 	return targets
 
 
+func available_enemy_ids() -> Array[String]:
+	var ids: Array[String] = []
+	for enemy in _enemies:
+		if bool(enemy["alive"]):
+			ids.append(String(enemy["id"]))
+	return ids
+
+
+func first_available_enemy_id() -> String:
+	var ids: Array[String] = available_enemy_ids()
+	if ids.is_empty():
+		return ""
+	return ids[0]
+
+
 func is_enemy_available(enemy_id: String) -> bool:
 	for enemy in _enemies:
 		if String(enemy["id"]) == enemy_id:
@@ -58,5 +74,5 @@ func mark_enemy_defeated(enemy_id: String) -> void:
 		if String(enemy["id"]) == enemy_id:
 			enemy["alive"] = false
 			if _selected_enemy_id == enemy_id:
-				_selected_enemy_id = ""
+				_selected_enemy_id = first_available_enemy_id()
 			return
