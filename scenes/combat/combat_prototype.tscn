@@ -84,7 +84,7 @@ polygon = PackedVector2Array(0, 343, 1280, 343, 1280, 350, 0, 350)
 y_sort_enabled = true
 
 [node name="Npc1Root" type="Node2D" parent="Battlefield" unique_id=167162357]
-position = Vector2(280, 480)
+position = Vector2(320, 480)
 
 [node name="Npc1Shadow" type="Polygon2D" parent="Battlefield/Npc1Root"]
 position = Vector2(0, -4)
@@ -115,7 +115,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="Npc2Root" type="Node2D" parent="Battlefield" unique_id=81900588]
-position = Vector2(385, 435)
+position = Vector2(405, 435)
 
 
 [node name="Npc2Shadow" type="Polygon2D" parent="Battlefield/Npc2Root"]
@@ -130,7 +130,7 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("5_npc2")
 
 [node name="Npc3Root" type="Node2D" parent="Battlefield" unique_id=229338228]
-position = Vector2(465, 509)
+position = Vector2(475, 509)
 
 
 [node name="Npc3Shadow" type="Polygon2D" parent="Battlefield/Npc3Root"]
