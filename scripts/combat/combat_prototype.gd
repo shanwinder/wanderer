@@ -35,6 +35,9 @@ const ENEMY_RECOIL_DISTANCE: float = 18.0
 const ENEMY_HIT_TIME: float = 0.14
 const HIT_HOLD_TIME: float = 0.08
 const PLAYER_HIT_RECOIL_DISTANCE: float = 14.0
+# M1.5E-05: เมื่อ Player หรือ NPC2 ช่วย Guard ให้สะดุ้งน้อยกว่ารับ Hit ปกติ
+const GUARDED_HIT_RECOIL_DISTANCE: float = 5.0
+const GUARDED_HIT_SQUASH: Vector2 = Vector2(1.01, 0.99)
 const PLAYER_HIT_TIME: float = 0.14
 const ENEMY_COUNTER_HOLD_TIME: float = 0.08
 
@@ -703,10 +706,16 @@ func _start_enemy_counteraction() -> void:
 	attack_button.disabled = true
 	defend_button.disabled = true
 
-	# เลือกสี Hit Feedback ก่อนคำนวณ Damage เพราะสถานะ Defend จะถูกรีเซ็ต
+	# แช่สถานะก่อน Enemy ตี: ทั้ง Player Defend และ NPC2 GUARD มีการรับ Hit แบบเบา
+	# (_apply_enemy_hit จะใช้สถานะ Guard แล้วรีเซ็ต bonus เหล่านี้ตอนคำนวณ)
+	var guarded_hit: bool = player_is_defending or npc_guard_bonus > 0
 	var hit_color: Color = Color(1.0, 0.55, 0.55, 1.0)
-	if player_is_defending:
-		hit_color = Color(0.75, 0.88, 1.0, 1.0)
+	var recoil_distance: float = PLAYER_HIT_RECOIL_DISTANCE
+	var hit_squash: Vector2 = IMPACT_SPRITE_SQUASH
+	if guarded_hit:
+		hit_color = DEFEND_DAMAGE_COLOR
+		recoil_distance = GUARDED_HIT_RECOIL_DISTANCE
+		hit_squash = GUARDED_HIT_SQUASH
 
 	action_tween = create_tween()
 	action_tween.set_trans(Tween.TRANS_SINE)
@@ -729,7 +738,7 @@ func _start_enemy_counteraction() -> void:
 	_queue_attack_pose(enemy_sprite, enemy_sprite_base_position, -1.0)
 	action_tween.tween_callback(_apply_enemy_hit)
 	action_tween.tween_property(
-		player_root, "position", player_home + Vector2(-PLAYER_HIT_RECOIL_DISTANCE, 0),
+		player_root, "position", player_home + Vector2(-recoil_distance, 0),
 		PLAYER_HIT_TIME
 	)
 	action_tween.parallel().tween_property(
@@ -738,9 +747,9 @@ func _start_enemy_counteraction() -> void:
 	action_tween.parallel().tween_property(
 		player_sprite, "modulate", hit_color, PLAYER_HIT_TIME
 	)
-	# Player มีปฏิกิริยาต่อแรงกระแทก ไม่ว่าจะโดนโจมตีปกติหรือตั้งรับ
+	# Guard รับแรงกระแทกน้อยกว่า Hit ปกติ โดยไม่ย้ายเป้าหมายเข้าหา Enemy
 	action_tween.parallel().tween_property(
-		player_sprite, "scale", player_sprite_base_scale * IMPACT_SPRITE_SQUASH,
+		player_sprite, "scale", player_sprite_base_scale * hit_squash,
 		PLAYER_HIT_TIME
 	)
 	action_tween.tween_interval(ENEMY_COUNTER_HOLD_TIME)
@@ -815,7 +824,9 @@ func _apply_enemy_hit() -> void:
 		player_root.position, actual_damage, feedback_color,
 		was_defending or guard_blocked > 0
 	)
-	_show_hit_spark(player_root.position + HIT_SPARK_PLAYER_OFFSET, feedback_color)
+	# ตอน Guard ไม่มี Spark โจมตีซ้ำ; เล่าแรงปะทะผ่าน Recoil เบาและตัวเลขสีฟ้า
+	if not was_defending and guard_blocked == 0:
+		_show_hit_spark(player_root.position + HIT_SPARK_PLAYER_OFFSET, feedback_color)
 	_flash_hp_label(player_label, feedback_color, true)
 	_add_log("")
 
