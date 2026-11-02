@@ -46,6 +46,13 @@ const DEFEND_DAMAGE_COLOR: Color = Color(0.53, 0.84, 1.0, 1.0)
 const ACTIVE_SPRITE_SCALE_FACTOR: float = 1.03
 const IMPACT_SPRITE_SQUASH: Vector2 = Vector2(1.04, 0.96)
 
+# M1.5C-05: Pixel-style Hit Spark แบบ Polygon สั้น ๆ (ไม่ต้องมี Texture)
+const HIT_SPARK_DURATION: float = 0.22
+const HIT_SPARK_START_SCALE: float = 0.8
+const HIT_SPARK_END_SCALE: float = 1.15
+const HIT_SPARK_ENEMY_OFFSET: Vector2 = Vector2(-55, -70)
+const HIT_SPARK_PLAYER_OFFSET: Vector2 = Vector2(45, -72)
+
 
 # -----------------------------------------------------------------------------
 # ตัวแปรสถานะปัจจุบันของการต่อสู้
@@ -73,6 +80,7 @@ var enemy_sprite_base_scale: Vector2
 
 # เก็บ Feedback ที่ยังแสดงอยู่ เพื่อให้ Restart ล้างได้อย่างปลอดภัย
 var damage_popups: Array[Label] = []
+var hit_sparks: Array[Polygon2D] = []
 var player_hp_flash_tween: Tween
 var enemy_hp_flash_tween: Tween
 
@@ -155,6 +163,11 @@ func _start_new_battle() -> void:
 		if is_instance_valid(popup):
 			popup.queue_free()
 	damage_popups.clear()
+	# Hit Spark ต้องหายไปทันทีเมื่อ Restart แม้กำลัง Fade อยู่
+	for spark in hit_sparks:
+		if is_instance_valid(spark):
+			spark.queue_free()
+	hit_sparks.clear()
 	if player_hp_flash_tween != null and player_hp_flash_tween.is_valid():
 		player_hp_flash_tween.kill()
 	if enemy_hp_flash_tween != null and enemy_hp_flash_tween.is_valid():
@@ -259,6 +272,7 @@ func _apply_player_hit() -> void:
 	)
 	_update_ui()
 	_show_floating_damage(enemy_home, actual_damage, ENEMY_DAMAGE_COLOR)
+	_show_hit_spark(enemy_root.position + HIT_SPARK_ENEMY_OFFSET, ENEMY_DAMAGE_COLOR)
 	_flash_hp_label(enemy_a_label, ENEMY_DAMAGE_COLOR, false)
 
 	# ศัตรูที่ HP หมดยังรับ Hit Feedback ก่อน Motion จบ แต่ไม่สวนกลับ
@@ -411,6 +425,7 @@ func _apply_enemy_hit() -> void:
 	if was_defending:
 		feedback_color = DEFEND_DAMAGE_COLOR
 	_show_floating_damage(player_home, actual_damage, feedback_color, was_defending)
+	_show_hit_spark(player_root.position + HIT_SPARK_PLAYER_OFFSET, feedback_color)
 	_flash_hp_label(player_label, feedback_color, true)
 	_add_log("")
 
@@ -456,6 +471,45 @@ func _update_ui() -> void:
 		enemy_hp,
 		ENEMY_MAX_HP
 	]
+
+
+# -----------------------------------------------------------------------------
+# Hit Spark: แสงปะทะทรงพิกเซลขนาดเล็ก ไม่เพิ่มการยืดตัวของ Sprite
+# -----------------------------------------------------------------------------
+func _show_hit_spark(hit_position: Vector2, spark_color: Color) -> void:
+	var spark: Polygon2D = Polygon2D.new()
+	spark.polygon = PackedVector2Array([
+		Vector2(-3, -17), Vector2(3, -17),
+		Vector2(3, -4), Vector2(17, -4),
+		Vector2(17, 4), Vector2(3, 4),
+		Vector2(3, 17), Vector2(-3, 17),
+		Vector2(-3, 4), Vector2(-17, 4),
+		Vector2(-17, -4), Vector2(-3, -4)
+	])
+	spark.color = spark_color
+	spark.position = hit_position
+	spark.scale = Vector2.ONE * HIT_SPARK_START_SCALE
+	spark.z_index = 9
+	battlefield.add_child(spark)
+	hit_sparks.append(spark)
+
+	# Tween ผูกกับ Polygon: เมื่อ Restart ลบ Effect แล้ว Motion หยุดตาม
+	var effect_tween: Tween = create_tween().bind_node(spark)
+	effect_tween.set_trans(Tween.TRANS_SINE)
+	effect_tween.set_ease(Tween.EASE_OUT)
+	effect_tween.tween_property(
+		spark, "scale", Vector2.ONE * HIT_SPARK_END_SCALE, HIT_SPARK_DURATION
+	)
+	effect_tween.parallel().tween_property(
+		spark, "modulate:a", 0.0, HIT_SPARK_DURATION
+	)
+	effect_tween.tween_callback(_finish_hit_spark.bind(spark))
+
+
+func _finish_hit_spark(spark: Polygon2D) -> void:
+	hit_sparks.erase(spark)
+	if is_instance_valid(spark):
+		spark.queue_free()
 
 
 # -----------------------------------------------------------------------------
