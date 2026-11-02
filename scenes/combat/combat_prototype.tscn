@@ -171,6 +171,21 @@ position = Vector2(0, -53)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("7_enemy1")
 
+[node name="EnemyBRoot" type="Node2D" parent="Battlefield"]
+position = Vector2(1100, 424)
+
+[node name="EnemyBShadow" type="Polygon2D" parent="Battlefield/EnemyBRoot"]
+position = Vector2(0, -4)
+color = Color(0.035, 0.029, 0.023, 0.42)
+polygon = PackedVector2Array(-50, 0, -42, -4, -23, -7, 0, -8, 23, -7, 42, -4, 50, 0, 42, 4, 23, 7, 0, 8, -23, 7, -42, 4)
+
+[node name="EnemyB" type="Sprite2D" parent="Battlefield/EnemyBRoot"]
+texture_filter = 1
+position = Vector2(0, -48)
+scale = Vector2(2.1, 2.1)
+modulate = Color(0.80, 0.88, 1.0, 1)
+texture = ExtResource("7_enemy1")
+
 [node name="ForegroundLeft" type="Polygon2D" parent="."]
 color = Color(0.143, 0.129, 0.114, 1)
 polygon = PackedVector2Array(0, 478, 23, 468, 52, 476, 69, 492, 55, 509, 84, 535, 0, 535)
@@ -235,7 +250,7 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.88, 0.91, 0.90, 1)
 theme_override_font_sizes/font_size = 15
-text = "รอบที่ 1 · Player HP 30/30 · Enemy HP 0/15"
+text = "รอบที่ 1 · Player HP 30/30\nEnemy A 0/15 · Enemy B 0/12"
 horizontal_alignment = 1
 
 [node name="ResultHint" type="Label" parent="BattleResultPanel/ResultMargin/ResultVBox"]
@@ -308,9 +323,8 @@ layout_mode = 2
 text = "Enemy A HP: 15 / 15"
 
 [node name="EnemyBLabel" type="Label" parent="MainMargin/MainVBox/BattleRow/EnemiesPanel" unique_id=705654534]
-visible = false
 layout_mode = 2
-text = "Enemy B — not included in this test"
+text = "Enemy B HP: 12 / 12"
 
 [node name="CombatLog" type="RichTextLabel" parent="MainMargin/MainVBox" unique_id=2102754491]
 custom_minimum_size = Vector2(0, 28)
