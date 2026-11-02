@@ -326,6 +326,15 @@ layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
+[node name="TargetLabel" type="Label" parent="MainMargin/MainVBox/ActionRow"]
+layout_mode = 2
+text = "เป้าหมาย"
+
+[node name="TargetPicker" type="OptionButton" parent="MainMargin/MainVBox/ActionRow"]
+custom_minimum_size = Vector2(148, 38)
+layout_mode = 2
+tooltip_text = "เลือกเป้าหมายสำหรับการโจมตี"
+
 [node name="AttackButton" type="Button" parent="MainMargin/MainVBox/ActionRow" unique_id=45462366]
 custom_minimum_size = Vector2(150, 38)
 layout_mode = 2
