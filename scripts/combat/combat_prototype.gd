@@ -14,11 +14,13 @@ const PLAYER_MAX_HP: int = 30
 const ENEMY_MAX_HP: int = 15
 
 const PLAYER_ATTACK_DAMAGE: int = 5
+# M1.5D-03: NPC ทำ Damage ต่ำแบบกำหนดตายตัวก่อนมี AI/สกิลจริง
+const NPC_ATTACK_DAMAGE: int = 1
 const ENEMY_ATTACK_DAMAGE: int = 3
 const DEFEND_REDUCTION: int = 2
 
 # M1.5C: ระยะเคลื่อนที่ใช้หน่วยเป็นพิกเซล ส่วนเวลาของ Tween ใช้หน่วยเป็นวินาที
-# ตัวละครทุกฝ่ายไปแสดง Action ที่ Marker2D: Battlefield/ActionStage
+# ตัวละครทุกฝ่ายไปแสดง Action ที่พิกัดกลางสนามเดียวกัน
 const ENEMY_RECOIL_DISTANCE: float = 18.0
 
 # แยกเวลาของแต่ละจังหวะไว้ให้ปรับความเร็วได้โดยไม่แตะระบบ HP
@@ -64,6 +66,7 @@ const NPC_STAGE_MAX_APPROACH_TIME: float = 0.60
 const NPC_STAGE_MIN_RETURN_TIME: float = 0.22
 const NPC_STAGE_MAX_RETURN_TIME: float = 0.42
 const NPC_STAGE_HOLD_TIME: float = 0.10
+const NPC_ATTACK_HIT_TIME: float = 0.14
 const NPC_ACTIVE_TINT: Color = Color(1.12, 1.08, 1.02, 1.0)
 
 
@@ -364,7 +367,7 @@ func _on_defend_button_pressed() -> void:
 
 
 # -----------------------------------------------------------------------------
-# M1.5D-01: ทดลองลำดับเทิร์น NPC1 -> NPC2 -> NPC3 (Presentation only)
+# M1.5D-03: NPC1 -> NPC2 -> NPC3 เคลื่อนมาที่ Action Stage แล้วโจมตีจริง
 # -----------------------------------------------------------------------------
 func _start_npc_turns() -> void:
 	if battle_is_over:
@@ -400,7 +403,7 @@ func _start_next_npc_action() -> void:
 		distance / NPC_STAGE_RETURN_SPEED,
 		NPC_STAGE_MIN_RETURN_TIME, NPC_STAGE_MAX_RETURN_TIME
 	)
-	_add_log("NPC%d ออก Action ที่กลางสนาม (ทดลอง ยังไม่มี Damage)" % (npc_action_index + 1))
+	_add_log("NPC%d เตรียมโจมตี Enemy A" % (npc_action_index + 1))
 
 	action_tween = create_tween()
 	action_tween.set_trans(Tween.TRANS_SINE)
@@ -410,21 +413,76 @@ func _start_next_npc_action() -> void:
 	action_tween.parallel().tween_property(
 		current_sprite, "modulate", NPC_ACTIVE_TINT, approach_time
 	)
+	# เมื่อ NPC ถึงเวทีกลาง ให้ชะลอจังหวะก่อนลงมือหนึ่งครั้ง
 	action_tween.tween_interval(NPC_STAGE_HOLD_TIME)
+	action_tween.tween_callback(_apply_npc_hit)
+	action_tween.tween_property(
+		enemy_root, "position", enemy_home + Vector2(ENEMY_RECOIL_DISTANCE, 0),
+		NPC_ATTACK_HIT_TIME
+	)
+	action_tween.parallel().tween_property(
+		enemy_sprite, "modulate", Color(1.0, 0.55, 0.55, 1.0),
+		NPC_ATTACK_HIT_TIME
+	)
+	action_tween.parallel().tween_property(
+		enemy_sprite, "scale", enemy_sprite_base_scale * IMPACT_SPRITE_SQUASH,
+		NPC_ATTACK_HIT_TIME
+	)
+
+	# คืนทั้งผู้ลงมือและศัตรูพร้อมกัน หลังเอฟเฟกต์ปะทะเสร็จ
 	action_tween.tween_property(
 		current_root, "position", home, return_time
 	)
 	action_tween.parallel().tween_property(
 		current_sprite, "modulate", original_tint, return_time
 	)
+	action_tween.parallel().tween_property(
+		enemy_root, "position", enemy_home, return_time
+	)
+	action_tween.parallel().tween_property(
+		enemy_sprite, "modulate", Color.WHITE, return_time
+	)
+	action_tween.parallel().tween_property(
+		enemy_sprite, "scale", enemy_sprite_base_scale, return_time
+	)
 	action_tween.tween_callback(_finish_npc_action)
 
 
+func _apply_npc_hit() -> void:
+	# NPC ยังไม่มี AI: โจมตีเป้าหมายเดียวด้วย Damage คงที่
+	if battle_is_over or enemy_hp <= 0:
+		return
+
+	var previous_hp: int = enemy_hp
+	enemy_hp = maxi(enemy_hp - NPC_ATTACK_DAMAGE, 0)
+	var actual_damage: int = previous_hp - enemy_hp
+	_add_log("NPC%d โจมตี Enemy A สร้างความเสียหาย %d หน่วย" % [
+		npc_action_index + 1, actual_damage
+	])
+	_update_ui()
+	_show_floating_damage(enemy_home, actual_damage, ENEMY_DAMAGE_COLOR)
+	_show_hit_spark(enemy_root.position + HIT_SPARK_ENEMY_OFFSET, ENEMY_DAMAGE_COLOR)
+	_flash_hp_label(enemy_a_label, ENEMY_DAMAGE_COLOR, false)
+
+	# ถ้าการโจมตีของ NPC ปิดฉาก ให้ Finish Motion ได้ แต่ห้าม NPC ถัดไป
+	# และห้าม Enemy ออก Action อีก
+	if enemy_hp <= 0:
+		_end_battle(true)
+
+
 func _finish_npc_action() -> void:
-	# คืนตำแหน่ง NPC อย่างแม่นยำเพื่อไม่ให้ Formation คลาดเคลื่อน
+	# คืนตำแหน่งและรูปทรงทุกฝ่ายก่อนข้ามไปคิวต่อไป
 	npc_roots[npc_action_index].position = npc_home_positions[npc_action_index]
 	npc_sprites[npc_action_index].modulate = npc_home_tints[npc_action_index]
+	enemy_root.position = enemy_home
+	enemy_sprite.modulate = Color.WHITE
+	enemy_sprite.scale = enemy_sprite_base_scale
 	action_tween = null
+
+	if battle_is_over:
+		action_in_progress = false
+		return
+
 	npc_action_index += 1
 	_start_next_npc_action()
 
