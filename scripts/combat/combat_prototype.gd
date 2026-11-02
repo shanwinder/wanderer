@@ -143,6 +143,7 @@ var enemy_hp_flash_tween: Tween
 @onready var combat_log: RichTextLabel = (
 	$MainMargin/MainVBox/CombatLog
 )
+@onready var action_status_label: Label = $ActionStatusLabel
 
 @onready var attack_button: Button = (
 	$MainMargin/MainVBox/ActionRow/AttackButton
@@ -280,6 +281,9 @@ func _start_new_battle() -> void:
 	_add_log("กด 'ตั้งรับ' เพื่อลดความเสียหายจากศัตรู")
 	_add_log("")
 
+	# แสดงสถานะพร้อมรับคำสั่งหลัง Reset โดยไม่เพิ่ม Animation หรือเวลารอ
+	_set_action_status("รอบที่ %d · เลือกคำสั่ง" % turn_number)
+
 	# อัปเดตตัวเลขบนหน้าจอ
 	_update_ui()
 
@@ -297,6 +301,7 @@ func _on_attack_button_pressed() -> void:
 	defend_button.disabled = true
 	player_is_defending = false
 	_add_log("--- รอบที่ %d ---" % turn_number)
+	_set_action_status("รอบที่ %d · Player: ATK" % turn_number)
 
 	# Tween เป็นเพียง Presentation; ความเสียหายยังใช้ค่าเดิม
 	action_tween = create_tween()
@@ -406,6 +411,7 @@ func _on_defend_button_pressed() -> void:
 	# ระบบ Defend และกฎตัดสินใจของ NPC2 ยังคงเหมือนเดิม
 	player_is_defending = true
 	_add_log("Player ตั้งรับ เตรียมลดความเสียหายจาก Enemy A")
+	_set_action_status("รอบที่ %d · Player: GUARD" % turn_number)
 
 	# ท่าตั้งรับไม่เคลื่อน Root หรือ Shadow และไม่สร้างเอฟเฟกต์ใหม่
 	action_tween = create_tween()
@@ -520,6 +526,9 @@ func _start_next_npc_action() -> void:
 
 	# ใช้ Intent ที่คำนวณไว้ตอนเริ่ม NPC phase ไม่ตัดสินใจระหว่าง Animation
 	var intent: String = npc_planned_intents[npc_action_index]
+	_set_action_status("รอบที่ %d · NPC%d: %s" % [
+		turn_number, npc_action_index + 1, intent
+	])
 	var is_attack: bool = intent == NPC_INTENT_ATTACK
 	npc_intent_labels[npc_action_index].add_theme_color_override(
 		"font_color", NPC_INTENT_ACTIVE_COLOR
@@ -702,6 +711,7 @@ func _start_enemy_counteraction() -> void:
 	if battle_is_over:
 		return
 
+	_set_action_status("รอบที่ %d · Enemy A: ATK" % turn_number)
 	action_in_progress = true
 	attack_button.disabled = true
 	defend_button.disabled = true
@@ -851,6 +861,7 @@ func _finish_enemy_counteraction() -> void:
 	turn_number += 1
 
 	if not battle_is_over:
+		_set_action_status("รอบที่ %d · เลือกคำสั่ง" % turn_number)
 		attack_button.disabled = false
 		defend_button.disabled = false
 
@@ -989,6 +1000,10 @@ func _flash_hp_label(label: Label, color: Color, is_player: bool) -> void:
 # -----------------------------------------------------------------------------
 # เพิ่มข้อความลงใน Combat Log
 # -----------------------------------------------------------------------------
+func _set_action_status(message: String) -> void:
+	action_status_label.text = message
+
+
 func _add_log(message: String) -> void:
 	combat_log.append_text(message + "\n")
 
@@ -1007,8 +1022,10 @@ func _end_battle(player_won: bool) -> void:
 	_add_log("")
 
 	if player_won:
+		_set_action_status("จบการต่อสู้ · ชนะ")
 		_add_log("=== Enemy A ถูกกำจัด — คุณชนะ ===")
 	else:
+		_set_action_status("จบการต่อสู้ · แพ้")
 		_add_log("=== Player พ่ายแพ้ — การต่อสู้สิ้นสุด ===")
 
 	_add_log("กด 'เริ่มใหม่' เพื่อทดลองอีกครั้ง")
