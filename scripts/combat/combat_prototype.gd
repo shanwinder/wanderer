@@ -1,5 +1,7 @@
 extends Control
 
+const CombatTurnFlow = preload("res://scripts/combat/combat_turn_flow.gd")
+
 # 1.0 = จังหวะเดิม, 0.70 = Motion/Feedback ใช้เวลานานขึ้นประมาณ 43%
 # ใช้ค่ากลางเดียวกันทุก Tween เพื่อปรับความเร็วในการทดลองได้จาก Inspector
 @export_range(0.45, 1.0, 0.05) var combat_speed_scale: float = 0.70
@@ -109,6 +111,9 @@ var battle_is_over: bool = false
 # ใช้แสดงหมายเลขรอบใน Combat Log
 var turn_number: int = 1
 
+# แยกการวางแผนคิวเทิร์นออกจาก Animation และผลลัพธ์ของการโจมตี
+var turn_flow = CombatTurnFlow.new()
+
 # ล็อกคำสั่งระหว่าง Motion ทั้งสองฝ่าย เพื่อไม่ให้ HP คลาดเคลื่อน
 var action_in_progress: bool = false
 var action_tween: Tween
@@ -127,7 +132,6 @@ var npc_home_tints: Array[Color] = []
 var npc_sprite_base_positions: Array[Vector2] = []
 var npc_action_index: int = 0
 var npc_guard_bonus: int = 0
-var npc_planned_intents: Array[String] = []
 var npc_intent_labels: Array[Label] = []
 
 # เก็บ Feedback ที่ยังแสดงอยู่ เพื่อให้ Restart ล้างได้อย่างปลอดภัย
@@ -252,6 +256,8 @@ func _start_new_battle() -> void:
 	battle_result_panel.hide()
 	battle_result_panel.modulate.a = 1.0
 
+	# ยกเลิกคิวเก่าแม้ Restart ตอนกำลังออก Action หรือรอจังหวะส่งต่อ
+	turn_flow.reset()
 	# ล้าง Cue ที่เกาะกับ NPC เมื่อ Restart ระหว่างเดินทางหรือรับ Hit
 	_clear_npc_intents()
 	action_in_progress = false
@@ -327,8 +333,13 @@ func _on_attack_button_pressed() -> void:
 	attack_button.disabled = true
 	defend_button.disabled = true
 	player_is_defending = false
+	# วางแผนทั้งรอบไว้ล่วงหน้า แล้วให้ Player ใช้ Action แรก
+	turn_flow.plan_round(false, npc_roots.size())
+	var player_action: Dictionary = turn_flow.take_next_action()
 	_add_log("--- รอบที่ %d ---" % turn_number)
-	_set_action_status("รอบที่ %d · Player: ATK" % turn_number)
+	_set_action_status("รอบที่ %d · Player: %s" % [
+		turn_number, String(player_action["intent"])
+	])
 
 	# Tween เป็นเพียง Presentation; ความเสียหายยังใช้ค่าเดิม
 	action_tween = _pace_tween(create_tween())
@@ -439,8 +450,12 @@ func _on_defend_button_pressed() -> void:
 
 	# ระบบ Defend และกฎตัดสินใจของ NPC2 ยังคงเหมือนเดิม
 	player_is_defending = true
+	turn_flow.plan_round(true, npc_roots.size())
+	var player_action: Dictionary = turn_flow.take_next_action()
 	_add_log("Player ตั้งรับ เตรียมลดความเสียหายจาก Enemy A")
-	_set_action_status("รอบที่ %d · Player: GUARD" % turn_number)
+	_set_action_status("รอบที่ %d · Player: %s" % [
+		turn_number, String(player_action["intent"])
+	])
 
 	# ท่าตั้งรับไม่เคลื่อน Root หรือ Shadow และไม่สร้างเอฟเฟกต์ใหม่
 	action_tween = _pace_tween(create_tween())
@@ -510,11 +525,9 @@ func _start_npc_turns() -> void:
 func _prepare_npc_intents() -> void:
 	_clear_npc_intents()
 	for i in range(npc_roots.size()):
-		# NPC2 ป้องกันเมื่อ Player เลือกโจมตี; ถ้า Player ตั้งรับอยู่แล้วให้ช่วยโจมตี
-		var intent: String = NPC_INTENT_ATTACK
-		if i == 1 and not player_is_defending:
-			intent = NPC_INTENT_GUARD
-		npc_planned_intents.append(intent)
+		# Intent อ่านจาก Turn Flow ที่วางแผนไว้ตอน Player เลือกคำสั่ง
+		# ไม่ให้ Animation ตัดสินใจ ATK/GUARD แยกซ้ำอีกที่หนึ่ง
+		var intent: String = turn_flow.npc_intent_at(i)
 
 		# Label เป็นลูกของ Root จึงเดินทางติดไปกับตัว NPC อัตโนมัติ
 		var cue: Label = Label.new()
@@ -541,21 +554,27 @@ func _clear_npc_intents() -> void:
 		if is_instance_valid(cue):
 			cue.queue_free()
 	npc_intent_labels.clear()
-	npc_planned_intents.clear()
 
 
 func _start_next_npc_action() -> void:
 	if battle_is_over:
 		return
 
-	# เมื่อ NPC ทั้งสามคนจบเทิร์นจึงเข้าสู่การโต้กลับของศัตรู
-	if npc_action_index >= npc_roots.size():
+	# Turn Flow เลือกว่าเป็น NPC คนถัดไปหรือ Enemy โดยไม่ขึ้นกับ Tween
+	var next_action: Dictionary = turn_flow.take_next_action()
+	if next_action.is_empty():
+		push_error("Combat Turn Flow: ไม่มี Action ถัดไปหลัง NPC")
+		return
+	if next_action["actor"] == CombatTurnFlow.ACTOR_ENEMY:
 		_clear_npc_intents()
 		_start_enemy_counteraction()
 		return
+	if next_action["actor"] != CombatTurnFlow.ACTOR_NPC:
+		push_error("Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง")
+		return
 
-	# ใช้ Intent ที่คำนวณไว้ตอนเริ่ม NPC phase ไม่ตัดสินใจระหว่าง Animation
-	var intent: String = npc_planned_intents[npc_action_index]
+	npc_action_index = int(next_action["actor_index"])
+	var intent: String = String(next_action["intent"])
 	_set_action_status("รอบที่ %d · NPC%d: %s" % [
 		turn_number, npc_action_index + 1, intent
 	])
@@ -732,7 +751,6 @@ func _finish_npc_action() -> void:
 		action_in_progress = false
 		return
 
-	npc_action_index += 1
 	_start_next_npc_action()
 
 
@@ -897,6 +915,7 @@ func _finish_enemy_counteraction() -> void:
 		_show_battle_result()
 		return
 
+	turn_flow.reset()
 	turn_number += 1
 	_set_action_status("รอบที่ %d · เลือกคำสั่ง" % turn_number)
 	attack_button.disabled = false
@@ -1078,6 +1097,8 @@ func _end_battle(player_won: bool) -> void:
 		return
 	battle_is_over = true
 	battle_result_player_won = player_won
+	# เมื่อใครสักคนแพ้ ห้าม Action ที่วางแผนไว้แล้วออกต่อ
+	turn_flow.reset()
 	npc_guard_bonus = 0
 
 	# ปิดปุ่มโจมตีและตั้งรับ แต่ยังคงเปิดปุ่มเริ่มใหม่ไว้
