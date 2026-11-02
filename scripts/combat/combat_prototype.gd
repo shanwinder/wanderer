@@ -43,8 +43,8 @@ const DEFEND_DAMAGE_COLOR: Color = Color(0.53, 0.84, 1.0, 1.0)
 
 # M1.5C-04: ขยายตัวผู้ลงมือเล็กน้อย และบีบ-ขยายเป้าหมายเมื่อถูกปะทะ
 # ปรับขนาดที่ Sprite เท่านั้น ไม่เปลี่ยน Root, Contact Shadow หรือระยะพุ่ง
-const ACTIVE_SPRITE_SCALE_FACTOR: float = 1.07
-const IMPACT_SPRITE_SQUASH: Vector2 = Vector2(1.10, 0.90)
+const ACTIVE_SPRITE_SCALE_FACTOR: float = 1.03
+const IMPACT_SPRITE_SQUASH: Vector2 = Vector2(1.04, 0.96)
 
 
 # -----------------------------------------------------------------------------
