@@ -76,6 +76,9 @@ const NPC_ACTIVE_TINT: Color = Color(1.12, 1.08, 1.02, 1.0)
 # M1.5D-05: เจตนาของ NPC ถูกวางไว้ล่วงหน้าก่อน Resolve Action
 # ขณะนี้ทุกคนเป็น ATK แบบ deterministic (ยังไม่เพิ่ม AI หรือเปลี่ยน Damage)
 const NPC_INTENT_ATTACK: String = "ATK"
+const NPC_INTENT_GUARD: String = "GUARD"
+const NPC_GUARD_REDUCTION: int = 1
+const NPC_GUARD_ACTIVE_TINT: Color = Color(0.76, 0.90, 1.0, 1.0)
 const NPC_INTENT_QUEUED_COLOR: Color = Color(0.72, 0.82, 0.80, 0.95)
 const NPC_INTENT_ACTIVE_COLOR: Color = Color(1.0, 0.85, 0.55, 1.0)
 
@@ -110,6 +113,7 @@ var npc_sprites: Array[Sprite2D] = []
 var npc_home_positions: Array[Vector2] = []
 var npc_home_tints: Array[Color] = []
 var npc_action_index: int = 0
+var npc_guard_bonus: int = 0
 var npc_planned_intents: Array[String] = []
 var npc_intent_labels: Array[Label] = []
 
@@ -258,6 +262,7 @@ func _start_new_battle() -> void:
 	player_hp = PLAYER_MAX_HP
 	enemy_hp = ENEMY_MAX_HP
 	player_is_defending = false
+	npc_guard_bonus = 0
 	battle_is_over = false
 	turn_number = 1
 
@@ -414,11 +419,15 @@ func _start_npc_turns() -> void:
 func _prepare_npc_intents() -> void:
 	_clear_npc_intents()
 	for i in range(npc_roots.size()):
-		npc_planned_intents.append(NPC_INTENT_ATTACK)
+		# NPC2 ป้องกันเมื่อ Player เลือกโจมตี; ถ้า Player ตั้งรับอยู่แล้วให้ช่วยโจมตี
+		var intent: String = NPC_INTENT_ATTACK
+		if i == 1 and not player_is_defending:
+			intent = NPC_INTENT_GUARD
+		npc_planned_intents.append(intent)
 
 		# Label เป็นลูกของ Root จึงเดินทางติดไปกับตัว NPC อัตโนมัติ
 		var cue: Label = Label.new()
-		cue.text = NPC_INTENT_ATTACK
+		cue.text = intent
 		cue.size = Vector2(88, 25)
 		cue.position = Vector2(-44, -121)
 		cue.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -433,6 +442,7 @@ func _prepare_npc_intents() -> void:
 		cue.add_theme_constant_override("outline_size", 4)
 		npc_roots[i].add_child(cue)
 		npc_intent_labels.append(cue)
+
 
 
 func _clear_npc_intents() -> void:
@@ -453,8 +463,9 @@ func _start_next_npc_action() -> void:
 		_start_enemy_counteraction()
 		return
 
-	# NPC ที่กำลังออก Action ใช้สีทอง; NPC ที่ยังรอคิวมีสีอ่อน
+	# ใช้ Intent ที่คำนวณไว้ตอนเริ่ม NPC phase ไม่ตัดสินใจระหว่าง Animation
 	var intent: String = npc_planned_intents[npc_action_index]
+	var is_attack: bool = intent == NPC_INTENT_ATTACK
 	npc_intent_labels[npc_action_index].add_theme_color_override(
 		"font_color", NPC_INTENT_ACTIVE_COLOR
 	)
@@ -473,7 +484,13 @@ func _start_next_npc_action() -> void:
 		distance / NPC_STAGE_RETURN_SPEED,
 		NPC_STAGE_MIN_RETURN_TIME, NPC_STAGE_MAX_RETURN_TIME
 	)
-	_add_log("NPC%d ตั้งใจ %s: Enemy A" % [npc_action_index + 1, intent])
+	var action_tint: Color = NPC_ACTIVE_TINT
+	if not is_attack:
+		action_tint = NPC_GUARD_ACTIVE_TINT
+	if is_attack:
+		_add_log("NPC%d ตั้งใจ %s: Enemy A" % [npc_action_index + 1, intent])
+	else:
+		_add_log("NPC%d ตั้งใจ %s: ป้องกัน Player" % [npc_action_index + 1, intent])
 
 	action_tween = create_tween()
 	action_tween.set_trans(Tween.TRANS_SINE)
@@ -481,45 +498,102 @@ func _start_next_npc_action() -> void:
 		current_root, "position", stage_position, approach_time
 	).set_ease(Tween.EASE_OUT)
 	action_tween.parallel().tween_property(
-		current_sprite, "modulate", NPC_ACTIVE_TINT, approach_time
+		current_sprite, "modulate", action_tint, approach_time
 	)
-	# NPC เข้า ActionStage พร้อมกับดึง Enemy มาจุดรับการโจมตี
-	action_tween.parallel().tween_property(
-		enemy_root, "position", _enemy_target_stage_position(), TARGET_STAGE_ARRIVAL_TIME
-	).set_ease(Tween.EASE_OUT)
-	# เมื่อ NPC ถึงเวทีกลาง ให้ชะลอจังหวะก่อนลงมือหนึ่งครั้ง
-	action_tween.tween_interval(NPC_STAGE_HOLD_TIME)
-	action_tween.tween_callback(_apply_npc_hit)
-	action_tween.tween_property(
-		enemy_root, "position", _enemy_target_stage_position() + Vector2(ENEMY_RECOIL_DISTANCE, 0),
-		NPC_ATTACK_HIT_TIME
-	)
-	action_tween.parallel().tween_property(
-		enemy_sprite, "modulate", Color(1.0, 0.55, 0.55, 1.0),
-		NPC_ATTACK_HIT_TIME
-	)
-	action_tween.parallel().tween_property(
-		enemy_sprite, "scale", enemy_sprite_base_scale * IMPACT_SPRITE_SQUASH,
-		NPC_ATTACK_HIT_TIME
-	)
+	if is_attack:
+		# เข้าจุดปะทะเฉพาะเมื่อโจมตี ไม่ดึง Enemy มารับ Hit ปลอมในเทิร์น GUARD
+		action_tween.parallel().tween_property(
+			enemy_root, "position", _enemy_target_stage_position(), TARGET_STAGE_ARRIVAL_TIME
+		).set_ease(Tween.EASE_OUT)
 
-	# คืนทั้งผู้ลงมือและศัตรูพร้อมกัน หลังเอฟเฟกต์ปะทะเสร็จ
+	action_tween.tween_interval(NPC_STAGE_HOLD_TIME)
+	if is_attack:
+		action_tween.tween_callback(_apply_npc_hit)
+		action_tween.tween_property(
+			enemy_root, "position", _enemy_target_stage_position() + Vector2(ENEMY_RECOIL_DISTANCE, 0),
+			NPC_ATTACK_HIT_TIME
+		)
+		action_tween.parallel().tween_property(
+			enemy_sprite, "modulate", Color(1.0, 0.55, 0.55, 1.0),
+			NPC_ATTACK_HIT_TIME
+		)
+		action_tween.parallel().tween_property(
+			enemy_sprite, "scale", enemy_sprite_base_scale * IMPACT_SPRITE_SQUASH,
+			NPC_ATTACK_HIT_TIME
+		)
+	else:
+		# GUARD ไม่มี Damage และไม่มี Hit Spark ให้ Enemy; แสดงสีป้องกันที่ Player
+		action_tween.tween_callback(_apply_npc_guard)
+		action_tween.tween_property(
+			player_sprite, "modulate", DEFEND_DAMAGE_COLOR, NPC_ATTACK_HIT_TIME
+		)
+
+	# ทั้งสอง Action ใช้ช่วงกลับเท่ากัน ไม่เพิ่มการรอเทิร์น NPC
 	action_tween.tween_property(
 		current_root, "position", home, return_time
 	)
 	action_tween.parallel().tween_property(
 		current_sprite, "modulate", original_tint, return_time
 	)
-	action_tween.parallel().tween_property(
-		enemy_root, "position", enemy_home, return_time
-	)
-	action_tween.parallel().tween_property(
-		enemy_sprite, "modulate", Color.WHITE, return_time
-	)
-	action_tween.parallel().tween_property(
-		enemy_sprite, "scale", enemy_sprite_base_scale, return_time
-	)
+	if is_attack:
+		action_tween.parallel().tween_property(
+			enemy_root, "position", enemy_home, return_time
+		)
+		action_tween.parallel().tween_property(
+			enemy_sprite, "modulate", Color.WHITE, return_time
+		)
+		action_tween.parallel().tween_property(
+			enemy_sprite, "scale", enemy_sprite_base_scale, return_time
+		)
+	else:
+		action_tween.parallel().tween_property(
+			player_sprite, "modulate", Color.WHITE, return_time
+		)
 	action_tween.tween_callback(_finish_npc_action)
+
+
+
+func _apply_npc_guard() -> void:
+	if battle_is_over:
+		return
+	# Guard เก็บไว้ถึง Enemy counteraction รอบนี้เท่านั้น
+	npc_guard_bonus = NPC_GUARD_REDUCTION
+	_add_log("NPC%d ป้องกัน Player: ลดความเสียหายจาก Enemy รอบนี้ %d" % [
+		npc_action_index + 1, npc_guard_bonus
+	])
+	_show_npc_guard_feedback()
+
+
+func _show_npc_guard_feedback() -> void:
+	# ใช้ระบบ popup เดิมเพื่อให้ Restart ลบ Cue ป้องกันได้พร้อม Damage
+	var popup: Label = Label.new()
+	popup.text = "SHIELD +%d" % npc_guard_bonus
+	popup.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	popup.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	popup.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	popup.size = Vector2(156, 32)
+	popup.position = player_home + Vector2(-78, -155)
+	popup.z_index = 10
+	popup.add_theme_font_size_override("font_size", 20)
+	popup.add_theme_color_override("font_color", DEFEND_DAMAGE_COLOR)
+	popup.add_theme_color_override(
+		"font_outline_color", Color(0.06, 0.06, 0.06, 0.95)
+	)
+	popup.add_theme_constant_override("outline_size", 5)
+	battlefield.add_child(popup)
+	damage_popups.append(popup)
+
+	var float_tween: Tween = create_tween().bind_node(popup)
+	float_tween.set_trans(Tween.TRANS_SINE)
+	float_tween.set_ease(Tween.EASE_OUT)
+	float_tween.tween_property(
+		popup, "position", popup.position + Vector2(0, -DAMAGE_FLOAT_HEIGHT),
+		DAMAGE_FLOAT_TIME
+	)
+	float_tween.parallel().tween_property(
+		popup, "modulate:a", 0.0, DAMAGE_FLOAT_TIME - 0.12
+	).set_delay(0.12)
+	float_tween.tween_callback(_finish_damage_popup.bind(popup))
 
 
 func _apply_npc_hit() -> void:
@@ -548,6 +622,7 @@ func _finish_npc_action() -> void:
 	# คืนตำแหน่งและรูปทรงทุกฝ่ายก่อนข้ามไปคิวต่อไป
 	npc_roots[npc_action_index].position = npc_home_positions[npc_action_index]
 	npc_sprites[npc_action_index].modulate = npc_home_tints[npc_action_index]
+	player_sprite.modulate = Color.WHITE
 	# ปิด Cue ของคนที่ออก Action เสร็จแล้ว (เหลือเฉพาะผู้รอคิว)
 	npc_intent_labels[npc_action_index].hide()
 	enemy_root.position = enemy_home
@@ -655,6 +730,13 @@ func _apply_enemy_hit() -> void:
 		if damage < 1:
 			damage = 1
 
+	# NPC2 Guard ใช้ได้กับการโต้กลับครั้งเดียว และไม่ลดต่ำกว่า 1
+	var guard_blocked: int = mini(npc_guard_bonus, maxi(damage - 1, 0))
+	damage = maxi(1, damage - npc_guard_bonus)
+	npc_guard_bonus = 0
+	if guard_blocked > 0:
+		_add_log("NPC2 ช่วยลดความเสียหายที่ Player ได้รับ %d หน่วย" % guard_blocked)
+
 	# ลด HP ของผู้เล่น
 	player_hp -= damage
 
@@ -673,9 +755,12 @@ func _apply_enemy_hit() -> void:
 	_update_ui()
 	var actual_damage: int = previous_hp - player_hp
 	var feedback_color: Color = PLAYER_DAMAGE_COLOR
-	if was_defending:
+	if was_defending or guard_blocked > 0:
 		feedback_color = DEFEND_DAMAGE_COLOR
-	_show_floating_damage(player_root.position, actual_damage, feedback_color, was_defending)
+	_show_floating_damage(
+		player_root.position, actual_damage, feedback_color,
+		was_defending or guard_blocked > 0
+	)
 	_show_hit_spark(player_root.position + HIT_SPARK_PLAYER_OFFSET, feedback_color)
 	_flash_hp_label(player_label, feedback_color, true)
 	_add_log("")
@@ -845,6 +930,7 @@ func _add_log(message: String) -> void:
 # -----------------------------------------------------------------------------
 func _end_battle(player_won: bool) -> void:
 	battle_is_over = true
+	npc_guard_bonus = 0
 
 	# ปิดปุ่มโจมตีและตั้งรับ แต่ยังคงเปิดปุ่มเริ่มใหม่ไว้
 	attack_button.disabled = true
