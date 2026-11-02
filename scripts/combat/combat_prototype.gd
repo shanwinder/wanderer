@@ -14,8 +14,7 @@ const ENEMY_ATTACK_DAMAGE: int = 3
 const DEFEND_REDUCTION: int = 2
 
 # M1.5C: ระยะเคลื่อนที่ใช้หน่วยเป็นพิกเซล ส่วนเวลาของ Tween ใช้หน่วยเป็นวินาที
-# Player พุ่งไปครึ่งหนึ่งของระยะ X ระหว่างจุดยืน Player กับ Enemy
-const ATTACK_APPROACH_RATIO: float = 0.5
+# ตัวละครทุกฝ่ายไปแสดง Action ที่ Marker2D: Battlefield/ActionStage
 const ENEMY_RECOIL_DISTANCE: float = 18.0
 
 # แยกเวลาของแต่ละจังหวะไว้ให้ปรับความเร็วได้โดยไม่แตะระบบ HP
@@ -25,8 +24,7 @@ const HIT_HOLD_TIME: float = 0.08
 const ATTACK_RETURN_TIME: float = 0.34
 
 # M1.5C-02: จังหวะโต้กลับของ Enemy A
-# พุ่งไปยังจุดกึ่งกลางเดียวกับที่ Player ใช้ โดยคำนวณจากตำแหน่งจริง
-const ENEMY_COUNTER_APPROACH_RATIO: float = 0.5
+# Enemy A เคลื่อนมาที่ ActionStage เช่นเดียวกับสมาชิกปาร์ตี้
 const ENEMY_COUNTER_LUNGE_TIME: float = 0.42
 const PLAYER_HIT_RECOIL_DISTANCE: float = 14.0
 const PLAYER_HIT_TIME: float = 0.14
@@ -53,12 +51,15 @@ const HIT_SPARK_END_SCALE: float = 1.15
 const HIT_SPARK_ENEMY_OFFSET: Vector2 = Vector2(-55, -70)
 const HIT_SPARK_PLAYER_OFFSET: Vector2 = Vector2(45, -72)
 
-# M1.5D-01: NPC แต่ละคนออกท่าสั้น ๆ ต่อกันก่อน Enemy โต้กลับ
-# ยังไม่ส่งผลต่อ HP หรือเพิ่ม AI เพื่อใช้วัดความชัดเจนและ Pacing เทิร์น
-const NPC_STEP_DISTANCE: float = 42.0
-const NPC_STEP_OUT_TIME: float = 0.16
-const NPC_STEP_HOLD_TIME: float = 0.05
-const NPC_STEP_RETURN_TIME: float = 0.16
+# M1.5D-02: NPC ทั้งสามไปยัง ActionStage เดียวกัน ไม่ว่าจุดเริ่มอยู่ที่ใด
+# ระยะไกลใช้เวลามากขึ้นเล็กน้อย แทนการพุ่ง 400px ใน 0.16 วินาที
+const NPC_STAGE_APPROACH_SPEED: float = 1300.0
+const NPC_STAGE_RETURN_SPEED: float = 1800.0
+const NPC_STAGE_MIN_APPROACH_TIME: float = 0.26
+const NPC_STAGE_MAX_APPROACH_TIME: float = 0.48
+const NPC_STAGE_MIN_RETURN_TIME: float = 0.18
+const NPC_STAGE_MAX_RETURN_TIME: float = 0.32
+const NPC_STAGE_HOLD_TIME: float = 0.10
 const NPC_ACTIVE_TINT: Color = Color(1.12, 1.08, 1.02, 1.0)
 
 
@@ -135,6 +136,7 @@ var enemy_hp_flash_tween: Tween
 @onready var player_sprite: AnimatedSprite2D = $Battlefield/PlayerRoot/Player
 @onready var enemy_sprite: Sprite2D = $Battlefield/EnemyARoot/EnemyA
 @onready var battlefield: Node2D = $Battlefield
+@onready var action_stage: Marker2D = $Battlefield/ActionStage
 @onready var npc1_root: Node2D = $Battlefield/Npc1Root
 @onready var npc2_root: Node2D = $Battlefield/Npc2Root
 @onready var npc3_root: Node2D = $Battlefield/Npc3Root
@@ -168,6 +170,13 @@ func _ready() -> void:
 
 	# เริ่มการต่อสู้รอบแรก
 	_start_new_battle()
+
+
+# -----------------------------------------------------------------------------
+# จุดแสดง Action กลางสนาม ปรับพิกัดได้จาก Marker2D ใน Scene
+# -----------------------------------------------------------------------------
+func _action_stage_position() -> Vector2:
+	return action_stage.position
 
 
 # -----------------------------------------------------------------------------
@@ -249,10 +258,7 @@ func _on_attack_button_pressed() -> void:
 	action_tween = create_tween()
 	action_tween.set_trans(Tween.TRANS_SINE)
 	action_tween.tween_property(
-		player_root, "position", Vector2(
-			player_home.x + (enemy_home.x - player_home.x) * ATTACK_APPROACH_RATIO,
-			player_home.y
-		), ATTACK_LUNGE_TIME
+		player_root, "position", _action_stage_position(), ATTACK_LUNGE_TIME
 	).set_ease(Tween.EASE_OUT)
 	action_tween.parallel().tween_property(
 		player_sprite, "modulate", Color(1.25, 1.15, 1.05, 1.0), ATTACK_LUNGE_TIME
@@ -374,23 +380,32 @@ func _start_next_npc_action() -> void:
 	var current_sprite: Sprite2D = npc_sprites[npc_action_index]
 	var home: Vector2 = npc_home_positions[npc_action_index]
 	var original_tint: Color = npc_home_tints[npc_action_index]
-	_add_log("NPC%d ขยับเตรียมสนับสนุน (ทดลอง Action ยังไม่มี Damage)" % (npc_action_index + 1))
+	var stage_position: Vector2 = _action_stage_position()
+	var distance: float = home.distance_to(stage_position)
+	var approach_time: float = clampf(
+		distance / NPC_STAGE_APPROACH_SPEED,
+		NPC_STAGE_MIN_APPROACH_TIME, NPC_STAGE_MAX_APPROACH_TIME
+	)
+	var return_time: float = clampf(
+		distance / NPC_STAGE_RETURN_SPEED,
+		NPC_STAGE_MIN_RETURN_TIME, NPC_STAGE_MAX_RETURN_TIME
+	)
+	_add_log("NPC%d ออก Action ที่กลางสนาม (ทดลอง ยังไม่มี Damage)" % (npc_action_index + 1))
 
 	action_tween = create_tween()
 	action_tween.set_trans(Tween.TRANS_SINE)
 	action_tween.tween_property(
-		current_root, "position", home + Vector2(NPC_STEP_DISTANCE, 0),
-		NPC_STEP_OUT_TIME
+		current_root, "position", stage_position, approach_time
 	).set_ease(Tween.EASE_OUT)
 	action_tween.parallel().tween_property(
-		current_sprite, "modulate", NPC_ACTIVE_TINT, NPC_STEP_OUT_TIME
+		current_sprite, "modulate", NPC_ACTIVE_TINT, approach_time
 	)
-	action_tween.tween_interval(NPC_STEP_HOLD_TIME)
+	action_tween.tween_interval(NPC_STAGE_HOLD_TIME)
 	action_tween.tween_property(
-		current_root, "position", home, NPC_STEP_RETURN_TIME
+		current_root, "position", home, return_time
 	)
 	action_tween.parallel().tween_property(
-		current_sprite, "modulate", original_tint, NPC_STEP_RETURN_TIME
+		current_sprite, "modulate", original_tint, return_time
 	)
 	action_tween.tween_callback(_finish_npc_action)
 
@@ -423,10 +438,7 @@ func _start_enemy_counteraction() -> void:
 	action_tween = create_tween()
 	action_tween.set_trans(Tween.TRANS_SINE)
 	action_tween.tween_property(
-		enemy_root, "position", Vector2(
-			enemy_home.x + (player_home.x - enemy_home.x) * ENEMY_COUNTER_APPROACH_RATIO,
-			enemy_home.y
-		), ENEMY_COUNTER_LUNGE_TIME
+		enemy_root, "position", _action_stage_position(), ENEMY_COUNTER_LUNGE_TIME
 	).set_ease(Tween.EASE_OUT)
 	action_tween.parallel().tween_property(
 		enemy_sprite, "modulate", Color(1.25, 0.95, 0.80, 1.0),
