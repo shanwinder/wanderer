@@ -33,6 +33,14 @@ const PLAYER_HIT_TIME: float = 0.14
 const ENEMY_COUNTER_HOLD_TIME: float = 0.08
 const ENEMY_COUNTER_RETURN_TIME: float = 0.38
 
+# M1.5C-03: Floating Damage และการกระพริบค่า HP
+const DAMAGE_FLOAT_TIME: float = 0.85
+const DAMAGE_FLOAT_HEIGHT: float = 45.0
+const HP_FLASH_TIME: float = 0.50
+const ENEMY_DAMAGE_COLOR: Color = Color(1.0, 0.78, 0.42, 1.0)
+const PLAYER_DAMAGE_COLOR: Color = Color(1.0, 0.48, 0.48, 1.0)
+const DEFEND_DAMAGE_COLOR: Color = Color(0.53, 0.84, 1.0, 1.0)
+
 
 # -----------------------------------------------------------------------------
 # ตัวแปรสถานะปัจจุบันของการต่อสู้
@@ -55,6 +63,11 @@ var action_in_progress: bool = false
 var action_tween: Tween
 var player_home: Vector2
 var enemy_home: Vector2
+
+# เก็บ Feedback ที่ยังแสดงอยู่ เพื่อให้ Restart ล้างได้อย่างปลอดภัย
+var damage_popups: Array[Label] = []
+var player_hp_flash_tween: Tween
+var enemy_hp_flash_tween: Tween
 
 
 # -----------------------------------------------------------------------------
@@ -91,6 +104,7 @@ var enemy_home: Vector2
 @onready var enemy_root: Node2D = $Battlefield/EnemyARoot
 @onready var player_sprite: AnimatedSprite2D = $Battlefield/PlayerRoot/Player
 @onready var enemy_sprite: Sprite2D = $Battlefield/EnemyARoot/EnemyA
+@onready var battlefield: Node2D = $Battlefield
 
 
 # -----------------------------------------------------------------------------
@@ -124,6 +138,20 @@ func _start_new_battle() -> void:
 	enemy_root.position = enemy_home
 	player_sprite.modulate = Color.WHITE
 	enemy_sprite.modulate = Color.WHITE
+
+	# ล้างตัวเลข Damage และ HP Flash ที่อาจยังแสดงอยู่ตอน Restart
+	for popup in damage_popups:
+		if is_instance_valid(popup):
+			popup.queue_free()
+	damage_popups.clear()
+	if player_hp_flash_tween != null and player_hp_flash_tween.is_valid():
+		player_hp_flash_tween.kill()
+	if enemy_hp_flash_tween != null and enemy_hp_flash_tween.is_valid():
+		enemy_hp_flash_tween.kill()
+	player_hp_flash_tween = null
+	enemy_hp_flash_tween = null
+	player_label.modulate = Color.WHITE
+	enemy_a_label.modulate = Color.WHITE
 
 	# คืนค่าทุกอย่างกลับเป็นค่าเริ่มต้น
 	player_hp = PLAYER_MAX_HP
@@ -195,12 +223,16 @@ func _on_attack_button_pressed() -> void:
 
 
 func _apply_player_hit() -> void:
+	var previous_hp: int = enemy_hp
 	enemy_hp = maxi(enemy_hp - PLAYER_ATTACK_DAMAGE, 0)
+	var actual_damage: int = previous_hp - enemy_hp
 	_add_log(
 		"Player โจมตี Enemy A สร้างความเสียหาย %d หน่วย"
 		% PLAYER_ATTACK_DAMAGE
 	)
 	_update_ui()
+	_show_floating_damage(enemy_home, actual_damage, ENEMY_DAMAGE_COLOR)
+	_flash_hp_label(enemy_a_label, ENEMY_DAMAGE_COLOR, false)
 
 	# ศัตรูที่ HP หมดยังรับ Hit Feedback ก่อน Motion จบ แต่ไม่สวนกลับ
 	if enemy_hp <= 0:
@@ -300,6 +332,8 @@ func _start_enemy_counteraction() -> void:
 # คำนวณผลโต้กลับของศัตรู ณ จังหวะปะทะ
 # -----------------------------------------------------------------------------
 func _apply_enemy_hit() -> void:
+	var was_defending: bool = player_is_defending
+	var previous_hp: int = player_hp
 	# เริ่มจากความเสียหายปกติของศัตรู
 	var damage: int = ENEMY_ATTACK_DAMAGE
 
@@ -327,6 +361,12 @@ func _apply_enemy_hit() -> void:
 	player_is_defending = false
 
 	_update_ui()
+	var actual_damage: int = previous_hp - player_hp
+	var feedback_color: Color = PLAYER_DAMAGE_COLOR
+	if was_defending:
+		feedback_color = DEFEND_DAMAGE_COLOR
+	_show_floating_damage(player_home, actual_damage, feedback_color, was_defending)
+	_flash_hp_label(player_label, feedback_color, true)
 	_add_log("")
 
 	# หาก HP ผู้เล่นหมด ให้จบการต่อสู้
@@ -369,6 +409,76 @@ func _update_ui() -> void:
 		enemy_hp,
 		ENEMY_MAX_HP
 	]
+
+
+# -----------------------------------------------------------------------------
+# Floating Damage: โชว์เฉพาะความเสียหายจริงเหนือผู้ถูกโจมตี
+# -----------------------------------------------------------------------------
+func _show_floating_damage(
+	actor_home: Vector2,
+	damage: int,
+	damage_color: Color,
+	is_defending: bool = false
+) -> void:
+	if damage <= 0:
+		return
+
+	var popup: Label = Label.new()
+	popup.text = "-%d" % damage
+	if is_defending:
+		popup.text = "GUARD -%d" % damage
+	popup.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	popup.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	popup.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	popup.add_theme_font_size_override("font_size", 22)
+	popup.add_theme_color_override("font_color", damage_color)
+	popup.add_theme_color_override("font_outline_color", Color(0.06, 0.06, 0.06, 0.95))
+	popup.add_theme_constant_override("outline_size", 5)
+	popup.z_index = 10
+	battlefield.add_child(popup)
+
+	# อยู่เหนือหัวของ Actor แม้ Actor จะเคลื่อนที่ไปกลาง Action Area
+	popup.size = Vector2(128, 32)
+	popup.position = actor_home + Vector2(-64, -155)
+	damage_popups.append(popup)
+
+	# Tween ผูกกับ Label: เมื่อ Restart ลบ Label แล้ว Tween หยุดตาม
+	var float_tween: Tween = create_tween().bind_node(popup)
+	float_tween.set_trans(Tween.TRANS_SINE)
+	float_tween.set_ease(Tween.EASE_OUT)
+	float_tween.tween_property(
+		popup, "position", popup.position + Vector2(0, -DAMAGE_FLOAT_HEIGHT),
+		DAMAGE_FLOAT_TIME
+	)
+	float_tween.parallel().tween_property(
+		popup, "modulate:a", 0.0, DAMAGE_FLOAT_TIME - 0.12
+	).set_delay(0.12)
+	float_tween.tween_callback(_finish_damage_popup.bind(popup))
+
+
+func _finish_damage_popup(popup: Label) -> void:
+	damage_popups.erase(popup)
+	if is_instance_valid(popup):
+		popup.queue_free()
+
+
+# -----------------------------------------------------------------------------
+# HP Feedback: เน้นข้อความ HP แล้วค่อย ๆ กลับเป็นปกติ
+# -----------------------------------------------------------------------------
+func _flash_hp_label(label: Label, color: Color, is_player: bool) -> void:
+	var previous_tween: Tween = enemy_hp_flash_tween
+	if is_player:
+		previous_tween = player_hp_flash_tween
+	if previous_tween != null and previous_tween.is_valid():
+		previous_tween.kill()
+
+	label.modulate = color
+	var flash_tween: Tween = create_tween()
+	flash_tween.tween_property(label, "modulate", Color.WHITE, HP_FLASH_TIME)
+	if is_player:
+		player_hp_flash_tween = flash_tween
+	else:
+		enemy_hp_flash_tween = flash_tween
 
 
 # -----------------------------------------------------------------------------
