@@ -83,10 +83,6 @@ polygon = PackedVector2Array(0, 343, 1280, 343, 1280, 350, 0, 350)
 [node name="Battlefield" type="Node2D" parent="." unique_id=202512223]
 y_sort_enabled = true
 
-# Shared acting position; adjust this Marker2D in Godot to reframe every turn.
-[node name="ActionStage" type="Marker2D" parent="Battlefield"]
-position = Vector2(770, 485)
-
 [node name="Npc1Root" type="Node2D" parent="Battlefield" unique_id=167162357]
 position = Vector2(280, 480)
 
