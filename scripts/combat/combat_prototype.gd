@@ -73,6 +73,12 @@ const NPC_STAGE_HOLD_TIME: float = 0.10
 const NPC_ATTACK_HIT_TIME: float = 0.14
 const NPC_ACTIVE_TINT: Color = Color(1.12, 1.08, 1.02, 1.0)
 
+# M1.5D-05: เจตนาของ NPC ถูกวางไว้ล่วงหน้าก่อน Resolve Action
+# ขณะนี้ทุกคนเป็น ATK แบบ deterministic (ยังไม่เพิ่ม AI หรือเปลี่ยน Damage)
+const NPC_INTENT_ATTACK: String = "ATK"
+const NPC_INTENT_QUEUED_COLOR: Color = Color(0.72, 0.82, 0.80, 0.95)
+const NPC_INTENT_ACTIVE_COLOR: Color = Color(1.0, 0.85, 0.55, 1.0)
+
 
 # -----------------------------------------------------------------------------
 # ตัวแปรสถานะปัจจุบันของการต่อสู้
@@ -104,6 +110,8 @@ var npc_sprites: Array[Sprite2D] = []
 var npc_home_positions: Array[Vector2] = []
 var npc_home_tints: Array[Color] = []
 var npc_action_index: int = 0
+var npc_planned_intents: Array[String] = []
+var npc_intent_labels: Array[Label] = []
 
 # เก็บ Feedback ที่ยังแสดงอยู่ เพื่อให้ Restart ล้างได้อย่างปลอดภัย
 var damage_popups: Array[Label] = []
@@ -213,6 +221,8 @@ func _start_new_battle() -> void:
 	if action_tween != null and action_tween.is_valid():
 		action_tween.kill()
 	action_tween = null
+	# ล้าง Cue ที่เกาะกับ NPC เมื่อ Restart ระหว่างเดินทางหรือรับ Hit
+	_clear_npc_intents()
 	action_in_progress = false
 	player_root.position = player_home
 	enemy_root.position = enemy_home
@@ -396,7 +406,41 @@ func _start_npc_turns() -> void:
 	attack_button.disabled = true
 	defend_button.disabled = true
 	npc_action_index = 0
+	_prepare_npc_intents()
 	_start_next_npc_action()
+
+
+# เตรียม Intent ของทุก NPC ในรอบนี้ ก่อนให้ใครเริ่มเคลื่อนไหว
+func _prepare_npc_intents() -> void:
+	_clear_npc_intents()
+	for i in range(npc_roots.size()):
+		npc_planned_intents.append(NPC_INTENT_ATTACK)
+
+		# Label เป็นลูกของ Root จึงเดินทางติดไปกับตัว NPC อัตโนมัติ
+		var cue: Label = Label.new()
+		cue.text = NPC_INTENT_ATTACK
+		cue.size = Vector2(88, 25)
+		cue.position = Vector2(-44, -121)
+		cue.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		cue.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		cue.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		cue.z_index = 12
+		cue.add_theme_font_size_override("font_size", 15)
+		cue.add_theme_color_override("font_color", NPC_INTENT_QUEUED_COLOR)
+		cue.add_theme_color_override(
+			"font_outline_color", Color(0.06, 0.07, 0.07, 0.95)
+		)
+		cue.add_theme_constant_override("outline_size", 4)
+		npc_roots[i].add_child(cue)
+		npc_intent_labels.append(cue)
+
+
+func _clear_npc_intents() -> void:
+	for cue in npc_intent_labels:
+		if is_instance_valid(cue):
+			cue.queue_free()
+	npc_intent_labels.clear()
+	npc_planned_intents.clear()
 
 
 func _start_next_npc_action() -> void:
@@ -405,8 +449,15 @@ func _start_next_npc_action() -> void:
 
 	# เมื่อ NPC ทั้งสามคนจบเทิร์นจึงเข้าสู่การโต้กลับของศัตรู
 	if npc_action_index >= npc_roots.size():
+		_clear_npc_intents()
 		_start_enemy_counteraction()
 		return
+
+	# NPC ที่กำลังออก Action ใช้สีทอง; NPC ที่ยังรอคิวมีสีอ่อน
+	var intent: String = npc_planned_intents[npc_action_index]
+	npc_intent_labels[npc_action_index].add_theme_color_override(
+		"font_color", NPC_INTENT_ACTIVE_COLOR
+	)
 
 	var current_root: Node2D = npc_roots[npc_action_index]
 	var current_sprite: Sprite2D = npc_sprites[npc_action_index]
@@ -422,7 +473,7 @@ func _start_next_npc_action() -> void:
 		distance / NPC_STAGE_RETURN_SPEED,
 		NPC_STAGE_MIN_RETURN_TIME, NPC_STAGE_MAX_RETURN_TIME
 	)
-	_add_log("NPC%d เตรียมโจมตี Enemy A" % (npc_action_index + 1))
+	_add_log("NPC%d ตั้งใจ %s: Enemy A" % [npc_action_index + 1, intent])
 
 	action_tween = create_tween()
 	action_tween.set_trans(Tween.TRANS_SINE)
@@ -497,12 +548,15 @@ func _finish_npc_action() -> void:
 	# คืนตำแหน่งและรูปทรงทุกฝ่ายก่อนข้ามไปคิวต่อไป
 	npc_roots[npc_action_index].position = npc_home_positions[npc_action_index]
 	npc_sprites[npc_action_index].modulate = npc_home_tints[npc_action_index]
+	# ปิด Cue ของคนที่ออก Action เสร็จแล้ว (เหลือเฉพาะผู้รอคิว)
+	npc_intent_labels[npc_action_index].hide()
 	enemy_root.position = enemy_home
 	enemy_sprite.modulate = Color.WHITE
 	enemy_sprite.scale = enemy_sprite_base_scale
 	action_tween = null
 
 	if battle_is_over:
+		_clear_npc_intents()
 		action_in_progress = false
 		return
 
