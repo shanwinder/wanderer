@@ -61,6 +61,13 @@ const HIT_SPARK_END_SCALE: float = 1.15
 const HIT_SPARK_ENEMY_OFFSET: Vector2 = Vector2(-55, -70)
 const HIT_SPARK_PLAYER_OFFSET: Vector2 = Vector2(45, -72)
 
+# M1.5E-01: Projectile สั้น ๆ สำหรับเชื่อมจังหวะโจมตีจาก Action Stage
+# ยังเป็น Visual Prototype; แยกประเภทอาวุธและ Attack Animation จริงในภายหลัง
+const ATTACK_PROJECTILE_TRAVEL_TIME: float = 0.20
+const ATTACK_PROJECTILE_START_OFFSET: Vector2 = Vector2(36.0, -58.0)
+const ATTACK_PROJECTILE_ENEMY_OFFSET: Vector2 = Vector2(-62.0, -58.0)
+const ATTACK_PROJECTILE_COLOR: Color = Color(1.0, 0.82, 0.52, 1.0)
+
 # M1.5D-02: NPC ทั้งสามไปยัง ActionStage เดียวกัน ไม่ว่าจุดเริ่มอยู่ที่ใด
 # ระยะไกลใช้เวลามากขึ้นเล็กน้อย แทนการพุ่ง 400px ใน 0.16 วินาที
 const NPC_STAGE_APPROACH_SPEED: float = 1000.0
@@ -120,6 +127,7 @@ var npc_intent_labels: Array[Label] = []
 # เก็บ Feedback ที่ยังแสดงอยู่ เพื่อให้ Restart ล้างได้อย่างปลอดภัย
 var damage_popups: Array[Label] = []
 var hit_sparks: Array[Polygon2D] = []
+var attack_projectiles: Array[Polygon2D] = []
 var player_hp_flash_tween: Tween
 var enemy_hp_flash_tween: Tween
 
@@ -245,6 +253,12 @@ func _start_new_battle() -> void:
 		if is_instance_valid(spark):
 			spark.queue_free()
 	hit_sparks.clear()
+	# ยกเลิกเส้นทาง Projectile ค้างจาก Attack/NPC และลบ Node ของมัน
+	for projectile in attack_projectiles:
+		if is_instance_valid(projectile):
+			projectile.hide()
+			projectile.queue_free()
+	attack_projectiles.clear()
 	if player_hp_flash_tween != null and player_hp_flash_tween.is_valid():
 		player_hp_flash_tween.kill()
 	if enemy_hp_flash_tween != null and enemy_hp_flash_tween.is_valid():
@@ -291,6 +305,8 @@ func _on_attack_button_pressed() -> void:
 	player_is_defending = false
 	_add_log("--- รอบที่ %d ---" % turn_number)
 
+	# เตรียม Projectile ไว้แบบซ่อนก่อน แล้วปล่อยเมื่อ Player ถึง Action Stage
+	var projectile: Polygon2D = _create_attack_projectile()
 	# Tween เป็นเพียง Presentation; ความเสียหายยังใช้ค่าเดิม
 	action_tween = create_tween()
 	action_tween.set_trans(Tween.TRANS_SINE)
@@ -306,9 +322,13 @@ func _on_attack_button_pressed() -> void:
 		ATTACK_LUNGE_TIME
 	)
 
-	# Enemy A ยืนประจำ Formation ไม่ถูกลากเข้ามายัง ActionStage
-	# เมื่อ Player ก้าวถึงจุดโจมตี จึงหัก HP และแสดง Hit Feedback
+	# Enemy A ยืนประจำ Formation; Damage เกิดเมื่อ Projectile ไปถึงเป้าหมาย
+	action_tween.tween_callback(_launch_attack_projectile.bind(projectile))
+	action_tween.tween_property(
+		projectile, "position", _projectile_target_position(), ATTACK_PROJECTILE_TRAVEL_TIME
+	).set_trans(Tween.TRANS_LINEAR)
 	action_tween.tween_callback(_apply_player_hit)
+	action_tween.tween_callback(_finish_attack_projectile.bind(projectile))
 	action_tween.tween_property(
 		enemy_root, "position", enemy_home + Vector2(ENEMY_RECOIL_DISTANCE, 0),
 		ENEMY_HIT_TIME
@@ -477,6 +497,10 @@ func _start_next_npc_action() -> void:
 		NPC_STAGE_MIN_RETURN_TIME, NPC_STAGE_MAX_RETURN_TIME
 	)
 	var action_tint: Color = NPC_ACTIVE_TINT
+	# เฉพาะ Intent ATK เท่านั้นที่สร้าง Projectile; GUARD ไม่สร้างวัตถุโจมตี
+	var projectile: Polygon2D = null
+	if is_attack:
+		projectile = _create_attack_projectile()
 	if not is_attack:
 		action_tint = NPC_GUARD_ACTIVE_TINT
 	if is_attack:
@@ -495,7 +519,12 @@ func _start_next_npc_action() -> void:
 	# NPC ยังไป ActionStage แต่ Enemy A คงตำแหน่ง Formation ไว้
 	action_tween.tween_interval(NPC_STAGE_HOLD_TIME)
 	if is_attack:
+		action_tween.tween_callback(_launch_attack_projectile.bind(projectile))
+		action_tween.tween_property(
+			projectile, "position", _projectile_target_position(), ATTACK_PROJECTILE_TRAVEL_TIME
+		).set_trans(Tween.TRANS_LINEAR)
 		action_tween.tween_callback(_apply_npc_hit)
+		action_tween.tween_callback(_finish_attack_projectile.bind(projectile))
 		action_tween.tween_property(
 			enemy_root, "position", enemy_home + Vector2(ENEMY_RECOIL_DISTANCE, 0),
 			NPC_ATTACK_HIT_TIME
@@ -794,6 +823,50 @@ func _update_ui() -> void:
 		enemy_hp,
 		ENEMY_MAX_HP
 	]
+
+
+# -----------------------------------------------------------------------------
+# Attack Projectile: Visual travel cue ที่เชื่อม Action Stage กับ Enemy A
+# -----------------------------------------------------------------------------
+func _projectile_origin_position() -> Vector2:
+	return _action_stage_position() + ATTACK_PROJECTILE_START_OFFSET
+
+
+func _projectile_target_position() -> Vector2:
+	return enemy_home + ATTACK_PROJECTILE_ENEMY_OFFSET
+
+
+func _create_attack_projectile() -> Polygon2D:
+	var projectile: Polygon2D = Polygon2D.new()
+	# พิกเซลชิ้นเล็กเรียบ ๆ ไม่ใช่ลำแสงหรือวงแหวนขนาดใหญ่
+	projectile.polygon = PackedVector2Array([
+		Vector2(-9, -2), Vector2(6, -2), Vector2(10, 0),
+		Vector2(6, 2), Vector2(-9, 2)
+	])
+	projectile.color = ATTACK_PROJECTILE_COLOR
+	projectile.position = _projectile_origin_position()
+	projectile.rotation = (
+		_projectile_target_position() - projectile.position
+	).angle()
+	projectile.z_index = 8
+	projectile.visible = false
+	battlefield.add_child(projectile)
+	attack_projectiles.append(projectile)
+	return projectile
+
+
+func _launch_attack_projectile(projectile: Polygon2D) -> void:
+	if not is_instance_valid(projectile):
+		return
+	projectile.position = _projectile_origin_position()
+	projectile.visible = true
+
+
+func _finish_attack_projectile(projectile: Polygon2D) -> void:
+	attack_projectiles.erase(projectile)
+	if is_instance_valid(projectile):
+		projectile.hide()
+		projectile.queue_free()
 
 
 # -----------------------------------------------------------------------------
