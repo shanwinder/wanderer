@@ -15,6 +15,7 @@ const CombatTargets = preload("res://scripts/combat/combat_targets.gd")
 # ในต้นแบบนี้เรากำหนดตัวเลขไว้ตรง ๆ ก่อน เพื่อให้เข้าใจระบบได้ง่าย
 const PLAYER_MAX_HP: int = 30
 const ENEMY_MAX_HP: int = 15
+const ENEMY_B_MAX_HP: int = 12
 
 const PLAYER_ATTACK_DAMAGE: int = 5
 # M1.5D-03: NPC ทำ Damage ต่ำแบบกำหนดตายตัวก่อนมี AI/สกิลจริง
@@ -96,6 +97,7 @@ const NPC_INTENT_ACTIVE_COLOR: Color = Color(1.0, 0.85, 0.55, 1.0)
 # ตัวแปรเหล่านี้จะเปลี่ยนไปตามการกดปุ่มของผู้เล่น
 var player_hp: int = PLAYER_MAX_HP
 var enemy_hp: int = ENEMY_MAX_HP
+var enemy_b_hp: int = ENEMY_B_MAX_HP
 
 # ใช้ตรวจว่าผู้เล่นเลือกตั้งรับในรอบนี้หรือไม่
 var player_is_defending: bool = false
@@ -122,10 +124,24 @@ var action_in_progress: bool = false
 var action_tween: Tween
 var player_home: Vector2
 var enemy_home: Vector2
+var enemy_b_home: Vector2
 var player_sprite_base_scale: Vector2
 var enemy_sprite_base_scale: Vector2
+var enemy_b_sprite_base_scale: Vector2
 var player_sprite_base_position: Vector2
 var enemy_sprite_base_position: Vector2
+var enemy_b_sprite_base_position: Vector2
+var enemy_b_base_tint: Color
+
+# เป้าหมายภาพที่กำลังถูกโจมตี/ออก Action; set ก่อนสร้าง Tween ทุกครั้ง
+var active_enemy_id: String = ""
+var active_enemy_root: Node2D
+var active_enemy_sprite: Sprite2D
+var active_enemy_home: Vector2
+var active_enemy_sprite_base_scale: Vector2
+var active_enemy_sprite_base_position: Vector2
+var active_enemy_base_tint: Color
+var active_enemy_label: Label
 
 # จัดกลุ่ม Root และ Sprite ของ NPC เพื่อสลับ Action ตามลำดับแน่นอน
 var npc_roots: Array[Node2D] = []
@@ -156,6 +172,9 @@ var enemy_hp_flash_tween: Tween
 @onready var enemy_a_label: Label = (
 	$MainMargin/MainVBox/BattleRow/EnemiesPanel/EnemyALabel
 )
+@onready var enemy_b_label: Label = (
+	$MainMargin/MainVBox/BattleRow/EnemiesPanel/EnemyBLabel
+)
 
 @onready var combat_log: RichTextLabel = (
 	$MainMargin/MainVBox/CombatLog
@@ -181,8 +200,10 @@ var enemy_hp_flash_tween: Tween
 # ตัวละครที่ทำ Motion ถูกย้ายไว้ใน Root แล้วตั้งแต่ M1.5B
 @onready var player_root: Node2D = $Battlefield/PlayerRoot
 @onready var enemy_root: Node2D = $Battlefield/EnemyARoot
+@onready var enemy_b_root: Node2D = $Battlefield/EnemyBRoot
 @onready var player_sprite: AnimatedSprite2D = $Battlefield/PlayerRoot/Player
 @onready var enemy_sprite: Sprite2D = $Battlefield/EnemyARoot/EnemyA
+@onready var enemy_b_sprite: Sprite2D = $Battlefield/EnemyBRoot/EnemyB
 @onready var battlefield: Node2D = $Battlefield
 @onready var npc1_root: Node2D = $Battlefield/Npc1Root
 @onready var npc2_root: Node2D = $Battlefield/Npc2Root
@@ -206,10 +227,15 @@ func _ready() -> void:
 	# จดตำแหน่งที่จัดฉากไว้ เพื่อให้ทุก Action กลับเข้ากลุ่มเดิมได้
 	player_home = player_root.position
 	enemy_home = enemy_root.position
+	enemy_b_home = enemy_b_root.position
 	player_sprite_base_scale = player_sprite.scale
 	enemy_sprite_base_scale = enemy_sprite.scale
+	enemy_b_sprite_base_scale = enemy_b_sprite.scale
 	player_sprite_base_position = player_sprite.position
 	enemy_sprite_base_position = enemy_sprite.position
+	enemy_b_sprite_base_position = enemy_b_sprite.position
+	enemy_b_base_tint = enemy_b_sprite.modulate
+	_activate_enemy(CombatTargets.ENEMY_A_ID)
 
 	# บันทึก Formation และสีต้นฉบับของ NPC เพื่อใช้คืนค่าเมื่อ Restart
 	npc_roots = [npc1_root, npc2_root, npc3_root]
@@ -224,6 +250,59 @@ func _ready() -> void:
 
 
 # ตัวเลือกแสดงจาก Target Registry ไม่ฮาร์ดโค้ดรายชื่อศัตรูใน Scene
+func _enemy_hp_for(enemy_id: String) -> int:
+	if enemy_id == CombatTargets.ENEMY_A_ID:
+		return enemy_hp
+	if enemy_id == CombatTargets.ENEMY_B_ID:
+		return enemy_b_hp
+	return 0
+
+
+func _activate_enemy(enemy_id: String) -> void:
+	active_enemy_id = enemy_id
+	if enemy_id == CombatTargets.ENEMY_B_ID:
+		active_enemy_root = enemy_b_root
+		active_enemy_sprite = enemy_b_sprite
+		active_enemy_home = enemy_b_home
+		active_enemy_sprite_base_scale = enemy_b_sprite_base_scale
+		active_enemy_sprite_base_position = enemy_b_sprite_base_position
+		active_enemy_base_tint = enemy_b_base_tint
+		active_enemy_label = enemy_b_label
+	else:
+		active_enemy_id = CombatTargets.ENEMY_A_ID
+		active_enemy_root = enemy_root
+		active_enemy_sprite = enemy_sprite
+		active_enemy_home = enemy_home
+		active_enemy_sprite_base_scale = enemy_sprite_base_scale
+		active_enemy_sprite_base_position = enemy_sprite_base_position
+		active_enemy_base_tint = Color.WHITE
+		active_enemy_label = enemy_a_label
+
+
+func _enemy_display_name(enemy_id: String) -> String:
+	return "Enemy B" if enemy_id == CombatTargets.ENEMY_B_ID else "Enemy A"
+
+
+func _enemy_rest_tint(enemy_id: String) -> Color:
+	if not target_registry.is_enemy_available(enemy_id):
+		return Color(0.42, 0.42, 0.42, 1.0)
+	return enemy_b_base_tint if enemy_id == CombatTargets.ENEMY_B_ID else Color.WHITE
+
+
+func _restore_active_enemy() -> void:
+	active_enemy_root.position = active_enemy_home
+	active_enemy_sprite.position = active_enemy_sprite_base_position
+	active_enemy_sprite.scale = active_enemy_sprite_base_scale
+	active_enemy_sprite.modulate = _enemy_rest_tint(active_enemy_id)
+
+
+func _resolve_live_attack_target(planned_id: String) -> String:
+	if _is_enemy_target_valid(planned_id):
+		return planned_id
+	# Enemy เป้าหมายอาจถูก Player/NPC ก่อนหน้ากำจัดระหว่างรอบ
+	return target_registry.first_available_enemy_id()
+
+
 func _refresh_target_picker() -> void:
 	target_picker.clear()
 	var selected_id: String = target_registry.selected_enemy_id()
@@ -248,10 +327,7 @@ func _on_target_picker_item_selected(index: int) -> void:
 
 
 func _is_enemy_target_valid(target_id: String) -> bool:
-	# ปัจจุบันมี Enemy A ตัวเดียว; จุดนี้จะขยาย Damage Routing ในขั้นถัดไป
-	return target_id == CombatTargets.ENEMY_A_ID and enemy_hp > 0 and (
-		target_registry.is_enemy_available(target_id)
-	)
+	return target_registry.is_enemy_available(target_id) and _enemy_hp_for(target_id) > 0
 
 
 # เรียกเมื่อ Root พุ่งจาก Formation สั้น ๆ แล้วคำนวณ Hit ตอน Sprite ออกท่า
@@ -300,12 +376,17 @@ func _start_new_battle() -> void:
 	action_in_progress = false
 	player_root.position = player_home
 	enemy_root.position = enemy_home
+	enemy_b_root.position = enemy_b_home
 	player_sprite.modulate = Color.WHITE
 	enemy_sprite.modulate = Color.WHITE
+	enemy_b_sprite.modulate = enemy_b_base_tint
 	player_sprite.scale = player_sprite_base_scale
 	enemy_sprite.scale = enemy_sprite_base_scale
+	enemy_b_sprite.scale = enemy_b_sprite_base_scale
 	player_sprite.position = player_sprite_base_position
 	enemy_sprite.position = enemy_sprite_base_position
+	enemy_b_sprite.position = enemy_b_sprite_base_position
+	_activate_enemy(CombatTargets.ENEMY_A_ID)
 	npc_action_index = 0
 	for i in range(npc_roots.size()):
 		npc_roots[i].position = npc_home_positions[i]
@@ -330,10 +411,12 @@ func _start_new_battle() -> void:
 	enemy_hp_flash_tween = null
 	player_label.modulate = Color.WHITE
 	enemy_a_label.modulate = Color.WHITE
+	enemy_b_label.modulate = Color.WHITE
 
 	# คืนค่าทุกอย่างกลับเป็นค่าเริ่มต้น
 	player_hp = PLAYER_MAX_HP
 	enemy_hp = ENEMY_MAX_HP
+	enemy_b_hp = ENEMY_B_MAX_HP
 	player_is_defending = false
 	npc_guard_bonus = 0
 	battle_is_over = false
@@ -345,6 +428,7 @@ func _start_new_battle() -> void:
 	defend_button.disabled = false
 	target_registry.reset()
 	target_registry.register_enemy(CombatTargets.ENEMY_A_ID, "Enemy A")
+	target_registry.register_enemy(CombatTargets.ENEMY_B_ID, "Enemy B")
 	_refresh_target_picker()
 
 	# ล้างข้อความเก่า และเขียนข้อความเริ่มต้น
@@ -380,9 +464,13 @@ func _on_attack_button_pressed() -> void:
 	target_picker.disabled = true
 	player_is_defending = false
 	# วางแผนทั้งรอบไว้ล่วงหน้า แล้วให้ Player ใช้ Action แรก
-	turn_flow.plan_round(false, npc_roots.size(), selected_enemy_id)
+	turn_flow.plan_round(
+		false, npc_roots.size(), selected_enemy_id,
+		target_registry.available_enemy_ids()
+	)
 	var player_action: Dictionary = turn_flow.take_next_action()
 	active_action_target_id = String(player_action["target_id"])
+	_activate_enemy(active_action_target_id)
 	_add_log("--- รอบที่ %d ---" % turn_number)
 	_set_action_status("รอบที่ %d · Player: %s" % [
 		turn_number, String(player_action["intent"])
@@ -409,7 +497,7 @@ func _on_attack_button_pressed() -> void:
 	# หัก HP ที่ปลาย Strike ไม่ใช่ทันทีที่ Root เข้ากลางสนาม
 	action_tween.tween_callback(_apply_player_hit)
 	action_tween.tween_property(
-		enemy_root, "position", enemy_home + Vector2(ENEMY_RECOIL_DISTANCE, 0),
+		active_enemy_root, "position", active_enemy_home + Vector2(ENEMY_RECOIL_DISTANCE, 0),
 		ENEMY_HIT_TIME
 	)
 	# กลับ Sprite ของผู้โจมตีหลัง Hit ขณะเป้าหมายสะดุ้ง
@@ -417,11 +505,11 @@ func _on_attack_button_pressed() -> void:
 		player_sprite, "position", player_sprite_base_position, ENEMY_HIT_TIME
 	)
 	action_tween.parallel().tween_property(
-		enemy_sprite, "modulate", Color(1.0, 0.55, 0.55, 1.0), ENEMY_HIT_TIME
+		active_enemy_sprite, "modulate", Color(1.0, 0.55, 0.55, 1.0), ENEMY_HIT_TIME
 	)
 	# Impact Punch ของเป้าหมายใช้ทิศทางกว้าง-เตี้ย แทนการย้าย Root เพิ่ม
 	action_tween.parallel().tween_property(
-		enemy_sprite, "scale", enemy_sprite_base_scale * IMPACT_SPRITE_SQUASH,
+		active_enemy_sprite, "scale", active_enemy_sprite_base_scale * IMPACT_SPRITE_SQUASH,
 		ENEMY_HIT_TIME
 	)
 
@@ -429,15 +517,15 @@ func _on_attack_button_pressed() -> void:
 	action_tween.tween_interval(HIT_HOLD_TIME)
 
 	# คืน Actor ไปตำแหน่งเดิมก่อนอนุญาตให้เล่นเทิร์นถัดไป
-	action_tween.tween_property(enemy_root, "position", enemy_home, SHORT_LUNGE_RETURN_TIME)
-	action_tween.parallel().tween_property(enemy_sprite, "modulate", Color.WHITE, SHORT_LUNGE_RETURN_TIME)
+	action_tween.tween_property(active_enemy_root, "position", active_enemy_home, SHORT_LUNGE_RETURN_TIME)
+	action_tween.parallel().tween_property(active_enemy_sprite, "modulate", active_enemy_base_tint, SHORT_LUNGE_RETURN_TIME)
 	action_tween.parallel().tween_property(player_root, "position", player_home, SHORT_LUNGE_RETURN_TIME)
 	action_tween.parallel().tween_property(player_sprite, "modulate", Color.WHITE, SHORT_LUNGE_RETURN_TIME)
 	action_tween.parallel().tween_property(
 		player_sprite, "scale", player_sprite_base_scale, SHORT_LUNGE_RETURN_TIME
 	)
 	action_tween.parallel().tween_property(
-		enemy_sprite, "scale", enemy_sprite_base_scale, SHORT_LUNGE_RETURN_TIME
+		active_enemy_sprite, "scale", active_enemy_sprite_base_scale, SHORT_LUNGE_RETURN_TIME
 	)
 	action_tween.tween_interval(ACTION_HANDOFF_PAUSE)
 	action_tween.tween_callback(_finish_player_attack)
@@ -466,13 +554,10 @@ func _apply_player_hit() -> void:
 func _finish_player_attack() -> void:
 	# คงตำแหน่งและขนาดเดิม แม้การโจมตีครั้งนี้กำจัดศัตรูได้
 	player_root.position = player_home
-	enemy_root.position = enemy_home
+	_restore_active_enemy()
 	player_sprite.modulate = Color.WHITE
-	enemy_sprite.modulate = Color.WHITE
 	player_sprite.scale = player_sprite_base_scale
-	enemy_sprite.scale = enemy_sprite_base_scale
 	player_sprite.position = player_sprite_base_position
-	enemy_sprite.position = enemy_sprite_base_position
 	action_tween = null
 
 	if battle_is_over:
@@ -500,7 +585,10 @@ func _on_defend_button_pressed() -> void:
 
 	# ระบบ Defend และกฎตัดสินใจของ NPC2 ยังคงเหมือนเดิม
 	player_is_defending = true
-	turn_flow.plan_round(true, npc_roots.size(), target_registry.selected_enemy_id())
+	turn_flow.plan_round(
+		true, npc_roots.size(), target_registry.selected_enemy_id(),
+		target_registry.available_enemy_ids()
+	)
 	var player_action: Dictionary = turn_flow.take_next_action()
 	active_action_target_id = String(player_action["target_id"])
 	_add_log("Player ตั้งรับ เตรียมลดความเสียหายจาก Enemy A")
@@ -619,6 +707,12 @@ func _start_next_npc_action() -> void:
 		return
 	active_action_target_id = String(next_action["target_id"])
 	if next_action["actor"] == CombatTurnFlow.ACTOR_ENEMY:
+		var attacker_id: String = String(next_action["enemy_id"])
+		if not target_registry.is_enemy_available(attacker_id):
+			# ศัตรูที่ตายระหว่างรอบต้องข้ามคิวของตัวเอง
+			_start_next_npc_action()
+			return
+		_activate_enemy(attacker_id)
 		_clear_npc_intents()
 		_start_enemy_counteraction()
 		return
@@ -632,6 +726,12 @@ func _start_next_npc_action() -> void:
 		turn_number, npc_action_index + 1, intent
 	])
 	var is_attack: bool = intent == CombatTurnFlow.INTENT_ATTACK
+	if is_attack:
+		active_action_target_id = _resolve_live_attack_target(active_action_target_id)
+		if active_action_target_id.is_empty():
+			_end_battle(true)
+			return
+		_activate_enemy(active_action_target_id)
 	npc_intent_labels[npc_action_index].add_theme_color_override(
 		"font_color", NPC_INTENT_ACTIVE_COLOR
 	)
@@ -646,7 +746,9 @@ func _start_next_npc_action() -> void:
 	if not is_attack:
 		action_tint = NPC_GUARD_ACTIVE_TINT
 	if is_attack:
-		_add_log("NPC%d ตั้งใจ %s: Enemy A" % [npc_action_index + 1, intent])
+		_add_log("NPC%d ตั้งใจ %s: %s" % [
+			npc_action_index + 1, intent, _enemy_display_name(active_action_target_id)
+		])
 	else:
 		_add_log("NPC%d ตั้งใจ %s: ป้องกัน Player" % [npc_action_index + 1, intent])
 
@@ -670,18 +772,18 @@ func _start_next_npc_action() -> void:
 		_queue_attack_pose(current_sprite, sprite_home, 1.0)
 		action_tween.tween_callback(_apply_npc_hit)
 		action_tween.tween_property(
-			enemy_root, "position", enemy_home + Vector2(ENEMY_RECOIL_DISTANCE, 0),
+			active_enemy_root, "position", active_enemy_home + Vector2(ENEMY_RECOIL_DISTANCE, 0),
 			NPC_ATTACK_HIT_TIME
 		)
 		action_tween.parallel().tween_property(
 			current_sprite, "position", sprite_home, NPC_ATTACK_HIT_TIME
 		)
 		action_tween.parallel().tween_property(
-			enemy_sprite, "modulate", Color(1.0, 0.55, 0.55, 1.0),
+			active_enemy_sprite, "modulate", Color(1.0, 0.55, 0.55, 1.0),
 			NPC_ATTACK_HIT_TIME
 		)
 		action_tween.parallel().tween_property(
-			enemy_sprite, "scale", enemy_sprite_base_scale * IMPACT_SPRITE_SQUASH,
+			active_enemy_sprite, "scale", active_enemy_sprite_base_scale * IMPACT_SPRITE_SQUASH,
 			NPC_ATTACK_HIT_TIME
 		)
 	else:
@@ -700,13 +802,13 @@ func _start_next_npc_action() -> void:
 			current_sprite, "modulate", original_tint, SHORT_LUNGE_RETURN_TIME
 		)
 		action_tween.parallel().tween_property(
-			enemy_root, "position", enemy_home, SHORT_LUNGE_RETURN_TIME
+			active_enemy_root, "position", active_enemy_home, SHORT_LUNGE_RETURN_TIME
 		)
 		action_tween.parallel().tween_property(
-			enemy_sprite, "modulate", Color.WHITE, SHORT_LUNGE_RETURN_TIME
+			active_enemy_sprite, "modulate", active_enemy_base_tint, SHORT_LUNGE_RETURN_TIME
 		)
 		action_tween.parallel().tween_property(
-			enemy_sprite, "scale", enemy_sprite_base_scale, SHORT_LUNGE_RETURN_TIME
+			active_enemy_sprite, "scale", active_enemy_sprite_base_scale, SHORT_LUNGE_RETURN_TIME
 		)
 	else:
 		action_tween.tween_property(
@@ -793,9 +895,7 @@ func _finish_npc_action() -> void:
 	player_sprite.modulate = Color.WHITE
 	# ปิด Cue ของคนที่ออก Action เสร็จแล้ว (เหลือเฉพาะผู้รอคิว)
 	npc_intent_labels[npc_action_index].hide()
-	enemy_root.position = enemy_home
-	enemy_sprite.modulate = Color.WHITE
-	enemy_sprite.scale = enemy_sprite_base_scale
+	_restore_active_enemy()
 	action_tween = null
 
 	if battle_is_over:
@@ -814,7 +914,9 @@ func _start_enemy_counteraction() -> void:
 	if battle_is_over:
 		return
 
-	_set_action_status("รอบที่ %d · Enemy A: ATK" % turn_number)
+	_set_action_status("รอบที่ %d · %s: ATK" % [
+		turn_number, _enemy_display_name(active_enemy_id)
+	])
 	action_in_progress = true
 	attack_button.disabled = true
 	defend_button.disabled = true
@@ -833,29 +935,29 @@ func _start_enemy_counteraction() -> void:
 	action_tween = _pace_tween(create_tween())
 	action_tween.set_trans(Tween.TRANS_SINE)
 	action_tween.tween_property(
-		enemy_root, "position", enemy_home + Vector2(-SHORT_LUNGE_DISTANCE, 0.0),
+		active_enemy_root, "position", active_enemy_home + Vector2(-SHORT_LUNGE_DISTANCE, 0.0),
 		SHORT_LUNGE_TIME
 	).set_ease(Tween.EASE_OUT)
 	action_tween.parallel().tween_property(
-		enemy_sprite, "modulate", Color(1.25, 0.95, 0.80, 1.0),
+		active_enemy_sprite, "modulate", Color(1.25, 0.95, 0.80, 1.0),
 		SHORT_LUNGE_TIME
 	)
 	# Enemy เป็น Active Character ระหว่าง Counteraction
 	action_tween.parallel().tween_property(
-		enemy_sprite, "scale", enemy_sprite_base_scale * ACTIVE_SPRITE_SCALE_FACTOR,
+		active_enemy_sprite, "scale", active_enemy_sprite_base_scale * ACTIVE_SPRITE_SCALE_FACTOR,
 		SHORT_LUNGE_TIME
 	)
 
 	# Player ยืนรับการโจมตีที่ Formation ไม่ถูกดึงเข้าหาผู้โจมตี
 	# Enemy เตรียมและออกท่าไปทางซ้ายก่อนคำนวณ Damage
-	_queue_attack_pose(enemy_sprite, enemy_sprite_base_position, -1.0)
+	_queue_attack_pose(active_enemy_sprite, active_enemy_sprite_base_position, -1.0)
 	action_tween.tween_callback(_apply_enemy_hit)
 	action_tween.tween_property(
 		player_root, "position", player_home + Vector2(-recoil_distance, 0),
 		PLAYER_HIT_TIME
 	)
 	action_tween.parallel().tween_property(
-		enemy_sprite, "position", enemy_sprite_base_position, PLAYER_HIT_TIME
+		active_enemy_sprite, "position", active_enemy_sprite_base_position, PLAYER_HIT_TIME
 	)
 	action_tween.parallel().tween_property(
 		player_sprite, "modulate", hit_color, PLAYER_HIT_TIME
@@ -869,10 +971,10 @@ func _start_enemy_counteraction() -> void:
 
 	# Shadow ของทั้งสอง Actor จะกลับไปพร้อม Root ที่เป็น Parent
 	action_tween.tween_property(
-		enemy_root, "position", enemy_home, SHORT_LUNGE_RETURN_TIME
+		active_enemy_root, "position", active_enemy_home, SHORT_LUNGE_RETURN_TIME
 	)
 	action_tween.parallel().tween_property(
-		enemy_sprite, "modulate", Color.WHITE, SHORT_LUNGE_RETURN_TIME
+		active_enemy_sprite, "modulate", active_enemy_base_tint, SHORT_LUNGE_RETURN_TIME
 	)
 	action_tween.parallel().tween_property(
 		player_root, "position", player_home, SHORT_LUNGE_RETURN_TIME
@@ -881,7 +983,7 @@ func _start_enemy_counteraction() -> void:
 		player_sprite, "modulate", Color.WHITE, SHORT_LUNGE_RETURN_TIME
 	)
 	action_tween.parallel().tween_property(
-		enemy_sprite, "scale", enemy_sprite_base_scale, SHORT_LUNGE_RETURN_TIME
+		active_enemy_sprite, "scale", active_enemy_sprite_base_scale, SHORT_LUNGE_RETURN_TIME
 	)
 	action_tween.parallel().tween_property(
 		player_sprite, "scale", player_sprite_base_scale, SHORT_LUNGE_RETURN_TIME
@@ -955,13 +1057,10 @@ func _apply_enemy_hit() -> void:
 
 func _finish_enemy_counteraction() -> void:
 	# คืนตำแหน่งและขนาดก่อนเปิดการเล่นรอบต่อไป หรือหลังแพ้
-	enemy_root.position = enemy_home
+	_restore_active_enemy()
 	player_root.position = player_home
-	enemy_sprite.modulate = Color.WHITE
 	player_sprite.modulate = Color.WHITE
-	enemy_sprite.scale = enemy_sprite_base_scale
 	player_sprite.scale = player_sprite_base_scale
-	enemy_sprite.position = enemy_sprite_base_position
 	player_sprite.position = player_sprite_base_position
 	action_tween = null
 	action_in_progress = false
