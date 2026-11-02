@@ -1,9 +1,5 @@
 extends Control
 
-# จุด Action กลางสนามอยู่ในระบบพิกัดเดียวกับ Battlefield Actor Root
-# แก้ได้จาก Inspector ของ CombatPrototype โดยไม่ต้องอ่าน Transform ของ Marker2D
-@export var action_stage_position: Vector2 = Vector2(770.0, 485.0)
-
 
 # -----------------------------------------------------------------------------
 # ค่าคงที่ของการต่อสู้
@@ -19,27 +15,20 @@ const NPC_ATTACK_DAMAGE: int = 1
 const ENEMY_ATTACK_DAMAGE: int = 3
 const DEFEND_REDUCTION: int = 2
 
-# M1.5C: ระยะเคลื่อนที่ใช้หน่วยเป็นพิกเซล ส่วนเวลาของ Tween ใช้หน่วยเป็นวินาที
-# ตัวละครทุกฝ่ายไปแสดง Action ที่พิกัดกลางสนามเดียวกัน
+# M1.5E-02: ขยับ Root ของผู้โจมตีสั้น ๆ จาก Formation แล้วออกท่าที่ตำแหน่งนั้น
+# Player / NPC ไปทางขวา (+X), Enemy A ไปทางซ้าย (-X)
+# ห้ามเป้าหมายเดินเข้ามารับ Action — มีเพียง Recoil สั้น ๆ ณ Formation
+const SHORT_LUNGE_DISTANCE: float = 44.0
+const SHORT_LUNGE_TIME: float = 0.18
+const SHORT_LUNGE_RETURN_TIME: float = 0.22
+const GUARD_POSE_RAISE_TIME: float = 0.12
+const GUARD_POSE_RETURN_TIME: float = 0.18
 const ENEMY_RECOIL_DISTANCE: float = 18.0
-
-# M1.5D-07: Enemy A รับการโจมตี ณ Formation; เฉพาะ Player ที่เข้าจุดรับการโต้กลับ
-const ACTION_TARGET_SEPARATION: float = 135.0
-const TARGET_STAGE_ARRIVAL_TIME: float = 0.28
-
-# แยกเวลาของแต่ละจังหวะไว้ให้ปรับความเร็วได้โดยไม่แตะระบบ HP
-const ATTACK_LUNGE_TIME: float = 0.42
 const ENEMY_HIT_TIME: float = 0.14
 const HIT_HOLD_TIME: float = 0.08
-const ATTACK_RETURN_TIME: float = 0.34
-
-# M1.5C-02: จังหวะโต้กลับของ Enemy A
-# Enemy A เคลื่อนมาที่ ActionStage เช่นเดียวกับสมาชิกปาร์ตี้
-const ENEMY_COUNTER_LUNGE_TIME: float = 0.42
 const PLAYER_HIT_RECOIL_DISTANCE: float = 14.0
 const PLAYER_HIT_TIME: float = 0.14
 const ENEMY_COUNTER_HOLD_TIME: float = 0.08
-const ENEMY_COUNTER_RETURN_TIME: float = 0.38
 
 # M1.5C-03: Floating Damage และการกระพริบค่า HP
 const DAMAGE_FLOAT_TIME: float = 0.85
@@ -68,14 +57,7 @@ const HIT_SPARK_END_SCALE: float = 1.15
 const HIT_SPARK_ENEMY_OFFSET: Vector2 = Vector2(-55, -70)
 const HIT_SPARK_PLAYER_OFFSET: Vector2 = Vector2(45, -72)
 
-# M1.5D-02: NPC ทั้งสามไปยัง ActionStage เดียวกัน ไม่ว่าจุดเริ่มอยู่ที่ใด
-# ระยะไกลใช้เวลามากขึ้นเล็กน้อย แทนการพุ่ง 400px ใน 0.16 วินาที
-const NPC_STAGE_APPROACH_SPEED: float = 1000.0
-const NPC_STAGE_RETURN_SPEED: float = 1400.0
-const NPC_STAGE_MIN_APPROACH_TIME: float = 0.30
-const NPC_STAGE_MAX_APPROACH_TIME: float = 0.60
-const NPC_STAGE_MIN_RETURN_TIME: float = 0.22
-const NPC_STAGE_MAX_RETURN_TIME: float = 0.42
+# NPC รักษาจังหวะเตรียม Action ก่อน Hit; Guard ไม่ออกจาก Formation
 const NPC_STAGE_HOLD_TIME: float = 0.10
 const NPC_ATTACK_HIT_TIME: float = 0.14
 const NPC_ACTIVE_TINT: Color = Color(1.12, 1.08, 1.02, 1.0)
@@ -203,30 +185,11 @@ func _ready() -> void:
 		npc_home_tints.append(npc_sprites[i].modulate)
 		npc_sprite_base_positions.append(npc_sprites[i].position)
 
-	# แสดงพิกัดปลายทางใน Output เพื่อช่วยตรวจกรณีที่ Motion ผิดตำแหน่ง
-	print("Combat action destination: ", _action_stage_position())
-
 	# เริ่มการต่อสู้รอบแรก
 	_start_new_battle()
 
 
-# -----------------------------------------------------------------------------
-# ใช้พิกัดจาก Inspector โดยตรง เพื่อไม่ให้ Marker ที่อ่านเป็น (0, 0)
-# ส่ง Actor ทุกตัวพุ่งไปมุมซ้ายบนของหน้าจอ
-# -----------------------------------------------------------------------------
-func _action_stage_position() -> Vector2:
-	if action_stage_position.is_zero_approx():
-		push_warning("ActionStage was (0, 0); using safe center fallback.")
-		return Vector2(770.0, 485.0)
-	return action_stage_position
-
-
-# Player รับการโจมตีฝั่งซ้ายของ Enemy A เมื่อ Enemy เป็นผู้ลงมือ
-func _player_target_stage_position() -> Vector2:
-	return _action_stage_position() + Vector2(-ACTION_TARGET_SEPARATION, 0.0)
-
-
-# เรียกหลังผู้โจมตีมาถึงกลางสนาม แล้วจึงคำนวณ Hit ตอน Sprite ฟันออก
+# เรียกเมื่อ Root พุ่งจาก Formation สั้น ๆ แล้วคำนวณ Hit ตอน Sprite ออกท่า
 # Player/NPC โจมตีไปทางขวา (+1), Enemy โจมตีไปทางซ้าย (-1)
 func _queue_attack_pose(
 	actor_sprite: Node2D, base_position: Vector2, facing_direction: float
@@ -328,18 +291,19 @@ func _on_attack_button_pressed() -> void:
 	action_tween = create_tween()
 	action_tween.set_trans(Tween.TRANS_SINE)
 	action_tween.tween_property(
-		player_root, "position", _action_stage_position(), ATTACK_LUNGE_TIME
+		player_root, "position", player_home + Vector2(SHORT_LUNGE_DISTANCE, 0.0),
+		SHORT_LUNGE_TIME
 	).set_ease(Tween.EASE_OUT)
 	action_tween.parallel().tween_property(
-		player_sprite, "modulate", Color(1.25, 1.15, 1.05, 1.0), ATTACK_LUNGE_TIME
+		player_sprite, "modulate", Color(1.25, 1.15, 1.05, 1.0), SHORT_LUNGE_TIME
 	)
 	# Player ชัดขึ้นในฐานะ Active Character ขณะพุ่งโจมตี
 	action_tween.parallel().tween_property(
 		player_sprite, "scale", player_sprite_base_scale * ACTIVE_SPRITE_SCALE_FACTOR,
-		ATTACK_LUNGE_TIME
+		SHORT_LUNGE_TIME
 	)
 
-	# Enemy A ยังยืนที่ Formation; Player ทำ Windup/Strike เฉพาะ Sprite
+	# Enemy A ยังอยู่ Formation; Player เตรียมและออกท่าที่จุดพุ่งสั้น ๆ
 	_queue_attack_pose(player_sprite, player_sprite_base_position, 1.0)
 	# หัก HP ที่ปลาย Strike ไม่ใช่ทันทีที่ Root เข้ากลางสนาม
 	action_tween.tween_callback(_apply_player_hit)
@@ -364,15 +328,15 @@ func _on_attack_button_pressed() -> void:
 	action_tween.tween_interval(HIT_HOLD_TIME)
 
 	# คืน Actor ไปตำแหน่งเดิมก่อนอนุญาตให้เล่นเทิร์นถัดไป
-	action_tween.tween_property(enemy_root, "position", enemy_home, ATTACK_RETURN_TIME)
-	action_tween.parallel().tween_property(enemy_sprite, "modulate", Color.WHITE, ATTACK_RETURN_TIME)
-	action_tween.parallel().tween_property(player_root, "position", player_home, ATTACK_RETURN_TIME)
-	action_tween.parallel().tween_property(player_sprite, "modulate", Color.WHITE, ATTACK_RETURN_TIME)
+	action_tween.tween_property(enemy_root, "position", enemy_home, SHORT_LUNGE_RETURN_TIME)
+	action_tween.parallel().tween_property(enemy_sprite, "modulate", Color.WHITE, SHORT_LUNGE_RETURN_TIME)
+	action_tween.parallel().tween_property(player_root, "position", player_home, SHORT_LUNGE_RETURN_TIME)
+	action_tween.parallel().tween_property(player_sprite, "modulate", Color.WHITE, SHORT_LUNGE_RETURN_TIME)
 	action_tween.parallel().tween_property(
-		player_sprite, "scale", player_sprite_base_scale, ATTACK_RETURN_TIME
+		player_sprite, "scale", player_sprite_base_scale, SHORT_LUNGE_RETURN_TIME
 	)
 	action_tween.parallel().tween_property(
-		enemy_sprite, "scale", enemy_sprite_base_scale, ATTACK_RETURN_TIME
+		enemy_sprite, "scale", enemy_sprite_base_scale, SHORT_LUNGE_RETURN_TIME
 	)
 	action_tween.tween_callback(_finish_player_attack)
 
@@ -433,7 +397,7 @@ func _on_defend_button_pressed() -> void:
 
 
 # -----------------------------------------------------------------------------
-# M1.5D-03: NPC1 -> NPC2 -> NPC3 เคลื่อนมาที่ Action Stage แล้วโจมตีจริง
+# NPC1 -> NPC2 -> NPC3 ออก Action ใกล้ Formation ของตนเอง
 # -----------------------------------------------------------------------------
 func _start_npc_turns() -> void:
 	if battle_is_over:
@@ -507,16 +471,7 @@ func _start_next_npc_action() -> void:
 	var home: Vector2 = npc_home_positions[npc_action_index]
 	var original_tint: Color = npc_home_tints[npc_action_index]
 	var sprite_home: Vector2 = npc_sprite_base_positions[npc_action_index]
-	var stage_position: Vector2 = _action_stage_position()
-	var distance: float = home.distance_to(stage_position)
-	var approach_time: float = clampf(
-		distance / NPC_STAGE_APPROACH_SPEED,
-		NPC_STAGE_MIN_APPROACH_TIME, NPC_STAGE_MAX_APPROACH_TIME
-	)
-	var return_time: float = clampf(
-		distance / NPC_STAGE_RETURN_SPEED,
-		NPC_STAGE_MIN_RETURN_TIME, NPC_STAGE_MAX_RETURN_TIME
-	)
+	var lunge_position: Vector2 = home + Vector2(SHORT_LUNGE_DISTANCE, 0.0)
 	var action_tint: Color = NPC_ACTIVE_TINT
 	if not is_attack:
 		action_tint = NPC_GUARD_ACTIVE_TINT
@@ -527,13 +482,19 @@ func _start_next_npc_action() -> void:
 
 	action_tween = create_tween()
 	action_tween.set_trans(Tween.TRANS_SINE)
-	action_tween.tween_property(
-		current_root, "position", stage_position, approach_time
-	).set_ease(Tween.EASE_OUT)
-	action_tween.parallel().tween_property(
-		current_sprite, "modulate", action_tint, approach_time
-	)
-	# NPC ยังไป ActionStage แต่ Enemy A คงตำแหน่ง Formation ไว้
+	if is_attack:
+		# โจมตี: ขยับจาก Formation เพียง 44px และยืนออกท่าที่จุดนั้น
+		action_tween.tween_property(
+			current_root, "position", lunge_position, SHORT_LUNGE_TIME
+		).set_ease(Tween.EASE_OUT)
+		action_tween.parallel().tween_property(
+			current_sprite, "modulate", action_tint, SHORT_LUNGE_TIME
+		)
+	else:
+		# GUARD: ยืนที่ Formation ไม่วิ่งไปไหน เน้นเพียงสีท่าป้องกัน
+		action_tween.tween_property(
+			current_sprite, "modulate", action_tint, GUARD_POSE_RAISE_TIME
+		)
 	action_tween.tween_interval(NPC_STAGE_HOLD_TIME)
 	if is_attack:
 		_queue_attack_pose(current_sprite, sprite_home, 1.0)
@@ -560,26 +521,29 @@ func _start_next_npc_action() -> void:
 			player_sprite, "modulate", DEFEND_DAMAGE_COLOR, NPC_ATTACK_HIT_TIME
 		)
 
-	# ทั้งสอง Action ใช้ช่วงกลับเท่ากัน ไม่เพิ่มการรอเทิร์น NPC
-	action_tween.tween_property(
-		current_root, "position", home, return_time
-	)
-	action_tween.parallel().tween_property(
-		current_sprite, "modulate", original_tint, return_time
-	)
+	# ผู้โจมตีถอยกลับ Formation; GUARD แค่คืนสี ไม่มีการย้าย Root
 	if is_attack:
-		action_tween.parallel().tween_property(
-			enemy_root, "position", enemy_home, return_time
+		action_tween.tween_property(
+			current_root, "position", home, SHORT_LUNGE_RETURN_TIME
 		)
 		action_tween.parallel().tween_property(
-			enemy_sprite, "modulate", Color.WHITE, return_time
+			current_sprite, "modulate", original_tint, SHORT_LUNGE_RETURN_TIME
 		)
 		action_tween.parallel().tween_property(
-			enemy_sprite, "scale", enemy_sprite_base_scale, return_time
+			enemy_root, "position", enemy_home, SHORT_LUNGE_RETURN_TIME
+		)
+		action_tween.parallel().tween_property(
+			enemy_sprite, "modulate", Color.WHITE, SHORT_LUNGE_RETURN_TIME
+		)
+		action_tween.parallel().tween_property(
+			enemy_sprite, "scale", enemy_sprite_base_scale, SHORT_LUNGE_RETURN_TIME
 		)
 	else:
+		action_tween.tween_property(
+			current_sprite, "modulate", original_tint, GUARD_POSE_RETURN_TIME
+		)
 		action_tween.parallel().tween_property(
-			player_sprite, "modulate", Color.WHITE, return_time
+			player_sprite, "modulate", Color.WHITE, GUARD_POSE_RETURN_TIME
 		)
 	action_tween.tween_callback(_finish_npc_action)
 
@@ -691,28 +655,25 @@ func _start_enemy_counteraction() -> void:
 	action_tween = create_tween()
 	action_tween.set_trans(Tween.TRANS_SINE)
 	action_tween.tween_property(
-		enemy_root, "position", _action_stage_position(), ENEMY_COUNTER_LUNGE_TIME
+		enemy_root, "position", enemy_home + Vector2(-SHORT_LUNGE_DISTANCE, 0.0),
+		SHORT_LUNGE_TIME
 	).set_ease(Tween.EASE_OUT)
 	action_tween.parallel().tween_property(
 		enemy_sprite, "modulate", Color(1.25, 0.95, 0.80, 1.0),
-		ENEMY_COUNTER_LUNGE_TIME
+		SHORT_LUNGE_TIME
 	)
 	# Enemy เป็น Active Character ระหว่าง Counteraction
 	action_tween.parallel().tween_property(
 		enemy_sprite, "scale", enemy_sprite_base_scale * ACTIVE_SPRITE_SCALE_FACTOR,
-		ENEMY_COUNTER_LUNGE_TIME
+		SHORT_LUNGE_TIME
 	)
 
-	# Player เข้าพื้นที่รับ Action ทางซ้ายของผู้โจมตี
-	action_tween.parallel().tween_property(
-		player_root, "position", _player_target_stage_position(), TARGET_STAGE_ARRIVAL_TIME
-	).set_ease(Tween.EASE_OUT)
-
+	# Player ยืนรับการโจมตีที่ Formation ไม่ถูกดึงเข้าหาผู้โจมตี
 	# Enemy เตรียมและออกท่าไปทางซ้ายก่อนคำนวณ Damage
 	_queue_attack_pose(enemy_sprite, enemy_sprite_base_position, -1.0)
 	action_tween.tween_callback(_apply_enemy_hit)
 	action_tween.tween_property(
-		player_root, "position", _player_target_stage_position() + Vector2(-PLAYER_HIT_RECOIL_DISTANCE, 0),
+		player_root, "position", player_home + Vector2(-PLAYER_HIT_RECOIL_DISTANCE, 0),
 		PLAYER_HIT_TIME
 	)
 	action_tween.parallel().tween_property(
@@ -730,22 +691,22 @@ func _start_enemy_counteraction() -> void:
 
 	# Shadow ของทั้งสอง Actor จะกลับไปพร้อม Root ที่เป็น Parent
 	action_tween.tween_property(
-		enemy_root, "position", enemy_home, ENEMY_COUNTER_RETURN_TIME
+		enemy_root, "position", enemy_home, SHORT_LUNGE_RETURN_TIME
 	)
 	action_tween.parallel().tween_property(
-		enemy_sprite, "modulate", Color.WHITE, ENEMY_COUNTER_RETURN_TIME
+		enemy_sprite, "modulate", Color.WHITE, SHORT_LUNGE_RETURN_TIME
 	)
 	action_tween.parallel().tween_property(
-		player_root, "position", player_home, ENEMY_COUNTER_RETURN_TIME
+		player_root, "position", player_home, SHORT_LUNGE_RETURN_TIME
 	)
 	action_tween.parallel().tween_property(
-		player_sprite, "modulate", Color.WHITE, ENEMY_COUNTER_RETURN_TIME
+		player_sprite, "modulate", Color.WHITE, SHORT_LUNGE_RETURN_TIME
 	)
 	action_tween.parallel().tween_property(
-		enemy_sprite, "scale", enemy_sprite_base_scale, ENEMY_COUNTER_RETURN_TIME
+		enemy_sprite, "scale", enemy_sprite_base_scale, SHORT_LUNGE_RETURN_TIME
 	)
 	action_tween.parallel().tween_property(
-		player_sprite, "scale", player_sprite_base_scale, ENEMY_COUNTER_RETURN_TIME
+		player_sprite, "scale", player_sprite_base_scale, SHORT_LUNGE_RETURN_TIME
 	)
 	action_tween.tween_callback(_finish_enemy_counteraction)
 
