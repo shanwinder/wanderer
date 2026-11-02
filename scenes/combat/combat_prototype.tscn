@@ -22,6 +22,18 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_result"]
+bg_color = Color(0.11, 0.15, 0.16, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.62, 0.65, 0.60, 0.88)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="CombatPrototype" type="Control" unique_id=849180832]
 layout_mode = 3
 anchors_preset = 15
@@ -188,6 +200,49 @@ mouse_filter = 2
 theme_override_colors/font_color = Color(0.70, 0.82, 0.84, 1)
 theme_override_font_sizes/font_size = 16
 text = "รอบที่ 1 · เลือกคำสั่ง"
+horizontal_alignment = 1
+
+[node name="BattleResultPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 415.0
+offset_top = 158.0
+offset_right = 865.0
+offset_bottom = 307.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_result")
+
+[node name="ResultMargin" type="MarginContainer" parent="BattleResultPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 14
+
+[node name="ResultVBox" type="VBoxContainer" parent="BattleResultPanel/ResultMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ResultTitle" type="Label" parent="BattleResultPanel/ResultMargin/ResultVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.85, 0.55, 1)
+theme_override_font_sizes/font_size = 29
+text = "ชัยชนะ"
+horizontal_alignment = 1
+
+[node name="ResultDetail" type="Label" parent="BattleResultPanel/ResultMargin/ResultVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.91, 0.90, 1)
+theme_override_font_sizes/font_size = 15
+text = "รอบที่ 1 · Player HP 30/30 · Enemy HP 0/15"
+horizontal_alignment = 1
+
+[node name="ResultHint" type="Label" parent="BattleResultPanel/ResultMargin/ResultVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.70, 0.78, 0.77, 1)
+theme_override_font_sizes/font_size = 14
+text = "กด 'เริ่มใหม่' เพื่อเล่นอีกครั้ง"
 horizontal_alignment = 1
 
 [node name="MainMargin" type="MarginContainer" parent="." unique_id=2047073220]
