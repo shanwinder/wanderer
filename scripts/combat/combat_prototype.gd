@@ -781,6 +781,8 @@ func _start_enemy_counteraction() -> void:
 # -----------------------------------------------------------------------------
 func _apply_enemy_hit() -> void:
 	var was_defending: bool = player_is_defending
+	# ใช้สถานะก่อนลด/รีเซ็ต Guard เพื่อให้ Popup และ Reaction สอดคล้องกัน
+	var was_guarded: bool = was_defending or npc_guard_bonus > 0
 	var previous_hp: int = player_hp
 	# เริ่มจากความเสียหายปกติของศัตรู
 	var damage: int = ENEMY_ATTACK_DAMAGE
@@ -818,14 +820,13 @@ func _apply_enemy_hit() -> void:
 	_update_ui()
 	var actual_damage: int = previous_hp - player_hp
 	var feedback_color: Color = PLAYER_DAMAGE_COLOR
-	if was_defending or guard_blocked > 0:
+	if was_guarded:
 		feedback_color = DEFEND_DAMAGE_COLOR
 	_show_floating_damage(
-		player_root.position, actual_damage, feedback_color,
-		was_defending or guard_blocked > 0
+		player_root.position, actual_damage, feedback_color, was_guarded
 	)
 	# ตอน Guard ไม่มี Spark โจมตีซ้ำ; เล่าแรงปะทะผ่าน Recoil เบาและตัวเลขสีฟ้า
-	if not was_defending and guard_blocked == 0:
+	if not was_guarded:
 		_show_hit_spark(player_root.position + HIT_SPARK_PLAYER_OFFSET, feedback_color)
 	_flash_hp_label(player_label, feedback_color, true)
 	_add_log("")
