@@ -178,6 +178,18 @@ theme_override_font_sizes/font_size = 22
 text = "WANDERER — VISUAL COMBAT TEST 1"
 horizontal_alignment = 1
 
+[node name="ActionStatusLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 58.0
+offset_right = 1248.0
+offset_bottom = 84.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.70, 0.82, 0.84, 1)
+theme_override_font_sizes/font_size = 16
+text = "รอบที่ 1 · เลือกคำสั่ง"
+horizontal_alignment = 1
+
 [node name="MainMargin" type="MarginContainer" parent="." unique_id=2047073220]
 layout_mode = 0
 offset_left = 30.0
