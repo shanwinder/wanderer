@@ -23,7 +23,7 @@ const DEFEND_REDUCTION: int = 2
 # ตัวละครทุกฝ่ายไปแสดง Action ที่พิกัดกลางสนามเดียวกัน
 const ENEMY_RECOIL_DISTANCE: float = 18.0
 
-# M1.5D-04: เป้าหมายเข้ามารับ Action ใกล้ผู้ลงมือในพื้นที่เวทีกลาง
+# M1.5D-07: Enemy A รับการโจมตี ณ Formation; เฉพาะ Player ที่เข้าจุดรับการโต้กลับ
 const ACTION_TARGET_SEPARATION: float = 135.0
 const TARGET_STAGE_ARRIVAL_TIME: float = 0.28
 
@@ -208,11 +208,7 @@ func _action_stage_position() -> Vector2:
 	return action_stage_position
 
 
-# จุดรับการโจมตีซ้าย/ขวาของผู้ลงมือ (ActionStage อยู่ตรงกลาง)
-func _enemy_target_stage_position() -> Vector2:
-	return _action_stage_position() + Vector2(ACTION_TARGET_SEPARATION, 0.0)
-
-
+# Player รับการโจมตีฝั่งซ้ายของ Enemy A เมื่อ Enemy เป็นผู้ลงมือ
 func _player_target_stage_position() -> Vector2:
 	return _action_stage_position() + Vector2(-ACTION_TARGET_SEPARATION, 0.0)
 
@@ -310,15 +306,11 @@ func _on_attack_button_pressed() -> void:
 		ATTACK_LUNGE_TIME
 	)
 
-	# Enemy มาอยู่ด้านขวาของ ActionStage ก่อน Player โจมตีถึงจุด
-	action_tween.parallel().tween_property(
-		enemy_root, "position", _enemy_target_stage_position(), TARGET_STAGE_ARRIVAL_TIME
-	).set_ease(Tween.EASE_OUT)
-
+	# Enemy A ยืนประจำ Formation ไม่ถูกลากเข้ามายัง ActionStage
 	# เมื่อ Player ก้าวถึงจุดโจมตี จึงหัก HP และแสดง Hit Feedback
 	action_tween.tween_callback(_apply_player_hit)
 	action_tween.tween_property(
-		enemy_root, "position", _enemy_target_stage_position() + Vector2(ENEMY_RECOIL_DISTANCE, 0),
+		enemy_root, "position", enemy_home + Vector2(ENEMY_RECOIL_DISTANCE, 0),
 		ENEMY_HIT_TIME
 	)
 	action_tween.parallel().tween_property(
@@ -500,17 +492,12 @@ func _start_next_npc_action() -> void:
 	action_tween.parallel().tween_property(
 		current_sprite, "modulate", action_tint, approach_time
 	)
-	if is_attack:
-		# เข้าจุดปะทะเฉพาะเมื่อโจมตี ไม่ดึง Enemy มารับ Hit ปลอมในเทิร์น GUARD
-		action_tween.parallel().tween_property(
-			enemy_root, "position", _enemy_target_stage_position(), TARGET_STAGE_ARRIVAL_TIME
-		).set_ease(Tween.EASE_OUT)
-
+	# NPC ยังไป ActionStage แต่ Enemy A คงตำแหน่ง Formation ไว้
 	action_tween.tween_interval(NPC_STAGE_HOLD_TIME)
 	if is_attack:
 		action_tween.tween_callback(_apply_npc_hit)
 		action_tween.tween_property(
-			enemy_root, "position", _enemy_target_stage_position() + Vector2(ENEMY_RECOIL_DISTANCE, 0),
+			enemy_root, "position", enemy_home + Vector2(ENEMY_RECOIL_DISTANCE, 0),
 			NPC_ATTACK_HIT_TIME
 		)
 		action_tween.parallel().tween_property(
