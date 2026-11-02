@@ -1,5 +1,9 @@
 extends Control
 
+# จุด Action กลางสนามอยู่ในระบบพิกัดเดียวกับ Battlefield Actor Root
+# แก้ได้จาก Inspector ของ CombatPrototype โดยไม่ต้องอ่าน Transform ของ Marker2D
+@export var action_stage_position: Vector2 = Vector2(770.0, 485.0)
+
 
 # -----------------------------------------------------------------------------
 # ค่าคงที่ของการต่อสู้
@@ -136,7 +140,6 @@ var enemy_hp_flash_tween: Tween
 @onready var player_sprite: AnimatedSprite2D = $Battlefield/PlayerRoot/Player
 @onready var enemy_sprite: Sprite2D = $Battlefield/EnemyARoot/EnemyA
 @onready var battlefield: Node2D = $Battlefield
-@onready var action_stage: Marker2D = $Battlefield/ActionStage
 @onready var npc1_root: Node2D = $Battlefield/Npc1Root
 @onready var npc2_root: Node2D = $Battlefield/Npc2Root
 @onready var npc3_root: Node2D = $Battlefield/Npc3Root
@@ -168,15 +171,22 @@ func _ready() -> void:
 		npc_home_positions.append(npc_roots[i].position)
 		npc_home_tints.append(npc_sprites[i].modulate)
 
+	# แสดงพิกัดปลายทางใน Output เพื่อช่วยตรวจกรณีที่ Motion ผิดตำแหน่ง
+	print("Combat action destination: ", _action_stage_position())
+
 	# เริ่มการต่อสู้รอบแรก
 	_start_new_battle()
 
 
 # -----------------------------------------------------------------------------
-# จุดแสดง Action กลางสนาม ปรับพิกัดได้จาก Marker2D ใน Scene
+# ใช้พิกัดจาก Inspector โดยตรง เพื่อไม่ให้ Marker ที่อ่านเป็น (0, 0)
+# ส่ง Actor ทุกตัวพุ่งไปมุมซ้ายบนของหน้าจอ
 # -----------------------------------------------------------------------------
 func _action_stage_position() -> Vector2:
-	return action_stage.position
+	if action_stage_position.is_zero_approx():
+		push_warning("ActionStage was (0, 0); using safe center fallback.")
+		return Vector2(770.0, 485.0)
+	return action_stage_position
 
 
 # -----------------------------------------------------------------------------
