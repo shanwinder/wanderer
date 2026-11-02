@@ -53,6 +53,14 @@ const HIT_SPARK_END_SCALE: float = 1.15
 const HIT_SPARK_ENEMY_OFFSET: Vector2 = Vector2(-55, -70)
 const HIT_SPARK_PLAYER_OFFSET: Vector2 = Vector2(45, -72)
 
+# M1.5D-01: NPC แต่ละคนออกท่าสั้น ๆ ต่อกันก่อน Enemy โต้กลับ
+# ยังไม่ส่งผลต่อ HP หรือเพิ่ม AI เพื่อใช้วัดความชัดเจนและ Pacing เทิร์น
+const NPC_STEP_DISTANCE: float = 42.0
+const NPC_STEP_OUT_TIME: float = 0.16
+const NPC_STEP_HOLD_TIME: float = 0.05
+const NPC_STEP_RETURN_TIME: float = 0.16
+const NPC_ACTIVE_TINT: Color = Color(1.12, 1.08, 1.02, 1.0)
+
 
 # -----------------------------------------------------------------------------
 # ตัวแปรสถานะปัจจุบันของการต่อสู้
@@ -77,6 +85,13 @@ var player_home: Vector2
 var enemy_home: Vector2
 var player_sprite_base_scale: Vector2
 var enemy_sprite_base_scale: Vector2
+
+# จัดกลุ่ม Root และ Sprite ของ NPC เพื่อสลับ Action ตามลำดับแน่นอน
+var npc_roots: Array[Node2D] = []
+var npc_sprites: Array[Sprite2D] = []
+var npc_home_positions: Array[Vector2] = []
+var npc_home_tints: Array[Color] = []
+var npc_action_index: int = 0
 
 # เก็บ Feedback ที่ยังแสดงอยู่ เพื่อให้ Restart ล้างได้อย่างปลอดภัย
 var damage_popups: Array[Label] = []
@@ -120,6 +135,12 @@ var enemy_hp_flash_tween: Tween
 @onready var player_sprite: AnimatedSprite2D = $Battlefield/PlayerRoot/Player
 @onready var enemy_sprite: Sprite2D = $Battlefield/EnemyARoot/EnemyA
 @onready var battlefield: Node2D = $Battlefield
+@onready var npc1_root: Node2D = $Battlefield/Npc1Root
+@onready var npc2_root: Node2D = $Battlefield/Npc2Root
+@onready var npc3_root: Node2D = $Battlefield/Npc3Root
+@onready var npc1_sprite: Sprite2D = $Battlefield/Npc1Root/Npc1
+@onready var npc2_sprite: Sprite2D = $Battlefield/Npc2Root/Npc2
+@onready var npc3_sprite: Sprite2D = $Battlefield/Npc3Root/Npc3
 
 
 # -----------------------------------------------------------------------------
@@ -137,6 +158,13 @@ func _ready() -> void:
 	enemy_home = enemy_root.position
 	player_sprite_base_scale = player_sprite.scale
 	enemy_sprite_base_scale = enemy_sprite.scale
+
+	# บันทึก Formation และสีต้นฉบับของ NPC เพื่อใช้คืนค่าเมื่อ Restart
+	npc_roots = [npc1_root, npc2_root, npc3_root]
+	npc_sprites = [npc1_sprite, npc2_sprite, npc3_sprite]
+	for i in range(npc_roots.size()):
+		npc_home_positions.append(npc_roots[i].position)
+		npc_home_tints.append(npc_sprites[i].modulate)
 
 	# เริ่มการต่อสู้รอบแรก
 	_start_new_battle()
@@ -157,6 +185,10 @@ func _start_new_battle() -> void:
 	enemy_sprite.modulate = Color.WHITE
 	player_sprite.scale = player_sprite_base_scale
 	enemy_sprite.scale = enemy_sprite_base_scale
+	npc_action_index = 0
+	for i in range(npc_roots.size()):
+		npc_roots[i].position = npc_home_positions[i]
+		npc_sprites[i].modulate = npc_home_tints[i]
 
 	# ล้างตัวเลข Damage และ HP Flash ที่อาจยังแสดงอยู่ตอน Restart
 	for popup in damage_popups:
@@ -294,8 +326,8 @@ func _finish_player_attack() -> void:
 		action_in_progress = false
 		return
 
-	# รอให้ศัตรูแสดงการโต้กลับและหัก HP ก่อนเปิดคำสั่งรอบถัดไป
-	_start_enemy_counteraction()
+	# ทดลองให้สมาชิก NPC แสดง Action ของตนก่อนศัตรูโต้กลับ
+	_start_npc_turns()
 
 
 # -----------------------------------------------------------------------------
@@ -311,8 +343,65 @@ func _on_defend_button_pressed() -> void:
 	player_is_defending = true
 	_add_log("Player ตั้งรับ เตรียมลดความเสียหายจาก Enemy A")
 
-	# การตั้งรับข้ามการโจมตีของ Player และเข้าสู่ Motion ของศัตรู
-	_start_enemy_counteraction()
+	# แม้ Player ตั้งรับ NPC ยังคงแสดงเทิร์นของตนก่อนศัตรูโต้กลับ
+	_start_npc_turns()
+
+
+# -----------------------------------------------------------------------------
+# M1.5D-01: ทดลองลำดับเทิร์น NPC1 -> NPC2 -> NPC3 (Presentation only)
+# -----------------------------------------------------------------------------
+func _start_npc_turns() -> void:
+	if battle_is_over:
+		return
+
+	action_in_progress = true
+	attack_button.disabled = true
+	defend_button.disabled = true
+	npc_action_index = 0
+	_start_next_npc_action()
+
+
+func _start_next_npc_action() -> void:
+	if battle_is_over:
+		return
+
+	# เมื่อ NPC ทั้งสามคนจบเทิร์นจึงเข้าสู่การโต้กลับของศัตรู
+	if npc_action_index >= npc_roots.size():
+		_start_enemy_counteraction()
+		return
+
+	var current_root: Node2D = npc_roots[npc_action_index]
+	var current_sprite: Sprite2D = npc_sprites[npc_action_index]
+	var home: Vector2 = npc_home_positions[npc_action_index]
+	var original_tint: Color = npc_home_tints[npc_action_index]
+	_add_log("NPC%d ขยับเตรียมสนับสนุน (ทดลอง Action ยังไม่มี Damage)" % (npc_action_index + 1))
+
+	action_tween = create_tween()
+	action_tween.set_trans(Tween.TRANS_SINE)
+	action_tween.tween_property(
+		current_root, "position", home + Vector2(NPC_STEP_DISTANCE, 0),
+		NPC_STEP_OUT_TIME
+	).set_ease(Tween.EASE_OUT)
+	action_tween.parallel().tween_property(
+		current_sprite, "modulate", NPC_ACTIVE_TINT, NPC_STEP_OUT_TIME
+	)
+	action_tween.tween_interval(NPC_STEP_HOLD_TIME)
+	action_tween.tween_property(
+		current_root, "position", home, NPC_STEP_RETURN_TIME
+	)
+	action_tween.parallel().tween_property(
+		current_sprite, "modulate", original_tint, NPC_STEP_RETURN_TIME
+	)
+	action_tween.tween_callback(_finish_npc_action)
+
+
+func _finish_npc_action() -> void:
+	# คืนตำแหน่ง NPC อย่างแม่นยำเพื่อไม่ให้ Formation คลาดเคลื่อน
+	npc_roots[npc_action_index].position = npc_home_positions[npc_action_index]
+	npc_sprites[npc_action_index].modulate = npc_home_tints[npc_action_index]
+	action_tween = null
+	npc_action_index += 1
+	_start_next_npc_action()
 
 
 # -----------------------------------------------------------------------------
