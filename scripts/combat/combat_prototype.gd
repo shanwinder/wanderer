@@ -531,24 +531,40 @@ func _on_attack_button_pressed() -> void:
 	action_tween.tween_callback(_finish_player_attack)
 
 
-func _apply_player_hit() -> void:
+func _apply_hit_to_active_enemy(damage: int, actor_name: String) -> void:
 	if battle_is_over or not _is_enemy_target_valid(active_action_target_id):
 		return
-	var previous_hp: int = enemy_hp
-	enemy_hp = maxi(enemy_hp - PLAYER_ATTACK_DAMAGE, 0)
-	var actual_damage: int = previous_hp - enemy_hp
-	_add_log(
-		"Player โจมตี Enemy A สร้างความเสียหาย %d หน่วย"
-		% PLAYER_ATTACK_DAMAGE
-	)
-	_update_ui()
-	_show_floating_damage(enemy_root.position, actual_damage, ENEMY_DAMAGE_COLOR)
-	_show_hit_spark(enemy_root.position + HIT_SPARK_ENEMY_OFFSET, ENEMY_DAMAGE_COLOR)
-	_flash_hp_label(enemy_a_label, ENEMY_DAMAGE_COLOR, false)
 
-	# ศัตรูที่ HP หมดยังรับ Hit Feedback ก่อน Motion จบ แต่ไม่สวนกลับ
-	if enemy_hp <= 0:
-		_end_battle(true)
+	var previous_hp: int = _enemy_hp_for(active_action_target_id)
+	var new_hp: int = maxi(previous_hp - damage, 0)
+	if active_action_target_id == CombatTargets.ENEMY_B_ID:
+		enemy_b_hp = new_hp
+	else:
+		enemy_hp = new_hp
+
+	var actual_damage: int = previous_hp - new_hp
+	_add_log("%s โจมตี %s สร้างความเสียหาย %d หน่วย" % [
+		actor_name, _enemy_display_name(active_action_target_id), actual_damage
+	])
+	_update_ui()
+	_show_floating_damage(active_enemy_root.position, actual_damage, ENEMY_DAMAGE_COLOR)
+	_show_hit_spark(
+		active_enemy_root.position + HIT_SPARK_ENEMY_OFFSET, ENEMY_DAMAGE_COLOR
+	)
+	_flash_hp_label(active_enemy_label, ENEMY_DAMAGE_COLOR, false)
+
+	if new_hp <= 0:
+		var defeated_id: String = active_action_target_id
+		target_registry.mark_enemy_defeated(defeated_id)
+		_add_log("%s ถูกกำจัด" % _enemy_display_name(defeated_id))
+		_refresh_target_picker()
+		if target_registry.available_enemy_ids().is_empty():
+			_end_battle(true)
+
+
+func _apply_player_hit() -> void:
+	_apply_hit_to_active_enemy(PLAYER_ATTACK_DAMAGE, "Player")
+
 
 
 func _finish_player_attack() -> void:
@@ -866,25 +882,10 @@ func _show_npc_guard_feedback() -> void:
 
 
 func _apply_npc_hit() -> void:
-	# NPC ใช้ Target ID ที่ได้จากคิว (ยังมี Enemy A ตัวเดียว)
-	if battle_is_over or not _is_enemy_target_valid(active_action_target_id):
-		return
-
-	var previous_hp: int = enemy_hp
-	enemy_hp = maxi(enemy_hp - NPC_ATTACK_DAMAGE, 0)
-	var actual_damage: int = previous_hp - enemy_hp
-	_add_log("NPC%d โจมตี Enemy A สร้างความเสียหาย %d หน่วย" % [
-		npc_action_index + 1, actual_damage
+	_apply_hit_to_active_enemy(NPC_ATTACK_DAMAGE, "NPC%d" % [
+		npc_action_index + 1
 	])
-	_update_ui()
-	_show_floating_damage(enemy_root.position, actual_damage, ENEMY_DAMAGE_COLOR)
-	_show_hit_spark(enemy_root.position + HIT_SPARK_ENEMY_OFFSET, ENEMY_DAMAGE_COLOR)
-	_flash_hp_label(enemy_a_label, ENEMY_DAMAGE_COLOR, false)
 
-	# ถ้าการโจมตีของ NPC ปิดฉาก ให้ Finish Motion ได้ แต่ห้าม NPC ถัดไป
-	# และห้าม Enemy ออก Action อีก
-	if enemy_hp <= 0:
-		_end_battle(true)
 
 
 func _finish_npc_action() -> void:
@@ -1029,13 +1030,12 @@ func _apply_enemy_hit() -> void:
 		player_hp = 0
 
 	_add_log(
-		"Enemy A โจมตีกลับ สร้างความเสียหาย %d หน่วย"
-		% damage
+		"%s โจมตีกลับ สร้างความเสียหาย %d หน่วย"
+		% [_enemy_display_name(active_enemy_id), damage]
 	)
 
-	# สถานะตั้งรับมีผลเพียงรอบเดียว
-	player_is_defending = false
-
+	# Player Defend มีผลกับการโต้กลับทุกครั้งในรอบนี้
+	# NPC2 GUARD ถูกใช้ได้ครั้งเดียวและรีเซ็ตด้านบนแล้ว
 	_update_ui()
 	var actual_damage: int = previous_hp - player_hp
 	var feedback_color: Color = PLAYER_DAMAGE_COLOR
@@ -1070,8 +1070,13 @@ func _finish_enemy_counteraction() -> void:
 		_show_battle_result()
 		return
 
+	if turn_flow.pending_count() > 0:
+		_start_next_npc_action()
+		return
+
 	turn_flow.reset()
 	active_action_target_id = ""
+	player_is_defending = false
 	turn_number += 1
 	_set_action_status("รอบที่ %d · เลือกคำสั่ง" % turn_number)
 	attack_button.disabled = false
@@ -1098,6 +1103,10 @@ func _update_ui() -> void:
 	enemy_a_label.text = "Enemy A HP: %d / %d" % [
 		enemy_hp,
 		ENEMY_MAX_HP
+	]
+	enemy_b_label.text = "Enemy B HP: %d / %d" % [
+		enemy_b_hp,
+		ENEMY_B_MAX_HP
 	]
 
 
@@ -1238,9 +1247,12 @@ func _show_battle_result() -> void:
 		battle_result_title.add_theme_color_override(
 			"font_color", Color(1.0, 0.64, 0.60, 1.0)
 		)
-	battle_result_detail.text = "รอบที่ %d · Player HP %d/%d · Enemy HP %d/%d" % [
-		turn_number, player_hp, PLAYER_MAX_HP, enemy_hp, ENEMY_MAX_HP
-	]
+	battle_result_detail.text = (
+		"รอบที่ %d · Player HP %d/%d\nEnemy A %d/%d · Enemy B %d/%d" % [
+			turn_number, player_hp, PLAYER_MAX_HP,
+			enemy_hp, ENEMY_MAX_HP, enemy_b_hp, ENEMY_B_MAX_HP
+		]
+	)
 	battle_result_panel.modulate.a = 0.0
 	battle_result_panel.show()
 	battle_result_tween = _pace_tween(create_tween())
@@ -1254,9 +1266,7 @@ func _end_battle(player_won: bool) -> void:
 		return
 	battle_is_over = true
 	battle_result_player_won = player_won
-	# เป้าหมายที่ถูกกำจัดจะเลือกซ้ำไม่ได้
-	if player_won:
-		target_registry.mark_enemy_defeated(CombatTargets.ENEMY_A_ID)
+	# เป้าหมายที่ถูกกำจัดจะถูกทำเครื่องหมายตอน HP เป็นศูนย์
 	target_picker.disabled = true
 	# เมื่อใครสักคนแพ้ ห้าม Action ที่วางแผนไว้แล้วออกต่อ
 	turn_flow.reset()
