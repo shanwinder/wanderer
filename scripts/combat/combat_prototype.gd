@@ -57,12 +57,12 @@ const HIT_SPARK_PLAYER_OFFSET: Vector2 = Vector2(45, -72)
 
 # M1.5D-02: NPC ทั้งสามไปยัง ActionStage เดียวกัน ไม่ว่าจุดเริ่มอยู่ที่ใด
 # ระยะไกลใช้เวลามากขึ้นเล็กน้อย แทนการพุ่ง 400px ใน 0.16 วินาที
-const NPC_STAGE_APPROACH_SPEED: float = 1300.0
-const NPC_STAGE_RETURN_SPEED: float = 1800.0
-const NPC_STAGE_MIN_APPROACH_TIME: float = 0.26
-const NPC_STAGE_MAX_APPROACH_TIME: float = 0.48
-const NPC_STAGE_MIN_RETURN_TIME: float = 0.18
-const NPC_STAGE_MAX_RETURN_TIME: float = 0.32
+const NPC_STAGE_APPROACH_SPEED: float = 1000.0
+const NPC_STAGE_RETURN_SPEED: float = 1400.0
+const NPC_STAGE_MIN_APPROACH_TIME: float = 0.30
+const NPC_STAGE_MAX_APPROACH_TIME: float = 0.60
+const NPC_STAGE_MIN_RETURN_TIME: float = 0.22
+const NPC_STAGE_MAX_RETURN_TIME: float = 0.42
 const NPC_STAGE_HOLD_TIME: float = 0.10
 const NPC_ACTIVE_TINT: Color = Color(1.12, 1.08, 1.02, 1.0)
 
