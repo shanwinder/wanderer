@@ -54,6 +54,13 @@ const DEFEND_DAMAGE_COLOR: Color = Color(0.53, 0.84, 1.0, 1.0)
 const ACTIVE_SPRITE_SCALE_FACTOR: float = 1.03
 const IMPACT_SPRITE_SQUASH: Vector2 = Vector2(1.04, 0.96)
 
+# M1.5E-01: ท่าโจมตีด้วย Sprite ทดแทน Attack Art จริงแบบเรียบง่าย
+# ขยับเฉพาะตำแหน่ง Sprite ใน Root ไม่ย้ายเงาหรือสร้าง Projectile
+const ATTACK_POSE_WINDUP_DISTANCE: float = 6.0
+const ATTACK_POSE_STRIKE_DISTANCE: float = 14.0
+const ATTACK_POSE_WINDUP_TIME: float = 0.10
+const ATTACK_POSE_STRIKE_TIME: float = 0.10
+
 # M1.5C-05: Pixel-style Hit Spark แบบ Polygon สั้น ๆ (ไม่ต้องมี Texture)
 const HIT_SPARK_DURATION: float = 0.22
 const HIT_SPARK_START_SCALE: float = 0.8
@@ -106,12 +113,15 @@ var player_home: Vector2
 var enemy_home: Vector2
 var player_sprite_base_scale: Vector2
 var enemy_sprite_base_scale: Vector2
+var player_sprite_base_position: Vector2
+var enemy_sprite_base_position: Vector2
 
 # จัดกลุ่ม Root และ Sprite ของ NPC เพื่อสลับ Action ตามลำดับแน่นอน
 var npc_roots: Array[Node2D] = []
 var npc_sprites: Array[Sprite2D] = []
 var npc_home_positions: Array[Vector2] = []
 var npc_home_tints: Array[Color] = []
+var npc_sprite_base_positions: Array[Vector2] = []
 var npc_action_index: int = 0
 var npc_guard_bonus: int = 0
 var npc_planned_intents: Array[String] = []
@@ -182,6 +192,8 @@ func _ready() -> void:
 	enemy_home = enemy_root.position
 	player_sprite_base_scale = player_sprite.scale
 	enemy_sprite_base_scale = enemy_sprite.scale
+	player_sprite_base_position = player_sprite.position
+	enemy_sprite_base_position = enemy_sprite.position
 
 	# บันทึก Formation และสีต้นฉบับของ NPC เพื่อใช้คืนค่าเมื่อ Restart
 	npc_roots = [npc1_root, npc2_root, npc3_root]
@@ -189,6 +201,7 @@ func _ready() -> void:
 	for i in range(npc_roots.size()):
 		npc_home_positions.append(npc_roots[i].position)
 		npc_home_tints.append(npc_sprites[i].modulate)
+		npc_sprite_base_positions.append(npc_sprites[i].position)
 
 	# แสดงพิกัดปลายทางใน Output เพื่อช่วยตรวจกรณีที่ Motion ผิดตำแหน่ง
 	print("Combat action destination: ", _action_stage_position())
@@ -213,6 +226,23 @@ func _player_target_stage_position() -> Vector2:
 	return _action_stage_position() + Vector2(-ACTION_TARGET_SEPARATION, 0.0)
 
 
+# เรียกหลังผู้โจมตีมาถึงกลางสนาม แล้วจึงคำนวณ Hit ตอน Sprite ฟันออก
+# Player/NPC โจมตีไปทางขวา (+1), Enemy โจมตีไปทางซ้าย (-1)
+func _queue_attack_pose(
+	actor_sprite: Node2D, base_position: Vector2, facing_direction: float
+) -> void:
+	action_tween.tween_property(
+		actor_sprite, "position",
+		base_position + Vector2(-facing_direction * ATTACK_POSE_WINDUP_DISTANCE, 0.0),
+		ATTACK_POSE_WINDUP_TIME
+	).set_ease(Tween.EASE_OUT)
+	action_tween.tween_property(
+		actor_sprite, "position",
+		base_position + Vector2(facing_direction * ATTACK_POSE_STRIKE_DISTANCE, 0.0),
+		ATTACK_POSE_STRIKE_TIME
+	).set_ease(Tween.EASE_OUT)
+
+
 # -----------------------------------------------------------------------------
 # เริ่มการต่อสู้ใหม่
 # -----------------------------------------------------------------------------
@@ -230,10 +260,13 @@ func _start_new_battle() -> void:
 	enemy_sprite.modulate = Color.WHITE
 	player_sprite.scale = player_sprite_base_scale
 	enemy_sprite.scale = enemy_sprite_base_scale
+	player_sprite.position = player_sprite_base_position
+	enemy_sprite.position = enemy_sprite_base_position
 	npc_action_index = 0
 	for i in range(npc_roots.size()):
 		npc_roots[i].position = npc_home_positions[i]
 		npc_sprites[i].modulate = npc_home_tints[i]
+		npc_sprites[i].position = npc_sprite_base_positions[i]
 
 	# ล้างตัวเลข Damage และ HP Flash ที่อาจยังแสดงอยู่ตอน Restart
 	for popup in damage_popups:
@@ -306,12 +339,17 @@ func _on_attack_button_pressed() -> void:
 		ATTACK_LUNGE_TIME
 	)
 
-	# Enemy A ยืนประจำ Formation ไม่ถูกลากเข้ามายัง ActionStage
-	# เมื่อ Player ก้าวถึงจุดโจมตี จึงหัก HP และแสดง Hit Feedback
+	# Enemy A ยังยืนที่ Formation; Player ทำ Windup/Strike เฉพาะ Sprite
+	_queue_attack_pose(player_sprite, player_sprite_base_position, 1.0)
+	# หัก HP ที่ปลาย Strike ไม่ใช่ทันทีที่ Root เข้ากลางสนาม
 	action_tween.tween_callback(_apply_player_hit)
 	action_tween.tween_property(
 		enemy_root, "position", enemy_home + Vector2(ENEMY_RECOIL_DISTANCE, 0),
 		ENEMY_HIT_TIME
+	)
+	# กลับ Sprite ของผู้โจมตีหลัง Hit ขณะเป้าหมายสะดุ้ง
+	action_tween.parallel().tween_property(
+		player_sprite, "position", player_sprite_base_position, ENEMY_HIT_TIME
 	)
 	action_tween.parallel().tween_property(
 		enemy_sprite, "modulate", Color(1.0, 0.55, 0.55, 1.0), ENEMY_HIT_TIME
@@ -365,6 +403,8 @@ func _finish_player_attack() -> void:
 	enemy_sprite.modulate = Color.WHITE
 	player_sprite.scale = player_sprite_base_scale
 	enemy_sprite.scale = enemy_sprite_base_scale
+	player_sprite.position = player_sprite_base_position
+	enemy_sprite.position = enemy_sprite_base_position
 	action_tween = null
 
 	if battle_is_over:
@@ -466,6 +506,7 @@ func _start_next_npc_action() -> void:
 	var current_sprite: Sprite2D = npc_sprites[npc_action_index]
 	var home: Vector2 = npc_home_positions[npc_action_index]
 	var original_tint: Color = npc_home_tints[npc_action_index]
+	var sprite_home: Vector2 = npc_sprite_base_positions[npc_action_index]
 	var stage_position: Vector2 = _action_stage_position()
 	var distance: float = home.distance_to(stage_position)
 	var approach_time: float = clampf(
@@ -495,10 +536,14 @@ func _start_next_npc_action() -> void:
 	# NPC ยังไป ActionStage แต่ Enemy A คงตำแหน่ง Formation ไว้
 	action_tween.tween_interval(NPC_STAGE_HOLD_TIME)
 	if is_attack:
+		_queue_attack_pose(current_sprite, sprite_home, 1.0)
 		action_tween.tween_callback(_apply_npc_hit)
 		action_tween.tween_property(
 			enemy_root, "position", enemy_home + Vector2(ENEMY_RECOIL_DISTANCE, 0),
 			NPC_ATTACK_HIT_TIME
+		)
+		action_tween.parallel().tween_property(
+			current_sprite, "position", sprite_home, NPC_ATTACK_HIT_TIME
 		)
 		action_tween.parallel().tween_property(
 			enemy_sprite, "modulate", Color(1.0, 0.55, 0.55, 1.0),
@@ -609,6 +654,7 @@ func _finish_npc_action() -> void:
 	# คืนตำแหน่งและรูปทรงทุกฝ่ายก่อนข้ามไปคิวต่อไป
 	npc_roots[npc_action_index].position = npc_home_positions[npc_action_index]
 	npc_sprites[npc_action_index].modulate = npc_home_tints[npc_action_index]
+	npc_sprites[npc_action_index].position = npc_sprite_base_positions[npc_action_index]
 	player_sprite.modulate = Color.WHITE
 	# ปิด Cue ของคนที่ออก Action เสร็จแล้ว (เหลือเฉพาะผู้รอคิว)
 	npc_intent_labels[npc_action_index].hide()
@@ -662,11 +708,15 @@ func _start_enemy_counteraction() -> void:
 		player_root, "position", _player_target_stage_position(), TARGET_STAGE_ARRIVAL_TIME
 	).set_ease(Tween.EASE_OUT)
 
-	# ลด HP หลังศัตรูพุ่งถึงจุดโต้กลับ ไม่หัก HP ทันทีตอนเริ่มเทิร์น
+	# Enemy เตรียมและออกท่าไปทางซ้ายก่อนคำนวณ Damage
+	_queue_attack_pose(enemy_sprite, enemy_sprite_base_position, -1.0)
 	action_tween.tween_callback(_apply_enemy_hit)
 	action_tween.tween_property(
 		player_root, "position", _player_target_stage_position() + Vector2(-PLAYER_HIT_RECOIL_DISTANCE, 0),
 		PLAYER_HIT_TIME
+	)
+	action_tween.parallel().tween_property(
+		enemy_sprite, "position", enemy_sprite_base_position, PLAYER_HIT_TIME
 	)
 	action_tween.parallel().tween_property(
 		player_sprite, "modulate", hit_color, PLAYER_HIT_TIME
@@ -765,6 +815,8 @@ func _finish_enemy_counteraction() -> void:
 	player_sprite.modulate = Color.WHITE
 	enemy_sprite.scale = enemy_sprite_base_scale
 	player_sprite.scale = player_sprite_base_scale
+	enemy_sprite.position = enemy_sprite_base_position
+	player_sprite.position = player_sprite_base_position
 	action_tween = null
 	action_in_progress = false
 	turn_number += 1
