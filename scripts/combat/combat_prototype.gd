@@ -23,6 +23,14 @@ const SHORT_LUNGE_TIME: float = 0.18
 const SHORT_LUNGE_RETURN_TIME: float = 0.22
 const GUARD_POSE_RAISE_TIME: float = 0.12
 const GUARD_POSE_RETURN_TIME: float = 0.18
+
+# M1.5E-04: Player Defend ออกท่า Brace สั้น ๆ โดยไม่ย้าย Root
+const PLAYER_DEFEND_BRACE_TIME: float = 0.12
+const PLAYER_DEFEND_HOLD_TIME: float = 0.08
+const PLAYER_DEFEND_RECOVER_TIME: float = 0.16
+const PLAYER_DEFEND_BRACE_OFFSET: Vector2 = Vector2(-3.0, -2.0)
+const PLAYER_DEFEND_BRACE_SCALE: Vector2 = Vector2(1.02, 0.99)
+const PLAYER_DEFEND_BRACE_TINT: Color = Color(0.80, 0.92, 1.0, 1.0)
 const ENEMY_RECOIL_DISTANCE: float = 18.0
 const ENEMY_HIT_TIME: float = 0.14
 const HIT_HOLD_TIME: float = 0.08
@@ -386,13 +394,61 @@ func _on_defend_button_pressed() -> void:
 	if battle_is_over or action_in_progress:
 		return
 
+	# ล็อกคำสั่งทันที ไม่ให้กด Attack/Defend ระหว่าง Player กำลัง Brace
+	action_in_progress = true
+	attack_button.disabled = true
+	defend_button.disabled = true
 	_add_log("--- รอบที่ %d ---" % turn_number)
 
-	# ตั้งสถานะว่าผู้เล่นกำลังป้องกันในรอบนี้
+	# ระบบ Defend และกฎตัดสินใจของ NPC2 ยังคงเหมือนเดิม
 	player_is_defending = true
 	_add_log("Player ตั้งรับ เตรียมลดความเสียหายจาก Enemy A")
 
-	# แม้ Player ตั้งรับ NPC ยังคงแสดงเทิร์นของตนก่อนศัตรูโต้กลับ
+	# ท่าตั้งรับไม่เคลื่อน Root หรือ Shadow และไม่สร้างเอฟเฟกต์ใหม่
+	action_tween = create_tween()
+	action_tween.set_trans(Tween.TRANS_SINE)
+	action_tween.tween_property(
+		player_sprite, "position",
+		player_sprite_base_position + PLAYER_DEFEND_BRACE_OFFSET,
+		PLAYER_DEFEND_BRACE_TIME
+	).set_ease(Tween.EASE_OUT)
+	action_tween.parallel().tween_property(
+		player_sprite, "scale",
+		player_sprite_base_scale * PLAYER_DEFEND_BRACE_SCALE,
+		PLAYER_DEFEND_BRACE_TIME
+	)
+	action_tween.parallel().tween_property(
+		player_sprite, "modulate", PLAYER_DEFEND_BRACE_TINT,
+		PLAYER_DEFEND_BRACE_TIME
+	)
+
+	action_tween.tween_interval(PLAYER_DEFEND_HOLD_TIME)
+	action_tween.tween_property(
+		player_sprite, "position", player_sprite_base_position,
+		PLAYER_DEFEND_RECOVER_TIME
+	)
+	action_tween.parallel().tween_property(
+		player_sprite, "scale", player_sprite_base_scale,
+		PLAYER_DEFEND_RECOVER_TIME
+	)
+	action_tween.parallel().tween_property(
+		player_sprite, "modulate", Color.WHITE,
+		PLAYER_DEFEND_RECOVER_TIME
+	)
+	action_tween.tween_callback(_finish_player_defend_pose)
+
+
+func _finish_player_defend_pose() -> void:
+	# คืน Sprite ให้ตรงตำแหน่งก่อนเข้าสู่ NPC phase แม้ถูก Restart ภายหลัง
+	player_sprite.position = player_sprite_base_position
+	player_sprite.scale = player_sprite_base_scale
+	player_sprite.modulate = Color.WHITE
+	action_tween = null
+	if battle_is_over:
+		action_in_progress = false
+		return
+
+	# แผน NPC ประเมิน player_is_defending หลังท่า Brace เสร็จ
 	_start_npc_turns()
 
 
