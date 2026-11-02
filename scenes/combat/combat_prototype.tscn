@@ -22,6 +22,18 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_result"]
+bg_color = Color(0.11, 0.15, 0.16, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.62, 0.65, 0.60, 0.88)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="CombatPrototype" type="Control" unique_id=849180832]
 layout_mode = 3
 anchors_preset = 15
@@ -56,6 +68,14 @@ offset_bottom = 343.0
 mouse_filter = 2
 color = Color(0.16, 0.19, 0.16, 1)
 
+[node name="DistantRidge" type="Polygon2D" parent="."]
+color = Color(0.137, 0.163, 0.156, 1)
+polygon = PackedVector2Array(0, 297, 80, 281, 175, 291, 272, 269, 358, 285, 457, 263, 552, 277, 660, 256, 753, 273, 846, 252, 946, 269, 1050, 251, 1150, 284, 1230, 272, 1280, 288, 1280, 343, 0, 343)
+
+[node name="MidgroundShelf" type="Polygon2D" parent="."]
+color = Color(0.125, 0.149, 0.136, 1)
+polygon = PackedVector2Array(0, 331, 100, 320, 215, 327, 314, 311, 435, 320, 535, 312, 655, 329, 764, 314, 883, 324, 993, 309, 1114, 324, 1200, 316, 1280, 324, 1280, 343, 0, 343)
+
 [node name="Ground" type="ColorRect" parent="." unique_id=975505626]
 layout_mode = 0
 offset_top = 343.0
@@ -64,11 +84,24 @@ offset_bottom = 543.0
 mouse_filter = 2
 color = Color(0.19, 0.16, 0.13, 1)
 
+[node name="StageFloor" type="Polygon2D" parent="."]
+color = Color(0.208, 0.177, 0.146, 1)
+polygon = PackedVector2Array(100, 361, 1180, 361, 1280, 535, 0, 535)
+
+[node name="GroundRim" type="Polygon2D" parent="."]
+color = Color(0.151, 0.148, 0.124, 1)
+polygon = PackedVector2Array(0, 343, 1280, 343, 1280, 350, 0, 350)
+
 [node name="Battlefield" type="Node2D" parent="." unique_id=202512223]
 y_sort_enabled = true
 
 [node name="Npc1Root" type="Node2D" parent="Battlefield" unique_id=167162357]
-position = Vector2(183.00002, 491)
+position = Vector2(320, 480)
+
+[node name="Npc1Shadow" type="Polygon2D" parent="Battlefield/Npc1Root"]
+position = Vector2(0, -4)
+color = Color(0.035, 0.029, 0.023, 0.42)
+polygon = PackedVector2Array(-34, 0, -28.56, -4.2, -15.3, -6.3, 0, -7, 15.3, -6.3, 28.56, -4.2, 34, 0, 28.56, 4.2, 15.3, 6.3, 0, 7, -15.3, 6.3, -28.56, 4.2)
 
 [node name="Npc1" type="Sprite2D" parent="Battlefield/Npc1Root" unique_id=1421812779]
 texture_filter = 1
@@ -76,39 +109,90 @@ position = Vector2(0, -52.5)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("4_npc1")
 
-[node name="Player" type="AnimatedSprite2D" parent="Battlefield" unique_id=141029305]
+[node name="PlayerRoot" type="Node2D" parent="Battlefield" unique_id=2062452648]
+position = Vector2(570, 465)
+
+
+[node name="PlayerShadow" type="Polygon2D" parent="Battlefield/PlayerRoot"]
+position = Vector2(0, -4)
+color = Color(0.035, 0.029, 0.023, 0.42)
+polygon = PackedVector2Array(-36, 0, -30.24, -4.2, -16.2, -6.3, 0, -7, 16.2, -6.3, 30.24, -4.2, 36, 0, 30.24, 4.2, 16.2, 6.3, 0, 7, -16.2, 6.3, -30.24, 4.2)
+
+[node name="Player" type="AnimatedSprite2D" parent="Battlefield/PlayerRoot" unique_id=141029305]
 texture_filter = 1
-position = Vector2(479, 412)
+position = Vector2(0, -54)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_player")
 animation = &"idle"
 autoplay = "idle"
 
-[node name="Npc2" type="Sprite2D" parent="Battlefield" unique_id=917054219]
+[node name="Npc2Root" type="Node2D" parent="Battlefield" unique_id=81900588]
+position = Vector2(405, 435)
+
+
+[node name="Npc2Shadow" type="Polygon2D" parent="Battlefield/Npc2Root"]
+position = Vector2(0, -4)
+color = Color(0.035, 0.029, 0.023, 0.42)
+polygon = PackedVector2Array(-34, 0, -28.56, -4.2, -15.3, -6.3, 0, -7, 15.3, -6.3, 28.56, -4.2, 34, 0, 28.56, 4.2, 15.3, 6.3, 0, 7, -15.3, 6.3, -28.56, 4.2)
+
+[node name="Npc2" type="Sprite2D" parent="Battlefield/Npc2Root" unique_id=917054219]
 texture_filter = 1
-position = Vector2(299, 390)
+position = Vector2(0, -58)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("5_npc2")
 
-[node name="Npc3" type="Sprite2D" parent="Battlefield" unique_id=679747556]
+[node name="Npc3Root" type="Node2D" parent="Battlefield" unique_id=229338228]
+position = Vector2(475, 509)
+
+
+[node name="Npc3Shadow" type="Polygon2D" parent="Battlefield/Npc3Root"]
+position = Vector2(0, -4)
+color = Color(0.035, 0.029, 0.023, 0.42)
+polygon = PackedVector2Array(-34, 0, -28.56, -4.2, -15.3, -6.3, 0, -7, 15.3, -6.3, 28.56, -4.2, 34, 0, 28.56, 4.2, 15.3, 6.3, 0, 7, -15.3, 6.3, -28.56, 4.2)
+
+[node name="Npc3" type="Sprite2D" parent="Battlefield/Npc3Root" unique_id=679747556]
 texture_filter = 1
-position = Vector2(375, 474)
+position = Vector2(0, -58)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("6_npc3")
 
-[node name="EnemyA" type="Sprite2D" parent="Battlefield" unique_id=1393338436]
+[node name="EnemyARoot" type="Node2D" parent="Battlefield" unique_id=2034793958]
+position = Vector2(970, 506)
+
+
+[node name="EnemyAShadow" type="Polygon2D" parent="Battlefield/EnemyARoot"]
+position = Vector2(0, -4)
+color = Color(0.035, 0.029, 0.023, 0.42)
+polygon = PackedVector2Array(-68, 0, -57.12, -6, -30.6, -9, 0, -10, 30.6, -9, 57.12, -6, 68, 0, 57.12, 6, 30.6, 9, 0, 10, -30.6, 9, -57.12, 6)
+
+[node name="EnemyA" type="Sprite2D" parent="Battlefield/EnemyARoot" unique_id=1393338436]
 texture_filter = 1
-position = Vector2(945, 461)
+position = Vector2(0, -53)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("7_enemy1")
 
-[node name="PlayerRoot" type="Node2D" parent="Battlefield" unique_id=2062452648]
+[node name="EnemyBRoot" type="Node2D" parent="Battlefield"]
+position = Vector2(1100, 424)
 
-[node name="Npc2Root" type="Node2D" parent="Battlefield" unique_id=81900588]
+[node name="EnemyBShadow" type="Polygon2D" parent="Battlefield/EnemyBRoot"]
+position = Vector2(0, -4)
+color = Color(0.035, 0.029, 0.023, 0.42)
+polygon = PackedVector2Array(-50, 0, -42, -4, -23, -7, 0, -8, 23, -7, 42, -4, 50, 0, 42, 4, 23, 7, 0, 8, -23, 7, -42, 4)
 
-[node name="Npc3Root" type="Node2D" parent="Battlefield" unique_id=229338228]
+[node name="EnemyB" type="Sprite2D" parent="Battlefield/EnemyBRoot"]
+texture_filter = 1
+position = Vector2(0, -48)
+scale = Vector2(2.1, 2.1)
+modulate = Color(0.80, 0.88, 1.0, 1)
+texture = ExtResource("7_enemy1")
 
-[node name="EnemyARoot" type="Node2D" parent="Battlefield" unique_id=2034793958]
+[node name="ForegroundLeft" type="Polygon2D" parent="."]
+color = Color(0.143, 0.129, 0.114, 1)
+polygon = PackedVector2Array(0, 478, 23, 468, 52, 476, 69, 492, 55, 509, 84, 535, 0, 535)
+
+[node name="ForegroundRight" type="Polygon2D" parent="."]
+color = Color(0.143, 0.129, 0.114, 1)
+polygon = PackedVector2Array(1280, 470, 1261, 462, 1237, 478, 1222, 493, 1242, 507, 1203, 535, 1280, 535)
 
 [node name="TitleLabel" type="Label" parent="." unique_id=1955448986]
 layout_mode = 0
@@ -119,6 +203,61 @@ offset_bottom = 54.0
 theme_override_colors/font_color = Color(0.95, 0.85, 0.56, 1)
 theme_override_font_sizes/font_size = 22
 text = "WANDERER — VISUAL COMBAT TEST 1"
+horizontal_alignment = 1
+
+[node name="ActionStatusLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 58.0
+offset_right = 1248.0
+offset_bottom = 84.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.70, 0.82, 0.84, 1)
+theme_override_font_sizes/font_size = 16
+text = "รอบที่ 1 · เลือกคำสั่ง"
+horizontal_alignment = 1
+
+[node name="BattleResultPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 415.0
+offset_top = 158.0
+offset_right = 865.0
+offset_bottom = 307.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_result")
+
+[node name="ResultMargin" type="MarginContainer" parent="BattleResultPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 14
+
+[node name="ResultVBox" type="VBoxContainer" parent="BattleResultPanel/ResultMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ResultTitle" type="Label" parent="BattleResultPanel/ResultMargin/ResultVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.85, 0.55, 1)
+theme_override_font_sizes/font_size = 29
+text = "ชัยชนะ"
+horizontal_alignment = 1
+
+[node name="ResultDetail" type="Label" parent="BattleResultPanel/ResultMargin/ResultVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.91, 0.90, 1)
+theme_override_font_sizes/font_size = 15
+text = "รอบที่ 1 · Player HP 30/30\nEnemy A 0/15 · Enemy B 0/12"
+horizontal_alignment = 1
+
+[node name="ResultHint" type="Label" parent="BattleResultPanel/ResultMargin/ResultVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.70, 0.78, 0.77, 1)
+theme_override_font_sizes/font_size = 14
+text = "กด 'เริ่มใหม่' เพื่อเล่นอีกครั้ง"
 horizontal_alignment = 1
 
 [node name="MainMargin" type="MarginContainer" parent="." unique_id=2047073220]
@@ -155,14 +294,17 @@ layout_mode = 2
 text = "Player HP: 30 / 30"
 
 [node name="NpcALabel" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel" unique_id=1940055509]
+visible = false
 layout_mode = 2
 text = "NPC1 — visual only"
 
 [node name="NpcBLabel" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel" unique_id=648608578]
+visible = false
 layout_mode = 2
 text = "NPC2 — visual only"
 
 [node name="NpcCLabel" type="Label" parent="MainMargin/MainVBox/BattleRow/AlliesPanel" unique_id=1924699664]
+visible = false
 layout_mode = 2
 text = "NPC3 — visual only"
 
@@ -182,10 +324,10 @@ text = "Enemy A HP: 15 / 15"
 
 [node name="EnemyBLabel" type="Label" parent="MainMargin/MainVBox/BattleRow/EnemiesPanel" unique_id=705654534]
 layout_mode = 2
-text = "Enemy B — not included in this test"
+text = "Enemy B HP: 12 / 12"
 
 [node name="CombatLog" type="RichTextLabel" parent="MainMargin/MainVBox" unique_id=2102754491]
-custom_minimum_size = Vector2(0, 42)
+custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.9, 0.92, 0.95, 1)
@@ -197,6 +339,15 @@ scroll_following = true
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
+
+[node name="TargetLabel" type="Label" parent="MainMargin/MainVBox/ActionRow"]
+layout_mode = 2
+text = "เป้าหมาย"
+
+[node name="TargetPicker" type="OptionButton" parent="MainMargin/MainVBox/ActionRow"]
+custom_minimum_size = Vector2(148, 38)
+layout_mode = 2
+tooltip_text = "เลือกเป้าหมายสำหรับการโจมตี"
 
 [node name="AttackButton" type="Button" parent="MainMargin/MainVBox/ActionRow" unique_id=45462366]
 custom_minimum_size = Vector2(150, 38)
