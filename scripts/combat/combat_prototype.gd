@@ -1,6 +1,7 @@
 extends Control
 
 const CombatTurnFlow = preload("res://scripts/combat/combat_turn_flow.gd")
+const CombatTargets = preload("res://scripts/combat/combat_targets.gd")
 
 # 1.0 = จังหวะเดิม, 0.70 = Motion/Feedback ใช้เวลานานขึ้นประมาณ 43%
 # ใช้ค่ากลางเดียวกันทุก Tween เพื่อปรับความเร็วในการทดลองได้จาก Inspector
@@ -112,6 +113,10 @@ var turn_number: int = 1
 # แยกการวางแผนคิวเทิร์นออกจาก Animation และผลลัพธ์ของการโจมตี
 var turn_flow = CombatTurnFlow.new()
 
+# คัดเป้าหมายฝ่ายศัตรูก่อนเริ่ม Action แล้วเก็บ ID ไปกับคิวเทิร์น
+var target_registry = CombatTargets.new()
+var active_action_target_id: String = ""
+
 # ล็อกคำสั่งระหว่าง Motion ทั้งสองฝ่าย เพื่อไม่ให้ HP คลาดเคลื่อน
 var action_in_progress: bool = false
 var action_tween: Tween
@@ -167,6 +172,7 @@ var enemy_hp_flash_tween: Tween
 @onready var defend_button: Button = (
 	$MainMargin/MainVBox/ActionRow/DefendButton
 )
+@onready var target_picker: OptionButton = $MainMargin/MainVBox/ActionRow/TargetPicker
 
 @onready var restart_button: Button = (
 	$MainMargin/MainVBox/ActionRow/RestartButton
@@ -195,6 +201,7 @@ func _ready() -> void:
 	attack_button.pressed.connect(_on_attack_button_pressed)
 	defend_button.pressed.connect(_on_defend_button_pressed)
 	restart_button.pressed.connect(_on_restart_button_pressed)
+	target_picker.item_selected.connect(_on_target_picker_item_selected)
 
 	# จดตำแหน่งที่จัดฉากไว้ เพื่อให้ทุก Action กลับเข้ากลุ่มเดิมได้
 	player_home = player_root.position
@@ -214,6 +221,37 @@ func _ready() -> void:
 
 	# เริ่มการต่อสู้รอบแรก
 	_start_new_battle()
+
+
+# ตัวเลือกแสดงจาก Target Registry ไม่ฮาร์ดโค้ดรายชื่อศัตรูใน Scene
+func _refresh_target_picker() -> void:
+	target_picker.clear()
+	var selected_id: String = target_registry.selected_enemy_id()
+	var selected_index: int = -1
+	for enemy in target_registry.available_enemy_targets():
+		target_picker.add_item(String(enemy["name"]))
+		var index: int = target_picker.item_count - 1
+		target_picker.set_item_metadata(index, String(enemy["id"]))
+		if String(enemy["id"]) == selected_id:
+			selected_index = index
+	if selected_index >= 0:
+		target_picker.select(selected_index)
+	target_picker.disabled = selected_index < 0 or action_in_progress or battle_is_over
+
+
+func _on_target_picker_item_selected(index: int) -> void:
+	# ระหว่าง Tween ไม่รับการเปลี่ยนเป้าหมาย: Action ที่เริ่มแล้วจะล็อก Target ID
+	if battle_is_over or action_in_progress:
+		return
+	if not target_registry.select_enemy(String(target_picker.get_item_metadata(index))):
+		_refresh_target_picker()
+
+
+func _is_enemy_target_valid(target_id: String) -> bool:
+	# ปัจจุบันมี Enemy A ตัวเดียว; จุดนี้จะขยาย Damage Routing ในขั้นถัดไป
+	return target_id == CombatTargets.ENEMY_A_ID and enemy_hp > 0 and (
+		target_registry.is_enemy_available(target_id)
+	)
 
 
 # เรียกเมื่อ Root พุ่งจาก Formation สั้น ๆ แล้วคำนวณ Hit ตอน Sprite ออกท่า
@@ -254,8 +292,9 @@ func _start_new_battle() -> void:
 	battle_result_panel.hide()
 	battle_result_panel.modulate.a = 1.0
 
-	# ยกเลิกคิวเก่าแม้ Restart ตอนกำลังออก Action หรือรอจังหวะส่งต่อ
+	# ยกเลิกคิวและ Target ID ที่ผูกกับ Action เก่าเมื่อ Restart
 	turn_flow.reset()
+	active_action_target_id = ""
 	# ล้าง Cue ที่เกาะกับ NPC เมื่อ Restart ระหว่างเดินทางหรือรับ Hit
 	_clear_npc_intents()
 	action_in_progress = false
@@ -304,6 +343,9 @@ func _start_new_battle() -> void:
 	# เปิดปุ่มการกระทำอีกครั้ง
 	attack_button.disabled = false
 	defend_button.disabled = false
+	target_registry.reset()
+	target_registry.register_enemy(CombatTargets.ENEMY_A_ID, "Enemy A")
+	_refresh_target_picker()
 
 	# ล้างข้อความเก่า และเขียนข้อความเริ่มต้น
 	combat_log.clear()
@@ -327,13 +369,20 @@ func _on_attack_button_pressed() -> void:
 	if battle_is_over or action_in_progress:
 		return
 
+	var selected_enemy_id: String = target_registry.selected_enemy_id()
+	if not _is_enemy_target_valid(selected_enemy_id):
+		_refresh_target_picker()
+		return
+
 	action_in_progress = true
 	attack_button.disabled = true
 	defend_button.disabled = true
+	target_picker.disabled = true
 	player_is_defending = false
 	# วางแผนทั้งรอบไว้ล่วงหน้า แล้วให้ Player ใช้ Action แรก
-	turn_flow.plan_round(false, npc_roots.size())
+	turn_flow.plan_round(false, npc_roots.size(), selected_enemy_id)
 	var player_action: Dictionary = turn_flow.take_next_action()
+	active_action_target_id = String(player_action["target_id"])
 	_add_log("--- รอบที่ %d ---" % turn_number)
 	_set_action_status("รอบที่ %d · Player: %s" % [
 		turn_number, String(player_action["intent"])
@@ -395,6 +444,8 @@ func _on_attack_button_pressed() -> void:
 
 
 func _apply_player_hit() -> void:
+	if battle_is_over or not _is_enemy_target_valid(active_action_target_id):
+		return
 	var previous_hp: int = enemy_hp
 	enemy_hp = maxi(enemy_hp - PLAYER_ATTACK_DAMAGE, 0)
 	var actual_damage: int = previous_hp - enemy_hp
@@ -444,12 +495,14 @@ func _on_defend_button_pressed() -> void:
 	action_in_progress = true
 	attack_button.disabled = true
 	defend_button.disabled = true
+	target_picker.disabled = true
 	_add_log("--- รอบที่ %d ---" % turn_number)
 
 	# ระบบ Defend และกฎตัดสินใจของ NPC2 ยังคงเหมือนเดิม
 	player_is_defending = true
-	turn_flow.plan_round(true, npc_roots.size())
+	turn_flow.plan_round(true, npc_roots.size(), target_registry.selected_enemy_id())
 	var player_action: Dictionary = turn_flow.take_next_action()
+	active_action_target_id = String(player_action["target_id"])
 	_add_log("Player ตั้งรับ เตรียมลดความเสียหายจาก Enemy A")
 	_set_action_status("รอบที่ %d · Player: %s" % [
 		turn_number, String(player_action["intent"])
@@ -514,6 +567,7 @@ func _start_npc_turns() -> void:
 	action_in_progress = true
 	attack_button.disabled = true
 	defend_button.disabled = true
+	target_picker.disabled = true
 	npc_action_index = 0
 	_prepare_npc_intents()
 	_start_next_npc_action()
@@ -563,6 +617,7 @@ func _start_next_npc_action() -> void:
 	if next_action.is_empty():
 		push_error("Combat Turn Flow: ไม่มี Action ถัดไปหลัง NPC")
 		return
+	active_action_target_id = String(next_action["target_id"])
 	if next_action["actor"] == CombatTurnFlow.ACTOR_ENEMY:
 		_clear_npc_intents()
 		_start_enemy_counteraction()
@@ -709,8 +764,8 @@ func _show_npc_guard_feedback() -> void:
 
 
 func _apply_npc_hit() -> void:
-	# NPC ยังไม่มี AI: โจมตีเป้าหมายเดียวด้วย Damage คงที่
-	if battle_is_over or enemy_hp <= 0:
+	# NPC ใช้ Target ID ที่ได้จากคิว (ยังมี Enemy A ตัวเดียว)
+	if battle_is_over or not _is_enemy_target_valid(active_action_target_id):
 		return
 
 	var previous_hp: int = enemy_hp
@@ -839,6 +894,9 @@ func _start_enemy_counteraction() -> void:
 # คำนวณผลโต้กลับของศัตรู ณ จังหวะปะทะ
 # -----------------------------------------------------------------------------
 func _apply_enemy_hit() -> void:
+	# Enemy Action ก็กำหนดเป้าหมายชัดเจนใน Turn Flow
+	if battle_is_over or active_action_target_id != CombatTargets.PLAYER_ID:
+		return
 	var was_defending: bool = player_is_defending
 	# ใช้สถานะก่อนลด/รีเซ็ต Guard เพื่อให้ Popup และ Reaction สอดคล้องกัน
 	var was_guarded: bool = was_defending or npc_guard_bonus > 0
@@ -914,10 +972,12 @@ func _finish_enemy_counteraction() -> void:
 		return
 
 	turn_flow.reset()
+	active_action_target_id = ""
 	turn_number += 1
 	_set_action_status("รอบที่ %d · เลือกคำสั่ง" % turn_number)
 	attack_button.disabled = false
 	defend_button.disabled = false
+	_refresh_target_picker()
 
 
 # -----------------------------------------------------------------------------
@@ -1095,6 +1155,10 @@ func _end_battle(player_won: bool) -> void:
 		return
 	battle_is_over = true
 	battle_result_player_won = player_won
+	# เป้าหมายที่ถูกกำจัดจะเลือกซ้ำไม่ได้
+	if player_won:
+		target_registry.mark_enemy_defeated(CombatTargets.ENEMY_A_ID)
+	target_picker.disabled = true
 	# เมื่อใครสักคนแพ้ ห้าม Action ที่วางแผนไว้แล้วออกต่อ
 	turn_flow.reset()
 	npc_guard_bonus = 0
