@@ -17,16 +17,19 @@ func reset() -> void:
 	_next_index = 0
 
 
-func plan_round(player_defending: bool, npc_count: int) -> void:
+func plan_round(player_defending: bool, npc_count: int, enemy_target_id: String) -> void:
 	reset()
 
 	var player_intent: String = INTENT_ATTACK
+	var player_target_id: String = enemy_target_id
 	if player_defending:
 		player_intent = INTENT_GUARD
+		player_target_id = "player"
 	_actions.append({
 		"actor": ACTOR_PLAYER,
 		"actor_index": 0,
-		"intent": player_intent
+		"intent": player_intent,
+		"target_id": player_target_id
 	})
 
 	# กฎ NPC2 แบบเดิม: Player โจมตี -> NPC2 Guard; Player ตั้งรับ -> NPC2 ATK
@@ -34,16 +37,21 @@ func plan_round(player_defending: bool, npc_count: int) -> void:
 		var npc_intent: String = INTENT_ATTACK
 		if i == 1 and not player_defending:
 			npc_intent = INTENT_GUARD
+		var npc_target_id: String = enemy_target_id
+		if npc_intent == INTENT_GUARD:
+			npc_target_id = "player"
 		_actions.append({
 			"actor": ACTOR_NPC,
 			"actor_index": i,
-			"intent": npc_intent
+			"intent": npc_intent,
+			"target_id": npc_target_id
 		})
 
 	_actions.append({
 		"actor": ACTOR_ENEMY,
 		"actor_index": 0,
-		"intent": INTENT_ATTACK
+		"intent": INTENT_ATTACK,
+		"target_id": "player"
 	})
 
 
