@@ -23,6 +23,10 @@ const DEFEND_REDUCTION: int = 2
 # ตัวละครทุกฝ่ายไปแสดง Action ที่พิกัดกลางสนามเดียวกัน
 const ENEMY_RECOIL_DISTANCE: float = 18.0
 
+# M1.5D-04: เป้าหมายเข้ามารับ Action ใกล้ผู้ลงมือในพื้นที่เวทีกลาง
+const ACTION_TARGET_SEPARATION: float = 135.0
+const TARGET_STAGE_ARRIVAL_TIME: float = 0.28
+
 # แยกเวลาของแต่ละจังหวะไว้ให้ปรับความเร็วได้โดยไม่แตะระบบ HP
 const ATTACK_LUNGE_TIME: float = 0.42
 const ENEMY_HIT_TIME: float = 0.14
@@ -192,6 +196,15 @@ func _action_stage_position() -> Vector2:
 	return action_stage_position
 
 
+# จุดรับการโจมตีซ้าย/ขวาของผู้ลงมือ (ActionStage อยู่ตรงกลาง)
+func _enemy_target_stage_position() -> Vector2:
+	return _action_stage_position() + Vector2(ACTION_TARGET_SEPARATION, 0.0)
+
+
+func _player_target_stage_position() -> Vector2:
+	return _action_stage_position() + Vector2(-ACTION_TARGET_SEPARATION, 0.0)
+
+
 # -----------------------------------------------------------------------------
 # เริ่มการต่อสู้ใหม่
 # -----------------------------------------------------------------------------
@@ -282,10 +295,16 @@ func _on_attack_button_pressed() -> void:
 		ATTACK_LUNGE_TIME
 	)
 
+	# Enemy มาอยู่ด้านขวาของ ActionStage ก่อน Player โจมตีถึงจุด
+	action_tween.parallel().tween_property(
+		enemy_root, "position", _enemy_target_stage_position(), TARGET_STAGE_ARRIVAL_TIME
+	).set_ease(Tween.EASE_OUT)
+
 	# เมื่อ Player ก้าวถึงจุดโจมตี จึงหัก HP และแสดง Hit Feedback
 	action_tween.tween_callback(_apply_player_hit)
 	action_tween.tween_property(
-		enemy_root, "position", enemy_home + Vector2(ENEMY_RECOIL_DISTANCE, 0), ENEMY_HIT_TIME
+		enemy_root, "position", _enemy_target_stage_position() + Vector2(ENEMY_RECOIL_DISTANCE, 0),
+		ENEMY_HIT_TIME
 	)
 	action_tween.parallel().tween_property(
 		enemy_sprite, "modulate", Color(1.0, 0.55, 0.55, 1.0), ENEMY_HIT_TIME
@@ -322,7 +341,7 @@ func _apply_player_hit() -> void:
 		% PLAYER_ATTACK_DAMAGE
 	)
 	_update_ui()
-	_show_floating_damage(enemy_home, actual_damage, ENEMY_DAMAGE_COLOR)
+	_show_floating_damage(enemy_root.position, actual_damage, ENEMY_DAMAGE_COLOR)
 	_show_hit_spark(enemy_root.position + HIT_SPARK_ENEMY_OFFSET, ENEMY_DAMAGE_COLOR)
 	_flash_hp_label(enemy_a_label, ENEMY_DAMAGE_COLOR, false)
 
@@ -413,11 +432,15 @@ func _start_next_npc_action() -> void:
 	action_tween.parallel().tween_property(
 		current_sprite, "modulate", NPC_ACTIVE_TINT, approach_time
 	)
+	# NPC เข้า ActionStage พร้อมกับดึง Enemy มาจุดรับการโจมตี
+	action_tween.parallel().tween_property(
+		enemy_root, "position", _enemy_target_stage_position(), TARGET_STAGE_ARRIVAL_TIME
+	).set_ease(Tween.EASE_OUT)
 	# เมื่อ NPC ถึงเวทีกลาง ให้ชะลอจังหวะก่อนลงมือหนึ่งครั้ง
 	action_tween.tween_interval(NPC_STAGE_HOLD_TIME)
 	action_tween.tween_callback(_apply_npc_hit)
 	action_tween.tween_property(
-		enemy_root, "position", enemy_home + Vector2(ENEMY_RECOIL_DISTANCE, 0),
+		enemy_root, "position", _enemy_target_stage_position() + Vector2(ENEMY_RECOIL_DISTANCE, 0),
 		NPC_ATTACK_HIT_TIME
 	)
 	action_tween.parallel().tween_property(
@@ -460,7 +483,7 @@ func _apply_npc_hit() -> void:
 		npc_action_index + 1, actual_damage
 	])
 	_update_ui()
-	_show_floating_damage(enemy_home, actual_damage, ENEMY_DAMAGE_COLOR)
+	_show_floating_damage(enemy_root.position, actual_damage, ENEMY_DAMAGE_COLOR)
 	_show_hit_spark(enemy_root.position + HIT_SPARK_ENEMY_OFFSET, ENEMY_DAMAGE_COLOR)
 	_flash_hp_label(enemy_a_label, ENEMY_DAMAGE_COLOR, false)
 
@@ -518,10 +541,15 @@ func _start_enemy_counteraction() -> void:
 		ENEMY_COUNTER_LUNGE_TIME
 	)
 
+	# Player เข้าพื้นที่รับ Action ทางซ้ายของผู้โจมตี
+	action_tween.parallel().tween_property(
+		player_root, "position", _player_target_stage_position(), TARGET_STAGE_ARRIVAL_TIME
+	).set_ease(Tween.EASE_OUT)
+
 	# ลด HP หลังศัตรูพุ่งถึงจุดโต้กลับ ไม่หัก HP ทันทีตอนเริ่มเทิร์น
 	action_tween.tween_callback(_apply_enemy_hit)
 	action_tween.tween_property(
-		player_root, "position", player_home + Vector2(-PLAYER_HIT_RECOIL_DISTANCE, 0),
+		player_root, "position", _player_target_stage_position() + Vector2(-PLAYER_HIT_RECOIL_DISTANCE, 0),
 		PLAYER_HIT_TIME
 	)
 	action_tween.parallel().tween_property(
@@ -593,7 +621,7 @@ func _apply_enemy_hit() -> void:
 	var feedback_color: Color = PLAYER_DAMAGE_COLOR
 	if was_defending:
 		feedback_color = DEFEND_DAMAGE_COLOR
-	_show_floating_damage(player_home, actual_damage, feedback_color, was_defending)
+	_show_floating_damage(player_root.position, actual_damage, feedback_color, was_defending)
 	_show_hit_spark(player_root.position + HIT_SPARK_PLAYER_OFFSET, feedback_color)
 	_flash_hp_label(player_label, feedback_color, true)
 	_add_log("")
