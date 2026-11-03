@@ -1,0 +1,575 @@
+{
+  "runs": {
+    "dev-1": [
+      {
+        "step": "version",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-1/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-1/version.engine.log",
+          "--version"
+        ],
+        "errors": [],
+        "log": "version.log"
+      },
+      {
+        "step": "import",
+        "status": "FAIL",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-1/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-1/import.engine.log",
+          "--editor",
+          "--import"
+        ],
+        "errors": [
+          "Condition \"ret != noErr\" is true. Returning: \"\"",
+          "Cannot save file '/Users/depa/Library/Application Support/Godot/editor_settings-4.7.tres'.",
+          "Error saving editor settings to /Users/depa/Library/Application Support/Godot/editor_settings-4.7.tres"
+        ],
+        "log": "import.log"
+      }
+    ],
+    "dev-2": [
+      {
+        "step": "version",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-2/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-2/version.engine.log",
+          "--version"
+        ],
+        "errors": [],
+        "log": "version.log"
+      },
+      {
+        "step": "import",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-2/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-2/import.engine.log",
+          "--editor",
+          "--import"
+        ],
+        "errors": [],
+        "log": "import.log"
+      },
+      {
+        "step": "parse-combat_prototype",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-2/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-2/parse-combat_prototype.engine.log",
+          "--script",
+          "res://scripts/combat/combat_prototype.gd",
+          "--check-only"
+        ],
+        "errors": [],
+        "log": "parse-combat_prototype.log"
+      },
+      {
+        "step": "parse-combat_turn_flow",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-2/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-2/parse-combat_turn_flow.engine.log",
+          "--script",
+          "res://scripts/combat/combat_turn_flow.gd",
+          "--check-only"
+        ],
+        "errors": [],
+        "log": "parse-combat_turn_flow.log"
+      },
+      {
+        "step": "parse-combat_targets",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-2/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-2/parse-combat_targets.engine.log",
+          "--script",
+          "res://scripts/combat/combat_targets.gd",
+          "--check-only"
+        ],
+        "errors": [],
+        "log": "parse-combat_targets.log"
+      },
+      {
+        "step": "parse-queue_regression",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-2/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-2/parse-queue_regression.engine.log",
+          "--script",
+          "res://tests/combat/queue_regression.gd",
+          "--check-only"
+        ],
+        "errors": [],
+        "log": "parse-queue_regression.log"
+      },
+      {
+        "step": "startup",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-2/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-2/startup.engine.log",
+          "--quit-after",
+          "120"
+        ],
+        "errors": [],
+        "log": "startup.log"
+      },
+      {
+        "step": "gameplay",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-2/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-2/gameplay.engine.log",
+          "--fixed-fps",
+          "60",
+          "--script",
+          "res://tests/combat/queue_regression.gd"
+        ],
+        "errors": [],
+        "log": "gameplay.log"
+      },
+      {
+        "step": "invalid-actions",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-2/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-2/invalid-actions.engine.log",
+          "--fixed-fps",
+          "60",
+          "--script",
+          "res://tests/combat/queue_regression.gd",
+          "--",
+          "--invalid-actions"
+        ],
+        "errors": [
+          "Combat Turn Flow: ไม่มี Action ถัดไปหลัง NPC",
+          "Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง",
+          "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+          "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+          "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action"
+        ],
+        "log": "invalid-actions.log"
+      },
+      {
+        "step": "playable-parse-full_party_proof",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-2/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-2/playable-parse-full_party_proof.engine.log",
+          "--script",
+          "res://scripts/combat/full_party_proof.gd",
+          "--check-only"
+        ],
+        "errors": [],
+        "log": "playable-parse-full_party_proof.log"
+      },
+      {
+        "step": "playable-parse-party_playable_integration",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-2/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-2/playable-parse-party_playable_integration.engine.log",
+          "--script",
+          "res://tests/combat/party_playable_integration.gd",
+          "--check-only"
+        ],
+        "errors": [],
+        "log": "playable-parse-party_playable_integration.log"
+      },
+      {
+        "step": "party-playable-startup",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-2/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-2/party-playable-startup.engine.log",
+          "res://scenes/combat/full_party_proof.tscn",
+          "--quit-after",
+          "120"
+        ],
+        "errors": [],
+        "log": "party-playable-startup.log"
+      },
+      {
+        "step": "party-playable-proof",
+        "status": "FAIL",
+        "exit_code": 1,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-2/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-2/party-playable-proof.engine.log",
+          "--fixed-fps",
+          "60",
+          "--script",
+          "res://tests/combat/party_playable_integration.gd",
+          "--",
+          "--report=/private/tmp/wanderer-m2c-04-dev-2/party-playable-scenarios.json"
+        ],
+        "errors": [],
+        "log": "party-playable-proof.log"
+      }
+    ],
+    "dev-3": [
+      {
+        "step": "version",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-3/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-3/version.engine.log",
+          "--version"
+        ],
+        "errors": [],
+        "log": "version.log"
+      },
+      {
+        "step": "import",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-3/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-3/import.engine.log",
+          "--editor",
+          "--import"
+        ],
+        "errors": [],
+        "log": "import.log"
+      },
+      {
+        "step": "parse-combat_prototype",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-3/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-3/parse-combat_prototype.engine.log",
+          "--script",
+          "res://scripts/combat/combat_prototype.gd",
+          "--check-only"
+        ],
+        "errors": [],
+        "log": "parse-combat_prototype.log"
+      },
+      {
+        "step": "parse-combat_turn_flow",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-3/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-3/parse-combat_turn_flow.engine.log",
+          "--script",
+          "res://scripts/combat/combat_turn_flow.gd",
+          "--check-only"
+        ],
+        "errors": [],
+        "log": "parse-combat_turn_flow.log"
+      },
+      {
+        "step": "parse-combat_targets",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-3/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-3/parse-combat_targets.engine.log",
+          "--script",
+          "res://scripts/combat/combat_targets.gd",
+          "--check-only"
+        ],
+        "errors": [],
+        "log": "parse-combat_targets.log"
+      },
+      {
+        "step": "parse-queue_regression",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-3/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-3/parse-queue_regression.engine.log",
+          "--script",
+          "res://tests/combat/queue_regression.gd",
+          "--check-only"
+        ],
+        "errors": [],
+        "log": "parse-queue_regression.log"
+      },
+      {
+        "step": "startup",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-3/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-3/startup.engine.log",
+          "--quit-after",
+          "120"
+        ],
+        "errors": [],
+        "log": "startup.log"
+      },
+      {
+        "step": "gameplay",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-3/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-3/gameplay.engine.log",
+          "--fixed-fps",
+          "60",
+          "--script",
+          "res://tests/combat/queue_regression.gd"
+        ],
+        "errors": [],
+        "log": "gameplay.log"
+      },
+      {
+        "step": "invalid-actions",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-3/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-3/invalid-actions.engine.log",
+          "--fixed-fps",
+          "60",
+          "--script",
+          "res://tests/combat/queue_regression.gd",
+          "--",
+          "--invalid-actions"
+        ],
+        "errors": [
+          "Combat Turn Flow: ไม่มี Action ถัดไปหลัง NPC",
+          "Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง",
+          "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+          "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+          "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action"
+        ],
+        "log": "invalid-actions.log"
+      },
+      {
+        "step": "playable-parse-full_party_proof",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-3/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-3/playable-parse-full_party_proof.engine.log",
+          "--script",
+          "res://scripts/combat/full_party_proof.gd",
+          "--check-only"
+        ],
+        "errors": [],
+        "log": "playable-parse-full_party_proof.log"
+      },
+      {
+        "step": "playable-parse-party_playable_integration",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-3/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-3/playable-parse-party_playable_integration.engine.log",
+          "--script",
+          "res://tests/combat/party_playable_integration.gd",
+          "--check-only"
+        ],
+        "errors": [],
+        "log": "playable-parse-party_playable_integration.log"
+      },
+      {
+        "step": "party-playable-startup",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-3/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-3/party-playable-startup.engine.log",
+          "res://scenes/combat/full_party_proof.tscn",
+          "--quit-after",
+          "120"
+        ],
+        "errors": [],
+        "log": "party-playable-startup.log"
+      },
+      {
+        "step": "party-playable-proof",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2c-04-dev-3/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2c-04-dev-3/party-playable-proof.engine.log",
+          "--fixed-fps",
+          "60",
+          "--script",
+          "res://tests/combat/party_playable_integration.gd",
+          "--",
+          "--report=/private/tmp/wanderer-m2c-04-dev-3/party-playable-scenarios.json"
+        ],
+        "errors": [],
+        "log": "party-playable-proof.log"
+      }
+    ]
+  },
+  "fixes": [
+    "dev1: import exit0 failed due unexpected macOS certificate/editor settings sandbox errors; reran with required permissions without filtering errors",
+    "dev2: 459 assertions failed, no engine errors; reset target picker across Restart and show none for empty SKIP target; update matching UI assertion",
+    "dev3: 247038 checks 27cases PASS; pre-final test expansion",
+    "GUI: HELP popup overlapped global feedback; moved popup near feet, added per-effect separation assertions",
+    "final1: 260800 checks 31cases PASS, 37 stages PASS; includes terminal IMPACT/SETTLING Restart and each-actor44px assertions",
+    "py_compile: sandbox denied default macOS cache creation; compile(source,filename,exec) passed without cache writes; actual runner also passed",
+    "Initial git fetch could not write .git/FETCH_HEAD in sandbox; final fetch with required permissions succeeded and confirmed origin/visual-combat-test-1 and merge-base remain 737e380c8549a2ef6bc306184973d2e8dbb3f757. GitHub PR36 metadata independently confirmed merged before branch creation."
+  ],
+  "final_static_validation": {
+    "markdown_links_and_anchors": 48,
+    "source_hashes_match_test_snapshot_and_worktree": 55,
+    "diff_check": "PASS"
+  }
+}
