@@ -125,6 +125,7 @@ func restart(fixture: Variant) -> bool:
 	_help_uses.clear()
 	for id in _party_order:
 		_help_uses[id] = 1
+	_update_terminal()
 	return true
 
 
@@ -231,6 +232,8 @@ func fixture_heal(id: Variant, amount: Variant, generation: Variant) -> Dictiona
 # Enemy declarations are locked for the whole round; {} defaults each hit to Player.
 # Player attack accepts a known enemy even if unavailable: fallback happens before lock.
 func begin_round(action: Variant, target_id: Variant = "", enemy_targets: Variant = {}) -> Dictionary:
+	if not _result.is_empty():
+		return _reply("TERMINAL", _result)
 	if not _can_mutate():
 		return _reply("REJECTED", "COMMAND_LOCKED")
 	if typeof(action) != TYPE_STRING or action not in ["ATTACK", "DEFEND"] \

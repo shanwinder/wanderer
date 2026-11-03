@@ -184,6 +184,7 @@ func _dead_slots() -> void:
 	before = failures
 	fixture = _fixture(1, 2, {"enemy_a": 0, "enemy_b": 0})
 	encounter = _new(fixture)
+	_check(encounter.snapshot().result == "VICTORY" and not encounter.snapshot().command_ready, "Restart immediately detects all enemies unavailable")
 	_check(encounter.begin_round("ATTACK").status == "TERMINAL", "no available enemy")
 	_check(encounter.snapshot().result == "VICTORY" and encounter.snapshot().round_completions == 0, "no phantom round")
 	_record("E-no-enemy", before, fixture, "VICTORY before any action, no queue or round completion", encounter)
@@ -315,6 +316,7 @@ func _terminal() -> void:
 			_check(encounter.snapshot().result == "DEFEAT", "HELP never revives Player")
 	fixture = _fixture(1, 1, {"player": 0})
 	encounter = _new(fixture)
+	_check(encounter.snapshot().result == "DEFEAT" and not encounter.snapshot().command_ready, "Restart immediately detects defeated Player")
 	_check(encounter.begin_round("DEFEND").status == "TERMINAL", "already defeated Player cannot start HELP")
 
 
