@@ -44,7 +44,8 @@
 | M1.5E — action presentation refinements | Short Lunge 44px, sprite attack pose, Player Defend brace และ guarded-hit feedback | ตรวจค่าจาก script; ภาพ/animation/readability ยังต้อง F6 |
 | M1.6A — turn-flow foundation | แยก action queue ใน `combat_turn_flow.gd` | PR #29 ตรวจลำดับ, lock, Restart และจบรอบครั้งเดียว |
 | M1.6B–C — targets / dual enemy | Enemy A/B, target picker, แยก HP, retarget ตัวที่รอด, counter เฉพาะตัวที่ยังมีชีวิต และ victory เมื่อทั้งคู่ตาย | PR #29 ตรวจ A-first/B-first และแก้คิวค้างหลังข้ามศัตรูที่ตายแล้ว |
-| M2A — NPC Autonomy Proof | **Planned — ยังไม่ implement** | เสนอด้านล่าง; ต้องมีงาน implementation แยกหลัง review |
+| M2A-02 — isolated decision/effect proof (feature branch; pending review) | Resolver และ data-only Player/NPC/Enemy fixture แยกจาก combat หลัก; เจ้าของอนุมัติ D1–D9 และ implementation ใน chat วันที่ 3 พฤศจิกายน 2026 | ผลตรวจ commit/engine/command และ raw evidence อยู่ใน [proof tests](../tests/npc/README.md); ไม่ใช่ผล autonomy ของ main scene |
+| M2A-03 — playable integration / reason UX | **Planned — ยังไม่ implement** | ยังไม่มี F6 หรือ playtest ยืนยันว่าผู้เล่นเข้าใจเหตุผล; ต้องได้รับงานแยก |
 
 แหล่งตรวจโค้ด: [scene](../scenes/combat/combat_prototype.tscn), [combat controller](../scripts/combat/combat_prototype.gd), [turn flow](../scripts/combat/combat_turn_flow.gd), [targets](../scripts/combat/combat_targets.gd)
 
@@ -52,7 +53,7 @@
 
 หลักฐาน **Verified ที่บันทึกไว้** อยู่ใน [Combat regression](../tests/combat/README.md): Godot `4.7.2.stable.official.ed1daf0bf`, clean import, parse, main-scene startup, gameplay 14,395 checks และ negative tests 983 checks (ห้า errors ที่คาดไว้) ผ่านบน fix ของ PR #29 ส่วน baseline ก่อน fix ไม่ผ่าน B-first ตามที่คาด ตัวเลขนี้เป็นผลเดิม ไม่ใช่ผลทดสอบใหม่ของงาน P0 และ **Manual F6 ยัง NOT RUN**; PR เอกสารนี้ต้องระบุผลตรวจของตนแยกต่างหาก
 
-### M2A — NPC Autonomy Proof [Planned / proposed next]
+### M2A — NPC Autonomy Proof [M2A-02 feature branch / M2A-03 planned]
 
 เป้าหมายคือพิสูจน์ว่า **NPC เลือกเองและผู้เล่นเข้าใจเหตุผลได้** ก่อนสร้าง Full NPC AI ไม่ถือว่าปาร์ตี้สี่คนที่มีอยู่หรือกฎ NPC2 Guard ทำให้ M2A สำเร็จแล้ว
 
@@ -62,7 +63,7 @@
 4. เกณฑ์รับงานที่เสนอ: input เดิมให้ผลอธิบายซ้ำได้, เปลี่ยน state แล้วเห็นการเลือกที่มีเหตุผลต่างกัน, target ใช้ได้หรือมี fallback ปลอดภัย, ผู้สร้างลองเล่นแล้วอธิบายเหตุผล NPC ได้ และ Godot regression เดิมยังผ่านโดยไม่เปลี่ยน damage/turn flow เพื่อให้ test ผ่าน
 5. หลักฐานก่อน merge M2A: decision cases พร้อม expected/actual, Godot logs และ exit codes บน commit ที่เสนอ, regression ทั้ง A-first/B-first/Restart และ F6 เพื่อประเมินความเข้าใจ intent/reason แยกจากผล headless
 
-ค่าขีดแบ่งความเสี่ยง, ความหมาย/ผลของ Help และ UX reason เป็น **ข้อเสนอรอ review** ไม่ปิด OPEN ที่มีอยู่ ไม่เพิ่ม Trust/Guidance, inventory, progression, Starstone หรือ AI เต็มระบบใน proof นี้ ลำดับ milestone หลัง M2A ไม่ถูกอนุมัติใหม่จากงาน P0
+ข้อเสนอด้านบนเป็นบันทึกจาก P0; ต่อมาเจ้าของอนุมัติ M2A-01 D1–D9 ทั้งชุดและสั่ง M2A-02 อย่างชัดเจนใน chat วันที่ 3 พฤศจิกายน 2026: HP ต่ำ ≤30%, HELP สูงสุด 4 HP หนึ่งครั้ง/encounter, self-DEFEND ลด 2 ต่ำสุด 1, self-first เมื่อเสี่ยงพร้อมกัน, ประเมินครั้งเดียวต้น NPC slot และ SKIP อย่างปลอดภัย รายละเอียด executable contract และหลักฐานอยู่ใน [M2A-02 proof tests](../tests/npc/README.md) ซึ่งใช้ NPC max HP 10 และ enemy target ที่ประกาศ/ล็อกไว้ ไม่เพิ่ม UI/animation หรือแก้ combat หลักในงานนี้ การอนุมัตินี้เป็นกฎ **prototype** ไม่ปิด OPEN ของเกมเต็ม ไม่เพิ่ม Trust/Guidance, inventory, progression, Starstone หรือ AI เต็มระบบ M2A-03 ยังต้องมีคำสั่งแยกและไม่เริ่มอัตโนมัติ
 
 - Side-view combat ยังเป็นแกนหลัก; ใช้แรงบันดาลใจจาก Octopath Traveler เฉพาะ staging/focus/pacing ไม่ลอกภาพ
 - Turn System ยัง [OPEN] ให้ prototype ช่วยตัดสิน

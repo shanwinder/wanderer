@@ -38,7 +38,7 @@ As of the post-PR #29 baseline (`2926e5c` on `visual-combat-test-1`):
 - NPCs take real actions under deterministic prototype rules: after Player Attack, NPC1/3 attack and NPC2 guards Player; after Player Defend, all three attack. These rules are **not an autonomous NPC decision system**.
 - Combat presentation includes compact formation, action/intent cues, hit feedback and short lunges. Preserve `combat_speed_scale = 0.70` and `SHORT_LUNGE_DISTANCE = 44.0`.
 - **Verified (recorded):** PR #29's Godot 4.7.2 headless scene regression passed both enemy kill orders, queue completion, command locks, Restart and damage/Guard checks. Manual F6 visual review was **not run** in that record. See [test instructions and evidence](tests/combat/README.md); this is not a claim of a new run for every documentation update.
-- **Planned:** M2A NPC Autonomy Proof is the next proposed development step, pending review of this documentation checkpoint and a separate implementation task. See the [current status and M2A proposal](docs/README.md#current-status-and-next-roadmap).
+- **M2A-02 (this feature branch):** isolated NPC decision/effect proof and headless tests; the main scene retains its original NPC rules. See the [proof contract and evidence](tests/npc/README.md) and [current status](docs/README.md#current-status-and-next-roadmap). Playable integration and reason UX remain planned for a separately authorized M2A-03.
 
 Read [AGENTS.md](AGENTS.md) before agent work. Current status lives in the [documentation index](docs/README.md); older design snapshots are not completion reports.
 
