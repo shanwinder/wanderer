@@ -715,6 +715,15 @@ func _clear_npc_intents() -> void:
 func _start_next_npc_action() -> void:
 	if battle_is_over:
 		return
+	if not action_in_progress or action_tween != null:
+		push_error("Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action")
+		return
+
+	# คิวอาจหมดหลังข้าม Enemy ที่ตายแล้ว แม้ไม่มี Counteraction ถัดไป
+	# ตรวจจำนวนก่อนอ่าน เพื่อไม่ให้ Action ว่างที่ผิดรูปแบบกลายเป็นการจบรอบ
+	if turn_flow.pending_count() == 0:
+		_finish_round()
+		return
 
 	# Turn Flow เลือกว่าเป็น NPC คนถัดไปหรือ Enemy โดยไม่ขึ้นกับ Tween
 	var next_action: Dictionary = turn_flow.take_next_action()
@@ -1063,20 +1072,22 @@ func _finish_enemy_counteraction() -> void:
 	player_sprite.scale = player_sprite_base_scale
 	player_sprite.position = player_sprite_base_position
 	action_tween = null
-	action_in_progress = false
 
 	if battle_is_over:
 		# เมื่อแพ้ ใช้หมายเลขรอบที่ HP หมดจริง ไม่ใช่รอบถัดไป
+		action_in_progress = false
 		_show_battle_result()
 		return
 
-	if turn_flow.pending_count() > 0:
-		_start_next_npc_action()
-		return
+	_start_next_npc_action()
 
+
+func _finish_round() -> void:
+	# เรียกจาก Dispatcher หลัง Action จบและข้ามศัตรูที่ตายจนหมดคิวแล้วเท่านั้น
 	turn_flow.reset()
 	active_action_target_id = ""
 	player_is_defending = false
+	action_in_progress = false
 	turn_number += 1
 	_set_action_status("รอบที่ %d · เลือกคำสั่ง" % turn_number)
 	attack_button.disabled = false
