@@ -1,0 +1,53 @@
+{
+  "date": "2026-11-03",
+  "timezone": "Asia/Bangkok",
+  "base_commit": "335427450026fcb4ef0c7d4f236df259f193dbe2",
+  "base_pr": 35,
+  "branch": "codex/m2c-03-multi-npc-turn-proof",
+  "target": "visual-combat-test-1",
+  "tested_commit": "0f33e1b1121ac49a297314477336d89f269d96e5",
+  "final_head": "Reported in Draft PR; later commit changes docs/evidence only.",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "command": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m2c-03-final-2 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof",
+  "output": "/private/tmp/wanderer-m2c-03-final-2",
+  "runner_exit_code": 0,
+  "stages_passed": 33,
+  "stage_exit_codes": "all 0 (see results.json and logs.zip)",
+  "parse_steps": 21,
+  "expected_actual_counts": {
+    "gameplay": 14395,
+    "invalid-actions": 983,
+    "npc-proof": 412,
+    "npc-playable": 5166,
+    "actor-proof": 122,
+    "ownership-proof": 219,
+    "party-foundation-proof": 382,
+    "party-turn-proof": 1250
+  },
+  "expected_negative_errors": 5,
+  "unexpected_errors": 0,
+  "focused_case_records": 23,
+  "focused_status": "P1-P16 and edge cases PASS; P7/P8 combined; P16-policy plus runner legacy suites",
+  "runtime_source_hashes_verified": 50,
+  "manual_F6": "NOT RUN",
+  "presentation_acceptance": "NOT RUN; data-only proof, no new scene",
+  "initial_attempt": "FAIL: sandbox certificate/editor settings errors at import despite exit0. Preserved separately; subsequent runs required normal Godot access.",
+  "intermediate_runs": [
+    "/tmp/wanderer-m2c-03-check-2: PASS before extra edge cases",
+    "/tmp/wanderer-m2c-03-check-3: PASS expanded 1248 checks before committing source",
+    "/tmp/wanderer-m2c-03-final: PASS 1248 checks on ebf89b8; subsequent terminal fixture correction added two checks"
+  ],
+  "legacy_assertions": "Unchanged; all seven legacy counts match baseline",
+  "scope": "No scenes, assets, project settings, legacy combat controller/flow/targets or legacy harness changes",
+  "limitations": [
+    "Prototype data-only, no main combat integration or playable full-party scene",
+    "No visual verification or presentation epoch implementation",
+    "M2C-04 not implemented; M2B-03 item implementation deferred",
+    "No merge or auto-merge authorized"
+  ],
+  "validation": {
+    "local_markdown_links_and_anchors": 78,
+    "scope": "9 source/documentation paths plus 7 evidence files; main scene/controller/turn flow/targets, legacy harnesses, assets and project unchanged",
+    "source_hashes": 50
+  }
+}

@@ -389,3 +389,235 @@ python3 tests/combat/verify.py \
 | Manual F6 | NOT RUN | — |
 
 หลักฐาน durable: [run record / full SHA / command / expected-actual](evidence/m2c-02/run-record.json), [stage results / exit codes / exact errors](evidence/m2c-02/results.json), [raw logs / engine logs / exits](evidence/m2c-02/logs.txt), [source SHA-256 manifest](evidence/m2c-02/source-sha256.json). ผล M2A/M2B เดิมในหัวข้อก่อนหน้าเป็น inherited evidence ตาม commit เดิม; ตารางนี้เป็นผลที่รันใหม่ของ M2C-02.
+
+## M2C-03 — Multi-NPC decision and turn resolution proof
+
+**Data-only feature branch, pending Draft review; ยังไม่ merge และไม่เชื่อม Combat หลัก.**
+ฐานที่ยืนยันว่า merge แล้วคือ PR #35/M2C-02, `335427450026fcb4ef0c7d4f236df259f193dbe2`.
+ตอนเริ่ม working tree สะอาด, local/remote HEAD/merge-base ตรงกัน, ไม่พบ branch/PR M2C-03 ซ้ำ.
+Open PR #2/#17 ไม่ถูกใช้เป็น canonical หรือแก้ไข. ใช้ branch เดียว
+`codex/m2c-03-multi-npc-turn-proof` ไปยัง `visual-combat-test-1`.
+สถานะ milestone ปัจจุบันอยู่ใน [docs index](../../docs/README.md#current-status-and-next-roadmap);
+หัวข้อ M2C-02 ด้านบนเก็บผล/ข้อจำกัดของงานครั้งนั้น ไม่ใช่สถานะล่าสุดของ M2C-03.
+
+### Approved prototype decisions
+
+ก่อนอนุมัติ ทั้งชุดมีสถานะ **PROTOTYPE — Pending Owner Approval**.
+เจ้าของอนุมัติ “D1–D13 สำหรับ M2C-03” ใน chat วันที่ 3 พฤศจิกายน 2026;
+ปัจจุบันเป็น **PROTOTYPE — Owner Approved** เฉพาะ proof นี้ ไม่ใช่ Final Gameplay/Balance.
+
+| Decision | Contract ที่ใช้ |
+| --- | --- |
+| D1 | Stable Actor ID, unique ภายใน Encounter; ID ไม่เปลี่ยนตามตำแหน่งใน Array |
+| D2 | Player → NPC ตาม Party Order → Enemy ตาม Enemy Order |
+| D3 | NPC ตัดสินใจหนึ่งครั้งเมื่อตนถึง slot จาก state ล่าสุด |
+| D4 | NPC ATTACK เลือก enemy ที่พร้อมตัวแรกตาม Enemy Order |
+| D5 | NPC แต่ละคนมี HELP 1 use ต่อ Encounter |
+| D6 | HELP ต่อกันได้หาก Player ยัง HP ≤30% เมื่อ NPC คนนั้นตัดสินใจ |
+| D7 | HELP ให้ Player เท่านั้น; ไม่มี NPC-to-NPC HELP |
+| D8 | HP0 unavailable; Player HP0 คือ Defeat; HELP ไม่คืนชีพ |
+| D9 | Fallback ก่อน lock; หลัง lock เป้าหมายตายให้ SKIP ไม่เปลี่ยนเป้าหมาย |
+| D10 | Encounter owns action token: identity/generation/round/action/actor; presentation epoch แยกเป็นงานภายหลัง |
+| D11 | Data Fixture → Playable Proof → Review ก่อน Main Combat; PR นี้ทำเฉพาะ Data Fixture/turn proof |
+| D12 | ตรวจ next still-valid declared hit ที่เล็ง NPC ตนเอง; ไม่รวม damage ของสอง hit เป็นก้อน |
+| D13 | NPC Self-DEFEND ลด next valid hit2 ขั้นต่ำ1; guard ที่เหลือหมดอายุสิ้นรอบ |
+
+ค่าตัวเลขใช้ Prototype Defaults ใน task ที่แนบ: Player ATTACK5, NPC ATTACK1,
+Enemy ATTACK3, HELP4 (clamp Max HP), DEFEND ลด2 ขั้นต่ำ1.
+Player DEFEND ลดทุก enemy hit ที่เกิดในรอบนั้น; NPC Self-DEFEND ลดเฉพาะ hit ถัดไปที่เล็งตน.
+นี่ไม่ใช่ Legacy NPC2 Guard Player และไม่เปลี่ยน balance ของ main combat.
+
+### Architecture / files changed
+
+- [FullPartyEncounter](../../scripts/combat/full_party_encounter.gd) ต่อ foundation เดิมด้วย round, pending slots, locked action, generation/action ID, HELP ledger, guards, declared hits และ terminal result. Registry/RuntimeState เดิมเป็นเจ้าของ HP.
+- [NPCDecisionResolver](../../scripts/npc/npc_decision_resolver.gd) เพิ่ม `decide_for_actor(actor_id, context)` กับ strict multi-actor schema และใช้ `_policy()` ร่วมกับ `decide(snapshot)` เดิม. Legacy `validate_snapshot()` ไม่เปลี่ยน; schema เดิมยัง reject multi-enemy IDs.
+- [Focused harness](party_turn_proof.gd) + UID เพิ่ม P1–P16/edge cases; [verify.py](../combat/verify.py) เพิ่ม `--party-turn-proof` เป็น opt-in อิสระ.
+- README, docs index, Actor/Combat test guide เดิมอัปเดตสถานะ/learning/evidence ในที่เดิม; evidence ใหม่อยู่ [m2c-03](evidence/m2c-03/run-record.json).
+
+ไม่มีการแก้ Actor Definition/RuntimeState/Registry, legacy tests, legacy Combat
+Controller/Turn Flow/Targets, NPCProofEncounter/playable controller, scenes, assets
+หรือ project settings. Speed0.70, lunge44px และ Compact Formation คงเดิม.
+
+### Public contract / multi-NPC decisions
+
+`restart(fixture)`, `snapshot()`, `actor_snapshot(id)`, `reorder_party(order)` และ
+ready-only register/unregister/fixture damage/heal ยังคงอยู่.
+`set_lifecycle()` เป็น guard ของ foundation fixture เท่านั้น; ใช้ปลดล็อก live queue/terminal ไม่ได้.
+Roster mutation ทำได้เฉพาะ command-ready ไม่มี action/round ที่กำลังรัน; reorder ไม่ reset HP/HELP.
+Fixture schema เดิมคง strict; initial HELP1 ต่อ NPC และไม่เพิ่ม field ใหม่ใน fixture.
+
+```gdscript
+var encounter = preload("res://scripts/combat/full_party_encounter.gd").new()
+# {} = Enemy A/B ประกาศโจมตี Player ตาม enemy order
+encounter.begin_round("ATTACK", "enemy_a", {})
+var token: Dictionary = encounter.begin_next_action()
+encounter.resolve_action(token)
+encounter.complete_action(token)
+# เรียก begin_next_action() ต่อเมื่อ slot ก่อนหน้าจบ; ไม่เรียก complete_npc() เดิม
+```
+
+`begin_round(action, target_id="", enemy_targets={})` รับ Player ATTACK/DEFEND เท่านั้น.
+Enemy declarations map จาก enemy ID → Player/NPC ID; ค่า default คือ Player.
+Unknown ID/ผิด membership/type ถูก reject ก่อน state เปลี่ยน. Damage enemy คง3.
+Known selected enemy ที่ HP0 fallback ก่อน Player lock ได้; unknown ID ไม่ fallback.
+`begin_next_action()` เลือก NPC decision ตอนถึง slot; ไม่มีสาม decisions ที่คำนวณไว้ล่วงหน้า.
+
+`decision_context()` คืน detached actors/roster/HELP/declarations/revision;
+ก่อนเริ่มรอบ declarations ยังว่าง จึงยังไม่ใช่ valid resolver context.
+`decide_for_actor()` คืน actor_id/action/target_id/reason_code/reason_details/snapshot_revision.
+Resolver เป็น pure function: ไม่แก้ HP, resource หรือ queue; explanation เป็น historical snapshot
+ที่แก้แล้วไม่กระทบ context. `snapshot_revision` เพิ่มเมื่อ command/effect/ready fixture mutation/roster
+เปลี่ยน และ reset เมื่อ Restart; ใช้คู่ generation เพื่อแยก session.
+
+Policy priority: Player defeated → no living enemy → actor unavailable → self low/lethal threat
+→ Player low HP HELP (หรือ HELP_UNAVAILABLE_ATTACK) → ATTACK_AVAILABLE_ENEMY.
+เก็บ reason codes เดิมสำหรับสถานการณ์เทียบเท่ากัน; self target ใช้ stable NPC ID จริง.
+NPC0 ยังอยู่ Registry และได้ SKIP slot; ไม่ใช่ Party Defeat.
+
+### Queue / locked action / token lifecycle
+
+Queue เป็น Array ของ IDs ที่ยัง **PENDING**; เมื่อ pop slot จึงสร้าง record **LOCKED**.
+`resolve_action(token)` เปลี่ยนเป็น **RESOLVED** หรือ **SKIPPED**;
+`complete_action(token)` เปลี่ยนเป็น **COMPLETED** แล้วจึง dispatch slot ต่อได้.
+มี active action ได้หนึ่งตัวเสมอ. Completion ไม่ลง effect และไม่ยิง enemy response เอง.
+เมื่อคิวหมด completion สุดท้ายเพิ่ม round/completions ครั้งเดียวและปลด command lock.
+Victory/Defeat ยกเลิก pending slots ไม่เพิ่ม round/counter/action ใหม่;
+active effect ที่ทำให้ terminal ยังต้อง complete เพื่อปิด lifecycle.
+
+Token ต้องตรงกับ internal record ทั้ง `encounter_id`, `generation`, `round_id`,
+`action_id`, `actor_id` รวมชนิดข้อมูล. การส่ง token จาก Encounter อื่นแม้ generation/action ID
+เท่ากันถูก reject. Early completion, duplicate resolve/completion, old slot หรือ old generation
+ไม่เปลี่ยน HP/HELP/queue/round. Caller แก้ decision/action/target/reason/state ใน token ได้
+แต่ effect อ่านค่าจาก locked internal record เท่านั้น. Token เป็น callback identity ภายใน process;
+ไม่ใช่ security credential สำหรับ network/multiplayer.
+
+Enemy declarations ถูก lock ตลอดรอบ. หาก declared target ไม่พร้อมที่ effect ให้ SKIP;
+ไม่มี automatic retarget. NPC ถัดไปเลือก target ใหม่ก่อน lock ได้. Dead enemy ยังอยู่ Registry
+แต่ไม่โจมตีและไม่นับเป็น threat. D12 ดู hit แรกที่ยังพร้อมและเล็ง NPC ตนเองตาม Enemy Order.
+
+### HELP ownership / guard / Restart
+
+HELP ledger keyed by NPC ID; หัก1 เฉพาะ effect ที่ heal ได้จริง ไม่หักเมื่อ invalid token,
+actor/Player HP0 หรือ Player เต็ม. Decision ไม่ใช้ resource; reorder ไม่ reset.
+Self-DEFEND keyed by NPC ID; hit ที่เล็งสมาชิกอื่นไม่ consume/ใช้ guard นั้น.
+NPC guard ใช้หนึ่ง valid hit; Player guard ใช้ทุก hit ในรอบ; ทั้งหมด clear เมื่อจบรอบ/terminal/Restart.
+
+Restart validate fixture และสร้าง candidate Registry/RuntimeState ครบก่อน commit.
+Invalid candidate แม้ผิด actor สุดท้ายไม่เปลี่ยน session เดิม. Valid Restart เพิ่ม generation,
+reset round1/completions0, queue/token/action IDs/HELP1/guards/result และสร้าง runtime objects ใหม่;
+คำนวณ terminal จาก fixture ทันที หาก Player0 ให้ DEFEAT หรือ enemies0 ทั้งหมดให้ VICTORY และล็อก command.
+Old timer callback + retained old Registry/RuntimeState เปลี่ยน Encounter ใหม่ไม่ได้.
+Foundation fixture API ยังคง heal HP0 ได้เพื่อทดลอง data contract เดิม; combat HELP ตรวจ availability
+ก่อน heal เสมอ. Terminal ตรวจตอน Restart และ command/dispatch/effect/completion.
+Ready-only fixture damage/heal ยังเป็น data experiment ตาม contract เดิม; เมื่อเริ่ม command
+จะตรวจ terminal จาก runtime อีกครั้งก่อนสร้าง queue.
+
+### ตัวอย่างหนึ่งรอบเต็ม / expected = actual
+
+Fixture Player6/30, NPC1/2/3 HP10/7/3, A15, B12; declarations A/B→Player.
+
+| Slot | Action / Target / Reason | Effect / state หลังลงผล |
+| --- | --- | --- |
+| Player | DEFEND / player / PLAYER_COMMAND | guard Player ทั้งรอบ |
+| NPC1 | HELP / player / PLAYER_LOW_HP_HELP | Player6→10; HELP NPC1:1→0 |
+| NPC2 | ATTACK / enemy_a / ATTACK_AVAILABLE_ENEMY | อ่าน Player10; A15→14 |
+| NPC3 | ATTACK / enemy_a / ATTACK_AVAILABLE_ENEMY | อ่าน Player10; A14→13 |
+| A | ATTACK / player / ENEMY_DECLARED_TARGET | Player10→9 (3−2=1) |
+| B | ATTACK / player / ENEMY_DECLARED_TARGET | Player9→8 (3−2=1) |
+| Completion | Queue ว่าง | round2, completions1, ready; guards ว่าง, HELP NPC2/3 ยัง1 |
+
+### Focused acceptance P1–P16 / actual results
+
+[scenarios.json](evidence/m2c-03/scenarios.json) บันทึก input, expected, actual และ action traces;
+[raw logs](evidence/m2c-03/logs.zip) มี full `SCENARIOS_JSON` และผล assertions เพิ่มเติม.
+แต่ละแถวด้านล่างเป็น **PASS** จากรันปัจจุบัน ไม่ใช่อนุมานจาก code inspection.
+P7/P8 ใช้ combined case; P16-policy ตรวจ API ส่วน full P16 regression อยู่ใน runner.
+
+| Scenario | Input → Expected Decision / Target / Reason / Effect / Queue | Actual |
+| --- | --- | --- |
+| P1 | Player + NPC1 + A; Player ATTACK5, NPC ATTACK A1 (ATTACK_AVAILABLE_ENEMY), A→Player3; A9 Player27 round2 | PASS |
+| P2 | Player + NPC3 + Enemy2; all NPC ATTACK A1 each; A7 B12 Player24; 6 slots, completion1 | PASS |
+| P3 | NPCทั้งสาม ATTACK A / ATTACK_AVAILABLE_ENEMY หลัง Player ATTACK; A7 Player27 กับ enemy1 | PASS |
+| P4 | Player6 DEFEND; NPC1 HELP→10; NPC2/3 ATTACK A; Player8 A13, ledger0/1/1, round2 | PASS |
+| P5 | NPC1 HP3, A/B→NPC1: SELF_LOW_HP_THREAT DEFEND; NPC2/3 ATTACK; hit1 แล้ว hit3 clamp2; NPC1 HP0 ไม่ defeat; round2 | PASS |
+| P6 | Player6, NPC1 HP3, A→NPC1 B→Player: NPC1 DEFEND, NPC2 HELP, NPC3 ATTACK; reasons ต่างกัน; NPC1 HP2 Player9 | PASS |
+| P7 | Playerฆ่า A HP5; NPC1/3 เลือก B, A SKIP, B counter; B10 Player27 round2 | PASS |
+| P8 | NPC2 HP0 → SKIP ACTOR_UNAVAILABLE ยังอยู่ registry; midround NPC0 ก่อน slot ก็ SKIP | PASS |
+| P9 | Player1 → HELP1→5→9→13; ledgerแต่ละคน0; reorderคง resource; รอบถัดไป HP6 → HELP_UNAVAILABLE_ATTACK ทั้งสาม | PASS |
+| P10 | NPC1 lock A แล้ว fixture ทำ A0: TARGET_DEAD_BEFORE_RESOLVE SKIP; ไม่ตี B; NPC2 เลือก B ใหม่; queueจบ | PASS |
+| P11 | Restartระหว่าง NPC HELP ก่อน/หลัง effect; delayed old callbacks reject; new ledger/queue/HP ไม่เปลี่ยน; fresh roundผ่าน | PASS |
+| P12 | Restartระหว่าง Enemy action ก่อน/หลัง effect; old runtime/callback inert; new session เล่นจบรอบได้ | PASS |
+| P13 | early/duplicate resolve/completion + prior action ID reject; ATTACK/HELP/DEFEND/enemy effect ลงครั้งเดียว; roundครั้งเดียว | PASS |
+| P14 | A-first/B-first แล้ว final kill; victoryหยุด slots; Player3 ถูก Aฆ่า → defeatหยุด B ไม่มี phantom round | PASS |
+| P15 | Invalid PlayerAction/ID/membership/foreign token/wrong types/generation/busy mutation; rejectโดย HP/resource/queue/roundไม่เปลี่ยน | PASS |
+| P16 | Legacy strict schema/reasons + Combat/M2A/M2B/M2C-02 เดิมครบ; ไม่มีลด assertions หรือแก้ expected เดิม | PASS |
+
+Edge cases เพิ่ม: NPC0 roster, no available enemy, normal queue exhaustion,
+unknown vs known-dead target, busy unregister/register/reorder และ bypass lifecycle,
+HELP clamp MaxHP4, HELP invalidated เมื่อ Player defeated/full หรือ actor dead,
+next-hit3 vs aggregate6 ที่ NPC HP4, SELF_LETHAL_THREAT ที่ HP3/Max5,
+dead enemy threat ignored, two hits on same self guard, unused guard expiry,
+enemy declared target HP0 (skip ไม่ retarget), external token action/target/reason mutation,
+nested snapshot isolation, custom stable IDs และ strict malformed context fields.
+Tests ใช้ white-box Registry mutations เฉพาะจำลองเป้าหมาย/actor เปลี่ยนหลัง lock;
+ไม่มี public busy mutation escape hatch หรือ scene ใหม่.
+
+### Verification / durable evidence / limitations
+
+Tested commit: `0f33e1b1121ac49a297314477336d89f269d96e5`.
+Actual engine: **`4.7.2.stable.official.ed1daf0bf`**. วันที่ 3 พฤศจิกายน 2026.
+หลัง commit นี้เปลี่ยนเฉพาะ docs/evidence; Final HEAD รายงานใน Draft PR (ไม่ใส่ self-referential SHA ใน commit ของตัวเอง).
+
+```sh
+python3 tests/combat/verify.py \
+  --godot /Applications/Godot.app/Contents/MacOS/Godot \
+  --output /tmp/wanderer-m2c-03-final-2 \
+  --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof
+```
+
+| Suite/stage | Expected / Actual | Exit |
+| --- | --- | --- |
+| Version / clean import / 21 parses | PASS, zero unexpected errors | 0 each |
+| Main + existing NPC playable startup | PASS | 0 each |
+| M2C-03 | PASS — 1,250 checks, 0 failures | 0 |
+| Combat | 14,395 / 14,395 checks | 0 |
+| Negative | 983 / 983 checks + exactly five expected errors | 0 |
+| M2A-02 | 412 / 412 checks | 0 |
+| M2A-03 | 5,166 / 5,166 checks | 0 |
+| M2B-01 | 122 / 122 checks | 0 |
+| M2B-02 | 219 / 219 checks | 0 |
+| M2C-02 | 382 / 382 checks | 0 |
+| Manual F6 / presentation acceptance | **NOT RUN** — data-only, ไม่มี scene ใหม่ | — |
+
+**33 stages PASS, runner exit0.** ไม่มี unexpected engine errors แม้ stage exit0.
+จำนวน legacy checks ไม่เปลี่ยน; เพิ่ม 1,250 checks ใน harness ใหม่เท่านั้น.
+รอบ exploratory แรก import FAIL เพราะ sandbox ปิด certificate/editor settings แม้ engine exit0;
+ไม่ลบ error หรือเปลี่ยน expected เพื่อให้ผ่าน. รันใหม่ด้วยสิทธิ์ที่จำเป็นแล้วผ่าน.
+[run-record.json](evidence/m2c-03/run-record.json) ระบุ engine/base/tested commit/command/exits,
+[results.json](evidence/m2c-03/results.json) เก็บทุก stage,
+[logs.zip](evidence/m2c-03/logs.zip) เก็บ stdout/engine logs/.exit ของ final run,
+[source-sha256.json](evidence/m2c-03/source-sha256.json) ตรวจ source ตรงกับ tested commit และ imported snapshot.
+[initial-failed-results.json](evidence/m2c-03/initial-failed-results.json) และ
+[initial-failed-import.log](evidence/m2c-03/initial-failed-import.log) เก็บข้อจำกัดรอบแรก.
+
+ข้อจำกัด: ไม่ใช่ full NPC AI; ไม่มี personality/trust/Guidance ใหม่, item/equipment,
+Down/Death/permadeath, save/load, multiplayer, scene/Tween/animation integration หรือ visual proof.
+ไม่มี presentation epoch เพราะยังไม่มี presentation callbacks ใน proof นี้; เมื่อทำ M2C-04 ต้องออกแบบ
+แยกจาก encounter token ตาม D10 และผ่าน review ตาม D11 ก่อนแตะ main combat.
+M2C-04 **NOT IMPLEMENTED**, M2B-03 Item Implementation **DEFERRED**.
+หยุดหลัง Draft PR เพื่อ review; ไม่ merge/auto-merge/delete branch หรือเริ่ม milestone ใหม่.
+
+### GDScript learning notes — ภาษาไทย
+
+1. **Array/Dictionary สำหรับ Queue:** Array เก็บลำดับ เช่น `[player,npc_01,enemy_a]`; `pop_front()` เอา slot หน้าออก. Dictionary เก็บข้อมูลตาม key เช่น `_help_uses[npc_id]`. Queue ไม่เก็บ HP เพราะจะเสี่ยงมีค่าเก่าหลายชุด.
+2. **Actor ID กับ Actor Order:** ID คือ “คนไหน” ส่วนตำแหน่งใน Array คือ “ถึงคิวเมื่อไร”. ย้าย NPC3 ไปก่อน NPC1 เปลี่ยนลำดับได้โดย HP/HELP ยังผูก ID คนเดิม.
+3. **Snapshot และ Pure Resolver:** snapshot คือภาพข้อมูลตอนนั้น. Resolver อ่านภาพแล้วคืนคำตัดสิน ไม่เปลี่ยนเกม. NPC2 ต้องขอภาพใหม่หลัง NPC1 ลงผล จึงเห็น Player10 และเลือก ATTACK แทน HELP ซ้ำจาก HP6 เก่า.
+4. **Action State Machine:** เหมือนบัตรงาน: รอ → ล็อก → ลงผล/ข้าม → เสร็จ. `resolve_action()` รับเฉพาะ LOCKED; `complete_action()` รับเฉพาะ RESOLVED/SKIPPED จึงกดจบก่อนลงผลไม่ได้.
+5. **Locked Decision:** หลังเริ่ม action แล้วถือคำตัดสินภายในเป็นใบงานจริง. ต่อให้คนเรียกแก้ Dictionary ที่ส่งกลับ ก็เปลี่ยนการโจมตีเป็น HELP กลางทางไม่ได้. หากเป้าหมายตายให้ข้ามแทนย้ายเป้ากลาง animation ในอนาคต.
+6. **Token/Generation:** Token เหมือนเลขใบงานที่บอก encounter/รอบ/คน/action; generation คือรุ่นของการเริ่ม Encounter. Restart เพิ่มรุ่น ทำให้ใบงานรุ่นเก่าถูกปฏิเสธแม้ action_id เริ่มนับใหม่.
+7. **Exactly-Once Effect:** HP/resource เปลี่ยนใน resolve ครั้งแรกเท่านั้น; เปลี่ยน state ทันทีหลังลงผล. callback เดิมมาอีกครั้งเจอ state เปลี่ยนแล้วจึงไม่หัก HP/HELP ซ้ำ. Completion จัดคิวอย่างเดียว.
+8. **Restart และ Stale Callback:** สร้างข้อมูลใหม่ใน candidate ก่อนตรวจครบแล้วค่อยสลับ owner. callback เก่าที่ timer ยังยิงจะเจอ generation ผิด; แม้มี reference runtime เก่าอยู่ก็เป็น object ของ session เก่า.
+9. **Single Source of Truth:** HP จริงอยู่ `_current_hp` ใน ActorRuntimeState จุดเดียว. Registry/Encounter ขอ snapshot ตอนอ่านและลงผลผ่าน runtime damage/heal. Queue, decision explanation และ UI ในอนาคตเก็บได้เพียงข้อมูลอ่าน/ประวัติ ไม่เขียน current HP อีกชุด.
+
+ลองไล่ P4 ใน `party_turn_proof.gd`: หา `begin_round("DEFEND")` → Player slot → NPC1 HELP
+→ อ่าน HP10 → NPC2 ATTACK. จากนั้นดู P11/P12 ว่าทำไม callback เก่าจึงไม่เปลี่ยน HP ใหม่.

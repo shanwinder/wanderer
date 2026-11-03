@@ -19,6 +19,7 @@ def main():
     parser.add_argument("--actor-proof", action="store_true", help="Also verify M2B-01 actor data foundation")
     parser.add_argument("--ownership-proof", action="store_true", help="Also verify M2B-02 Encounter HP ownership")
     parser.add_argument("--party-foundation-proof", action="store_true", help="Also verify M2C-02 registry and encounter data foundation")
+    parser.add_argument("--party-turn-proof", action="store_true", help="Also verify M2C-03 multi-NPC decisions and full party turn resolution")
     args = parser.parse_args()
     source = Path(__file__).resolve().parents[2]
     output = args.output.resolve() if args.output else Path(tempfile.mkdtemp(prefix="wanderer-queue-"))
@@ -62,7 +63,7 @@ def main():
         passed = code == 0 and sorted(errors) == sorted(expected_errors)
         if name == "version":
             passed = passed and "4.7.2.stable" in log
-        if name in ("gameplay", "invalid-actions", "npc-proof", "npc-playable", "actor-proof", "ownership-proof", "party-foundation-proof"):
+        if name in ("gameplay", "invalid-actions", "npc-proof", "npc-playable", "actor-proof", "ownership-proof", "party-foundation-proof", "party-turn-proof"):
             passed = passed and re.search(r"RESULT: \d+ checks, 0 failures", log) is not None
         result = {"step": name, "status": "PASS" if passed else "FAIL",
                   "exit_code": code, "timed_out": timed_out, "command": command,
@@ -112,6 +113,11 @@ def main():
                            "tests/actors/party_foundation_proof.gd"]:
                 run("party-parse-" + Path(script).stem, ["--script", "res://" + script, "--check-only"])
             run("party-foundation-proof", [*timing, "--script", "res://tests/actors/party_foundation_proof.gd"])
+        if args.party_turn_proof:
+            for script in ["scripts/npc/npc_decision_resolver.gd", "scripts/combat/full_party_encounter.gd",
+                           "tests/actors/party_turn_proof.gd"]:
+                run("turn-parse-" + Path(script).stem, ["--script", "res://" + script, "--check-only"])
+            run("party-turn-proof", [*timing, "--script", "res://tests/actors/party_turn_proof.gd"])
     return 0 if all(result["status"] == "PASS" for result in results) else 1
 
 
