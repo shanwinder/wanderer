@@ -1,0 +1,91 @@
+{
+  "task": "M2C-04",
+  "date": "2026-11-04 Asia/Bangkok",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "base": "737e380c8549a2ef6bc306184973d2e8dbb3f757",
+  "tested_commit": "9271aa5c9fd0da4579f0642234be01d508affbc3",
+  "final_head": "See Draft PR head: only documentation/evidence changes after tested_commit; source-sha256.json verified against final worktree and test snapshot.",
+  "command": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m2c-04-final-1 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof",
+  "runner_exit": 0,
+  "stages": 37,
+  "expected": "37 stages PASS; unchanged eight baseline counts; new scene cases all PASS; zero unexpected errors",
+  "actual": {
+    "gameplay": {
+      "checks": 14395,
+      "failures": 0,
+      "exit": 0
+    },
+    "invalid-actions": {
+      "checks": 983,
+      "failures": 0,
+      "exit": 0
+    },
+    "npc-proof": {
+      "checks": 412,
+      "failures": 0,
+      "exit": 0
+    },
+    "npc-playable": {
+      "checks": 5166,
+      "failures": 0,
+      "exit": 0
+    },
+    "actor-proof": {
+      "checks": 122,
+      "failures": 0,
+      "exit": 0
+    },
+    "ownership-proof": {
+      "checks": 219,
+      "failures": 0,
+      "exit": 0
+    },
+    "party-foundation-proof": {
+      "checks": 382,
+      "failures": 0,
+      "exit": 0
+    },
+    "party-turn-proof": {
+      "checks": 1250,
+      "failures": 0,
+      "exit": 0
+    },
+    "party-playable-proof": {
+      "checks": 260800,
+      "failures": 0,
+      "exit": 0
+    }
+  },
+  "negative_expected_errors": [
+    "Combat Turn Flow: ไม่มี Action ถัดไปหลัง NPC",
+    "Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง",
+    "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+    "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+    "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action"
+  ],
+  "source_files_matched_snapshot": 55,
+  "gui_smoke": {
+    "mode": "Godot editor Run Current Scene toolbar (F6 action), real-time GUI",
+    "viewport": "project1280x720; embedded frame1475x719 with blackbars",
+    "observed": [
+      "six sprites and HUD",
+      "S1 DEFEND; NPC attack impact; Player guard; final Player28 round2",
+      "S2 HELP Player6 to10, resource1 to0, green flash; NPC2/3 waiting before slot",
+      "restarted editor current-scene run after popup layout correction; HELP popup clear of feedback"
+    ],
+    "not_verified": [
+      "full owner visual acceptance",
+      "all GUI presets/restart gates",
+      "video-measured pacing/lunge",
+      "new main combat GUI review"
+    ],
+    "media": "Screenshots in tool transcript only; no durable screenshot/video file."
+  },
+  "limitations": [
+    "deterministic approved prototype; not full NPC AI",
+    "no Main Combat Migration approval",
+    "HELP threshold decision-time only; effect rechecks availability/resource/full HP, not <=30%",
+    "race interruption tests use white-box Registry access only in harness; production UI has no concurrent mutation path",
+    "GUI owner acceptance pending"
+  ]
+}
