@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-03",
+  "timezone": "Asia/Bangkok",
+  "implementation_commit": "33e8238f6309db8d262617e3b9026d97b50689a4",
+  "merged_base": "924748cf09a4c421c7c0c270995a512fa67ad281",
+  "branch": "codex/m2b-01-shared-actor-state",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "command": [
+    "python3",
+    "tests/combat/verify.py",
+    "--godot",
+    "/Applications/Godot.app/Contents/MacOS/Godot",
+    "--output",
+    "/tmp/wanderer-m2b-01-final",
+    "--npc-proof",
+    "--actor-proof"
+  ],
+  "runner_exit_code": 0,
+  "expected": "Every stage exit 0, no unexpected errors; negative suite exactly five expected errors; all harnesses zero failures",
+  "actual": {
+    "stages": 21,
+    "status": "PASS",
+    "checks": {
+      "actor": 122,
+      "combat": 14395,
+      "negative": 983,
+      "m2a_02": 412,
+      "m2a_03": 5166
+    }
+  },
+  "source_verification": "All manifest files equal both imported snapshot and implementation commit; subsequent changes documentation/evidence only",
+  "manual_f6": "NOT RUN by agent in this task",
+  "owner_acceptance": "Owner reports M2A-03 manual acceptance and permission to proceed; no per-scenario evidence supplied",
+  "prior_attempts": [
+    {
+      "output": "/tmp/wanderer-m2b-01-first",
+      "status": "FAIL",
+      "runner_exit_code": 1,
+      "reason": "Sandbox macOS certificate/editor-settings errors even with Godot import exit 0"
+    },
+    {
+      "output": "/tmp/wanderer-m2b-01-check",
+      "status": "PASS",
+      "runner_exit_code": 0,
+      "role": "Pre-commit verification, not final evidence"
+    }
+  ]
+}
