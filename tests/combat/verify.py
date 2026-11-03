@@ -15,6 +15,7 @@ def main():
     parser.add_argument("--godot", default="godot")
     parser.add_argument("--output", type=Path)
     parser.add_argument("--real-time", action="store_true", help="Use wall-clock Tween timing")
+    parser.add_argument("--npc-proof", action="store_true", help="Also verify the isolated M2A-02 proof")
     args = parser.parse_args()
     source = Path(__file__).resolve().parents[2]
     output = args.output.resolve() if args.output else Path(tempfile.mkdtemp(prefix="wanderer-queue-"))
@@ -58,7 +59,7 @@ def main():
         passed = code == 0 and sorted(errors) == sorted(expected_errors)
         if name == "version":
             passed = passed and "4.7.2.stable" in log
-        if name in ("gameplay", "invalid-actions"):
+        if name in ("gameplay", "invalid-actions", "npc-proof"):
             passed = passed and re.search(r"RESULT: \d+ checks, 0 failures", log) is not None
         result = {"step": name, "status": "PASS" if passed else "FAIL",
                   "exit_code": code, "timed_out": timed_out, "command": command,
@@ -86,6 +87,11 @@ def main():
             "Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง",
             *(["Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action"] * 3),
         ])
+        if args.npc_proof:
+            for script in ["scripts/npc/npc_decision_resolver.gd",
+                           "scripts/npc/npc_proof_encounter.gd", "tests/npc/decision_effect_proof.gd"]:
+                run("parse-" + Path(script).stem, ["--script", "res://" + script, "--check-only"])
+            run("npc-proof", [*timing, "--script", "res://tests/npc/decision_effect_proof.gd"])
     return 0 if all(result["status"] == "PASS" for result in results) else 1
 
 
