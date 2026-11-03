@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://c5xkk1ynaloj4"]
 
-[ext_resource type="Script" path="res://scripts/combat/full_party_proof.gd" id="1"]
+[ext_resource type="Script" uid="uid://dppmmg8e7bl5i" path="res://scripts/combat/full_party_proof.gd" id="1"]
 
-[node name="FullPartyProof" type="Control"]
+[node name="FullPartyProof" type="Control" unique_id=1458852363]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
