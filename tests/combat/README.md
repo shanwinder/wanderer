@@ -119,3 +119,11 @@ Add `--ownership-proof` to parse/run the isolated Encounter ownership harness.
 It is independent of `--actor-proof` (the unchanged M2B-01 suite) and `--npc-proof`.
 Use all three flags for the complete M2B-02 regression. See
 [ownership architecture and current evidence](../actors/README.md#m2b-02--single-source-encounter-hp).
+
+## Optional M2C-02 party foundation proof
+
+Add `--party-foundation-proof` to parse ActorDefinition, ActorRuntimeState,
+ActorRegistry, FullPartyEncounter and the focused harness, then run the harness.
+This opt-in works independently; combine it with `--npc-proof --actor-proof
+--ownership-proof` for F22 full regression. Existing suites and assertions are unchanged.
+See [contract, acceptance mapping and evidence](../actors/README.md#m2c-02--multi-actor-registry-and-encounter-foundation).

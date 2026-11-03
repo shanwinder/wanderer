@@ -309,3 +309,83 @@ acceptance เป็นข้อมูลเดิมจาก task M2B-01 ไ�
 ไม่มี main combat migration, UI/scene ใหม่, stats/items/inventory/equipment, AI framework,
 Trust/Guidance ใหม่, save/load, Down/Death หรือ lore change.
 หยุดที่ Draft PR เพื่อ review; ไม่ merge/enable auto-merge/delete branch หรือเริ่ม M2B-03/M2C.
+
+## M2C-02 — Multi-Actor Registry and Encounter Foundation
+
+งาน data-only บน `codex/m2c-02-multi-actor-foundation` รอ review. ฐาน merged ที่ fetch/ตรวจ local/remote/merge-base ตรงกันคือ `90eb7d14a21b8349f4433cc48d4aeaa913613b07` หลัง PR #34. ไม่เปลี่ยน NPCProofEncounter/Resolver หรือ combat หลัก. สถานะ milestone อยู่ใน [docs index](../../docs/README.md#current-status-and-next-roadmap) เท่านั้น; M2C-01 เป็น Design Only ไม่ใช่การอนุมัติ D1–D13 ทั้งชุด.
+
+### Contract and ownership
+
+- [ActorRegistry](../../scripts/actors/actor_registry.gd) เป็น RefCounted เฉพาะ encounter เก็บ RuntimeState หนึ่งชุดต่อ ID พร้อม Definition และ membership. ใช้ validator ของ ActorDefinition เดิม; รับเฉพาะ validated Definition/RuntimeState ที่ ID/max HP ตรงกันและ HP ถูกต้อง. Register คัดลอก input เข้า ownership ของ registry จึงแก้ HP ผ่าน reference ที่ผู้เรียกเก็บไว้ไม่ได้. Public reads คืน Dictionary/Array/scalars เท่านั้น.
+- [FullPartyEncounter](../../scripts/combat/full_party_encounter.gd) ถือ registry, `player_id`, `party_order` (NPC เท่านั้น), `enemy_order`, generation และ lifecycle booleans. Player อยู่ใน membership PARTY แต่มี identity แยก ไม่อยู่ใน NPC order. นี่ไม่ใช่ final turn order.
+- Roster ต้องมี Player 1, NPC 0–3 และ Enemy 1–2. IDs ใช้ lowercase snake_case ตาม ActorDefinition ไม่บังคับชื่อเฉพาะ; fixture ใช้ `player`, `npc_01`–`npc_03`, `enemy_a`, `enemy_b`. Role PLAYER/NPC ใช้ membership PARTY; ENEMY ใช้ ENEMY. ID เดียวปรากฏได้ครั้งเดียวใน registry และ roster รวมทั้งหมด; ห้าม actor ตกหล่นจาก roster.
+- `prototype_fixture(npc_count, enemy_count)` สร้าง Dictionary `{actors, player_id, party_order, enemy_order}`. แต่ละ actors entry ต้องมีเพียง `{definition, initial_hp}`; definition ใช้ schema M2B-01; initial_hp เป็น int 0..max เท่านั้น. Restart ไม่รับ null เป็น default HP. `restart(fixture)` คืน bool โดยไม่แก้ input.
+- `register_actor(definition, runtime, membership)`, `unregister_actor(id)`, `reorder_party(order)` คืน bool. ห้ามเพิ่ม Player คนที่สอง/เกิน capacity/ลบ Player/ลบ Enemy ตัวสุดท้าย. NPC HP=0 ยังคงอยู่ใน roster; can_act=false ไม่แปลว่า Down/Death.
+- Roster mutation ต้อง command_ready=true และ active_action=false. `set_lifecycle(bool, bool)` เป็น proof guard เล็ก ๆ ยังไม่มี action หรือ state machine. Restart ที่ถูกต้องทำได้แม้ locked และ reset booleans; input ผิดต้องรักษา lock เดิม.
+- ถอด ID แล้ว registry เก็บ tombstone ใน session เดิมเพื่อป้องกัน remove→re-add reset HP. ข้อแลกเปลี่ยน: จะนำสมาชิก ID เดิมกลับไม่ได้จน Restart สร้าง session ใหม่; ยังไม่มี bench/recruitment/global database.
+- `actor_snapshot(id)` / `snapshot()` คืนข้อมูลใหม่ทุกครั้ง แก้ nested dictionary/array แล้วไม่กระทบเจ้าของ. Unknown/wrong-type ID คืน `{}`. `available_enemy_ids()` derive จาก runtime.can_act ทุกครั้ง ไม่มี alive cache.
+- `fixture_damage(id, amount, generation)` / `fixture_heal(...)` เป็น controlled data-proof boundary เท่านั้น (ไม่ใช่ Player/NPC combat execution). Amount เป็น int ≥0, clamp โดย RuntimeState เดิม; stale/wrong-type generation หรือ locked → REJECTED, unknown ID/amount ผิด → INVALID_INPUT, สำเร็จ → APPLIED + actual hp_delta. ไม่เพิ่ม Action/Effect framework หรือ party HELP resource.
+- GDScript underscore เป็น convention ไม่ใช่ private access control. Tests จงใจอ่าน `_registry._actors` เพื่อพิสูจน์เจ้าของ/object identity; UI ต้องใช้ public snapshot API. Registry เก็บ current HP เฉพาะ RuntimeState ไม่มี authoritative HP Dictionary อีกชุด.
+
+### ตัวอย่าง Reorder และ HP
+
+Fixture เริ่ม Player 30/30, NPC1 10/10, NPC2 7/10, NPC3 3/10, A 15/15, B 12/12.
+เรียก `fixture_damage("npc_02", 3, encounter.snapshot().generation)` ได้ NPC2 7→4 โดยอีกห้าตัว HP เท่าเดิม.
+Reorder `[npc_01,npc_02,npc_03]` → `[npc_03,npc_01,npc_02]` เปลี่ยนเฉพาะ Array ของ IDs: NPC2 ยังเป็น npc_02, object เดิมและ HP 4.
+Restart ด้วย fixture เดิมจึงได้ NPC2 HP 7 พร้อม RuntimeState ใหม่.
+
+### Atomic Restart
+
+ตรวจ schema → สร้าง registry candidate → validate IDs/roles/memberships/roster ทั้งชุด → commit registry + roster + generation. ถ้า actor ตัวสุดท้ายผิด จะทิ้ง candidate โดยไม่เปลี่ยนข้อมูล/object/generation/lock/tombstone เดิม. ถ้าผ่าน generation เพิ่มหนึ่ง, runtime ทุกตัวเป็น object ใหม่, tombstones ว่าง. Old runtime/registry references แก้ได้เฉพาะข้อมูลเก่าที่ไม่ใช่เจ้าของ encounter ใหม่; fixture callback ที่ถือ generation เก่าถูกปฏิเสธ.
+
+### GDScript สำหรับผู้เริ่มต้น
+
+- **Identity กับ Order:** ID เหมือนเลขประจำตัว; order เหมือนรายชื่อเรียงแถว ย้ายแถวไม่ควรเปลี่ยนเจ้าของ HP. การสร้าง RuntimeState ใหม่ตอน reorder จะเผลอล้างบาดแผล จึงเปลี่ยนแค่ Array.
+- **Registry:** สมุดทะเบียนใช้ Dictionary ค้นจาก ID ไปยังเจ้าของข้อมูล ไม่ค้นจากตำแหน่งในแถว. `_actors[id]` จึงยังเป็นคนเดิมหลังสลับลำดับ.
+- **Role กับ Membership:** Role บอกประเภท Player/NPC/Enemy ส่วน membership บอก PARTY/ENEMY. Player กับ NPC อยู่ฝ่ายเดียวกันแต่มีบทบาทต่างกัน; ไม่ใช้ตำแหน่ง Array เดา role.
+- **RefCounted:** object ข้อมูลที่ไม่ต้องเป็น Node ใน scene; ถูกคืนหน่วยความจำเมื่อไม่มี reference ใช้แล้ว. ไม่ต้องเพิ่ม singleton/Resource/.tres สำหรับ proof นี้. ถ้า tests เก็บ reference เก่าไว้ มันยังมีชีวิตอยู่แต่ไม่ได้เป็นเจ้าของ encounter ใหม่.
+- **Dictionary:** คู่ key→value เช่น actor_id→RuntimeState; **Array:** รายการมีลำดับ เช่น party_order. Dictionary ที่เก็บ object ไม่ใช่สำเนา object; จึงห้ามส่ง `_actors` ให้ UI.
+- **Snapshot Isolation:** สร้าง dictionary จาก scalar snapshot ของแต่ละ object และสำเนา Array. ผู้เรียกแก้ snapshot ได้เพื่อทดลอง แต่แก้ของจริงไม่ได้. `duplicate(true)` ของ container ไม่ได้แปลว่าจะ clone RefCounted ข้างใน จึงต้องสร้าง snapshot จาก object ก่อน.
+- **Atomic Mutation:** ตรวจให้ครบก่อนเขียนเหมือนตรวจใบรายการทั้งหมดก่อนบันทึก ห้ามลงทะเบียนครึ่งชุดแล้วค่อยพบ ID ซ้ำ. Restart ใช้ candidate ส่วน register/reorder ตรวจเงื่อนไขทั้งหมดก่อนเปลี่ยน field.
+- **Runtime State Ownership:** Current HP อยู่ใน ActorRuntimeState เพียงที่เดียว; snapshot เป็นภาพข้อมูลตอนอ่าน ไม่ใช่เจ้าของ. ลอง damage 3 แล้วอ่านใหม่จะเห็น 4 แต่ snapshot เก่ายังคงค่าเดิมตามเวลาที่อ่าน.
+
+### Focused acceptance mapping
+
+[party_foundation_proof.gd](party_foundation_proof.gd) ใช้ทั้ง public contract และ white-box ownership probes; ไม่มีการแก้ assertions เดิม.
+
+| Criteria | วิธีพิสูจน์ / expected |
+| --- | --- |
+| F01–F05 | NPC 0/1/2/3 × Enemy 1/2; Player หนึ่ง, unique IDs และ membership ครบ |
+| F06–F08 | Role/membership/ID/max mismatch, duplicate Definition IDs, bare object, invalid types/bounds → reject ก่อน overwrite |
+| F09–F12 | NPC2 7→4 independent; live RuntimeState probe; damage/heal clamp; HP0 อยู่ roster แต่ unavailable |
+| F13–F14 | Snapshot ไม่มี object; แก้ nested/input container ไม่รั่ว; reorder ทุก actor values/object identity คงเดิม |
+| F15–F17 | Invalid/duplicate/unknown reorder, locked register/unregister, capacity, remove→re-add tombstone → atomic rejection |
+| F18–F20 | Valid restart เปลี่ยน roster/generation/runtime; invalid schema/last candidate ไม่เปลี่ยนอะไร; old references/stale generation inert |
+| F21 | Enemy damage ถึง0 → available list ว่าง; heal → available กลับจาก runtime ไม่มี alive cache |
+| F22 | รัน Combat/negative/M2A-02/M2A-03/M2B-01/M2B-02 เดิมครบ |
+
+### Verification command and evidence
+
+```sh
+python3 tests/combat/verify.py \
+  --godot /Applications/Godot.app/Contents/MacOS/Godot \
+  --output /tmp/wanderer-m2c-02-final \
+  --npc-proof --actor-proof --ownership-proof --party-foundation-proof
+```
+
+เลือก output ใหม่ทุกครั้ง; flag ใหม่ใช้เดี่ยวได้โดยยังรัน baseline combat เสมอ. Manual F6 **NOT RUN** เพราะเป็น data-only; ไม่มี visual acceptance ใหม่. M2C-03/M2C-04/action resolution/multi-NPC decisions/playable scene/items/equipment/Down/Death/full AI/lore ไม่ได้ implement. Speed 0.70, lunge 44px และ Compact Formation คงเดิม.
+
+ผลรันใหม่วันที่ 3 พฤศจิกายน 2026 บน tested commit `a7cf38d` ด้วย engine จริง `4.7.2.stable.official.ed1daf0bf`: **PASS 29 stages**, runner exit 0; ทุก stage exit 0, ไม่มี unexpected errors. Parse 18 ครั้ง (รวม dependency parses ของ flag ใหม่), clean import, main/playable startup ผ่าน. Subsequent HEAD เพิ่ม docs/evidence เท่านั้น; runtime/tests/scenes/assets/project bytes ตรงกับ tested commit และ imported snapshot ตาม manifest.
+
+| Suite | Expected / Actual | Exit |
+| --- | --- | --- |
+| M2C-02 F01–F21 | PASS — 382 checks, 0 failures | 0 |
+| Combat | 14,395 / 14,395 checks | 0 |
+| Negative | 983 / 983 checks + exactly 5 expected errors | 0 |
+| M2A-02 | 412 / 412 checks | 0 |
+| M2A-03 | 5,166 / 5,166 checks | 0 |
+| M2B-01 | 122 / 122 checks | 0 |
+| M2B-02 | 219 / 219 checks | 0 |
+| Manual F6 | NOT RUN | — |
+
+หลักฐาน durable: [run record / full SHA / command / expected-actual](evidence/m2c-02/run-record.json), [stage results / exit codes / exact errors](evidence/m2c-02/results.json), [raw logs / engine logs / exits](evidence/m2c-02/logs.txt), [source SHA-256 manifest](evidence/m2c-02/source-sha256.json). ผล M2A/M2B เดิมในหัวข้อก่อนหน้าเป็น inherited evidence ตาม commit เดิม; ตารางนี้เป็นผลที่รันใหม่ของ M2C-02.

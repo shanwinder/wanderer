@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-03",
+  "timezone": "Asia/Bangkok",
+  "base_commit": "90eb7d14a21b8349f4433cc48d4aeaa913613b07",
+  "branch": "codex/m2c-02-multi-actor-foundation",
+  "tested_commit": "a7cf38dc3c1a6681542842d57758dc5cfbeb6e1e",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "command": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m2c-02-final --npc-proof --actor-proof --ownership-proof --party-foundation-proof",
+  "runner_exit_code": 0,
+  "expected": "29 stages PASS; legacy counts unchanged; exactly 5 expected negative errors; zero unexpected errors",
+  "actual": {
+    "stages_passed": 29,
+    "checks": {
+      "gameplay": 14395,
+      "invalid-actions": 983,
+      "npc-proof": 412,
+      "npc-playable": 5166,
+      "actor-proof": 122,
+      "ownership-proof": 219,
+      "party-foundation-proof": 382
+    },
+    "expected_negative_errors": 5,
+    "unexpected_errors": 0
+  },
+  "source_manifest_entries": 48,
+  "source_comparison": "Runtime/scenes/assets/project/test source bytes identical at tested commit, fresh imported snapshot and evidence working tree. Subsequent commit adds only documentation/evidence.",
+  "manual_F6": "NOT RUN (data-only; no visual acceptance claimed)",
+  "logs": "Raw stdout/stderr, engine logs and per-stage exits consolidated in logs.txt; commands and exact errors in results.json. Initial check run also passed; final run is the evidence recorded here."
+}
