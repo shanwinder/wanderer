@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-03",
+  "timezone": "Asia/Bangkok",
+  "base_commit": "156df771a17ae9aaf5b83032e8ff58f51b3d7a47",
+  "tested_commit": "53029a0b2843f87149ee0a762cb677c496103b2a",
+  "branch": "codex/m2b-02-actor-state-ownership",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "command": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m2b-02-final --npc-proof --actor-proof --ownership-proof",
+  "runner_exit_code": 0,
+  "expected": "23 stages pass; baseline counts unchanged; 5 expected negative errors only",
+  "actual": {
+    "stages_passed": 23,
+    "ownership_checks": 219,
+    "combat_checks": 14395,
+    "negative_checks": 983,
+    "expected_negative_errors": 5,
+    "npc_proof_checks": 412,
+    "npc_playable_checks": 5166,
+    "actor_checks": 122,
+    "unexpected_errors": 0
+  },
+  "source_manifest_entries": 42,
+  "source_comparison": "All manifest bytes identical at implementation commit, final imported snapshot and documentation/evidence working tree. Final commit adds docs/evidence only.",
+  "manual_F6": "NOT RUN",
+  "initial_failed_run": "Sandbox import failed despite Godot exit 0: macOS certificate/editor-settings access; results and raw import log preserved. Final/check runs outside sandbox passed with unchanged error checks.",
+  "logs": "logs.txt contains raw stdout/stderr, Godot engine logs and per-stage exit files; results.json records commands/exits/errors. No snapshot or imported binaries committed."
+}

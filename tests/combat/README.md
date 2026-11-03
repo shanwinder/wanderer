@@ -112,3 +112,10 @@ Add `--actor-proof` to parse and execute the isolated actor data tests. Use both
 `--npc-proof --actor-proof` for legacy combat, M2A-02, M2A-03 and M2B-01 together.
 Neither flag changes the default legacy suite or its five expected negative errors.
 See [Actor architecture, examples and current run evidence](../actors/README.md).
+
+## Optional M2B-02 ownership proof
+
+Add `--ownership-proof` to parse/run the isolated Encounter ownership harness.
+It is independent of `--actor-proof` (the unchanged M2B-01 suite) and `--npc-proof`.
+Use all three flags for the complete M2B-02 regression. See
+[ownership architecture and current evidence](../actors/README.md#m2b-02--single-source-encounter-hp).

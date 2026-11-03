@@ -302,3 +302,11 @@ no scenario-by-scenario results, engine, tested commit or new media were supplie
 It does not rewrite the agent's historical NOT RUN record above. No new manual
 F6/reason-comprehension acceptance was performed by the M2B-01 agent.
 New automated regression evidence is recorded in [Actor tests](../actors/README.md).
+
+### M2B-02 — subsequent Encounter HP ownership migration
+
+The proof Encounter now owns three ActorRuntimeStates while retaining the same
+public snapshot schemas, Resolver decisions and playable controller. This does
+not migrate main combat. The original M2A-02/M2A-03 harnesses and expectations
+are unchanged; current regression results and manual F6 NOT RUN status are in
+[Actor ownership evidence](../actors/README.md#m2b-02--single-source-encounter-hp).

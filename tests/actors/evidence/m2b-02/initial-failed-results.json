@@ -1,0 +1,41 @@
+[
+  {
+    "step": "version",
+    "status": "PASS",
+    "exit_code": 0,
+    "timed_out": false,
+    "command": [
+      "/Applications/Godot.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/private/tmp/wanderer-m2b-02-first/snapshot",
+      "--log-file",
+      "/private/tmp/wanderer-m2b-02-first/version.engine.log",
+      "--version"
+    ],
+    "errors": [],
+    "log": "version.log"
+  },
+  {
+    "step": "import",
+    "status": "FAIL",
+    "exit_code": 0,
+    "timed_out": false,
+    "command": [
+      "/Applications/Godot.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/private/tmp/wanderer-m2b-02-first/snapshot",
+      "--log-file",
+      "/private/tmp/wanderer-m2b-02-first/import.engine.log",
+      "--editor",
+      "--import"
+    ],
+    "errors": [
+      "Condition \"ret != noErr\" is true. Returning: \"\"",
+      "Cannot save file '/Users/depa/Library/Application Support/Godot/editor_settings-4.7.tres'.",
+      "Error saving editor settings to /Users/depa/Library/Application Support/Godot/editor_settings-4.7.tres"
+    ],
+    "log": "import.log"
+  }
+]
