@@ -6,9 +6,11 @@
 
 | เอกสาร | เนื้อหา | อำนาจ/ขอบเขต |
 |---|---|---|
+| [AGENTS.md](../AGENTS.md) | กติกาสำหรับ Codex/agents, ขอบเขต, tests และ PR | อ่านก่อนทำงานใน repository |
+| [Current status and next roadmap](#current-status-and-next-roadmap) | สถานะหลัง PR #29 และข้อเสนอ M2A | จุดอ้างอิงสถานะปัจจุบัน; ไม่สร้างแผนฉบับซ้ำ |
 | [01 — Game Development Plan v0.1](01_Wanderer_Game_Development_Plan_v0.1.md) | วิสัยทัศน์, โลก, gameplay loop, NPC autonomy, death, milestones | **ฐานเกมเดิม**; เก็บประวัติการออกแบบ |
 | [02 — Visual Combat v0.2](02_Wanderer_Visual_Combat_Prototype_Update_v0.2.md) | Functional + visual prototype | ปรับ v0.1 เฉพาะงานภาพ/ต้นแบบ |
-| [03 — Combat Presentation v0.3](03_Wanderer_Combat_Presentation_Direction_Update_v0.3.md) | Staging, depth, UI, M1.5B–D | **ล่าสุดสำหรับ presentation & active milestone** |
+| [03 — Combat Presentation v0.3](03_Wanderer_Combat_Presentation_Direction_Update_v0.3.md) | Staging, depth, UI, M1.5B–D | เจตนา presentation และประวัติแผน; สถานะงานถัดไปในฉบับนี้ล้าสมัย |
 | [04 — Learning Workflow v0.4](04_Wanderer_Learning_Development_Workflow_v0.4.md) | ผู้พัฒนาเรียนรู้ Godot ด้วยตัวเอง; AI เป็นโค้ช | **ล่าสุดสำหรับวิธีลงมือพัฒนาเสมอ** |
 | **[05 — Starstone World Lore v0.5](05_Wanderer_Starstone_World_Lore_v0.5.md)** | คืนฟ้าแตก, ดาราศิลา, การพ้องพลัง, ความหายาก, สังคม, ความตาย, ความลับโลกเก่า | **ล่าสุดสำหรับ Low-Magic/Lore**; แทนความไม่ชัดใน v0.1 §5.5 |
 | **[06 — Resonance Gameplay v0.5](06_Wanderer_Resonance_Gameplay_Integration_v0.5.md)** | กฎอุปกรณ์, NPC, ต้นทุน, MRE-1, acceptance tests, roadmap integration | **ล่าสุดสำหรับ proposed magic gameplay**; ยังไม่ implement |
@@ -19,25 +21,60 @@
 ไม่ใช้หลักว่า “เอกสารเลขสูงสุดชนะทุกเรื่อง” แต่ให้แยก **domain of authority**:
 
 1. **Learning-first development:** v0.4 ควบคุมการทำงาน/ระดับความช่วยเหลือจาก AI ทั้งหมด
-2. **Combat presentation + active milestone:** v0.3 ควบคุม layout, staging, 1.5B–D
+2. **Combat presentation:** v0.3 เป็นเจตนาการจัดฉาก; สถานะ implementation ให้ตรวจ scene/script บนฐานที่ merge แล้ว และใช้หัวข้อ Current status ด้านล่างสำหรับ milestone ปัจจุบัน ไม่เริ่ม M1.5B ซ้ำจากข้อความเก่า
 3. **Low-magic/world canon:** v0.5 [05] กำหนดกฎโลกเหนือธรรมชาติแทน v0.1 §5.5 เฉพาะหัวข้อนั้น
 4. **Magic gameplay integration:** v0.5 [06] เสนอวิธีทำงานและ *จุดที่จะเพิ่มได้เมื่อพร้อม*; ไม่แก้สถานะ milestone เดิม
 5. **Original game vision:** v0.1 ยังมีผลกับ Player control, NPC autonomy, post-post-apocalypse, quests, journeys, class progression, Permadeath และมิติอื่นนอกเหนือข้อแก้ชัดเจน
 6. สถานะ **[LOCKED — INTENT]** ใน v0.5 หมายถึงเจตนาที่ผู้สร้างระบุ; **[DESIGN BASELINE]** เป็นข้อเสนอทำงาน, **[OPEN]** ยังไม่ตัดสิน และ **[LATER]** เก็บไว้ภายหลัง
+7. **โค้ดจริงบอกสิ่งที่ Implemented; หลักฐานทดสอบบอกสิ่งที่ Verified; แผนบอกสิ่งที่ Planned** โค้ดที่มีอยู่ไม่เปลี่ยนเจตนาออกแบบหรือปิด OPEN โดยอัตโนมัติ หากไม่ตรงกันให้รายงานช่องว่างและขอ review ก่อนเปลี่ยนระบบ
 
 หากความขัดแย้งกระทบระบบหลัก: บันทึก decision และให้ผู้สร้างทบทวนก่อนแก้ อย่าข้ามไป implement เพราะเห็นชื่อไฟล์ v0.5
 
-## Current direction — สิ่งที่ทำถัดไปจริง
+## Current status and next roadmap
 
-**Visual Combat Test 1** ผ่านการทดสอบเบื้องต้น ตามบันทึก v0.3
+ตรวจจากฐาน `visual-combat-test-1` หลัง merge [PR #28](https://github.com/shanwinder/wanderer/pull/28) (`e25f16f`) และ [PR #29](https://github.com/shanwinder/wanderer/pull/29) (`2926e5c`) ณ 3 พฤศจิกายน 2026 ผู้สร้างยืนยันอนุมัติ PR #29 แล้วในงาน P0 นี้
 
-**Milestone 1.5B — Octopath-inspired Combat Staging Pass** ยังเป็นงานถัดไป: ทดลองการจัดตำแหน่งแบบมีความลึก ไม่ใช้ flat baseline, ทำ Active Character เด่นขึ้น และรักษา readability; จากนั้น M1.5C (Attack Feel) และ M1.5D (NPC Turn Presentation)
+**Implemented** = มีอยู่ในโค้ดฐานที่ merge แล้ว; **Verified** = มีผลตรวจจริงพร้อมวิธี/ขอบเขต/หลักฐาน; **Planned** = ข้อเสนอหรือเจตนา ยังไม่ใช่ฟีเจอร์ที่เสร็จ สถานะเหล่านี้ไม่ใช้แทนกัน และการ merge ไม่เท่ากับผ่าน visual acceptance ทั้งหมด
+
+| Milestone / ขอบเขต | Implemented | Verified / ข้อจำกัด |
+|---|---|---|
+| M1.5B — staging | Compact allied formation, depth ผ่านตำแหน่ง Y และ contact shadows ใน scene | ตรวจโครง scene; ยังไม่มีผล F6 visual review ในบันทึก PR #29 |
+| M1.5C — attack feel | Lunge, recoil, HP flash, floating damage, hit spark และ active sprite emphasis | PR #29 ทดสอบ scene/Tween จริงแบบ headless; คุณภาพภาพและความรู้สึก pacing ยังต้องตรวจด้วยตา |
+| M1.5D — NPC presentation | NPC1/2/3 ลงมือทีละตัว มี intent ATK/GUARD และผลต่อ HP/Guard จริง | PR #29 ตรวจลำดับและผล damage/Guard; **ยังไม่ใช่ NPC AI/autonomy** |
+| M1.5E — action presentation refinements | Short Lunge 44px, sprite attack pose, Player Defend brace และ guarded-hit feedback | ตรวจค่าจาก script; ภาพ/animation/readability ยังต้อง F6 |
+| M1.6A — turn-flow foundation | แยก action queue ใน `combat_turn_flow.gd` | PR #29 ตรวจลำดับ, lock, Restart และจบรอบครั้งเดียว |
+| M1.6B–C — targets / dual enemy | Enemy A/B, target picker, แยก HP, retarget ตัวที่รอด, counter เฉพาะตัวที่ยังมีชีวิต และ victory เมื่อทั้งคู่ตาย | PR #29 ตรวจ A-first/B-first และแก้คิวค้างหลังข้ามศัตรูที่ตายแล้ว |
+| M2A — NPC Autonomy Proof | **Planned — ยังไม่ implement** | เสนอด้านล่าง; ต้องมีงาน implementation แยกหลัง review |
+
+แหล่งตรวจโค้ด: [scene](../scenes/combat/combat_prototype.tscn), [combat controller](../scripts/combat/combat_prototype.gd), [turn flow](../scripts/combat/combat_turn_flow.gd), [targets](../scripts/combat/combat_targets.gd)
+
+กฎ NPC ปัจจุบันเป็น deterministic: Player Attack → NPC1/3 ATK, NPC2 GUARD; Player Defend → NPC1/2/3 ATK การโจมตีตาม Target ID ที่เลือกและ fallback อัตโนมัติยังไม่พิสูจน์ว่า NPC ประเมินสถานการณ์และเลือกเอง
+
+หลักฐาน **Verified ที่บันทึกไว้** อยู่ใน [Combat regression](../tests/combat/README.md): Godot `4.7.2.stable.official.ed1daf0bf`, clean import, parse, main-scene startup, gameplay 14,395 checks และ negative tests 983 checks (ห้า errors ที่คาดไว้) ผ่านบน fix ของ PR #29 ส่วน baseline ก่อน fix ไม่ผ่าน B-first ตามที่คาด ตัวเลขนี้เป็นผลเดิม ไม่ใช่ผลทดสอบใหม่ของงาน P0 และ **Manual F6 ยัง NOT RUN**; PR เอกสารนี้ต้องระบุผลตรวจของตนแยกต่างหาก
+
+### M2A — NPC Autonomy Proof [Planned / proposed next]
+
+เป้าหมายคือพิสูจน์ว่า **NPC เลือกเองและผู้เล่นเข้าใจเหตุผลได้** ก่อนสร้าง Full NPC AI ไม่ถือว่าปาร์ตี้สี่คนที่มีอยู่หรือกฎ NPC2 Guard ทำให้ M2A สำเร็จแล้ว
+
+1. หลัง review P0 และได้รับงาน M2A แยก ให้ตกลงสถานการณ์ proof ขนาด **Player 1 + NPC 1 + Enemy 1** โดยรักษา dual-enemy prototype เดิมเป็น regression baseline; วิธีจัด test fixture/scene ยังรอ review
+2. เสนอ decision function เล็กที่รับ state ขั้นต่ำและคืน action, target และ reason แยกจาก Tween/UI ทดลอง Attack / Defend / Help โดย **Help เป็นพฤติกรรม proof ที่ต้องนิยามก่อน** ไม่เปิดระบบ healing, Down หรือ permadeath ทั้งชุด
+3. เสนอกรณีทดสอบ: ภาวะปกติ, NPC เสี่ยง, Player ต้องการความช่วยเหลือ, ไม่มีเป้าหมายที่ใช้ได้ และสถานการณ์ที่การเลือกต่างจากกฎ NPC2 เดิม ต้องไม่มีปุ่มสั่ง NPC โดยตรง และ reason ต้องสอดคล้องกับ state จริง
+4. เกณฑ์รับงานที่เสนอ: input เดิมให้ผลอธิบายซ้ำได้, เปลี่ยน state แล้วเห็นการเลือกที่มีเหตุผลต่างกัน, target ใช้ได้หรือมี fallback ปลอดภัย, ผู้สร้างลองเล่นแล้วอธิบายเหตุผล NPC ได้ และ Godot regression เดิมยังผ่านโดยไม่เปลี่ยน damage/turn flow เพื่อให้ test ผ่าน
+5. หลักฐานก่อน merge M2A: decision cases พร้อม expected/actual, Godot logs และ exit codes บน commit ที่เสนอ, regression ทั้ง A-first/B-first/Restart และ F6 เพื่อประเมินความเข้าใจ intent/reason แยกจากผล headless
+
+ค่าขีดแบ่งความเสี่ยง, ความหมาย/ผลของ Help และ UX reason เป็น **ข้อเสนอรอ review** ไม่ปิด OPEN ที่มีอยู่ ไม่เพิ่ม Trust/Guidance, inventory, progression, Starstone หรือ AI เต็มระบบใน proof นี้ ลำดับ milestone หลัง M2A ไม่ถูกอนุมัติใหม่จากงาน P0
 
 - Side-view combat ยังเป็นแกนหลัก; ใช้แรงบันดาลใจจาก Octopath Traveler เฉพาะ staging/focus/pacing ไม่ลอกภาพ
 - Turn System ยัง [OPEN] ให้ prototype ช่วยตัดสิน
-- ยังไม่เพิ่ม Full NPC AI ก่อน staging และ attack feel ตามเกณฑ์แผน
+- รักษา Combat Speed **0.70**, Short Lunge **44px** และ Compact Formation; ไม่เริ่ม staging ซ้ำหรือขยาย Full NPC AI จากการปรับเอกสาร
 - **ห้ามเริ่ม coding ระบบ Starstone/Resonance เพียงเพราะ merge เอกสาร v0.5**
 - เมื่อ M2–M4 พื้นฐานสมบูรณ์ ค่อยประเมิน **M4.R optional** ทดสอบ Pulse Pendant **หนึ่งชิ้น** ตาม [06]; ถ้ารบกวน learning/roadmap เลื่อนไปหลัง Vertical Slice ได้
+
+### PR #2 — documentation proposal, not canonical
+
+ตรวจ [PR #2](https://github.com/shanwinder/wanderer/pull/2) ณ 3 พฤศจิกายน 2026: **open / Draft / unmerged**, head `fac99aa` บน `docs/thailand-worldbuilding-v0-1` เสนอรวมเอกสารเป็น `docs/GAME.md`, `docs/WORLD.md`, `docs/WORKFLOW.md` และคู่มือเรียน พร้อมลบเอกสารเก่า แผนใน diff มี M2A proof ขนาด Player 1 + NPC 1 + Enemy 1 แต่ยังระบุ M1.5B เป็น NEXT ซึ่งไม่ตรงกับโค้ดฐานปัจจุบัน
+
+ข้อเสนอการรวมเอกสารช่วยลดความซ้ำซ้อนได้ แต่ต้อง reconcile milestone และทบทวนสถานะ lore/OPEN ก่อนรับเข้า ข้อความ APPROVED/LOCKED ภายใน PR นั้นไม่ทำให้เนื้อหาทั้ง PR เป็น canonical บนฐานนี้โดยอัตโนมัติ งาน P0 ไม่ merge/cherry-pick PR #2 ไม่สร้างไฟล์ canonical ชุดคู่ขนาน และไม่เปลี่ยน world lore ใช้เอกสารที่ merge แล้วตาม authority ด้านบนต่อไปจนมี review เฉพาะเรื่อง
 
 ## Low-Magic direction v0.5
 
