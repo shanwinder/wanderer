@@ -7,7 +7,7 @@
 | เอกสาร | เนื้อหา | อำนาจ/ขอบเขต |
 |---|---|---|
 | [AGENTS.md](../AGENTS.md) | กติกาสำหรับ Codex/agents, ขอบเขต, tests และ PR | อ่านก่อนทำงานใน repository |
-| [Current status and next roadmap](#current-status-and-next-roadmap) | สถานะหลัง PR #29 และข้อเสนอ M2A | จุดอ้างอิงสถานะปัจจุบัน; ไม่สร้างแผนฉบับซ้ำ |
+| [Current status and next roadmap](#current-status-and-next-roadmap) | สถานะฐานหลัง PR #31 และ M2A-03 ที่รอ review | จุดอ้างอิงสถานะปัจจุบัน; ไม่สร้างแผนฉบับซ้ำ |
 | [01 — Game Development Plan v0.1](01_Wanderer_Game_Development_Plan_v0.1.md) | วิสัยทัศน์, โลก, gameplay loop, NPC autonomy, death, milestones | **ฐานเกมเดิม**; เก็บประวัติการออกแบบ |
 | [02 — Visual Combat v0.2](02_Wanderer_Visual_Combat_Prototype_Update_v0.2.md) | Functional + visual prototype | ปรับ v0.1 เฉพาะงานภาพ/ต้นแบบ |
 | [03 — Combat Presentation v0.3](03_Wanderer_Combat_Presentation_Direction_Update_v0.3.md) | Staging, depth, UI, M1.5B–D | เจตนา presentation และประวัติแผน; สถานะงานถัดไปในฉบับนี้ล้าสมัย |
@@ -34,6 +34,8 @@
 
 ตรวจจากฐาน `visual-combat-test-1` หลัง merge [PR #28](https://github.com/shanwinder/wanderer/pull/28) (`e25f16f`) และ [PR #29](https://github.com/shanwinder/wanderer/pull/29) (`2926e5c`) ณ 3 พฤศจิกายน 2026 ผู้สร้างยืนยันอนุมัติ PR #29 แล้วในงาน P0 นี้
 
+ฐานล่าสุดที่ตรวจจริงสำหรับ M2A-03 คือ `8294d24ce351e5d02ca26a4ace96469f7081e31d` หลัง merge [PR #31](https://github.com/shanwinder/wanderer/pull/31); ตรงกับ checkpoint ที่ผู้สร้างระบุ ไม่มี base drift. งาน M2A-03 ในตารางเป็นโค้ด feature branch ที่ยังไม่ merge แยกจากฐานนี้ ขั้นถัดไปคือ review Draft PR และทำ manual F6/reason playtest; ไม่เริ่ม M2B หรือแทน NPC ใน combat หลักอัตโนมัติ
+
 **Implemented** = มีอยู่ในโค้ดฐานที่ merge แล้ว; **Verified** = มีผลตรวจจริงพร้อมวิธี/ขอบเขต/หลักฐาน; **Planned** = ข้อเสนอหรือเจตนา ยังไม่ใช่ฟีเจอร์ที่เสร็จ สถานะเหล่านี้ไม่ใช้แทนกัน และการ merge ไม่เท่ากับผ่าน visual acceptance ทั้งหมด
 
 | Milestone / ขอบเขต | Implemented | Verified / ข้อจำกัด |
@@ -44,8 +46,8 @@
 | M1.5E — action presentation refinements | Short Lunge 44px, sprite attack pose, Player Defend brace และ guarded-hit feedback | ตรวจค่าจาก script; ภาพ/animation/readability ยังต้อง F6 |
 | M1.6A — turn-flow foundation | แยก action queue ใน `combat_turn_flow.gd` | PR #29 ตรวจลำดับ, lock, Restart และจบรอบครั้งเดียว |
 | M1.6B–C — targets / dual enemy | Enemy A/B, target picker, แยก HP, retarget ตัวที่รอด, counter เฉพาะตัวที่ยังมีชีวิต และ victory เมื่อทั้งคู่ตาย | PR #29 ตรวจ A-first/B-first และแก้คิวค้างหลังข้ามศัตรูที่ตายแล้ว |
-| M2A-02 — isolated decision/effect proof (feature branch; pending review) | Resolver และ data-only Player/NPC/Enemy fixture แยกจาก combat หลัก; เจ้าของอนุมัติ D1–D9 และ implementation ใน chat วันที่ 3 พฤศจิกายน 2026 | ผลตรวจ commit/engine/command และ raw evidence อยู่ใน [proof tests](../tests/npc/README.md); ไม่ใช่ผล autonomy ของ main scene |
-| M2A-03 — playable integration / reason UX | **Planned — ยังไม่ implement** | ยังไม่มี F6 หรือ playtest ยืนยันว่าผู้เล่นเข้าใจเหตุผล; ต้องได้รับงานแยก |
+| M2A-02 — isolated decision/effect proof (merged PR #31, `8294d24`) | Resolver และ data-only Player/NPC/Enemy fixture แยกจาก combat หลัก; เจ้าของอนุมัติ D1–D9 และ implementation ใน chat วันที่ 3 พฤศจิกายน 2026 | ผลตรวจ commit/engine/command และ raw evidence อยู่ใน [proof tests](../tests/npc/README.md); ไม่ใช่ผล autonomy ของ main scene |
+| M2A-03 — playable integration / reason UX (feature branch; pending review) | ฉากแยก post-Player, six presets, action/target/reason UX, Tween และ Encounter effects เดิม; ผู้สร้างสั่ง implementation แยกวันที่ 3 พฤศจิกายน 2026 | Headless scene integration ผ่าน 5,166 checks บน `6de034d`; Combat 14,395 / negative 983 / M2A-02 412 ผ่าน รายละเอียด engine/command/evidence และ manual checklist ใน [proof tests](../tests/npc/README.md#m2a-03--playable-integration-and-reason-ux); F6 visual/reason comprehension **NOT RUN** |
 
 แหล่งตรวจโค้ด: [scene](../scenes/combat/combat_prototype.tscn), [combat controller](../scripts/combat/combat_prototype.gd), [turn flow](../scripts/combat/combat_turn_flow.gd), [targets](../scripts/combat/combat_targets.gd)
 
@@ -53,7 +55,7 @@
 
 หลักฐาน **Verified ที่บันทึกไว้** อยู่ใน [Combat regression](../tests/combat/README.md): Godot `4.7.2.stable.official.ed1daf0bf`, clean import, parse, main-scene startup, gameplay 14,395 checks และ negative tests 983 checks (ห้า errors ที่คาดไว้) ผ่านบน fix ของ PR #29 ส่วน baseline ก่อน fix ไม่ผ่าน B-first ตามที่คาด ตัวเลขนี้เป็นผลเดิม ไม่ใช่ผลทดสอบใหม่ของงาน P0 และ **Manual F6 ยัง NOT RUN**; PR เอกสารนี้ต้องระบุผลตรวจของตนแยกต่างหาก
 
-### M2A — NPC Autonomy Proof [M2A-02 feature branch / M2A-03 planned]
+### M2A — NPC Autonomy Proof [M2A-02 merged / M2A-03 pending review]
 
 เป้าหมายคือพิสูจน์ว่า **NPC เลือกเองและผู้เล่นเข้าใจเหตุผลได้** ก่อนสร้าง Full NPC AI ไม่ถือว่าปาร์ตี้สี่คนที่มีอยู่หรือกฎ NPC2 Guard ทำให้ M2A สำเร็จแล้ว
 
@@ -63,7 +65,7 @@
 4. เกณฑ์รับงานที่เสนอ: input เดิมให้ผลอธิบายซ้ำได้, เปลี่ยน state แล้วเห็นการเลือกที่มีเหตุผลต่างกัน, target ใช้ได้หรือมี fallback ปลอดภัย, ผู้สร้างลองเล่นแล้วอธิบายเหตุผล NPC ได้ และ Godot regression เดิมยังผ่านโดยไม่เปลี่ยน damage/turn flow เพื่อให้ test ผ่าน
 5. หลักฐานก่อน merge M2A: decision cases พร้อม expected/actual, Godot logs และ exit codes บน commit ที่เสนอ, regression ทั้ง A-first/B-first/Restart และ F6 เพื่อประเมินความเข้าใจ intent/reason แยกจากผล headless
 
-ข้อเสนอด้านบนเป็นบันทึกจาก P0; ต่อมาเจ้าของอนุมัติ M2A-01 D1–D9 ทั้งชุดและสั่ง M2A-02 อย่างชัดเจนใน chat วันที่ 3 พฤศจิกายน 2026: HP ต่ำ ≤30%, HELP สูงสุด 4 HP หนึ่งครั้ง/encounter, self-DEFEND ลด 2 ต่ำสุด 1, self-first เมื่อเสี่ยงพร้อมกัน, ประเมินครั้งเดียวต้น NPC slot และ SKIP อย่างปลอดภัย รายละเอียด executable contract และหลักฐานอยู่ใน [M2A-02 proof tests](../tests/npc/README.md) ซึ่งใช้ NPC max HP 10 และ enemy target ที่ประกาศ/ล็อกไว้ ไม่เพิ่ม UI/animation หรือแก้ combat หลักในงานนี้ การอนุมัตินี้เป็นกฎ **prototype** ไม่ปิด OPEN ของเกมเต็ม ไม่เพิ่ม Trust/Guidance, inventory, progression, Starstone หรือ AI เต็มระบบ M2A-03 ยังต้องมีคำสั่งแยกและไม่เริ่มอัตโนมัติ
+ข้อเสนอด้านบนเป็นบันทึกจาก P0; ต่อมาเจ้าของอนุมัติ M2A-01 D1–D9 ทั้งชุดและสั่ง M2A-02 อย่างชัดเจนใน chat วันที่ 3 พฤศจิกายน 2026: HP ต่ำ ≤30%, HELP สูงสุด 4 HP หนึ่งครั้ง/encounter, self-DEFEND ลด 2 ต่ำสุด 1, self-first เมื่อเสี่ยงพร้อมกัน, ประเมินครั้งเดียวต้น NPC slot และ SKIP อย่างปลอดภัย รายละเอียด executable contract และหลักฐานอยู่ใน [M2A-02 proof tests](../tests/npc/README.md) ซึ่งใช้ NPC max HP 10 และ enemy target ที่ประกาศ/ล็อกไว้ ไม่เพิ่ม UI/animation หรือแก้ combat หลักในงานนี้ การอนุมัตินี้เป็นกฎ **prototype** ไม่ปิด OPEN ของเกมเต็ม ไม่เพิ่ม Trust/Guidance, inventory, progression, Starstone หรือ AI เต็มระบบ ต่อมาเจ้าของสั่ง M2A-03 แยกอย่างชัดเจนวันที่ 3 พฤศจิกายน 2026; implementation อยู่ใน feature branch รอ review ตามตารางข้างต้น
 
 - Side-view combat ยังเป็นแกนหลัก; ใช้แรงบันดาลใจจาก Octopath Traveler เฉพาะ staging/focus/pacing ไม่ลอกภาพ
 - Turn System ยัง [OPEN] ให้ prototype ช่วยตัดสิน
