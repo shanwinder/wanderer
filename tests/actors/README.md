@@ -374,3 +374,18 @@ python3 tests/combat/verify.py \
 ```
 
 เลือก output ใหม่ทุกครั้ง; flag ใหม่ใช้เดี่ยวได้โดยยังรัน baseline combat เสมอ. Manual F6 **NOT RUN** เพราะเป็น data-only; ไม่มี visual acceptance ใหม่. M2C-03/M2C-04/action resolution/multi-NPC decisions/playable scene/items/equipment/Down/Death/full AI/lore ไม่ได้ implement. Speed 0.70, lunge 44px และ Compact Formation คงเดิม.
+
+ผลรันใหม่วันที่ 3 พฤศจิกายน 2026 บน tested commit `a7cf38d` ด้วย engine จริง `4.7.2.stable.official.ed1daf0bf`: **PASS 29 stages**, runner exit 0; ทุก stage exit 0, ไม่มี unexpected errors. Parse 18 ครั้ง (รวม dependency parses ของ flag ใหม่), clean import, main/playable startup ผ่าน. Subsequent HEAD เพิ่ม docs/evidence เท่านั้น; runtime/tests/scenes/assets/project bytes ตรงกับ tested commit และ imported snapshot ตาม manifest.
+
+| Suite | Expected / Actual | Exit |
+| --- | --- | --- |
+| M2C-02 F01–F21 | PASS — 382 checks, 0 failures | 0 |
+| Combat | 14,395 / 14,395 checks | 0 |
+| Negative | 983 / 983 checks + exactly 5 expected errors | 0 |
+| M2A-02 | 412 / 412 checks | 0 |
+| M2A-03 | 5,166 / 5,166 checks | 0 |
+| M2B-01 | 122 / 122 checks | 0 |
+| M2B-02 | 219 / 219 checks | 0 |
+| Manual F6 | NOT RUN | — |
+
+หลักฐาน durable: [run record / full SHA / command / expected-actual](evidence/m2c-02/run-record.json), [stage results / exit codes / exact errors](evidence/m2c-02/results.json), [raw logs / engine logs / exits](evidence/m2c-02/logs.txt), [source SHA-256 manifest](evidence/m2c-02/source-sha256.json). ผล M2A/M2B เดิมในหัวข้อก่อนหน้าเป็น inherited evidence ตาม commit เดิม; ตารางนี้เป็นผลที่รันใหม่ของ M2C-02.
