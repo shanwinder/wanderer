@@ -1,0 +1,510 @@
+
+===== actor-proof.engine.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+CASE ownership-hp-recreation: complete
+CASE invalid-input: complete
+CASE M2A-bridge: HELP/player/PLAYER_LOW_HP_HELP; Player 6→10→7
+RESULT: 122 checks, 0 failures
+
+===== actor-proof.exit =====
+0
+
+===== actor-proof.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+CASE ownership-hp-recreation: complete
+CASE invalid-input: complete
+CASE M2A-bridge: HELP/player/PLAYER_LOW_HP_HELP; Player 6→10→7
+RESULT: 122 checks, 0 failures
+
+===== gameplay.engine.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: B-first progression, dead-tail skip, retarget, victory
+PASS: A-first progression, live B counter, victory
+PASS: Attack, Defend, NPC2 guard, damage, order, defeat
+PASS: Restart during player/NPC attack/NPC guard/both enemy actions
+RESULT: 14395 checks, 0 failures
+
+===== gameplay.exit =====
+0
+
+===== gameplay.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: B-first progression, dead-tail skip, retarget, victory
+PASS: A-first progression, live B counter, victory
+PASS: Attack, Defend, NPC2 guard, damage, order, defeat
+PASS: Restart during player/NPC attack/NPC guard/both enemy actions
+RESULT: 14395 checks, 0 failures
+
+===== import.engine.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+[   0% ] first_scan_filesystem | Started Project initialization (5 steps)
+[  16% ] first_scan_filesystem | Loading global class names...
+[  33% ] first_scan_filesystem | Verifying GDExtensions...
+[  50% ] first_scan_filesystem | Creating autoload scripts...
+[  66% ] first_scan_filesystem | Initializing plugins...
+[  83% ] first_scan_filesystem | Starting file scan...
+[ DONE ] first_scan_filesystem
+
+[   0% ] update_scripts_classes | Started Registering global classes... (13 steps)
+[   0% ] update_scripts_classes | ActorDefinition
+[   7% ] update_scripts_classes | ActorRuntimeState
+[  14% ] update_scripts_classes | 
+[  21% ] update_scripts_classes | 
+[  28% ] update_scripts_classes | 
+[  35% ] update_scripts_classes | 
+[  42% ] update_scripts_classes | 
+[  50% ] update_scripts_classes | 
+[  57% ] update_scripts_classes | 
+[  64% ] update_scripts_classes | 
+[  71% ] update_scripts_classes | 
+[  78% ] update_scripts_classes | 
+[  85% ] update_scripts_classes | 
+[ DONE ] update_scripts_classes
+
+[   0% ] _update_scan_actions | Started Scanning actions... (7 steps)
+[   0% ] _update_scan_actions | npc_01_idle.png
+[  12% ] _update_scan_actions | npc_02_idle.png
+[  25% ] _update_scan_actions | npc_03_idle.png
+[  37% ] _update_scan_actions | player_idle_01.png
+[  50% ] _update_scan_actions | player_idle_02.png
+[  62% ] _update_scan_actions | enemy_01_idle.png
+[  75% ] _update_scan_actions | icon.svg
+[ DONE ] _update_scan_actions
+
+[   0% ] reimport | Started (Re)Importing Assets (7 steps)
+[   0% ] reimport | Preparing files to reimport...
+[  12% ] reimport | Preparing files to reimport...
+[  25% ] reimport | Preparing files to reimport...
+[  37% ] reimport | Preparing files to reimport...
+[  50% ] reimport | Preparing files to reimport...
+[  62% ] reimport | Preparing files to reimport...
+[  75% ] reimport | Preparing files to reimport...
+[   0% ] reimport | Executing pre-reimport operations...
+[   0% ] reimport | npc_01_idle.png
+[  12% ] reimport | npc_02_idle.png
+[  25% ] reimport | npc_03_idle.png
+[  37% ] reimport | player_idle_01.png
+[  50% ] reimport | player_idle_02.png
+[  62% ] reimport | enemy_01_idle.png
+[  75% ] reimport | icon.svg
+[  87% ] reimport | Finalizing Asset Import...
+[ DONE ] reimport
+
+[   0% ] reimport | Started (Re)Importing Assets (7 steps)
+[   0% ] reimport | Executing post-reimport operations...
+[ DONE ] reimport
+
+[   0% ] loading_editor_layout | Started Loading editor (5 steps)
+[   0% ] loading_editor_layout | Loading editor layout...
+[  16% ] loading_editor_layout | Loading docks...
+[ DONE ] loading_editor_layout
+
+
+===== import.exit =====
+0
+
+===== import.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started Registering global classes... (13 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | ActorDefinition[39m[0m
+[   7% ] [90m[1mupdate_scripts_classes[22m | ActorRuntimeState[39m[0m
+[  14% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  21% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  28% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  35% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  42% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  50% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  57% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  64% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  71% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  78% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  85% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[92m[ DONE ][39m [1mupdate_scripts_classes[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started Scanning actions... (7 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | npc_01_idle.png[39m[0m
+[  12% ] [90m[1m_update_scan_actions[22m | npc_02_idle.png[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | npc_03_idle.png[39m[0m
+[  37% ] [90m[1m_update_scan_actions[22m | player_idle_01.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | player_idle_02.png[39m[0m
+[  62% ] [90m[1m_update_scan_actions[22m | enemy_01_idle.png[39m[0m
+[  75% ] [90m[1m_update_scan_actions[22m | icon.svg[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (7 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  12% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  25% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  37% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  50% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  62% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  75% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing pre-reimport operations...[39m[0m
+[   0% ] [90m[1mreimport[22m | npc_01_idle.png[39m[0m
+[  12% ] [90m[1mreimport[22m | npc_02_idle.png[39m[0m
+[  25% ] [90m[1mreimport[22m | npc_03_idle.png[39m[0m
+[  37% ] [90m[1mreimport[22m | player_idle_01.png[39m[0m
+[  50% ] [90m[1mreimport[22m | player_idle_02.png[39m[0m
+[  62% ] [90m[1mreimport[22m | enemy_01_idle.png[39m[0m
+[  75% ] [90m[1mreimport[22m | icon.svg[39m[0m
+[  87% ] [90m[1mreimport[22m | Finalizing Asset Import...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (7 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing post-reimport operations...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | Loading docks...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+
+===== invalid-actions.engine.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Combat Turn Flow: ไม่มี Action ถัดไปหลัง NPC
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _start_next_npc_action (res://scripts/combat/combat_prototype.gd:731)
+       [1] _test_invalid_actions (res://tests/combat/queue_regression.gd:196)
+       [2] _run (res://tests/combat/queue_regression.gd:223)
+ERROR: Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _start_next_npc_action (res://scripts/combat/combat_prototype.gd:745)
+       [1] _test_invalid_actions (res://tests/combat/queue_regression.gd:196)
+       [2] _run (res://tests/combat/queue_regression.gd:223)
+ERROR: Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _start_next_npc_action (res://scripts/combat/combat_prototype.gd:719)
+       [1] _test_invalid_actions (res://tests/combat/queue_regression.gd:200)
+       [2] _run (res://tests/combat/queue_regression.gd:223)
+ERROR: Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _start_next_npc_action (res://scripts/combat/combat_prototype.gd:719)
+       [1] _test_invalid_actions (res://tests/combat/queue_regression.gd:204)
+       [2] _run (res://tests/combat/queue_regression.gd:223)
+ERROR: Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _start_next_npc_action (res://scripts/combat/combat_prototype.gd:719)
+       [1] _test_invalid_actions (res://tests/combat/queue_regression.gd:208)
+       [2] _wait_until_idle (res://tests/combat/queue_regression.gd:42)
+PASS: malformed actions and invalid dispatch remain errors
+RESULT: 983 checks, 0 failures
+
+===== invalid-actions.exit =====
+0
+
+===== invalid-actions.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+ERROR: Combat Turn Flow: ไม่มี Action ถัดไปหลัง NPC
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _start_next_npc_action (res://scripts/combat/combat_prototype.gd:731)
+       [1] _test_invalid_actions (res://tests/combat/queue_regression.gd:196)
+       [2] _run (res://tests/combat/queue_regression.gd:223)
+ERROR: Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _start_next_npc_action (res://scripts/combat/combat_prototype.gd:745)
+       [1] _test_invalid_actions (res://tests/combat/queue_regression.gd:196)
+       [2] _run (res://tests/combat/queue_regression.gd:223)
+ERROR: Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _start_next_npc_action (res://scripts/combat/combat_prototype.gd:719)
+       [1] _test_invalid_actions (res://tests/combat/queue_regression.gd:200)
+       [2] _run (res://tests/combat/queue_regression.gd:223)
+ERROR: Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _start_next_npc_action (res://scripts/combat/combat_prototype.gd:719)
+       [1] _test_invalid_actions (res://tests/combat/queue_regression.gd:204)
+       [2] _run (res://tests/combat/queue_regression.gd:223)
+ERROR: Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _start_next_npc_action (res://scripts/combat/combat_prototype.gd:719)
+       [1] _test_invalid_actions (res://tests/combat/queue_regression.gd:208)
+       [2] _wait_until_idle (res://tests/combat/queue_regression.gd:42)
+PASS: malformed actions and invalid dispatch remain errors
+RESULT: 983 checks, 0 failures
+
+===== npc-playable-startup.engine.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== npc-playable-startup.exit =====
+0
+
+===== npc-playable-startup.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== npc-playable.engine.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+CASE S1 — Normal Combat: PASS
+CASE S2 — Player Needs Help: PASS
+CASE S3 — NPC Under Threat: PASS
+CASE S4 — HELP Unavailable: PASS
+CASE S6 — Guidance Conflict: PASS
+CASE S7 — Both at Risk: PASS
+CASE restart all actions / enemy response: complete
+RESULT: 5166 checks, 0 failures
+
+===== npc-playable.exit =====
+0
+
+===== npc-playable.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+CASE S1 — Normal Combat: PASS
+CASE S2 — Player Needs Help: PASS
+CASE S3 — NPC Under Threat: PASS
+CASE S4 — HELP Unavailable: PASS
+CASE S6 — Guidance Conflict: PASS
+CASE S7 — Both at Risk: PASS
+CASE restart all actions / enemy response: complete
+RESULT: 5166 checks, 0 failures
+
+===== npc-proof.engine.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+CASE S1: PASS
+CASE S2: PASS
+CASE S3: PASS
+CASE S4: PASS
+CASE S6: PASS
+CASE S7: PASS
+CASE S5: PASS
+CASE S9: PASS
+CASE S8: PASS
+CASE limits-invalid-input: PASS
+CASE locking-invalid-target: PASS
+CASE S10: PASS
+CASE S11: PASS
+SCENARIOS_JSON: {"S1":"PASS","S10":"PASS","S11":"PASS","S2":"PASS","S3":"PASS","S4":"PASS","S5":"PASS","S6":"PASS","S7":"PASS","S8":"PASS","S9":"PASS","limits-invalid-input":"PASS","locking-invalid-target":"PASS"}
+RESULT: 412 checks, 0 failures
+
+===== npc-proof.exit =====
+0
+
+===== npc-proof.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+CASE S1: PASS
+CASE S2: PASS
+CASE S3: PASS
+CASE S4: PASS
+CASE S6: PASS
+CASE S7: PASS
+CASE S5: PASS
+CASE S9: PASS
+CASE S8: PASS
+CASE limits-invalid-input: PASS
+CASE locking-invalid-target: PASS
+CASE S10: PASS
+CASE S11: PASS
+SCENARIOS_JSON: {"S1":"PASS","S10":"PASS","S11":"PASS","S2":"PASS","S3":"PASS","S4":"PASS","S5":"PASS","S6":"PASS","S7":"PASS","S8":"PASS","S9":"PASS","limits-invalid-input":"PASS","locking-invalid-target":"PASS"}
+RESULT: 412 checks, 0 failures
+
+===== ownership-proof.engine.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+CASE registry-snapshot-ownership: PASS
+CASE effects-duplicates-bounds: PASS
+CASE atomic-fixture-restart-stale: PASS
+CASE terminal-races-no-revival: PASS
+RESULT: 219 checks, 0 failures
+
+===== ownership-proof.exit =====
+0
+
+===== ownership-proof.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+CASE registry-snapshot-ownership: PASS
+CASE effects-duplicates-bounds: PASS
+CASE atomic-fixture-restart-stale: PASS
+CASE terminal-races-no-revival: PASS
+RESULT: 219 checks, 0 failures
+
+===== parse-actor_data_proof.engine.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-actor_data_proof.exit =====
+0
+
+===== parse-actor_data_proof.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-actor_definition.engine.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-actor_definition.exit =====
+0
+
+===== parse-actor_definition.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-actor_ownership_proof.engine.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-actor_ownership_proof.exit =====
+0
+
+===== parse-actor_ownership_proof.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-actor_runtime_state.engine.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-actor_runtime_state.exit =====
+0
+
+===== parse-actor_runtime_state.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-combat_prototype.engine.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-combat_prototype.exit =====
+0
+
+===== parse-combat_prototype.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-combat_targets.engine.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-combat_targets.exit =====
+0
+
+===== parse-combat_targets.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-combat_turn_flow.engine.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-combat_turn_flow.exit =====
+0
+
+===== parse-combat_turn_flow.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-decision_effect_proof.engine.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-decision_effect_proof.exit =====
+0
+
+===== parse-decision_effect_proof.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-npc_autonomy_proof.engine.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-npc_autonomy_proof.exit =====
+0
+
+===== parse-npc_autonomy_proof.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-npc_decision_resolver.engine.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-npc_decision_resolver.exit =====
+0
+
+===== parse-npc_decision_resolver.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-npc_proof_encounter.engine.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-npc_proof_encounter.exit =====
+0
+
+===== parse-npc_proof_encounter.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-playable_integration.engine.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-playable_integration.exit =====
+0
+
+===== parse-playable_integration.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-queue_regression.engine.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== parse-queue_regression.exit =====
+0
+
+===== parse-queue_regression.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== startup.engine.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== startup.exit =====
+0
+
+===== startup.log =====
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+
+===== version.exit =====
+0
+
+===== version.log =====
+4.7.2.stable.official.ed1daf0bf

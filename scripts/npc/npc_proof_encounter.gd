@@ -3,12 +3,18 @@ extends RefCounted
 # Isolated data-only encounter; not connected to the main combat controller.
 # Tests supply the post-Player state, then run one NPC slot and one enemy slot.
 const Resolver = preload("res://scripts/npc/npc_decision_resolver.gd")
+const Definition = preload("res://scripts/actors/actor_definition.gd")
+const RuntimeState = preload("res://scripts/actors/actor_runtime_state.gd")
+# Compatibility field prefix, stable actor ID, definition role.
+const ACTORS: Array[Array] = [["player", "player", "PLAYER"],
+	["npc", "npc", "NPC"], ["enemy", "enemy_a", "ENEMY"]]
 const ATTACK_DAMAGE: int = 1
 const HELP_AMOUNT: int = 4
 const DEFEND_REDUCTION: int = 2
 
 var _resolver = Resolver.new()
-var _state: Dictionary = {}
+var _state: Dictionary = {} # Encounter metadata only; never HP.
+var _actors: Dictionary = {}
 var _generation: int = 0
 var _next_action_id: int = 0
 var _active: Dictionary = {}
@@ -41,9 +47,12 @@ func restart(overrides: Dictionary = {}) -> Dictionary:
 	var invalid: String = _resolver.validate_snapshot(_snapshot_from(initial))
 	if not invalid.is_empty():
 		return _response("INVALID_INPUT", invalid)
+	var actors: Dictionary = _build_actor_candidates(initial)
+	if actors.is_empty():
+		return _response("INVALID_INPUT", "INVALID_ACTOR_REGISTRY")
 	# Invalidate old effect AND completion callbacks before replacing state.
 	_generation += 1
-	_state = initial.duplicate(true)
+	_commit_candidates(initial, actors)
 	_active.clear()
 	_pending.clear()
 	_round = 1
@@ -54,8 +63,49 @@ func restart(overrides: Dictionary = {}) -> Dictionary:
 	return _response("RESTARTED")
 
 
+# Candidate registry is local until every definition/state and ID is valid.
+# Separate helper allows focused duplicate-ID coverage without a public setter.
+func _register_actor(registry: Dictionary, definition: Variant, initial_hp: Variant) -> bool:
+	var actor = RuntimeState.create(definition, initial_hp)
+	if actor == null:
+		return false
+	var id: String = actor.snapshot().actor_id
+	if registry.has(id):
+		return false
+	registry[id] = actor
+	return true
+
+
+func _build_actor_candidates(values: Dictionary) -> Dictionary:
+	var registry: Dictionary = {}
+	for spec in ACTORS:
+		var definition = Definition.create({"actor_id": spec[1], "display_name": spec[1],
+			"role": spec[2], "base_max_hp": values[spec[0] + "_max_hp"]})
+		if not _register_actor(registry, definition, values[spec[0] + "_hp"]):
+			return {}
+	return registry
+
+
+func _commit_candidates(values: Dictionary, actors: Dictionary) -> void:
+	var metadata: Dictionary = values.duplicate(true)
+	for spec in ACTORS:
+		metadata.erase(spec[0] + "_hp")
+		metadata.erase(spec[0] + "_max_hp")
+	_state = metadata
+	_actors = actors
+
+
+func _state_snapshot() -> Dictionary:
+	var view: Dictionary = _state.duplicate(true)
+	for spec in ACTORS:
+		var actor: Dictionary = _actors[spec[1]].snapshot()
+		view[spec[0] + "_hp"] = actor.current_hp
+		view[spec[0] + "_max_hp"] = actor.max_hp
+	return view
+
+
 func situation_snapshot() -> Dictionary:
-	return _snapshot_from(_state)
+	return _snapshot_from(_state_snapshot())
 
 
 func _snapshot_from(state: Dictionary) -> Dictionary:
@@ -67,7 +117,7 @@ func _snapshot_from(state: Dictionary) -> Dictionary:
 
 
 func inspect() -> Dictionary:
-	return {"state": _state.duplicate(true), "generation": _generation, "round": _round,
+	return {"state": _state_snapshot(), "generation": _generation, "round": _round,
 		"round_completions": _round_completions, "result": _result,
 		"self_defend": _self_defend, "pending": _pending.duplicate(),
 		"active": _active.duplicate(true)}
@@ -103,19 +153,17 @@ func resolve_npc(token: Dictionary) -> Dictionary:
 	effect["hp_delta"] = 0
 	effect["help_use_delta"] = 0
 	_update_terminal()
-	if _state.enemy_hp == 0 and decision.action == "ATTACK":
+	if _actors["enemy_a"].snapshot().current_hp == 0 and decision.action == "ATTACK":
 		effect = _response("SKIP", "TARGET_DEAD_BEFORE_RESOLVE")
 	elif not _result.is_empty():
 		effect = _response("SKIP", "BATTLE_OVER")
-	elif _state.npc_hp == 0:
+	elif _actors["npc"].snapshot().current_hp == 0:
 		effect = _response("SKIP", "ACTOR_UNAVAILABLE")
 	elif decision.action == "ATTACK":
 		if decision.target_id != "enemy_a":
 			effect = _response("SKIP", "INVALID_TARGET")
 		else:
-			var damage: int = mini(ATTACK_DAMAGE, _state.enemy_hp)
-			_state.enemy_hp -= damage
-			effect.hp_delta = -damage
+			effect.hp_delta = _actors["enemy_a"].take_damage(ATTACK_DAMAGE).hp_delta
 	elif decision.action == "DEFEND":
 		if decision.target_id != "npc":
 			effect = _response("SKIP", "INVALID_TARGET")
@@ -124,11 +172,10 @@ func resolve_npc(token: Dictionary) -> Dictionary:
 	elif decision.action == "HELP":
 		if decision.target_id != "player" or not _state.help_enabled \
 			or _state.help_uses_remaining == 0 \
-			or _state.player_hp * 100 > _state.player_max_hp * 30:
+			or _actors["player"].snapshot().current_hp * 100 > _actors["player"].snapshot().max_hp * 30:
 			effect = _response("SKIP", "HELP_UNAVAILABLE_AT_RESOLVE")
 		else:
-			var healed: int = mini(HELP_AMOUNT, _state.player_max_hp - _state.player_hp)
-			_state.player_hp += healed
+			var healed: int = _actors["player"].heal(HELP_AMOUNT).hp_delta
 			_state.help_uses_remaining -= 1
 			effect.hp_delta = healed
 			effect.help_use_delta = -1
@@ -165,16 +212,15 @@ func complete_npc(token: Dictionary) -> Dictionary:
 func _resolve_enemy() -> void:
 	# Enemy target/damage were declared before the NPC slot and remain locked.
 	var target: String = _state.incoming_target_id
-	if _state.enemy_hp <= 0 or _state.incoming_damage == 0 or target == "":
+	if _actors["enemy_a"].snapshot().current_hp <= 0 or _state.incoming_damage == 0 or target == "":
 		return
-	var hp_key: String = target + "_hp"
-	if _state[hp_key] <= 0:
+	if not _actors[target].can_act():
 		return
 	var damage: int = _state.incoming_damage
 	if target == "npc" and _self_defend:
 		damage = maxi(1, damage - DEFEND_REDUCTION)
 		_self_defend = false
-	_state[hp_key] = maxi(0, _state[hp_key] - damage)
+	_actors[target].take_damage(damage)
 	_update_terminal()
 
 
@@ -184,7 +230,7 @@ func apply_fixture_change(changes: Dictionary) -> Dictionary:
 	for key in changes:
 		if key not in ["enemy_hp", "player_hp", "npc_hp", "help_enabled", "help_uses_remaining"]:
 			return _response("INVALID_INPUT", "UNSUPPORTED_FIXTURE_CHANGE")
-	var candidate: Dictionary = _state.duplicate(true)
+	var candidate: Dictionary = _state_snapshot()
 	candidate.merge(changes, true)
 	if typeof(candidate.enemy_hp) != TYPE_INT or candidate.enemy_hp < 0 \
 		or candidate.enemy_hp > candidate.enemy_max_hp:
@@ -192,7 +238,10 @@ func apply_fixture_change(changes: Dictionary) -> Dictionary:
 	var invalid: String = _resolver.validate_snapshot(_snapshot_from(candidate))
 	if not invalid.is_empty():
 		return _response("INVALID_INPUT", invalid)
-	_state = candidate
+	var actors: Dictionary = _build_actor_candidates(candidate)
+	if actors.is_empty():
+		return _response("INVALID_INPUT", "INVALID_ACTOR_REGISTRY")
+	_commit_candidates(candidate, actors)
 	_update_terminal()
 	return _response("CHANGED")
 
@@ -210,9 +259,9 @@ func _check_token(token: Dictionary) -> String:
 func _update_terminal() -> void:
 	if not _result.is_empty():
 		return
-	if _state.player_hp == 0:
+	if _actors["player"].snapshot().current_hp == 0:
 		_result = "DEFEAT"
-	elif _state.enemy_hp == 0:
+	elif _actors["enemy_a"].snapshot().current_hp == 0:
 		_result = "VICTORY"
 
 
