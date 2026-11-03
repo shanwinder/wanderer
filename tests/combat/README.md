@@ -127,3 +127,24 @@ ActorRegistry, FullPartyEncounter and the focused harness, then run the harness.
 This opt-in works independently; combine it with `--npc-proof --actor-proof
 --ownership-proof` for F22 full regression. Existing suites and assertions are unchanged.
 See [contract, acceptance mapping and evidence](../actors/README.md#m2c-02--multi-actor-registry-and-encounter-foundation).
+
+
+## Optional M2C-03 party turn proof
+
+Add `--party-turn-proof` to parse the shared Resolver, FullPartyEncounter and
+`tests/actors/party_turn_proof.gd`, then execute P1–P16 and edge cases. This flag
+works independently. Combine all five opt-in flags for the complete regression:
+
+```sh
+python3 tests/combat/verify.py \
+  --godot /Applications/Godot.app/Contents/MacOS/Godot \
+  --output /tmp/wanderer-m2c-03-final-2 \
+  --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof
+```
+
+Use a fresh output path. On `0f33e1b` with Godot
+`4.7.2.stable.official.ed1daf0bf`, all 33 stages pass, runner exit 0:
+M2C-03 1,250; Combat 14,395; negative 983 + exactly five expected errors;
+M2A-02 412; M2A-03 5,166; M2B-01 122; M2B-02 219; M2C-02 382 checks.
+Legacy harnesses/expected counts are unchanged. Manual F6 **NOT RUN**.
+See [contract, scenario results, Thai learning notes and durable evidence](../actors/README.md#m2c-03--multi-npc-decision-and-turn-resolution-proof).

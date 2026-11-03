@@ -7,7 +7,7 @@
 | เอกสาร | เนื้อหา | อำนาจ/ขอบเขต |
 |---|---|---|
 | [AGENTS.md](../AGENTS.md) | กติกาสำหรับ Codex/agents, ขอบเขต, tests และ PR | อ่านก่อนทำงานใน repository |
-| [Current status and next roadmap](#current-status-and-next-roadmap) | สถานะฐานหลัง PR #34 และ M2C-02 ที่รอ review | จุดอ้างอิงสถานะปัจจุบัน; ไม่สร้างแผนฉบับซ้ำ |
+| [Current status and next roadmap](#current-status-and-next-roadmap) | สถานะฐานหลัง PR #35 และ M2C-03 ที่รอ Draft review | จุดอ้างอิงสถานะปัจจุบัน; ไม่สร้างแผนฉบับซ้ำ |
 | [01 — Game Development Plan v0.1](01_Wanderer_Game_Development_Plan_v0.1.md) | วิสัยทัศน์, โลก, gameplay loop, NPC autonomy, death, milestones | **ฐานเกมเดิม**; เก็บประวัติการออกแบบ |
 | [02 — Visual Combat v0.2](02_Wanderer_Visual_Combat_Prototype_Update_v0.2.md) | Functional + visual prototype | ปรับ v0.1 เฉพาะงานภาพ/ต้นแบบ |
 | [03 — Combat Presentation v0.3](03_Wanderer_Combat_Presentation_Direction_Update_v0.3.md) | Staging, depth, UI, M1.5B–D | เจตนา presentation และประวัติแผน; สถานะงานถัดไปในฉบับนี้ล้าสมัย |
@@ -34,9 +34,11 @@
 
 ตรวจจากฐาน `visual-combat-test-1` หลัง merge [PR #28](https://github.com/shanwinder/wanderer/pull/28) (`e25f16f`) และ [PR #29](https://github.com/shanwinder/wanderer/pull/29) (`2926e5c`) ณ 3 พฤศจิกายน 2026 ผู้สร้างยืนยันอนุมัติ PR #29 แล้วในงาน P0 นี้
 
-ฐานล่าสุดที่ fetch/ตรวจสำหรับ M2C-02 คือ `90eb7d14a21b8349f4433cc48d4aeaa913613b07` หลัง merge [PR #34](https://github.com/shanwinder/wanderer/pull/34) เมื่อ 3 พฤศจิกายน 2026. GitHub ยืนยัน merged; working tree สะอาดและ local/remote HEAD/merge-base ตรงกันก่อนสร้าง `codex/m2c-02-multi-actor-foundation`. Open PRs มี #2/#17 ไม่มี M2C-02 ซ้ำ และไม่พบ branch ซ้ำ. PR #2 ยัง unmerged ไม่ใช้เป็น canonical. ผู้สร้างรายงาน manual acceptance ของ M2A-03 ใน task M2B-01: **owner-reported manual acceptance** เท่านั้น ไม่มีผลราย scenario/engine/ภาพเพิ่ม
+ฐานล่าสุดที่ fetch/ตรวจสำหรับ M2C-03 คือ `335427450026fcb4ef0c7d4f236df259f193dbe2` หลัง merge [PR #35](https://github.com/shanwinder/wanderer/pull/35) เมื่อ 3 พฤศจิกายน 2026. GitHub ยืนยัน merged; working tree สะอาดและ local/remote HEAD/merge-base ตรงกันก่อนสร้าง `codex/m2c-03-multi-npc-turn-proof`. Open PRs มี #2/#17 ไม่มี M2C-03 ซ้ำ และไม่พบ branch M2C-03 ซ้ำ. PR #2/#17 ยังไม่ใช้เป็น canonical และไม่แก้ไข. ผู้สร้างรายงาน manual acceptance ของ M2A-03 ใน task M2B-01: **owner-reported manual acceptance** เท่านั้น ไม่มีผลราย scenario/engine/ภาพเพิ่ม.
 
-ผู้สร้างอนุญาต implementation เฉพาะ M2C-02 Data Foundation ใน task วันที่ 3 พฤศจิกายน 2026: Registry/Encounter แยกจาก combat หลัก รองรับหลาย actor แต่ยังไม่มี turn resolution/decision/action/presentation integration. งานนี้อยู่ feature branch รอ review; ขั้นต่อไปคือ review Draft PR นี้ ห้าม merge หรือเริ่ม M2C-03/M2C-04 อัตโนมัติ. M2C-01 เป็น **Design Only**; ไม่ตีความ D1–D13 ว่าเป็น Final Gameplay Rules. รายงาน M2C-01 แยกฉบับไม่ได้แนบใน task นี้ จึงใช้ contract ที่ระบุในคำสั่ง M2C-02 เท่านั้น.
+เจ้าของอนุมัติ **D1–D13 สำหรับ M2C-03** โดยชัดเจนใน chat วันที่ 3 พฤศจิกายน 2026 หลังแนบงาน Multi-NPC Decision & Turn Resolution Proof. ใช้ค่าตัวเลข Prototype ตาม task: Player/NPC/Enemy ATTACK 5/1/3, HELP4, DEFEND ลด2 ขั้นต่ำ1 (Player ทุก hit ในรอบ, NPC next valid hit เท่านั้น). นี่เป็น **PROTOTYPE — Owner Approved** สำหรับ proof นี้ ไม่ใช่ Final Balance/Final Turn System. ก่อนข้อความอนุมัตินี้ D1–D13 อยู่สถานะ **PROTOTYPE — Pending Owner Approval**. M2C-01 ยังเป็น **Design Only**; ไม่ได้แนบรายงาน architecture แยก จึงใช้ contract จาก task M2C-03 และโค้ดฐานที่ merge แล้ว.
+
+M2C-03 มี implementation บน feature branch เพื่อ Draft review เท่านั้น: NPC ตัดสินใจเมื่อถึง slot จาก state ล่าสุด, action/target/reason แยกตาม ID, full queue Player→NPC→Enemy, locked record/token/generation, HELP ledger และ guard รายคน. ไม่เชื่อม Combat หลักและไม่มี scene/animation ใหม่. [รายงาน contract, P1–P16, learning และ evidence](../tests/actors/README.md#m2c-03--multi-npc-decision-and-turn-resolution-proof). ขั้นต่อไปคือ review Draft PR ของ M2C-03; ห้าม merge/enable auto-merge หรือลงมือ M2C-04 อัตโนมัติ. M2C-04 ยังไม่ได้ implement และ M2B-03 Item Implementation ยังเลื่อนออกไป.
 
 **Implemented** = มีอยู่ในโค้ดฐานที่ merge แล้ว; **Verified** = มีผลตรวจจริงพร้อมวิธี/ขอบเขต/หลักฐาน; **Planned** = ข้อเสนอหรือเจตนา ยังไม่ใช่ฟีเจอร์ที่เสร็จ สถานะเหล่านี้ไม่ใช้แทนกัน และการ merge ไม่เท่ากับผ่าน visual acceptance ทั้งหมด
 
@@ -52,10 +54,11 @@
 | M2A-03 — playable integration / reason UX (merged PR #32, `924748c`) | ฉากแยก post-Player, six presets, action/target/reason UX, Tween และ Encounter effects เดิม; ผู้สร้างสั่ง implementation แยกวันที่ 3 พฤศจิกายน 2026 | Headless scene integration ผ่าน 5,166 checks บน `6de034d`; Combat 14,395 / negative 983 / M2A-02 412 ผ่าน รายละเอียด engine/command/evidence และ manual checklist ใน [proof tests](../tests/npc/README.md#m2a-03--playable-integration-and-reason-ux); agent F6 ใน record เดิม **NOT RUN**; ต่อมา owner รายงาน manual acceptance โดยไม่มีผลราย scenario |
 | M2B-01 — shared actor data (merged PR #33, `156df77`) | Definition baseline + independent Runtime HP, validated input and detached snapshots; fixture bridge to existing Resolver only | ผลเดิมบน `33e8238`: 122 checks; รายละเอียดใน [Actor tests](../tests/actors/README.md); ตอน M2B-01 ยังไม่ integrate Encounter |
 | M2B-02 — single-source actor HP (merged PR #34, `90eb7d1`) | NPCProofEncounter ถือ RuntimeState ของ player/npc/enemy_a; effects ผ่าน damage/heal, snapshots schema เดิม, atomic candidate replacement และ duplicate-ID guard | Godot 4.7.2 บน `53029a0`: focused 219, combat 14,395, negative 983 + five expected errors, M2A-02 412, M2A-03 5,166, M2B-01 122 ผ่าน; [หลักฐาน/ข้อจำกัด](../tests/actors/README.md#m2b-02--single-source-encounter-hp); F6 NOT RUN |
-| M2C-01 — Full Party design | **Design Only**; ไม่มี gameplay implementation จาก design review | D1–D13 ไม่ใช่ final gameplay approval ทั้งชุด |
-| M2C-02 — Registry / Encounter foundation | **Feature branch, pending review**: independent RuntimeState, roster, snapshot isolation, lifecycle guard, tombstones และ atomic Restart | ผลทดสอบปัจจุบันและ evidence ใน [Actor tests](../tests/actors/README.md#m2c-02--multi-actor-registry-and-encounter-foundation); F6 NOT RUN (data-only) |
+| M2C-01 — Full Party design | **Design Only** | D1–D13 ได้รับอนุมัติเฉพาะ M2C-03 Prototype ใน task ใหม่ ไม่ใช่ Final Gameplay |
+| M2C-02 — Registry / Encounter foundation (merged PR #35, `3354274`) | **Implemented**: independent RuntimeState, roster, snapshot isolation, lifecycle guard, tombstones และ atomic Restart | ผลทดสอบปัจจุบันและ evidence ใน [Actor tests](../tests/actors/README.md#m2c-02--multi-actor-registry-and-encounter-foundation); F6 NOT RUN (data-only) |
 | M2B-03 — Item/Equipment design | Implementation deferred | ไม่มี item/equipment contract ใน M2C-02 |
-| M2C-03 / M2C-04 | **Not implemented**; action/decision และ presentation/playable integration ต้องมี task แยก | ไม่เริ่มจากการจบ M2C-02 อัตโนมัติ |
+| M2C-03 — Multi-NPC turn proof | **Feature branch, pending Draft review**: data-only full queue, decisions/effects/resources/guard/token safety; ไม่ integrate main scene | Godot `4.7.2.stable.official.ed1daf0bf` บน `0f33e1b`: focused 1,250 + legacy ทั้งเจ็ดชุดจำนวนเดิมผ่าน; [ผล/หลักฐาน](../tests/actors/README.md#m2c-03--multi-npc-decision-and-turn-resolution-proof); F6 NOT RUN |
+| M2C-04 — Playable Full Party | **Not implemented** | ต้องมี task/approval ใหม่หลัง review; ไม่เริ่มอัตโนมัติ |
 
 แหล่งตรวจโค้ด: [scene](../scenes/combat/combat_prototype.tscn), [combat controller](../scripts/combat/combat_prototype.gd), [turn flow](../scripts/combat/combat_turn_flow.gd), [targets](../scripts/combat/combat_targets.gd)
 
@@ -85,7 +88,7 @@
 
 ขอบเขตที่อนุมัติ: ข้อมูลขั้นต่ำ Actor ID/display name/role/base max HP แยกจาก current/max HP ระหว่างเล่น, damage/heal/availability และ snapshot. ใช้ `RefCounted` ไม่เพิ่ม shared Resource, singleton หรือ event bus. HP 0 เป็น unavailable ใน fixture ไม่ตัดสิน Down/Death/permadeath; ค่า stats ทั้งชุดใน v0.1 §11 ยังเป็น design intent ไม่ได้ implement ในงานนี้
 
-[Actor proof และคำอธิบายสำหรับผู้เริ่มต้น](../tests/actors/README.md) เป็น contract/test guide ไม่ใช่ roadmap คู่ขนาน. M2B-02 merge ผ่าน PR #34 แล้ว: NPCProofEncounter ถือ Actor states และรักษา snapshot/Resolver เดิม. M2C-02 ได้รับ implementation task แยกเฉพาะ data foundation ตามสถานะข้างต้น. M2B-03 Item/Equipment ยังคงเลื่อน implementation; M2C-03/M2C-04 ต้องมี task review ใหม่ ไม่ผูก final Turn System, full stats หรือระบบไอเท็มไว้ล่วงหน้า.
+[Actor proof และคำอธิบายสำหรับผู้เริ่มต้น](../tests/actors/README.md) เป็น contract/test guide ไม่ใช่ roadmap คู่ขนาน. M2B-02 merge ผ่าน PR #34 แล้ว: NPCProofEncounter ถือ Actor states และรักษา snapshot/Resolver เดิม. M2C-02 merge ผ่าน PR #35 แล้ว; M2C-03 ได้รับ task/approval แยกและอยู่ feature branch รอ Draft review ตามสถานะข้างต้น. M2B-03 Item/Equipment ยังคงเลื่อน implementation; M2C-04 ต้องมี task review ใหม่ ไม่ผูก final Turn System, full stats หรือระบบไอเท็มไว้ล่วงหน้า.
 
 ### PR #2 — documentation proposal, not canonical
 
