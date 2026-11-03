@@ -1,0 +1,18 @@
+{
+  "implementation_commit": "6de034d1023cff82bc5d9a35bfd8cab420901bee",
+  "base": "8294d24ce351e5d02ca26a4ace96469f7081e31d",
+  "sha256": {
+    "scenes/npc/npc_autonomy_proof.tscn": "29ef70acf53bf14d986341a032a54bd2d96395a877af844b0c2072ba2da54974",
+    "scripts/npc/npc_autonomy_proof.gd": "ee2eeb50d828c3e2f26ec0221c2f567f9a60909c92a1a61d7546a07c67672903",
+    "tests/npc/playable_integration.gd": "3bb936ee174e5e380931fa3475eb559227e465207a07742ca37e036cd42608d6",
+    "tests/combat/verify.py": "3d74d5c09e045bbcc0422e95b09c9ae129ae8f4e3a2592665d30b17f90c0688d",
+    "scripts/npc/npc_decision_resolver.gd": "ebafe7db9b6e4f20827848f2e1726e686eb555e596df8861b0522128f5adbd2d",
+    "scripts/npc/npc_proof_encounter.gd": "ce7984299ccad22ef63d14d3917361de44967652d37ff12455843e6f35ac3cd5",
+    "scenes/combat/combat_prototype.tscn": "3f34a7e784dff2ca17bde1d6b12f3f739d7c1fd4b06483d207ae0e48fb374750",
+    "scripts/combat/combat_prototype.gd": "1acf8f7bbeb1e0421675e67436311e87e85cc992eb49026262f7cc044a30b449",
+    "scripts/combat/combat_turn_flow.gd": "fced86f5923990887f47107121e4839d4980f6b67b91407ba950221385688300",
+    "scripts/combat/combat_targets.gd": "f9a0c13b001651ec538e10eb99815fd5e1b58c09b7480ce51cd2a8f93abd2b6c",
+    "tests/combat/queue_regression.gd": "b58315562e314e606fcfc9cfe0df14db2f4548992ff0506dd318dd5513d55b92",
+    "tests/npc/decision_effect_proof.gd": "65dec3aa060a5a1566d736041a35d4c9a0d2309b18e6c20422f676873a92d9ca"
+  }
+}
