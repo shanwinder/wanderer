@@ -105,3 +105,10 @@ neither issue. Only the final run supplies the PASS results above.
 6. Restart during player/NPC/enemy motion. Wait, then issue another command;
    no old damage/action should resume. Check command locking and the existing
    44px lunge, compact formation, pacing and animation visually.
+
+## Optional M2B-01 actor data proof
+
+Add `--actor-proof` to parse and execute the isolated actor data tests. Use both
+`--npc-proof --actor-proof` for legacy combat, M2A-02, M2A-03 and M2B-01 together.
+Neither flag changes the default legacy suite or its five expected negative errors.
+See [Actor architecture, examples and current run evidence](../actors/README.md).

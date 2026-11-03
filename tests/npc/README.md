@@ -292,3 +292,13 @@ review action timing, queue ownership, target multiplicity และ NPC policy 
 พร้อม tests และ human acceptance. ไม่ถือว่า M2A ผ่านด้านความรู้สึกเพียงเพราะ
 headless PASS. หยุดที่ Draft PR เพื่อ review; ไม่ merge, ไม่เริ่ม M2B และไม่นำ
 NPC autonomy ไปแทน scripted combat หลักอัตโนมัติ.
+
+### Subsequent owner-reported acceptance — M2B-01 checkpoint
+
+PR #32 merged as `924748cf09a4c421c7c0c270995a512fa67ad281`. In the
+2026-11-03 M2B-01 task the owner reports having manually tested and accepted
+M2A-03, and authorizes proceeding. This is **owner-reported manual acceptance**;
+no scenario-by-scenario results, engine, tested commit or new media were supplied.
+It does not rewrite the agent's historical NOT RUN record above. No new manual
+F6/reason-comprehension acceptance was performed by the M2B-01 agent.
+New automated regression evidence is recorded in [Actor tests](../actors/README.md).
