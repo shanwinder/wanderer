@@ -131,6 +131,7 @@ func _startup_and_differential() -> void:
 	_check(scene.enemy_b_sprite.scale == Vector2(2.1, 2.1) and scene.enemy_b_sprite.modulate == scene.enemy_b_base_tint, "Enemy B identity")
 	_check(root.content_scale_size == Vector2i(1280, 720), "1280x720")
 	_check(scene.restart_button.get_global_rect().end.y <= 720, "commands inside viewport")
+	_check(scene.battle_result_panel.z_index > scene.autonomous_intents.npc_03.z_index, "terminal panel above reason rows")
 	_home()
 	_observe()
 	_record("S01 opt-in startup / S22 Main presentation structure", "Inherited Main scene; six original actors/idle/shadows/depth/B; full NPC HP; visual quality needs owner F6")

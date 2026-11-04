@@ -1402,6 +1402,8 @@ func _build_autonomous_ui() -> void:
 	$MainMargin.offset_top = 520
 	$MainMargin.offset_bottom = 710
 	$MainMargin/MainVBox.add_theme_constant_override("separation", 4)
+	# Reason rows are added after the inherited panel; terminal results must draw above them.
+	battle_result_panel.z_index = 20
 
 
 func _autonomous_label(y: float) -> Label:
