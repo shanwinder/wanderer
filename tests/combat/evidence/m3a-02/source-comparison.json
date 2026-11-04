@@ -1,0 +1,20 @@
+{
+  "tested_commit": "be08f11e66f135abf1613cb7e41dac1cf51abd98",
+  "matching": 85,
+  "files": 85,
+  "mismatches": [],
+  "actual": "PASS",
+  "baseline_commit": "1facf144887a4c6778f2ed817aa49cab3675c73d",
+  "baseline_common_changed": [
+    "scripts/combat/full_party_encounter.gd",
+    "tests/combat/verify.py"
+  ],
+  "new_source_files": [
+    "scripts/npc/guidance_data_contract.gd",
+    "scripts/npc/guidance_data_contract.gd.uid",
+    "tests/npc/guidance_data_proof.gd",
+    "tests/npc/guidance_data_proof.gd.uid"
+  ],
+  "post_test_scope": "Only existing Markdown docs and tests/combat/evidence/m3a-02/*; verify final PR HEAD diff",
+  "final_head": "Resolve from Draft PR head; no self-referential commit hash embedded"
+}

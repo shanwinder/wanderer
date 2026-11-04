@@ -437,6 +437,8 @@ The cutover reference must be a passing **44-stage PR #39** run. This task expor
 
 Final results, source identity, commands and raw logs are linked in the [M3A-02 combat evidence section](../combat/README.md#m3a-02--guidance-data-verification). No new agent GUI/F5/F6 review is claimed for this data-only change. Owner-reported M2D-04 three-gate acceptance comes from the attached owner task; no independent scenario-level visual evidence was supplied. Historical M2D-04 pending evidence is preserved.
 
+Final committed source **`be08f11`** passed **56 stages / exit0**, Guidance **66,641 checks / zero failures**, D01–D26 focused + D27/D28 full-regression gates. All inherited counts and Legacy6cases/5,892frames were preserved. [Expected/actual D01–D28](../combat/evidence/m3a-02/coverage.json), [Guidance case details](../combat/evidence/m3a-02/guidance-data-scenarios.json), [run record and exact commands](../combat/evidence/m3a-02/run-record.json). Later edits are documentation/evidence only, with [85/85 source hashes matched](../combat/evidence/m3a-02/source-comparison.json).
+
 ### Learning notes — ภาษาไทย
 
 ใช้วงจร **Goal → Concept → Do → Observe → Explain → Adjust → Commit** ทีละขั้น:

@@ -977,3 +977,33 @@ Pre-implementation: fresh PR #39 `1728c5e` reference **44 stages PASS** in a dis
 The attached owner M3A-02 task reports **M2D-04 F5 / F6 Autonomous / F6 Legacy acceptance passed**. This updates current status as **Owner-Reported Acceptance** only; older pending records above are historical, and no independent scenario-level visual evidence or new agent GUI run is claimed here.
 
 Add `--guidance-data-proof` to the full cutover command. It adds three parse stages and one data proof; all existing assertions/gates and the required 44-stage cutover reference remain intact. D01–D26 are focused data tests; D27/D28 are mapped to actual full regression results. Expected/actual, commands, exits, engine logs and source hashes must accompany any claimed final PASS.
+
+Final source commit **`be08f11`**: **56 stages PASS**, all exit0, zero timeouts/unexpected errors, negative exactly five expected errors. Guidance **66,641 checks / 26 focused cases**; D27/D28 verified by full regression, for **28 acceptance cases**. No runtime/test changes after this run; later Markdown/evidence updates match all **85 source hashes**.
+
+| Suite | Fresh merged baseline | Final actual |
+|---|---:|---:|
+| Combat | 14,395 | 14,395 |
+| Negative | 983 + 5 expected errors | 983 + 5 expected errors |
+| M2A-02 / M2A-03 | 412 / 5,166 | 412 / 5,166 |
+| M2B-01 / M2B-02 | 122 / 219 | 122 / 219 |
+| M2C-02 / M2C-03 | 382 / 1,250 | 382 / 1,250 |
+| M2C-04 | 260,800 | 260,800 |
+| M2D-02 | 8,319 | 8,319 |
+| M2D-03 | 787,617 | 787,617 |
+| M2D-04 | 801,351 / 48 cases | 801,351 / 48 cases |
+| M3A-02 Guidance data | — | 66,641 / 26 focused cases |
+| Legacy exact traces | 6 cases / 5,892 frames | identical |
+
+Durable evidence:
+
+- [Run record / authorization / commands / limitations](evidence/m3a-02/run-record.json)
+- [Fresh PR #39 reference44stages](evidence/m3a-02/reference-results.json), [fresh merged PR #40 baseline52stages](evidence/m3a-02/baseline-results.json), [final56stages](evidence/m3a-02/final-results.json)
+- [D01–D28 expected/actual coverage](evidence/m3a-02/coverage.json), [Guidance focused cases](evidence/m3a-02/guidance-data-scenarios.json), [inherited count comparison](evidence/m3a-02/inherited-counts.json)
+- [C01–C22 cutover gates](evidence/m3a-02/cutover-release-gates.json), [native configured startup](evidence/m3a-02/main-cutover-f5-startup.json), [rollback](evidence/m3a-02/rollback.json)
+- [Legacy trace equality](evidence/m3a-02/trace-comparison.json), [raw reference/baseline/final traces](evidence/m3a-02/traces.zip), [scenario snapshots](evidence/m3a-02/scenarios.zip)
+- [All raw logs / engine logs / exits / snapshot startup configs, including development failure](evidence/m3a-02/logs.zip)
+- [Final source SHA-256](evidence/m3a-02/source-sha256.json), [baseline source SHA-256](evidence/m3a-02/baseline-source-sha256.json), [85/85 comparison and source scope](evidence/m3a-02/source-comparison.json)
+
+Development proof initially failed because the new validator assumed positive Encounter IDs. Corrected the validator to accept **non-zero signed RefCounted IDs** and require exact current identity; Encounter/token IDs and all gameplay expectations remain unchanged. The successful development rerun and final committed run are recorded separately. Initial disposable export setup also encountered an older host Python API; corrected the export setup before starting Godot or editing runtime.
+
+M3A-02 is ready for Draft code review, not merged. No new agent F5/F6 visual acceptance was run; current change is data-only. Existing OPT-IN naming, English reasons, short log and translucent result panel remain known presentation limitations. Stop after Draft PR; no M3A-03 or automatic merge.

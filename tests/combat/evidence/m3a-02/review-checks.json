@@ -1,0 +1,13 @@
+{
+  "date": "2026-11-04",
+  "markdown_local_file_links_checked": 138,
+  "broken_links": [],
+  "json_parse": "PASS",
+  "zip_integrity": "PASS",
+  "source_sha256_matching": 85,
+  "source_sha256_total": 85,
+  "git_diff_check": "PASS",
+  "post_test_changes": "Only README.md, docs/README.md, tests/combat/README.md, tests/npc/README.md and tests/combat/evidence/m3a-02/*",
+  "manual_agent_F5_F6": "NOT RUN",
+  "merge_authorized": false
+}
