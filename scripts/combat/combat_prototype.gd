@@ -3,6 +3,8 @@ extends Control
 const CombatTurnFlow = preload("res://scripts/combat/combat_turn_flow.gd")
 const CombatTargets = preload("res://scripts/combat/combat_targets.gd")
 const FullPartyEncounter = preload("res://scripts/combat/full_party_encounter.gd")
+const GuidedEncounter = preload("res://scripts/combat/guided_encounter.gd")
+const GuidanceMessages = preload("res://scripts/combat/guidance_messages.gd")
 const CombatPresentationAdapter = preload("res://scripts/combat/combat_presentation_adapter.gd")
 
 # Chosen by the inherited entry BEFORE _ready; a live session cannot change authority.
@@ -22,6 +24,14 @@ var autonomous_effect_label: Label
 var autonomous_scenario_picker: OptionButton
 var autonomous_scenario: int = 0
 var autonomous_selected_target: String = ""
+var guidance_picker: OptionButton
+var guidance_focus_picker: OptionButton
+var guidance_state_label: Label
+var guidance_error_label: Label
+var guidance_draft_type: String = "NONE"
+var guidance_draft_target: String = ""
+var _guidance_ui_identity: Array = [] # Refresh marker only; never used to submit a request.
+const GUIDANCE_TYPES: Array[String] = ["NONE", "ATTACK", "DEFEND", "HELP", "FOCUS_TARGET"]
 
 const AUTONOMOUS_NAMES: Dictionary = {"player": "Player", "npc_01": "NPC1", "npc_02": "NPC2",
 	"npc_03": "NPC3", "enemy_a": "Enemy A", "enemy_b": "Enemy B"}
@@ -35,11 +45,13 @@ const AUTONOMOUS_REASONS: Dictionary = {
 	"HELP_UNAVAILABLE_ATTACK": "HELP unavailable; attack an enemy.",
 	"ACTOR_UNAVAILABLE": "Unable to act; skip this slot.",
 	"NO_LIVING_ENEMY": "No available enemy remains.",
-	"PLAYER_DEFEATED": "Player is unavailable."
+	"PLAYER_DEFEATED": "Player is unavailable.",
+	"GUIDANCE_FOCUS_TARGET": "Prefer the suggested enemy.",
+	"GUIDANCE_DISCRETIONARY_DEFEND": "Choose self-DEFEND with a valid threat."
 }
 # Explicit opt-in test fixtures, never final Main Combat balance.
 const AUTONOMOUS_SCENARIOS: Array[Dictionary] = [
-	{"name": "Normal opt-in (NPC 10/10/10)", "hp": {}, "targets": {}},
+	{"name": "Normal (NPC 10/10/10)", "hp": {}, "targets": {}},
 	{"name": "Player needs HELP", "hp": {"player": 6}, "targets": {}},
 	{"name": "NPC self-DEFEND", "hp": {"npc_01": 3}, "targets": {"enemy_a": "npc_01", "enemy_b": "npc_01"}},
 	{"name": "Multiple HELP", "hp": {"player": 1}, "targets": {}},
@@ -48,7 +60,9 @@ const AUTONOMOUS_SCENARIOS: Array[Dictionary] = [
 	{"name": "Defeat", "hp": {"player": 1, "npc_01": 0, "npc_02": 0, "npc_03": 0}, "targets": {}},
 	{"name": "Unavailable slots", "hp": {"npc_01": 0, "enemy_a": 0}, "targets": {}},
 	{"name": "M2C HP fixture (10/7/3)", "hp": {"npc_02": 7, "npc_03": 3}, "targets": {}},
-	{"name": "B falls / A alive", "hp": {"enemy_b": 5}, "targets": {}}
+	{"name": "B falls / A alive", "hp": {"enemy_b": 5}, "targets": {}},
+	{"name": "Guidance: mixed responses", "hp": {"npc_02": 3}, "targets": {"enemy_a": "npc_02", "enemy_b": "npc_02"}},
+	{"name": "Guidance: cautious DEFEND", "hp": {}, "targets": {"enemy_a": "npc_02"}}
 ]
 
 # 1.0 = จังหวะเดิม, 0.70 = Motion/Feedback ใช้เวลานานขึ้นประมาณ 43%
@@ -295,7 +309,7 @@ func _ready() -> void:
 		npc_sprite_base_positions.append(npc_sprites[i].position)
 
 	if session_mode == SessionMode.AUTONOMOUS:
-		encounter = FullPartyEncounter.new()
+		encounter = GuidedEncounter.new()
 		_build_autonomous_ui()
 	else:
 		turn_flow = CombatTurnFlow.new()
@@ -1382,7 +1396,8 @@ func _build_autonomous_ui() -> void:
 		"npc_01": $MainMargin/MainVBox/BattleRow/AlliesPanel/NpcALabel,
 		"npc_02": $MainMargin/MainVBox/BattleRow/AlliesPanel/NpcBLabel,
 		"npc_03": $MainMargin/MainVBox/BattleRow/AlliesPanel/NpcCLabel}
-	$TitleLabel.text = "WANDERER — AUTONOMOUS OPT-IN"
+	$TitleLabel.text = "WANDERER — GUIDED AUTONOMOUS"
+	$TitleLabel.size.x = 840
 	$TitleLabel.add_theme_font_size_override("font_size", 22)
 	autonomous_scenario_picker = OptionButton.new()
 	autonomous_scenario_picker.position = Vector2(900, 22)
@@ -1391,10 +1406,19 @@ func _build_autonomous_ui() -> void:
 		autonomous_scenario_picker.add_item(preset.name)
 	autonomous_scenario_picker.item_selected.connect(_select_autonomous_scenario)
 	add_child(autonomous_scenario_picker)
-	autonomous_decision_label = _autonomous_label(90)
-	autonomous_effect_label = _autonomous_label(116)
+	autonomous_decision_label = _autonomous_label(154)
+	autonomous_effect_label = _autonomous_label(178)
 	for i in range(3):
-		autonomous_intents["npc_%02d" % (i + 1)] = _autonomous_label(146 + i * 24)
+		autonomous_intents["npc_%02d" % (i + 1)] = _autonomous_label(210 + i * 48)
+	for label in autonomous_intents.values():
+		label.size.y = 46
+		label.add_theme_font_size_override("font_size", 14)
+	_build_guidance_ui()
+	# The log has its own scrollable area, clear of action controls and actor homes.
+	combat_log.reparent(self)
+	combat_log.position = Vector2(916, 94)
+	combat_log.size = Vector2(332, 244)
+	combat_log.add_theme_font_size_override("normal_font_size", 13)
 	for label in autonomous_hp_labels.values():
 		label.show()
 		label.add_theme_font_size_override("font_size", 13)
@@ -1409,9 +1433,10 @@ func _build_autonomous_ui() -> void:
 func _autonomous_label(y: float) -> Label:
 	var label := Label.new()
 	label.position = Vector2(32, y)
-	label.size = Vector2(1216, 24)
+	label.size = Vector2(864, 24)
+	label.clip_text = true
 	label.add_theme_font_size_override("font_size", 16)
-	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	label.mouse_filter = Control.MOUSE_FILTER_PASS
 	add_child(label)
 	return label
 
@@ -1426,6 +1451,10 @@ func _select_autonomous_scenario(index: int) -> void:
 
 func _restart_autonomous_session() -> void:
 	autonomous_token.clear()
+	_guidance_ui_identity.clear()
+	guidance_draft_type = "NONE"
+	guidance_draft_target = ""
+	guidance_error_label.text = ""
 	var fixture: Dictionary = FullPartyEncounter.prototype_fixture()
 	var overrides: Dictionary = AUTONOMOUS_SCENARIOS[autonomous_scenario].hp
 	for entry in fixture.actors:
@@ -1441,7 +1470,7 @@ func _restart_autonomous_session() -> void:
 	autonomous_decision_label.text = "Player chooses ATTACK / DEFEND; each companion decides at its slot."
 	autonomous_effect_label.text = ""
 	combat_log.clear()
-	_add_log("=== Autonomous opt-in · %s ===" % AUTONOMOUS_SCENARIOS[autonomous_scenario].name)
+	_add_log("=== Guided Autonomous · %s ===" % AUTONOMOUS_SCENARIOS[autonomous_scenario].name)
 	_refresh_autonomous_ui()
 
 
@@ -1452,7 +1481,7 @@ func _restore_autonomous_views() -> void:
 		actor.root.position = actor.home
 		actor.sprite.position = actor.sprite_home
 		actor.sprite.scale = actor.scale
-		actor.sprite.modulate = actor.tint if view.actors[id].can_act else Color(0.42, 0.42, 0.42)
+		actor.sprite.modulate = actor.tint if view.actors.has(id) and view.actors[id].can_act else Color(0.42, 0.42, 0.42)
 	for label in autonomous_hp_labels.values():
 		label.modulate = Color.WHITE
 
@@ -1474,6 +1503,10 @@ func _refresh_autonomous_picker() -> void:
 func _refresh_autonomous_ui() -> void:
 	var view: Dictionary = encounter.snapshot()
 	for id in autonomous_hp_labels:
+		if not view.actors.has(id):
+			autonomous_hp_labels[id].hide()
+			continue
+		autonomous_hp_labels[id].show()
 		var actor: Dictionary = view.actors[id]
 		var text: String = "%s [%s] HP: %d / %d" % [actor.display_name, id, actor.current_hp, actor.max_hp]
 		if view.help_uses.has(id):
@@ -1485,12 +1518,16 @@ func _refresh_autonomous_ui() -> void:
 	defend_button.disabled = not view.command_ready
 	autonomous_scenario_picker.disabled = not view.command_ready
 	_refresh_autonomous_picker()
+	_refresh_guidance_ui()
 	_set_action_status("Autonomous · Round %d · %s" % [view.round_id,
 		view.result if not view.result.is_empty() else ("Choose command" if view.command_ready else presentation_adapter.phase)])
 
 
 func _autonomous_command(action: String) -> void:
 	if not encounter.snapshot().command_ready or action_in_progress:
+		return
+	if action not in ["ATTACK", "DEFEND"]:
+		guidance_error_label.text = "คำสั่ง Player ไม่ถูกต้อง"
 		return
 	var target: String = ""
 	if action == "ATTACK":
@@ -1500,9 +1537,18 @@ func _autonomous_command(action: String) -> void:
 		if not encounter.available_enemy_ids().has(target):
 			_refresh_autonomous_picker()
 			return
+	# UI selections are drafts. Fetch current identity/revision immediately before submission.
+	var submitted: Dictionary = encounter.submit_guidance(_guidance_request())
+	if submitted.status != "ACCEPTED":
+		guidance_error_label.text = "ส่งคำชี้นำไม่สำเร็จ: " + submitted.reason_code
+		_refresh_autonomous_ui()
+		return
 	var reply: Dictionary = encounter.begin_round(action, target, AUTONOMOUS_SCENARIOS[autonomous_scenario].targets)
 	if reply.status != "STARTED":
+		guidance_error_label.text = "ยังไม่เริ่มรอบ: " + reply.reason_code
+		_refresh_autonomous_ui() # Shows actual Pending, never claims Frozen.
 		return
+	guidance_error_label.text = ""
 	action_in_progress = true # Presentation busy only, never a second queue.
 	for id in autonomous_intents:
 		autonomous_intents[id].text = "%s [%s] · Waiting to decide" % [AUTONOMOUS_NAMES[id], id]
@@ -1537,7 +1583,17 @@ func _autonomous_advance() -> void:
 		decision.reason_code, AUTONOMOUS_REASONS.get(decision.reason_code, decision.reason_code)]
 	autonomous_decision_label.text = text
 	if autonomous_intents.has(locked.actor_id):
-		autonomous_intents[locked.actor_id].text = text
+		var caption: String = "%s · %s → %s · %s" % [AUTONOMOUS_NAMES[locked.actor_id],
+			decision.action, decision.target_id, GuidanceMessages.message(decision.reason_code)]
+		if locked.has("guidance_decision"):
+			var response: Dictionary = locked.guidance_decision.guidance_response
+			caption += "\n%s · %s" % [GuidanceMessages.message(response.response),
+				GuidanceMessages.message(response.reason_code)]
+			text += " · %s · %s" % [response.response, response.reason_code]
+		autonomous_intents[locked.actor_id].text = caption
+		autonomous_intents[locked.actor_id].tooltip_text = text
+		autonomous_intents[locked.actor_id].mouse_filter = Control.MOUSE_FILTER_PASS
+	autonomous_decision_label.tooltip_text = text
 	_add_log(text)
 	# A skipped slot has no target; its own view supplies node lifetime checks only.
 	var visual_target: String = locked.actor_id if decision.target_id.is_empty() else decision.target_id
@@ -1557,6 +1613,8 @@ func _autonomous_current(locked: Dictionary, states: Array, visual_phase: String
 	for key in ["encounter_id", "generation", "round_id", "action_id", "actor_id", "decision"]:
 		if not locked.has(key) or locked[key] != view.locked_action.get(key):
 			return false
+	if locked.get("guidance_decision", {}) != view.locked_action.get("guidance_decision", {}):
+		return false
 	return view.locked_action.state in states
 
 
@@ -1568,12 +1626,23 @@ func _autonomous_impact(locked: Dictionary) -> Dictionary:
 	var target: String = locked.decision.target_id
 	var guarded: bool = before.guards.has(target)
 	var text: String = "%s · %s → %s · %s · HP %+d" % [AUTONOMOUS_NAMES[locked.actor_id],
-		locked.decision.action, target, effect.get("reason_code", effect.status), effect.get("hp_delta", 0)]
+		locked.decision.action, target, effect.status, effect.get("hp_delta", 0)]
 	if before.actors.has(target):
 		text += " (%d → %d)" % [before.actors[target].current_hp, encounter.actor_snapshot(target).current_hp]
+	if effect.has("reason_code") and not effect.reason_code.is_empty():
+		text += " · " + effect.reason_code
+	if locked.decision.action == "HELP":
+		text += " · HELP use %d → %d" % [before.help_uses[locked.actor_id], encounter.snapshot().help_uses[locked.actor_id]]
+	if locked.decision.action == "DEFEND" and effect.status == "APPLIED":
+		text += " · GUARD"
+	if effect.status == "SKIP":
+		text += " · " + GuidanceMessages.message(effect.reason_code)
 	autonomous_effect_label.text = text
+	autonomous_effect_label.tooltip_text = text
 	if autonomous_intents.has(locked.actor_id):
-		autonomous_intents[locked.actor_id].text += " · %s HP %+d" % [effect.status, effect.get("hp_delta", 0)]
+		autonomous_intents[locked.actor_id].text += " · %s HP %+d%s" % [effect.status, effect.get("hp_delta", 0),
+			" GUARD" if locked.decision.action == "DEFEND" and effect.status == "APPLIED" else ""]
+		autonomous_intents[locked.actor_id].tooltip_text += "\n" + text
 	_add_log(text)
 	if effect.status == "APPLIED" and effect.hp_delta != 0:
 		var node: Node2D = autonomous_views[target].root
@@ -1611,3 +1680,106 @@ func _show_floating_heal(home: Vector2, amount: int, color: Color) -> void:
 
 func _exit_tree() -> void:
 	presentation_adapter.cancel()
+
+
+func _build_guidance_ui() -> void:
+	guidance_picker = OptionButton.new()
+	guidance_picker.name = "GuidancePicker"
+	guidance_picker.position = Vector2(32, 90)
+	guidance_picker.size = Vector2(256, 34)
+	guidance_picker.tooltip_text = "คำชี้นำทั้งทีม · เป็น Draft จนกดโจมตี/ตั้งรับ · NPC ตัดสินใจเอง"
+	for kind in GUIDANCE_TYPES:
+		guidance_picker.add_item("คำชี้นำ: " + GuidanceMessages.message(kind))
+	guidance_picker.item_selected.connect(_on_guidance_selected)
+	add_child(guidance_picker)
+	guidance_focus_picker = OptionButton.new()
+	guidance_focus_picker.name = "GuidanceFocusPicker"
+	guidance_focus_picker.position = Vector2(300, 90)
+	guidance_focus_picker.size = Vector2(210, 34)
+	guidance_focus_picker.tooltip_text = "FOCUS preference ของ NPC · แยกจากเป้าหมายโจมตีของ Player"
+	guidance_focus_picker.item_selected.connect(_on_guidance_focus_selected)
+	add_child(guidance_focus_picker)
+	guidance_state_label = _autonomous_label(128)
+	guidance_state_label.add_theme_font_size_override("font_size", 14)
+	guidance_error_label = _autonomous_label(342)
+	guidance_error_label.add_theme_font_size_override("font_size", 14)
+	guidance_error_label.modulate = Color("ffbe86")
+	# Explicit keyboard cycle includes both selectors and existing Player controls.
+	var controls: Array = [guidance_picker, guidance_focus_picker, target_picker,
+		attack_button, defend_button, restart_button, autonomous_scenario_picker]
+	for i in range(controls.size()):
+		controls[i].focus_next = controls[i].get_path_to(controls[(i + 1) % controls.size()])
+		controls[i].focus_previous = controls[i].get_path_to(controls[(i + controls.size() - 1) % controls.size()])
+
+
+func _on_guidance_selected(index: int) -> void:
+	if not encounter.snapshot().command_ready or index < 0 or index >= GUIDANCE_TYPES.size():
+		guidance_picker.select(GUIDANCE_TYPES.find(guidance_draft_type))
+		return
+	guidance_draft_type = GUIDANCE_TYPES[index]
+	if guidance_draft_type != "FOCUS_TARGET":
+		guidance_draft_target = ""
+	_refresh_guidance_ui()
+
+
+func _on_guidance_focus_selected(index: int) -> void:
+	if encounter.snapshot().command_ready and guidance_draft_type == "FOCUS_TARGET" \
+		and index >= 0 and index < guidance_focus_picker.item_count:
+		guidance_draft_target = str(guidance_focus_picker.get_item_metadata(index))
+	_refresh_guidance_ui()
+
+
+func _guidance_request() -> Dictionary:
+	var data: Dictionary = encounter.guidance_snapshot()
+	return {"schema_version": 1, "guidance_type": guidance_draft_type,
+		"preferred_target_id": guidance_draft_target if guidance_draft_type == "FOCUS_TARGET" else "",
+		"issuer_player_id": encounter.snapshot().player_id, "encounter_id": data.encounter_id,
+		"generation": data.generation, "round_id": data.round_id,
+		"expected_guidance_revision": data.guidance_revision}
+
+
+func _refresh_guidance_ui() -> void:
+	var view: Dictionary = encounter.snapshot()
+	var data: Dictionary = encounter.guidance_snapshot()
+	var identity: Array = [data.encounter_id, data.generation, data.round_id, data.guidance_revision,
+		view.round_running, view.result]
+	if identity != _guidance_ui_identity:
+		_guidance_ui_identity = identity
+		var owned: Dictionary = data.pending if view.command_ready else data.active
+		guidance_draft_type = owned.get("guidance_type", "NONE")
+		guidance_draft_target = owned.get("preferred_target_id", "")
+	guidance_picker.select(GUIDANCE_TYPES.find(guidance_draft_type))
+	guidance_picker.disabled = not view.command_ready
+	guidance_focus_picker.clear()
+	guidance_focus_picker.add_item("FOCUS: เลือกศัตรู…")
+	guidance_focus_picker.set_item_metadata(0, "")
+	for id in view.enemy_order:
+		guidance_focus_picker.add_item(AUTONOMOUS_NAMES.get(id, id) + (" (ไม่พร้อม)" if not view.actors[id].can_act else ""))
+		var index: int = guidance_focus_picker.item_count - 1
+		guidance_focus_picker.set_item_metadata(index, id)
+		if id == guidance_draft_target:
+			guidance_focus_picker.select(index)
+	guidance_focus_picker.disabled = not view.command_ready or guidance_draft_type != "FOCUS_TARGET"
+	var record: Dictionary = data.pending if view.command_ready else data.active
+	var state: String = "Pending" if view.command_ready else "Frozen"
+	if not view.result.is_empty():
+		state = "Terminal · " + view.result
+	var kind: String = record.get("guidance_type", "NONE")
+	var preference: String = record.get("preferred_target_id", "")
+	guidance_state_label.text = "%s · รอบ %d · %s %s · rev %d" % [state, data.round_id,
+		GuidanceMessages.message(kind), AUTONOMOUS_NAMES.get(preference, preference), data.guidance_revision]
+	if view.command_ready and (guidance_draft_type != kind or guidance_draft_target != preference):
+		guidance_state_label.text += " · Draft: %s %s (ยังไม่ส่ง)" % [GuidanceMessages.message(guidance_draft_type),
+			AUTONOMOUS_NAMES.get(guidance_draft_target, guidance_draft_target)]
+	guidance_state_label.tooltip_text = guidance_state_label.text
+
+
+func _process(_delta: float) -> void:
+	# Read-only UI observer catches roster invalidation/restart even without a button event.
+	# This marker is never a request revision cache. Running-round refresh uses callbacks.
+	if encounter != null and encounter.snapshot().command_ready:
+		var data: Dictionary = encounter.guidance_snapshot()
+		var identity: Array = [data.encounter_id, data.generation, data.round_id,
+			data.guidance_revision, false, ""]
+		if identity != _guidance_ui_identity:
+			_refresh_autonomous_ui()

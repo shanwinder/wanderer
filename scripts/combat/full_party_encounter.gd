@@ -191,6 +191,8 @@ func unregister_actor(id: Variant) -> bool:
 	_help_uses.erase(id)
 	_guidance_profiles.erase(id)
 	if _guidance_pending.get("preferred_target_id", "") == id:
+		# R1 Option A: pending content changed by system invalidation, too.
+		_guidance_revision += 1
 		_guidance_pending = _guidance_record("NONE", "")
 	_revision += 1
 	return true
@@ -367,7 +369,7 @@ func begin_next_action() -> Dictionary:
 
 
 func _npc_decision_for_slot(id: String) -> Dictionary:
-	# Production stays unguided. Only the isolated proof subclass overrides this seam.
+	# Base stays unguided; the production GuidedEncounter overrides this seam.
 	return _resolver.decide_for_actor(id, decision_context())
 
 
