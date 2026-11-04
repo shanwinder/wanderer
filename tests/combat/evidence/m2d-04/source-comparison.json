@@ -1,0 +1,9 @@
+{
+  "tested_commit": "e802e62aa1debcf66b0d4359a2361e1960428f9f",
+  "current_tree_source_files": 81,
+  "matching": 81,
+  "mismatches": [],
+  "actual": "PASS",
+  "post_test_scope": "Only README.md, docs/README.md, tests/combat/README.md and tests/combat/evidence/m2d-04/*; verify final HEAD diff in PR",
+  "final_head": "Resolve from Draft PR head SHA / git rev-parse HEAD; self-referential evidence commit hash is not embedded"
+}

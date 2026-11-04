@@ -540,6 +540,8 @@ Tested source/test commit **`84c80d5119c0cdb5f30b920202f63674aaf18009`**.
 
 ## M2D-03 — Opt-in Main Autonomous Combat
 
+**สถานะปัจจุบัน:** merged ผ่าน PR #39 (`1728c5e`) และ **Owner-Reported F6 Acceptance** ตาม task M2D-04. ข้อความ review/pending ด้านล่างเป็นบันทึก ณ M2D-03; ผลตรวจ M2D-04 และ gate ใหม่ของ F5 อยู่หัวข้อถัดไป.
+
 วันที่ **4 พฤศจิกายน 2026 Asia/Bangkok**. เจ้าของอนุมัติ D1–D13 สำหรับ Migration นี้โดยตรง
 พร้อม Normal Opt-in NPC HP **10/10/10**, max10ต่อคน. งานบน
 `codex/m2d-03-autonomous-main-optin` เพื่อ Draft review เท่านั้น.
@@ -746,3 +748,222 @@ M2D-04cutoverยังไม่เริ่ม; M2B-03deferred. ไม่merge/a
    หลังRESOLVEDcallbackซ้ำจึงไม่ใช้HELPหรือหักHPซ้ำ. Recoveryสร้างก่อนTweenเล่นและอ่านvisualfactsหลังimpact.
 10. **RollbackกับOpt-in:** Opt-inเปิดทางทดลองโดยdefaultไม่เปลี่ยน;
     rollbackคือหยุดsessionแล้วเปิดentryLegacyใหม่. ไม่ใช่เปลี่ยนenumหรือแปลงsnapshotระหว่างanimation.
+
+
+## M2D-04 — Autonomous Main Cutover Candidate
+
+วันที่ **4 พฤศจิกายน 2026 Asia/Bangkok**. Candidate บน `codex/m2d-04-autonomous-main-cutover`
+จาก merged PR #39 `1728c5e678c5065278d1251d50449a8820eb5dae`. Initial tree สะอาด; fetch แล้ว
+local/remote HEAD/merge-base ตรงกัน; open PR #2/#17 ยัง unmerged และไม่พบ M2D-04 ซ้ำ.
+**M2D-03 Implemented + Owner-Reported F6 Acceptance** มาจาก owner task นี้; ไม่มี owner scenario record ใหม่ให้ตรวจอิสระ.
+สถานะ/งานถัดไปมีแหล่งเดียวใน [docs index](../../docs/README.md#current-status-and-next-roadmap).
+
+### Candidate entry และขอบเขต
+
+`project.godot` เปลี่ยน `application/run/main_scene` จาก `uid://bn6oc55gryn7`
+(ฉาก Legacy ที่ตรวจจาก clean import) เป็น `res://scenes/combat/combat_autonomous_optin.tscn`.
+ใช้ path ที่ Godot โหลดได้จริงหลัง clean import; ไม่สร้าง UID ใหม่ให้ scene หรือ copy Node Tree.
+Canonical `visual-combat-test-1` ที่ `1728c5e` ยัง default Legacy จนกว่า owner จะสั่ง merge candidate.
+
+F5 Candidate สร้าง FullPartyEncounter เท่านั้น: HP ผ่าน Registry/ActorRuntimeState,
+queue/decisions/HELP/Guard/effect/completion ผ่าน Encounter API และ HUD อ่าน snapshot.
+F6 `combat_prototype.tscn` ยังสร้างเฉพาะ Legacy TurnFlow/Targets/HP และ NPC2 Guard Player เดิม.
+`session_mode` ของ controller เริ่ม LEGACY เหมือนเดิม; inherited scene กำหนด AUTONOMOUS ก่อน `_ready()`.
+ไม่มี runtime controller/adapter/Encounter/Resolver/data/scene tree/assets เปลี่ยนใน M2D-04.
+Normal Player30, NPC10/10/10, A15/B12; damage5/1/3, HELP4ครั้งเดียวต่อNPC, threshold≤30%ตอนdecision,
+PlayerDEFENDลด2ทุกvalid hitในรอบและNPCselfDEFENDลด2next valid self hitขั้นต่ำ1คงเดิมตาม D1–D13.
+M2C10/7/3 อยู่ fixture แยก; ตัวเลขทั้งหมดเป็น prototype ไม่ใช่ final balance/Turn System.
+
+ไฟล์ implementation/test 7 ไฟล์: `project.godot`, runner `verify.py`, test เดิม
+`autonomous_main_integration.gd`, [cutover harness](main_cutover_proof.gd)+UID,
+[startup observer](main_cutover_startup_probe.gd)+UID. เอกสารเดิม3ไฟล์และ evidence อยู่ task เดียวกัน.
+เปลี่ยน assertion เดิมเรื่อง project default ให้รับ `--expect-autonomous-default` อย่างชัดเจน;
+เมื่อไม่ส่ง flag ยัง expect Legacy. ทุก gameplay assertion/expected value และจำนวน checks เดิมคงอยู่.
+
+### วิธีรันซ้ำและผลจริง
+
+Actual engine **`4.7.2.stable.official.ed1daf0bf`**.
+Baseline ทดสอบบน merged `1728c5e`; candidate source/test commit
+**`e802e62aa1debcf66b0d4359a2361e1960428f9f`**. Final HEAD ดูจาก Draft PR และ `git rev-parse HEAD`;
+หลัง tested commit เปลี่ยนเฉพาะ docs/evidence. ตรวจ SHA-256 ทั้ง **81 source/test/asset files ตรงกัน**.
+
+```sh
+# ก่อนแก้ไฟล์ บน merged base หลัง PR #39 — 44 stages PASS
+python3 tests/combat/verify.py \
+  --godot /Applications/Godot.app/Contents/MacOS/Godot \
+  --output /tmp/wanderer-m2d-04-baseline-20261104-2 \
+  --npc-proof --actor-proof --ownership-proof --party-foundation-proof \
+  --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof
+
+# Committed candidate — 52 stages PASS; ต้องใช้ baseline output ที่ผ่านจริง
+python3 tests/combat/verify.py \
+  --godot /Applications/Godot.app/Contents/MacOS/Godot \
+  --output /tmp/wanderer-m2d-04-final-20261104-1 \
+  --npc-proof --actor-proof --ownership-proof --party-foundation-proof \
+  --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof \
+  --main-cutover-proof --cutover-baseline /tmp/wanderer-m2d-04-baseline-20261104-2
+```
+
+ใช้ output directory ใหม่ทุกครั้งและเก็บ baseline ไว้สำหรับ comparison.
+Attempt แรกใน sandbox FAIL ที่ clean import: Godot เขียน editor settings ไม่ได้ (exit0แต่พบunexpectederrors).
+ไม่มีการแก้ production default ตอนนั้น; รัน merged base ใหม่โดยให้ Godot เข้าถึง settings ที่ต้องใช้แล้วผ่าน44stages.
+เก็บ failure log ไว้ ไม่กลบเป็น PASS. Development candidate และ final run ผ่าน52stagesทั้งคู่.
+Final52stages exit0ทั้งหมด, timeout0, unexpectederrors0; negativeมี5expectederrorsแยกต่างหาก.
+
+| Suite | Pre-cutover actual | Candidate actual |
+| --- | ---: | ---: |
+| Combat Regression | 14,395 | 14,395 |
+| Negative | 983 + 5 expected errors | 983 + 5 expected errors |
+| M2A-02 / M2A-03 | 412 / 5,166 | 412 / 5,166 |
+| M2B-01 / M2B-02 | 122 / 219 | 122 / 219 |
+| M2C-02 / M2C-03 | 382 / 1,250 | 382 / 1,250 |
+| M2C-04 | 260,800 / 31 cases | 260,800 / 31 cases |
+| M2D-02 | 8,319 | 8,319 |
+| M2D-03 | 787,617 / 46 cases | 787,617 / 46 cases |
+| M2D-04 configured entry | — | **801,351 / 48 cases** |
+| Native configured startup / rollback startup | — | 9 / 5 |
+| Rollback full Legacy regression | — | 14,395 |
+
+### C01–C22 acceptance mapping — Headless แยกจาก GUI
+
+[ผล C01–C22 expected/actual และ counts](evidence/m2d-04/cutover-release-gates.json)
+ใช้ PASS สำหรับการตรวจ headless เท่านั้น; manual owner F5/F6 ยัง PENDING.
+Cutover harness สืบทอด test helpers/matrix M2D-03 แล้ว instantiate **ค่าจริงจาก ProjectSettings**;
+ไม่ preload Autonomous เพื่ออ้างว่า project default ถูกต้องเพียงเพราะฉากมีอยู่.
+
+| Case | Expected / automated actual |
+| --- | --- |
+| C01 | Config ชี้ Autonomous path และ clean-import resource โหลดได้ — PASS |
+| C02 | Modeก่อนready/Encounterเป็นauthorityเดียว; native project startup observerยืนยันentryจริง — PASS |
+| C03 | Normal NPC current/max HP10ทุกคน — PASS |
+| C04 | LegacyHP/TurnFlow/Targetsเป็นnullทุกobservedframe; snapshotmutationไม่เปลี่ยนstate — PASS |
+| C05 | Player ATTACK A/B ใช้targetpickerและHPตามdifferential — PASS |
+| C06 | Player DEFENDลด2ทั้งสองvalidhits — PASS |
+| C07 | NPC1/2/3ตัดสินแยกslot/reasonตรงstateล่าสุด — PASS |
+| C08 | HELP4/threshold/clamp/resourceคนละครั้ง/ไม่revive/ownership — PASS |
+| C09 | Self-DEFEND next valid self hitลด2ขั้นต่ำ1 — PASS |
+| C10 | Enemy A/B separate slots/normalเล็งPlayer — PASS |
+| C11 | Pickerfallbackก่อนlock/deadactorSKIP/lockedtargetไม่retarget — PASS |
+| C12 | Victory/Defeatหลังreturn/terminalไม่ลงactionเพิ่ม/Restartได้ — PASS |
+| C13/C14/C15 | Restart WINDUP/afterIMPACT/RETURN ×6actors — PASS |
+| C16 | stale/forged/early/duplicate/reentrant callbacks และ reusedactionID1 — PASS |
+| C17 | Direct Legacy sceneเริ่มLEGACY/noEncounter — PASS; GUI F6 owner pending |
+| C18 | LegacyHP/Guard/queue, regression14,395และexacttraces — PASS |
+| C19 | 1280×720/speed0.70/44px/home/compactformation/idle/shadow/depth/B/resultstructure — PASS; visual quality pending |
+| C20 | Fresh rollback config/import/native startup/fullLegacyregression — PASS |
+| C21 | ทุกstagePASS/no unexpectederrors/timeouts; negative5expected — PASS |
+| C22 | 11 inheritedsuitecountsไม่ลดและ6cases/5,892framesตรงbaseline — PASS |
+
+Native F5-equivalent gate แยกจาก F6 opt-in startup: runnerเพิ่ม **read-only observer autoload เฉพาะ snapshot**,
+เรียกGodotโดยไม่มี`--script`และไม่มีsceneoverride, อ่าน`get_tree().current_scene`หลังready แล้วบันทึกpath/mode/HP/authority.
+เก็บconfigที่ใช้ทดสอบและคืนsnapshotconfigใน`finally`; productionไม่มีautoloadนี้.
+Configured startupปกติ120framesยังรันโดยไม่injectobserverด้วย. Native gateนี้ไม่ใช่การกดF5โดยowner.
+
+### Differential และ rollback ที่รันจริง
+
+[Exact comparison](evidence/m2d-04/trace-comparison.json): baseline→candidate Legacy **6cases/5,892framesตรงทุกframe**,
+รวมA-first/B-first/DEFEND/defeat/Restartwindup/afterimpact. Rawทั้งสองชุดอยู่traces.zip.
+
+| Command | Legacy expected = actual Player/A/B | Autonomous expected = actual |
+| --- | --- | --- |
+| ATTACK A | 25 / 8 / 12 | 24 / 7 / 12 |
+| ATTACK B | 25 / 15 / 5 | 24 / 12 / 7 |
+| DEFEND | 28 / 12 / 12 | 28 / 12 / 12 |
+
+ความต่างATTACKเป็นเจตนา D1–D13: LegacyNPC2GuardPlayer แต่AutonomousNPC2ตัดสินเอง.
+ไม่ได้แก้expectedLegacyให้ตรงAutonomous.
+
+[Rollback record: configก่อน/หลังและstages](evidence/m2d-04/rollback.json):
+runnerจบcandidateprocessก่อนสร้าง`rollback-snapshot/`แยกโดยไม่มี`.godot`; คืนmain_sceneเป็น
+`res://scenes/combat/combat_prototype.tscn`, cleanimportใหม่, native startupตรวจLEGACY/noEncounter/HP30/15/12,
+แล้วรันLegacyregression14,395checksผ่าน. Candidateconfigไม่เปลี่ยนและไม่ลบLegacyระบบใด.
+
+วิธีrollbackที่ownerทำได้จริงในworkingcopyแยก: **Stop (F8)** → เปลี่ยนProject Settings > Application > Run > Main Scene
+เป็นLegacypathข้างบน → ปิด/เปิดprojectใหม่ → F5เริ่มbattleใหม่ → รันsmoke/regressionตามคำสั่งพื้นฐานต้นเอกสาร.
+เปิดLegacysceneแล้วF6เป็นทางทดลองfallbackทันทีโดยไม่แก้projectconfig.
+ไม่ย้ายHP/Guard/HELP/queueระหว่างsession; candidatecommitเก็บไว้ตรวจdiff/กลับมาทดลองได้.
+
+### Owner Visual Acceptance — แยกสาม gate
+
+**ทั้งหมด PENDING สำหรับ M2D-04** จนownerตรวจจริงและรายงานengine/commit/scenario/expected/actual/evidence.
+Owner-reported M2D-03 F6 ไม่ปิด F5 gateใหม่และไม่เท่ากับacceptancecandidateนี้.
+
+**A. F5 — Run Project (gate ใหม่)**
+
+- [ ] ตรวจbranch/HEADเป็นcandidate; Godot4.7.2; projectviewport1280×720; Stopก่อนเริ่ม.
+- [ ] กดF5โดยไม่เปิดฉากบังคับ: เข้าAutonomousทันที, Player30/NPC10×3/A15/B12, HELP1คนละresource,
+  Waiting to decide, formation/idle/contactshadow/depth/EnemyBtintscaleเดิม.
+- [ ] RestartแยกATTACK A24/7/12, ATTACK B24/12/7, DEFEND28/12/12;
+  targetpickerA/Bใช้ได้, NPCเลือกAเอง, enemyทั้งคู่ลงมือ, commandlocksจนreturnและกลับhome.
+- [ ] ทดสอบHELP/selfDEFEND/deadslot/victory/defeatและRestartระหว่างactionจากpresetsตามBข้างล่าง;
+  ไม่มีcallbackเก่า, panelไม่บังRestart/เล่นต่อ, Reason/HP/HELPอ่านทัน.
+- [ ] ประเมินlunge44px, pose/impact/recoil/guardedrecoil/popupสีdamage-heal/spark/HPflash,
+  log/actionstatus/resultpanel และpacing0.70; บันทึกvideoถ้าจะอ้างtimingเชิงสายตา.
+
+**B. F6 — Autonomous current scene**
+
+- [ ] Stopแล้วเปิด`combat_autonomous_optin.tscn`→F6; ตรวจNormalเหมือนF5โดยไม่อาศัยdefaultentry.
+- [ ] ATTACK A/B/DEFENDแยกbattle, killordersทั้งสอง; deadenemiesไม่counterและlivingenemyไม่หายคิว.
+- [ ] PlayerneedsHELP+DEFEND: NPC1HELP6→10/HELP0, NPC2/3ATTACK; finalPlayer8/A13/B12.
+- [ ] NPCselfDEFEND+DEFEND: firstselfhit1, secondactual2, NPC1HP0/Player30/A13/B12;
+  ไม่มีNPC2GuardPlayer. MultipleHELP+DEFEND: resource0แต่ละNPC/Player11.
+- [ ] A/Bfalls, Unavailableslots: SKIPไม่มีfakehit/falsepopup/retargetหลังlock.
+- [ ] Victory/Defeatpresets: resultหลังreturn, ไม่มีactionเพิ่ม; panelอ่านได้และRestartใช้ได้.
+- [ ] Restartระหว่างPlayer/NPCทั้งสาม/A/Bช่วงwindup/impact/return/resultfade,
+  รออย่างน้อย2วินาทีแล้วเล่นใหม่; ไม่มีoldHP/resource/motion/feedbackกลับมา.
+- [ ] ประเมินformation/readability/reason/target/lunge/pose/impact/return/pacingและfeedbackทั้งหมดเช่นA.
+
+**C. F6 — Legacy current scene**
+
+- [ ] Stopแล้วเปิด`combat_prototype.tscn`→F6: ไม่มีAutonomouspreset/HELP UI, ใช้Legacyเดิม.
+- [ ] ATTACK A25/8/12, ATTACK B25/15/5; NPC2ยังGuardPlayer, DEFEND28/12/12.
+- [ ] เล่นkillordersทั้งสอง, targetfallback/deadskips/livingcounter/victory/defeat/commandlocks.
+- [ ] Restartระหว่างactionแล้วเล่นใหม่; formation/44px/pose/impact/return/feedback/pacing/resultpanelเหมือนเดิม.
+
+Agent GUI smoke บนdisposablecandidate snapshotเป็น **partial**: Run Project toolbar (F5 action),
+project1280×720, embeddedgame1278×719at1.0×มีขอบดำ. เห็นNormalstartup, ATTACK B24/12/7,
+DEFEND28/12/12, HELP8/13/12พร้อมNPC1HELP0 และVictorypanel/Restartใช้ได้จริง. รายละเอียดอยู่run-record;
+screenshotsอยู่tooltranscript ไม่มีdurablevideo/ภาพวัดpacing. ไม่ถือเป็นOwnerAcceptanceหรือcompleteF6review.
+KnownUXจากM2D-03ยังอยู่: logพื้นที่สั้น, Reasonsภาษาอังกฤษ, resultpanelโปร่งแสง และtitle/presetยังเขียนOPT-IN.
+ไม่พบreleaseblockerในการตรวจอัตโนมัติ/GUIส่วนที่ทำ แต่ส่วนที่ยังไม่ได้ตรวจต้องให้ownerตัดสิน;
+ไม่ขยายเป็นUIredesignหรือเปลี่ยนgameplayเพื่อแก้ภาพ.
+
+### Durable evidence และ commit identity
+
+- [Run record: engine/commit/commands/results/manual status](evidence/m2d-04/run-record.json)
+- [Baseline44stages](evidence/m2d-04/baseline-results.json), [Final52stages](evidence/m2d-04/final-results.json)
+- [C01–C22 expected/actual/count gate](evidence/m2d-04/cutover-release-gates.json)
+- [Native configured F5-equivalent entry](evidence/m2d-04/main-cutover-f5-startup.json), [Rollback](evidence/m2d-04/rollback.json)
+- [Source SHA-256](evidence/m2d-04/source-sha256.json), [tested-source/current-tree comparison](evidence/m2d-04/source-comparison.json)
+- [Exact Legacy trace comparison](evidence/m2d-04/trace-comparison.json), [raw before/after traces](evidence/m2d-04/traces.zip)
+- [Full cutover/inherited scenario snapshots/action traces/differentials](evidence/m2d-04/scenarios.zip)
+- [Raw logs/engine logs/exit codes/configs including sandbox failure and development run](evidence/m2d-04/logs.zip)
+
+FinalHEADหลังtestedcommitต้องต่างเฉพาะdocs/evidence. หากแก้runtime/scene/test/config/assetต่อ ต้องรันใหม่.
+No merge/auto-merge/branchcleanup/releasetag/deployment; หยุดหลังเปิดDraftPRรอcode reviewและownerF5/F6.
+M2B-03deferred; ไม่เริ่มงานถัดไป.
+
+### GDScript / Godot learning notes — ภาษาไทย
+
+1. **F5 กับ F6:** F5ใช้Main Sceneของproject ไม่ขึ้นกับแท็บsceneที่กำลังดู;
+   F6ใช้current scene. F6opt-inผ่านจึงยังไม่พิสูจน์ว่าF5เข้าAutonomous.
+2. **Main Sceneอยู่ที่ไหน:** `[application] run/main_scene` ใน`project.godot`กำหนดentry.
+   งานนี้ใช้`res://...tscn`ที่cleanimportโหลดได้จริง; UIDเดิมยังชี้Legacyสำหรับประวัติrollback.
+3. **Scene Inheritance:** opt-insceneอ้างPackedSceneLegacyแล้วoverrideแค่`session_mode=1`.
+   Node Tree, controllerและpresentationใช้ชุดเดียว; เปลี่ยนentryจึงไม่ต้องcopyโค้ดหรือnodeใหม่.
+4. **Session Modeกับauthority:** enum`LEGACY/AUTONOMOUS`เลือกก่อน`_ready()`.
+   ทางหนึ่งสร้างTurnFlow/Targets อีกทางสร้างEncounter; testsดูinstance/HPnullและทุกframeเพื่อจับสองauthority.
+   ไม่สลับmodeกลางbattleเพราะHP/Guard/HELP/queueมีความหมายต่างกัน.
+5. **ทำไมเก็บLegacy:** เป็นfallbackที่เล่นได้และอ้างอิงregressionเก่า.
+   `session_mode`defaultยังLEGACYทำให้F6Legacyไม่แอบใช้Encounterแม้projectdefaultเปลี่ยน.
+6. **ทำไมต้องมีregressionใหม่:** การเปลี่ยนentryอาจเปิดfixtureผิด, modeช้าไปหลังready,
+   UIDไม่resolveหรือcallbackข้ามRestart. ทดสอบconfiguredentryและnative startupเพิ่มจากฉากopt-in.
+7. **Cutoverต่างจากrefactor:** cutoverเปลี่ยนจุดเริ่มใช้ระบบที่มีอยู่;
+   refactorเปลี่ยนโครงภายในระบบ. งานนี้ไม่แก้controller/Encounterหรือbalanceและตรวจdiffเพื่อยืนยันขอบเขต.
+8. **Rollback:** หยุดprocessเก่า คืนmain_sceneในcopyแยก แล้วเปิดproject/battleใหม่.
+   ไม่copyEncounter.snapshot()ไปใส่LegacyHP; nativeprobeกับfullLegacyregressionพิสูจน์ว่าคืนทางเก่าได้จริง.
+9. **Headlessกับภาพ:** process_frame/TweenตรวจHP/token/queue/ตำแหน่งได้ละเอียด,
+   แต่ไม่ตอบว่าreasonอ่านทันหรือpanelบังภาพหรือไม่. ownerF5/F6ที่1280×720เป็นgateอีกชุด.
+10. **CommitและSHA-256:** commitบอกชุดsourceที่ทดสอบ; hashรายไฟล์จับการเปลี่ยนหลังทดสอบ
+    รวมUID/scene metadata. FinalHEADอาจเพิ่มdocs/evidenceได้ แต่ต้องรายงานdiffและยืนยัน81sourcefilesเดิม;
+    ถ้าtest/runtimeเปลี่ยนแม้หนึ่งไฟล์ ผลเดิมไม่พอ ต้องรันใหม่.

@@ -1,0 +1,6 @@
+{
+  "expected": "Exact Legacy trace equality to pre-cutover merged base",
+  "cases": 6,
+  "frames": 5892,
+  "actual": "PASS"
+}

@@ -140,7 +140,9 @@ func _startup_and_differential() -> void:
 	await process_frame
 	_check(legacy.session_mode == legacy.SessionMode.LEGACY and legacy.encounter == null
 		and legacy.turn_flow != null and legacy.target_registry != null, "default isolated Legacy authority")
-	_check(load(ProjectSettings.get_setting("application/run/main_scene")) == Legacy, "project default remains Legacy")
+	# M2D-04 explicitly changes project entry; keep this assertion and all gameplay checks.
+	var expected_main = OptIn if "--expect-autonomous-default" in OS.get_cmdline_user_args() else Legacy
+	_check(load(ProjectSettings.get_setting("application/run/main_scene")) == expected_main, "explicit expected project default")
 	# Session mode cannot be toggled in a running battle.
 	scene.session_mode = scene.SessionMode.LEGACY
 	legacy.session_mode = legacy.SessionMode.AUTONOMOUS

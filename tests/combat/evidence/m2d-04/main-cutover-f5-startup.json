@@ -1,0 +1,9 @@
+{
+	"actual": "PASS",
+	"actual_entry": "res://scenes/combat/combat_autonomous_optin.tscn",
+	"checks": 9,
+	"expected_entry": "res://scenes/combat/combat_autonomous_optin.tscn",
+	"failures": 0,
+	"manual_owner_acceptance": "PENDING",
+	"session_mode": 1
+}
