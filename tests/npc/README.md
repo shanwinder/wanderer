@@ -317,7 +317,7 @@ are unchanged; current regression results and manual F6 NOT RUN status are in
 
 Owner approved M3A G1–G14 in the 4 November 2026 task, with **HELP 50% explicitly NOT approved**, and authorized implementation **only of M3A-02**. M3A-01 is the preceding chat design report. Current milestone authority remains [docs index](../../docs/README.md#current-status-and-next-roadmap).
 
-This is data-only: no Guidance UI, guided NPC policy, follow/refuse effects, persistent relationships, Speed/Retreat or balance changes. HELP stays at **≤30%, amount4, once per NPC per encounter**. Resolver, actor definitions/runtime, controller, presentation, scenes and project default are unchanged. M3A-03/04/05 are not started.
+This is data-only: no Guidance UI, guided NPC policy, follow/refuse effects, persistent relationships, Speed/Retreat or balance changes. HELP stays at **≤30%, amount4, once per NPC per encounter**. Resolver, actor definitions/runtime, controller, presentation, scenes and project default were unchanged by M3A-02. This is the historical M3A-02 scope; it merged via PR #41. Current M3A-03 work is recorded below; M3A-04/05 remain not started.
 
 ### Code and ownership
 
@@ -455,3 +455,119 @@ Final committed source **`be08f11`** passed **56 stages / exit0**, Guidance **66
 10. **Data ก่อน Policy:** โค้ดยังเรียก Resolver เดิมด้วย context เดิม จึงพิสูจน์ lifecycle ได้แยกจากการเปลี่ยนการตัดสินใจ ไม่เพิ่ม HELP50% หรือ follow/refuse logic ในขั้นนี้.
 
 บทเรียนจาก development test: Godot RefCounted instance ID เป็น signed int และอาจติดลบได้ จึงตรวจ non-zero + identity equality แทนการบังคับให้เป็นบวก โดยไม่เปลี่ยน Encounter/token ID เดิม. เก็บ failed development run ไว้ใน evidence; ใช้ final committed-source run เป็นผลรับงาน.
+
+## M3A-03 — Isolated Guidance Decision Proof
+
+### Scope, approval and ownership
+
+Base: merged PR #41, `cf5611ea71e68dcc9dbcac9a627df88f357d20c3`. Task and owner chat on **5 November 2026, Asia/Bangkok** authorize Strategy B as an isolated proof. The owner explicitly approved these Decision Delta predicates before implementation:
+
+| Preference | Permitted predicate, after baseline priorities |
+|---|---|
+| FOCUS_TARGET | Different live enemy target AND (`discipline == PLAN_ORIENTED` OR `trust == ESTABLISHED`) |
+| DEFEND | Valid declared self hit AND `courage == CAUTIOUS` AND the same Discipline/Trust predicate |
+| Compassion | No new effect; tested as invariant. Urgent HELP remains baseline ≤30%, heal4, once per NPC per encounter |
+
+These are fixed encounter-local **prototype fixtures**, not final personalities, Trust progression or final balance. Safety cannot be overridden. HELP50% remains **NOT APPROVED**. M3A-04/05, UI, initiative, items and Resonance are outside this task. The full preceding M3A-01 chat report was not supplied; approval context was checked against the index and M3A-02 source, then this explicit predicate delta was approved in this chat.
+
+- [Guidance Decision Layer](../../scripts/npc/guidance_decision_layer.gd): pure data-in/data-out, new `decide_with_guidance(actor_id, envelope_v1)` API on a separate type. Original [Resolver](../../scripts/npc/npc_decision_resolver.gd), `decide()` and `decide_for_actor()` are unchanged.
+- [Guided proof Encounter](../../scripts/npc/guided_decision_proof_encounter.gd): explicit subclass loaded by tests only; overrides the minimal NPC-slot seam. It constructs an envelope from current owned data and locks the resulting metadata beside the decision.
+- [FullPartyEncounter](../../scripts/combat/full_party_encounter.gd): sole HP/Guard/HELP/queue/token/effect/completion authority. Its default seam calls exactly the original resolver with the original `decision_context()`.
+- Main controller, presenter, scenes, assets and project default are unchanged. Main constructs the base Encounter, accepts Guidance **data only**, and never instantiates the proof type. Player target picker remains separate from NPC focus.
+
+Data flow: accepted submit → Encounter pending → successful round freeze → **current NPC slot context** + owned active Guidance/profile → Layer → token lock → inherited effect validation at impact → inherited completion. The proof adapter adds no HP mirror, resource ledger or second queue.
+
+### Strict envelope version1
+
+All six keys are mandatory; extra fields are rejected:
+
+| Field | Exact contract |
+|---|---|
+| `schema_version` | Integer1; bool/float/other versions rejected |
+| `base_context` | Original strict multi-actor Resolver schema, including current `snapshot_revision` |
+| `frozen_guidance` | Exact7keys from M3A-02 active record: type, issuer, preference, encounter/generation/round/Guidance revision |
+| `actor_profile` | Original strict M3A-02 profile; actor matches requested slot and Player matches context |
+| `identity` | Exact5integerkeys: nonzero signed `encounter_id`, `generation`≥1, `round_id`≥1, `guidance_revision`≥0, `snapshot_revision`≥0 |
+| `capabilities` | Version1 supports exactly `["ATTACK", "DEFEND", "HELP", "FOCUS_TARGET"]` in that order; partial/future capability sets require a reviewed extension |
+
+Frozen identities must match the envelope identity, issuer must match Player, and snapshot revision must match base context. FOCUS must name a known enemy; known HP0 is accepted input and evaluated as unavailable by policy. Request/profile value validation reuses M3A-02 validation. Invalid input returns only `status=INVALID_INPUT` and `reason_code`, with no partial decision or mutation.
+
+**Trust boundary:** the pure Layer validates consistency, not authentication against a live session. An entirely self-consistent old/foreign data envelope remains a valid offline input. Only Encounter authenticates requests/generation/current ownership, and the proof adapter always constructs its own fresh envelope; it exposes no external-envelope dispatch API. Stale action callbacks are rejected by inherited token identity checks.
+
+Successful reply is `{status: OK, baseline_decision, decision, guidance_response}`. The response contains `response`, `reason_code`, detached `details` with frozen Guidance/profile/identity and a `behavior_changed` boolean. Original decisions are neither extended nor mutated; for NONE both decision dictionaries equal the original resolver output **including** reason details and revision. Baseline reason details retain their original internal `guidance=NONE`; actual frozen Guidance is in separate response metadata.
+
+### Policy and explanations
+
+Order: validate → unchanged baseline → NONE exact wrapper → terminal/unavailable → self-preservation → urgent HELP → HELP-unavailable baseline ATTACK → discretionary applicability/predicate → final detached result.
+
+| Situation | Response / reason | Final behavior |
+|---|---|---|
+| NONE | NONE / NO_GUIDANCE | Exact baseline payload |
+| ATTACK with baseline ATTACK | MATCHED_INDEPENDENTLY / BASELINE_ATTACK | Baseline |
+| Safety DEFEND; requested DEFEND | MATCHED_INDEPENDENTLY / SELF_PRESERVATION_PRIORITY | Baseline safety DEFEND |
+| Safety DEFEND; any other suggestion | REFUSED / SELF_PRESERVATION_PRIORITY | Baseline safety DEFEND |
+| Urgent HELP; requested HELP | MATCHED_INDEPENDENTLY / URGENT_HELP_PRIORITY | Baseline HELP |
+| Urgent HELP; other suggestion | REFUSED / URGENT_HELP_PRIORITY | Baseline HELP |
+| Low Player HP but HELP exhausted | HELP: REFUSED / RESOURCE_UNAVAILABLE; ATTACK: MATCHED_INDEPENDENTLY; other: REFUSED / HELP_UNAVAILABLE_BASELINE_PRIORITY | Preserve baseline ATTACK fallback |
+| HELP with Player above30% | NOT_APPLICABLE / PLAYER_ABOVE_HELP_THRESHOLD | Baseline, no new heal/resource use |
+| DEFEND without valid first self hit | NOT_APPLICABLE / NO_VALID_THREAT | Baseline |
+| Discretionary predicate permits DEFEND | FOLLOWED / PROFILE_PERMITTED_COOPERATION | Self DEFEND, action reason GUIDANCE_DISCRETIONARY_DEFEND |
+| FOCUS names current baseline target | MATCHED_INDEPENDENTLY / BASELINE_TARGET | Baseline target |
+| FOCUS target dead at slot | NOT_APPLICABLE / TARGET_UNAVAILABLE | Reevaluate living baseline target |
+| FOCUS predicate permits different living target | FOLLOWED / PROFILE_PERMITTED_COOPERATION | ATTACK preferred target, action reason GUIDANCE_FOCUS_TARGET |
+| Valid discretionary suggestion but predicate declines | REFUSED / PROFILE_PREFERS_BASELINE | Baseline |
+| Terminal/unavailable actor | NOT_APPLICABLE / original baseline reason | Original SKIP |
+
+`FOLLOWED` is true only when Action or Target changes from baseline. Baseline ATTACK/HELP/DEFEND that already matches is never reported as causal following. Self-preservation uses the original first still-valid declared hit, not combined forecast damage. NPC DEFEND guards only self for the next valid hit; Player DEFEND still guards every hit that round.
+
+Action reason explains the locked decision. Guidance response explains relation to the suggestion. Effect independently reports actual `APPLIED`/`SKIP`, `hp_delta` and Encounter ledger consumption. A focused enemy dying **after lock** causes effect SKIP with no retarget; locked FOLLOWED/decision metadata remains unchanged. A full-health target at HELP impact causes SKIP without consuming a use. Returned dictionaries and token metadata are copied deeply, including separate baseline/final/details copies.
+
+### Revision review — deferred to M3A-04
+
+M3A-02's `unregister_actor()` removes an obsolete pending FOCUS preference without incrementing Guidance revision. Revision currently counts **accepted user submits only**, not system invalidations. A client holding the old revision can still submit a different valid suggestion after that invalidation in the same round. It cannot restore the removed enemy because membership validation rejects that target; this is not a compare-and-swap guarantee for *all* Guidance content changes.
+
+The isolated adapter reads Encounter-owned active Guidance after freeze and has no client cache, so the note does not block this proof. **No revision semantics changed here.** Before a future UI/client, review either (A) increment on system invalidation too, with stale-client tests and documented counter semantics, or (B) retain submit-only revision and add a separate content/system revision. This is a follow-up requiring M3A-04 review, not approval to implement M3A-04.
+
+### P01–P32 coverage
+
+[Focused proof](guidance_decision_proof.gd) records expected/actual and observations in each case. **30 independent focused cases**, not 1,192 independent cases; P29/P30 are mapped from separately executed full regression.
+
+| Cases | Expected / evidence |
+|---|---|
+| P01 | 100 NONE contexts (HP0/≤30%/>30%, enemy availability, HELP0/1) equal baseline; actual full round effects/state/queue equal production |
+| P02–P05 | ATTACK independent match; lethal3/5 and low3/10 threats refused; Player9/30 urgent HELP wins |
+| P06–P07 | Cautious/cooperative DEFEND4/10 follows and guards self only; no threat/dead declarer ignored; two3hits never treated as aggregate6 |
+| P08–P11 | Urgent HELP independent match; Player10/12/15/30 of30 never expands threshold; exhausted resource preserves fallback; Player0 SKIP |
+| P12–P15 | FOCUS A independent; B causal change; Player kills A before NPC slot → reevaluate B; B dies after lock → SKIP with stable metadata |
+| P16–P17 | Established Trust loses to safety; plan-oriented Discipline loses to urgent HELP; safety DEFEND can match independently |
+| P18 | All16trait combinations and one-field paired fixtures for Discipline/Trust/Courage; Compassion-only pair invariant |
+| P19 | One FOCUS: NPC1 follows, NPC2 refuses for safety, NPC3 refuses for profile |
+| P20 | NPC1 heals6→10; NPC2 now follows FOCUS using fresh HP/revision |
+| P21–P22 | Production base type remains unguided; both original strict Resolver APIs reject extension fields |
+| P23–P25 | Nested metadata/token isolation, deterministic repeats, malformed strict envelopes, inconsistent identities and stale/foreign authority requests |
+| P26 | HELP actual+3 clamp at1/4; resource once; duplicate impact/completion inert; healed target before impact skips without consumption |
+| P27–P28 | Invalid Restart atomic; Restart before/after impact plus real delayed stale callbacks; victory/defeat stop queue and clear Guidance |
+| P29 | Unchanged M3A-02 suite:66,641checks; expected/actual in full verification log |
+| P30 | All inherited counts retained; exact6Legacycases/5,892frames and startup/rollback gates |
+| P31–P32 | Actual configured Main creates unguided base Encounter; submitted FOCUS still attacks A; actual direct Legacy scene retains Legacy mode |
+
+Fresh pre-runtime PR #39 reference44stages and merged PR #41 baseline56stages passed. Development run1 had one **new test fixture** failure: a two-enemy context was supplied to the original single-enemy Legacy API. Corrected the test fixture to that API's original contract; no baseline rule, constant or inherited test changed. Development run2: **30cases/1,192checks PASS**. [Final committed-source verification / raw logs / hashes](../combat/README.md#m3a-03--guidance-decision-verification).
+
+### Learning notes — M3A-03 ภาษาไทย
+
+ใช้ **Goal → Concept → Do → Observe → Explain → Adjust → Commit**: ตั้งเป้าพิสูจน์ทีละพฤติกรรม อ่านโค้ดจริง ลอง fixture แล้วอธิบายผลก่อนปรับกฎ.
+
+1. **Policy กับ Contract:** `Data.validate_profile()` บอกว่าข้อมูลถูกชนิด; `decide_with_guidance()` บอกว่าจะเลือกอะไร ข้อมูลที่ valid ไม่ได้แปลว่าต้องทำตาม.
+2. **Baseline Decision:** `var baseline: Dictionary = _baseline.decide_for_actor(actor_id, envelope_v1.base_context)` คือคำตอบเมื่อไม่มีอิทธิพลใหม่ ใช้เทียบ causal change.
+3. **Soft Influence:** `decision.target_id = target` เกิดเฉพาะหลังผ่าน safety/applicability/predicate; เปลี่ยน Trust ค่าเดียวใน paired fixture แล้วดู FOLLOWED↔REFUSED.
+4. **Safety Priority:** `if baseline.action == "DEFEND":` คืน baseline ก่อนอ่าน predicate จึงไม่ใช้คะแนน Trust ลบความเสี่ยงตาย.
+5. **Deterministic Traits:** `profile.discipline == "PLAN_ORIENTED" or profile.trust == "ESTABLISHED"` เป็น predicate ที่ owner อนุมัติ ไม่สุ่ม; Courage ใช้กับ discretionary DEFEND; Compassion ยังไม่พิสูจน์ผลด้านพฤติกรรมใหม่.
+6. **Decision Time / Effect Time:** `begin_next_action()` ล็อกเหตุผล ส่วน `resolve_action(token)` อ่านความพร้อม target ที่ impact; P15 ทำให้เห็นเหตุผล FOLLOWED อยู่เดิมแต่ผล SKIP.
+7. **FOLLOWED / MATCHED:** ถ้า Action/Target เท่า baseline ให้ MATCHED_INDEPENDENTLY; ถ้า Guidance ทำให้เปลี่ยนจริงจึง FOLLOWED. `behavior_changed` และ tests ตรวจสองทาง.
+8. **Separate Reasons:** `decision.reason_code` อธิบาย Action; `guidance_response.reason_code` อธิบายการตอบคำชี้นำ; `effect.reason_code` อธิบายเหตุการณ์จริงที่ impact.
+9. **Versioned Envelope:** `_fields(envelope, ENVELOPE_FIELDS)` ตรวจครบ/ไม่มีเกิน; version1 ไม่แอบเพิ่ม key ให้ API เดิม. ลองเพิ่ม extra key ใน P24 แล้วต้อง INVALID_INPUT.
+10. **Immutable Style:** `baseline.duplicate(true)` และ `decision.duplicate(true)` แยก nested explanations; แก้ dictionary ที่ได้รับแล้วอ่าน lock ใหม่ต้องเหมือนเดิม.
+11. **Token / Generation:** effect ใช้ locked decision ของ Encounter ไม่เชื่อ payload ของ caller; Restart เปลี่ยน generation จึงปฏิเสธ callback เก่าแม้ actionID เริ่ม1ใหม่.
+12. **Regression Equivalence:** NONE เปรียบเทียบ payload ทั้งก้อนและผลจริง; full regressions เทียบ counts กับ fresh baseline และเทียบทุก Legacy trace frame ไม่ใช่อาศัยดูโค้ดหรือภาพอย่างเดียว.
+
+ไม่มี agent GUI/F5/F6 visual acceptance ใหม่ในงานนี้; headless startup/scene checks ไม่รับรอง pacing/readability ด้วยตา. Guided NPC ยังไม่เปิดใน Main Combat. รอ Draft code review; ไม่ merge/auto-merge และไม่เริ่ม M3A-04/05.

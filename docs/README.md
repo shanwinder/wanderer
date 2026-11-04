@@ -7,7 +7,7 @@
 | เอกสาร | เนื้อหา | อำนาจ/ขอบเขต |
 |---|---|---|
 | [AGENTS.md](../AGENTS.md) | กติกาสำหรับ Codex/agents, ขอบเขต, tests และ PR | อ่านก่อนทำงานใน repository |
-| [Current status and next roadmap](#current-status-and-next-roadmap) | ฐาน merged PR #40 และ M3A-02 Guidance Data Foundation | จุดอ้างอิงสถานะปัจจุบัน; ไม่สร้างแผนฉบับซ้ำ |
+| [Current status and next roadmap](#current-status-and-next-roadmap) | ฐาน merged PR #41 และ M3A-03 isolated Guidance Decision Proof | จุดอ้างอิงสถานะปัจจุบัน; ไม่สร้างแผนฉบับซ้ำ |
 | [01 — Game Development Plan v0.1](01_Wanderer_Game_Development_Plan_v0.1.md) | วิสัยทัศน์, โลก, gameplay loop, NPC autonomy, death, milestones | **ฐานเกมเดิม**; เก็บประวัติการออกแบบ |
 | [02 — Visual Combat v0.2](02_Wanderer_Visual_Combat_Prototype_Update_v0.2.md) | Functional + visual prototype | ปรับ v0.1 เฉพาะงานภาพ/ต้นแบบ |
 | [03 — Combat Presentation v0.3](03_Wanderer_Combat_Presentation_Direction_Update_v0.3.md) | Staging, depth, UI, M1.5B–D | เจตนา presentation และประวัติแผน; สถานะงานถัดไปในฉบับนี้ล้าสมัย |
@@ -58,11 +58,19 @@
 | G9–G11 | แยก Action/Guidance response/effect reason ในงาน proof ภายหลัง, Encounter ownership, versioned extension ที่รักษา Legacy APIs; M3A-02 ยังไม่เพิ่ม guided Resolver |
 | G12–G14 | แยก Player Command/Guidance feedback และ localization ในงาน UI ภายหลัง, reset/token/callback safety, แยก M3A-02→05 เป็นงาน/PR review ทีละขั้น |
 
-**M3A-02 Implemented on feature branch / Draft review:** `codex/m3a-02-guidance-data-foundation` เพิ่ม data validation, pending/frozen Guidance และ fixed profiles ผ่าน accessor แยก. Existing `snapshot()`, `decision_context()`, Resolver APIs, Player Command API และ NPC decisions คงเดิม; ไม่มี UI หรือ follow/refuse policy. [Executable contract, D01–D28 coverage, evidence และบทเรียน](../tests/npc/README.md#m3a-02--guidance-data-foundation).
+**M3A-02 Implemented / merged [PR #41](https://github.com/shanwinder/wanderer/pull/41):** `cf5611ea71e68dcc9dbcac9a627df88f357d20c3` เพิ่ม data validation, pending/frozen Guidance และ fixed profiles ผ่าน accessor แยก. Existing `snapshot()`, `decision_context()`, Resolver APIs, Player Command API และ NPC decisions คงเดิม; ไม่มี UI หรือ follow/refuse policy. [Executable contract, D01–D28 coverage, evidence และบทเรียน](../tests/npc/README.md#m3a-02--guidance-data-foundation).
 
 ก่อนแก้ runtime รัน fresh Godot `4.7.2.stable.official.ed1daf0bf`: disposable PR #39 reference (`1728c5e`) **44 stages PASS** แล้ว merged PR #40 (`1facf144`) **52 stages PASS**, inherited counts ตรง reference, Legacy **6 cases / 5,892 frames identical**, native configured startup/rollback ผ่าน. ผล M2D-04 เดิมบน `e802e62` เป็น inherited evidence แยกจาก fresh baseline นี้. Final M3A-02 บน committed source `be08f11`: **56 stages PASS**, Guidance **66,641 checks / 26 focused cases**, รวม D27/D28 จาก full regression เป็น28acceptance cases, inherited counts ครบ, Legacy6cases/5,892framesตรงทุกframe, zero unexpectederrors/timeouts. [Durable evidence](../tests/combat/README.md#m3a-02--guidance-data-verification).
 
-**ขั้นต่อไป: review M3A-02 Draft PR เท่านั้น.** M3A-03 guided decision proof, M3A-04 playable/UI integration และ M3A-05 Owner acceptance **ยังไม่เริ่ม** และต้องมี task แยก. Speed Order ยัง pending จาก v0.1; queue ปัจจุบัน Player→NPC→Enemy เป็น approved prototype ไม่ใช่ initiative calculation; Final Turn System ยัง OPEN. **M2B-03 Item Implementation Deferred**. ไม่ merge/auto-merge หรือเริ่มงานถัดไปอัตโนมัติ.
+**สถานะปัจจุบัน ณ 5 พฤศจิกายน 2026 Asia/Bangkok — M3A-03:** PR #41 merged ตาม checkpoint จริง; initial tree สะอาด, fetch สำเร็จ, local HEAD/remote HEAD/merge-base ตรง `cf5611ea71e68dcc9dbcac9a627df88f357d20c3`. Open PR #2/#17 ยัง Draft/unmerged ไม่เป็น canonical; ไม่พบ M3A-03 branch/PR ซ้ำก่อนเริ่ม. ใช้ branch เดียว `codex/m3a-03-guidance-decision-proof`. ข้อความวันที่ 4 พฤศจิกายนด้านบนเป็น historical checkpoint.
+
+**Approval boundary:** Owner task อนุญาต M3A-03 data-only isolated proof และยืนยัน Decision Delta ใน chat นี้วันที่ 5 พฤศจิกายน: FOCUS เปลี่ยนเป้าหมายได้เมื่อ Discipline=PLAN_ORIENTED **หรือ** Trust=ESTABLISHED; discretionary DEFEND ต้องมี first valid declared self hit และ Courage=CAUTIOUS **ร่วมกับ** predicate ข้างต้น. Safety/urgent HELP มาก่อน; Compassion ยังไม่มีผลใหม่; **HELP50% ไม่อนุมัติ**. นี่เป็น approved proof predicates ไม่ใช่ final balance/full personality AI.
+
+**M3A-03 implemented on feature branch / Draft review:** แยก Guidance Decision Layer, strict version1 envelope, baseline wrapper และ Guidance response metadata. Explicit proof subclass ใช้ effects/queue/token/completion ของ FullPartyEncounter เดิม; production Encounter ใช้ resolver เดิมและ Main ไม่มี Guided Policy/UI. [Executable contract / P01–P32 / บทเรียนภาษาไทย](../tests/npc/README.md#m3a-03--isolated-guidance-decision-proof). Final committed source `1ab6c73` ผ่าน60stages/30focusedcases/1,192checks, inheritedcountsคงเดิม, Legacy6cases/5,892framesตรง และ91/91sourcehashesตรง; full evidence อยู่ใน [verification record](../tests/combat/README.md#m3a-03--guidance-decision-verification).
+
+ก่อนแก้ runtime รัน fresh PR #39 reference44stages และ merged PR #41 baseline56stages PASS ด้วย Godot `4.7.2.stable.official.ed1daf0bf`; Guidance66,641, cutover801,351/48cases, inheritedcountsครบ และ Legacy6cases/5,892framesตรงทุกframe. ไม่อ้างผลเก่าแทน baseline นี้. Sandbox reference attempt แรก FAIL เพราะ system certificate/editor settings permissions; เก็บ logs และรัน sourceเดิมด้วยสิทธิ์ปกติใน outputใหม่จนผ่านก่อน implementation.
+
+**ขั้นต่อไป: review M3A-03 Draft PR เท่านั้น.** M3A-04 playable/UI integration และ M3A-05 Owner acceptance **ยังไม่เริ่ม** และต้องมี task แยก. Revision note เรื่อง system invalidation หลังถอด preferred Enemy เลื่อนไปทบทวน M3A-04; semantics เดิมไม่เปลี่ยน. Speed Order ยัง pending; queue Player→NPC→Enemy เป็น approved prototype ไม่ใช่ initiative calculation; Final Turn System ยัง OPEN. **M2B-03 Item Implementation Deferred**. ไม่ merge/auto-merge หรือเริ่มงานถัดไปอัตโนมัติ.
 
 **Implemented** = มีอยู่ในโค้ดฐานที่ merge แล้ว; **Verified** = มีผลตรวจจริงพร้อมวิธี/ขอบเขต/หลักฐาน; **Planned** = ข้อเสนอหรือเจตนา ยังไม่ใช่ฟีเจอร์ที่เสร็จ สถานะเหล่านี้ไม่ใช้แทนกัน และการ merge ไม่เท่ากับผ่าน visual acceptance ทั้งหมด
 
@@ -88,8 +96,9 @@
 | M2D-03 — Opt-in Integration | **Implemented / merged PR #39** at `1728c5e`; D1–D13, inherited scene, Encounter authority, Normal NPC10/10/10 | **Owner-Reported F6 Acceptance** per M2D-04 request; inherited `6f4c4db`:44 stages/787,617 checks. Fresh merged-base44 stages PASS in M2D-04; owner scenario evidence not independently supplied |
 | M2D-04 — Cutover | **Implemented / merged PR #40** (`1facf144`); F5 Autonomous / F6 Legacy | Owner-Reported Acceptance ทั้งสาม gate ตาม M3A-02 task; fresh merged baseline52stages PASS; [historical evidence](../tests/combat/README.md#m2d-04--autonomous-main-cutover-candidate) |
 | M3A-01 — Guidance architecture | Design Completed / G1–G14 approved ยกเว้น HELP50% | Design report ใน chat; ไม่ใช่ runtime verification |
-| M3A-02 — Guidance data | Implemented on feature branch / Draft review; state only, no guided AI | [Fresh verification / D01–D28](../tests/npc/README.md#m3a-02--guidance-data-foundation); ไม่มี agent GUI run ใหม่ |
-| M3A-03 / 04 / 05 | Not Started | ต้องได้รับ task implementation / acceptance แยก |
+| M3A-02 — Guidance data | **Implemented / merged PR #41** (`cf5611e`); state only | [Fresh verification / D01–D28](../tests/npc/README.md#m3a-02--guidance-data-foundation); ไม่มี agent GUI run ใหม่ |
+| M3A-03 — Guided decision | Implemented on feature branch / Draft review; isolated opt-in type, no Main policy/UI | [P01–P32/evidence](../tests/npc/README.md#m3a-03--isolated-guidance-decision-proof); no new GUI acceptance |
+| M3A-04 / 05 | Not Started | ต้องได้รับ task implementation / acceptance แยก |
 
 แหล่งตรวจโค้ด: [scene](../scenes/combat/combat_prototype.tscn), [combat controller](../scripts/combat/combat_prototype.gd), [turn flow](../scripts/combat/combat_turn_flow.gd), [targets](../scripts/combat/combat_targets.gd)
 
@@ -119,7 +128,7 @@
 
 ขอบเขตที่อนุมัติ: ข้อมูลขั้นต่ำ Actor ID/display name/role/base max HP แยกจาก current/max HP ระหว่างเล่น, damage/heal/availability และ snapshot. ใช้ `RefCounted` ไม่เพิ่ม shared Resource, singleton หรือ event bus. HP 0 เป็น unavailable ใน fixture ไม่ตัดสิน Down/Death/permadeath; ค่า stats ทั้งชุดใน v0.1 §11 ยังเป็น design intent ไม่ได้ implement ในงานนี้
 
-[Actor proof และคำอธิบายสำหรับผู้เริ่มต้น](../tests/actors/README.md) เป็น contract/test guide ไม่ใช่ roadmap คู่ขนาน. M2B-02 merge ผ่าน PR #34 แล้ว: NPCProofEncounter ถือ Actor states และรักษา snapshot/Resolver เดิม. M2C-02 merge ผ่าน PR #35 แล้ว; M2C-03 merge ผ่าน PR #36 แล้ว; M2C-04 merge ผ่าน PR #37 แล้ว; M2D-02 merge ผ่าน PR #38 แล้ว; M2D-03 merge ผ่าน PR #39 แล้ว; M2D-04 merged PR #40 แล้ว; M3A-02 เป็น data-only review ตามสถานะข้างต้น. M2B-03 Item/Equipment ยังคงเลื่อน implementation; M3A-02 ได้รับ implementation task โดยตรง แต่ merge ยังต้องคำสั่ง owner ใหม่ ไม่ผูก final Turn System, full stats หรือระบบไอเท็มไว้ล่วงหน้า.
+[Actor proof และคำอธิบายสำหรับผู้เริ่มต้น](../tests/actors/README.md) เป็น contract/test guide ไม่ใช่ roadmap คู่ขนาน. M2B-02 merge ผ่าน PR #34 แล้ว: NPCProofEncounter ถือ Actor states และรักษา snapshot/Resolver เดิม. M2C-02 merge ผ่าน PR #35 แล้ว; M2C-03 merge ผ่าน PR #36 แล้ว; M2C-04 merge ผ่าน PR #37 แล้ว; M2D-02 merge ผ่าน PR #38 แล้ว; M2D-03 merge ผ่าน PR #39 แล้ว; M2D-04 merged PR #40 แล้ว; M3A-02 merged PR #41 แล้ว; M3A-03 เป็น isolated proof review ตามสถานะข้างต้น. M2B-03 Item/Equipment ยังคงเลื่อน implementation; M3A-03 ได้รับ implementation task โดยตรง แต่ merge ยังต้องคำสั่ง owner ใหม่ ไม่ผูก final Turn System, full stats หรือระบบไอเท็มไว้ล่วงหน้า.
 
 ### PR #2 — documentation proposal, not canonical
 

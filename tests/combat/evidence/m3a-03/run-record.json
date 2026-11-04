@@ -1,0 +1,76 @@
+{
+  "date": "2026-11-05",
+  "timezone": "Asia/Bangkok",
+  "task": "M3A-03 Isolated Guidance Decision Proof",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "git_baseline": {
+    "clean": true,
+    "base_branch": "visual-combat-test-1",
+    "local_remote_merge_base": "cf5611ea71e68dcc9dbcac9a627df88f357d20c3",
+    "pr41": "confirmed merged via GitHub connector",
+    "open_prs_before_work": [
+      2,
+      17
+    ],
+    "duplicate_m3a03": "none",
+    "branch": "codex/m3a-03-guidance-decision-proof"
+  },
+  "authorization": {
+    "source": "Owner attached M3A-03 task and explicit predicate approval in this chat",
+    "focus": "PLAN_ORIENTED OR ESTABLISHED",
+    "defend": "valid self hit AND CAUTIOUS courage AND focus cooperation predicate",
+    "compassion": "No new effect",
+    "HELP50%": "NOT APPROVED / NOT IMPLEMENTED",
+    "scope": "M3A-03 only; no Main policy/UI; no M3A-04/05"
+  },
+  "tested_commit": "1ab6c7367b27ff4eb2fdba9da0b173b84ec0d8a4",
+  "final_head": "Exact final documentation/evidence commit is recorded in the Draft PR description; all source/test hashes remain the tested commit",
+  "commands": {
+    "reference": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m3a03-reference-20261105-2 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof (cwd disposable PR39 git archive export, initialized local git repo)",
+    "baseline": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m3a03-baseline-20261105 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --cutover-baseline /tmp/wanderer-m3a03-reference-20261105-2",
+    "final": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m3a03-final-20261105-1 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --guidance-decision-proof --cutover-baseline /tmp/wanderer-m3a03-reference-20261105-2",
+    "execution": "Godot verification outside sandbox after permission-only reference failure; no runner error filters weakened"
+  },
+  "reference": {
+    "commit": "1728c5e678c5065278d1251d50449a8820eb5dae",
+    "stages": 44,
+    "actual": "PASS"
+  },
+  "baseline": {
+    "commit": "cf5611ea71e68dcc9dbcac9a627df88f357d20c3",
+    "stages": 56,
+    "actual": "PASS",
+    "before_runtime_changes": true
+  },
+  "final": {
+    "stages": 60,
+    "actual": "PASS",
+    "focused_cases": 30,
+    "acceptance_cases": 32,
+    "checks": 1192,
+    "all_exits": 0,
+    "unexpected_errors": 0,
+    "timeouts": 0,
+    "expected_negative_errors": 5,
+    "source_hash_count": 91,
+    "legacy_cases": 6,
+    "legacy_frames": 5892
+  },
+  "development": {
+    "sandbox_reference": "FAIL exit0: system CA certificates and editor-settings permissions, before implementation; logs retained",
+    "reference_retry": "Same unmodified PR39 source with normal system access in new output;44stages PASS",
+    "focused1": "1166checks/1failure: new test passed two-enemy context to strict single-enemy Legacy API",
+    "fix": "Correct fixture to original single-enemy contract; no resolver/constant/inherited test changes; add first-hit boundaries",
+    "focused2": "1192checks/0failures/30cases"
+  },
+  "revision_review": "Deferred M3A-04: submit-only counter unchanged; invalidation can leave revision unchanged. No cached client in isolated adapter. Removed enemy still fails membership check. Review system/content revision before UI.",
+  "limitations": [
+    "No GUI F5/F6 visual acceptance run",
+    "Main remains unguided; data proof is not playable Main Guidance",
+    "Pure layer validates consistency, not current-session authentication; Encounter owns authentication",
+    "Compassion has no new behavior",
+    "Version1 capabilities fixed, no future action capabilities",
+    "Final Turn System OPEN; Speed Order pending; M2B-03 deferred"
+  ],
+  "stop": "One Draft PR, await code review; no merge/auto-merge/branch deletion/follow-on milestone"
+}

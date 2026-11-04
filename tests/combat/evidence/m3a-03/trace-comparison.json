@@ -1,0 +1,6 @@
+{
+  "expected": "Reference PR39 = merged PR41 baseline = final; exact Legacy frame equality",
+  "actual": "PASS",
+  "cases": 6,
+  "frames": 5892
+}

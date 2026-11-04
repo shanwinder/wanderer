@@ -1,0 +1,13 @@
+{
+  "actual": "PASS",
+  "markdown_local_file_links": 164,
+  "broken_links": [],
+  "source_hashes_matched": 91,
+  "source_total": 91,
+  "json_zip_integrity": "PASS",
+  "diff_check": "PASS",
+  "source_scope": "Only new layer/proof adapter/test/UID plus minimal Encounter seam and runner; original resolver/controller/presenter/scenes/assets/project untouched",
+  "inherited_tests_changed": false,
+  "manual_GUI": "NOT RUN",
+  "PR_duplicates": "None: exact title search M3A-03 and remote branch prefix codex/m3a-03 before push"
+}
