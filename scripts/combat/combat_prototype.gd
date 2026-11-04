@@ -2,7 +2,54 @@ extends Control
 
 const CombatTurnFlow = preload("res://scripts/combat/combat_turn_flow.gd")
 const CombatTargets = preload("res://scripts/combat/combat_targets.gd")
+const FullPartyEncounter = preload("res://scripts/combat/full_party_encounter.gd")
 const CombatPresentationAdapter = preload("res://scripts/combat/combat_presentation_adapter.gd")
+
+# Chosen by the inherited entry BEFORE _ready; a live session cannot change authority.
+enum SessionMode { LEGACY, AUTONOMOUS }
+@export var session_mode: SessionMode = SessionMode.LEGACY:
+	set(value):
+		if not is_node_ready():
+			session_mode = value
+
+var encounter # Autonomous only. No Legacy queue/targets/HP are initialized in that mode.
+var autonomous_token: Dictionary = {}
+var autonomous_views: Dictionary = {}
+var autonomous_hp_labels: Dictionary = {}
+var autonomous_intents: Dictionary = {}
+var autonomous_decision_label: Label
+var autonomous_effect_label: Label
+var autonomous_scenario_picker: OptionButton
+var autonomous_scenario: int = 0
+var autonomous_selected_target: String = ""
+
+const AUTONOMOUS_NAMES: Dictionary = {"player": "Player", "npc_01": "NPC1", "npc_02": "NPC2",
+	"npc_03": "NPC3", "enemy_a": "Enemy A", "enemy_b": "Enemy B"}
+const AUTONOMOUS_REASONS: Dictionary = {
+	"PLAYER_COMMAND": "Player chose this action.",
+	"ENEMY_DECLARED_TARGET": "Following this round's declared target.",
+	"ATTACK_AVAILABLE_ENEMY": "Attack the first available enemy.",
+	"PLAYER_LOW_HP_HELP": "Player is badly hurt; use my HELP.",
+	"SELF_LOW_HP_THREAT": "Low HP and targeted; protect myself.",
+	"SELF_LETHAL_THREAT": "The declared hit could fell me; defend.",
+	"HELP_UNAVAILABLE_ATTACK": "HELP unavailable; attack an enemy.",
+	"ACTOR_UNAVAILABLE": "Unable to act; skip this slot.",
+	"NO_LIVING_ENEMY": "No available enemy remains.",
+	"PLAYER_DEFEATED": "Player is unavailable."
+}
+# Explicit opt-in test fixtures, never final Main Combat balance.
+const AUTONOMOUS_SCENARIOS: Array[Dictionary] = [
+	{"name": "Normal opt-in (NPC 10/10/10)", "hp": {}, "targets": {}},
+	{"name": "Player needs HELP", "hp": {"player": 6}, "targets": {}},
+	{"name": "NPC self-DEFEND", "hp": {"npc_01": 3}, "targets": {"enemy_a": "npc_01", "enemy_b": "npc_01"}},
+	{"name": "Multiple HELP", "hp": {"player": 1}, "targets": {}},
+	{"name": "A falls / B alive", "hp": {"enemy_a": 5}, "targets": {}},
+	{"name": "Victory", "hp": {"enemy_a": 5, "enemy_b": 0}, "targets": {}},
+	{"name": "Defeat", "hp": {"player": 1, "npc_01": 0, "npc_02": 0, "npc_03": 0}, "targets": {}},
+	{"name": "Unavailable slots", "hp": {"npc_01": 0, "enemy_a": 0}, "targets": {}},
+	{"name": "M2C HP fixture (10/7/3)", "hp": {"npc_02": 7, "npc_03": 3}, "targets": {}},
+	{"name": "B falls / A alive", "hp": {"enemy_b": 5}, "targets": {}}
+]
 
 # 1.0 = จังหวะเดิม, 0.70 = Motion/Feedback ใช้เวลานานขึ้นประมาณ 43%
 # ใช้ค่ากลางเดียวกันทุก Tween เพื่อปรับความเร็วในการทดลองได้จาก Inspector
@@ -96,9 +143,9 @@ const NPC_INTENT_ACTIVE_COLOR: Color = Color(1.0, 0.85, 0.55, 1.0)
 # ตัวแปรสถานะปัจจุบันของการต่อสู้
 # -----------------------------------------------------------------------------
 # ตัวแปรเหล่านี้จะเปลี่ยนไปตามการกดปุ่มของผู้เล่น
-var player_hp: int = PLAYER_MAX_HP
-var enemy_hp: int = ENEMY_MAX_HP
-var enemy_b_hp: int = ENEMY_B_MAX_HP
+var player_hp: Variant
+var enemy_hp: Variant
+var enemy_b_hp: Variant
 
 # ใช้ตรวจว่าผู้เล่นเลือกตั้งรับในรอบนี้หรือไม่
 var player_is_defending: bool = false
@@ -114,10 +161,10 @@ var battle_is_over: bool = false
 var turn_number: int = 1
 
 # แยกการวางแผนคิวเทิร์นออกจาก Animation และผลลัพธ์ของการโจมตี
-var turn_flow = CombatTurnFlow.new()
+var turn_flow
 
 # คัดเป้าหมายฝ่ายศัตรูก่อนเริ่ม Action แล้วเก็บ ID ไปกับคิวเทิร์น
-var target_registry = CombatTargets.new()
+var target_registry
 var active_action_target_id: String = ""
 
 # ล็อกคำสั่งระหว่าง Motion ทั้งสองฝ่าย เพื่อไม่ให้ HP คลาดเคลื่อน
@@ -247,6 +294,12 @@ func _ready() -> void:
 		npc_home_tints.append(npc_sprites[i].modulate)
 		npc_sprite_base_positions.append(npc_sprites[i].position)
 
+	if session_mode == SessionMode.AUTONOMOUS:
+		encounter = FullPartyEncounter.new()
+		_build_autonomous_ui()
+	else:
+		turn_flow = CombatTurnFlow.new()
+		target_registry = CombatTargets.new()
 	# เริ่มการต่อสู้รอบแรก
 	_start_new_battle()
 
@@ -286,6 +339,9 @@ func _enemy_display_name(enemy_id: String) -> String:
 
 
 func _enemy_rest_tint(enemy_id: String) -> Color:
+	if encounter != null:
+		return (enemy_b_base_tint if enemy_id == "enemy_b" else Color.WHITE) \
+			if encounter.actor_snapshot(enemy_id).can_act else Color(0.42, 0.42, 0.42, 1.0)
 	if not target_registry.is_enemy_available(enemy_id):
 		return Color(0.42, 0.42, 0.42, 1.0)
 	return enemy_b_base_tint if enemy_id == CombatTargets.ENEMY_B_ID else Color.WHITE
@@ -306,6 +362,9 @@ func _resolve_live_attack_target(planned_id: String) -> String:
 
 
 func _refresh_target_picker() -> void:
+	if encounter != null:
+		_refresh_autonomous_picker()
+		return
 	target_picker.clear()
 	var selected_id: String = target_registry.selected_enemy_id()
 	var selected_index: int = -1
@@ -321,6 +380,13 @@ func _refresh_target_picker() -> void:
 
 
 func _on_target_picker_item_selected(index: int) -> void:
+	if encounter != null:
+		if encounter.snapshot().command_ready and index >= 0 and index < target_picker.item_count:
+			var id: String = str(target_picker.get_item_metadata(index))
+			if encounter.available_enemy_ids().has(id):
+				autonomous_selected_target = id
+		_refresh_autonomous_picker()
+		return
 	# ระหว่าง Tween ไม่รับการเปลี่ยนเป้าหมาย: Action ที่เริ่มแล้วจะล็อก Target ID
 	if battle_is_over or action_in_progress:
 		return
@@ -364,6 +430,22 @@ func _presentation_settings() -> Dictionary:
 		"IMPACT_SPRITE_SQUASH": IMPACT_SPRITE_SQUASH,
 		"HIT_HOLD_TIME": HIT_HOLD_TIME,
 		"ACTION_HANDOFF_PAUSE": ACTION_HANDOFF_PAUSE,
+		"NPC_STAGE_HOLD_TIME": NPC_STAGE_HOLD_TIME,
+		"NPC_ATTACK_HIT_TIME": NPC_ATTACK_HIT_TIME,
+		"NPC_ACTIVE_TINT": NPC_ACTIVE_TINT,
+		"PLAYER_HIT_RECOIL_DISTANCE": PLAYER_HIT_RECOIL_DISTANCE,
+		"GUARDED_HIT_RECOIL_DISTANCE": GUARDED_HIT_RECOIL_DISTANCE,
+		"GUARDED_HIT_SQUASH": GUARDED_HIT_SQUASH,
+		"PLAYER_HIT_TIME": PLAYER_HIT_TIME,
+		"ENEMY_COUNTER_HOLD_TIME": ENEMY_COUNTER_HOLD_TIME,
+		"PLAYER_DEFEND_BRACE_TIME": PLAYER_DEFEND_BRACE_TIME,
+		"PLAYER_DEFEND_HOLD_TIME": PLAYER_DEFEND_HOLD_TIME,
+		"PLAYER_DEFEND_RECOVER_TIME": PLAYER_DEFEND_RECOVER_TIME,
+		"PLAYER_DEFEND_BRACE_OFFSET": PLAYER_DEFEND_BRACE_OFFSET,
+		"PLAYER_DEFEND_BRACE_SCALE": PLAYER_DEFEND_BRACE_SCALE,
+		"PLAYER_DEFEND_BRACE_TINT": PLAYER_DEFEND_BRACE_TINT,
+		"GUARD_POSE_RAISE_TIME": GUARD_POSE_RAISE_TIME,
+		"GUARD_POSE_RETURN_TIME": GUARD_POSE_RETURN_TIME,
 	}
 
 
@@ -384,7 +466,8 @@ func _start_new_battle() -> void:
 	battle_result_panel.modulate.a = 1.0
 
 	# ยกเลิกคิวและ Target ID ที่ผูกกับ Action เก่าเมื่อ Restart
-	turn_flow.reset()
+	if turn_flow != null:
+		turn_flow.reset()
 	active_action_target_id = ""
 	# ล้าง Cue ที่เกาะกับ NPC เมื่อ Restart ระหว่างเดินทางหรือรับ Hit
 	_clear_npc_intents()
@@ -428,6 +511,10 @@ func _start_new_battle() -> void:
 	enemy_a_label.modulate = Color.WHITE
 	enemy_b_label.modulate = Color.WHITE
 
+	if encounter != null:
+		_restart_autonomous_session()
+		return
+
 	# คืนค่าทุกอย่างกลับเป็นค่าเริ่มต้น
 	player_hp = PLAYER_MAX_HP
 	enemy_hp = ENEMY_MAX_HP
@@ -464,6 +551,9 @@ func _start_new_battle() -> void:
 # เมื่อผู้เล่นกดปุ่มโจมตี
 # -----------------------------------------------------------------------------
 func _on_attack_button_pressed() -> void:
+	if encounter != null:
+		_autonomous_command("ATTACK")
+		return
 	# ระหว่างแสดงท่าทางยังไม่อนุญาตให้กดคำสั่งซ้อนกัน
 	if battle_is_over or action_in_progress:
 		return
@@ -560,6 +650,9 @@ func _finish_player_attack() -> void:
 # เมื่อผู้เล่นกดปุ่มตั้งรับ
 # -----------------------------------------------------------------------------
 func _on_defend_button_pressed() -> void:
+	if encounter != null:
+		_autonomous_command("DEFEND")
+		return
 	if battle_is_over or action_in_progress:
 		return
 
@@ -1077,6 +1170,9 @@ func _on_restart_button_pressed() -> void:
 # อัปเดตข้อความ HP บนหน้าจอ
 # -----------------------------------------------------------------------------
 func _update_ui() -> void:
+	if encounter != null:
+		_refresh_autonomous_ui()
+		return
 	player_label.text = "Player HP: %d / %d" % [
 		player_hp,
 		PLAYER_MAX_HP
@@ -1220,8 +1316,16 @@ func _show_battle_result() -> void:
 	if not battle_is_over or battle_result_panel.visible:
 		return
 
-	battle_result_title.text = "ชัยชนะ" if battle_result_player_won else "พ่ายแพ้"
-	if battle_result_player_won:
+	_present_battle_result(battle_result_player_won,
+		"รอบที่ %d · Player HP %d/%d\nEnemy A %d/%d · Enemy B %d/%d" % [
+			turn_number, player_hp, PLAYER_MAX_HP,
+			enemy_hp, ENEMY_MAX_HP, enemy_b_hp, ENEMY_B_MAX_HP])
+
+
+# Presentation only; autonomous callers supply result/detail from an Encounter snapshot.
+func _present_battle_result(player_won: bool, detail: String) -> void:
+	battle_result_title.text = "ชัยชนะ" if player_won else "พ่ายแพ้"
+	if player_won:
 		battle_result_title.add_theme_color_override(
 			"font_color", Color(0.96, 0.85, 0.55, 1.0)
 		)
@@ -1229,12 +1333,7 @@ func _show_battle_result() -> void:
 		battle_result_title.add_theme_color_override(
 			"font_color", Color(1.0, 0.64, 0.60, 1.0)
 		)
-	battle_result_detail.text = (
-		"รอบที่ %d · Player HP %d/%d\nEnemy A %d/%d · Enemy B %d/%d" % [
-			turn_number, player_hp, PLAYER_MAX_HP,
-			enemy_hp, ENEMY_MAX_HP, enemy_b_hp, ENEMY_B_MAX_HP
-		]
-	)
+	battle_result_detail.text = detail
 	battle_result_panel.modulate.a = 0.0
 	battle_result_panel.show()
 	battle_result_tween = _pace_tween(create_tween())
@@ -1268,6 +1367,246 @@ func _end_battle(player_won: bool) -> void:
 		_add_log("=== Player พ่ายแพ้ — การต่อสู้สิ้นสุด ===")
 
 	_add_log("กด 'เริ่มใหม่' เพื่อทดลองอีกครั้ง")
+
+
+# M2D-03 wiring in the existing controller: Encounter is the sole gameplay authority.
+func _build_autonomous_ui() -> void:
+	var roots: Array = [player_root, npc1_root, npc2_root, npc3_root, enemy_root, enemy_b_root]
+	var sprites: Array = [player_sprite, npc1_sprite, npc2_sprite, npc3_sprite, enemy_sprite, enemy_b_sprite]
+	var ids: Array = ["player", "npc_01", "npc_02", "npc_03", "enemy_a", "enemy_b"]
+	for i in range(ids.size()):
+		autonomous_views[ids[i]] = {"root": roots[i], "sprite": sprites[i], "home": roots[i].position,
+			"sprite_home": sprites[i].position, "scale": sprites[i].scale,
+			"tint": sprites[i].modulate, "enemy": i >= 4}
+	autonomous_hp_labels = {"player": player_label, "enemy_a": enemy_a_label, "enemy_b": enemy_b_label,
+		"npc_01": $MainMargin/MainVBox/BattleRow/AlliesPanel/NpcALabel,
+		"npc_02": $MainMargin/MainVBox/BattleRow/AlliesPanel/NpcBLabel,
+		"npc_03": $MainMargin/MainVBox/BattleRow/AlliesPanel/NpcCLabel}
+	$TitleLabel.text = "WANDERER — AUTONOMOUS OPT-IN"
+	$TitleLabel.add_theme_font_size_override("font_size", 22)
+	autonomous_scenario_picker = OptionButton.new()
+	autonomous_scenario_picker.position = Vector2(900, 22)
+	autonomous_scenario_picker.size = Vector2(348, 32)
+	for preset in AUTONOMOUS_SCENARIOS:
+		autonomous_scenario_picker.add_item(preset.name)
+	autonomous_scenario_picker.item_selected.connect(_select_autonomous_scenario)
+	add_child(autonomous_scenario_picker)
+	autonomous_decision_label = _autonomous_label(90)
+	autonomous_effect_label = _autonomous_label(116)
+	for i in range(3):
+		autonomous_intents["npc_%02d" % (i + 1)] = _autonomous_label(146 + i * 24)
+	for label in autonomous_hp_labels.values():
+		label.show()
+		label.add_theme_font_size_override("font_size", 13)
+	# Three real NPC HP/resource rows need more height than Legacy's hidden placeholders.
+	$MainMargin.offset_top = 520
+	$MainMargin.offset_bottom = 710
+	$MainMargin/MainVBox.add_theme_constant_override("separation", 4)
+	# Reason rows are added after the inherited panel; terminal results must draw above them.
+	battle_result_panel.z_index = 20
+
+
+func _autonomous_label(y: float) -> Label:
+	var label := Label.new()
+	label.position = Vector2(32, y)
+	label.size = Vector2(1216, 24)
+	label.add_theme_font_size_override("font_size", 16)
+	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(label)
+	return label
+
+
+func _select_autonomous_scenario(index: int) -> void:
+	if not encounter.snapshot().command_ready or index < 0 or index >= AUTONOMOUS_SCENARIOS.size():
+		autonomous_scenario_picker.select(autonomous_scenario)
+		return
+	autonomous_scenario = index
+	_start_new_battle()
+
+
+func _restart_autonomous_session() -> void:
+	autonomous_token.clear()
+	var fixture: Dictionary = FullPartyEncounter.prototype_fixture()
+	var overrides: Dictionary = AUTONOMOUS_SCENARIOS[autonomous_scenario].hp
+	for entry in fixture.actors:
+		var id: String = entry.definition.actor_id
+		entry.definition.display_name = AUTONOMOUS_NAMES[id]
+		# Normal opt-in starts ALL NPCs full; the isolated M2C fixture remains unchanged.
+		entry.initial_hp = overrides.get(id, entry.definition.base_max_hp)
+	encounter.restart(fixture)
+	_restore_autonomous_views()
+	for id in autonomous_intents:
+		autonomous_intents[id].text = "%s [%s] · Waiting to decide" % [AUTONOMOUS_NAMES[id], id]
+	autonomous_selected_target = ""
+	autonomous_decision_label.text = "Player chooses ATTACK / DEFEND; each companion decides at its slot."
+	autonomous_effect_label.text = ""
+	combat_log.clear()
+	_add_log("=== Autonomous opt-in · %s ===" % AUTONOMOUS_SCENARIOS[autonomous_scenario].name)
+	_refresh_autonomous_ui()
+
+
+func _restore_autonomous_views() -> void:
+	var view: Dictionary = encounter.snapshot()
+	for id in autonomous_views:
+		var actor: Dictionary = autonomous_views[id]
+		actor.root.position = actor.home
+		actor.sprite.position = actor.sprite_home
+		actor.sprite.scale = actor.scale
+		actor.sprite.modulate = actor.tint if view.actors[id].can_act else Color(0.42, 0.42, 0.42)
+	for label in autonomous_hp_labels.values():
+		label.modulate = Color.WHITE
+
+
+func _refresh_autonomous_picker() -> void:
+	target_picker.clear()
+	var available: Array = encounter.available_enemy_ids()
+	if not available.has(autonomous_selected_target):
+		autonomous_selected_target = "" if available.is_empty() else available[0]
+	for id in available:
+		target_picker.add_item(AUTONOMOUS_NAMES[id])
+		var index: int = target_picker.item_count - 1
+		target_picker.set_item_metadata(index, id)
+		if id == autonomous_selected_target:
+			target_picker.select(index)
+	target_picker.disabled = not encounter.snapshot().command_ready or available.is_empty()
+
+
+func _refresh_autonomous_ui() -> void:
+	var view: Dictionary = encounter.snapshot()
+	for id in autonomous_hp_labels:
+		var actor: Dictionary = view.actors[id]
+		var text: String = "%s [%s] HP: %d / %d" % [actor.display_name, id, actor.current_hp, actor.max_hp]
+		if view.help_uses.has(id):
+			text += " · HELP %d" % view.help_uses[id]
+		if view.guards.has(id):
+			text += " · GUARD"
+		autonomous_hp_labels[id].text = text
+	attack_button.disabled = not view.command_ready
+	defend_button.disabled = not view.command_ready
+	autonomous_scenario_picker.disabled = not view.command_ready
+	_refresh_autonomous_picker()
+	_set_action_status("Autonomous · Round %d · %s" % [view.round_id,
+		view.result if not view.result.is_empty() else ("Choose command" if view.command_ready else presentation_adapter.phase)])
+
+
+func _autonomous_command(action: String) -> void:
+	if not encounter.snapshot().command_ready or action_in_progress:
+		return
+	var target: String = ""
+	if action == "ATTACK":
+		if target_picker.selected < 0:
+			return
+		target = str(target_picker.get_item_metadata(target_picker.selected))
+		if not encounter.available_enemy_ids().has(target):
+			_refresh_autonomous_picker()
+			return
+	var reply: Dictionary = encounter.begin_round(action, target, AUTONOMOUS_SCENARIOS[autonomous_scenario].targets)
+	if reply.status != "STARTED":
+		return
+	action_in_progress = true # Presentation busy only, never a second queue.
+	for id in autonomous_intents:
+		autonomous_intents[id].text = "%s [%s] · Waiting to decide" % [AUTONOMOUS_NAMES[id], id]
+	_autonomous_advance()
+
+
+func _autonomous_advance() -> void:
+	var view: Dictionary = encounter.snapshot()
+	if not view.round_running:
+		action_in_progress = false
+		action_tween = null
+		autonomous_token = {}
+		_refresh_autonomous_ui()
+		if not view.result.is_empty():
+			_present_battle_result(view.result == "VICTORY",
+				"Round %d · Player HP %d/%d\nEnemy A %d/%d · Enemy B %d/%d" % [view.round_id,
+					view.actors.player.current_hp, view.actors.player.max_hp,
+					view.actors.enemy_a.current_hp, view.actors.enemy_a.max_hp,
+					view.actors.enemy_b.current_hp, view.actors.enemy_b.max_hp])
+		return
+	var locked: Dictionary = encounter.begin_next_action()
+	if not locked.has("decision"):
+		if locked.get("status") in ["COMPLETED", "TERMINAL"]:
+			_autonomous_advance()
+		else:
+			push_error("Autonomous Main: unexpected action lifecycle reply " + str(locked))
+		return
+	autonomous_token = locked.duplicate(true)
+	var decision: Dictionary = locked.decision
+	var text: String = "%s [%s] · %s → %s · %s · %s" % [AUTONOMOUS_NAMES[locked.actor_id], locked.actor_id,
+		decision.action, decision.target_id if not decision.target_id.is_empty() else "none",
+		decision.reason_code, AUTONOMOUS_REASONS.get(decision.reason_code, decision.reason_code)]
+	autonomous_decision_label.text = text
+	if autonomous_intents.has(locked.actor_id):
+		autonomous_intents[locked.actor_id].text = text
+	_add_log(text)
+	# A skipped slot has no target; its own view supplies node lifetime checks only.
+	var visual_target: String = locked.actor_id if decision.target_id.is_empty() else decision.target_id
+	action_tween = presentation_adapter.play_action(self, locked.actor_id, visual_target, decision.action,
+		autonomous_views[locked.actor_id], autonomous_views[visual_target], _presentation_settings(),
+		_autonomous_impact.bind(locked), _autonomous_complete.bind(locked))
+	_refresh_autonomous_ui()
+
+
+func _autonomous_current(locked: Dictionary, states: Array, visual_phase: String) -> bool:
+	if encounter == null or not action_in_progress or locked != autonomous_token \
+		or presentation_adapter.phase != visual_phase:
+		return false
+	var view: Dictionary = encounter.snapshot()
+	if not view.active_action:
+		return false
+	for key in ["encounter_id", "generation", "round_id", "action_id", "actor_id", "decision"]:
+		if not locked.has(key) or locked[key] != view.locked_action.get(key):
+			return false
+	return view.locked_action.state in states
+
+
+func _autonomous_impact(locked: Dictionary) -> Dictionary:
+	if not _autonomous_current(locked, ["LOCKED"], "IMPACT"):
+		return {}
+	var before: Dictionary = encounter.snapshot()
+	var effect: Dictionary = encounter.resolve_action(locked)
+	var target: String = locked.decision.target_id
+	var guarded: bool = before.guards.has(target)
+	var text: String = "%s · %s → %s · %s · HP %+d" % [AUTONOMOUS_NAMES[locked.actor_id],
+		locked.decision.action, target, effect.get("reason_code", effect.status), effect.get("hp_delta", 0)]
+	if before.actors.has(target):
+		text += " (%d → %d)" % [before.actors[target].current_hp, encounter.actor_snapshot(target).current_hp]
+	autonomous_effect_label.text = text
+	if autonomous_intents.has(locked.actor_id):
+		autonomous_intents[locked.actor_id].text += " · %s HP %+d" % [effect.status, effect.get("hp_delta", 0)]
+	_add_log(text)
+	if effect.status == "APPLIED" and effect.hp_delta != 0:
+		var node: Node2D = autonomous_views[target].root
+		var color: Color = Color("9bffb3") if effect.hp_delta > 0 else (DEFEND_DAMAGE_COLOR if guarded else ENEMY_DAMAGE_COLOR)
+		if effect.hp_delta > 0:
+			_show_floating_heal(node.position, effect.hp_delta, color)
+		else:
+			_show_floating_damage(node.position, -effect.hp_delta, color, guarded)
+			if not guarded:
+				_show_hit_spark(node.position + (HIT_SPARK_PLAYER_OFFSET if before.actors[target].role != "ENEMY" else HIT_SPARK_ENEMY_OFFSET), color)
+		_flash_hp_label(autonomous_hp_labels[target], color, target == "player")
+	elif effect.status == "APPLIED" and locked.decision.action == "DEFEND":
+		autonomous_effect_label.text += " · GUARD"
+	_refresh_autonomous_ui()
+	return {"hit": effect.status == "APPLIED" and effect.get("hp_delta", 0) < 0, "guarded": guarded}
+
+
+func _autonomous_complete(locked: Dictionary) -> void:
+	if not _autonomous_current(locked, ["RESOLVED", "SKIPPED"], "COMPLETED"):
+		return
+	if encounter.complete_action(locked).status != "COMPLETED":
+		return
+	autonomous_token = {}
+	action_tween = null
+	_restore_autonomous_views()
+	_autonomous_advance()
+
+
+func _show_floating_heal(home: Vector2, amount: int, color: Color) -> void:
+	# Reuse the existing popup lifetime/Restart cleanup; only the caption changes.
+	_show_floating_damage(home, amount, color)
+	if not damage_popups.is_empty():
+		damage_popups.back().text = "+%d" % amount
 
 
 func _exit_tree() -> void:

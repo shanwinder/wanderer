@@ -22,6 +22,7 @@ def main():
     parser.add_argument("--party-turn-proof", action="store_true", help="Also verify M2C-03 multi-NPC decisions and full party turn resolution")
     parser.add_argument("--party-playable-proof", action="store_true", help="Also verify M2C-04 real scene/Tween integration")
     parser.add_argument("--presentation-proof", action="store_true", help="Also verify M2D-02 Legacy presentation boundaries and traces")
+    parser.add_argument("--autonomous-main-proof", action="store_true", help="Also verify M2D-03 opt-in Main Combat integration")
     args = parser.parse_args()
     source = Path(__file__).resolve().parents[2]
     output = args.output.resolve() if args.output else Path(tempfile.mkdtemp(prefix="wanderer-queue-"))
@@ -65,7 +66,7 @@ def main():
         passed = code == 0 and sorted(errors) == sorted(expected_errors)
         if name == "version":
             passed = passed and "4.7.2.stable" in log
-        if name in ("gameplay", "invalid-actions", "npc-proof", "npc-playable", "actor-proof", "ownership-proof", "party-foundation-proof", "party-turn-proof", "party-playable-proof", "presentation-proof"):
+        if name in ("gameplay", "invalid-actions", "npc-proof", "npc-playable", "actor-proof", "ownership-proof", "party-foundation-proof", "party-turn-proof", "party-playable-proof", "presentation-proof", "autonomous-main-proof"):
             passed = passed and re.search(r"RESULT: \d+ checks, 0 failures", log) is not None
         result = {"step": name, "status": "PASS" if passed else "FAIL",
                   "exit_code": code, "timed_out": timed_out, "command": command,
@@ -86,6 +87,12 @@ def main():
             run("parse-" + Path(script).stem, ["--script", "res://" + script, "--check-only"])
         run("startup", ["--quit-after", "120"])
         timing = [] if args.real_time else ["--fixed-fps", "60"]
+        if args.autonomous_main_proof:
+            for script in ["scripts/combat/combat_presentation_adapter.gd", "tests/combat/autonomous_main_integration.gd"]:
+                run("autonomous-parse-" + Path(script).stem, ["--script", "res://" + script, "--check-only"])
+            run("autonomous-main-startup", ["res://scenes/combat/combat_autonomous_optin.tscn", "--quit-after", "120"])
+            run("autonomous-main-proof", [*timing, "--script", "res://tests/combat/autonomous_main_integration.gd",
+                                         "--", "--report=" + str(output / "autonomous-main-scenarios.json")])
         run("gameplay", [*timing, "--script", "res://tests/combat/queue_regression.gd"])
         run("invalid-actions", [*timing, "--script", "res://tests/combat/queue_regression.gd",
                                 "--", "--invalid-actions"], [
