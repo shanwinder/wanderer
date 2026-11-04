@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-05",
+  "timezone": "Asia/Bangkok",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "method": "Godot editor Run Project (F5 equivalent toolbar) / Run Current Scene (F6 equivalent toolbar), interacted via native CUA. Shortcuts F5/F8 did not reliably activate; toolbar actions used.",
+  "viewport": "Project logical1280x720 at 1.0x embedded; host game panel toolbar reports1475x719 with horizontal letterboxing. Not a calibrated pixel/timing video measurement.",
+  "tested_source": "Initial smoke on pre-commit working tree; final startup and Focus A/B round rerun on5e54b6f. Minor final differences: tooltip mouse filtering and removal of duplicate APPLIED caption.",
+  "observations": [
+    {
+      "entry": "F5 configured Main",
+      "expected": "Guidance selectors, independent Player A/FocusB, frozen before actions, independent NPC response/effect, next-round NONE",
+      "actual": "Observed: NPC1/2 followed B; NPC3 refused/profile and attacked A; Player attacked A; finalPlayer24/A9/B10, round2 PendingNONE/rev1. Final-source screenshot captured."
+    },
+    {
+      "entry": "F5 Restart",
+      "expected": "NONE/rev0/full HP/clean rows and feedback",
+      "actual": "Observed after Restart: Player30/A15/B12, NPC10 each, NONE/rev0, waiting rows, no old feedback."
+    },
+    {
+      "entry": "F6 Autonomous",
+      "expected": "Same Guidance UI; Player needsHELP + ATTACK suggestion preserves urgentHELP",
+      "actual": "Observed NPC1 HELP+4 with Thai REFUSED/urgent reason; NPC2/3 MATCHED_INDEPENDENTLY attacks; round2 Player8, A13/B12, NPC1 HELP0."
+    },
+    {
+      "entry": "F6 Legacy",
+      "expected": "No Guidance; original NPC2Guard/HP/queue",
+      "actual": "Observed no Guidance controls and original round after Attack: Player25/A8/B12, round2. Guard rule additionally verified by full regression/traces."
+    }
+  ],
+  "presentation": "Observed readable Thai rows/selectors, separate log and commands, short lunges/return/idle/HP flash and feedback. Exact44px/speed0.70/formation asserted automatically; subjective pacing and guarded-recoil quality remain owner gates. No new timing changes.",
+  "keyboard": "Explicit focus links/hitbox properties passed automated I29. A CUA Tab/Enter attempt left the Guidance popup open and did not establish a successful focus transition. Manual keyboard navigation remains UNVERIFIED.",
+  "not_run": [
+    "Owner comprehension/acceptance",
+    "Full visual scenario matrix",
+    "Dedicated manual discretionary-DEFEND and SKIP race scenarios",
+    "Calibrated standalone1280x720 capture/video and exact pixel/timing measurement",
+    "Confirmed keyboard navigation cycle"
+  ],
+  "M3A-05": "PENDING; not performed; checklist prepared in tests/combat/README.md"
+}

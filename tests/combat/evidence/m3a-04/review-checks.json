@@ -1,0 +1,35 @@
+{
+  "changed_docs": [
+    "README.md",
+    "docs/README.md",
+    "tests/combat/README.md",
+    "tests/npc/README.md"
+  ],
+  "local_file_links_checked": 194,
+  "broken_links": [],
+  "artifact_integrity_checked": 18,
+  "scope_changed_files_excluding_new_evidence": [
+    "README.md",
+    "docs/README.md",
+    "scripts/combat/combat_prototype.gd",
+    "scripts/combat/full_party_encounter.gd",
+    "scripts/combat/guidance_messages.gd",
+    "scripts/combat/guidance_messages.gd.uid",
+    "scripts/combat/guided_encounter.gd",
+    "scripts/combat/guided_encounter.gd.uid",
+    "scripts/npc/guided_decision_proof_encounter.gd",
+    "tests/combat/README.md",
+    "tests/combat/guidance_main_integration.gd",
+    "tests/combat/guidance_main_integration.gd.uid",
+    "tests/combat/verify.py",
+    "tests/npc/README.md",
+    "tests/npc/guidance_data_proof.gd",
+    "tests/npc/guidance_decision_proof.gd"
+  ],
+  "protected_source_changes": [],
+  "source_hash_matches": 97,
+  "source_hash_total": 97,
+  "source_hash_mismatches": [],
+  "actual": "PASS",
+  "note": "Historical milestone records retained; current authority in docs index; no balance/Layer/Resolver/scenes/assets/project/presentation changes."
+}

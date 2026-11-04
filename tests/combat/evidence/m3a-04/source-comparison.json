@@ -1,0 +1,8 @@
+{
+  "tested_commit": "5e54b6f5bcc5ada73cbd07c4dbdeca99256d2378",
+  "manifest_files": 97,
+  "matching": 97,
+  "mismatches": [],
+  "actual": "PASS",
+  "post_test_changes": "Markdown and evidence only; source/test/config/assets equal final fresh snapshot"
+}

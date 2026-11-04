@@ -1,0 +1,187 @@
+{
+  "focused_cases": 34,
+  "acceptance_items": 36,
+  "checks": 507851,
+  "coverage": [
+    {
+      "actual": "PASS",
+      "expected": "F5 remains Autonomous",
+      "id": "I01"
+    },
+    {
+      "actual": "PASS",
+      "expected": "Main uses production guided policy, no proof-class dependency",
+      "id": "I02"
+    },
+    {
+      "actual": "PASS",
+      "expected": "single Encounter authority; Legacy mirrors/queue/targets null",
+      "id": "I03"
+    },
+    {
+      "actual": "PASS",
+      "expected": "initial Guidance NONE",
+      "id": "I04"
+    },
+    {
+      "actual": "PASS",
+      "expected": "Player target independent; UI Draft changes no authority",
+      "id": "I05"
+    },
+    {
+      "actual": "PASS",
+      "expected": "accepted submit freezes for one round; busy edits inert; completion resets NONE",
+      "id": "I06"
+    },
+    {
+      "actual": "PASS",
+      "expected": "invalid/malformed Guidance never starts round; accepted Guidance with rejected Player input remains Pending (test-only rejecting Encounter)",
+      "id": "I07"
+    },
+    {
+      "actual": "PASS",
+      "expected": "R1 Option A: accepted submit/system preference clear +1; reads/rejects/HP0/unrelated roster changes unchanged; stale clients rejected; Frozen immutable; Restart new generation/rev0",
+      "id": "I21"
+    },
+    {
+      "actual": "PASS",
+      "expected": "Main per-slot policy: MATCHED_INDEPENDENTLY / BASELINE_ATTACK",
+      "id": "I08"
+    },
+    {
+      "actual": "PASS",
+      "expected": "Main per-slot policy: FOLLOWED / PROFILE_PERMITTED_COOPERATION",
+      "id": "I09"
+    },
+    {
+      "actual": "PASS",
+      "expected": "Main per-slot policy: MATCHED_INDEPENDENTLY / BASELINE_TARGET",
+      "id": "I10"
+    },
+    {
+      "actual": "PASS",
+      "expected": "Main per-slot policy: FOLLOWED / PROFILE_PERMITTED_COOPERATION",
+      "id": "I11"
+    },
+    {
+      "actual": "PASS",
+      "expected": "Main per-slot policy: REFUSED / SELF_PRESERVATION_PRIORITY",
+      "id": "I12"
+    },
+    {
+      "actual": "PASS",
+      "expected": "Main per-slot policy: REFUSED / URGENT_HELP_PRIORITY",
+      "id": "I13"
+    },
+    {
+      "actual": "PASS",
+      "expected": "Main per-slot policy: NOT_APPLICABLE / PLAYER_ABOVE_HELP_THRESHOLD",
+      "id": "I14"
+    },
+    {
+      "actual": "PASS",
+      "expected": "Main per-slot policy: MATCHED_INDEPENDENTLY / URGENT_HELP_PRIORITY",
+      "id": "I15"
+    },
+    {
+      "actual": "PASS",
+      "expected": "Main per-slot policy: REFUSED / PROFILE_PREFERS_BASELINE",
+      "id": "I16"
+    },
+    {
+      "actual": "PASS",
+      "expected": "NPC1 follows; NPC2 safety refusal; NPC3 profile refusal from same Guidance",
+      "id": "I17"
+    },
+    {
+      "actual": "PASS",
+      "expected": "Player kills focused B before NPC slot; NPC chooses living A",
+      "id": "I18"
+    },
+    {
+      "actual": "PASS",
+      "expected": "Focus dies after lock; no retarget/damage; FOLLOWED retained and actual SKIP HP0",
+      "id": "I19"
+    },
+    {
+      "actual": "PASS",
+      "expected": "system invalidation refreshes UI NONE/revision and removes enemy; stale request rejected",
+      "id": "I20"
+    },
+    {
+      "actual": "PASS",
+      "expected": "nested Guidance/UI/token data detached; unavailable NPC metadata explains actual base SKIP",
+      "id": "I22"
+    },
+    {
+      "actual": "PASS",
+      "expected": "Guided Restart WINDUP: fresh generation/NONE/rev0; delayed old callbacks inert",
+      "id": "I23"
+    },
+    {
+      "actual": "PASS",
+      "expected": "Guided Restart IMPACT: fresh generation/NONE/rev0; delayed old callbacks inert",
+      "id": "I24"
+    },
+    {
+      "actual": "PASS",
+      "expected": "Guided Restart RETURN: fresh generation/NONE/rev0; delayed old callbacks inert",
+      "id": "I25"
+    },
+    {
+      "actual": "PASS",
+      "expected": "forged Guided metadata rejected even when controller cache matches; old generation/token callbacks covered I23-25",
+      "id": "I26"
+    },
+    {
+      "actual": "PASS",
+      "expected": "Guided victory/defeat clear Guidance, lock inputs and present result",
+      "id": "I27"
+    },
+    {
+      "actual": "PASS",
+      "expected": "HELP +4/use once and self Guard next-hit semantics; duplicate impacts inert",
+      "id": "I28"
+    },
+    {
+      "actual": "PASS",
+      "expected": "1280x720 independent controls/hitboxes; explicit keyboard focus cycle; scrollable log clear of commands (visual acceptance separate)",
+      "id": "I29"
+    },
+    {
+      "actual": "PASS",
+      "expected": "all response/reason codes from Layer mapped to Thai/English outside policy",
+      "id": "I30"
+    },
+    {
+      "actual": "PASS",
+      "expected": "independent response rows survive later slots/effects",
+      "id": "I31"
+    },
+    {
+      "actual": "PASS",
+      "expected": "direct Legacy F6 has only Legacy authority and no Guidance controls",
+      "id": "I32"
+    },
+    {
+      "actual": "PASS",
+      "expected": "18 paired real-Main NONE rounds vs unchanged unguided base: decisions/effects/HP/HELP/Guard/queue/revision/terminal equal; normalize independent identities and extension metadata only",
+      "id": "I33"
+    },
+    {
+      "actual": "PASS",
+      "expected": "0.70 speed/44px lunge/Compact Formation/saved homes unchanged; real-Tween inherited matrix also runs",
+      "id": "I34"
+    },
+    {
+      "id": "I35",
+      "expected": "All inherited checks retained; 6 Legacy cases/5892 frames exact; configured startup/rollback pass",
+      "actual": "PASS"
+    },
+    {
+      "id": "I36",
+      "expected": "All stages exit0, no timeout or unexpected errors; five expected negative errors",
+      "actual": "PASS"
+    }
+  ]
+}
