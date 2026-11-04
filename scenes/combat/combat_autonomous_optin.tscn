@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/combat/combat_prototype.tscn" id="1"]
+
+[node name="CombatAutonomousOptin" instance=ExtResource("1")]
+session_mode = 1

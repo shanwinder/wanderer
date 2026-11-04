@@ -12,6 +12,12 @@ var _target: Dictionary = {}
 var _settings: Dictionary = {}
 var _on_impact: Callable
 var _on_complete: Callable
+var _action: String = ""
+var _facing: float = 1.0
+var _impact_at: float = 0.0
+var _complete_at: float = 0.0
+var _return_at: float = 0.0
+var _feedback: Dictionary = {}
 
 
 func cancel() -> void:
@@ -27,6 +33,8 @@ func cancel() -> void:
 	_settings.clear()
 	_on_impact = Callable()
 	_on_complete = Callable()
+	_action = ""
+	_feedback.clear()
 
 
 # Append the identical two pose steps to Player, NPC or Enemy's existing Tween.
@@ -147,4 +155,132 @@ func _complete(epoch: int, actor: String, target: String) -> void:
 	_actor.clear()
 	_target.clear()
 	_settings.clear()
+	callback.call()
+
+
+# M2D-03: same Main presentation values, generalized views and actual-effect feedback.
+# No Encounter/HP/decision policy lives here. Impact returns only visual facts.
+func play_action(owner: Node, actor: String, target: String, action: String,
+	actor_view: Dictionary, target_view: Dictionary, configuration: Dictionary,
+	impact: Callable, completed: Callable) -> Tween:
+	cancel()
+	actor_id = actor
+	target_id = target
+	_action = action
+	_actor = actor_view.duplicate()
+	_target = target_view.duplicate()
+	_settings = configuration.duplicate()
+	_on_impact = impact
+	_on_complete = completed
+	_facing = -1.0 if actor_view.enemy else 1.0
+	phase = "WINDUP"
+	_motion = owner.create_tween().set_speed_scale(clampf(_settings.speed, 0.45, 1.0))
+	_motion.set_trans(Tween.TRANS_SINE)
+	if action == "ATTACK":
+		_motion.tween_property(_actor.root, "position",
+			_actor.home + Vector2(_facing * _settings.SHORT_LUNGE_DISTANCE, 0), _settings.SHORT_LUNGE_TIME).set_ease(Tween.EASE_OUT)
+		_motion.parallel().tween_property(_actor.sprite, "modulate",
+			Color(1.25, 0.95, 0.80) if actor_view.enemy else
+			(Color(1.25, 1.15, 1.05) if actor == "player" else _settings.NPC_ACTIVE_TINT), _settings.SHORT_LUNGE_TIME)
+		_motion.parallel().tween_property(_actor.sprite, "scale",
+			_actor.scale * _settings.ACTIVE_SPRITE_SCALE_FACTOR, _settings.SHORT_LUNGE_TIME)
+		_impact_at = _settings.SHORT_LUNGE_TIME
+		if actor != "player" and not actor_view.enemy:
+			_motion.tween_interval(_settings.NPC_STAGE_HOLD_TIME)
+			_impact_at += _settings.NPC_STAGE_HOLD_TIME
+		append_attack_pose(_motion, _actor.sprite, _actor.sprite_home, _facing, _settings)
+		_impact_at += _settings.ATTACK_POSE_WINDUP_TIME + _settings.ATTACK_POSE_STRIKE_TIME
+	elif action == "DEFEND":
+		_motion.tween_property(_actor.sprite, "position",
+			_actor.sprite_home + _settings.PLAYER_DEFEND_BRACE_OFFSET, _settings.PLAYER_DEFEND_BRACE_TIME)
+		_motion.parallel().tween_property(_actor.sprite, "scale",
+			_actor.scale * _settings.PLAYER_DEFEND_BRACE_SCALE, _settings.PLAYER_DEFEND_BRACE_TIME)
+		_motion.parallel().tween_property(_actor.sprite, "modulate",
+			_settings.PLAYER_DEFEND_BRACE_TINT, _settings.PLAYER_DEFEND_BRACE_TIME)
+		_impact_at = _settings.PLAYER_DEFEND_BRACE_TIME
+	else:
+		# HELP stays home; SKIP waits without a strike or fabricated hit.
+		_motion.tween_property(_actor.sprite, "modulate",
+			Color("9bffb3") if action == "HELP" else _actor.tint, _settings.GUARD_POSE_RAISE_TIME)
+		_impact_at = _settings.GUARD_POSE_RAISE_TIME
+	_motion.tween_callback(_action_impact.bind(visual_epoch, actor_id, target_id))
+	_append_action_recovery(visual_epoch, actor_id, target_id)
+	return _motion
+
+
+func _action_impact(epoch: int, actor: String, target: String) -> void:
+	if not _current(epoch, actor, target, "WINDUP") or _motion.get_total_elapsed_time() < _impact_at:
+		return
+	phase = "IMPACT"
+	var callback: Callable = _on_impact
+	_on_impact = Callable()
+	var feedback: Dictionary = callback.call()
+	if _current(epoch, actor, target, "IMPACT"):
+		_feedback = feedback.duplicate()
+
+
+# Build the whole Tween before it starts. The reaction method reads visual feedback
+# AFTER impact, so an invalidated locked target receives no fake hit or recoil.
+func _append_action_recovery(epoch: int, actor: String, target: String) -> void:
+	var reaction_time: float
+	if _action == "ATTACK":
+		reaction_time = _settings.PLAYER_HIT_TIME if _actor.enemy else \
+			(_settings.ENEMY_HIT_TIME if actor == "player" else _settings.NPC_ATTACK_HIT_TIME)
+		_motion.tween_method(_action_reaction.bind(epoch, actor, target), 0.0, 1.0, reaction_time)
+		_motion.parallel().tween_property(_actor.sprite, "position", _actor.sprite_home, reaction_time)
+		var hold: float = _settings.ENEMY_COUNTER_HOLD_TIME if _actor.enemy else \
+			(_settings.HIT_HOLD_TIME if actor == "player" else 0.0)
+		if hold > 0:
+			_motion.tween_interval(hold)
+		reaction_time += hold
+	else:
+		reaction_time = _settings.PLAYER_DEFEND_HOLD_TIME if _action == "DEFEND" else _settings.NPC_STAGE_HOLD_TIME
+		_motion.tween_interval(reaction_time)
+	_return_at = _impact_at + reaction_time
+	_motion.tween_callback(_action_return.bind(epoch, actor, target))
+	var return_time: float = _settings.SHORT_LUNGE_RETURN_TIME
+	if _action == "DEFEND":
+		return_time = _settings.PLAYER_DEFEND_RECOVER_TIME
+	elif _action != "ATTACK":
+		return_time = _settings.GUARD_POSE_RETURN_TIME
+	_motion.tween_property(_actor.root, "position", _actor.home, return_time)
+	_motion.parallel().tween_property(_actor.sprite, "position", _actor.sprite_home, return_time)
+	_motion.parallel().tween_property(_actor.sprite, "scale", _actor.scale, return_time)
+	_motion.parallel().tween_property(_actor.sprite, "modulate", _actor.tint, return_time)
+	if _target.root != _actor.root:
+		_motion.parallel().tween_property(_target.root, "position", _target.home, return_time)
+		_motion.parallel().tween_property(_target.sprite, "scale", _target.scale, return_time)
+		_motion.parallel().tween_property(_target.sprite, "modulate", _target.tint, return_time)
+	_motion.tween_interval(_settings.ACTION_HANDOFF_PAUSE)
+	_complete_at = _return_at + return_time + _settings.ACTION_HANDOFF_PAUSE
+	_motion.tween_callback(_action_complete.bind(epoch, actor, target))
+
+
+func _action_reaction(weight: float, epoch: int, actor: String, target: String) -> void:
+	if not _current(epoch, actor, target, "IMPACT") or not _feedback.get("hit", false):
+		return
+	var guarded: bool = _feedback.get("guarded", false)
+	var recoil: float = _settings.ENEMY_RECOIL_DISTANCE
+	if _actor.enemy:
+		recoil = _settings.GUARDED_HIT_RECOIL_DISTANCE if guarded else _settings.PLAYER_HIT_RECOIL_DISTANCE
+	_target.root.position = _target.home.lerp(_target.home + Vector2(_facing * recoil, 0), weight)
+	_target.sprite.modulate = _target.tint.lerp(_settings.PLAYER_DEFEND_BRACE_TINT if guarded else Color(1, 0.55, 0.55), weight)
+	_target.sprite.scale = _target.scale.lerp(_target.scale * (_settings.GUARDED_HIT_SQUASH if guarded else _settings.IMPACT_SPRITE_SQUASH), weight)
+
+
+func _action_return(epoch: int, actor: String, target: String) -> void:
+	if _current(epoch, actor, target, "IMPACT") and _motion.get_total_elapsed_time() >= _return_at:
+		phase = "RETURN"
+
+
+func _action_complete(epoch: int, actor: String, target: String) -> void:
+	if not _current(epoch, actor, target, "RETURN") or _motion.get_total_elapsed_time() < _complete_at:
+		return
+	if _actor.root.position != _actor.home or _target.root.position != _target.home \
+		or _actor.sprite.position != _actor.sprite_home:
+		return
+	phase = "COMPLETED"
+	_motion = null
+	var callback: Callable = _on_complete
+	_on_complete = Callable()
 	callback.call()
