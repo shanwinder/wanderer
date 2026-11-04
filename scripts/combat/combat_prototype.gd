@@ -2,6 +2,7 @@ extends Control
 
 const CombatTurnFlow = preload("res://scripts/combat/combat_turn_flow.gd")
 const CombatTargets = preload("res://scripts/combat/combat_targets.gd")
+const CombatPresentationAdapter = preload("res://scripts/combat/combat_presentation_adapter.gd")
 
 # 1.0 = จังหวะเดิม, 0.70 = Motion/Feedback ใช้เวลานานขึ้นประมาณ 43%
 # ใช้ค่ากลางเดียวกันทุก Tween เพื่อปรับความเร็วในการทดลองได้จาก Inspector
@@ -121,6 +122,7 @@ var active_action_target_id: String = ""
 
 # ล็อกคำสั่งระหว่าง Motion ทั้งสองฝ่าย เพื่อไม่ให้ HP คลาดเคลื่อน
 var action_in_progress: bool = false
+var presentation_adapter = CombatPresentationAdapter.new()
 var action_tween: Tween
 var player_home: Vector2
 var enemy_home: Vector2
@@ -341,22 +343,35 @@ func _pace_tween(tween: Tween) -> Tween:
 func _queue_attack_pose(
 	actor_sprite: Node2D, base_position: Vector2, facing_direction: float
 ) -> void:
-	action_tween.tween_property(
-		actor_sprite, "position",
-		base_position + Vector2(-facing_direction * ATTACK_POSE_WINDUP_DISTANCE, 0.0),
-		ATTACK_POSE_WINDUP_TIME
-	).set_ease(Tween.EASE_OUT)
-	action_tween.tween_property(
-		actor_sprite, "position",
-		base_position + Vector2(facing_direction * ATTACK_POSE_STRIKE_DISTANCE, 0.0),
-		ATTACK_POSE_STRIKE_TIME
-	).set_ease(Tween.EASE_OUT)
+	presentation_adapter.append_attack_pose(
+		action_tween, actor_sprite, base_position, facing_direction, _presentation_settings())
+
+
+# Presentation-only values from the accepted Main Combat baseline (not proof timing).
+func _presentation_settings() -> Dictionary:
+	return {
+		"speed": combat_speed_scale,
+		"SHORT_LUNGE_DISTANCE": SHORT_LUNGE_DISTANCE,
+		"SHORT_LUNGE_TIME": SHORT_LUNGE_TIME,
+		"SHORT_LUNGE_RETURN_TIME": SHORT_LUNGE_RETURN_TIME,
+		"ACTIVE_SPRITE_SCALE_FACTOR": ACTIVE_SPRITE_SCALE_FACTOR,
+		"ATTACK_POSE_WINDUP_DISTANCE": ATTACK_POSE_WINDUP_DISTANCE,
+		"ATTACK_POSE_STRIKE_DISTANCE": ATTACK_POSE_STRIKE_DISTANCE,
+		"ATTACK_POSE_WINDUP_TIME": ATTACK_POSE_WINDUP_TIME,
+		"ATTACK_POSE_STRIKE_TIME": ATTACK_POSE_STRIKE_TIME,
+		"ENEMY_RECOIL_DISTANCE": ENEMY_RECOIL_DISTANCE,
+		"ENEMY_HIT_TIME": ENEMY_HIT_TIME,
+		"IMPACT_SPRITE_SQUASH": IMPACT_SPRITE_SQUASH,
+		"HIT_HOLD_TIME": HIT_HOLD_TIME,
+		"ACTION_HANDOFF_PAUSE": ACTION_HANDOFF_PAUSE,
+	}
 
 
 # -----------------------------------------------------------------------------
 # เริ่มการต่อสู้ใหม่
 # -----------------------------------------------------------------------------
 func _start_new_battle() -> void:
+	presentation_adapter.cancel()
 	# กด Restart ระหว่าง Motion ของฝ่ายใดก็ได้: ยกเลิก Tween และคืน Sprite
 	if action_tween != null and action_tween.is_valid():
 		action_tween.kill()
@@ -476,59 +491,15 @@ func _on_attack_button_pressed() -> void:
 		turn_number, String(player_action["intent"])
 	])
 
-	# Tween เป็นเพียง Presentation; ความเสียหายยังใช้ค่าเดิม
-	action_tween = _pace_tween(create_tween())
-	action_tween.set_trans(Tween.TRANS_SINE)
-	action_tween.tween_property(
-		player_root, "position", player_home + Vector2(SHORT_LUNGE_DISTANCE, 0.0),
-		SHORT_LUNGE_TIME
-	).set_ease(Tween.EASE_OUT)
-	action_tween.parallel().tween_property(
-		player_sprite, "modulate", Color(1.25, 1.15, 1.05, 1.0), SHORT_LUNGE_TIME
-	)
-	# Player ชัดขึ้นในฐานะ Active Character ขณะพุ่งโจมตี
-	action_tween.parallel().tween_property(
-		player_sprite, "scale", player_sprite_base_scale * ACTIVE_SPRITE_SCALE_FACTOR,
-		SHORT_LUNGE_TIME
-	)
-
-	# Enemy A ยังอยู่ Formation; Player เตรียมและออกท่าที่จุดพุ่งสั้น ๆ
-	_queue_attack_pose(player_sprite, player_sprite_base_position, 1.0)
-	# หัก HP ที่ปลาย Strike ไม่ใช่ทันทีที่ Root เข้ากลางสนาม
-	action_tween.tween_callback(_apply_player_hit)
-	action_tween.tween_property(
-		active_enemy_root, "position", active_enemy_home + Vector2(ENEMY_RECOIL_DISTANCE, 0),
-		ENEMY_HIT_TIME
-	)
-	# กลับ Sprite ของผู้โจมตีหลัง Hit ขณะเป้าหมายสะดุ้ง
-	action_tween.parallel().tween_property(
-		player_sprite, "position", player_sprite_base_position, ENEMY_HIT_TIME
-	)
-	action_tween.parallel().tween_property(
-		active_enemy_sprite, "modulate", Color(1.0, 0.55, 0.55, 1.0), ENEMY_HIT_TIME
-	)
-	# Impact Punch ของเป้าหมายใช้ทิศทางกว้าง-เตี้ย แทนการย้าย Root เพิ่ม
-	action_tween.parallel().tween_property(
-		active_enemy_sprite, "scale", active_enemy_sprite_base_scale * IMPACT_SPRITE_SQUASH,
-		ENEMY_HIT_TIME
-	)
-
-	# ค้าง Hit Pose สั้น ๆ ให้ตาเห็นการปะทะ ก่อนถอยกลับเข้าที่
-	action_tween.tween_interval(HIT_HOLD_TIME)
-
-	# คืน Actor ไปตำแหน่งเดิมก่อนอนุญาตให้เล่นเทิร์นถัดไป
-	action_tween.tween_property(active_enemy_root, "position", active_enemy_home, SHORT_LUNGE_RETURN_TIME)
-	action_tween.parallel().tween_property(active_enemy_sprite, "modulate", active_enemy_base_tint, SHORT_LUNGE_RETURN_TIME)
-	action_tween.parallel().tween_property(player_root, "position", player_home, SHORT_LUNGE_RETURN_TIME)
-	action_tween.parallel().tween_property(player_sprite, "modulate", Color.WHITE, SHORT_LUNGE_RETURN_TIME)
-	action_tween.parallel().tween_property(
-		player_sprite, "scale", player_sprite_base_scale, SHORT_LUNGE_RETURN_TIME
-	)
-	action_tween.parallel().tween_property(
-		active_enemy_sprite, "scale", active_enemy_sprite_base_scale, SHORT_LUNGE_RETURN_TIME
-	)
-	action_tween.tween_interval(ACTION_HANDOFF_PAUSE)
-	action_tween.tween_callback(_finish_player_attack)
+	# Adapter schedules visuals; the original controller callbacks still own gameplay.
+	action_tween = presentation_adapter.play_player_attack(
+		self, CombatTargets.PLAYER_ID, active_action_target_id,
+		{"root": player_root, "sprite": player_sprite, "home": player_home,
+			"sprite_home": player_sprite_base_position, "scale": player_sprite_base_scale},
+		{"root": active_enemy_root, "sprite": active_enemy_sprite, "home": active_enemy_home,
+			"sprite_home": active_enemy_sprite_base_position, "scale": active_enemy_sprite_base_scale,
+			"tint": active_enemy_base_tint},
+		_presentation_settings(), _apply_player_hit, _finish_player_attack)
 
 
 func _apply_hit_to_active_enemy(damage: int, actor_name: String) -> void:
@@ -1297,3 +1268,7 @@ func _end_battle(player_won: bool) -> void:
 		_add_log("=== Player พ่ายแพ้ — การต่อสู้สิ้นสุด ===")
 
 	_add_log("กด 'เริ่มใหม่' เพื่อทดลองอีกครั้ง")
+
+
+func _exit_tree() -> void:
+	presentation_adapter.cancel()
