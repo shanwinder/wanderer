@@ -1,0 +1,353 @@
+{
+  "coverage": [
+    {
+      "actual": "PASS",
+      "evidence_cases": [
+        "C01-C04 configured Main entry"
+      ],
+      "expected": "Project Main resolves Autonomous",
+      "id": "C01",
+      "manual_gui": "PENDING owner F5/F6",
+      "mode": "HEADLESS"
+    },
+    {
+      "actual": "PASS",
+      "evidence_cases": [
+        "C01-C04 configured Main entry",
+        "S02 default Main scene / S20 isolation"
+      ],
+      "expected": "Configured entry creates only FullPartyEncounter; native F5 probe separately required",
+      "id": "C02",
+      "manual_gui": "PENDING owner F5/F6",
+      "mode": "HEADLESS"
+    },
+    {
+      "actual": "PASS",
+      "evidence_cases": [
+        "S01 opt-in startup / S22 Main presentation structure"
+      ],
+      "expected": "Normal NPC current/max HP10 each",
+      "id": "C03",
+      "manual_gui": "PENDING owner F5/F6",
+      "mode": "HEADLESS"
+    },
+    {
+      "actual": "PASS",
+      "evidence_cases": [
+        "S02 default Main scene / S20 isolation",
+        "C04/C08 detached ownership"
+      ],
+      "expected": "No Legacy HP/queue/targets, detached snapshots",
+      "id": "C04",
+      "manual_gui": "PENDING owner F5/F6",
+      "mode": "HEADLESS"
+    },
+    {
+      "actual": "PASS",
+      "evidence_cases": [
+        "S03/S04/S05/S21 differential ATTACK enemy_a",
+        "S03/S04/S05/S21 differential ATTACK enemy_b"
+      ],
+      "expected": "ATTACK A24/7/12; ATTACK B24/12/7",
+      "id": "C05",
+      "manual_gui": "PENDING owner F5/F6",
+      "mode": "HEADLESS"
+    },
+    {
+      "actual": "PASS",
+      "evidence_cases": [
+        "S03/S04/S05/S21 differential DEFEND enemy_a"
+      ],
+      "expected": "DEFEND28/12/12; reduction2 per valid enemy hit",
+      "id": "C06",
+      "manual_gui": "PENDING owner F5/F6",
+      "mode": "HEADLESS"
+    },
+    {
+      "actual": "PASS",
+      "evidence_cases": [
+        "S03/S04/S05/S21 differential ATTACK enemy_a",
+        "S03/S04/S05/S21 differential ATTACK enemy_b",
+        "S06/S07/S08/S09 decision fixture 1"
+      ],
+      "expected": "Three separate decisions at slot time; HELP changes later decisions",
+      "id": "C07",
+      "manual_gui": "PENDING owner F5/F6",
+      "mode": "HEADLESS"
+    },
+    {
+      "actual": "PASS",
+      "evidence_cases": [
+        "S06/S07/S08/S09 decision fixture 3",
+        "S13 effect-boundary race help_threshold",
+        "S13 effect-boundary race help_full",
+        "S13 effect-boundary race help_clamp",
+        "S13 effect-boundary race help_player_dead",
+        "C04/C08 detached ownership"
+      ],
+      "expected": "HELP4/clamp/once per NPC, no revival, RuntimeState ownership",
+      "id": "C08",
+      "manual_gui": "PENDING owner F5/F6",
+      "mode": "HEADLESS"
+    },
+    {
+      "actual": "PASS",
+      "evidence_cases": [
+        "S06/S07/S08/S09 decision fixture 2"
+      ],
+      "expected": "Self-DEFEND next valid self hit only",
+      "id": "C09",
+      "manual_gui": "PENDING owner F5/F6",
+      "mode": "HEADLESS"
+    },
+    {
+      "actual": "PASS",
+      "evidence_cases": [
+        "S03/S04/S05/S21 differential ATTACK enemy_a",
+        "S03/S04/S05/S21 differential ATTACK enemy_b",
+        "S03/S04/S05/S21 differential DEFEND enemy_a",
+        "S10/S11/S12/S14/S15 fixture 4",
+        "S10/S11/S12/S14/S15 fixture 9"
+      ],
+      "expected": "Enemy A/B separate actions; living enemy still responds",
+      "id": "C10",
+      "manual_gui": "PENDING owner F5/F6",
+      "mode": "HEADLESS"
+    },
+    {
+      "actual": "PASS",
+      "evidence_cases": [
+        "S10/S11/S12/S14/S15 fixture 7",
+        "S13 effect-boundary race target_dead",
+        "S13 effect-boundary race actor_dead",
+        "S13 effect-boundary race enemy_dead",
+        "S13 effect-boundary race enemy_target_dead",
+        "S13 effect-boundary race help_threshold",
+        "S13 effect-boundary race help_full",
+        "S13 effect-boundary race help_clamp",
+        "S13 effect-boundary race help_player_dead",
+        "C11 picker fallback"
+      ],
+      "expected": "Fallback before lock; dead actors SKIP; invalidated locked target not retargeted",
+      "id": "C11",
+      "manual_gui": "PENDING owner F5/F6",
+      "mode": "HEADLESS"
+    },
+    {
+      "actual": "PASS",
+      "evidence_cases": [
+        "S10/S11/S12/S14/S15 fixture 5",
+        "S10/S11/S12/S14/S15 fixture 6",
+        "S14 full kill order enemy_a",
+        "S14 full kill order enemy_b"
+      ],
+      "expected": "Victory/Defeat after return; terminal commands inert",
+      "id": "C12",
+      "manual_gui": "PENDING owner F5/F6",
+      "mode": "HEADLESS"
+    },
+    {
+      "actual": "PASS",
+      "evidence_cases": [
+        "S16/S17 Restart player / WINDUP",
+        "S16/S17 Restart npc_01 / WINDUP",
+        "S16/S17 Restart npc_02 / WINDUP",
+        "S16/S17 Restart npc_03 / WINDUP",
+        "S16/S17 Restart enemy_a / WINDUP",
+        "S16/S17 Restart enemy_b / WINDUP"
+      ],
+      "expected": "Restart WINDUP all six actors",
+      "id": "C13",
+      "manual_gui": "PENDING owner F5/F6",
+      "mode": "HEADLESS"
+    },
+    {
+      "actual": "PASS",
+      "evidence_cases": [
+        "S16/S17 Restart player / IMPACT",
+        "S16/S17 Restart npc_01 / IMPACT",
+        "S16/S17 Restart npc_02 / IMPACT",
+        "S16/S17 Restart npc_03 / IMPACT",
+        "S16/S17 Restart enemy_a / IMPACT",
+        "S16/S17 Restart enemy_b / IMPACT"
+      ],
+      "expected": "Restart after IMPACT all six actors",
+      "id": "C14",
+      "manual_gui": "PENDING owner F5/F6",
+      "mode": "HEADLESS"
+    },
+    {
+      "actual": "PASS",
+      "evidence_cases": [
+        "S16/S17 Restart player / RETURN",
+        "S16/S17 Restart npc_01 / RETURN",
+        "S16/S17 Restart npc_02 / RETURN",
+        "S16/S17 Restart npc_03 / RETURN",
+        "S16/S17 Restart enemy_a / RETURN",
+        "S16/S17 Restart enemy_b / RETURN"
+      ],
+      "expected": "Restart RETURN all six actors",
+      "id": "C15",
+      "manual_gui": "PENDING owner F5/F6",
+      "mode": "HEADLESS"
+    },
+    {
+      "actual": "PASS",
+      "evidence_cases": [
+        "S18 stale/forged/early/duplicate callbacks",
+        "S16/S17 Restart player / WINDUP",
+        "S16/S17 Restart player / IMPACT",
+        "S16/S17 Restart player / RETURN",
+        "S16/S17 Restart npc_01 / WINDUP",
+        "S16/S17 Restart npc_01 / IMPACT",
+        "S16/S17 Restart npc_01 / RETURN",
+        "S16/S17 Restart npc_02 / WINDUP",
+        "S16/S17 Restart npc_02 / IMPACT",
+        "S16/S17 Restart npc_02 / RETURN",
+        "S16/S17 Restart npc_03 / WINDUP",
+        "S16/S17 Restart npc_03 / IMPACT",
+        "S16/S17 Restart npc_03 / RETURN",
+        "S16/S17 Restart enemy_a / WINDUP",
+        "S16/S17 Restart enemy_a / IMPACT",
+        "S16/S17 Restart enemy_a / RETURN",
+        "S16/S17 Restart enemy_b / WINDUP",
+        "S16/S17 Restart enemy_b / IMPACT",
+        "S16/S17 Restart enemy_b / RETURN",
+        "S16/S17 reentrant/terminal Restart 0",
+        "S16/S17 reentrant/terminal Restart 5",
+        "S16/S17 reentrant/terminal Restart 6"
+      ],
+      "expected": "Stale/forged/duplicate callbacks inert including new actionID1",
+      "id": "C16",
+      "manual_gui": "PENDING owner F5/F6",
+      "mode": "HEADLESS"
+    },
+    {
+      "actual": "PASS",
+      "evidence_cases": [
+        "S02 default Main scene / S20 isolation"
+      ],
+      "expected": "Direct Legacy scene starts Legacy with no Encounter; GUI F6 pending",
+      "id": "C17",
+      "manual_gui": "PENDING owner F5/F6",
+      "mode": "HEADLESS"
+    },
+    {
+      "actual": "PASS",
+      "evidence_cases": [
+        "S03/S04/S05/S21 differential ATTACK enemy_a",
+        "S03/S04/S05/S21 differential ATTACK enemy_b",
+        "S03/S04/S05/S21 differential DEFEND enemy_a"
+      ],
+      "expected": "Legacy HP/Guard/queue unchanged; full regression/trace gate separately required",
+      "id": "C18",
+      "manual_gui": "PENDING owner F5/F6",
+      "mode": "HEADLESS"
+    },
+    {
+      "actual": "PASS",
+      "evidence_cases": [
+        "S01 opt-in startup / S22 Main presentation structure"
+      ],
+      "expected": "Main speed0.70/44px/formation/home/idle/shadows/depth/B/result structure; visual gate pending",
+      "id": "C19",
+      "manual_gui": "PENDING owner F5/F6",
+      "mode": "HEADLESS"
+    },
+    {
+      "id": "C20",
+      "expected": "Fresh process and Legacy config restore HP/Guard/queue without session conversion",
+      "actual": "PASS",
+      "evidence": "rollback.json"
+    },
+    {
+      "id": "C21",
+      "expected": "Every stage PASS, no timeout/unexpected errors; negative exactly five expected",
+      "actual": "PASS",
+      "evidence": "results.json"
+    },
+    {
+      "id": "C22",
+      "expected": "All 11 inherited suite counts retained; 6 cases/5892 Legacy frames identical",
+      "actual": "PASS",
+      "evidence": "trace-comparison.json / counts"
+    }
+  ],
+  "counts": [
+    {
+      "suite": "gameplay",
+      "expected_minimum": 14395,
+      "actual": 14395,
+      "status": "PASS"
+    },
+    {
+      "suite": "invalid-actions",
+      "expected_minimum": 983,
+      "actual": 983,
+      "status": "PASS"
+    },
+    {
+      "suite": "npc-proof",
+      "expected_minimum": 412,
+      "actual": 412,
+      "status": "PASS"
+    },
+    {
+      "suite": "npc-playable",
+      "expected_minimum": 5166,
+      "actual": 5166,
+      "status": "PASS"
+    },
+    {
+      "suite": "actor-proof",
+      "expected_minimum": 122,
+      "actual": 122,
+      "status": "PASS"
+    },
+    {
+      "suite": "ownership-proof",
+      "expected_minimum": 219,
+      "actual": 219,
+      "status": "PASS"
+    },
+    {
+      "suite": "party-foundation-proof",
+      "expected_minimum": 382,
+      "actual": 382,
+      "status": "PASS"
+    },
+    {
+      "suite": "party-turn-proof",
+      "expected_minimum": 1250,
+      "actual": 1250,
+      "status": "PASS"
+    },
+    {
+      "suite": "party-playable-proof",
+      "expected_minimum": 260800,
+      "actual": 260800,
+      "status": "PASS"
+    },
+    {
+      "suite": "presentation-proof",
+      "expected_minimum": 8319,
+      "actual": 8319,
+      "status": "PASS"
+    },
+    {
+      "suite": "autonomous-main-proof",
+      "expected_minimum": 787617,
+      "actual": 787617,
+      "status": "PASS"
+    }
+  ],
+  "trace_comparison": {
+    "expected": "Exact Legacy trace equality to pre-cutover merged base",
+    "cases": 6,
+    "frames": 5892,
+    "actual": "PASS"
+  },
+  "baseline": "/private/tmp/wanderer-m2d-04-baseline-20261104-2",
+  "manual_owner_f5_f6": "PENDING",
+  "merge_authorized": false
+}

@@ -1,0 +1,223 @@
+{
+  "date": "2026-11-04",
+  "timezone": "Asia/Bangkok",
+  "task": "M2D-04 Autonomous Main Combat Default Cutover & Release Safety",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "godot": "/Applications/Godot.app/Contents/MacOS/Godot",
+  "git_baseline": {
+    "working_tree": "clean before work",
+    "branch": "visual-combat-test-1",
+    "local_head": "1728c5e678c5065278d1251d50449a8820eb5dae",
+    "remote_head": "1728c5e678c5065278d1251d50449a8820eb5dae",
+    "merge_base": "1728c5e678c5065278d1251d50449a8820eb5dae",
+    "pr39": "GitHub connector confirmed merged; local merge commit agrees",
+    "open_prs": [
+      2,
+      17
+    ],
+    "duplicate_m2d04": "none at initial check",
+    "fetch": "successful with required network access; initial sandbox DNS failure retained in transcript"
+  },
+  "feature_branch": "codex/m2d-04-autonomous-main-cutover",
+  "target_branch": "visual-combat-test-1",
+  "tested_commit": "e802e62aa1debcf66b0d4359a2361e1960428f9f",
+  "final_head": "Resolve from Draft PR; post-tested changes restricted to docs/evidence; source-comparison.json verifies all 81 hashes",
+  "baseline": {
+    "output": "/private/tmp/wanderer-m2d-04-baseline-20261104-2",
+    "commit": "1728c5e678c5065278d1251d50449a8820eb5dae",
+    "stages": 44,
+    "actual": "PASS",
+    "runner_exit": 0,
+    "expected": "All inherited suites, clean import/parse/configured startup pass before any edit"
+  },
+  "final": {
+    "output": "/private/tmp/wanderer-m2d-04-final-20261104-1",
+    "stages": 52,
+    "actual": "PASS",
+    "runner_exit": 0,
+    "cutover_checks": 801351,
+    "cutover_cases": 48,
+    "release_gates": "C01-C22 PASS HEADLESS",
+    "timeouts": 0,
+    "unexpected_errors": 0,
+    "expected_negative_errors": 5
+  },
+  "commands": {
+    "baseline": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m2d-04-baseline-20261104-2 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof",
+    "final": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m2d-04-final-20261104-1 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --cutover-baseline /tmp/wanderer-m2d-04-baseline-20261104-2"
+  },
+  "startup_gate": {
+    "native_configured_entry": "PASS via read-only snapshot autoload observer, no --script or explicit scene; separate unmodified startup stage also passes",
+    "scene": "res://scenes/combat/combat_autonomous_optin.tscn",
+    "session_mode": 1,
+    "normal_npc_hp": [
+      10,
+      10,
+      10
+    ],
+    "legacy_hp_queue_targets": "null",
+    "owner_f5": "PENDING"
+  },
+  "rollback": {
+    "actual": "PASS",
+    "process": "Stop candidate process, separate fresh copy without .godot, restore Legacy main config, clean import, native configured startup, full Legacy regression",
+    "checks": 14395,
+    "candidate_config_preserved": true,
+    "session_conversion": false
+  },
+  "legacy_trace_comparison": {
+    "actual": "PASS",
+    "cases": 6,
+    "frames": 5892,
+    "comparison": "exact before/after frame arrays"
+  },
+  "intentional_differentials": {
+    "ATTACK A": {
+      "legacy": [
+        25,
+        8,
+        12
+      ],
+      "autonomous": [
+        24,
+        7,
+        12
+      ]
+    },
+    "ATTACK B": {
+      "legacy": [
+        25,
+        15,
+        5
+      ],
+      "autonomous": [
+        24,
+        12,
+        7
+      ]
+    },
+    "DEFEND": {
+      "legacy": [
+        28,
+        12,
+        12
+      ],
+      "autonomous": [
+        28,
+        12,
+        12
+      ]
+    },
+    "expected_equals_actual": true
+  },
+  "development": {
+    "first_baseline_attempt": "FAIL import: sandbox blocked Godot editor settings/certificate access; no production edits before successful rerun",
+    "first_baseline_results": [
+      {
+        "step": "version",
+        "status": "PASS",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2d-04-baseline-20261104-1/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2d-04-baseline-20261104-1/version.engine.log",
+          "--version"
+        ],
+        "errors": [],
+        "log": "version.log"
+      },
+      {
+        "step": "import",
+        "status": "FAIL",
+        "exit_code": 0,
+        "timed_out": false,
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/private/tmp/wanderer-m2d-04-baseline-20261104-1/snapshot",
+          "--log-file",
+          "/private/tmp/wanderer-m2d-04-baseline-20261104-1/import.engine.log",
+          "--editor",
+          "--import"
+        ],
+        "errors": [
+          "Condition \"ret != noErr\" is true. Returning: \"\"",
+          "Cannot save file '/Users/depa/Library/Application Support/Godot/editor_settings-4.7.tres'.",
+          "Error saving editor settings to /Users/depa/Library/Application Support/Godot/editor_settings-4.7.tres"
+        ],
+        "log": "import.log"
+      }
+    ],
+    "development_candidate": "52 stages PASS; no runtime changes after final tested commit; imported UID files copied before final commit/run",
+    "raw_logs": "logs.zip"
+  },
+  "agent_gui": {
+    "status": "PARTIAL; not owner acceptance",
+    "snapshot": "/tmp/wanderer-m2d-04-development-20261104-1/snapshot",
+    "source_identity": "config/runtime/tests match tested commit; final source manifest matches 81 files",
+    "engine": "4.7.2.stable.official.ed1daf0bf",
+    "launch": "/Applications/Godot.app/Contents/MacOS/Godot --editor --path /tmp/wanderer-m2d-04-development-20261104-1/snapshot --log-file /tmp/wanderer-m2d-04-gui-editor.log",
+    "entry_action": "Run Project toolbar (F5 action); initial F5 key alone did not start, then toolbar started real configured entry",
+    "viewport": "project 1280x720; embedded game 1278x719 at 1.0x with black border",
+    "observations": [
+      {
+        "scenario": "Normal startup",
+        "expected": "Player30/NPC10x3/A15/B12; HELP1 each; waiting reasons; original formation",
+        "actual": "Observed"
+      },
+      {
+        "scenario": "Target B then ATTACK",
+        "expected": "Player24/A12/B7; NPCs independently target A; commands unlock round2",
+        "actual": "Observed including Player hit B at impact -5 and final HP24/12/7"
+      },
+      {
+        "scenario": "Restart then DEFEND",
+        "expected": "fresh normal HP; guard each valid hit; final28/12/12",
+        "actual": "Observed GUARD then final28/12/12 and unlocked controls"
+      },
+      {
+        "scenario": "Player needs HELP then DEFEND",
+        "expected": "NPC1 HELP+4/resource0, NPC2/3 ATTACK, final8/13/12",
+        "actual": "Observed reason/green actor cue, final8/13/12, NPC1 HELP0/NPC2-3 HELP1"
+      },
+      {
+        "scenario": "Victory preset then ATTACK and Restart",
+        "expected": "lethal impact then return before result; Restart accessible",
+        "actual": "Observed impact before panel, then readable victory panel and working Restart to fresh selected fixture"
+      }
+    ],
+    "not_checked": [
+      "F6 Autonomous GUI",
+      "F6 Legacy GUI",
+      "full self-DEFEND/defeat/dead-slot GUI matrix",
+      "all six actor Restart phases by GUI",
+      "video-measured pacing and exact pixel lunge by GUI"
+    ],
+    "presentation": "Original compact formation, Player idle frames and B identity visible; complete motion/readability acceptance remains owner gate",
+    "evidence": "screenshots in tool transcript plus raw editor log; no durable screenshots/video exported",
+    "cleanup": "closed agent-started debug session and disposable editor; editor exit0"
+  },
+  "owner_acceptance": {
+    "m2d03": "Owner-Reported F6 Acceptance from user task, without independent scenario record",
+    "m2d04_f5": "PENDING",
+    "m2d04_f6_autonomous": "PENDING",
+    "m2d04_f6_legacy": "PENDING"
+  },
+  "known_limitations": [
+    "Short battle log area",
+    "English NPC reason text",
+    "Translucent result panel",
+    "Inherited title/preset still says OPT-IN",
+    "Agent GUI is partial, not owner acceptance"
+  ],
+  "scope": "Configuration/tests/docs/evidence only; no gameplay runtime/scene tree/assets/lore/balance changes",
+  "merge_authorized": false,
+  "auto_merge": false,
+  "next_milestone_started": false,
+  "stop": "After one Draft PR, wait for code review and owner visual acceptance"
+}
