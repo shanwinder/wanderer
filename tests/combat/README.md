@@ -358,6 +358,9 @@ M2B-03deferred. หยุดหลังDraftPR; ไม่merge/enableauto-merge
 
 ## M2D-02 — Combat Presentation Adapter Foundation
 
+ส่วนนี้เป็นบันทึก checkpoint ของ M2D-02 ก่อน merge PR #38; สถานะปัจจุบันและการอนุมัติ M2D-03
+อยู่ใน [documentation index](../../docs/README.md#current-status-and-next-roadmap) และหัวข้อ M2D-03 ด้านล่าง.
+
 งานวันที่ **4 พฤศจิกายน 2026 Asia/Bangkok**. ฐาน/merge-base/local/remote HEAD ตรงกันที่
 `08f2a973ed39449b4afaeb0dbf88bf5264b01335` หลัง PR #37; working tree สะอาดก่อนเริ่ม,
 fetch และตรวจ open PRs #2/#17 แล้วไม่มีงาน M2D-02 ซ้ำ. Branch
@@ -534,3 +537,212 @@ Tested source/test commit **`84c80d5119c0cdb5f30b920202f63674aaf18009`**.
 9. **ช่วย M2D-03 อย่างไร:** contractภาพตอนนี้ไม่ต้องพึ่งHP/Encounter. งานในอนาคตอาจส่ง
    callbackจาก authorityอื่นหลังได้รับapproval โดยตรวจimpact/returnได้แยกกัน.
    ปัจจุบันยังส่งLegacy callbacksเท่านั้น; shared poseไม่ทำให้NPCเป็นautonomousหรือเริ่มcutover.
+
+## M2D-03 — Opt-in Main Autonomous Combat
+
+วันที่ **4 พฤศจิกายน 2026 Asia/Bangkok**. เจ้าของอนุมัติ D1–D13 สำหรับ Migration นี้โดยตรง
+พร้อม Normal Opt-in NPC HP **10/10/10**, max10ต่อคน. งานบน
+`codex/m2d-03-autonomous-main-optin` เพื่อ Draft review เท่านั้น.
+สถานะ milestone อยู่ที่ [documentation index](../../docs/README.md#current-status-and-next-roadmap).
+PR #38 merge จริงที่ `c0dcc33f0ab89c8187b9cb0c025138b447a8c7e2`;
+M2D-02 **Implemented / Owner-Reported Acceptance** ตาม owner task ไม่เท่ากับ independent visual acceptance.
+
+### Approved decisions และ behavior
+
+| Decision | สิ่งที่ทำใน Opt-in / ผลต่อ gameplay |
+| --- | --- |
+| D1 Authority/Adapter | Main Controller เรียก Encounter public API; Adapter จัดภาพและส่ง callback |
+| D2 TurnFlow | สร้างเฉพาะ Legacy; Opt-in ไม่มี Legacy queue instance |
+| D3 Targets | Legacy ใช้ CombatTargets; Opt-in อ่าน available IDs จาก Encounter |
+| D4 NPC2 | ใช้ Resolver เช่น NPCอื่น ไม่มี scripted Guard Player |
+| D5 Enemy target | Normal A/Bเล็งPlayer; NPC threat ใช้ presetประกาศชัดก่อนรอบ |
+| D6 Guard | Playerลด2ทุกvalid hitในรอบ; NPCลด2เฉพาะnext valid self hit, ขั้นต่ำ1 |
+| D7 HP | ActorRuntimeState ผ่าน Registry เป็นเจ้าของ; Legacy HPเป็นnullในOpt-in |
+| D8 Callback | Encounter identity/generation/full token/decision/state + visual epoch/phase/IDs/Tween/node lifetime |
+| D9 Presentation | Main scene/assets/idle/shadow/depth/B identity, speed0.70, 44px และ Main timing constants |
+| D10 Entry | thin inherited `combat_autonomous_optin.tscn`, modeก่อน_ready; default Legacy |
+| D11 Rollback | หยุดOpt-inแล้วเปิดLegacyเริ่มbattleใหม่; ไม่แปลงHP/queueกลางรอบ |
+| D12 Acceptance | Automated regression + Owner F6; headlessไม่ปิดvisual gate |
+| D13 Prototype | Player30, A15/B12, damage5/1/3, HELP4ต่อNPCหนึ่งครั้ง; NPC10/10/10 max10 |
+
+NPCเลือกศัตรูตัวแรกที่ยังพร้อมตาม Enemy Order เมื่อถึง slot จริง. Player Target Picker เป็นคำสั่งของ
+Playerเท่านั้น. HELPตรวจ≤30%ที่decision ไม่ตรวจthresholdซ้ำที่impact; ไม่ฟื้นPlayer HP0และไม่เกินmax.
+Self-DEFENDอ่านfirst still-valid declared hitตามResolverเดิม. Preset M2C HP10/7/3อยู่แยก;
+ทุกตัวเลขเป็น prototype ไม่ใช่ final Main balance. ไม่แก้Encounter/Resolver/Registry/RuntimeState policy.
+
+### Git baseline และ file scope
+
+Initial treeสะอาด, fetchแล้ว local/remote/merge-baseตรง `c0dcc33`; PR #38merged;
+open PR #2/#17ยังDraft/unmergedและไม่เป็นcanonical. ไม่พบM2D-03 branch/PRซ้ำ.
+อ่านMain/proof/Encounter/Resolver/data/testsและเอกสารv0.1/v0.3/v0.4ก่อนImplementation.
+M2D-01อ้างอิงจากowner-approved proposalและmerged M2D-02 contract; ไม่มีoriginal design reportไฟล์แยกในrepository/attachmentนี้.
+
+Runtime/test6ไฟล์: Main Controller, presentation adapter, thin inherited entry, newintegrationtest+UID,
+runnerflag. เอกสารเดิม3ไฟล์และevidenceอยู่PRเดียวกัน. ไม่แก้`project.godot`, Main scene tree/assets,
+LegacyTurnFlow/Targets, existing tests/expected results, Encounterpolicy, loreหรือitems.
+
+### Session isolation และ action mapping
+
+[Controller](../../scripts/combat/combat_prototype.gd) เลือกmodeก่อน_ready:
+Legacyสร้างTurnFlow+TargetsและLegacyHP; Autonomousสร้างEncounterเท่านั้น. setterปฏิเสธการเปลี่ยนmode
+หลังready. Controllerเดียวไม่มีสำเนาทั้งไฟล์หรือControllerตัวที่สาม. LegacyHPเป็นnullและLegacyqueue/
+registryเป็นnullตลอดOpt-in; testsตรวจทุกframe. Snapshotเป็นdetached value ไม่ใช่mutable HP mirror.
+
+`begin_round → begin_next_action → locked decision → windup → resolve_action(token) → actual feedback
+→ return home → complete_action(token) → next slot/round/result`.
+PlayerATTACK/DEFEND, NPCATTACK/DEFEND/HELP/SKIP และEnemyA/Bใช้lifecycleเดียวกัน;
+NPCแต่ละคนยังแสดงWaiting to decideก่อนslotของตน. Terminalอ่านsnapshot.resultและแสดงresultpanelเดิม
+หลังreturnโดยไม่เรียกLegacy_finish_round/_end_battle.
+
+[Adapter](../../scripts/combat/combat_presentation_adapter.gd) ไม่มีHP/Encounter/Resolver/queue.
+`play_action()`รับstableIDs, action, node/home/scale/tint, MainpresentationvaluesและCallables.
+สร้างTweenทั้งหมดก่อนเริ่ม; `_action_impact()`รับvisual facts `hit/guarded`จากactualeffect.
+`tween_method(_action_reaction...)`จึงไม่สร้างrecoil/flash/spark/damagepopupเมื่อeffectSKIP.
+HELPใช้greenactor/popup/HPflashและactualdelta; DEFENDใช้brace/blueguardfeedback.
+LegacyPlayerATTACKpathและsharedposeเดิมคงอยู่พร้อมexacttraceverification.
+
+Restartเรียกadapter.cancelก่อนreset: เพิ่มepoch, killTween, ทิ้งcallbacks, killresult/HPflash,
+ล้างboundpopup/spark, restartEncounterเพิ่มgenerationด้วยfreshfixture, ล้างtoken,
+คืนทุกactorhome/pose/tint/scale แล้วrefreshHUD/controlsจากsnapshot. Guard/HELP/availabilityไม่คำนวณซ้ำในUI.
+Completionตรวจทั้งstate/identity/phaseและhome; impactตรวจเวลาที่visualboundaryมาถึง.
+Callbacksเก่าใช้actionIDซ้ำก็ไม่ผ่านgeneration/epoch. Wrongdecision/token, early/duplicate/reentrantcallbacks
+มีfocusedtests. Fixture raceเขียนRegistryเฉพาะในtestsเพื่อจำลองconcurrentinvalidationที่playablecontrolsไม่มี.
+
+### Verification และ differential
+
+Actual engine **`4.7.2.stable.official.ed1daf0bf`**.
+Tested source/test commit **`6f4c4db57953a423b83809719370f774b57ede10`**.
+FinalHEADอยู่DraftPR; หลังtestedcommitเปลี่ยนเฉพาะdocs/evidence. Manifest64ไฟล์ต้องตรงfinaltree.
+
+```sh
+# ก่อนแก้ runtime บน merged c0dcc33 — 40 stages PASS
+python3 tests/combat/verify.py \
+  --godot /Applications/Godot.app/Contents/MacOS/Godot \
+  --output /tmp/wanderer-m2d-03-baseline-20261104-2 \
+  --npc-proof --actor-proof --ownership-proof --party-foundation-proof \
+  --party-turn-proof --party-playable-proof --presentation-proof
+
+# Final committed source/tests — 44 stages PASS
+python3 tests/combat/verify.py \
+  --godot /Applications/Godot.app/Contents/MacOS/Godot \
+  --output /tmp/wanderer-m2d-03-final-20261104-2 \
+  --npc-proof --actor-proof --ownership-proof --party-foundation-proof \
+  --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof
+```
+
+ทุกครั้งใช้freshoutputdirectory. Finalrunnerexit0; ทั้ง44stagesexit0, timeout0,
+unexpectedengineerrors0. Negative5expectederrorsแยกชัด. Flagใหม่เป็นopt-inอิสระ:
+เพิ่มadapter/testparse2stages, inheritedentrystartup1stageและruntimeproof1stage.
+Cleanimportตรวจscript/sceneทั้งหมด; startupทั้งMainและOpt-inผ่าน.
+
+| Suite | Baseline checks | Final checks / failures |
+| --- | --- | --- |
+| Combat | 14,395 | 14,395 / 0 |
+| Negative | 983 +5expectederrors | 983 / 0 +5expectederrors |
+| M2A-02 / M2A-03 | 412 / 5,166 | 412 / 5,166; failures0 |
+| M2B-01 / M2B-02 | 122 / 219 | 122 / 219; failures0 |
+| M2C-02 / M2C-03 | 382 / 1,250 | 382 / 1,250; failures0 |
+| M2C-04 | 260,800 /31cases | 260,800 /31cases; failures0 |
+| M2D-02 | 8,319 | 8,319 /0 |
+| M2D-03 | — | **787,617 /0; 46cases** |
+
+Legacybaseline→final exacttraceเท่ากัน **6cases/5,892frames** รวมkillorders, DEFEND, defeat,
+Restartwindup/afterimpact. Invariants: speed/lunge/formation/home, Playercontrols/locks, Restart,
+exactly-onceeffect/completion, terminaldrainsqueue. Intentionaldifferences: NPC2ไม่GuardPlayer,
+NPCมีHP/HELP/self-DEFEND/availabilityและเลือกtargetเอง; PlayerHPหลังATTACKจึงต่างกัน.
+
+| Normal command | Legacy expected = actual (Player/A/B) | Autonomous expected = actual |
+| --- | --- | --- |
+| ATTACK A | 25 /8 /12 | 24 /7 /12 |
+| ATTACK B | 25 /15 /5 | 24 /12 /7 |
+| DEFEND | 28 /12 /12 | 28 /12 /12 |
+
+### S01–S22 coverage และ evidence
+
+[New test](autonomous_main_integration.gd) ใช้inheritedscene/realTweens; ทุกcaseมีexpected/actual/finalHP/
+actiontrace. SnapshotHUDchecksรวมvisibility/viewportbounds; headlessไม่พิสูจน์visualquality.
+
+| Scenario | Focused case / expected behavior |
+| --- | --- |
+| S01 | inheritedentrymodeก่อนinit, sixactors, NPC10/10/10 |
+| S02 | projectMainยังLegacy, noEncounter, modeimmutable |
+| S03 / S04 / S05 | ATTACK A/B/DEFEND actualHPตามdifferentialtable |
+| S06 | NPC2/3Waiting; หลังNPC1HELP6→10, NPC2/3เลือกATTACKที่slot |
+| S07 | HELP4/actualgreenfeedback; thresholddecision-only; clamp/noHP0revival |
+| S08 | NPC1selfguard3HP, firsthit3→1, secondhitclamped2→0; Playerไม่ได้รับhit |
+| S09 | Player1:สามHELPแยกresources, guardedroundจบPlayer11 |
+| S10 / S11 | AหรือBตาย, deadslotSKIP, livingenemycounterแยกPlayer27 |
+| S12 | HP0NPC/enemySKIP, nofakehit |
+| S13 | actor/targetตายหลังlock:SKIP, noretarget/recoil/spark/popup |
+| S14 / S15 | victory/defeatกลางรอบ, resultหลังreturn, queueหยุด, commandslocked |
+| S16 / S17 | 6actors×WINDUP/IMPACT/RETURN=18cases; reentrant/terminal/resultfadeRestart |
+| S18 | stale/forged/wrongdecision/duplicate/earlycallback; validvisualphaseforgeryprobe |
+| S19 | HUDHP/HELP/guardตรงsnapshot, visible/bounds, actualdelta |
+| S20 | noLegacyqueue/targets/HPmirrorทุกobservedframe, detachedsnapshotmutationinert |
+| S21 | unchangedLegacysuite + differentials +5,892exacttraceframes |
+| S22 | Mainidle/shadow/depth/scale/tint/resultstructure; agentF6partial, OwnerF6pending |
+
+- [Run record / commands / commit / expected-actual / manual status](evidence/m2d-03/run-record.json)
+- [Baseline40stages](evidence/m2d-03/baseline-results.json), [Final44stages](evidence/m2d-03/final-results.json)
+- [Scenario expected/actual + action traces](evidence/m2d-03/scenarios.json)
+- [Raw stdout/engine logs/exit codes](evidence/m2d-03/logs.zip), [full traces](evidence/m2d-03/traces.zip)
+- [Exact Legacy comparison](evidence/m2d-03/trace-comparison.json), [source SHA-256](evidence/m2d-03/source-sha256.json)
+- [Development failures/corrections](evidence/m2d-03/development-record.json), [raw development logs](evidence/m2d-03/development-logs.zip)
+
+### Manual F6 — owner checklist / limitations
+
+**Owner Visual Acceptance PENDING.** Agentใช้GodoteditorRunCurrentScene(F6action),
+project1280×720; embeddedgamearea1278×719at1.0×พร้อมขอบดำ. บันทึกส่วนที่ตรวจจริงอยู่runrecord;
+screenshotsในtooltranscript ไม่มีdurablevideo. ไม่ใช้screenshotsอย่างเดียวอ้างruntimePASS.
+
+- [ ] เปิด `res://scenes/combat/combat_prototype.tscn` → F6: Legacyเดิม, idle/shadow/depth/Bidentity;
+  ATTACK A25/8/12, ATTACK B25/15/5, DEFEND28/12/12; NPC2GuardหลังATTACK.
+- [ ] เปิด `res://scenes/combat/combat_autonomous_optin.tscn` → F6: NormalNPC10/10/10, HP/HELPครบ,
+  Waiting to decide, compactformation, speed0.70/44pxlunge/returnhomeและreadability.
+- [ ] Restartระหว่างroundเพื่อแยกATTACK A/B/DEFEND; ตรวจHPตามตารางและNPCเลือกAเองเมื่อPlayerเลือกB.
+- [ ] เลือกPlayerneedsHELPแล้วDEFEND: NPC1HELP6→10, greenfeedback/HELP0; NPC2/3ATTACK;
+  จบรอบPlayer8/A13/B12. อ่านreasoncode+explanationและactualdeltaได้ทัน.
+- [ ] NPCself-DEFENDแล้วDEFEND: NPC1brace/selfguard, firstenemyhit1แล้วsecondactual2; NPC1HP0,
+  Player30, A13/B12. ไม่มีscriptedNPC2GuardPlayer.
+- [ ] MultipleHELPแล้วDEFEND: HELP4แต่ละNPCแยกกัน, resources0ทุกคน, Player11.
+- [ ] A/BfallsและUnavailablepresets: deadslotsSKIPโดยไม่มีfakehit, liveenemyยังcounter;
+  ทั้งkillordersเล่นจนจบ, targetpickerfallbackเฉพาะก่อนlock.
+- [ ] VictorypresetATTACK: lethalPlayerhitแล้วreturnก่อนresult. DefeatpresetATTACK:
+  HP0NPCskip, EnemyAทำให้Playerแพ้, Bไม่ลงมือหลังterminal.
+- [ ] Restartระหว่างPlayer/NPC1/2/3/A/Bก่อนimpact/หลังimpact/return/resultfade;
+  รอ2วินาทีแล้วเล่นใหม่ ไม่มีHP/resourceซ้ำหรือoldmotion/popup/spark/flash/tint/scale.
+- [ ] จดengine/commit/scenario/expected/actualพร้อมscreenshot/videoและความเห็นpacing/readability.
+
+Reasonsเป็นEnglishprototypeบนUIเดิมภาษาไทย; ยังไม่เพิ่มlocalizationsystem. CombatLogพื้นที่สั้นตามMainlayout,
+บางบรรทัดก่อนหน้าถูกตัดในscrollarea แต่latestdecision/effectและ3NPCreasonsแสดงแยกด้านบน.
+Result panel อยู่เหนือ reason rows แล้ว; พื้นหลังโปร่งแสงเดิมยังเห็นข้อความด้านหลังจาง ๆ จึงให้ owner ประเมิน readability เพิ่ม.
+ไม่มีvideo-measuredpacingหรือcompleteownerF6ทุกscenario. AutomatedS22เป็นstructure/motionevidence,
+ไม่ใช่visualqualityapproval. HP0เป็นfixtureavailability ไม่ตัดสินDown/Death/permadeath.
+
+Rollback: StopOpt-in → เปิดLegacyentry → F6/newbattle. ไม่copyHP/queueระหว่างmode.
+M2D-04cutoverยังไม่เริ่ม; M2B-03deferred. ไม่merge/auto-merge/deletebranchหรือเริ่มfollow-onเอง.
+
+### Learning notes — ตัวอย่างจากโค้ดจริง
+
+1. **Session Mode** คือการเลือกกติกาหนึ่งชุดก่อนเริ่มbattle:
+   `if session_mode == SessionMode.AUTONOMOUS: encounter = FullPartyEncounter.new()`.
+   ฉากinheritedกำหนด`session_mode = 1`ก่อน_ready จึงไม่ต้องcopyNodeTree.
+2. **หนึ่งBattleหนึ่งAuthority:** อีกทางของifสร้าง`CombatTurnFlow.new()`/`CombatTargets.new()`.
+   ถ้าสองชุดเดินพร้อมกัน อาจหักHPหรือจบรอบสองครั้ง; testsจึงตรวจnullของLegacyในOpt-inทุกframe.
+3. **ActorRuntimeStateเป็นเจ้าของHP:** Encounter→Registry→`take_damage()`/`heal()`เปลี่ยนHPจริง;
+   Mainอ่าน`encounter.snapshot().actors[id].current_hp`. `player_hp`ของLegacyเป็นnullในOpt-in.
+4. **Queueต่างกันอย่างไร:** Legacy`plan_round()`วางNPCrulesล่วงหน้า;
+   Encounter`begin_next_action()`ค่อยเรียกResolverเมื่อถึงactorIDนั้น. Presentationไม่ต้องนับ`npc_action_index`.
+5. **Adapterเชื่อมอย่างไร:** `play_action(..., _autonomous_impact.bind(locked), _autonomous_complete.bind(locked))`
+   ส่งCallableแทนการย้ายdamageไปไว้ในTween. Callbackแรกลงผล; callbackหลังreturnเดินคิว.
+6. **Token/Generation/Epoch:** tokenระบุEncounter/round/action/actor/decision; generationแยกbattleก่อน/หลังRestart;
+   `visual_epoch += 1`ในcancelแยกlifetimeของภาพ. ActionIDเริ่ม1ใหม่ได้แต่callbackเก่าไม่ผ่านgeneration.
+7. **Decision Timing:** `_autonomous_advance()`เรียกbegin_next_actionเพียงslotเดียว.
+   NPC1HELP6→10ก่อนNPC2ตัดสิน ทำให้NPC2เลือกATTACK; ถ้าคำนวณก่อนทั้งสามจะเห็นHP6เหมือนกันผิดจังหวะ.
+8. **ทำไมUIอ่านSnapshot:** `_refresh_autonomous_ui()`ใช้`view.guards`/`view.help_uses`และHPที่Encounterคืน.
+   UIแสดงผลไม่คำนวณdamageหรือHELPpolicyซ้ำ; snapshotที่แก้ภายนอกไม่เปลี่ยนstateจริง.
+9. **กันDuplicateEffect:** adapterเปลี่ยน`phase = "IMPACT"`และล้าง_on_impactก่อนcall;
+   Controllerตรวจlockeddecision/state แล้วEncounterยอมresolveเฉพาะLOCKED.
+   หลังRESOLVEDcallbackซ้ำจึงไม่ใช้HELPหรือหักHPซ้ำ. Recoveryสร้างก่อนTweenเล่นและอ่านvisualfactsหลังimpact.
+10. **RollbackกับOpt-in:** Opt-inเปิดทางทดลองโดยdefaultไม่เปลี่ยน;
+    rollbackคือหยุดsessionแล้วเปิดentryLegacyใหม่. ไม่ใช่เปลี่ยนenumหรือแปลงsnapshotระหว่างanimation.

@@ -32,7 +32,7 @@ The active development scene is:
 
 `res://scenes/combat/combat_prototype.tscn`
 
-As of the post-PR #37 baseline (`08f2a973` on `visual-combat-test-1`), with M2D-02 on its review branch:
+As of merged PR #38 (`c0dcc33` on `visual-combat-test-1`), with M2D-03 on its review branch:
 
 - **Implemented:** Player + NPC1/2/3 versus Enemy A (15 HP) and Enemy B (12 HP), target selection, surviving-target fallback, queued actions, victory/defeat and Restart.
 - NPCs take real actions under deterministic prototype rules: after Player Attack, NPC1/3 attack and NPC2 guards Player; after Player Defend, all three attack. These rules are **not an autonomous NPC decision system**.
@@ -42,9 +42,11 @@ As of the post-PR #37 baseline (`08f2a973` on `visual-combat-test-1`), with M2D-
 - **M2B-01 / M2B-02 merged via PR #33 / #34** (latest base `90eb7d1`): shared Actor Definition / Runtime State and single-source HP ownership in the isolated NPC proof Encounter. Main combat retains its existing state.
 - **M2C-01: Design Only. M2C-02 / M2C-03 merged via PR #35 / #36**, latest merged base `737e380c`. M2C-03 supplies the owner-approved D1–D13 prototype: per-slot decisions, full party queue and exactly-once token effects. See [data contract and inherited evidence](tests/actors/README.md#m2c-03--multi-npc-decision-and-turn-resolution-proof).
 - **M2C-04 implemented / merged via [PR #37](https://github.com/shanwinder/wanderer/pull/37)** at `08f2a973`. Its separate F6 scene uses FullPartyEncounter; Main Combat still uses Legacy HP/Guard/queue/targets. The owner reports checking it before merge; this is **owner-reported acceptance**, without scenario-level independent evidence.
-- **Fresh merged-base verification:** Godot `4.7.2.stable.official.ed1daf0bf`, **37 stages PASS** on `08f2a973`. The old M2C-04 manifest matched 54/55 files because scene UID/script UID/root unique ID/header changed after tested `9271aa5`; the new baseline run verifies the actual merged scene metadata.
-- **M2D-01 design completed; M2D-02 feature branch / pending review:** a small presentation adapter runs Legacy Player ATTACK and the shared NPC/Enemy attack pose. Gameplay authority and visual values remain Legacy. Final **40 stages PASS**, new boundary proof **8,319 checks**, and **5,892 exact matching before/after trace frames** on `84c80d5`. Limited agent GUI smoke review is recorded separately; **M2D-02 owner visual acceptance pending**. [Architecture, evidence, Thai learning notes and F6 checklist](tests/combat/README.md#m2d-02--combat-presentation-adapter-foundation).
-- **M2D-03 opt-in integration / M2D-04 cutover not started. M2B-03 Item Implementation deferred.** This task authorizes only the D1/D9 foundation and necessary presentation extraction; further Main Combat migration requires its own task.
+- **Recorded PR #37 merged-base verification:** Godot `4.7.2.stable.official.ed1daf0bf`, **37 stages PASS** on `08f2a973`. The old M2C-04 manifest matched 54/55 files because scene UID/script UID/root unique ID/header changed after tested `9271aa5`; that baseline run verified the actual merged scene metadata.
+- **M2D-01 design completed; M2D-02 implemented / merged [PR #38](https://github.com/shanwinder/wanderer/pull/38), owner-reported acceptance.** Legacy remains the Main default. Inherited evidence: 40 stages PASS, presentation 8,319 checks and 5,892 matching trace frames on `84c80d5`; this does not replace M2D-03 F6 review.
+- **M2D-03 owner-approved D1–D13 / review branch:** `scenes/combat/combat_autonomous_optin.tscn` inherits the Main scene and uses the same controller/presenter with FullPartyEncounter as its sole gameplay authority. Normal NPC HP is 10/10/10 (max 10 each); independent per-slot decisions, HELP and self-DEFEND are prototype behavior. [Contract, current verification, limitations and owner F6 checklist](tests/combat/README.md#m2d-03--opt-in-main-autonomous-combat).
+- **Fresh M2D-03 verification:** baseline **40 stages PASS** on merged `c0dcc33`; final **44 stages PASS** on `6f4c4db`, new integration **787,617 checks / 46 cases**, with **5,892 exact matching Legacy trace frames**. Agent F6 smoke review is partial; **Owner Visual Acceptance pending**.
+- **M2D-04 cutover not started. M2B-03 Item Implementation deferred.** Default Main entry and `project.godot` remain Legacy. Stop opt-in and start a fresh Legacy battle to roll back.
 
 Read [AGENTS.md](AGENTS.md) before agent work. Current status lives in the [documentation index](docs/README.md); older design snapshots are not completion reports.
 

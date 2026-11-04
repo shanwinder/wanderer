@@ -1,0 +1,33 @@
+{
+  "baseline_commit": "c0dcc33f0ab89c8187b9cb0c025138b447a8c7e2",
+  "tested_commit": "6f4c4db57953a423b83809719370f774b57ede10",
+  "exact_equal": true,
+  "cases": [
+    {
+      "case": "A-first victory",
+      "frames": 2498
+    },
+    {
+      "case": "B-first victory",
+      "frames": 1970
+    },
+    {
+      "case": "DEFEND",
+      "frames": 600
+    },
+    {
+      "case": "defeat",
+      "frames": 530
+    },
+    {
+      "case": "Restart windup",
+      "frames": 133
+    },
+    {
+      "case": "Restart after impact",
+      "frames": 161
+    }
+  ],
+  "total_frames": 5892,
+  "scope": "Exact Legacy HP/guard/queue/round/target/locks/result/status/log/feedback counts and 15 node transforms/tints; not pixels/audio/visual quality."
+}
