@@ -1,0 +1,80 @@
+[
+  {
+    "suite": "gameplay",
+    "expected": 14395,
+    "actual": 14395,
+    "status": "PASS"
+  },
+  {
+    "suite": "invalid-actions",
+    "expected": 983,
+    "actual": 983,
+    "status": "PASS"
+  },
+  {
+    "suite": "npc-proof",
+    "expected": 412,
+    "actual": 412,
+    "status": "PASS"
+  },
+  {
+    "suite": "npc-playable",
+    "expected": 5166,
+    "actual": 5166,
+    "status": "PASS"
+  },
+  {
+    "suite": "actor-proof",
+    "expected": 122,
+    "actual": 122,
+    "status": "PASS"
+  },
+  {
+    "suite": "ownership-proof",
+    "expected": 219,
+    "actual": 219,
+    "status": "PASS"
+  },
+  {
+    "suite": "party-foundation-proof",
+    "expected": 382,
+    "actual": 382,
+    "status": "PASS"
+  },
+  {
+    "suite": "party-turn-proof",
+    "expected": 1250,
+    "actual": 1250,
+    "status": "PASS"
+  },
+  {
+    "suite": "party-playable-proof",
+    "expected": 260800,
+    "actual": 260800,
+    "status": "PASS"
+  },
+  {
+    "suite": "presentation-proof",
+    "expected": 8319,
+    "actual": 8319,
+    "status": "PASS"
+  },
+  {
+    "suite": "autonomous-main-proof",
+    "expected": 787617,
+    "actual": 787617,
+    "status": "PASS"
+  },
+  {
+    "suite": "main-cutover-proof",
+    "expected": 801351,
+    "actual": 801351,
+    "status": "PASS"
+  },
+  {
+    "suite": "guidance-data-proof",
+    "expected": 66641,
+    "actual": 66641,
+    "status": "PASS"
+  }
+]

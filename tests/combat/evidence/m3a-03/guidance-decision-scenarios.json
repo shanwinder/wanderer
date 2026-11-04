@@ -1,0 +1,5893 @@
+{
+	"cases": {
+		"P01": {
+			"actual": "PASS",
+			"expected": "100 pure NONE contexts and actual full round exactly match baseline",
+			"failed_assertions": [],
+			"observations": []
+		},
+		"P02": {
+			"actual": "PASS",
+			"expected": "ATTACK independently matches",
+			"failed_assertions": [],
+			"observations": [
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371832004966907,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "ATTACK",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371832004966907,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "BASELINE_ATTACK",
+						"response": "MATCHED_INDEPENDENTLY"
+					},
+					"status": "OK"
+				}
+			]
+		},
+		"P03": {
+			"actual": "PASS",
+			"expected": "3/5 HP lethal first hit3; above30% still self DEFEND",
+			"failed_assertions": [],
+			"observations": [
+				{
+					"baseline_decision": {
+						"action": "DEFEND",
+						"actor_id": "npc_01",
+						"reason_code": "SELF_LETHAL_THREAT",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 3,
+							"npc_max_hp": 5,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "npc_01"
+					},
+					"decision": {
+						"action": "DEFEND",
+						"actor_id": "npc_01",
+						"reason_code": "SELF_LETHAL_THREAT",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 3,
+							"npc_max_hp": 5,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "npc_01"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371830327245307,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "ATTACK",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371830327245307,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "SELF_PRESERVATION_PRIORITY",
+						"response": "REFUSED"
+					},
+					"status": "OK"
+				}
+			]
+		},
+		"P04": {
+			"actual": "PASS",
+			"expected": "3/10 exactly30% low HP threat",
+			"failed_assertions": [],
+			"observations": [
+				{
+					"baseline_decision": {
+						"action": "DEFEND",
+						"actor_id": "npc_01",
+						"reason_code": "SELF_LOW_HP_THREAT",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 3,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "npc_01"
+					},
+					"decision": {
+						"action": "DEFEND",
+						"actor_id": "npc_01",
+						"reason_code": "SELF_LOW_HP_THREAT",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 3,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "npc_01"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371828649523707,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "ATTACK",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371828649523707,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "SELF_PRESERVATION_PRIORITY",
+						"response": "REFUSED"
+					},
+					"status": "OK"
+				}
+			]
+		},
+		"P05": {
+			"actual": "PASS",
+			"expected": "9/30 urgent HELP overrides ATTACK",
+			"failed_assertions": [],
+			"observations": [
+				{
+					"baseline_decision": {
+						"action": "HELP",
+						"actor_id": "npc_01",
+						"reason_code": "PLAYER_LOW_HP_HELP",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 9,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "player"
+					},
+					"decision": {
+						"action": "HELP",
+						"actor_id": "npc_01",
+						"reason_code": "PLAYER_LOW_HP_HELP",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 9,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "player"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371826971802107,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "ATTACK",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371826971802107,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "URGENT_HELP_PRIORITY",
+						"response": "REFUSED"
+					},
+					"status": "OK"
+				}
+			]
+		},
+		"P06": {
+			"actual": "PASS",
+			"expected": "valid nonlethal threat at4/10 and cautious established NPC follows DEFEND",
+			"failed_assertions": [],
+			"observations": [
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_02",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_02"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 4,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "DEFEND",
+						"actor_id": "npc_02",
+						"reason_code": "GUIDANCE_DISCRETIONARY_DEFEND",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_02"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 4,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "npc_02"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_02",
+								"compassion": "HIGH",
+								"courage": "CAUTIOUS",
+								"discipline": "FLEXIBLE",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": true,
+							"frozen_guidance": {
+								"encounter_id": -9223371825294080507,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "DEFEND",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371825294080507,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PERMITTED_COOPERATION",
+						"response": "FOLLOWED"
+					},
+					"status": "OK"
+				}
+			]
+		},
+		"P07": {
+			"actual": "PASS",
+			"expected": "no valid self threat/dead declarer ignored; first-hit3, never aggregate6",
+			"failed_assertions": [],
+			"observations": [
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371823012379157,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "DEFEND",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371823012379157,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "NO_VALID_THREAT",
+						"response": "NOT_APPLICABLE"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_b"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_b"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371821334657557,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "DEFEND",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371821334657557,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "NO_VALID_THREAT",
+						"response": "NOT_APPLICABLE"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "npc_01"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 5,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "npc_01"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 5,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371819656935957,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "DEFEND",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371819656935957,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PREFERS_BASELINE",
+						"response": "REFUSED"
+					},
+					"status": "OK"
+				}
+			]
+		},
+		"P08": {
+			"actual": "PASS",
+			"expected": "HELP at30% already chosen independently",
+			"failed_assertions": [],
+			"observations": [
+				{
+					"baseline_decision": {
+						"action": "HELP",
+						"actor_id": "npc_01",
+						"reason_code": "PLAYER_LOW_HP_HELP",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 9,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "player"
+					},
+					"decision": {
+						"action": "HELP",
+						"actor_id": "npc_01",
+						"reason_code": "PLAYER_LOW_HP_HELP",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 9,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "player"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371817979214357,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "HELP",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371817979214357,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "URGENT_HELP_PRIORITY",
+						"response": "MATCHED_INDEPENDENTLY"
+					},
+					"status": "OK"
+				}
+			]
+		},
+		"P09": {
+			"actual": "PASS",
+			"expected": "HELP above30%, including40%/50%/full: no heal/resource expansion",
+			"failed_assertions": [],
+			"observations": [
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 10,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 10,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371816301492757,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "HELP",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371816301492757,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PLAYER_ABOVE_HELP_THRESHOLD",
+						"response": "NOT_APPLICABLE"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 12,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 12,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371814623771157,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "HELP",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371814623771157,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PLAYER_ABOVE_HELP_THRESHOLD",
+						"response": "NOT_APPLICABLE"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 15,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 15,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371812946049557,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "HELP",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371812946049557,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PLAYER_ABOVE_HELP_THRESHOLD",
+						"response": "NOT_APPLICABLE"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371811268327957,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "HELP",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371811268327957,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PLAYER_ABOVE_HELP_THRESHOLD",
+						"response": "NOT_APPLICABLE"
+					},
+					"status": "OK"
+				}
+			]
+		},
+		"P10": {
+			"actual": "PASS",
+			"expected": "HELP exhausted retains ATTACK fallback; no discretionary override",
+			"failed_assertions": [],
+			"observations": []
+		},
+		"P11": {
+			"actual": "PASS",
+			"expected": "Player HP0 cannot be helped/revived",
+			"failed_assertions": [],
+			"observations": []
+		},
+		"P12": {
+			"actual": "PASS",
+			"expected": "FOCUS A matches independently",
+			"failed_assertions": [],
+			"observations": [
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371806000282133,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "FOCUS_TARGET",
+								"issuer_player_id": "player",
+								"preferred_target_id": "enemy_a",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371806000282133,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "BASELINE_TARGET",
+						"response": "MATCHED_INDEPENDENTLY"
+					},
+					"status": "OK"
+				}
+			]
+		},
+		"P13": {
+			"actual": "PASS",
+			"expected": "FOCUS B causally changes NPC target without changing Player target",
+			"failed_assertions": [],
+			"observations": [
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "GUIDANCE_FOCUS_TARGET",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_b"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": true,
+							"frozen_guidance": {
+								"encounter_id": -9223371804322560533,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "FOCUS_TARGET",
+								"issuer_player_id": "player",
+								"preferred_target_id": "enemy_b",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371804322560533,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PERMITTED_COOPERATION",
+						"response": "FOLLOWED"
+					},
+					"status": "OK"
+				}
+			]
+		},
+		"P14": {
+			"actual": "PASS",
+			"expected": "focused A killed by Player before NPC slot: reevaluate, attack B",
+			"failed_assertions": [],
+			"observations": []
+		},
+		"P15": {
+			"actual": "PASS",
+			"expected": "FOCUS B dies after lock; effect SKIP while FOLLOWED at lock remains true",
+			"failed_assertions": [],
+			"observations": []
+		},
+		"P16": {
+			"actual": "PASS",
+			"expected": "high Trust cannot override safety",
+			"failed_assertions": [],
+			"observations": [
+				{
+					"baseline_decision": {
+						"action": "DEFEND",
+						"actor_id": "npc_01",
+						"reason_code": "SELF_LOW_HP_THREAT",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 2,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "npc_01"
+					},
+					"decision": {
+						"action": "DEFEND",
+						"actor_id": "npc_01",
+						"reason_code": "SELF_LOW_HP_THREAT",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 2,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "npc_01"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371798970628629,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "FOCUS_TARGET",
+								"issuer_player_id": "player",
+								"preferred_target_id": "enemy_b",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371798970628629,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "SELF_PRESERVATION_PRIORITY",
+						"response": "REFUSED"
+					},
+					"status": "OK"
+				}
+			]
+		},
+		"P17": {
+			"actual": "PASS",
+			"expected": "high Discipline cannot override urgent HELP",
+			"failed_assertions": [],
+			"observations": [
+				{
+					"baseline_decision": {
+						"action": "DEFEND",
+						"actor_id": "npc_01",
+						"reason_code": "SELF_LOW_HP_THREAT",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 2,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "npc_01"
+					},
+					"decision": {
+						"action": "DEFEND",
+						"actor_id": "npc_01",
+						"reason_code": "SELF_LOW_HP_THREAT",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 2,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "npc_01"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371797292907029,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "DEFEND",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371797292907029,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "SELF_PRESERVATION_PRIORITY",
+						"response": "MATCHED_INDEPENDENTLY"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "HELP",
+						"actor_id": "npc_01",
+						"reason_code": "PLAYER_LOW_HP_HELP",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 6,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "player"
+					},
+					"decision": {
+						"action": "HELP",
+						"actor_id": "npc_01",
+						"reason_code": "PLAYER_LOW_HP_HELP",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 6,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "player"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371795615185429,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "FOCUS_TARGET",
+								"issuer_player_id": "player",
+								"preferred_target_id": "enemy_b",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371795615185429,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "URGENT_HELP_PRIORITY",
+						"response": "REFUSED"
+					},
+					"status": "OK"
+				}
+			]
+		},
+		"P18": {
+			"actual": "PASS",
+			"expected": "16 profile combinations, explicit one-trait paired fixtures; Compassion deliberately inert",
+			"failed_assertions": [],
+			"observations": [
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "CAUTIOUS",
+								"discipline": "FLEXIBLE",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "CAUTIOUS"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371793937463829,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "FOCUS_TARGET",
+								"issuer_player_id": "player",
+								"preferred_target_id": "enemy_b",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371793937463829,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PREFERS_BASELINE",
+						"response": "REFUSED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "CAUTIOUS",
+								"discipline": "FLEXIBLE",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "CAUTIOUS"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371792259742229,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "DEFEND",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371792259742229,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PREFERS_BASELINE",
+						"response": "REFUSED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "HIGH",
+								"courage": "CAUTIOUS",
+								"discipline": "FLEXIBLE",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "CAUTIOUS"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371790582020629,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "FOCUS_TARGET",
+								"issuer_player_id": "player",
+								"preferred_target_id": "enemy_b",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371790582020629,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PREFERS_BASELINE",
+						"response": "REFUSED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "HIGH",
+								"courage": "CAUTIOUS",
+								"discipline": "FLEXIBLE",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "CAUTIOUS"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371788904299029,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "DEFEND",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371788904299029,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PREFERS_BASELINE",
+						"response": "REFUSED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "FLEXIBLE",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "CAUTIOUS"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371787226577429,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "FOCUS_TARGET",
+								"issuer_player_id": "player",
+								"preferred_target_id": "enemy_b",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371787226577429,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PREFERS_BASELINE",
+						"response": "REFUSED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "FLEXIBLE",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "CAUTIOUS"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371785548855829,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "DEFEND",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371785548855829,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PREFERS_BASELINE",
+						"response": "REFUSED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "HIGH",
+								"courage": "BOLD",
+								"discipline": "FLEXIBLE",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "CAUTIOUS"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371783871134229,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "FOCUS_TARGET",
+								"issuer_player_id": "player",
+								"preferred_target_id": "enemy_b",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371783871134229,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PREFERS_BASELINE",
+						"response": "REFUSED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "HIGH",
+								"courage": "BOLD",
+								"discipline": "FLEXIBLE",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "CAUTIOUS"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371782193412629,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "DEFEND",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371782193412629,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PREFERS_BASELINE",
+						"response": "REFUSED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "GUIDANCE_FOCUS_TARGET",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_b"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "CAUTIOUS",
+								"discipline": "FLEXIBLE",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": true,
+							"frozen_guidance": {
+								"encounter_id": -9223371780515691029,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "FOCUS_TARGET",
+								"issuer_player_id": "player",
+								"preferred_target_id": "enemy_b",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371780515691029,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PERMITTED_COOPERATION",
+						"response": "FOLLOWED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "DEFEND",
+						"actor_id": "npc_01",
+						"reason_code": "GUIDANCE_DISCRETIONARY_DEFEND",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "npc_01"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "CAUTIOUS",
+								"discipline": "FLEXIBLE",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": true,
+							"frozen_guidance": {
+								"encounter_id": -9223371778837969429,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "DEFEND",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371778837969429,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PERMITTED_COOPERATION",
+						"response": "FOLLOWED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "GUIDANCE_FOCUS_TARGET",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_b"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "HIGH",
+								"courage": "CAUTIOUS",
+								"discipline": "FLEXIBLE",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": true,
+							"frozen_guidance": {
+								"encounter_id": -9223371777160247829,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "FOCUS_TARGET",
+								"issuer_player_id": "player",
+								"preferred_target_id": "enemy_b",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371777160247829,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PERMITTED_COOPERATION",
+						"response": "FOLLOWED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "DEFEND",
+						"actor_id": "npc_01",
+						"reason_code": "GUIDANCE_DISCRETIONARY_DEFEND",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "npc_01"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "HIGH",
+								"courage": "CAUTIOUS",
+								"discipline": "FLEXIBLE",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": true,
+							"frozen_guidance": {
+								"encounter_id": -9223371775482526229,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "DEFEND",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371775482526229,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PERMITTED_COOPERATION",
+						"response": "FOLLOWED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "GUIDANCE_FOCUS_TARGET",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_b"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "FLEXIBLE",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": true,
+							"frozen_guidance": {
+								"encounter_id": -9223371773804804629,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "FOCUS_TARGET",
+								"issuer_player_id": "player",
+								"preferred_target_id": "enemy_b",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371773804804629,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PERMITTED_COOPERATION",
+						"response": "FOLLOWED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "FLEXIBLE",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371772127083029,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "DEFEND",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371772127083029,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PREFERS_BASELINE",
+						"response": "REFUSED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "GUIDANCE_FOCUS_TARGET",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_b"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "HIGH",
+								"courage": "BOLD",
+								"discipline": "FLEXIBLE",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": true,
+							"frozen_guidance": {
+								"encounter_id": -9223371770449361429,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "FOCUS_TARGET",
+								"issuer_player_id": "player",
+								"preferred_target_id": "enemy_b",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371770449361429,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PERMITTED_COOPERATION",
+						"response": "FOLLOWED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "HIGH",
+								"courage": "BOLD",
+								"discipline": "FLEXIBLE",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371768771639829,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "DEFEND",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371768771639829,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PREFERS_BASELINE",
+						"response": "REFUSED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "GUIDANCE_FOCUS_TARGET",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_b"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "CAUTIOUS",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "CAUTIOUS"
+							},
+							"behavior_changed": true,
+							"frozen_guidance": {
+								"encounter_id": -9223371767093918229,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "FOCUS_TARGET",
+								"issuer_player_id": "player",
+								"preferred_target_id": "enemy_b",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371767093918229,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PERMITTED_COOPERATION",
+						"response": "FOLLOWED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "DEFEND",
+						"actor_id": "npc_01",
+						"reason_code": "GUIDANCE_DISCRETIONARY_DEFEND",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "npc_01"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "CAUTIOUS",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "CAUTIOUS"
+							},
+							"behavior_changed": true,
+							"frozen_guidance": {
+								"encounter_id": -9223371765416196629,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "DEFEND",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371765416196629,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PERMITTED_COOPERATION",
+						"response": "FOLLOWED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "GUIDANCE_FOCUS_TARGET",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_b"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "HIGH",
+								"courage": "CAUTIOUS",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "CAUTIOUS"
+							},
+							"behavior_changed": true,
+							"frozen_guidance": {
+								"encounter_id": -9223371763738475029,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "FOCUS_TARGET",
+								"issuer_player_id": "player",
+								"preferred_target_id": "enemy_b",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371763738475029,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PERMITTED_COOPERATION",
+						"response": "FOLLOWED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "DEFEND",
+						"actor_id": "npc_01",
+						"reason_code": "GUIDANCE_DISCRETIONARY_DEFEND",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "npc_01"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "HIGH",
+								"courage": "CAUTIOUS",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "CAUTIOUS"
+							},
+							"behavior_changed": true,
+							"frozen_guidance": {
+								"encounter_id": -9223371762060753429,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "DEFEND",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371762060753429,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PERMITTED_COOPERATION",
+						"response": "FOLLOWED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "GUIDANCE_FOCUS_TARGET",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_b"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "CAUTIOUS"
+							},
+							"behavior_changed": true,
+							"frozen_guidance": {
+								"encounter_id": -9223371760383031829,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "FOCUS_TARGET",
+								"issuer_player_id": "player",
+								"preferred_target_id": "enemy_b",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371760383031829,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PERMITTED_COOPERATION",
+						"response": "FOLLOWED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "CAUTIOUS"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371758705310229,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "DEFEND",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371758705310229,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PREFERS_BASELINE",
+						"response": "REFUSED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "GUIDANCE_FOCUS_TARGET",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_b"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "HIGH",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "CAUTIOUS"
+							},
+							"behavior_changed": true,
+							"frozen_guidance": {
+								"encounter_id": -9223371757027588629,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "FOCUS_TARGET",
+								"issuer_player_id": "player",
+								"preferred_target_id": "enemy_b",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371757027588629,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PERMITTED_COOPERATION",
+						"response": "FOLLOWED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "HIGH",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "CAUTIOUS"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371755349867029,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "DEFEND",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371755349867029,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PREFERS_BASELINE",
+						"response": "REFUSED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "GUIDANCE_FOCUS_TARGET",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_b"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "CAUTIOUS",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": true,
+							"frozen_guidance": {
+								"encounter_id": -9223371753672145429,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "FOCUS_TARGET",
+								"issuer_player_id": "player",
+								"preferred_target_id": "enemy_b",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371753672145429,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PERMITTED_COOPERATION",
+						"response": "FOLLOWED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "DEFEND",
+						"actor_id": "npc_01",
+						"reason_code": "GUIDANCE_DISCRETIONARY_DEFEND",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "npc_01"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "CAUTIOUS",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": true,
+							"frozen_guidance": {
+								"encounter_id": -9223371751994423829,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "DEFEND",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371751994423829,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PERMITTED_COOPERATION",
+						"response": "FOLLOWED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "GUIDANCE_FOCUS_TARGET",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_b"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "HIGH",
+								"courage": "CAUTIOUS",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": true,
+							"frozen_guidance": {
+								"encounter_id": -9223371750316702229,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "FOCUS_TARGET",
+								"issuer_player_id": "player",
+								"preferred_target_id": "enemy_b",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371750316702229,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PERMITTED_COOPERATION",
+						"response": "FOLLOWED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "DEFEND",
+						"actor_id": "npc_01",
+						"reason_code": "GUIDANCE_DISCRETIONARY_DEFEND",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "npc_01"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "HIGH",
+								"courage": "CAUTIOUS",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": true,
+							"frozen_guidance": {
+								"encounter_id": -9223371748638980629,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "DEFEND",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371748638980629,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PERMITTED_COOPERATION",
+						"response": "FOLLOWED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "GUIDANCE_FOCUS_TARGET",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_b"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": true,
+							"frozen_guidance": {
+								"encounter_id": -9223371746961259029,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "FOCUS_TARGET",
+								"issuer_player_id": "player",
+								"preferred_target_id": "enemy_b",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371746961259029,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PERMITTED_COOPERATION",
+						"response": "FOLLOWED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "ORDINARY",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371745283537429,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "DEFEND",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371745283537429,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PREFERS_BASELINE",
+						"response": "REFUSED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "GUIDANCE_FOCUS_TARGET",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "player"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_b"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "HIGH",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": true,
+							"frozen_guidance": {
+								"encounter_id": -9223371743605815829,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "FOCUS_TARGET",
+								"issuer_player_id": "player",
+								"preferred_target_id": "enemy_b",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371743605815829,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PERMITTED_COOPERATION",
+						"response": "FOLLOWED"
+					},
+					"status": "OK"
+				},
+				{
+					"baseline_decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_01"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 1,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"guidance_response": {
+						"details": {
+							"actor_profile": {
+								"actor_id": "npc_01",
+								"compassion": "HIGH",
+								"courage": "BOLD",
+								"discipline": "PLAN_ORIENTED",
+								"player_id": "player",
+								"schema_version": 1,
+								"trust": "ESTABLISHED"
+							},
+							"behavior_changed": false,
+							"frozen_guidance": {
+								"encounter_id": -9223371741928094229,
+								"generation": 2,
+								"guidance_revision": 1,
+								"guidance_type": "DEFEND",
+								"issuer_player_id": "player",
+								"preferred_target_id": "",
+								"round_id": 1
+							},
+							"identity": {
+								"encounter_id": -9223371741928094229,
+								"generation": 2,
+								"guidance_revision": 1,
+								"round_id": 1,
+								"snapshot_revision": 1
+							}
+						},
+						"reason_code": "PROFILE_PREFERS_BASELINE",
+						"response": "REFUSED"
+					},
+					"status": "OK"
+				}
+			]
+		},
+		"P19": {
+			"actual": "PASS",
+			"expected": "one team FOCUS: NPC1 follows B, NPC2 safety DEFEND, NPC3 retains A",
+			"failed_assertions": [],
+			"observations": [
+				{
+					"action_id": 2,
+					"actor_id": "npc_01",
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_01",
+						"reason_code": "GUIDANCE_FOCUS_TARGET",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_02"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 10,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 2,
+						"status": "DECIDED",
+						"target_id": "enemy_b"
+					},
+					"encounter_id": -9223371734864886294,
+					"generation": 2,
+					"guidance_decision": {
+						"baseline_decision": {
+							"action": "ATTACK",
+							"actor_id": "npc_01",
+							"reason_code": "ATTACK_AVAILABLE_ENEMY",
+							"reason_details": {
+								"declared_hits": [
+									{
+										"actor_id": "enemy_a",
+										"damage": 3,
+										"target_id": "npc_02"
+									},
+									{
+										"actor_id": "enemy_b",
+										"damage": 3,
+										"target_id": "player"
+									}
+								],
+								"guidance": "NONE",
+								"help_enabled": true,
+								"help_uses_remaining": 1,
+								"incoming_damage": 0,
+								"incoming_target_id": "",
+								"living_enemy_ids": [
+									"enemy_a",
+									"enemy_b"
+								],
+								"npc_hp": 10,
+								"npc_max_hp": 10,
+								"player_hp": 30,
+								"player_max_hp": 30
+							},
+							"snapshot_revision": 2,
+							"status": "DECIDED",
+							"target_id": "enemy_a"
+						},
+						"decision": {
+							"action": "ATTACK",
+							"actor_id": "npc_01",
+							"reason_code": "GUIDANCE_FOCUS_TARGET",
+							"reason_details": {
+								"declared_hits": [
+									{
+										"actor_id": "enemy_a",
+										"damage": 3,
+										"target_id": "npc_02"
+									},
+									{
+										"actor_id": "enemy_b",
+										"damage": 3,
+										"target_id": "player"
+									}
+								],
+								"guidance": "NONE",
+								"help_enabled": true,
+								"help_uses_remaining": 1,
+								"incoming_damage": 0,
+								"incoming_target_id": "",
+								"living_enemy_ids": [
+									"enemy_a",
+									"enemy_b"
+								],
+								"npc_hp": 10,
+								"npc_max_hp": 10,
+								"player_hp": 30,
+								"player_max_hp": 30
+							},
+							"snapshot_revision": 2,
+							"status": "DECIDED",
+							"target_id": "enemy_b"
+						},
+						"guidance_response": {
+							"details": {
+								"actor_profile": {
+									"actor_id": "npc_01",
+									"compassion": "ORDINARY",
+									"courage": "BOLD",
+									"discipline": "PLAN_ORIENTED",
+									"player_id": "player",
+									"schema_version": 1,
+									"trust": "ESTABLISHED"
+								},
+								"behavior_changed": true,
+								"frozen_guidance": {
+									"encounter_id": -9223371734864886294,
+									"generation": 2,
+									"guidance_revision": 1,
+									"guidance_type": "FOCUS_TARGET",
+									"issuer_player_id": "player",
+									"preferred_target_id": "enemy_b",
+									"round_id": 1
+								},
+								"identity": {
+									"encounter_id": -9223371734864886294,
+									"generation": 2,
+									"guidance_revision": 1,
+									"round_id": 1,
+									"snapshot_revision": 2
+								}
+							},
+							"reason_code": "PROFILE_PERMITTED_COOPERATION",
+							"response": "FOLLOWED"
+						},
+						"status": "OK"
+					},
+					"round_id": 1,
+					"state": "LOCKED"
+				},
+				{
+					"action_id": 3,
+					"actor_id": "npc_02",
+					"decision": {
+						"action": "DEFEND",
+						"actor_id": "npc_02",
+						"reason_code": "SELF_LOW_HP_THREAT",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_02"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 3,
+							"incoming_target_id": "npc",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 2,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 3,
+						"status": "DECIDED",
+						"target_id": "npc_02"
+					},
+					"encounter_id": -9223371734864886294,
+					"generation": 2,
+					"guidance_decision": {
+						"baseline_decision": {
+							"action": "DEFEND",
+							"actor_id": "npc_02",
+							"reason_code": "SELF_LOW_HP_THREAT",
+							"reason_details": {
+								"declared_hits": [
+									{
+										"actor_id": "enemy_a",
+										"damage": 3,
+										"target_id": "npc_02"
+									},
+									{
+										"actor_id": "enemy_b",
+										"damage": 3,
+										"target_id": "player"
+									}
+								],
+								"guidance": "NONE",
+								"help_enabled": true,
+								"help_uses_remaining": 1,
+								"incoming_damage": 3,
+								"incoming_target_id": "npc",
+								"living_enemy_ids": [
+									"enemy_a",
+									"enemy_b"
+								],
+								"npc_hp": 2,
+								"npc_max_hp": 10,
+								"player_hp": 30,
+								"player_max_hp": 30
+							},
+							"snapshot_revision": 3,
+							"status": "DECIDED",
+							"target_id": "npc_02"
+						},
+						"decision": {
+							"action": "DEFEND",
+							"actor_id": "npc_02",
+							"reason_code": "SELF_LOW_HP_THREAT",
+							"reason_details": {
+								"declared_hits": [
+									{
+										"actor_id": "enemy_a",
+										"damage": 3,
+										"target_id": "npc_02"
+									},
+									{
+										"actor_id": "enemy_b",
+										"damage": 3,
+										"target_id": "player"
+									}
+								],
+								"guidance": "NONE",
+								"help_enabled": true,
+								"help_uses_remaining": 1,
+								"incoming_damage": 3,
+								"incoming_target_id": "npc",
+								"living_enemy_ids": [
+									"enemy_a",
+									"enemy_b"
+								],
+								"npc_hp": 2,
+								"npc_max_hp": 10,
+								"player_hp": 30,
+								"player_max_hp": 30
+							},
+							"snapshot_revision": 3,
+							"status": "DECIDED",
+							"target_id": "npc_02"
+						},
+						"guidance_response": {
+							"details": {
+								"actor_profile": {
+									"actor_id": "npc_02",
+									"compassion": "HIGH",
+									"courage": "CAUTIOUS",
+									"discipline": "FLEXIBLE",
+									"player_id": "player",
+									"schema_version": 1,
+									"trust": "ESTABLISHED"
+								},
+								"behavior_changed": false,
+								"frozen_guidance": {
+									"encounter_id": -9223371734864886294,
+									"generation": 2,
+									"guidance_revision": 1,
+									"guidance_type": "FOCUS_TARGET",
+									"issuer_player_id": "player",
+									"preferred_target_id": "enemy_b",
+									"round_id": 1
+								},
+								"identity": {
+									"encounter_id": -9223371734864886294,
+									"generation": 2,
+									"guidance_revision": 1,
+									"round_id": 1,
+									"snapshot_revision": 3
+								}
+							},
+							"reason_code": "SELF_PRESERVATION_PRIORITY",
+							"response": "REFUSED"
+						},
+						"status": "OK"
+					},
+					"round_id": 1,
+					"state": "LOCKED"
+				},
+				{
+					"action_id": 4,
+					"actor_id": "npc_03",
+					"decision": {
+						"action": "ATTACK",
+						"actor_id": "npc_03",
+						"reason_code": "ATTACK_AVAILABLE_ENEMY",
+						"reason_details": {
+							"declared_hits": [
+								{
+									"actor_id": "enemy_a",
+									"damage": 3,
+									"target_id": "npc_02"
+								},
+								{
+									"actor_id": "enemy_b",
+									"damage": 3,
+									"target_id": "player"
+								}
+							],
+							"guidance": "NONE",
+							"help_enabled": true,
+							"help_uses_remaining": 1,
+							"incoming_damage": 0,
+							"incoming_target_id": "",
+							"living_enemy_ids": [
+								"enemy_a",
+								"enemy_b"
+							],
+							"npc_hp": 3,
+							"npc_max_hp": 10,
+							"player_hp": 30,
+							"player_max_hp": 30
+						},
+						"snapshot_revision": 4,
+						"status": "DECIDED",
+						"target_id": "enemy_a"
+					},
+					"encounter_id": -9223371734864886294,
+					"generation": 2,
+					"guidance_decision": {
+						"baseline_decision": {
+							"action": "ATTACK",
+							"actor_id": "npc_03",
+							"reason_code": "ATTACK_AVAILABLE_ENEMY",
+							"reason_details": {
+								"declared_hits": [
+									{
+										"actor_id": "enemy_a",
+										"damage": 3,
+										"target_id": "npc_02"
+									},
+									{
+										"actor_id": "enemy_b",
+										"damage": 3,
+										"target_id": "player"
+									}
+								],
+								"guidance": "NONE",
+								"help_enabled": true,
+								"help_uses_remaining": 1,
+								"incoming_damage": 0,
+								"incoming_target_id": "",
+								"living_enemy_ids": [
+									"enemy_a",
+									"enemy_b"
+								],
+								"npc_hp": 3,
+								"npc_max_hp": 10,
+								"player_hp": 30,
+								"player_max_hp": 30
+							},
+							"snapshot_revision": 4,
+							"status": "DECIDED",
+							"target_id": "enemy_a"
+						},
+						"decision": {
+							"action": "ATTACK",
+							"actor_id": "npc_03",
+							"reason_code": "ATTACK_AVAILABLE_ENEMY",
+							"reason_details": {
+								"declared_hits": [
+									{
+										"actor_id": "enemy_a",
+										"damage": 3,
+										"target_id": "npc_02"
+									},
+									{
+										"actor_id": "enemy_b",
+										"damage": 3,
+										"target_id": "player"
+									}
+								],
+								"guidance": "NONE",
+								"help_enabled": true,
+								"help_uses_remaining": 1,
+								"incoming_damage": 0,
+								"incoming_target_id": "",
+								"living_enemy_ids": [
+									"enemy_a",
+									"enemy_b"
+								],
+								"npc_hp": 3,
+								"npc_max_hp": 10,
+								"player_hp": 30,
+								"player_max_hp": 30
+							},
+							"snapshot_revision": 4,
+							"status": "DECIDED",
+							"target_id": "enemy_a"
+						},
+						"guidance_response": {
+							"details": {
+								"actor_profile": {
+									"actor_id": "npc_03",
+									"compassion": "ORDINARY",
+									"courage": "BOLD",
+									"discipline": "FLEXIBLE",
+									"player_id": "player",
+									"schema_version": 1,
+									"trust": "CAUTIOUS"
+								},
+								"behavior_changed": false,
+								"frozen_guidance": {
+									"encounter_id": -9223371734864886294,
+									"generation": 2,
+									"guidance_revision": 1,
+									"guidance_type": "FOCUS_TARGET",
+									"issuer_player_id": "player",
+									"preferred_target_id": "enemy_b",
+									"round_id": 1
+								},
+								"identity": {
+									"encounter_id": -9223371734864886294,
+									"generation": 2,
+									"guidance_revision": 1,
+									"round_id": 1,
+									"snapshot_revision": 4
+								}
+							},
+							"reason_code": "PROFILE_PREFERS_BASELINE",
+							"response": "REFUSED"
+						},
+						"status": "OK"
+					},
+					"round_id": 1,
+					"state": "LOCKED"
+				}
+			]
+		},
+		"P20": {
+			"actual": "PASS",
+			"expected": "NPC1 heals6→10, NPC2 now evaluates discretionary FOCUS from latest state",
+			"failed_assertions": [],
+			"observations": []
+		},
+		"P21": {
+			"actual": "PASS",
+			"expected": "FullPartyEncounter ignores stored FOCUS; only explicit proof type opts in",
+			"failed_assertions": [],
+			"observations": []
+		},
+		"P22": {
+			"actual": "PASS",
+			"expected": "both original API schemas/semantics unchanged",
+			"failed_assertions": [],
+			"observations": []
+		},
+		"P23": {
+			"actual": "PASS",
+			"expected": "immutable-style detached metadata stable through caller edits and impact",
+			"failed_assertions": [],
+			"observations": []
+		},
+		"P24": {
+			"actual": "PASS",
+			"expected": "strict fields/version/types/identity/profile/capabilities; malformed input atomic",
+			"failed_assertions": [],
+			"observations": []
+		},
+		"P25": {
+			"actual": "PASS",
+			"expected": "cross-record envelope identity validated; authority rejects stale/foreign requests",
+			"failed_assertions": [],
+			"observations": []
+		},
+		"P26": {
+			"actual": "PASS",
+			"expected": "HELP actual delta/clamp, resource exactly once, zero-heal SKIP consumes nothing",
+			"failed_assertions": [],
+			"observations": []
+		},
+		"P27": {
+			"actual": "PASS",
+			"expected": "Restart before/after guided impact; real delayed stale callbacks cannot change new generation",
+			"failed_assertions": [],
+			"observations": []
+		},
+		"P28": {
+			"actual": "PASS",
+			"expected": "victory and defeat at impact stop queue, clear Guidance, preserve completion safety",
+			"failed_assertions": [],
+			"observations": []
+		},
+		"P31": {
+			"actual": "PASS",
+			"expected": "real configured Main scene/authority still unguided",
+			"failed_assertions": [],
+			"observations": []
+		},
+		"P32": {
+			"actual": "PASS",
+			"expected": "direct Legacy scene still Legacy, full deterministic regressions mapped separately",
+			"failed_assertions": [],
+			"observations": []
+		}
+	},
+	"checks": 1192,
+	"failures": 0,
+	"focused_cases": 30
+}

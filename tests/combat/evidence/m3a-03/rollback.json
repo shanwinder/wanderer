@@ -1,0 +1,70 @@
+{
+  "expected": "Fresh process and Legacy config restore HP/Guard/queue without session conversion",
+  "candidate_config": "; Engine configuration file.\n; It's best edited using the editor UI and not directly,\n; since the parameters that go here are not all obvious.\n;\n; Format:\n;   [section] ; section goes between []\n;   param=value ; assign values to parameters\n\nconfig_version=5\n\n[application]\n\nconfig/name=\"wanderer\"\nrun/main_scene=\"res://scenes/combat/combat_autonomous_optin.tscn\"\nconfig/features=PackedStringArray(\"4.7\", \"GL Compatibility\")\nconfig/icon=\"res://icon.svg\"\n\n[display]\n\nwindow/size/viewport_width=1280\nwindow/size/viewport_height=720\nwindow/stretch/mode=\"canvas_items\"\n\n[physics]\n\n3d/physics_engine=\"Jolt Physics\"\n\n[rendering]\n\nrendering_device/driver.windows=\"d3d12\"\nrenderer/rendering_method=\"gl_compatibility\"\nrenderer/rendering_method.mobile=\"gl_compatibility\"\n",
+  "rollback_config": "; Engine configuration file.\n; It's best edited using the editor UI and not directly,\n; since the parameters that go here are not all obvious.\n;\n; Format:\n;   [section] ; section goes between []\n;   param=value ; assign values to parameters\n\nconfig_version=5\n\n[application]\n\nconfig/name=\"wanderer\"\nrun/main_scene=\"res://scenes/combat/combat_prototype.tscn\"\nconfig/features=PackedStringArray(\"4.7\", \"GL Compatibility\")\nconfig/icon=\"res://icon.svg\"\n\n[display]\n\nwindow/size/viewport_width=1280\nwindow/size/viewport_height=720\nwindow/stretch/mode=\"canvas_items\"\n\n[physics]\n\n3d/physics_engine=\"Jolt Physics\"\n\n[rendering]\n\nrendering_device/driver.windows=\"d3d12\"\nrenderer/rendering_method=\"gl_compatibility\"\nrenderer/rendering_method.mobile=\"gl_compatibility\"\n",
+  "candidate_config_restored": true,
+  "steps": [
+    {
+      "step": "rollback-import",
+      "status": "PASS",
+      "exit_code": 0,
+      "timed_out": false,
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-m3a03-final-20261105-1/rollback-snapshot",
+        "--log-file",
+        "/private/tmp/wanderer-m3a03-final-20261105-1/rollback-import.engine.log",
+        "--editor",
+        "--import"
+      ],
+      "errors": [],
+      "log": "rollback-import.log"
+    },
+    {
+      "step": "rollback-f5-startup",
+      "status": "PASS",
+      "exit_code": 0,
+      "timed_out": false,
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-m3a03-final-20261105-1/rollback-snapshot",
+        "--log-file",
+        "/private/tmp/wanderer-m3a03-final-20261105-1/rollback-f5-startup.engine.log",
+        "--fixed-fps",
+        "60",
+        "--quit-after",
+        "120",
+        "--",
+        "--report=/private/tmp/wanderer-m3a03-final-20261105-1/rollback-f5-startup.json",
+        "--expect-legacy"
+      ],
+      "errors": [],
+      "log": "rollback-f5-startup.log"
+    },
+    {
+      "step": "rollback-gameplay",
+      "status": "PASS",
+      "exit_code": 0,
+      "timed_out": false,
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-m3a03-final-20261105-1/rollback-snapshot",
+        "--log-file",
+        "/private/tmp/wanderer-m3a03-final-20261105-1/rollback-gameplay.engine.log",
+        "--fixed-fps",
+        "60",
+        "--script",
+        "res://tests/combat/queue_regression.gd"
+      ],
+      "errors": [],
+      "log": "rollback-gameplay.log"
+    }
+  ],
+  "actual": "PASS"
+}

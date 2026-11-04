@@ -1,0 +1,20 @@
+{
+  "expected": "All tested source/test/assets/config hashes unchanged after verification; base scope limited to approved seam/runner",
+  "actual": "PASS",
+  "tested_source_commit": "1ab6c7367b27ff4eb2fdba9da0b173b84ec0d8a4",
+  "matched": 91,
+  "total": 91,
+  "changed_common_source": [
+    "scripts/combat/full_party_encounter.gd",
+    "tests/combat/verify.py"
+  ],
+  "new_source": [
+    "scripts/npc/guidance_decision_layer.gd",
+    "scripts/npc/guidance_decision_layer.gd.uid",
+    "scripts/npc/guided_decision_proof_encounter.gd",
+    "scripts/npc/guided_decision_proof_encounter.gd.uid",
+    "tests/npc/guidance_decision_proof.gd",
+    "tests/npc/guidance_decision_proof.gd.uid"
+  ],
+  "docs_evidence_only_after_test": true
+}

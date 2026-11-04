@@ -1006,4 +1006,53 @@ Durable evidence:
 
 Development proof initially failed because the new validator assumed positive Encounter IDs. Corrected the validator to accept **non-zero signed RefCounted IDs** and require exact current identity; Encounter/token IDs and all gameplay expectations remain unchanged. The successful development rerun and final committed run are recorded separately. Initial disposable export setup also encountered an older host Python API; corrected the export setup before starting Godot or editing runtime.
 
-M3A-02 is ready for Draft code review, not merged. No new agent F5/F6 visual acceptance was run; current change is data-only. Existing OPT-IN naming, English reasons, short log and translucent result panel remain known presentation limitations. Stop after Draft PR; no M3A-03 or automatic merge.
+At the original M3A-02 checkpoint it was ready for Draft code review and not yet merged (subsequently merged via PR #41). No new agent F5/F6 visual acceptance was run; current change is data-only. Existing OPT-IN naming, English reasons, short log and translucent result panel remain known presentation limitations. The original stop boundary was Draft review, with no M3A-03 or automatic merge in that task.
+
+
+## M3A-03 — Guidance Decision Verification
+
+M3A-03 adds opt-in `--guidance-decision-proof`: three parse stages and one isolated proof stage. It does not enable Guided Policy in existing Main integration tests. See [contract, owner-approved predicates, P01–P32 and Thai learning notes](../npc/README.md#m3a-03--isolated-guidance-decision-proof).
+
+On **5 November 2026 (Asia/Bangkok)**, actual engine `/Applications/Godot.app/Contents/MacOS/Godot --version` returned **`4.7.2.stable.official.ed1daf0bf`**. Before runtime edits, exported merged PR #39 `1728c5e678c5065278d1251d50449a8820eb5dae` to a disposable local Git repo and ran its unchanged runner: **44 stages PASS**. The cutover runner requires this passing44-stage reference, not the56-stage current base. Then verified merged PR #41 **`cf5611ea71e68dcc9dbcac9a627df88f357d20c3`**: **56 stages PASS**, Guidance Data66,641checks, all reference counts and exact Legacy6cases/5,892frames.
+
+The first sandbox reference import was correctly marked FAIL despite exit0 due to OS certificate/editor-settings permissions. Re-ran identical source with normal system access in a fresh output directory before implementation; did not suppress errors. Development proof1 failed a new Legacy API fixture (two-enemy input to the original single-enemy API). Corrected only that fixture; no inherited tests/constants changed. Raw failed and successful attempts are retained.
+
+Committed source **`1ab6c7367b27ff4eb2fdba9da0b173b84ec0d8a4`** passed **60 stages / all exit0**, including **30 focused cases / 1,192 checks / zero failures**. P29/P30 are separately evidenced full-regression gates, totaling32acceptance items. No unexpected errors/timeouts; negative suite has exactly five expected errors. Subsequent changes are Markdown/evidence only; **91/91 source/test/asset/config hashes match** the tested source.
+
+| Suite | Fresh PR #41 baseline | Final actual |
+|---|---:|---:|
+| Legacy gameplay | 14,395 | 14,395 |
+| Negative | 983 +5expectederrors | 983 +5expectederrors |
+| M2A-02 / M2A-03 | 412 / 5,166 | 412 / 5,166 |
+| M2B-01 / M2B-02 | 122 / 219 | 122 / 219 |
+| M2C-02 / M2C-03 / M2C-04 | 382 / 1,250 / 260,800 | 382 / 1,250 / 260,800 |
+| M2D-02 / M2D-03 | 8,319 / 787,617 | 8,319 / 787,617 |
+| M2D-04 cutover | 801,351 / 48cases | 801,351 / 48cases |
+| M3A-02 Guidance Data | 66,641 | 66,641 |
+| M3A-03 Guided decisions | — | 1,192 / 30focusedcases |
+
+Reference→baseline→final Legacy traces are identical in every frame: **6 independent cases / 5,892 frames**. Counts are assertions/frame observations, not independent scenarios. Native configured startup and disposable Legacy rollback/import/startup/full regression pass. Production/Main receives Guidance data yet still uses the original resolver; direct Legacy F6 remains Legacy. No Main/UI/scene/config/presentation change was made.
+
+Exact final command (reference and baseline commands in run record):
+
+```sh
+python3 tests/combat/verify.py \
+  --godot /Applications/Godot.app/Contents/MacOS/Godot \
+  --output /tmp/wanderer-m3a03-final-20261105-1 \
+  --npc-proof --actor-proof --ownership-proof --party-foundation-proof \
+  --party-turn-proof --party-playable-proof --presentation-proof \
+  --autonomous-main-proof --main-cutover-proof --guidance-data-proof \
+  --guidance-decision-proof \
+  --cutover-baseline /tmp/wanderer-m3a03-reference-20261105-2
+```
+
+For another run choose a new output directory; create the disposable PR #39 reference using `git archive` and its original runner. Canonical project config/branch is never changed to produce that reference. All test processes use fresh source snapshots/imports. Final HEAD and the exact tested commit are recorded separately in the Draft PR description to avoid claiming documentation commits were independently rerun.
+
+- [Run record / commands / approval / expected-actual / limitations](evidence/m3a-03/run-record.json)
+- [Reference44stages](evidence/m3a-03/reference-results.json), [merged PR #41 baseline56stages](evidence/m3a-03/baseline-results.json), [final60stages](evidence/m3a-03/final-results.json)
+- [P01–P32 mapping](evidence/m3a-03/coverage.json), [30focusedcase reports](evidence/m3a-03/guidance-decision-scenarios.json), [all scenario snapshots](evidence/m3a-03/scenarios.zip)
+- [All13inheritedsuitecounts](evidence/m3a-03/inherited-counts.json), [22cutoverreleasegates](evidence/m3a-03/cutover-release-gates.json), [Legacy rollback](evidence/m3a-03/rollback.json)
+- [Three-way exact trace comparison](evidence/m3a-03/trace-comparison.json), [raw traces](evidence/m3a-03/traces.zip), [all raw stage/engine logs/exit codes including failed attempts](evidence/m3a-03/logs.zip)
+- [Final SHA-256 manifest](evidence/m3a-03/source-sha256.json), [baseline manifest](evidence/m3a-03/baseline-source-sha256.json), [91/91 source comparison and scope](evidence/m3a-03/source-comparison.json)
+
+**Limitations:** no GUI F5/F6 visual acceptance in this task; no visual/pacing claim from headless results. Guidance UI/playable Main integration remains M3A-04/05 and is not started. Compassion has no new policy effect; HELP50% is not implemented. Revision system-invalidation note is analyzed and deferred without changing submit-only semantics. Await one Draft PR review; no merge/auto-merge authorization.

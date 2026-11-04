@@ -1,0 +1,226 @@
+[
+  {
+    "id": "P01",
+    "expected": "100 pure NONE contexts and actual full round exactly match baseline",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P01",
+    "kind": "focused"
+  },
+  {
+    "id": "P02",
+    "expected": "ATTACK independently matches",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P02",
+    "kind": "focused"
+  },
+  {
+    "id": "P03",
+    "expected": "3/5 HP lethal first hit3; above30% still self DEFEND",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P03",
+    "kind": "focused"
+  },
+  {
+    "id": "P04",
+    "expected": "3/10 exactly30% low HP threat",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P04",
+    "kind": "focused"
+  },
+  {
+    "id": "P05",
+    "expected": "9/30 urgent HELP overrides ATTACK",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P05",
+    "kind": "focused"
+  },
+  {
+    "id": "P06",
+    "expected": "valid nonlethal threat at4/10 and cautious established NPC follows DEFEND",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P06",
+    "kind": "focused"
+  },
+  {
+    "id": "P07",
+    "expected": "no valid self threat/dead declarer ignored; first-hit3, never aggregate6",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P07",
+    "kind": "focused"
+  },
+  {
+    "id": "P08",
+    "expected": "HELP at30% already chosen independently",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P08",
+    "kind": "focused"
+  },
+  {
+    "id": "P09",
+    "expected": "HELP above30%, including40%/50%/full: no heal/resource expansion",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P09",
+    "kind": "focused"
+  },
+  {
+    "id": "P10",
+    "expected": "HELP exhausted retains ATTACK fallback; no discretionary override",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P10",
+    "kind": "focused"
+  },
+  {
+    "id": "P11",
+    "expected": "Player HP0 cannot be helped/revived",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P11",
+    "kind": "focused"
+  },
+  {
+    "id": "P12",
+    "expected": "FOCUS A matches independently",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P12",
+    "kind": "focused"
+  },
+  {
+    "id": "P13",
+    "expected": "FOCUS B causally changes NPC target without changing Player target",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P13",
+    "kind": "focused"
+  },
+  {
+    "id": "P14",
+    "expected": "focused A killed by Player before NPC slot: reevaluate, attack B",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P14",
+    "kind": "focused"
+  },
+  {
+    "id": "P15",
+    "expected": "FOCUS B dies after lock; effect SKIP while FOLLOWED at lock remains true",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P15",
+    "kind": "focused"
+  },
+  {
+    "id": "P16",
+    "expected": "high Trust cannot override safety",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P16",
+    "kind": "focused"
+  },
+  {
+    "id": "P17",
+    "expected": "high Discipline cannot override urgent HELP",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P17",
+    "kind": "focused"
+  },
+  {
+    "id": "P18",
+    "expected": "16 profile combinations, explicit one-trait paired fixtures; Compassion deliberately inert",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P18",
+    "kind": "focused"
+  },
+  {
+    "id": "P19",
+    "expected": "one team FOCUS: NPC1 follows B, NPC2 safety DEFEND, NPC3 retains A",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P19",
+    "kind": "focused"
+  },
+  {
+    "id": "P20",
+    "expected": "NPC1 heals6→10, NPC2 now evaluates discretionary FOCUS from latest state",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P20",
+    "kind": "focused"
+  },
+  {
+    "id": "P21",
+    "expected": "FullPartyEncounter ignores stored FOCUS; only explicit proof type opts in",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P21",
+    "kind": "focused"
+  },
+  {
+    "id": "P22",
+    "expected": "both original API schemas/semantics unchanged",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P22",
+    "kind": "focused"
+  },
+  {
+    "id": "P23",
+    "expected": "immutable-style detached metadata stable through caller edits and impact",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P23",
+    "kind": "focused"
+  },
+  {
+    "id": "P24",
+    "expected": "strict fields/version/types/identity/profile/capabilities; malformed input atomic",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P24",
+    "kind": "focused"
+  },
+  {
+    "id": "P25",
+    "expected": "cross-record envelope identity validated; authority rejects stale/foreign requests",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P25",
+    "kind": "focused"
+  },
+  {
+    "id": "P26",
+    "expected": "HELP actual delta/clamp, resource exactly once, zero-heal SKIP consumes nothing",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P26",
+    "kind": "focused"
+  },
+  {
+    "id": "P27",
+    "expected": "Restart before/after guided impact; real delayed stale callbacks cannot change new generation",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P27",
+    "kind": "focused"
+  },
+  {
+    "id": "P28",
+    "expected": "victory and defeat at impact stop queue, clear Guidance, preserve completion safety",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P28",
+    "kind": "focused"
+  },
+  {
+    "id": "P29",
+    "expected": "Unchanged Guidance Data suite66641checks; no inherited test edits",
+    "actual": "PASS",
+    "evidence": "inherited-counts.json / final/guidance-data-proof.log",
+    "kind": "full-regression gate"
+  },
+  {
+    "id": "P30",
+    "expected": "All13inheritedcounts exact;60stages PASS;6Legacycases/5892frames;startup/rollback",
+    "actual": "PASS",
+    "evidence": "final-results.json / inherited-counts.json / trace-comparison.json / rollback.json / cutover-release-gates.json",
+    "kind": "full-regression gate"
+  },
+  {
+    "id": "P31",
+    "expected": "real configured Main scene/authority still unguided",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P31",
+    "kind": "focused"
+  },
+  {
+    "id": "P32",
+    "expected": "direct Legacy scene still Legacy, full deterministic regressions mapped separately",
+    "actual": "PASS",
+    "evidence": "guidance-decision-scenarios.json#P32",
+    "kind": "focused"
+  }
+]
