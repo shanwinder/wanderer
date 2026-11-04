@@ -279,7 +279,7 @@ func _lifecycle() -> void:
 	_check(data.active.is_empty() and data.pending.guidance_type == "NONE" and data.pending.round_id == 2,
 		"round completion clears active and restores next-round NONE")
 	_check(data.guidance_revision == revision and encounter.snapshot().round_completions == 1,
-		"revision counts accepted submissions only; round completes once")
+		"revision unchanged by round completion; round completes once")
 	_reject(encounter, request, "WRONG_ROUND")
 	encounter.begin_round("DEFEND")
 	_check(encounter.guidance_snapshot().active.guidance_type == "NONE", "Guidance does not cross rounds")

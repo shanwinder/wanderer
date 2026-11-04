@@ -1,0 +1,83 @@
+{
+  "date": "2026-11-05",
+  "timezone": "Asia/Bangkok",
+  "task": "M3A-04 Playable Guidance Integration",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "baseline_commit": "2d3b1e110c3957531a3faaa402b37d963009405a",
+  "tested_commit": "5e54b6f5bcc5ada73cbd07c4dbdeca99256d2378",
+  "branch": "codex/m3a-04-playable-guidance-integration",
+  "git_preflight": {
+    "clean_before_work": true,
+    "PR42": "GitHub confirmed merged; local/remote HEAD/merge-base equal",
+    "remote_PR42_branch": "deleted; GitHub branch search and git ls-remote m3a heads empty",
+    "open_PRs": [
+      2,
+      17
+    ],
+    "duplicate_M3A04": "none before branch and before push; no unrelated PR edits"
+  },
+  "R1": {
+    "source": "Explicit owner Option A approval in this chat on2026-11-05",
+    "accepted_submit": "+1, including identical content",
+    "system_preferred_enemy_clear": "+1 before NONE record",
+    "reads_rejects_HP0_unrelated_removal": "unchanged",
+    "Restart": "new generation/revision0",
+    "schema": "version1 unchanged"
+  },
+  "reference": {
+    "commit": "1728c5e678c5065278d1251d50449a8820eb5dae",
+    "stages": 44,
+    "actual": "PASS",
+    "source": "disposable git archive export and local Git index; canonical branch/config untouched"
+  },
+  "baseline": {
+    "commit": "2d3b1e110c3957531a3faaa402b37d963009405a",
+    "stages": 60,
+    "actual": "PASS",
+    "before_runtime_edits": true
+  },
+  "final": {
+    "stages": 64,
+    "all_stages": "PASS",
+    "focused_cases": 34,
+    "main_checks": 507851,
+    "guidance_data_checks": 66641,
+    "guidance_decision_checks": 1192,
+    "legacy_cases": 6,
+    "legacy_frames": 5892,
+    "source_hashes": 97,
+    "hash_matches": 97,
+    "timeouts": 0,
+    "unexpected_errors": 0,
+    "expected_negative_errors": 5
+  },
+  "commands": {
+    "reference": "python3 /tmp/wanderer-m3a04-reference-source-20261105/tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m3a04-reference-20261105-2 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof",
+    "baseline": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m3a04-baseline-20261105 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --guidance-decision-proof --cutover-baseline /tmp/wanderer-m3a04-reference-20261105-2",
+    "final": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m3a04-final-20261105 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --guidance-decision-proof --guidance-main-proof --cutover-baseline /tmp/wanderer-m3a04-reference-20261105-2"
+  },
+  "development": [
+    "Export setup first failed unsupported tar filter argument on host Python3.9; retried before Godot/runtime changes.",
+    "Sandbox reference import FAIL despite exit0, macOS CA access; logs preserved; same source normal OS access fresh output PASS before implementation.",
+    "Focused1 FAIL: read-only constant in new test, missing HUD refresh after test-only direct race mutation, paired fixture display names differed. Corrected fixtures; no policy/balance changes.",
+    "Focused2 PASS34cases/495410checks. Full development64stagesPASS. Added explicit unavailable-NPC metadata assertion and minor presentation cleanup before final committed-source rerun."
+  ],
+  "assertion_migration": {
+    "P31": "Main unguided/FOCUSignoredA -> production Guided type/FOCUSfollowedB; same check count",
+    "P21": "unchanged base FullPartyEncounter unguided",
+    "P01": "unchanged NONE baseline equivalence",
+    "I33": "added18paired real-Main NONE round decisions/effects/complete-state comparisons",
+    "M3A02": "only round-completion assertion text clarified; predicate unchanged"
+  },
+  "scope": "M3A-04 only. Layer/Resolver/actors/presentation/scenes/assets/project config and balance unchanged. Four existing Markdown guides updated.",
+  "known_limitations": [
+    "Owner comprehension/acceptance",
+    "Full visual scenario matrix",
+    "Dedicated manual discretionary-DEFEND and SKIP race scenarios",
+    "Calibrated standalone1280x720 capture/video and exact pixel/timing measurement",
+    "Confirmed keyboard navigation cycle",
+    "Internal underscore-field subclass coupling remains; UI uses public APIs",
+    "HELP50% not approved; Compassion no new policy; Final Turn System OPEN; SpeedOrderPending; M2B03Deferred"
+  ],
+  "stop": "One Draft PR; wait code review; M3A05 pending; no merge/auto-merge/branch deletion/follow-on work"
+}

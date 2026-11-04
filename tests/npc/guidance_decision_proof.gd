@@ -2,6 +2,7 @@ extends SceneTree
 
 const Encounter = preload("res://scripts/combat/full_party_encounter.gd")
 const Guided = preload("res://scripts/npc/guided_decision_proof_encounter.gd")
+const ProductionGuided = preload("res://scripts/combat/guided_encounter.gd")
 const Layer = preload("res://scripts/npc/guidance_decision_layer.gd")
 const Resolver = preload("res://scripts/npc/npc_decision_resolver.gd")
 const Data = preload("res://scripts/npc/guidance_data_contract.gd")
@@ -481,16 +482,16 @@ func _main_boundaries() -> void:
 	var scene = Main.instantiate()
 	root.add_child(scene)
 	await process_frame
-	_check(scene.encounter != null and not scene.encounter is Guided, "actual Main uses unguided production type")
+	_check(scene.encounter is ProductionGuided and not scene.encounter is Guided, "M3A-04 Main uses production Guided type, not test-only subclass")
 	_check(scene.encounter.submit_guidance(_request(scene.encounter, "FOCUS_TARGET", "enemy_b")).status == "ACCEPTED",
-		"Main authority accepts data only")
+		"Main authority accepts Guidance")
 	scene.encounter.begin_round("DEFEND")
 	_step(scene.encounter)
 	var t: Dictionary = scene.encounter.begin_next_action()
-	_check(t.decision.target_id == "enemy_a" and not t.has("guidance_decision"), "Main FOCUS data never enables policy")
+	_check(t.decision.target_id == "enemy_b" and t.guidance_decision.guidance_response.response == "FOLLOWED", "M3A-04 Main FOCUS now intentionally enables approved policy")
 	scene.queue_free()
 	await process_frame
-	_record("P31", "real configured Main scene/authority still unguided")
+	_record("P31", "M3A-04 migration: actual Main guided; base remains unguided in P21; NONE equivalence in P01")
 	scene = Legacy.instantiate()
 	root.add_child(scene)
 	await process_frame

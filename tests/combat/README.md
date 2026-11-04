@@ -1056,3 +1056,94 @@ For another run choose a new output directory; create the disposable PR #39 refe
 - [Final SHA-256 manifest](evidence/m3a-03/source-sha256.json), [baseline manifest](evidence/m3a-03/baseline-source-sha256.json), [91/91 source comparison and scope](evidence/m3a-03/source-comparison.json)
 
 **Limitations:** no GUI F5/F6 visual acceptance in this task; no visual/pacing claim from headless results. Guidance UI/playable Main integration remains M3A-04/05 and is not started. Compassion has no new policy effect; HELP50% is not implemented. Revision system-invalidation note is analyzed and deferred without changing submit-only semantics. Await one Draft PR review; no merge/auto-merge authorization.
+
+## M3A-04 — Playable Guidance Candidate
+
+**สถานะ:** Candidate บน `codex/m3a-04-playable-guidance-integration` เพื่อ Draft Code Review; **M3A-05 Owner Acceptance Pending**. ฐานจริงคือ merged [PR #42](https://github.com/shanwinder/wanderer/pull/42) `2d3b1e110c3957531a3faaa402b37d963009405a`. Owner อนุมัติ **R1 Option A** ใน chat วันที่ 5 พฤศจิกายน 2026 ก่อนเริ่ม branch/runtime edits. ไม่อนุญาต merge/auto-merge หรือเริ่ม milestone ถัดไป.
+
+### Architecture / R1 / policy preservation
+
+[Production GuidedEncounter](../../scripts/combat/guided_encounter.gd) สืบทอด FullPartyEncounter และใช้ Guidance Decision Layer เดิมจาก M3A-03. Test-only proof subclass เปลี่ยนเป็น subclass บาง ๆ ของ production adapter; Main ไม่ import proof class. มี Gameplay Authority ชุดเดียว: Encounter ถือ queue/Guard/HELP/Guidance/token, ActorRuntimeState ถือ HP; Controller ถือ draft selections และ visual views; Presentation Adapter เดิมถือ Tween/impact/completion. ไม่มี shadow combat state.
+
+R1 เปลี่ยนจาก submit-only เป็น Pending Content Revision: accepted submission +1; ล้าง Pending FOCUS_TARGET หลังถอน preferred Enemy สำเร็จ +1 ก่อนสร้าง NONE record. Reads/rejects/HP0/unrelated actor removal ไม่เพิ่ม. Freeze/round completion/terminal ใช้ round/lifecycle identity เดิม; Restart generation ใหม่/revision0. [Current contract และผลต่อ stale client/frozen state/roster](../npc/README.md#r1-option-a--current-m3a-04-contract). ใช้ request version1/eight fieldsเดิม ไม่เพิ่ม schema/counter แบบ Option B.
+
+NONE เท่ากับ unguided baseline; safety, urgent HELP ≤30%, HELP+4/once, cooperation predicate และ Courage เดิมไม่เปลี่ยน. **HELP50% NOT APPROVED**, Compassion ไม่มี policy ใหม่, first valid hit เดิม, ไม่เพิ่ม randomness/Speed forecast/initiative. Player/NPC/Enemy damage5/1/3, Guard reduction2/min1, Combat Speed0.70/Lunge44px/Compact Formation และ saved homes เดิม. Scene/assets/project config/Resolver/Layer/Presentation Adapter ไม่แก้. Default ยังคง Autonomous และ direct Legacy F6 ยังเล่นได้.
+
+Controller อ่าน identity/revision ล่าสุดก่อน submit; ถ้าไม่ ACCEPTED จะไม่ begin_round. ถ้า accepted แล้ว Player command reject จะแสดง Pending จริงพร้อม error. Begin STARTED จึง Frozen; queue ปิด selectors. NPC ประเมินตอน slot จริง; response/decision metadata lock แยกจาก actual effect. `_autonomous_current()` เปรียบเทียบ Guidance metadata กับ Encounter locked token ด้วย. Restart ใช้ visual epoch/generation และ cleanup เดิม. Controller อ่าน snapshots เท่านั้น ไม่มี API ให้ UI เขียน locked decision/profile.
+
+### วิธีเล่นและบทเรียน GDScript ภาษาไทย
+
+ใช้ Goal → Concept → Do → Observe → Explain → Adjust → Commit โดยลองทีละ scenario:
+
+1. **F5/F6:** เปิด project ด้วย Godot4.7.2 แล้ว F5 เพื่อเปิด Main. เปิด `res://scenes/combat/combat_autonomous_optin.tscn` แล้ว F6 ได้ flow เดียวกัน. เปิด `combat_prototype.tscn` แล้ว F6 คือ Legacy ซึ่งไม่มี Guidance. ไม่สลับ authority ระหว่าง session.
+2. **Player Command:** Target Picker ด้านล่างเลือกเป้าหมายโจมตีของ Player แล้วกดโจมตี/ตั้งรับ. ผู้เล่นควบคุมเพียงตนเอง; `begin_round()` เป็นเจ้าของการเริ่ม queue จริง.
+3. **Guidance เป็นคำแนะนำ:** selector ด้านซ้ายบนเลือก NONE/ATTACK/DEFEND/HELP/FOCUS_TARGET. การเปลี่ยน selector เก็บเพียง Draft ใน controller; ยังไม่เขียน Encounter และไม่มีปุ่มบังคับ NPC ลงมือทันที.
+4. **Draft/Pending/Frozen:** Draft = ยังไม่ส่ง; Pending = Encounter รอเริ่มรอบ; Frozen = accepted และ round เริ่มแล้ว. กด Player command จึงสร้าง request จาก snapshot ล่าสุด → submit → ตรวจ ACCEPTED → begin_round. จบรอบกลับ NONE; terminal ปิด input. คำขอถูกปฏิเสธต่างจาก NPC ปฏิเสธ Guidance.
+5. **FOCUS_TARGET:** เลือก Focus EnemyB ด้านบนและ Player Target EnemyA ด้านล่างได้พร้อมกัน. `guidance_draft_target` แยกจาก `autonomous_selected_target`. NPC1/2 อาจเลือก B, NPC3 อาจเลือก A ตาม policy. HP0 preference อาจใช้ไม่ได้เมื่อถึง slot.
+6. **NPC ตัดสินใจเอง:** Normal + FOCUS B เห็นการร่วมมือและ profile refusal; Player needs HELP + ATTACK เห็น NPC1 ช่วย Player ก่อน; NPC self-DEFEND + ATTACK เห็น safety มาก่อน. สอง preset เพิ่มเติม “Guidance: mixed responses” และ “Guidance: cautious DEFEND” ใช้ค่าตัวเลขเดิมเพื่อสังเกต predicate ที่อนุมัติ ไม่ใช่ balance ใหม่.
+7. **FOLLOWED กับ MATCHED:** FOLLOWED แปลว่า Action/Target เปลี่ยนจาก baseline เพราะคำชี้นำ; MATCHED_INDEPENDENTLY แปลว่าเดิมก็ตัดสินใจแบบนั้น. ลอง Normal + ATTACK หรือ FOCUS A เทียบ FOCUS B. `guidance_response` อยู่ข้าง `decision` ไม่เปลี่ยน original schema.
+8. **Decision กับ Effect:** บรรทัด NPC แสดง Action/Target, action reason, response/reason และ APPLIED/SKIP/HP delta. HELP consumption และ guard อยู่ใน actual effect/log/tooltip. เป้าหมายตายหลัง lock อาจยัง FOLLOWED แต่ SKIP HP0 ตอน impact; ไม่มี damage/retarget ที่แอบเกิด. ภาษาไทยอยู่ใน [message mapping](../../scripts/combat/guidance_messages.gd) แยกจาก policy; English codes ดูใน tooltip/scrollable log.
+9. **Restart/Revision:** Restart คืน NONE/rev0 พร้อม generation ใหม่และยกเลิก Tween/popups/flash. `guidance_revision` ป้องกัน stale client ใน round เดิม; generation ป้องกันคำขอและ callback ข้าม session. R1 เพิ่ม revision เมื่อระบบถอน Enemy ที่ pending focus ด้วย; การอ่าน snapshot ไม่เพิ่ม.
+10. **เรียนรู้ผ่าน preset:** ลอง HELP, safety, multiple HELP, unavailable slots, victory/defeat และ kill order ทั้งสอง. สังเกต NPC1 HELP6→10 ทำให้ NPC2 ไม่อยู่ urgent region แล้ว; resolver อ่าน state ใหม่ตอนแต่ละ slot ไม่ precompute ทั้งทีม. ห้ามตีความ fixed traits ว่าเป็น persistent personality เต็มระบบ.
+11. **อ่าน Evidence:** `results.json` บอก stage/command/exit/errors/timeout; scenario report มี expected/actual/locked tokens/effects; trace comparison เทียบ Legacy ทุก frame; source manifest ยืนยัน source ที่ทดสอบ. จำนวน checks รวม per-frame assertions ไม่ใช่จำนวน independent cases. Headless ไม่ยืนยันความรู้สึกหรือ owner comprehension.
+12. **ข้อจำกัด:** ข้อความ debug ยาวถูก clip ในแถวหลักและอ่านเต็มผ่าน tooltip/log; log เลื่อนดูได้และไม่ทับ controls. Queue ยัง Player→NPC→Enemy ตาม prototype; Final Turn System OPEN, Speed Order Pending, M2B-03 Deferred. ไม่มี HELP50%, Compassion effect, trust progression, items, retreat หรือ permadeath ใหม่.
+
+### Focused integration / assertion migration
+
+`--guidance-main-proof` เพิ่มสาม parse stages และ real Main scene proof. I01–I34 คือ34 focused cases; I35/I36 เป็น full-regression/error gates แยก ไม่อ้างเป็น focused cases.
+
+| Cases | Expected |
+|---|---|
+| I01–I07 | F5 config/production guided type/single authority/NONE; Player A vs Focus B; draft→accepted→freeze→NONE; malformed draft blocks round; accepted-but-rejected command stays Pending |
+| I08–I16 | Main ATTACK independent; Focus B followed/A independent; discretionary DEFEND; safety/urgent HELP refusals; HELP40% not applicable; urgent HELP independent; profile refusal |
+| I17–I22 | Three independent responses; focus dead before slot/after lock; system invalidation/UI refresh; R1 both enemy IDs/stale/fresh/frozen/Restart; detached nested snapshots/token and unavailable NPC explanation |
+| I23–I28 | Restart windup/impact/return; delayed old and forged metadata callbacks; guided victory/defeat; HELP+4/once and next-hit self Guard exactly once |
+| I29–I34 | Distinct 1280×720 controls/hitboxes/focus links/log; all actual Layer reason codes mapped Thai/English; independent rows; Legacy no UI;18paired NONE rounds vs unguided base; presentation baseline |
+| I35/I36 | All inherited suites/counts retained, exact Legacy traces, native startup/rollback; no unexpected errors/timeouts |
+
+**Intentional migration:** M3A-03 P31 used to assert Main unguided / FOCUS ignored→A. M3A-04 requires production GuidedEncounter (not proof subclass) / FOCUS B→FOLLOWED B. Same three checks remain, no lowered coverage/count. P21 still proves **base FullPartyEncounter unguided**, P01 preserves NONE exact decisions/effects, and I33 adds18paired real-Main NONE rounds. M3A-02 Data Proof remains base/data-only; only round-completion assertion wording changes, its predicate stays exact. [Before baseline](evidence/m3a-04/baseline-results.json), [final](evidence/m3a-04/final-results.json), [focused coverage](evidence/m3a-04/guidance-main-scenarios.zip).
+
+### Verification and durable evidence
+
+Actual executable `/Applications/Godot.app/Contents/MacOS/Godot --version` returned **4.7.2.stable.official.ed1daf0bf**. Before runtime edits: disposable unchanged PR #39 `1728c5e` reference44stages PASS, then actual merged PR #42 `2d3b1e1` baseline60stages PASS. Sandbox import first attempt had an unexpected macOS CA-certificate error despite exit0; classified FAIL and preserved. Same source with normal OS access in a fresh output passed before implementation. Export setup initially hit host Python's unsupported tar filter argument, corrected before Godot ran.
+
+Final tested source commit **`5e54b6f`**: **64 stages PASS / 34 focused Main cases / 507,851 Main checks**, Guidance Data66,641 / Decision1,192 and all inherited counts retained; Legacy6cases/5,892frames identical,97/97source hashes equal, zero unexpected errors/timeouts (negative five expected errors). Exact results/counts, command lines and GUI scope are in the records below; final PR head may add only Markdown/evidence. Full run includes fresh import, parse, configured Main startup, Legacy startup/gameplay, negative suite (five expected errors), all M2A/B/C/D and M3A-02/03/04 proofs, native configured startup, fresh rollback, trace/count release gates.
+
+```sh
+python3 tests/combat/verify.py \
+  --godot /Applications/Godot.app/Contents/MacOS/Godot \
+  --output /tmp/wanderer-m3a04-final-20261105 \
+  --npc-proof --actor-proof --ownership-proof --party-foundation-proof \
+  --party-turn-proof --party-playable-proof --presentation-proof \
+  --autonomous-main-proof --main-cutover-proof --guidance-data-proof \
+  --guidance-decision-proof --guidance-main-proof \
+  --cutover-baseline /tmp/wanderer-m3a04-reference-20261105-2
+```
+
+Create the PR39 reference with `git archive 1728c5e` into a disposable directory, initialize a local Git index, then run its original runner with all flags through `--autonomous-main-proof` only; that runner yields the required44-stage reference. Never edit canonical config/expected counts to fabricate a reference. Choose fresh output paths on later runs.
+
+- [Run record / engine / tested commit / commands / limitations](evidence/m3a-04/run-record.json)
+- [Reference44 results](evidence/m3a-04/reference-results.json), [merged-base60](evidence/m3a-04/baseline-results.json), [final results](evidence/m3a-04/final-results.json), [inherited counts](evidence/m3a-04/inherited-counts.json)
+- [Focused I01–I34 report](evidence/m3a-04/guidance-main-scenarios.zip), [all scenario reports](evidence/m3a-04/scenarios.zip), [I35/I36 gates](evidence/m3a-04/coverage.json)
+- [Exact Legacy comparison](evidence/m3a-04/trace-comparison.json), [raw three-way traces](evidence/m3a-04/traces.zip), [rollback](evidence/m3a-04/rollback.json)
+- [SHA256 manifest](evidence/m3a-04/source-sha256.json), [final source equality](evidence/m3a-04/source-comparison.json), [scope/link/artifact checks](evidence/m3a-04/review-checks.json)
+- [All raw stage/engine logs and exits, including failed development/import attempts](evidence/m3a-04/logs.zip), [agent GUI screenshots](evidence/m3a-04/gui.zip), [GUI observations/scope](evidence/m3a-04/gui-smoke.json)
+
+Development focused attempt1 had a read-only constant mutation in a new test, a missing test-only HUD refresh after direct race mutation, and mismatched actor display names in the paired fixture. Fixed fixtures using a test-only rejecting Encounter / snapshot HUD refresh / matching names; no balance/Resolver change. Attempt2:34cases/495,410checks/0failures. Added explicit unavailable-NPC metadata coverage before final rerun; final report is authoritative. Full development run:64stages PASS; all inherited counts unchanged. Failed logs are retained, not removed from the record.
+
+Agent GUI smoke observed F5/Autonomous F6/Legacy F6 through editor toolbar equivalents at project logical1280x720,1.0x embedded (host panel1475x719 with letterboxing). Final-source F5 FocusB/PlayerA round produced Player24/A9/B10 and next-roundNONE; F6 urgentHELP produced Player8/A13/B12 with NPC1 HELP0; Legacy Attack produced Player25/A8/B12. Thai responses/log and Restart cleanup were observed. This is limited smoke: manual keyboard focus transition was **UNVERIFIED** after CUA Tab/Enter did not establish it; calibrated standalone capture, full visual matrix, manual discretionary-DEFEND/SKIP races and owner comprehension remain pending. No visual acceptance PASS is inferred from headless tests or screenshots.
+
+### M3A-05 Owner acceptance checklist — PENDING, separate milestone
+
+Agent GUI smoke is limited evidence; it does not complete these owner gates. Record engine, commit, expected/actual, pacing/readability and media/notes for each when separately authorized:
+
+- [ ] F5 and F6 Autonomous at1280×720: Guidance/Focus/Player Target labels, hitboxes, Tab/keyboard navigation, long Thai messages/tooltips/log scroll readable and separate from controls.
+- [ ] Normal + ATTACK/FocusA/FocusB: explain MATCHED_INDEPENDENTLY vs FOLLOWED; NPC3 profile refusal; Player target independent.
+- [ ] Player needs HELP + ATTACK: NPC1 REFUSED/urgent HELP+4/use once, later NPC decisions refresh; HELP40% never heals.
+- [ ] NPC self-DEFEND and both new Guidance presets: safety priority, discretionary cautious guard, same team suggestion/different responses, next-valid-hit semantics.
+- [ ] Target dies before slot vs after lock: latest decision vs immutable lock; SKIP/HP0 clearly distinguishable from successful attack.
+- [ ] Restart before/after impact/during return: no old popup/text/flash/damage/callback; NONE/rev0/new session.
+- [ ] Victory/defeat result panel, input locking, new round NONE; no stale Frozen claim on failed command.
+- [ ] F6 Legacy: no Guidance controls; NPC2 Guard Player; original HP/target fallback/both kill orders/queue, direct scene remains available.
+- [ ] Compare0.70pacing/44pxlunge/Compact Formation, idle/poses/guarded recoil, floating damage/heal/flash/spark, EnemyB tint/scale, return homes. Exact pixel/timing assertions are automated; owner judges feel.
+- [ ] Owner can explain requested Guidance, actual NPC choice, response reason and actual applied/skipped effect without reading source. Keep M3A-05 pending until owner records acceptance.

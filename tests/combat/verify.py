@@ -26,7 +26,8 @@ def main():
     parser.add_argument("--autonomous-main-proof", action="store_true", help="Also verify M2D-03 opt-in Main Combat integration")
     parser.add_argument("--main-cutover-proof", action="store_true", help="Verify configured Main entry, native startup, Legacy rollback and release gates")
     parser.add_argument("--guidance-data-proof", action="store_true", help="Also verify M3A-02 data-only Guidance contracts and lifecycle")
-    parser.add_argument("--guidance-decision-proof", action="store_true", help="Also verify M3A-03 isolated Guidance decision layer (never enables Main policy)")
+    parser.add_argument("--guidance-decision-proof", action="store_true", help="Verify M3A-03 isolated Guidance decision layer and current Main boundary (does not toggle policy)")
+    parser.add_argument("--guidance-main-proof", action="store_true", help="Verify M3A-04 production Guidance in real Main scene and R1 revision")
     parser.add_argument("--cutover-baseline", type=Path, help="Passing merged-base output directory for trace/count comparison")
     args = parser.parse_args()
     if args.main_cutover_proof:
@@ -76,7 +77,7 @@ def main():
         passed = code == 0 and sorted(errors) == sorted(expected_errors)
         if name == "version":
             passed = passed and "4.7.2.stable" in log
-        if name in ("gameplay", "invalid-actions", "npc-proof", "npc-playable", "actor-proof", "ownership-proof", "party-foundation-proof", "party-turn-proof", "party-playable-proof", "presentation-proof", "autonomous-main-proof", "main-cutover-proof", "main-cutover-f5-startup", "rollback-f5-startup", "rollback-gameplay", "guidance-data-proof", "guidance-decision-proof"):
+        if name in ("gameplay", "invalid-actions", "npc-proof", "npc-playable", "actor-proof", "ownership-proof", "party-foundation-proof", "party-turn-proof", "party-playable-proof", "presentation-proof", "autonomous-main-proof", "main-cutover-proof", "main-cutover-f5-startup", "rollback-f5-startup", "rollback-gameplay", "guidance-data-proof", "guidance-decision-proof", "guidance-main-proof"):
             passed = passed and re.search(r"RESULT: \d+ checks, 0 failures", log) is not None
         result = {"step": name, "status": "PASS" if passed else "FAIL",
                   "exit_code": code, "timed_out": timed_out, "command": command,
@@ -161,6 +162,12 @@ def main():
                 run("guided-parse-" + Path(script).stem, ["--script", "res://" + script, "--check-only"])
             run("guidance-decision-proof", [*timing, "--script", "res://tests/npc/guidance_decision_proof.gd", "--",
                                             "--report=" + str(output / "guidance-decision-scenarios.json")])
+        if args.guidance_main_proof:
+            for script in ["scripts/combat/guided_encounter.gd", "scripts/combat/guidance_messages.gd",
+                           "tests/combat/guidance_main_integration.gd"]:
+                run("guidance-main-parse-" + Path(script).stem, ["--script", "res://" + script, "--check-only"])
+            run("guidance-main-proof", [*timing, "--script", "res://tests/combat/guidance_main_integration.gd", "--",
+                                        "--report=" + str(output / "guidance-main-scenarios.json")])
         if args.main_cutover_proof:
             for script in ["tests/combat/main_cutover_proof.gd", "tests/combat/main_cutover_startup_probe.gd"]:
                 run("cutover-parse-" + Path(script).stem, ["--script", "res://" + script, "--check-only"])
