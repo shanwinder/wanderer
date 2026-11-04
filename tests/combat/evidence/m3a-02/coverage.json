@@ -1,0 +1,206 @@
+[
+  {
+    "id": "D01",
+    "expected": "Initial NONE, no frozen Guidance, revision0; existing schemas unchanged",
+    "actual": "PASS",
+    "checks": 5,
+    "evidence": "guidance-data-scenarios.json#D01"
+  },
+  {
+    "id": "D02",
+    "expected": "Accept ATTACK as data only; request detached; revision increments",
+    "actual": "PASS",
+    "checks": 3,
+    "evidence": "guidance-data-scenarios.json#D02"
+  },
+  {
+    "id": "D03",
+    "expected": "Accept DEFEND as data only; request detached; revision increments",
+    "actual": "PASS",
+    "checks": 3,
+    "evidence": "guidance-data-scenarios.json#D03"
+  },
+  {
+    "id": "D04",
+    "expected": "Accept HELP as data only; request detached; revision increments",
+    "actual": "PASS",
+    "checks": 3,
+    "evidence": "guidance-data-scenarios.json#D04"
+  },
+  {
+    "id": "D05",
+    "expected": "Accept FOCUS_TARGET as data only; request detached; revision increments",
+    "actual": "PASS",
+    "checks": 6,
+    "evidence": "guidance-data-scenarios.json#D05"
+  },
+  {
+    "id": "D06",
+    "expected": "Unknown/wrong-type enums rejected without writes",
+    "actual": "PASS",
+    "checks": 19,
+    "evidence": "guidance-data-scenarios.json#D06"
+  },
+  {
+    "id": "D07",
+    "expected": "Only integer schema_version1 accepted",
+    "actual": "PASS",
+    "checks": 16,
+    "evidence": "guidance-data-scenarios.json#D07"
+  },
+  {
+    "id": "D08",
+    "expected": "Exact eight fields, strict types and identity bounds; missing/extra rejected",
+    "actual": "PASS",
+    "checks": 116,
+    "evidence": "guidance-data-scenarios.json#D08"
+  },
+  {
+    "id": "D09",
+    "expected": "Issuer must be current Player; only FOCUS has a known enemy preference; foreign encounter rejected",
+    "actual": "PASS",
+    "checks": 33,
+    "evidence": "guidance-data-scenarios.json#D09"
+  },
+  {
+    "id": "D10",
+    "expected": "Wrong generation rejected",
+    "actual": "PASS",
+    "checks": 2,
+    "evidence": "guidance-data-scenarios.json#D10"
+  },
+  {
+    "id": "D11",
+    "expected": "Wrong round rejected",
+    "actual": "PASS",
+    "checks": 2,
+    "evidence": "guidance-data-scenarios.json#D11"
+  },
+  {
+    "id": "D12",
+    "expected": "Future/unmatched Guidance revision rejected",
+    "actual": "PASS",
+    "checks": 2,
+    "evidence": "guidance-data-scenarios.json#D12"
+  },
+  {
+    "id": "D13",
+    "expected": "Exact replay and stale competing edit rejected; fresh NONE accepted",
+    "actual": "PASS",
+    "checks": 6,
+    "evidence": "guidance-data-scenarios.json#D13"
+  },
+  {
+    "id": "D14",
+    "expected": "Mutating outer/nested pending/active snapshots cannot change owner",
+    "actual": "PASS",
+    "checks": 4,
+    "evidence": "guidance-data-scenarios.json#D14"
+  },
+  {
+    "id": "D15",
+    "expected": "Profiles use exact versioned fields and four approved trait enums; no self-preservation score",
+    "actual": "PASS",
+    "checks": 73,
+    "evidence": "guidance-data-scenarios.json#D15"
+  },
+  {
+    "id": "D16",
+    "expected": "Profile isolation, stable-ID reorder/register/remove and current Player binding",
+    "actual": "PASS",
+    "checks": 11,
+    "evidence": "guidance-data-scenarios.json#D16"
+  },
+  {
+    "id": "D17",
+    "expected": "Atomic freeze only after valid Player command",
+    "actual": "PASS",
+    "checks": 5,
+    "evidence": "guidance-data-scenarios.json#D17"
+  },
+  {
+    "id": "D18",
+    "expected": "Rejected Player commands never freeze or lose pending Guidance",
+    "actual": "PASS",
+    "checks": 12,
+    "evidence": "guidance-data-scenarios.json#D18"
+  },
+  {
+    "id": "D19",
+    "expected": "Submission rejected before/during/after impact and between queued slots",
+    "actual": "PASS",
+    "checks": 9,
+    "evidence": "guidance-data-scenarios.json#D19"
+  },
+  {
+    "id": "D20",
+    "expected": "Next command-ready round starts NONE; old round requests rejected",
+    "actual": "PASS",
+    "checks": 40,
+    "evidence": "guidance-data-scenarios.json#D20"
+  },
+  {
+    "id": "D21",
+    "expected": "Victory/defeat reject Guidance and clear active immediately without blocking completion",
+    "actual": "PASS",
+    "checks": 26,
+    "evidence": "guidance-data-scenarios.json#D21"
+  },
+  {
+    "id": "D22",
+    "expected": "Restart before/after effect at all six actors rejects delayed old requests/tokens; fresh round works",
+    "actual": "PASS",
+    "checks": 402,
+    "evidence": "guidance-data-scenarios.json#D22"
+  },
+  {
+    "id": "D23",
+    "expected": "Failed Restart preserves pending/frozen Guidance, profiles, generation and all combat state",
+    "actual": "PASS",
+    "checks": 17,
+    "evidence": "guidance-data-scenarios.json#D23"
+  },
+  {
+    "id": "D24",
+    "expected": "NONE is identical across normal/HELP/self-defense/dead fixtures; Resolver schema and 30% threshold preserved",
+    "actual": "PASS",
+    "checks": 212,
+    "evidence": "guidance-data-scenarios.json#D24"
+  },
+  {
+    "id": "D25",
+    "expected": "Every Guidance type preserves complete decisions/effects/queue/terminal across the Cartesian fixture matrix",
+    "actual": "PASS",
+    "checks": 65600,
+    "evidence": "guidance-data-scenarios.json#D25"
+  },
+  {
+    "id": "D26",
+    "expected": "Data submission never changes HP/HELP/guards/queue/token; HP0 known target valid; removed target clears preference",
+    "actual": "PASS",
+    "checks": 13,
+    "evidence": "guidance-data-scenarios.json#D26"
+  },
+  {
+    "id": "D27",
+    "expected": "Legacy gameplay14395/negative983 + exactly five expected errors; six cases/5892 frame trace equality",
+    "actual": "PASS",
+    "evidence": [
+      "final-results.json",
+      "inherited-counts.json",
+      "trace-comparison.json",
+      "logs.zip"
+    ]
+  },
+  {
+    "id": "D28",
+    "expected": "Every inherited count, full cutover, native startup and rollback preserved with zero unexpected errors/timeouts",
+    "actual": "PASS",
+    "evidence": [
+      "final-results.json",
+      "inherited-counts.json",
+      "cutover-release-gates.json",
+      "rollback.json"
+    ]
+  }
+]

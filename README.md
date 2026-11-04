@@ -28,11 +28,11 @@ project.godot            Godot project configuration
 
 ## Current prototype
 
-On this M2D-04 candidate branch, **F5 / Run Project** starts:
+**F5 / Run Project** starts the Autonomous Main Combat merged through [PR #40](https://github.com/shanwinder/wanderer/pull/40) (`1facf144`):
 
 `res://scenes/combat/combat_autonomous_optin.tscn`
 
-The canonical `visual-combat-test-1` at merged PR #39 (`1728c5e`) still defaults to Legacy until the owner merges this candidate. Open `res://scenes/combat/combat_prototype.tscn` with **F6** for the preserved Legacy entry.
+The canonical `visual-combat-test-1` defaults to Autonomous. Open `res://scenes/combat/combat_prototype.tscn` with **F6** for the preserved Legacy entry.
 
 Current status (4 November 2026):
 
@@ -47,8 +47,10 @@ Current status (4 November 2026):
 - **Recorded PR #37 merged-base verification:** Godot `4.7.2.stable.official.ed1daf0bf`, **37 stages PASS** on `08f2a973`. The old M2C-04 manifest matched 54/55 files because scene UID/script UID/root unique ID/header changed after tested `9271aa5`; that baseline run verified the actual merged scene metadata.
 - **M2D-01 design completed; M2D-02 implemented / merged [PR #38](https://github.com/shanwinder/wanderer/pull/38), owner-reported acceptance.** Legacy remains the canonical Main default before M2D-04 merge. Inherited evidence: 40 stages PASS, presentation 8,319 checks and 5,892 matching trace frames on `84c80d5`; M2D-04 has separate verification and visual gates.
 - **M2D-03 Implemented / merged [PR #39](https://github.com/shanwinder/wanderer/pull/39)** at `1728c5e678c5065278d1251d50449a8820eb5dae`. **Owner-Reported F6 Acceptance** per the M2D-04 request; no independent scenario-level owner evidence was supplied. The inherited scene uses the existing controller/presenter and FullPartyEncounter as its sole authority. Normal NPC HP10/10/10, per-slot decisions, HELP and self-DEFEND remain prototype rules.
-- **M2D-04 Cutover Candidate:** only the feature branch changes project entry. Fresh merged-base **44 stages PASS**; committed candidate `e802e62` **52 stages PASS**, C01–C22 headless gates pass, all inherited counts retained, Legacy **6 cases / 5,892 frames identical**, and fresh Legacy rollback passes. No gameplay controller, scene tree, balance or assets changed.
-- **Owner F5/F6 Visual Acceptance PENDING for M2D-04.** Agent GUI smoke is partial and separate. [Commands, durable evidence, rollback, Thai learning notes and separate F5/F6 checklists](tests/combat/README.md#m2d-04--autonomous-main-cutover-candidate). **M2B-03 Item Implementation deferred.** Candidate is for Draft review; owner decides merge.
+- **M2D-04 Implemented / merged PR #40** at `1facf144887a4c6778f2ed817aa49cab3675c73d`: Autonomous Main is the project default; Legacy F6 remains available. The M3A-02 owner task reports **F5 / F6 Autonomous / F6 Legacy acceptance passed**; this is Owner-Reported Acceptance, without independent scenario-level evidence supplied in this task. Historical pending records remain in the old evidence.
+- **M3A-01 Design Completed / G1–G14 Owner Approved** in the 4 November 2026 task, with the explicit exception that **HELP 50% is NOT approved**. Existing HELP threshold remains ≤30%.
+- **M3A-02 Guidance Data Foundation:** implementation on `codex/m3a-02-guidance-data-foundation` for Draft review. Encounter-owned pending/frozen Guidance, strict requests, session profiles and lifecycle safety; **no Guidance UI or Guidance-aware NPC decisions**. Fresh pre-implementation PR #39 reference passed 44 stages and merged PR #40 baseline passed 52 stages. Final committed-source verification passed **56 stages**, including **66,641 Guidance checks**, all inherited counts and **6 cases / 5,892 identical Legacy trace frames**. See [contract, verification and Thai learning notes](tests/npc/README.md#m3a-02--guidance-data-foundation).
+- **M3A-03 / M3A-04 / M3A-05 not started; M2B-03 Item Implementation deferred.** Speed Order is pending; Final Turn System remains OPEN. Next action is M3A-02 Draft code review; implementation of a later milestone needs a separate task. Current authority and approval details live in the [documentation index](docs/README.md#current-status-and-next-roadmap).
 
 Read [AGENTS.md](AGENTS.md) before agent work. Current status lives in the [documentation index](docs/README.md); older design snapshots are not completion reports.
 

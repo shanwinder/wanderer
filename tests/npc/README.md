@@ -310,3 +310,148 @@ public snapshot schemas, Resolver decisions and playable controller. This does
 not migrate main combat. The original M2A-02/M2A-03 harnesses and expectations
 are unchanged; current regression results and manual F6 NOT RUN status are in
 [Actor ownership evidence](../actors/README.md#m2b-02--single-source-encounter-hp).
+
+## M3A-02 — Guidance Data Foundation
+
+### Authorization / scope
+
+Owner approved M3A G1–G14 in the 4 November 2026 task, with **HELP 50% explicitly NOT approved**, and authorized implementation **only of M3A-02**. M3A-01 is the preceding chat design report. Current milestone authority remains [docs index](../../docs/README.md#current-status-and-next-roadmap).
+
+This is data-only: no Guidance UI, guided NPC policy, follow/refuse effects, persistent relationships, Speed/Retreat or balance changes. HELP stays at **≤30%, amount4, once per NPC per encounter**. Resolver, actor definitions/runtime, controller, presentation, scenes and project default are unchanged. M3A-03/04/05 are not started.
+
+### Code and ownership
+
+- [GuidanceData contract](../../scripts/npc/guidance_data_contract.gd) validates values only; it has no mutable session state or decision policy.
+- [FullPartyEncounter](../../scripts/combat/full_party_encounter.gd) owns pending/active Guidance, Guidance revision and fixed profiles. It exposes `submit_guidance(request)` and `guidance_snapshot()`.
+- Existing `snapshot()`, `decision_context()`, Player command signatures, Resolver schemas and action token/effect contract are unchanged. Guidance does not advance combat `snapshot_revision` or enter Resolver input.
+- [Data proof](guidance_data_proof.gd) uses RefCounted data objects and SceneTree timers only, with no GUI dependency.
+
+### Strict request version1
+
+All **eight keys are required**, with no extra fields. An optional target is represented by the empty string, never a missing key/null.
+
+| Field | Type / bounds | Validation |
+|---|---|---|
+| `schema_version` | int, exactly1 | bool/float rejected |
+| `guidance_type` | String | NONE / ATTACK / DEFEND / HELP / FOCUS_TARGET |
+| `issuer_player_id` | String, stable actor ID | Must equal current Encounter Player ID |
+| `preferred_target_id` | String | FOCUS_TARGET requires a known enemy ID; other types require `""` |
+| `encounter_id` | non-zero signed int | Exact current Encounter ID; RefCounted IDs can be negative |
+| `generation` | int ≥1 | Exact current generation |
+| `round_id` | int ≥1 | Exact current round |
+| `expected_guidance_revision` | int ≥0 | Exact current Guidance revision |
+
+A known enemy at HP0 is still a valid **data preference**. Unknown/non-enemy IDs are rejected. Whether the preference is applicable belongs to M3A-03. FOCUS_TARGET never forces an NPC target or changes Enemy declared targets in this milestone.
+
+```gdscript
+var game = preload("res://scripts/combat/full_party_encounter.gd").new()
+var data: Dictionary = game.guidance_snapshot()
+var request: Dictionary = {
+    "schema_version": 1, "guidance_type": "FOCUS_TARGET",
+    "issuer_player_id": game.snapshot().player_id,
+    "preferred_target_id": "enemy_b", "encounter_id": data.encounter_id,
+    "generation": data.generation, "round_id": data.round_id,
+    "expected_guidance_revision": data.guidance_revision
+}
+var reply: Dictionary = game.submit_guidance(request) # ACCEPTED
+# NPC policy still chooses independently under exactly the pre-M3A rules.
+```
+
+Reply shape follows the existing `status` / `reason_code` convention:
+
+- `ACCEPTED`, empty reason: data stored; revision increments once.
+- `REJECTED`: `COMMAND_LOCKED`, `INVALID_GUIDANCE_FIELDS`, `INVALID_GUIDANCE_VERSION`, `INVALID_GUIDANCE_TYPE`, `INVALID_GUIDANCE_ID`, `INVALID_GUIDANCE_TARGET`, `INVALID_GUIDANCE_IDENTITY`, `FOREIGN_ENCOUNTER`, `STALE_GENERATION`, `WRONG_ROUND`, `INVALID_ISSUER`, `STALE_GUIDANCE_REVISION` or `UNKNOWN_GUIDANCE_TARGET`.
+- `TERMINAL`, reason VICTORY/DEFEAT: no request accepted.
+
+Validation precedence: terminal → lifecycle lock → request schema/types/ranges → encounter/generation/round/issuer/revision → enemy membership. Every rejection leaves combat and Guidance/profile/revision state unchanged. This is request rejection, not an NPC refusing a suggestion.
+
+### Round lifecycle and revision
+
+| Transition | Pending | Active | Guidance revision |
+|---|---|---|---|
+| Normal Restart | NONE with new generation/round identity | empty | reset0 |
+| Valid submit while command-ready | accepted record | empty | +1 |
+| Invalid/replayed submit | unchanged | unchanged | unchanged |
+| Rejected Player command | preserved | empty | unchanged |
+| Successful `begin_round()` | empty | deep copy of pending, frozen | unchanged |
+| Any point in running queue, including gaps between actions | no edits accepted | frozen | unchanged |
+| Round completion | NONE bound to next round | empty | retained |
+| Terminal, including terminal impact before return | empty | empty | retained |
+| Invalid Restart | unchanged | unchanged | unchanged |
+
+Only accepted submissions increment Guidance revision. Round/generation identities prevent requests crossing lifecycle boundaries even when revision numbers coincide. Repeating identical content with a **fresh** expected revision is a valid edit; replaying the original request is rejected. Successful Restart resets the revision and increments generation, so an old request cannot become valid again.
+
+Removing a preferred enemy through the existing command-ready roster API clears that obsolete pending preference to NONE. HP changes alone do not clear a known preference. Profiles follow stable IDs through reorder; register/remove keeps the profile map aligned with the NPC roster. No new roster mutation API is added.
+
+### Fixed profile fixtures
+
+Profiles use exact fields `schema_version`, `actor_id`, `player_id`, `discipline`, `trust`, `compassion`, `courage`. Actor/Player IDs must be valid and different. Version is integer1; enum values are strict.
+
+| Stable ID | Discipline | Trust | Compassion | Courage |
+|---|---|---|---|---|
+| npc_01 | PLAN_ORIENTED | ESTABLISHED | ORDINARY | BOLD |
+| npc_02 | FLEXIBLE | ESTABLISHED | HIGH | CAUTIOUS |
+| npc_03 | FLEXIBLE | CAUTIOUS | ORDINARY | BOLD |
+| Other valid NPC IDs | FLEXIBLE | CAUTIOUS | ORDINARY | CAUTIOUS |
+
+These are explicit **test fixtures**, not established character personalities or final balance. Each profile's `player_id` binds Trust to the current session Player. Restart regenerates profiles; it does not inherit a relationship with a different Player. Self-preservation remains the unchanged safety policy, not a configurable trait score. Profiles are separate from ActorDefinition/ActorRuntimeState and are not read by decisions in M3A-02.
+
+The accessor returns only detached dictionaries/scalars. Pending/active records contain type, issuer, preferred target, encounter/generation/round and accepted Guidance revision. Profiles are deep-copied on snapshot. No public API accepts arbitrary profile edits; external profile dictionaries cannot write session state.
+
+### D01–D28 verification mapping
+
+D01–D26 are focused cases with expected/actual results in `guidance-data-scenarios.json`. D27/D28 are full-regression gates, not fabricated focused assertions.
+
+| Cases | Expected coverage |
+|---|---|
+| D01–D05 | Initial NONE; valid ATTACK/DEFEND/HELP/FOCUS A/B |
+| D06–D09 | Strict enum/version/fields/types/issuer/target/foreign encounter |
+| D10–D13 | Wrong generation/round/revision and replay; fresh NONE edit |
+| D14–D16 | Pending/active/profile isolation; profile validation and stable-ID/Player binding |
+| D17–D20 | Freeze after valid command only, no mid-round edit, next round NONE |
+| D21 | Initial and mid-action victory/defeat clear Guidance and reject input |
+| D22–D23 | Restart at six actors before/after effect; real delayed stale callbacks; invalid Restart atomic |
+| D24 | NONE equivalence and strict Resolver context; Player40% + HELP still ATTACK |
+| D25 | 1,600 paired rounds across all five data types, HP boundaries, both Player actions and enemy states; entire decisions/effects/gameplay snapshots equal (only independent Encounter ID normalized) |
+| D26 | HP/HELP/guards/queue/token unchanged; known HP0 preference; removed target cleanup |
+| D27 | Existing gameplay14,395 / negative983+five expected errors / exact Legacy presentation traces |
+| D28 | Every inherited proof count retained, M2D-04 configured cutover / startup / rollback / release gates pass |
+
+The paired comparison is supplemented by all unchanged inherited suites against the independently tested pre-implementation baseline; it does not replace that baseline. Existing tests/assertions/expected results were not weakened.
+
+### Commands / evidence / acceptance
+
+Use a new output directory for every run. `--guidance-data-proof` is opt-in and also works alone with the base combat suite. Full verification:
+
+```sh
+python3 tests/combat/verify.py \
+  --godot /Applications/Godot.app/Contents/MacOS/Godot \
+  --output /tmp/wanderer-m3a02-final-UNIQUE \
+  --npc-proof --actor-proof --ownership-proof --party-foundation-proof \
+  --party-turn-proof --party-playable-proof --presentation-proof \
+  --autonomous-main-proof --main-cutover-proof --guidance-data-proof \
+  --cutover-baseline /tmp/wanderer-m3a02-pr39-reference-20261104-2
+```
+
+The cutover reference must be a passing **44-stage PR #39** run. This task exported `1728c5e` into a disposable source directory with a local Git index, then ran the original runner before touching runtime. It did not change the canonical branch or reuse imports. Fresh merged PR #40 `1facf144` then passed **52 stages** with all recorded reference counts and 6 cases / 5,892 equal Legacy trace frames before implementation.
+
+Final results, source identity, commands and raw logs are linked in the [M3A-02 combat evidence section](../combat/README.md#m3a-02--guidance-data-verification). No new agent GUI/F5/F6 review is claimed for this data-only change. Owner-reported M2D-04 three-gate acceptance comes from the attached owner task; no independent scenario-level visual evidence was supplied. Historical M2D-04 pending evidence is preserved.
+
+Final committed source **`be08f11`** passed **56 stages / exit0**, Guidance **66,641 checks / zero failures**, D01–D26 focused + D27/D28 full-regression gates. All inherited counts and Legacy6cases/5,892frames were preserved. [Expected/actual D01–D28](../combat/evidence/m3a-02/coverage.json), [Guidance case details](../combat/evidence/m3a-02/guidance-data-scenarios.json), [run record and exact commands](../combat/evidence/m3a-02/run-record.json). Later edits are documentation/evidence only, with [85/85 source hashes matched](../combat/evidence/m3a-02/source-comparison.json).
+
+### Learning notes — ภาษาไทย
+
+ใช้วงจร **Goal → Concept → Do → Observe → Explain → Adjust → Commit** ทีละขั้น:
+
+1. **Data Contract:** `_fields()` ตรวจชื่อ key ครบและไม่มีเกิน ก่อนอ่านค่าจริง ลองลบ `round_id` แล้วดูว่า request ถูกปฏิเสธโดย state ไม่เปลี่ยน.
+2. **Schema Version:** `schema_version = 1` บอกว่าผู้ส่งกับผู้รับใช้ข้อตกลงเดียวกัน การเพิ่มข้อมูลในอนาคตต้อง review version ไม่แอบยอมรับทุก key.
+3. **Encounter Ownership:** `_guidance_pending` อยู่ใน Encounter ส่วน UI ในอนาคตมีหน้าที่ส่ง request และอ่านผล ไม่ถือสำเนาที่มีอำนาจเปลี่ยน gameplay.
+4. **Pending / Active / Frozen:** ก่อนเริ่มรอบแก้ Pending ได้ เมื่อ `begin_round()` สำเร็จจะ copy ไป Active และปิดการแก้ จึงไม่เปลี่ยนคำชี้นำระหว่าง animation.
+5. **Round Scope:** `_finish_round()` ล้าง Active และสร้าง NONE ที่มี round ใหม่ ลองส่งรอบ1 แล้วไม่ส่งรอบ2 ต้องเห็น NONE.
+6. **Generation:** Restart เพิ่ม generation แม้ actionID หรือ Guidance revision จะเริ่มใหม่ request เก่าก็ถูกปฏิเสธเพราะ generation ไม่ตรง.
+7. **Guidance Revision:** รับ request แล้วเพิ่มหนึ่ง ผู้ส่งที่ยังอ้าง revision เดิมจึงเขียนทับการแก้ใหม่ไม่ได้ และส่ง request ซ้ำไม่ได้.
+8. **Deep Copy:** `duplicate(true)` แยก nested dictionaries ลองแก้ `view.profiles.npc_02.trust` จาก accessor แล้วอ่านใหม่ ค่าใน Encounter ต้องเหมือนเดิม.
+9. **Atomic Validation:** `submit_guidance()` ตรวจทุกเงื่อนไขก่อนเพิ่ม revision/เขียน Pending; `restart()` สร้าง candidate registry/profiles ก่อนสลับ state จริง.
+10. **Data ก่อน Policy:** โค้ดยังเรียก Resolver เดิมด้วย context เดิม จึงพิสูจน์ lifecycle ได้แยกจากการเปลี่ยนการตัดสินใจ ไม่เพิ่ม HELP50% หรือ follow/refuse logic ในขั้นนี้.
+
+บทเรียนจาก development test: Godot RefCounted instance ID เป็น signed int และอาจติดลบได้ จึงตรวจ non-zero + identity equality แทนการบังคับให้เป็นบวก โดยไม่เปลี่ยน Encounter/token ID เดิม. เก็บ failed development run ไว้ใน evidence; ใช้ final committed-source run เป็นผลรับงาน.

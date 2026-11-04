@@ -1,0 +1,99 @@
+{
+  "date": "2026-11-04",
+  "timezone": "Asia/Bangkok",
+  "task": "M3A-02 Guidance Data Foundation & Lifecycle Safety",
+  "authorization": {
+    "source": "Owner message and attached M3A-02 task in this chat",
+    "G1-G14": "APPROVED with G6 exception",
+    "HELP50%": "NOT APPROVED / NOT IMPLEMENTED",
+    "implementation": "M3A-02 ONLY",
+    "M3A-03/04/05": "NOT STARTED",
+    "M2D04_visual": "Owner-reported F5/F6 Autonomous/F6 Legacy acceptance from task; no independent scenario-level evidence"
+  },
+  "git_baseline": {
+    "working_tree": "clean",
+    "branch": "visual-combat-test-1",
+    "local_head": "1facf144887a4c6778f2ed817aa49cab3675c73d",
+    "remote_tracking_head": "same",
+    "github_remote_head": "same, read via connector branch API",
+    "merge_base": "same",
+    "pr40": "confirmed merged via connector",
+    "open_prs": [
+      2,
+      17
+    ],
+    "duplicate_m3a02": "none",
+    "feature_branch": "codex/m3a-02-guidance-data-foundation"
+  },
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "godot": "/Applications/Godot.app/Contents/MacOS/Godot",
+  "tested_commit": "be08f11e66f135abf1613cb7e41dac1cf51abd98",
+  "reference": {
+    "commit": "1728c5e678c5065278d1251d50449a8820eb5dae",
+    "source": "git archive exported to /tmp/wanderer-m3a02-pr39-reference-source-20261104-2 then git init/add for original runner",
+    "stages": 44,
+    "status": "PASS",
+    "output": "/tmp/wanderer-m3a02-pr39-reference-20261104-2"
+  },
+  "baseline": {
+    "commit": "1facf144887a4c6778f2ed817aa49cab3675c73d",
+    "stages": 52,
+    "status": "PASS",
+    "output": "/tmp/wanderer-m3a02-merged-baseline-20261104-1",
+    "before_runtime_edits": true
+  },
+  "final": {
+    "stages": 56,
+    "status": "PASS",
+    "output": "/tmp/wanderer-m3a02-final-20261104-1",
+    "guidance_checks": 66641,
+    "focused_cases": 26,
+    "total_acceptance_cases": 28,
+    "paired_rounds": 1600,
+    "unexpected_errors": 0,
+    "timeouts": 0,
+    "expected_negative_errors": 5,
+    "all_exits": 0,
+    "legacy_trace_cases": 6,
+    "legacy_trace_frames": 5892,
+    "source_hashes": 85
+  },
+  "commands": {
+    "reference": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m3a02-pr39-reference-20261104-2 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof (cwd disposable PR39 export)",
+    "baseline": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m3a02-merged-baseline-20261104-1 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --cutover-baseline /tmp/wanderer-m3a02-pr39-reference-20261104-2",
+    "final": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m3a02-final-20261104-1 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --cutover-baseline /tmp/wanderer-m3a02-pr39-reference-20261104-2"
+  },
+  "development": {
+    "setup_attempt": "Disposable export attempt1 failed because host Python lacks tar extractall(filter=...); corrected safe member validation before extraction, before Godot/runtime edits",
+    "focused_attempt1": "FAIL: request validator incorrectly required positive RefCounted instance ID; 66621 checks / 1649 failures; combat/import/parse passed",
+    "fix": "Accept non-zero signed Encounter ID, require exact current identity; existing Encounter/token IDs unchanged",
+    "focused_attempt2": "PASS: 66621 checks / 0 failures",
+    "post_development_test_change": "Added assertions verifying Guidance setup submissions were accepted; committed then final full verification",
+    "raw_logs": "logs.zip includes failed and passed development runs"
+  },
+  "scope": {
+    "runtime": [
+      "scripts/npc/guidance_data_contract.gd",
+      "scripts/combat/full_party_encounter.gd"
+    ],
+    "unchanged": [
+      "Resolver APIs/policy/threshold",
+      "ActorDefinition/RuntimeState/Registry",
+      "Player Command API/action resolution",
+      "controller/presenter/scenes/assets/project default",
+      "damage/HP/HELP/Guard/turn order",
+      "speed0.70/lunge44/formation/home positions"
+    ],
+    "ui_added": false,
+    "guided_policy_added": false
+  },
+  "manual_checks": {
+    "agent_GUI_F5_F6": "NOT RUN, data-only milestone",
+    "visual_quality": "Not established by headless tests",
+    "owner_m3a02_acceptance": "Pending review; no merge authorization"
+  },
+  "merge_authorized": false,
+  "auto_merge": false,
+  "next_milestone_started": false,
+  "stop": "After one Draft PR, wait for code review"
+}
