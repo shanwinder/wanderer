@@ -21,6 +21,7 @@ def main():
     parser.add_argument("--party-foundation-proof", action="store_true", help="Also verify M2C-02 registry and encounter data foundation")
     parser.add_argument("--party-turn-proof", action="store_true", help="Also verify M2C-03 multi-NPC decisions and full party turn resolution")
     parser.add_argument("--party-playable-proof", action="store_true", help="Also verify M2C-04 real scene/Tween integration")
+    parser.add_argument("--presentation-proof", action="store_true", help="Also verify M2D-02 Legacy presentation boundaries and traces")
     args = parser.parse_args()
     source = Path(__file__).resolve().parents[2]
     output = args.output.resolve() if args.output else Path(tempfile.mkdtemp(prefix="wanderer-queue-"))
@@ -64,7 +65,7 @@ def main():
         passed = code == 0 and sorted(errors) == sorted(expected_errors)
         if name == "version":
             passed = passed and "4.7.2.stable" in log
-        if name in ("gameplay", "invalid-actions", "npc-proof", "npc-playable", "actor-proof", "ownership-proof", "party-foundation-proof", "party-turn-proof", "party-playable-proof"):
+        if name in ("gameplay", "invalid-actions", "npc-proof", "npc-playable", "actor-proof", "ownership-proof", "party-foundation-proof", "party-turn-proof", "party-playable-proof", "presentation-proof"):
             passed = passed and re.search(r"RESULT: \d+ checks, 0 failures", log) is not None
         result = {"step": name, "status": "PASS" if passed else "FAIL",
                   "exit_code": code, "timed_out": timed_out, "command": command,
@@ -92,6 +93,11 @@ def main():
             "Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง",
             *(["Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action"] * 3),
         ])
+        if args.presentation_proof:
+            for script in ["scripts/combat/combat_presentation_adapter.gd", "tests/combat/presentation_boundary.gd"]:
+                run("presentation-parse-" + Path(script).stem, ["--script", "res://" + script, "--check-only"])
+            run("presentation-proof", [*timing, "--script", "res://tests/combat/presentation_boundary.gd",
+                                       "--", "--report=" + str(output / "presentation-traces.json")])
         if args.npc_proof:
             for script in ["scripts/npc/npc_decision_resolver.gd",
                            "scripts/npc/npc_proof_encounter.gd", "tests/npc/decision_effect_proof.gd",
