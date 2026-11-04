@@ -351,7 +351,7 @@ func begin_next_action() -> Dictionary:
 				target = available_enemy_ids()[0]
 		decision = _make_decision(id, _player_command.action, target, "PLAYER_COMMAND")
 	elif _party_order.has(id):
-		decision = _resolver.decide_for_actor(id, decision_context())
+		decision = _npc_decision_for_slot(id)
 	else:
 		var target: String = ""
 		for hit in _declared_hits:
@@ -364,6 +364,11 @@ func begin_next_action() -> Dictionary:
 		"decision": decision.duplicate(true)}
 	_active_action = true
 	return _locked.duplicate(true)
+
+
+func _npc_decision_for_slot(id: String) -> Dictionary:
+	# Production stays unguided. Only the isolated proof subclass overrides this seam.
+	return _resolver.decide_for_actor(id, decision_context())
 
 
 func _make_decision(id: String, action: String, target: String, reason: String) -> Dictionary:
