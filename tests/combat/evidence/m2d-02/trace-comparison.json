@@ -1,0 +1,46 @@
+{
+  "method": "Exact JSON equality of six per-frame Legacy traces at --fixed-fps 60; no timing/HP/balance overrides except defeat HP1 fixture.",
+  "baseline_commit": "08f2a973ed39449b4afaeb0dbf88bf5264b01335",
+  "final_tested_commit": "84c80d5119c0cdb5f30b920202f63674aaf18009",
+  "status": "PASS",
+  "frames": 5892,
+  "cases": [
+    {
+      "case": "A-first victory",
+      "baseline_frames": 2498,
+      "final_frames": 2498,
+      "equal": true
+    },
+    {
+      "case": "B-first victory",
+      "baseline_frames": 1970,
+      "final_frames": 1970,
+      "equal": true
+    },
+    {
+      "case": "DEFEND",
+      "baseline_frames": 600,
+      "final_frames": 600,
+      "equal": true
+    },
+    {
+      "case": "defeat",
+      "baseline_frames": 530,
+      "final_frames": 530,
+      "equal": true
+    },
+    {
+      "case": "Restart windup",
+      "baseline_frames": 133,
+      "final_frames": 133,
+      "equal": true
+    },
+    {
+      "case": "Restart after impact",
+      "baseline_frames": 161,
+      "final_frames": 161,
+      "equal": true
+    }
+  ],
+  "observed": "HP/Guard/queue/round/target IDs/locks/terminal/result visibility/status/log/feedback counts and 15 node transforms/tints. Not pixel, audio or rendered animation-frame comparison."
+}

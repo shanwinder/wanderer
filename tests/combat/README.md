@@ -151,6 +151,10 @@ See [contract, scenario results, Thai learning notes and durable evidence](../ac
 
 ## M2C-04 — Playable Full Party Integration
 
+**สถานะภายหลัง record นี้:** merged ผ่าน PR #37 (`08f2a973`) แล้ว. เจ้าของรายงานตรวจเองก่อน merge
+โดยไม่มีหลักฐานราย scenario เพิ่ม; จัดเป็น Owner-Reported Acceptance. ข้อความ pending ใน record
+ด้านล่างคือสถานะ ณ งาน M2C-04. M2D-02 ตรวจ merged metadata และ runtime ใหม่ตามหัวข้อถัดไป.
+
 งานวันที่ **4 พฤศจิกายน 2026 Asia/Bangkok**, implementation mode. ฐาน clean
 `visual-combat-test-1` local/remote/merge-base `737e380c8549a2ef6bc306184973d2e8dbb3f757`;
 GitHub ยืนยัน PR #36 merged. ตรวจ open PRs #2/#17 และ branch แล้วไม่มี M2C-04 ซ้ำ.
@@ -350,3 +354,183 @@ Owner checklist (บันทึก engine/commit/date/expected/actual และ
 ขอบเขตคงเดิม: prototype D1–D13 ไม่ใช่ fullAI/finalturnsystem; ไม่มี items/equipment,
 Trust/Guidanceใหม่, Down/Death, save/load, multiplayerหรือloreใหม่. Main Combat Migrationยังไม่อนุมัติ,
 M2B-03deferred. หยุดหลังDraftPR; ไม่merge/enableauto-merge/deletebranchหรือเริ่มงานถัดไป.
+
+
+## M2D-02 — Combat Presentation Adapter Foundation
+
+งานวันที่ **4 พฤศจิกายน 2026 Asia/Bangkok**. ฐาน/merge-base/local/remote HEAD ตรงกันที่
+`08f2a973ed39449b4afaeb0dbf88bf5264b01335` หลัง PR #37; working tree สะอาดก่อนเริ่ม,
+fetch และตรวจ open PRs #2/#17 แล้วไม่มีงาน M2D-02 ซ้ำ. Branch
+`codex/m2d-02-presentation-adapter` → Draft PR ไป `visual-combat-test-1` เพื่อรอ review.
+Milestone authority อยู่ที่ [docs index](../../docs/README.md#current-status-and-next-roadmap).
+M2D-01 Design Completed ตาม task เจ้าของ; งานนี้อนุมัติ D1/D9 และ extraction ที่จำเป็นเท่านั้น.
+D2–D8/D10–D13 ยังไม่อนุมัติใน Main Combat. M2D-03/M2D-04 ไม่เริ่ม; M2B-03 Item deferred.
+
+### Baseline ใหม่และ scene metadata
+
+Inherited M2C-04 ทดสอบ `9271aa5` แต่ `full_party_proof.tscn` เปลี่ยน header/Scene UID,
+Script UID และ root unique ID ภายหลัง; manifest เดิมตรง54/55ไฟล์บน merged base.
+จึงรัน **ก่อนแก้ runtime** บน merged `08f2a973` จริง: Godot
+`4.7.2.stable.official.ed1daf0bf`, **37 stages PASS / runner exit0**, zero unexpected errors.
+ครั้งแรกภายใต้ sandbox import มี CA/editor-settings errors แม้ exit0 จึงเป็น FAIL;
+เก็บหลักฐานไว้และรัน fresh directory ด้วยสิทธิ์ที่จำเป็นจนผ่านก่อน extraction.
+ไม่กรอง engine errors และไม่แก้ assertions ของ suite เดิม.
+
+เจ้าของรายงานตรวจ M2C-04 เองก่อน merge: **Owner-Reported Acceptance**;
+ไม่มี scenario-level independent visual evidence เพิ่มจากเจ้าของ.
+
+### Architecture, extracted และ remaining
+
+[combat_presentation_adapter.gd](../../scripts/combat/combat_presentation_adapter.gd) เป็น
+`RefCounted` ขนาดเล็ก. `owner.create_tween()` ผูก lifecycle กับ scene จริงโดยไม่เพิ่ม Node Tree.
+รับ locked actor/target IDs, views ที่มี Node/home/sprite transform/tint, ค่า presentation จาก
+Main Combat และสอง `Callable`. ไม่มี HP, Damage, Guard, NPC decision, target selection,
+queue, terminal, ActorRuntimeState หรือ FullPartyEncounter ใน adapter.
+
+| ส่วน | เจ้าของปัจจุบัน |
+| --- | --- |
+| Player ATTACK lunge0.18s → windup0.10s → strike0.10s → recoil0.14s → hold0.08s → return0.22s → handoff0.16s | Adapter; copy ลำดับ/property/easing/parallel groups เดิม |
+| Sprite attack pose สองช่วงของ NPC/Enemy | Adapter primitive `append_attack_pose()` บน Tween เดิม; ไม่ย้าย flow/impact ของ NPC/Enemy |
+| HP/actual damage/Guard/target validity/fallback/queue/locks/terminal | Legacy Controller + CombatTurnFlow + CombatTargets ตามเดิม |
+| Damage popup, hit spark, HP flash, their cleanup | Legacy feedback functions เดิม เรียกจาก impact controller เดิม |
+| Player DEFEND, NPC Guard/intents, remaining NPC/Enemy sequences, result panel/status/log/picker | Legacy Controller; remaining work ไม่ย้ายทั้งหมดใน foundation นี้ |
+| Restart | Adapter cancel visual lifetime ก่อน; Controller ฆ่า remaining Tweens/feedback และคืนทุก home/tint ตามเดิม |
+
+คง speed0.70, lunge44px, Compact Formation, idle, B tint/scale, shadows/Y-sort, visual timing เดิม.
+ไม่แก้ scene, project settings, Encounter, Resolver, Registry/RuntimeState, turn-flow หรือ targets.
+
+### Tween / Impact / Completion contract และ safety
+
+Player command วางแผน Legacy queue และล็อก target ก่อนเรียก adapter:
+`WINDUP → _impact(epoch,actor,target) → IMPACT → recoil/return/handoff → _complete → COMPLETED`.
+`_impact` ตรวจ visual epoch/IDs/phase/Tween/node lifetime และตำแหน่งปลาย strike ก่อนเรียก
+`_apply_player_hit()` **หนึ่งครั้ง**. Controller เดิมลง HP/feedback/terminal ที่จังหวะนี้.
+`_complete` ต้อง IMPACT และทั้งสอง roots กลับ home แล้ว; จึงเรียก `_finish_player_attack()`
+หนึ่งครั้งเพื่อคืนภาพและเดิน Legacy queue ต่อ. Completion ไม่ลง damage.
+
+`phase` เปลี่ยนและล้าง Callable ก่อนเรียกออกไปเพื่อกัน reentrancy/duplicates.
+`visual_epoch` เพิ่มเมื่อ cancel/new Player attack; เป็น visual lifetime เท่านั้น ไม่ใช่ Encounter
+Action Token. Restart ฆ่า owning Tween, ทิ้ง callbacks/views ก่อน reset Legacy state.
+`_exit_tree()` cancel เมื่อออก scene. Shared NPC/Enemy pose ไม่ถือ callback/queue ใหม่;
+Restart ยัง kill `action_tween` ของแต่ละ action ตามเดิม.
+
+### Verification และ acceptance mapping
+
+```sh
+# Pre-extraction on merged 08f2a973 (37 stages)
+python3 tests/combat/verify.py \
+  --godot /Applications/Godot.app/Contents/MacOS/Godot \
+  --output /tmp/wanderer-m2d-02-baseline-20261104-2 \
+  --npc-proof --actor-proof --ownership-proof \
+  --party-foundation-proof --party-turn-proof --party-playable-proof
+
+# Final on committed source/tests 84c80d5 (40 stages)
+python3 tests/combat/verify.py \
+  --godot /Applications/Godot.app/Contents/MacOS/Godot \
+  --output /tmp/wanderer-m2d-02-final-20261104-1 \
+  --npc-proof --actor-proof --ownership-proof \
+  --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof
+```
+
+เลือก output directory ใหม่เสมอ. `--presentation-proof` เป็น opt-in อิสระ เพิ่ม2parse+1runtime stage.
+เวอร์ชัน/import/parse/main+proof startups ผ่าน; ทุก stage exit0, runner exit0.
+Exactly5 expected errors เฉพาะ negative suite; unexpected engine errors0.
+
+| Suite | Baseline checks / failures | Final checks / failures |
+| --- | --- | --- |
+| Combat | 14,395 / 0 | 14,395 / 0 |
+| Negative | 983 / 0 +5 expected errors | 983 / 0 +5 expected errors |
+| M2A-02 | 412 / 0 | 412 / 0 |
+| M2A-03 | 5,166 / 0 | 5,166 / 0 |
+| M2B-01 | 122 / 0 | 122 / 0 |
+| M2B-02 | 219 / 0 | 219 / 0 |
+| M2C-02 | 382 / 0 | 382 / 0 |
+| M2C-03 | 1,250 / 0 | 1,250 / 0 |
+| M2C-04 | 260,800 / 0 (31 cases) | 260,800 / 0 (31 cases) |
+| New presentation boundary | Trace-only observer4,312 / 0 | 8,319 / 0 |
+
+[presentation_boundary.gd](presentation_boundary.gd) instantiate scene จริง ไม่ mock Tween/balance.
+ดูตำแหน่ง/HP **ภายใน impact callback** เพราะ frame observer อาจเห็น recoil เริ่มภายในเฟรมเดียวกันแล้ว.
+Dev1 ทดสอบ pose ผิดจังหวะ2assertions; แก้เครื่องมือสังเกตโดยไม่เปลี่ยน expected pose/timing/HP.
+Final เพิ่ม Restart แบบ reentrant ภายใน impact และหลัง lethal Player impact ก่อน result panel.
+
+| Acceptance | Evidence / ขอบเขต |
+| --- | --- |
+| A01–A07 | Legacy suite unchanged + exact traces: AttackA/B, Defend, NPC2 Guard, NPC1/3 and A/B order, fallback, both kill orders |
+| A08–A10 | Focused callback snapshots: HP ก่อน/หลัง strike เท่านั้น, duplicate/completion inert, homes restored |
+| A11–A12 | Node pose/recoil/squash/popup/spark/HP flash/idle/speed0.70/lunge44 checks + trace equality; visual quality ยังรอ owner |
+| A13–A15 | A/B × windup/impact/return Restart, old epoch replay during new attack, wrong IDs/duplicates/early completion, stale effects cleanup; reentrant/lethal impact Restart |
+| A16–A18 | Legacy victory/defeat/result/locks + all inherited M2A/M2B/M2C suites count เดิมผ่าน |
+
+**Before/after:** รัน observer เดียวกันบน merged snapshot ด้วย `--legacy-trace-only`,
+แล้วเทียบ exact JSON กับ final: **6 cases /5,892 frames ตรงกันทั้งหมด**.
+A-first victory2,498; B-first victory1,970; DEFEND600; defeat530; Restart windup133;
+Restart after impact161. บันทึก HP/Guard/queue/round/target/locks/terminal/result visibility,
+status/log, feedback counts และ15node transforms/tints. ไม่มี timing/HP override ยกเว้น defeat fixture1HP.
+นี่ไม่ใช่ pixel/audio/animation-frame comparison และไม่พิสูจน์ visual quality จาก headless.
+
+### Manual F6 — agent status และ owner checklist
+
+Agent เปิด Godot4.7.2 editor ใช้ Run Current Scene toolbar (F6 action) บน snapshot ก่อน/หลัง.
+Project viewport1280×720; embedded game areaแสดง1278×719ที่1.0×พร้อมขอบดำ.
+ตรวจ startup/idle formation, shadows และ EnemyB tint/scale; baseline ATTACKA จบPlayer25/A8/B12,
+after ATTACKA ค่าเดิม, after ATTACKB Player25/A15/B5, DEFEND Player28/A12/B12,
+และกด Restart ทันทีหลัง ATTACK กลับPlayer30/A15/B12/round1โดยไม่มีผลค้างเมื่อดูภายหลัง.
+Screenshots อยู่ tool transcript เท่านั้น; ไม่มี durable video/image. Runtime+asset GUI hashesตรง final;
+GUI snapshot มี test harness เวอร์ชันก่อนเพิ่ม test-only cases ซึ่งไม่กระทบ runtime.
+
+**Owner M2D-02 acceptance PENDING.** ยังไม่ตรวจ GUIครบkill orders/victory/defeat/every Restart phase,
+ไม่ได้ video-measure44px/pacing หรือยืนยัน motion/readability ทุกช่วง. Battle Log มีพื้นที่แสดงจำกัด
+ตามภาพก่อน/หลังเดิม; owner ควรประเมิน readability. ไม่มีการแก้ UI ใน refactor นี้.
+
+- [ ] เปิด `res://scenes/combat/combat_prototype.tscn` → F6 ด้วย Godot4.7.2, viewport1280×720.
+- [ ] ดู Player idle, Compact Formation, shadows/depth และ EnemyA/B identity/B tint+scale เทียบก่อน/หลัง.
+- [ ] ATTACK A และ B หลัง Restart: ตรวจ pose/windup44px lunge/recoil/squash/return, spark/damage/HP flash และ active emphasis; HPตามตารางด้านบน.
+- [ ] DEFEND: brace/Guard feedback; NPCทุกคนATTACK; Player28/A12/B12. ATTACK: NPC2GUARDลดเฉพาะ counterแรก; A/Bลงมือแยกตามลำดับ.
+- [ ] Target picker ล็อกระหว่าง action, อ่าน target/intent/status/log ได้, actorกลับhomeก่อนส่งต่อคิว.
+- [ ] เล่นทั้ง A-first/B-first จน victory; ดู resultหลังreturn. ตรวจ defeat ใน fixture/debugที่แยกจาก production balance.
+- [ ] Restart ช่วง windup, หลังimpact, ระหว่างreturn, NPC2Guard, A/Bcounter และresultfade; รอ2วินาทีแล้วเริ่มรอบใหม่ ไม่มีmotion/popup/flash/HP/queueเก่า.
+- [ ] บันทึก owner scenario/expected/actual, engine, commit, screenshot/video และความเห็นpacing0.70แยกจาก automated PASS.
+
+### Source SHA และ durable evidence
+
+Tested source/test commit **`84c80d5119c0cdb5f30b920202f63674aaf18009`**.
+หลังจากนั้นเปลี่ยนเฉพาะ docs/evidence; Final HEAD ระบุใน Draft PR. Manifest59ไฟล์ตรง snapshot
+และ worktree; ต้องตรวจเทียบอีกครั้งก่อนส่ง PR. ไม่แก้ source/tests หลัง final run.
+
+- [Run record / commands / expected-actual / baseline source manifest](evidence/m2d-02/run-record.json)
+- [Baseline37 stage results](evidence/m2d-02/baseline-results.json), [Final40 stage results](evidence/m2d-02/final-results.json)
+- [Raw logs / engine logs / exit codes / GUI logs](evidence/m2d-02/logs.zip)
+- [Before-after trace comparison](evidence/m2d-02/trace-comparison.json), [raw traces + baseline observer + M2C-04 scenarios](evidence/m2d-02/traces.zip)
+- [Final source SHA-256](evidence/m2d-02/source-sha256.json)
+- [Development failures and correction](evidence/m2d-02/development-record.json), [development raw logs](evidence/m2d-02/development-logs.zip)
+
+### Learning notes — โค้ดจริงของ M2D-02
+
+1. **Gameplay กับ presentation:** `_apply_hit_to_active_enemy()` ใน Controller คำนวณ
+   `var new_hp: int = maxi(previous_hp - damage, 0)` แล้วเปลี่ยน Legacy HP.
+   Adapter ใช้ `_motion.tween_property(actor.root, "position", actor.home + Vector2(settings.SHORT_LUNGE_DISTANCE, 0.0), settings.SHORT_LUNGE_TIME)`
+   เพื่อเลื่อนภาพ. การเลื่อนภาพไม่ต้องรู้ว่าดาบทำdamageกี่หน่วย.
+2. **Adapter คือผู้จัดลำดับภาพ:** `play_player_attack()` รับ views/ค่าการนำเสนอ/Callable;
+   Controller เรียกด้วย `_presentation_settings(), _apply_player_hit, _finish_player_attack`.
+   จึงดึงภาพหนึ่งเส้นทางออกได้โดยไม่สร้างcombat controllerใหม่.
+3. **Tween callback และ Signal:** `_motion.tween_callback(_impact.bind(visual_epoch, actor_id, target_id))`
+   รอให้ Tweenก่อนหน้าจบแล้วส่งIDsที่ล็อกไว้. `attack_button.pressed.connect(_on_attack_button_pressed)`
+   ใน `_ready()` คือ Signalจากปุ่มเรียกฟังก์ชัน. งานนี้เลือกCallableสองตัวสำหรับขอบเขตภาพ ไม่เพิ่มevent bus.
+4. **Impact boundary:** `_impact()` ตั้ง `phase = "IMPACT"` ก่อน `callback.call()`;
+   callbackจริงคือ `_apply_player_hit()`. HPจึงเปลี่ยนหลังstrikeและก่อนrecoil ตามLegacyเดิม.
+   `_complete()` เรียกอีกCallableหลังกลับhome ไม่เรียกdamageซ้ำ.
+5. **ทำไม adapter ไม่เก็บ HP:** ถ้ามีHPอีกชุด ภาพอาจอ่านค่าหนึ่งแต่queue/terminalใช้อีกค่า.
+   โค้ดนี้ส่งแต่Node/home/scale/tint; `player_hp`, `enemy_hp`, `enemy_b_hp` ยังอยู่ที่เดิม.
+6. **ID แยกจาก Node:** `actor_id = locked_actor_id` / `target_id = locked_target_id`
+   เก็บว่าใครกำลังทำอะไรกับใคร; `_actor.root` และ `_target.sprite` บอกว่าต้องขยับภาพไหน.
+   `_current()` ตรวจทั้งID/epochและ `is_instance_valid(...)`; Node referenceอย่างเดียวไม่บอกtarget identity.
+7. **Restart ต้องยกเลิก Tween:** `cancel()` ทำ `visual_epoch += 1` และ `_motion.kill()`
+   แล้วล้างCallable. ถ้าresetเฉพาะHPแต่Tweenเก่ายังเดิน มันอาจขยับภาพ/เรียกhitหลังเริ่มใหม่.
+   Controllerจึงเรียก `presentation_adapter.cancel()` ก่อน cleanup/Legacy reset.
+8. **Refactor ยังต้อง regression:** ลำดับ `parallel()`/callbackที่เปลี่ยนเพียงนิดเดียวอาจทำให้hitเร็ว,
+   Guardใช้ผิดครั้งหรือqueueส่งต่อซ้ำ. งานนี้ใช้scene/Tweensจริงและเทียบ5,892framesพร้อมsuiteเดิม
+   เพื่อวัดพฤติกรรม ไม่อ้างว่าโค้ดย้ายไฟล์แล้วต้องเหมือนเดิมเสมอ.
+9. **ช่วย M2D-03 อย่างไร:** contractภาพตอนนี้ไม่ต้องพึ่งHP/Encounter. งานในอนาคตอาจส่ง
+   callbackจาก authorityอื่นหลังได้รับapproval โดยตรวจimpact/returnได้แยกกัน.
+   ปัจจุบันยังส่งLegacy callbacksเท่านั้น; shared poseไม่ทำให้NPCเป็นautonomousหรือเริ่มcutover.
