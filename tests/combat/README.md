@@ -967,3 +967,13 @@ M2B-03deferred; ไม่เริ่มงานถัดไป.
 10. **CommitและSHA-256:** commitบอกชุดsourceที่ทดสอบ; hashรายไฟล์จับการเปลี่ยนหลังทดสอบ
     รวมUID/scene metadata. FinalHEADอาจเพิ่มdocs/evidenceได้ แต่ต้องรายงานdiffและยืนยัน81sourcefilesเดิม;
     ถ้าtest/runtimeเปลี่ยนแม้หนึ่งไฟล์ ผลเดิมไม่พอ ต้องรันใหม่.
+
+## M3A-02 — Guidance Data Verification
+
+M3A-02 is Encounter-owned **data/lifecycle only**. The owner approved G1–G14 with **HELP50% not approved**, and authorized only M3A-02. No Resolver policy, UI, controller, scene, balance or default entry changes. [Request contract / lifecycle / D01–D28 / Thai learning notes](../npc/README.md#m3a-02--guidance-data-foundation). Current status belongs to the [documentation index](../../docs/README.md#current-status-and-next-roadmap).
+
+Pre-implementation: fresh PR #39 `1728c5e` reference **44 stages PASS** in a disposable export, followed by fresh merged PR #40 `1facf144` **52 stages PASS**. Engine `4.7.2.stable.official.ed1daf0bf`, all inherited counts match, negative exactly five expected errors, Legacy6cases/5,892frames identical. Source was not changed until both runs passed.
+
+The attached owner M3A-02 task reports **M2D-04 F5 / F6 Autonomous / F6 Legacy acceptance passed**. This updates current status as **Owner-Reported Acceptance** only; older pending records above are historical, and no independent scenario-level visual evidence or new agent GUI run is claimed here.
+
+Add `--guidance-data-proof` to the full cutover command. It adds three parse stages and one data proof; all existing assertions/gates and the required 44-stage cutover reference remain intact. D01–D26 are focused data tests; D27/D28 are mapped to actual full regression results. Expected/actual, commands, exits, engine logs and source hashes must accompany any claimed final PASS.

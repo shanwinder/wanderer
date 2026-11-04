@@ -7,7 +7,7 @@
 | เอกสาร | เนื้อหา | อำนาจ/ขอบเขต |
 |---|---|---|
 | [AGENTS.md](../AGENTS.md) | กติกาสำหรับ Codex/agents, ขอบเขต, tests และ PR | อ่านก่อนทำงานใน repository |
-| [Current status and next roadmap](#current-status-and-next-roadmap) | ฐานหลัง PR #39 และ M2D-04 Cutover Candidate | จุดอ้างอิงสถานะปัจจุบัน; ไม่สร้างแผนฉบับซ้ำ |
+| [Current status and next roadmap](#current-status-and-next-roadmap) | ฐาน merged PR #40 และ M3A-02 Guidance Data Foundation | จุดอ้างอิงสถานะปัจจุบัน; ไม่สร้างแผนฉบับซ้ำ |
 | [01 — Game Development Plan v0.1](01_Wanderer_Game_Development_Plan_v0.1.md) | วิสัยทัศน์, โลก, gameplay loop, NPC autonomy, death, milestones | **ฐานเกมเดิม**; เก็บประวัติการออกแบบ |
 | [02 — Visual Combat v0.2](02_Wanderer_Visual_Combat_Prototype_Update_v0.2.md) | Functional + visual prototype | ปรับ v0.1 เฉพาะงานภาพ/ต้นแบบ |
 | [03 — Combat Presentation v0.3](03_Wanderer_Combat_Presentation_Direction_Update_v0.3.md) | Staging, depth, UI, M1.5B–D | เจตนา presentation และประวัติแผน; สถานะงานถัดไปในฉบับนี้ล้าสมัย |
@@ -44,15 +44,25 @@
 
 **M2C-04 merged PR #37**: isolated Full Party proof. **M2D-01 Design Completed** ตาม owner design reference. **M2D-02 Implemented / merged [PR #38](https://github.com/shanwinder/wanderer/pull/38)** ที่ `c0dcc33f0ab89c8187b9cb0c025138b447a8c7e2`; **Owner-Reported Acceptance** ตาม task M2D-03 ไม่ใช่หลักฐานตรวจภาพครบทุก scenario โดย agent.
 
-**สถานะปัจจุบัน ณ 4 พฤศจิกายน 2026 Asia/Bangkok:** ตรวจ GitHub ยืนยัน [PR #39](https://github.com/shanwinder/wanderer/pull/39) merged จริงที่ `1728c5e678c5065278d1251d50449a8820eb5dae`; initial tree สะอาด, fetch แล้ว local/remote HEAD และ merge-base ตรงกัน. Open PR #2/#17 ยัง unmerged ไม่ใช้เป็น canonical; ไม่พบ M2D-04 branch/PR ซ้ำก่อนเริ่ม. ย่อหน้าฐาน M2D-02 ข้างบนเป็นบันทึกประวัติ ไม่ใช่ฐานล่าสุดของงานนี้.
+**สถานะปัจจุบัน ณ 4 พฤศจิกายน 2026 Asia/Bangkok — M3A-02:** GitHub ยืนยัน [PR #40](https://github.com/shanwinder/wanderer/pull/40) merged เข้าสู่ `visual-combat-test-1` ที่ `1facf144887a4c6778f2ed817aa49cab3675c73d` จริง; initial tree สะอาด, local/remote-tracking HEAD, GitHub remote HEAD และ merge-base ตรงกัน. Open PRs มี #2/#17 ซึ่งยัง unmerged และไม่ใช้เป็น canonical; ไม่พบ M3A-02 ซ้ำ. ข้อความฐาน M2D-02/M2D-03 ข้างบนเป็นประวัติ ไม่ใช่ฐานล่าสุด.
 
-**M2D-03 Implemented + Owner-Reported F6 Acceptance** ตาม task M2D-04; ไม่มีผล owner ราย scenario เพิ่มให้ตรวจอิสระ. D1–D13 และ Normal NPC current/max HP10/10/10 คงเดิม. Thin inherited scene ใช้ Main controller/presenter เดิม; Autonomous ใช้ FullPartyEncounter เท่านั้น, Legacy ใช้ HP/TurnFlow/Targets เดิม. M2C10/7/3 เป็น proof fixture แยก ไม่ใช่ Normal หรือ final balance.
+**M2D-04 Implemented / Merged:** F5 default คือ `res://scenes/combat/combat_autonomous_optin.tscn`; direct F6 ของ `combat_prototype.tscn` ยังเป็น Legacy. FullPartyEncounter เป็น sole gameplay authority ของ Autonomous; Legacy HP/queue/targets แยกเหมือนเดิม. Owner task M3A-02 ระบุว่า **F5 / F6 Autonomous / F6 Legacy ทั้งสาม gate ผ่าน — Owner-Reported Acceptance**; ไม่มีผลราย scenario/engine/media เพิ่มให้ตรวจอิสระ. ไม่เปลี่ยนผล PENDING ใน historical evidence ย้อนหลัง.
 
-**M2D-04 เป็น Cutover Candidate เฉพาะ `codex/m2d-04-autonomous-main-cutover`**: `project.godot` ชี้ Autonomous สำหรับ F5 บน branch นี้. Canonical `visual-combat-test-1` ที่ `1728c5e` ยังมี Legacy default จนกว่า owner review/ยอมรับภาพและสั่ง merge. `combat_prototype.tscn` ยังเปิด F6 เป็น Legacy ได้; controller default ยังคง LEGACY และเก็บไว้เป็น rollback entry. ไม่แก้ gameplay policy/runtime/scene tree/assets.
+**M3A-01 Design Completed:** รายงานใน chat ได้รับ Owner Approval G1–G14 โดยชัดเจนในข้อความเริ่ม M3A-02 วันที่ 4 พฤศจิกายน 2026 ยกเว้น **G6 ไม่อนุมัติ HELP 50%**; threshold เดิม ≤30% ยังใช้. Approval ของ design ไม่ใช่ approval ให้ implement ทุก milestone.
 
-Fresh pre-cutover verification บน merged `1728c5e`: **44 stages PASS**. Final committed source `e802e62`: **52 stages PASS**, cutover **801,351 checks / 48 cases**, C01–C22 headless gates ผ่าน, count เดิมครบ, exact Legacy **6 cases / 5,892 frames**, native configured startup และ fresh rollback/regression ผ่าน. Engine `4.7.2.stable.official.ed1daf0bf`. [คำสั่ง/หลักฐาน/ข้อจำกัด/คู่มือไทย/F5-F6 checklist](../tests/combat/README.md#m2d-04--autonomous-main-cutover-candidate).
+| Gate ที่อนุมัติ | ข้อตกลง |
+|---|---|
+| G1–G4 | ATTACK / DEFEND / HELP / FOCUS_TARGET (NONE คือ absence), team-wide, one round, submit/change เฉพาะ command-ready; freeze เมื่อ Player command สำเร็จ |
+| G5 | Safety และ urgent HELP เดิมมาก่อน Guidance; first-valid-hit limitation เดิมยังอยู่ |
+| G6–G8 | Fixed enums ของ Discipline/Trust/Compassion/Courage, encounter-local profiles, deterministic; self-preservation เป็น safety rule; **HELP 50% ไม่อนุมัติ** |
+| G9–G11 | แยก Action/Guidance response/effect reason ในงาน proof ภายหลัง, Encounter ownership, versioned extension ที่รักษา Legacy APIs; M3A-02 ยังไม่เพิ่ม guided Resolver |
+| G12–G14 | แยก Player Command/Guidance feedback และ localization ในงาน UI ภายหลัง, reset/token/callback safety, แยก M3A-02→05 เป็นงาน/PR review ทีละขั้น |
 
-ขั้นต่อไปคือ **review M2D-04 Draft PR และ Owner Visual Acceptance แยก F5 / F6 Autonomous / F6 Legacy**. Agent GUI smoke ไม่ใช่ owner acceptance; headless ไม่รับรองคุณภาพภาพ. **M2B-03 Item Implementation Deferred**; ไม่เริ่ม milestone ถัดไป, ไม่ merge/auto-merge/release tag/deploy อัตโนมัติ.
+**M3A-02 Implemented on feature branch / Draft review:** `codex/m3a-02-guidance-data-foundation` เพิ่ม data validation, pending/frozen Guidance และ fixed profiles ผ่าน accessor แยก. Existing `snapshot()`, `decision_context()`, Resolver APIs, Player Command API และ NPC decisions คงเดิม; ไม่มี UI หรือ follow/refuse policy. [Executable contract, D01–D28 coverage, evidence และบทเรียน](../tests/npc/README.md#m3a-02--guidance-data-foundation).
+
+ก่อนแก้ runtime รัน fresh Godot `4.7.2.stable.official.ed1daf0bf`: disposable PR #39 reference (`1728c5e`) **44 stages PASS** แล้ว merged PR #40 (`1facf144`) **52 stages PASS**, inherited counts ตรง reference, Legacy **6 cases / 5,892 frames identical**, native configured startup/rollback ผ่าน. ผล M2D-04 เดิมบน `e802e62` เป็น inherited evidence แยกจาก fresh baseline นี้.
+
+**ขั้นต่อไป: review M3A-02 Draft PR เท่านั้น.** M3A-03 guided decision proof, M3A-04 playable/UI integration และ M3A-05 Owner acceptance **ยังไม่เริ่ม** และต้องมี task แยก. Speed Order ยัง pending จาก v0.1; queue ปัจจุบัน Player→NPC→Enemy เป็น approved prototype ไม่ใช่ initiative calculation; Final Turn System ยัง OPEN. **M2B-03 Item Implementation Deferred**. ไม่ merge/auto-merge หรือเริ่มงานถัดไปอัตโนมัติ.
 
 **Implemented** = มีอยู่ในโค้ดฐานที่ merge แล้ว; **Verified** = มีผลตรวจจริงพร้อมวิธี/ขอบเขต/หลักฐาน; **Planned** = ข้อเสนอหรือเจตนา ยังไม่ใช่ฟีเจอร์ที่เสร็จ สถานะเหล่านี้ไม่ใช้แทนกัน และการ merge ไม่เท่ากับผ่าน visual acceptance ทั้งหมด
 
@@ -76,7 +86,10 @@ Fresh pre-cutover verification บน merged `1728c5e`: **44 stages PASS**. Fina
 | M2D-01 — Presentation migration design | **Design Completed** (owner task reference) | ไม่ใช่ approval ให้ implement migration ทั้งชุด |
 | M2D-02 — Presentation Adapter Foundation | **Implemented / merged PR #38**: Player ATTACK visuals + shared NPC/Enemy attack pose; Legacy authority | Inherited `84c80d5`:40stages PASS, presentation8,319checks,5,892exact trace frames; Owner-Reported Acceptance per M2D-03 task |
 | M2D-03 — Opt-in Integration | **Implemented / merged PR #39** at `1728c5e`; D1–D13, inherited scene, Encounter authority, Normal NPC10/10/10 | **Owner-Reported F6 Acceptance** per M2D-04 request; inherited `6f4c4db`:44 stages/787,617 checks. Fresh merged-base44 stages PASS in M2D-04; owner scenario evidence not independently supplied |
-| M2D-04 — Cutover | **Candidate on feature branch**; F5 Autonomous, F6 Legacy preserved; canonical default still Legacy until merge | `e802e62`:52 stages PASS, C01–C22 headless, rollback and Legacy traces pass; **Owner F5/F6 pending**. [Evidence/checklists](../tests/combat/README.md#m2d-04--autonomous-main-cutover-candidate) |
+| M2D-04 — Cutover | **Implemented / merged PR #40** (`1facf144`); F5 Autonomous / F6 Legacy | Owner-Reported Acceptance ทั้งสาม gate ตาม M3A-02 task; fresh merged baseline52stages PASS; [historical evidence](../tests/combat/README.md#m2d-04--autonomous-main-cutover-candidate) |
+| M3A-01 — Guidance architecture | Design Completed / G1–G14 approved ยกเว้น HELP50% | Design report ใน chat; ไม่ใช่ runtime verification |
+| M3A-02 — Guidance data | Implemented on feature branch / Draft review; state only, no guided AI | [Fresh verification / D01–D28](../tests/npc/README.md#m3a-02--guidance-data-foundation); ไม่มี agent GUI run ใหม่ |
+| M3A-03 / 04 / 05 | Not Started | ต้องได้รับ task implementation / acceptance แยก |
 
 แหล่งตรวจโค้ด: [scene](../scenes/combat/combat_prototype.tscn), [combat controller](../scripts/combat/combat_prototype.gd), [turn flow](../scripts/combat/combat_turn_flow.gd), [targets](../scripts/combat/combat_targets.gd)
 
@@ -106,7 +119,7 @@ Fresh pre-cutover verification บน merged `1728c5e`: **44 stages PASS**. Fina
 
 ขอบเขตที่อนุมัติ: ข้อมูลขั้นต่ำ Actor ID/display name/role/base max HP แยกจาก current/max HP ระหว่างเล่น, damage/heal/availability และ snapshot. ใช้ `RefCounted` ไม่เพิ่ม shared Resource, singleton หรือ event bus. HP 0 เป็น unavailable ใน fixture ไม่ตัดสิน Down/Death/permadeath; ค่า stats ทั้งชุดใน v0.1 §11 ยังเป็น design intent ไม่ได้ implement ในงานนี้
 
-[Actor proof และคำอธิบายสำหรับผู้เริ่มต้น](../tests/actors/README.md) เป็น contract/test guide ไม่ใช่ roadmap คู่ขนาน. M2B-02 merge ผ่าน PR #34 แล้ว: NPCProofEncounter ถือ Actor states และรักษา snapshot/Resolver เดิม. M2C-02 merge ผ่าน PR #35 แล้ว; M2C-03 merge ผ่าน PR #36 แล้ว; M2C-04 merge ผ่าน PR #37 แล้ว; M2D-02 merge ผ่าน PR #38 แล้ว; M2D-03 merge ผ่าน PR #39 แล้ว; M2D-04 เป็น candidate ตามสถานะข้างต้น. M2B-03 Item/Equipment ยังคงเลื่อน implementation; M2D-04 ได้รับ task ให้ทำ cutover candidate โดยตรง แต่ merge ยังต้องคำสั่ง owner ใหม่ ไม่ผูก final Turn System, full stats หรือระบบไอเท็มไว้ล่วงหน้า.
+[Actor proof และคำอธิบายสำหรับผู้เริ่มต้น](../tests/actors/README.md) เป็น contract/test guide ไม่ใช่ roadmap คู่ขนาน. M2B-02 merge ผ่าน PR #34 แล้ว: NPCProofEncounter ถือ Actor states และรักษา snapshot/Resolver เดิม. M2C-02 merge ผ่าน PR #35 แล้ว; M2C-03 merge ผ่าน PR #36 แล้ว; M2C-04 merge ผ่าน PR #37 แล้ว; M2D-02 merge ผ่าน PR #38 แล้ว; M2D-03 merge ผ่าน PR #39 แล้ว; M2D-04 merged PR #40 แล้ว; M3A-02 เป็น data-only review ตามสถานะข้างต้น. M2B-03 Item/Equipment ยังคงเลื่อน implementation; M3A-02 ได้รับ implementation task โดยตรง แต่ merge ยังต้องคำสั่ง owner ใหม่ ไม่ผูก final Turn System, full stats หรือระบบไอเท็มไว้ล่วงหน้า.
 
 ### PR #2 — documentation proposal, not canonical
 

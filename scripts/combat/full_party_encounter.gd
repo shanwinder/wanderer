@@ -1,10 +1,11 @@
 extends RefCounted
 
-# M2C-02 data foundation only: no turn order, decisions or action execution.
+# Encounter owns actor state, M2C-03 turns and M3A-02 data-only Guidance.
 const Registry = preload("res://scripts/actors/actor_registry.gd")
 const Definition = preload("res://scripts/actors/actor_definition.gd")
 const RuntimeState = preload("res://scripts/actors/actor_runtime_state.gd")
 const Resolver = preload("res://scripts/npc/npc_decision_resolver.gd")
+const GuidanceData = preload("res://scripts/npc/guidance_data_contract.gd")
 # Owner-approved M2C-03 PROTOTYPE values, not final gameplay balance.
 const PLAYER_DAMAGE: int = 5
 const NPC_DAMAGE: int = 1
@@ -32,6 +33,10 @@ var _enemy_order: Array = []
 var _generation: int = 0
 var _command_ready: bool = true
 var _active_action: bool = false
+var _guidance_pending: Dictionary = {}
+var _guidance_active: Dictionary = {}
+var _guidance_revision: int = 0
+var _guidance_profiles: Dictionary = {}
 
 
 static func prototype_fixture(npc_count: int = 3, enemy_count: int = 2) -> Dictionary:
@@ -104,6 +109,12 @@ func restart(fixture: Variant) -> bool:
 			return false
 	if not _valid_roster(candidate, fixture.player_id, fixture.party_order, fixture.enemy_order):
 		return false
+	var profiles: Dictionary = {}
+	for id in fixture.party_order:
+		var profile: Dictionary = GuidanceData.fixed_profile(id, fixture.player_id)
+		if profile.is_empty():
+			return false
+		profiles[id] = profile
 	_registry = candidate
 	_player_id = fixture.player_id
 	_party_order = fixture.party_order.duplicate()
@@ -125,6 +136,10 @@ func restart(fixture: Variant) -> bool:
 	_help_uses.clear()
 	for id in _party_order:
 		_help_uses[id] = 1
+	_guidance_profiles = profiles.duplicate(true)
+	_guidance_revision = 0
+	_guidance_pending = _guidance_record("NONE", "")
+	_guidance_active.clear()
 	_update_terminal()
 	return true
 
@@ -157,6 +172,7 @@ func register_actor(definition: Variant, runtime: Variant, membership: Variant) 
 	if baseline.role == "NPC":
 		_party_order.append(baseline.actor_id)
 		_help_uses[baseline.actor_id] = 1
+		_guidance_profiles[baseline.actor_id] = GuidanceData.fixed_profile(baseline.actor_id, _player_id)
 	else:
 		_enemy_order.append(baseline.actor_id)
 	_revision += 1
@@ -173,6 +189,9 @@ func unregister_actor(id: Variant) -> bool:
 	_party_order.erase(id)
 	_enemy_order.erase(id)
 	_help_uses.erase(id)
+	_guidance_profiles.erase(id)
+	if _guidance_pending.get("preferred_target_id", "") == id:
+		_guidance_pending = _guidance_record("NONE", "")
 	_revision += 1
 	return true
 
@@ -208,6 +227,43 @@ func snapshot() -> Dictionary:
 		"snapshot_revision": _revision, "pending": _pending.duplicate(),
 		"locked_action": _locked.duplicate(true), "help_uses": _help_uses.duplicate(),
 		"guards": _guards.duplicate(), "result": _result, "declared_hits": _declared_hits.duplicate(true)}
+
+
+# Separate accessor preserves every existing combat/Resolver snapshot field.
+func guidance_snapshot() -> Dictionary:
+	return {"schema_version": GuidanceData.SCHEMA_VERSION, "encounter_id": _encounter_id,
+		"generation": _generation, "round_id": _round, "guidance_revision": _guidance_revision,
+		"pending": _guidance_pending.duplicate(true), "active": _guidance_active.duplicate(true),
+		"profiles": _guidance_profiles.duplicate(true)}
+
+
+func _guidance_record(kind: String, preferred_target: String) -> Dictionary:
+	return {"guidance_type": kind, "issuer_player_id": _player_id,
+		"preferred_target_id": preferred_target, "encounter_id": _encounter_id,
+		"generation": _generation, "round_id": _round, "guidance_revision": _guidance_revision}
+
+
+func submit_guidance(request: Variant) -> Dictionary:
+	if not _result.is_empty():
+		return _reply("TERMINAL", _result)
+	if not _can_mutate():
+		return _reply("REJECTED", "COMMAND_LOCKED")
+	var invalid: String = GuidanceData.validate_request(request)
+	if not invalid.is_empty():
+		return _reply("REJECTED", invalid)
+	for spec in [["encounter_id", _encounter_id, "FOREIGN_ENCOUNTER"],
+		["generation", _generation, "STALE_GENERATION"], ["round_id", _round, "WRONG_ROUND"],
+		["issuer_player_id", _player_id, "INVALID_ISSUER"],
+		["expected_guidance_revision", _guidance_revision, "STALE_GUIDANCE_REVISION"]]:
+		if request[spec[0]] != spec[1]:
+			return _reply("REJECTED", spec[2])
+	# Membership only: a known HP0 enemy remains a valid preference, not an effect.
+	if request.guidance_type == "FOCUS_TARGET" and not _enemy_order.has(request.preferred_target_id):
+		return _reply("REJECTED", "UNKNOWN_GUIDANCE_TARGET")
+	# No combat revision/HP/queue/token/resource changes. All validation precedes writes.
+	_guidance_revision += 1
+	_guidance_pending = _guidance_record(request.guidance_type, request.preferred_target_id)
+	return _reply("ACCEPTED")
 
 
 # Generation is required so an old proof callback cannot mutate a new session.
@@ -259,6 +315,8 @@ func begin_round(action: Variant, target_id: Variant = "", enemy_targets: Varian
 	_locked.clear()
 	_round_running = true
 	_command_ready = false
+	_guidance_active = _guidance_pending.duplicate(true)
+	_guidance_pending.clear()
 	_revision += 1
 	return _reply("STARTED")
 
@@ -389,6 +447,8 @@ func _update_terminal() -> void:
 	if not _result.is_empty():
 		_pending.clear()
 		_command_ready = false
+		_guidance_pending.clear()
+		_guidance_active.clear()
 
 
 func _stop_round() -> void:
@@ -406,6 +466,8 @@ func _finish_round() -> void:
 	_guards.clear()
 	_round_running = false
 	_command_ready = true
+	_guidance_active.clear()
+	_guidance_pending = _guidance_record("NONE", "")
 
 
 func _reply(status: String, reason: String = "") -> Dictionary:

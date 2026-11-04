@@ -25,6 +25,7 @@ def main():
     parser.add_argument("--presentation-proof", action="store_true", help="Also verify M2D-02 Legacy presentation boundaries and traces")
     parser.add_argument("--autonomous-main-proof", action="store_true", help="Also verify M2D-03 opt-in Main Combat integration")
     parser.add_argument("--main-cutover-proof", action="store_true", help="Verify configured Main entry, native startup, Legacy rollback and release gates")
+    parser.add_argument("--guidance-data-proof", action="store_true", help="Also verify M3A-02 data-only Guidance contracts and lifecycle")
     parser.add_argument("--cutover-baseline", type=Path, help="Passing merged-base output directory for trace/count comparison")
     args = parser.parse_args()
     if args.main_cutover_proof:
@@ -74,7 +75,7 @@ def main():
         passed = code == 0 and sorted(errors) == sorted(expected_errors)
         if name == "version":
             passed = passed and "4.7.2.stable" in log
-        if name in ("gameplay", "invalid-actions", "npc-proof", "npc-playable", "actor-proof", "ownership-proof", "party-foundation-proof", "party-turn-proof", "party-playable-proof", "presentation-proof", "autonomous-main-proof", "main-cutover-proof", "main-cutover-f5-startup", "rollback-f5-startup", "rollback-gameplay"):
+        if name in ("gameplay", "invalid-actions", "npc-proof", "npc-playable", "actor-proof", "ownership-proof", "party-foundation-proof", "party-turn-proof", "party-playable-proof", "presentation-proof", "autonomous-main-proof", "main-cutover-proof", "main-cutover-f5-startup", "rollback-f5-startup", "rollback-gameplay", "guidance-data-proof"):
             passed = passed and re.search(r"RESULT: \d+ checks, 0 failures", log) is not None
         result = {"step": name, "status": "PASS" if passed else "FAIL",
                   "exit_code": code, "timed_out": timed_out, "command": command,
@@ -147,6 +148,12 @@ def main():
             run("party-playable-startup", ["res://scenes/combat/full_party_proof.tscn", "--quit-after", "120"])
             run("party-playable-proof", [*timing, "--script", "res://tests/combat/party_playable_integration.gd",
                                          "--", "--report=" + str(output / "party-playable-scenarios.json")])
+        if args.guidance_data_proof:
+            for script in ["scripts/npc/guidance_data_contract.gd", "scripts/combat/full_party_encounter.gd",
+                           "tests/npc/guidance_data_proof.gd"]:
+                run("guidance-parse-" + Path(script).stem, ["--script", "res://" + script, "--check-only"])
+            run("guidance-data-proof", [*timing, "--script", "res://tests/npc/guidance_data_proof.gd", "--",
+                                        "--report=" + str(output / "guidance-data-scenarios.json")])
         if args.main_cutover_proof:
             for script in ["tests/combat/main_cutover_proof.gd", "tests/combat/main_cutover_startup_probe.gd"]:
                 run("cutover-parse-" + Path(script).stem, ["--script", "res://" + script, "--check-only"])
