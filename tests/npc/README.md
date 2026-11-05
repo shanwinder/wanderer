@@ -573,7 +573,7 @@ Fresh pre-runtime PR #39 reference44stages and merged PR #41 baseline56stages pa
 11. **Token / Generation:** effect ใช้ locked decision ของ Encounter ไม่เชื่อ payload ของ caller; Restart เปลี่ยน generation จึงปฏิเสธ callback เก่าแม้ actionID เริ่ม1ใหม่.
 12. **Regression Equivalence:** NONE เปรียบเทียบ payload ทั้งก้อนและผลจริง; full regressions เทียบ counts กับ fresh baseline และเทียบทุก Legacy trace frame ไม่ใช่อาศัยดูโค้ดหรือภาพอย่างเดียว.
 
-Historical M3A-03 checkpoint: no new agent GUI acceptance; Main was unguided then. PR #42 is now merged; current M3A-04 candidate/evidence are in the combat guide. M3A-05 Owner Acceptance Pending.
+Historical M3A-03 checkpoint: no new agent GUI acceptance; Main was unguided then. PR #42 and PR #43 are now merged; M3A-04 is Implemented / Merged / Owner Accepted at `a84c8d4deaa759f0f0937e6ff58c3f4ba4612a34`. M3A-05 is COMPLETED — Owner-Reported Acceptance: PASS per the owner closure request of 5 November 2026; this is not new agent verification. [Acceptance source and evidence limits](../combat/README.md#m3a-05-owner-acceptance--completed).
 
 
 ### R1 Option A — current M3A-04 contract
@@ -586,4 +586,4 @@ The pre-implementation merged PR #42 run verified the old behavior before editin
 
 Production [GuidedEncounter](../../scripts/combat/guided_encounter.gd) shares the M3A-03 adapter with the historical proof type. It constructs an internal fresh envelope at each NPC slot and locks detached metadata beside the base decision. Base unavailable-slot payloads stay exact while adding explanatory NOT_APPLICABLE metadata for non-NONE Guidance. Underscore-field access remains an internal subclass dependency, not a public UI API. Pure Layer / original Resolver / actor state / balance are unchanged.
 
-[Thai play guide, learning notes, Main cases, evidence and M3A-05 checklist](../combat/README.md#m3a-04--playable-guidance-candidate).
+[Thai play guide, learning notes, Main cases, evidence and M3A-05 checklist](../combat/README.md#m3a-04--playable-guidance-implemented).

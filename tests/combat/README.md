@@ -1057,9 +1057,13 @@ For another run choose a new output directory; create the disposable PR #39 refe
 
 **Limitations:** no GUI F5/F6 visual acceptance in this task; no visual/pacing claim from headless results. Guidance UI/playable Main integration remains M3A-04/05 and is not started. Compassion has no new policy effect; HELP50% is not implemented. Revision system-invalidation note is analyzed and deferred without changing submit-only semantics. Await one Draft PR review; no merge/auto-merge authorization.
 
-## M3A-04 — Playable Guidance Candidate
+<a id="m3a-04--playable-guidance-candidate"></a>
 
-**สถานะ:** Candidate บน `codex/m3a-04-playable-guidance-integration` เพื่อ Draft Code Review; **M3A-05 Owner Acceptance Pending**. ฐานจริงคือ merged [PR #42](https://github.com/shanwinder/wanderer/pull/42) `2d3b1e110c3957531a3faaa402b37d963009405a`. Owner อนุมัติ **R1 Option A** ใน chat วันที่ 5 พฤศจิกายน 2026 ก่อนเริ่ม branch/runtime edits. ไม่อนุญาต merge/auto-merge หรือเริ่ม milestone ถัดไป.
+## M3A-04 — Playable Guidance Implemented
+
+**M3A-04 — Implemented / Merged / Owner Accepted.** [PR #43](https://github.com/shanwinder/wanderer/pull/43) merged เข้า `visual-combat-test-1` ที่ [`a84c8d4deaa759f0f0937e6ff58c3f4ba4612a34`](https://github.com/shanwinder/wanderer/commit/a84c8d4deaa759f0f0937e6ff58c3f4ba4612a34). ตรวจ fetch/local HEAD/remote HEAD/merge-base ตรง SHA นี้ก่อนแก้ closure Markdown วันที่ 5 พฤศจิกายน 2026. Owner accepted ตามคำยืนยันในงานปิด M3A-05 ด้านล่าง ไม่ใช่ agent independent visual verification. สถานะหลักและข้อเสนองานถัดไปอยู่ที่ [documentation index](../../docs/README.md#current-status-and-next-roadmap).
+
+**Historical implementation baseline:** งาน PR #43 เริ่มจาก merged [PR #42](https://github.com/shanwinder/wanderer/pull/42) `2d3b1e110c3957531a3faaa402b37d963009405a` บน `codex/m3a-04-playable-guidance-integration`. Owner อนุมัติ **R1 Option A** ใน chat วันที่ 5 พฤศจิกายน 2026 ก่อน runtime edits. Commands/results/GUI limitations ด้านล่างเป็น record เดิมของ PR #43 ไม่ใช่การรันใหม่ใน closure task.
 
 ### Architecture / R1 / policy preservation
 
@@ -1105,6 +1109,8 @@ Controller อ่าน identity/revision ล่าสุดก่อน submit;
 
 ### Verification and durable evidence
 
+**Verified — Recorded (PR #43):** ผลและ engine version ต่อไปนี้มาจาก record เดิม. Documentation closure ไม่รัน Godot/full regression, F5/F6, keyboard หรือ visual acceptance ใหม่; ไม่อ้างว่าทดสอบ merge commit อีกครั้ง. **64/64 stages PASS**, **34 focused Guidance Main cases / 507,851 Main checks**, zero unexpected failures, Legacy6cases/5,892frames identical และ97/97source hashes matching เป็นผลที่บันทึกบน tested source ด้านล่าง. 507,851 รวม per-frame assertions ไม่ใช่ independent test cases. Negative five expected errors แยกจาก unexpected errors. หลักฐาน logs/JSON/ZIP และ pending GUI ข้างล่างไม่ถูกแก้ย้อนหลัง.
+
 Actual executable `/Applications/Godot.app/Contents/MacOS/Godot --version` returned **4.7.2.stable.official.ed1daf0bf**. Before runtime edits: disposable unchanged PR #39 `1728c5e` reference44stages PASS, then actual merged PR #42 `2d3b1e1` baseline60stages PASS. Sandbox import first attempt had an unexpected macOS CA-certificate error despite exit0; classified FAIL and preserved. Same source with normal OS access in a fresh output passed before implementation. Export setup initially hit host Python's unsupported tar filter argument, corrected before Godot ran.
 
 Final tested source commit **`5e54b6f`**: **64 stages PASS / 34 focused Main cases / 507,851 Main checks**, Guidance Data66,641 / Decision1,192 and all inherited counts retained; Legacy6cases/5,892frames identical,97/97source hashes equal, zero unexpected errors/timeouts (negative five expected errors). Exact results/counts, command lines and GUI scope are in the records below; final PR head may add only Markdown/evidence. Full run includes fresh import, parse, configured Main startup, Legacy startup/gameplay, negative suite (five expected errors), all M2A/B/C/D and M3A-02/03/04 proofs, native configured startup, fresh rollback, trace/count release gates.
@@ -1133,9 +1139,40 @@ Development focused attempt1 had a read-only constant mutation in a new test, a 
 
 Agent GUI smoke observed F5/Autonomous F6/Legacy F6 through editor toolbar equivalents at project logical1280x720,1.0x embedded (host panel1475x719 with letterboxing). Final-source F5 FocusB/PlayerA round produced Player24/A9/B10 and next-roundNONE; F6 urgentHELP produced Player8/A13/B12 with NPC1 HELP0; Legacy Attack produced Player25/A8/B12. Thai responses/log and Restart cleanup were observed. This is limited smoke: manual keyboard focus transition was **UNVERIFIED** after CUA Tab/Enter did not establish it; calibrated standalone capture, full visual matrix, manual discretionary-DEFEND/SKIP races and owner comprehension remain pending. No visual acceptance PASS is inferred from headless tests or screenshots.
 
-### M3A-05 Owner acceptance checklist — PENDING, separate milestone
+<a id="m3a-05-owner-acceptance-checklist--pending-separate-milestone"></a>
 
-Agent GUI smoke is limited evidence; it does not complete these owner gates. Record engine, commit, expected/actual, pacing/readability and media/notes for each when separately authorized:
+### M3A-05 Owner Acceptance — COMPLETED
+
+**M3A-05 — Owner-Reported Acceptance: PASS.** แหล่งคำรับรองคือเจ้าของโครงการใน ChatGPT request “M3A-05 Owner Acceptance Closure & Next Milestone Preparation” วันที่ **5 พฤศจิกายน 2026 (Asia/Bangkok)**: ยืนยันว่า merge PR #43, ลบ feature branch และตรวจรับ M3A-05 โดยรวมผ่านแล้ว พร้อมอนุญาตให้บันทึก acceptance/ปรับเอกสาร/เสนอ milestone ถัดไป. Agent ยืนยัน merge และฐาน Git แยกจากคำรับรองการเล่นของเจ้าของ.
+
+**Owner-reported acceptance; per-scenario independent evidence not supplied.** ไม่มีผลราย scenario, engine/commit ที่ owner ใช้เล่น, screenshot หรือวิดีโอแนบมากับคำยืนยัน; ไม่สมมุติรายละเอียดเหล่านั้น. Engine/tested commit ของ automated record ด้านบนไม่ใช่หลักฐานว่า owner ใช้ executable/commit เดียวกัน. การปิดนี้เป็น overall Owner-Reported Accepted ไม่ใช่ Independent Verification โดย agent และไม่ใช่ผล automated ใหม่.
+
+Acceptance matrix เดิมมีขอบเขตดังนี้; ทุกแถวอยู่ภายใต้ **คำยืนยันรวมว่า PASS** เท่านั้น ไม่มี independent result รายแถวให้บันทึก:
+
+| Acceptance area | ขอบเขตที่อยู่ใน matrix |
+|---|---|
+| F5 Guided Main | Run Project ใช้ production GuidedEncounter / Main entry |
+| F6 Autonomous | Run Current Scene ของ Autonomous entry |
+| F6 Legacy | Legacy entry, no Guidance และกฎ NPC2 Guard เดิม |
+| Guidance and Focus selection | คำแนะนำทีม/Focus แยก Player Command/Player Target |
+| NPC response readability | คำขอ, decision, reason, response และ actual effect อ่านเข้าใจ |
+| FOLLOWED vs MATCHED_INDEPENDENTLY | แยกการเปลี่ยนเพราะ Guidance จากการเลือกเหมือนกันเอง |
+| Profile refusal | การปฏิเสธจาก fixed prototype profiles |
+| Urgent HELP and Safety Priority | HELP≤30%/+4/once และ safety มาก่อน Guidance |
+| Discretionary DEFEND | cautious/cooperation/valid self threat predicates เดิม |
+| Target invalidation and SKIP | ก่อน slot vs หลัง lock; ไม่อ้าง effect ที่ไม่ได้เกิด |
+| Restart and stale callbacks | lifecycle/generation/revision/cleanup และผลเก่าไม่ข้าม session |
+| Victory and Defeat | terminal result, queue/input locking และ Restart |
+| Keyboard navigation | การเข้าถึง controls ด้วย keyboard |
+| Thai UI readability | label, explanation, tooltip และ log ภาษาไทย |
+| Combat pacing and presentation | speed0.70, 44px lunge, Compact Formation, animation/feedback/return homes |
+| Owner comprehension | เข้าใจคำแนะนำ เหตุผลที่ NPC เลือกเอง และ applied/skipped effect |
+
+**Evidence classification:** Implemented = merged code ของ M3A-04; Verified — Recorded = automated PR #43 บน `5e54b6f5bcc5ada73cbd07c4dbdeca99256d2378`; Owner-Reported Accepted = คำรับรองรวมวันที่ข้างต้น. Agent GUI smoke เดิมยังมีข้อจำกัดเรื่อง keyboard/full visual matrix/manual DEFEND/SKIP races และ calibrated capture ตาม record; ไม่เปลี่ยนเป็น agent PASS เพราะ owner รับรองภายหลัง.
+
+**Documentation closure validation — 5 November 2026:** ตรวจ diff เทียบ `a84c8d4deaa759f0f0937e6ff58c3f4ba4612a34` ด้วย `git diff --name-only` และ `git diff --check`: เปลี่ยนเฉพาะ Markdown5ไฟล์ (AGENTS/root README/docs index/combat guide/NPC guide), whitespace check ผ่าน. ตรวจ Markdown13ไฟล์ทั้ง repository: local file/fragment links255รายการ รวม Markdown anchors58รายการ, broken0; รองรับ explicit historical anchor aliases. ตรวจ PR #43/merge SHA จาก GitHub เทียบ local/remote/merge-base; ตรวจ current status/owner attribution/roadmap approval boundaries ด้วยตนเอง. SHA-256 ของ source/test/config/assets ทั้ง97ไฟล์ตรง manifestเดิม — เป็น source-integrity check ใหม่ ไม่ใช่ runtime verification ใหม่. Historical combat recordsก่อน M3A-04, checklistด้านล่าง และ exact R1 contract ใน NPC guideคงเดิม; ไม่แก้ evidence JSON/ZIP, test assertions หรือ expectations. **Godot/full regression/GUI/manual keyboard/visual acceptance: NOT RUN ในงาน closure นี้.** ผล runtime PASS อ้างอิง PR #43 เท่านั้น.
+
+**Historical checklist ณ PR #43 (เก็บช่องเดิม ไม่ใช่สถานะ PENDING ปัจจุบัน):** ข้อความและช่องว่างข้างล่างสะท้อนสิ่งที่ record เดิมยังไม่ได้บันทึกโดย owner ในงานนั้น. คำสั่งให้คง pending ใน checklist เป็นประวัติก่อนคำรับรอง 5 พฤศจิกายน ไม่ลบ/ติ๊กย้อนหลังเป็น independent verification. Original checklist introduction: Agent GUI smoke is limited evidence; it does not complete these owner gates. Record engine, commit, expected/actual, pacing/readability and media/notes for each when separately authorized:
 
 - [ ] F5 and F6 Autonomous at1280×720: Guidance/Focus/Player Target labels, hitboxes, Tab/keyboard navigation, long Thai messages/tooltips/log scroll readable and separate from controls.
 - [ ] Normal + ATTACK/FocusA/FocusB: explain MATCHED_INDEPENDENTLY vs FOLLOWED; NPC3 profile refusal; Player target independent.

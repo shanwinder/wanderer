@@ -10,10 +10,12 @@
 
 ## Game principles and scope
 
-- Player controls only their own adventurer. NPC companions retain independent decisions; future Guidance is a suggestion, not direct puppet control. Current scripted ATK/GUARD rules are a prototype, not proof that autonomy is implemented.
+- Player controls only their own adventurer. NPC companions retain independent decisions; Guidance is a suggestion, not direct puppet control.
+- Autonomous Main uses production `GuidedEncounter` and the approved Guidance Decision Layer. NPCs decide independently under the approved prototype policy when their own slot begins. Full NPC AI and persistent personality remain unimplemented.
+- Legacy F6 retains its original scripted ATK/GUARD combat rules. These Legacy rules alone are not proof of NPC autonomy.
 - Preserve the accepted combat baseline unless the task explicitly authorizes a change: `combat_speed_scale = 0.70`, `SHORT_LUNGE_DISTANCE = 44.0` and Compact Formation. Allied root positions are NPC1 `(320,480)`, NPC2 `(405,435)`, NPC3 `(475,509)`, Player `(570,465)`; Enemy A `(970,506)` and B `(1100,424)`. Actions return to their saved home positions.
 - Preserve damage/HP, Guard semantics, target validity, queue order, command locking, Restart cancellation and victory/defeat behavior when working outside those systems. Do not change tests or constants merely to obtain a PASS.
-- Work only on the assigned milestone and acceptance criteria. The next proposed step is M2A NPC Autonomy Proof; it needs its own reviewed task. Documentation work does not authorize gameplay, scene, animation, combat logic or NPC AI changes. Do not begin the next milestone automatically.
+- Work only on the assigned milestone and acceptance criteria. M3A-04 is merged and M3A-05 has Owner-Reported Acceptance; the next milestone proposals in [the documentation index](docs/README.md#next-milestone-proposals--pending-owner-approval) await owner approval and their own reviewed task. Documentation work does not authorize gameplay, scene, animation, combat logic or NPC AI changes. Do not begin the next milestone automatically.
 - Keep world lore and OPEN decisions unchanged unless explicitly in scope. Existing turn-system experiments do not settle the final Turn System. Starstone/Resonance, full NPC AI and larger management/progression systems are not implicit additions to a small proof.
 - Use the learning-first workflow in [v0.4](docs/04_Wanderer_Learning_Development_Workflow_v0.4.md): explain purpose and expected behavior, work in small reviewable steps, default to coaching for learning tasks and do not assume the developer has mastered a topic. Follow explicit task authorization for implementation work.
 
@@ -35,4 +37,4 @@
 - One task → one feature branch → one PR. Use `codex/` for new feature branches. Start from the requested up-to-date merged base; reuse the task's branch and PR for fixes. Check existing work to prevent duplicate or stacked PR chains. Do not modify unrelated work.
 - Open the requested Draft PR with the files changed, why, differences from prior docs/behavior, validation evidence and untested items. Check the final diff contains only authorized files.
 - **Never merge automatically or enable auto-merge.** A new explicit user instruction is required for any merge; passing tests or approval alone does not authorize an agent merge. Do not clean up other branches/PRs or promote to `main` as a side effect.
-- Stop after the requested Draft PR and wait for review. Do not start M2A or another follow-on task automatically.
+- Stop after the requested Draft PR and wait for review. Do not start the proposed next milestone or another follow-on task automatically.
