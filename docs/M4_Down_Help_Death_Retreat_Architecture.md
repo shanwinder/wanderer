@@ -1,16 +1,26 @@
 # M4 — Down / Help / Death / Retreat: Architecture & Acceptance Design
 
-**M4 Architecture — Proposed / Awaiting Owner Review**
+**M4 Architecture — Design Review Completed / D01, D02, D12 Owner Approved**
 
-วันที่ 5 พฤศจิกายน 2026 (Asia/Bangkok) • **Design Only** • ทุกกฎใหม่ด้านล่าง **PENDING OWNER APPROVAL**
+วันที่ 5 พฤศจิกายน 2026 (Asia/Bangkok) • **Design Only / Partially Owner Approved** • D01/D02/D12 = **APPROVED DESIGN**; D03–D11 และ D13–D17 = **PENDING OWNER APPROVAL**
 
 ## 1. Executive Summary
 
-งานนี้ได้รับอนุญาตให้ทำ **Option A: ออกแบบ M4** จากคำขอ “M4 Architecture & Acceptance Design” หลังปิด M3A-05; ไม่ใช่การอนุมัติกฎเกมหรือ implementation. [ดัชนีเอกสาร](README.md#current-status-and-next-roadmap) ยังคงเป็น Milestone Authority; ฉบับนี้เป็น specification เฉพาะ M4 ไม่ใช่ roadmap ชุดใหม่. การ merge เอกสารไม่อนุมัติ gameplay rules โดยปริยาย และต้องมีคำสั่ง merge ใหม่เสมอ.
+งานออกแบบเริ่มจาก **Option A: ออกแบบ M4** หลังปิด M3A-05. ต่อมาเจ้าของอนุมัติ D01 Option A, D02 Option B และ D12 Option A โดยชัดแจ้งในคำสั่ง **“WANDERER — M4 Architecture Owner Approval & PR #45 Closure” วันที่ 5 พฤศจิกายน 2026 (Asia/Bangkok)** ซึ่งเป็น **Owner Approval Source** ของบันทึกนี้ และอนุญาตให้ merge PR #45/cleanup feature branch หลัง validation ผ่าน. [ดัชนีเอกสาร](README.md#current-status-and-next-roadmap) ยังคงเป็น Milestone Authority; ฉบับนี้เป็น specification เฉพาะ M4 ไม่ใช่ roadmap ชุดใหม่. การ merge ไม่อนุมัติกฎที่ยัง Pending และไม่ใช่ implementation authorization.
+
+| Decision | Owner-approved design / scope |
+|---|---|
+| D01 — **APPROVED / Option A** | Party (Player/NPC) HP0 → DOWN; ไม่เท่ากับ DEAD. DEAD ต้องมี transition ที่อนุมัติแยก. Enemy คง HP/availability เดิม. เป็น requirement ของ future isolated proof; Main Player HP0 → DEFEAT ยังเดิม |
+| D02 — **APPROVED / Option B** | แยก LifeState ALIVE/DOWN/DEAD กับ Participation PRESENT/RETREATED; valid pairs เฉพาะ ALIVE/PRESENT, DOWN/PRESENT, DEAD/PRESENT, ALIVE/RETREATED. ActorRuntimeState ถือ state; Encounter อนุญาต transition; Registry preserve state/copy isolation; UI/Presenter อ่าน snapshot; reject invalid pairs; unregister ไม่ใช่ Death/Retreat; ไม่เพิ่ม Enemy lifecycle ใน first proof |
+| D12 — **APPROVED / Option A** | เริ่ม M4-01 — Isolated Data/State Proof จาก ownership, transitions และ invariants; ไม่รวม Main integration, UI/animation, NPC policy, RESCUE/RETREAT actions, Guidance v1 หรือ Legacy F6. ต้องมี task specification และ implementation authorization แยกก่อนเขียนโค้ด |
+
+**Status vocabulary:** **APPROVED DESIGN** คือ owner เลือกทิศทางเฉพาะข้อ; **PROPOSED RULE** คือกฎที่เสนอและยัง **PENDING OWNER APPROVAL**. **IMPLEMENTED** ต้องมีโค้ดจริง; **VERIFIED** ต้องมีผลทดสอบพร้อม engine/commit/command/expected-actual/evidence; **OWNER-REPORTED ACCEPTANCE** คือคำรับรองเจ้าของและต้องคง attribution. M4-01 = **NOT STARTED / NOT IMPLEMENTED**; M4 Runtime = **NOT STARTED**; ไม่มี M4 Verified. A01–A39 ยัง **Proposed / NOT RUN** รวมกรณีที่แตะ design ที่อนุมัติแล้ว.
+
+**Approval exclusions:** D03–D11 และ D13–D17 ยัง Pending รวม RESCUE/HP/resource, bleed-out/death timing, retreat success, NPC priorities, target/Guidance extension, terminal/survivor summary, Enemy lifecycle extension, scheduler, consent, carry/Down attack/stabilization/aftercare. การอนุมัติขอบเขตไม่เพิ่ม Enemy lifecycle ใน D01/D02 ไม่อนุมัติ summary proposals ทั้งชุดของ D11/D14.
 
 เป้าหมายคือให้การล้ม การช่วย การเสียชีวิตใน encounter และการหนี มีผลต่อทางเลือกของ NPC และสรุปผู้รอดชีวิตได้ โดยรักษา **Player controls only themselves; NPC companions decide independently; Guidance is a suggestion, never direct control.** ผู้เล่นอาจถูกช่วย ถูกปฏิเสธ หรือถูกทิ้งไว้ แต่ต้องอ่านเหตุผลและผลที่เกิดจริงแยกกันได้.
 
-**ข้อเสนอแนะนำ:** แยก `LifeState(ALIVE/DOWN/DEAD)` กับ `Participation(PRESENT/RETREATED)` เฉพาะ Party ใน first proof; Enemy คง HP/availability เดิม; Encounter สั่ง transaction เดียวผ่าน Registry-owned RuntimeState; HELP คง heal เดิม และ RESCUE เป็น action ใหม่ที่ต้องอนุมัติแยก; นับ bleed-out ด้วย event `ROUND_CLOSED` หลังคิวจบครบครั้งเดียว; Retreat ใช้ slot ของแต่ละ actor และ NPC เลือกเอง. เริ่มพิสูจน์ data/state แบบแยกจาก Main ก่อนนโยบาย NPC, UI และภาพ. ตัวเลข RESCUE/bleed-out และ outcome ยังไม่ใช่ balance ที่อนุมัติ.
+**Approved direction D01/D02/D12:** แยก `LifeState(ALIVE/DOWN/DEAD)` กับ `Participation(PRESENT/RETREATED)` เฉพาะ Party ใน first proof; Enemy คง HP/availability เดิม; Encounter อนุญาต transition ผ่าน Registry-owned RuntimeState; เริ่ม isolated data/state proof ก่อน Main, NPC policy, UI และภาพ. **ข้อเสนอที่ยัง Pending:** HELP คง heal เดิม และ RESCUE เป็น action ใหม่ที่ต้องอนุมัติแยก; นับ bleed-out ด้วย event `ROUND_CLOSED` หลังคิวจบครบครั้งเดียว; Retreat ใช้ slot ของแต่ละ actor และ NPC เลือกเอง. เริ่มพิสูจน์ data/state แบบแยกจาก Main ก่อนนโยบาย NPC, UI และภาพ. ตัวเลข RESCUE/bleed-out และ outcome ยังไม่ใช่ balance ที่อนุมัติ.
 
 ### ฐานที่ตรวจจริง
 
@@ -26,7 +36,7 @@
 
 อ่าน [v0.1 §22–23](01_Wanderer_Game_Development_Plan_v0.1.md#22-ขอบเขต-prototype-แรก), §14, [v0.4](04_Wanderer_Learning_Development_Workflow_v0.4.md), [combat guide](../tests/combat/README.md) และ [NPC guide](../tests/npc/README.md) เทียบ source จริง. v0.1 เป็น intent เรื่อง Down/Death/Retreat; v0.3 เป็น presentation intent; v0.5 เป็น lore/proposed Resonance. ไม่แก้ historical snapshots, lore หรือ OPEN Turn System. PR #2/#17 เป็นงาน unmerged คนละขอบเขต ไม่ merge/cherry-pick.
 
-**Design review correction — PR #45 เดิม:** ตรวจ [review 5779853288](https://github.com/shanwinder/wanderer/pull/45#pullrequestreview-5779853288) บน PR HEAD `fb176943ddeea09513a02bf722c65441a800021e` วันที่ 5 พฤศจิกายน 2026; fetch แล้ว local/remote-tracking HEAD ตรง GitHub PR HEAD, working tree สะอาด และ merge-base ยังเป็น actual base ข้างบน. Review ขอแก้ D11/D14 และ D09; คำขอแก้เอกสารเลือกทิศทาง **Party Lifecycle Summary + Enemy Combat Summary** และ **รักษา R1 / strict boundary** เท่านั้น ไม่ใช่ Owner Approval ของ gameplay. ทุก D01–D17 ยัง PENDING OWNER APPROVAL; แก้บน branch/PR เดิม ไม่เริ่ม M4-01.
+**Design review correction — PR #45 เดิม:** ตรวจ [review 5779853288](https://github.com/shanwinder/wanderer/pull/45#pullrequestreview-5779853288) บน PR HEAD `fb176943ddeea09513a02bf722c65441a800021e` วันที่ 5 พฤศจิกายน 2026; fetch แล้ว local/remote-tracking HEAD ตรง GitHub PR HEAD, working tree สะอาด และ merge-base ยังเป็น actual base ข้างบน. Review ขอแก้ D11/D14 และ D09; คำขอแก้เอกสารเลือกทิศทาง **Party Lifecycle Summary + Enemy Combat Summary** และ **รักษา R1 / strict boundary** เท่านั้น ไม่ใช่ Owner Approval ของ gameplay. ณ review-correction checkpoint นั้นทุก D01–D17 ยัง PENDING OWNER APPROVAL; แก้บน branch/PR เดิม ไม่เริ่ม M4-01. ต่อมา [follow-up review 5779998593](https://github.com/shanwinder/wanderer/pull/45#pullrequestreview-5779998593) ยอมรับ corrections ครบที่ `a82c81f90987dd63cebc1736a1987fb1ca014abc`; Design Review Completed. Owner approval ภายหลังจำกัด D01/D02/D12 ตามตารางข้างบน; D09/D11/D14 ยังเป็น PROPOSED RULE / PENDING OWNER APPROVAL.
 
 ## 2. Existing Architecture — Facts from Actual Base
 
@@ -54,9 +64,9 @@
 
 ## 3. Current vs Proposed Behavior และขอบเขต
 
-| ประเด็น | Existing runtime | Proposed M4 — PENDING OWNER APPROVAL |
+| ประเด็น | Existing runtime | M4 design — เฉพาะ D01/D02/D12 approved; rules อื่น Pending |
 |---|---|---|
-| HP0 | unavailable; Player จบ DEFEAT | party HP0 → DOWN/PRESENT; NPC ยังตัดสินใจได้ถ้ามีผู้พร้อม |
+| HP0 | unavailable; Player จบ DEFEAT | **APPROVED DESIGN D01/D02:** party HP0 → DOWN/PRESENT ใน future isolated proof; การให้ NPC ทำงานต่อ/เปลี่ยน terminal ยัง Pending D10/D15 |
 | Help | heal living Player เท่านั้น | คง HELP; RESCUE สำหรับ DOWN แยก effect/resource |
 | Death | ไม่มี state/timer/persistence | DOWN→DEAD ใน encounter จาก clock ที่เลือก; ไม่มี save deletion |
 | Retreat | ไม่มี action/guidance/outcome | actor action; ออกจาก participation ไม่ลบ identity |
@@ -66,7 +76,7 @@
 
 **Preservation boundary:** speed0.70; short lunge44px; Compact Formation homes NPC1(320,480), NPC2(405,435), NPC3(475,509), Player(570,465), A(970,506), B(1100,424); ทุก action คืน saved home. Player/NPC/Enemy ATTACK5/1/3; HELP≤30%/+4/หนึ่งครั้งต่อ NPC ต่อ encounter; Guard ลด 2/min1 ใน Autonomous และ Legacy NPC2 ลด 1 เดิม; deterministic order/command locking; R1 Option A/schema v1; Restart generation และ Legacy differential คงเดิมทั้งหมดในงานนี้.
 
-ไม่มี gameplay scripts/actions/policies/scene/UI/config/test assertions ใหม่; ไม่ implement inventory/equipment, Trust progression, Compassion effect, personality AI, injury system, permadeath, Speed Initiative, Final Turn System, Starstone/Resonance. ทางเลือก M4 ที่เปลี่ยน HP0/terminal/targets เป็น **proposed isolated future behavior** ไม่ใช่การเปลี่ยน baseline วันนี้.
+ไม่มี gameplay scripts/actions/policies/scene/UI/config/test assertions ใหม่; ไม่ implement inventory/equipment, Trust progression, Compassion effect, personality AI, injury system, permadeath, Speed Initiative, Final Turn System, Starstone/Resonance. D01 อนุมัติ HP0→DOWN เป็น **future isolated design requirement**; terminal/targets ยังเป็น **PROPOSED RULE / PENDING OWNER APPROVAL**. ไม่มีการเปลี่ยน baseline วันนี้.
 
 ## 4. Actor Lifecycle State Machine
 
@@ -75,9 +85,9 @@
 | ทางเลือก | ข้อดี | ข้อเสีย |
 |---|---|---|
 | A: enum เดียว ALIVE/DOWN/DEAD/RETREATED | เรียนรู้ง่าย, switch สั้น, ปิดคู่ state ผิดได้ง่าย | RETREATED บอกไม่ได้ว่าหนีทั้งที่บาดเจ็บ/Down; ข้อมูลชีวิตหายหรือซ่อนอยู่ที่อื่น; เพิ่ม rescue/carry ยาก |
-| B: LifeState + Participation แยก (**แนะนำ**, D02) | สรุปชีวิตกับที่อยู่แยกกัน; ไม่สับสน death กับ unregister; รองรับ future evacuation โดยไม่ทำเป็น resurrection | ต้องตรวจคู่ state ทุก transaction; contract/copy/validator ซับซ้อนขึ้น |
+| B: LifeState + Participation แยก (**APPROVED DESIGN / Option B**, D02) | สรุปชีวิตกับที่อยู่แยกกัน; ไม่สับสน death กับ unregister; รองรับ future evacuation โดยไม่ทำเป็น resurrection | ต้องตรวจคู่ state ทุก transaction; contract/copy/validator ซับซ้อนขึ้น |
 
-**Proposed valid pairs สำหรับ Party (Player/NPC) ใน proof แรก:** ALIVE/PRESENT, DOWN/PRESENT, DEAD/PRESENT, ALIVE/RETREATED เท่านั้น. DOWN/RETREATED และ DEAD/RETREATED reject; เก็บการแบกผู้บาดเจ็บ/ศพเป็น later decision ไม่ใช่บังคับให้ลุกก่อนแบกในเกมเต็ม. หากอนุมัติ evacuation ภายหลัง ค่อยขยาย valid pairs/version; ห้าม loss of life state เพื่อแสดงว่าออกสนามแล้ว.
+**Approved valid pairs — D02 สำหรับ Party (Player/NPC) ใน initial isolated proof:** ALIVE/PRESENT, DOWN/PRESENT, DEAD/PRESENT, ALIVE/RETREATED เท่านั้น. DOWN/RETREATED และ DEAD/RETREATED reject; เก็บการแบกผู้บาดเจ็บ/ศพเป็น later decision ไม่ใช่บังคับให้ลุกก่อนแบกในเกมเต็ม. หากอนุมัติ evacuation ภายหลัง ค่อยขยาย valid pairs/version; ห้าม loss of life state เพื่อแสดงว่าออกสนามแล้ว.
 
 - `HP=0` เป็นค่าตัวเลข; สำหรับ lifecycle model ใหม่ DOWN/DEAD ต้อง HP0, ALIVE ต้อง HP>0. ไม่อ่าน HP0 ว่า DEAD โดยอัตโนมัติ.
 - `Unavailable` ของ Party เป็นผลของ eligibility รวม life/participation/terminal ไม่ใช่ life state; Enemy ใน first proof ใช้ HP availability เดิมตาม D14.
@@ -97,7 +107,7 @@ flowchart LR
 
 ภาพนี้แสดงเพียงความสัมพันธ์ที่มีในโค้ด; `heal()` ระดับข้อมูลเพิ่มจาก 0 ได้แต่ gameplay HELP ปัจจุบันกั้นไว้. ไม่มี DOWN/DEAD/RETREATED ใน runtime นี้.
 
-### Proposed transitions — เฉพาะ Party; ทั้งภาพยังรอ Owner Approval
+### Future transitions — Party; D01/D02 approved, action/clock rules ยัง Pending
 
 ```mermaid
 stateDiagram-v2
@@ -106,15 +116,17 @@ stateDiagram-v2
     state "DEAD / PRESENT" as XP
     state "ALIVE / RETREATED" as AR
     [*] --> AP: valid new encounter fixture
-    AP --> DP: HP0 at accepted damage impact
-    DP --> AP: accepted RESCUE impact
-    DP --> XP: accepted BLEED_TICK reaches zero
-    AP --> AR: accepted RETREAT impact
+    AP --> DP: D01 APPROVED DESIGN HP0
+    DP --> AP: D03 D04 PENDING RESCUE
+    DP --> XP: D05 D06 PENDING death timing
+    AP --> AR: D07 PENDING RETREAT
 ```
 
 ไม่มีลูกศร DP→AR, XP→AP หรือ AR→AP เพราะแนะนำให้ reject ใน encounter เดียว. Restart สร้าง generation/initial state ใหม่ ไม่ใช่ transition ชุบชีวิตใน encounter เก่า. enemy HP0 semantics อยู่ D14; proof แรกใช้ party actor เท่านั้น ไม่อ้างว่า enemy ได้กฎ Down อัตโนมัติ.
 
 ### Transition contract
+
+**Approval boundary:** เฉพาะ Party HP0→DOWN และ data ownership/valid pairs เป็น APPROVED DESIGN D01/D02. ตารางรวมรายละเอียด impact/token/clock/RESCUE/RETREAT/DEAD rejection ที่ยังเป็น PROPOSED RULE ตาม D03–D11/D13–D17; ห้ามใช้ตารางทั้งชุดเป็น authorization ของ M4-01. DEAD เป็น state ที่ยอมรับใน model แต่ trigger/timing เข้าสู่ DEAD ยังไม่อนุมัติ.
 
 ทุกแถว owner คือ **Encounter ตรวจและ commit ผ่าน Registry-owned RuntimeState**; validation ต้องเสร็จก่อนเขียน. `T`=owned action token identity+phase; `E`=Encounter event key `(encounter_id,generation,round_id,event_kind)` ที่ consume ครั้งเดียว. Rejected/SKIP ไม่มี HP/state/resource/clock delta. รหัส M4_* ทั้งหมดเป็น proposed reason namespace ไม่ใช่ existing API.
 
@@ -410,12 +422,12 @@ Future manual gate ต้อง record engine/commit/command(entry)/expected-act
 
 ## 14. Open Decision Register
 
-ทุกแถวสถานะ **PENDING OWNER APPROVAL** รวม Recommendation และค่าตัวเลข; owner อนุญาตเพียง design task. Dependencies เป็นเงื่อนไขออก implementation task ไม่ใช่อนุมัติงานต่ออัตโนมัติ.
+D01/D02/D12 = **APPROVED DESIGN** ตาม Owner Approval Source ใน §1 วันที่ 5 พฤศจิกายน 2026 (Asia/Bangkok). D03–D11 และ D13–D17 = **PENDING OWNER APPROVAL** รวม recommendations และค่าตัวเลข. Dependencies ของ full integration ไม่ขยาย approval ของ isolated data proof; ทุก implementation ต้องมี task specification และ authorization แยก.
 
 | Decision ID | Question | Existing Behavior | Option A | Option B | Recommendation | Trade-offs | Dependencies | Owner Approval Status |
 |---|---|---|---|---|---|---|---|---|
-| D01 | HP0 คืออะไร | unavailable; Player DEFEAT | HP0→DOWN ก่อน | HP0→DEAD/inactive ทันที | A สำหรับ party M4 | เปิด rescue แต่เปลี่ยน terminal | D02,D06,D10 | PENDING OWNER APPROVAL |
-| D02 | Down ownership/model | Runtime HP only | combined enum | split Life/Participation ใน owned runtime, Encounter authorize | B | คู่ state/copy validation เพิ่มแต่ summary ชัด | Registry copy/version | PENDING OWNER APPROVAL |
+| D01 | HP0 คืออะไร | unavailable; Player DEFEAT | HP0→DOWN ก่อน | HP0→DEAD/inactive ทันที | A สำหรับ party M4 | เปิด rescue แต่เปลี่ยน terminal | D02,D06,D10 | **APPROVED / Option A — APPROVED DESIGN**, owner closure request 5 Nov 2026 Asia/Bangkok (§1) |
+| D02 | Down ownership/model | Runtime HP only | combined enum | split Life/Participation ใน owned runtime, Encounter authorize | B | คู่ state/copy validation เพิ่มแต่ summary ชัด | Registry copy/version | **APPROVED / Option B — APPROVED DESIGN**, owner closure request 5 Nov 2026 Asia/Bangkok (§1) |
 | D03 | Rescue semantics/HP | HELP+4 living Player | overloaded HELP | separate RESCUE, candidate 1 HP | B | action/schema ใหม่; ไม่เปลี่ยน HELP เดิม | D01,D04,D09 | PENDING OWNER APPROVAL |
 | D04 | Help/Rescue limits | HELP 1/NPC/encounter | share HELP budget | separate RESCUE 1/helper/encounter, consume on success | B เป็น candidate | เพิ่ม resource state/loop risk; ไม่ใช่ inventory | D03,episode guard | PENDING OWNER APPROVAL |
 | D05 | Bleed-out clock | ไม่มี | round close event, candidate B2+entry round grace | every N slots หรือ whitelisted non-round events | A | cadence ผูก prototype แต่ adapter ย้ายได้ | D06,D10,D15 | PENDING OWNER APPROVAL |
@@ -425,7 +437,7 @@ Future manual gate ต้อง record engine/commit/command(entry)/expected-act
 | D09 | Target/queue/Guidance identity และ exceptional issuer lifecycle | Existing Approved R1: accepted submit +1; preferred-Enemy removal ที่ล้าง Pending +1; freeze/round reset/Restart ใช้ lifecycle identity; HP0 ไม่เพิ่ม; can_act targeting เดิม | retained roster/action eligibility/versioned context + **strict boundary**: reject/isolate pre-round issuer change ที่ยังไม่มี contract; ไม่ re-arm Pending เก่า | explicit same-round Pending revision extension เมื่อล้างจริง; ต้อง owner approval แยกก่อนเปิด path | A สำหรับ initial proof; §11 ไม่เพิ่ม R1 rule/counter/schema | ยังไม่รองรับ same-round exception; B ต้อง stale-client/re-submit proof; summary retention ยังเป็น future contract | D02,D10,D15; A33–A39; approved boundary ก่อน recovery | PENDING OWNER APPROVAL |
 | D10 | Terminal outcome | Player unavailable→DEFEAT first | active party/enemy+mixed outcome §8 | preserve Player immediate defeat | A สำหรับ M4 isolated | จำเป็นต่อ NPC ช่วย Player Down; migration ใหญ่ | D01,D07,D09,D15 | PENDING OWNER APPROVAL |
 | D11 | Survivor/Combat summary domains | Existing result UI มี Player/Enemy HP; ยังไม่มี M4 summary/archive | **Party Lifecycle Summary + Enemy Combat Summary**: frozen party_lifecycle_rows / enemy_combat_rows / encounter_outcome | unified lifecycle rows ทุก actor ซึ่งต้อง D14 Enemy lifecycle mapping ที่ approve แยกก่อน | A ตาม §8; partitions ใช้เฉพาะ Party | สอง row contracts แต่ไม่ตีความ Enemy HP0 เป็น DEAD; initial IDs ต้องครบ/ไม่ซ้ำ; ไม่มี automatic aftercare | D02,D10,D14; future archive/retention หาก unregister; A29–A32 | PENDING OWNER APPROVAL |
-| D12 | First implementation scope | ไม่มี M4 runtime | isolated data/state/atomic proof ก่อน | full Main/UI/NPC พร้อมกัน | A | feedback ภาพช้ากว่าแต่ review ความเสี่ยงทีละชั้น | D01,D02 และ explicit new task | PENDING OWNER APPROVAL |
+| D12 | First implementation scope | ไม่มี M4 runtime | isolated data/state/atomic proof ก่อน | full Main/UI/NPC พร้อมกัน | A | feedback ภาพช้ากว่าแต่ review ความเสี่ยงทีละชั้น | D01,D02 และ explicit new task | **APPROVED / Option A — APPROVED DESIGN**, owner closure request 5 Nov 2026 Asia/Bangkok (§1) |
 | D13 | Down→Retreated | ไม่มี carry/evacuation | reject first proof | carried evacuation แยก action/consent/resource | A ชั่วคราว | ไม่ครอบคลุม lore intent การแบก; ไม่ลืมชีวิตผู้หนี | D02,D07,D17 | PENDING OWNER APPROVAL |
 | D14 | Enemy lifecycle scope และ summary | Existing HP>0=Available / HP0=Unavailable; ไม่มี Down/Death/Retreat | คง HP availability; enemy_combat_rows แยกจาก Party; ไม่เพิ่ม Enemy LifeState/Participation mapping ใน first proof | เสนอ Enemy lifecycle/retreat และ summary mapping ภายหลังเป็น decision แยก | A คู่กับ D11; HP0 ไม่พิสูจน์ DEAD | proof มี semantics ต่างกันสองฝ่าย; ยังไม่ตัดสิน Enemy death/escape ในเกมเต็ม | D10,D11; reviewed Enemy contract/owner approval ก่อน B; A10,A11,A23,A30 | PENDING OWNER APPROVAL |
 | D15 | Player unavailable/clock advance | immediate DEFEAT; input starts round | automatic NPC continuation/no Player command | stop/suspend ที่ Player Down | A เมื่ออนุมัติ M4 queue proof | scheduler / Guidance boundary ตาม D09 / declared targets ใหม่ | D08,D09,D10 | PENDING OWNER APPROVAL |
@@ -434,29 +446,41 @@ Future manual gate ต้อง record engine/commit/command(entry)/expected-act
 
 ## 15. Recommended First Proof และ Implementation Breakdown
 
-**Proposed เท่านั้น:** ลำดับนี้แตกงานภายใต้ M4 design ไม่ใช่ roadmap คู่ขนาน; authority สถานะยังอยู่ index. ไม่มี task ใด Implemented/Approved และห้ามเริ่มใน PR นี้.
+**D12 อนุมัติแนวทางและลำดับเริ่ม M4-01 — Isolated Data/State Proof เท่านั้น; implementation ยัง NOT STARTED.** ตารางแยกงานภายใต้ M4 design ไม่ใช่ roadmap คู่ขนาน; authority สถานะยังอยู่ index. M4-02–05 ยัง Proposed. ทุก task ต้อง specification/implementation authorization แยก; ห้ามเริ่มโค้ดใน PR นี้.
 
 | Proposed task | Reviewable scope / prerequisite | Acceptance / stop gate |
 |---|---|---|
-| Proposed M4-01 — Data / State Proof | หลัง owner เลือก D01/D02/D12 และออก implementation task; RefCounted isolated model, lifecycle pairs, HP invariants, copy isolation, encounter authorization; ใช้ fixture-authorized transitions ไม่ add production actions | A01,A19,A21; Main/Legacy/Resolver/Layer/scene/UI ไม่เปลี่ยน; owner อธิบาย HP0 vs Down vs Dead vs Retreated ได้; stop Draft review |
+| M4-01 — Isolated Data / State Proof (D12 approved direction; NOT STARTED) | D01 A/D02 B/D12 A approved แล้ว; ต้อง task specification + implementation authorization แยก; RefCounted isolated model, lifecycle pairs, HP invariants, copy isolation, encounter authorization; ใช้ fixture-authorized transitions ไม่ add production actions | A01,A19,A21; Main/Legacy/Resolver/Layer/scene/UI ไม่เปลี่ยน; owner อธิบาย HP0 vs Down vs Dead vs Retreated ได้; stop Draft review |
 | Proposed M4-02 — Atomic Effect / Clock Proof | ต้อง D03–D06,D09,D13,D17; isolated rescue effect/episode/resource, round event clock/death, token/generation/restart; fixture event ไม่ใช่ player button | A02–A05,A14–A19,A22; no resurrection/duplicates; no UI; tests/evidence ครบ; stop review |
 | Proposed M4-03 — Queue / Retreat / Outcome Proof | ต้อง D07,D10,D11,D14,D15; isolated stable queue, unavailable Player continuation, actor exit และ summary | A08–A13,A20,A23,A26,A28–A32 ตาม option; no Guidance types ใหม่; stop review |
 | Proposed M4-04 — Autonomous Decision Extension Proof | ต้อง D08/D09/D16 และ versioned input/response contract; pure paired cases: rescue/refusal/retreat/conflict | A06,A07,A09,A24,A27,A33–A39 ตาม phase ที่เกี่ยวข้อง; ไม่แก้ v1/Compassion/R1 เอง; causal reason ชัด; stop review |
 | Proposed M4-05 — Playable Integration / UI / Visual Acceptance | owner สั่งแยกหลัง proof ก่อนหน้าผ่าน; controller/presenter/Guidance adapter contracts reviewed; production cutover ไม่ implicit | A14–A26 และ existing full regression; actual engine/commit/logs/exit/results/source hashes; F5/F6 Autonomous/F6 Legacy 1280×720 และ owner comprehension; stop Draft และ owner acceptance |
 
-แนะนำให้ออกงาน **Proposed M4-01** เท่านั้นเป็นก้าวแรกหลัง review ไม่รวม bleed-out, RESCUE action, NPC policy หรือ visual เข้า data foundation เพื่อให้ดู“เล่นได้”ทันที. หาก implementation ต้องใช้ test-only model/fixtures ต้องระบุใน task ใหม่ ไม่สร้าง script หรือ test ใน design PR นี้. Decisions ส่วนที่ยังไม่ใช้เลื่อน review ได้ แต่ห้าม hard code pending rule แล้วเรียกว่า approved.
+เตรียม specification ของ **M4-01** เป็นก้าวแรกตาม D12 ที่อนุมัติแล้ว; ยังไม่อนุญาต implementation. ไม่รวม bleed-out, RESCUE action, NPC policy หรือ visual เข้า data foundation เพื่อให้ดู“เล่นได้”ทันที. หาก implementation ต้องใช้ test-only model/fixtures ต้องระบุใน task ใหม่ ไม่สร้าง script หรือ test ใน design PR นี้. Decisions ส่วนที่ยังไม่ใช้เลื่อน review ได้ แต่ห้าม hard code pending rule แล้วเรียกว่า approved.
+
+### M4-01 Next Task Preparation — proposal only, NOT STARTED
+
+- **Technical dependencies:** D01 A/D02 B/D12 A; ActorRuntimeState ปัจจุบันมี HP-only/raw heal จาก0 และ Registry สร้าง copy จาก HP จึงต้องออกแบบ lifecycle-preserving copy contract ก่อน. Resolver/Layer ใช้ strict original snapshots; ต้องแยก versioned accessor/isolated model ไม่ส่ง fields ใหม่เข้า v1. Encounter-authorized transitions ต้องอยู่ใน isolated proof โดยไม่แก้ production terminal/queue.
+- **Files likely to change (ต้อง review ใน task ใหม่):** `scripts/actors/actor_runtime_state.gd`, `scripts/actors/actor_registry.gd` หรือ isolated counterparts หากการแก้ shared class กระทบ Main; test-only isolated Encounter/model และ focused harness ใต้ `tests/actors/`; `tests/combat/verify.py` เฉพาะ optional proof hook หากได้รับอนุญาต; actor test guide/evidence และ index เพื่อบันทึกผลจริง. ยังไม่เลือกชื่อไฟล์ใหม่หรือเพิ่มไฟล์เหล่านี้ใน PR #45; production `full_party_encounter.gd`, GuidedEncounter, Resolver/Layer, scene/controller/presenter ไม่ควรอยู่ใน first-proof diff.
+- **Proof boundaries:** HP/Life/Participation invariants และ 4 valid pairs; ActorRuntimeState owns state, Registry copy-in/out preserves every state field, isolated Encounter authorizes atomic HP0→DOWN; invalid pair/unauthorized transition rejects without partial mutation. DEAD/ALIVE-RETREATED ใช้ validated seeded fixtures เพื่อพิสูจน์ data/copy/rejection เท่านั้น ไม่สร้าง death/retreat triggers. DOWN→ALIVE, death timing, retreat effects และ exceptional Guidance flow ต้องรอ decisions ที่เกี่ยวข้อง; ไม่ทำ RESCUE/RETREAT/bleed-out/scheduler/terminal/summary gameplay หรือ NPC policy.
+- **Risks:** shared raw heal/can_act/copy/snapshot changes อาจเปลี่ยน old Main และ strict validators; state หายตอน copy; HP0 ถูกตีความ DEAD; invalid pair/partial commit; stale generation mutation; test-only authority หลุดเข้า production. ให้เลือก isolation seam ใน task specification ก่อนแก้ shared code; ไม่ลด regression หรือเปลี่ยน expected constants เพื่อให้ผ่าน.
+- **Test cases:** ครบ 4 valid pairs และ reject คู่ที่เหลือ; ALIVE HP>0, DOWN/DEAD HP0 และ HP bounds/type; fixture-authorized damage ถึง0เกิด DOWNครั้งเดียว; invalid actor/pair/transition/unauthorized request ไม่มี delta; copy-in/out/nested snapshot mutation ไม่เขียน authority; round-trip preserve state; unregister ไม่กลายเป็น death/retreat; valid Restart new generation/reset และ invalid Restart atomic; stale/duplicate fixture transition ไม่ mutate. A01/A19/A21 ใช้เฉพาะส่วน data/invariant ที่อนุมัติ โดยไม่ยก B2/RESCUE/reentry action rules ทั้งแถวเป็น approved; compatibility เดิมรวม Main HP0→DEFEAT, Guidance v1/R1 และ Legacy ต้องมี regression evidence จริง.
+- **Expected deliverables:** reviewed task specification/explicit authorization, bounded isolated proof source, focused expected/actual results พร้อม actual engine/commit/commands/logs/exits/results/source hashes, required existing regression และ Thai learning notes. Data proof ไม่มี visual-acceptance claim; Draft PR ของ M4-01 ต้องรอ task ใหม่และไม่ merge อัตโนมัติ.
+- **Recommended sequence:** 1) review isolation/API/snapshot/fixture authority และ reject boundaries → 2) validate state pairs/HP invariants → 3) prove Registry copy isolation → 4) isolated Encounter HP0 transition/rejection → 5) snapshot/Restart/generation safety → 6) focused proof + unchanged regression → 7) documentation/evidence/Draft review. เอกสารนี้เตรียมข้อเสนอเท่านั้น ไม่เริ่มขั้น implementation.
 
 ## 16. Risks / Dependencies / Verification Record
 
 **Known risks:** HP0 เดิมกับ Player DEFEAT ขัด rescue window; raw heal/copy สูญ life ทำ resurrection; strict schema ทำ unknown fields พัง; inherited underscore coupling; controller รวม Legacy/Guided/UI และ result bool; clock grace/terminal precedence ทำ down มีเวลาต่างกัน; no active party clock freeze ยังไม่ใช่ post combat fate; separate budgets/repeated Down อาจทำ survival loop; declared hit เดิมเป็น first hit ไม่ใช่ forecast; consent/attack Down/carry/enemy exit ยังไม่ครบ full vision. เหล่านี้เป็น design risks จาก inspection ไม่ใช่ test failures ที่ค้นพบใหม่.
 
-**Dependencies:** Owner เลือก critical decisions และออก task implementation แยก; versioned context/capability plan ก่อน NPC integration; approved enemy/Player unavailable scheduler ก่อน terminal cutover; Godot actual version และ fresh regression evidence ก่อน runtime PR; owner play/keyboard/visual acceptance ก่อน merge presentation. ไม่ต้องรอ Final Turn System เพื่อ review data แต่ไม่ถือว่า prototype clock settles ระบบนั้น.
+**Dependencies:** D01/D02/D12 approved design แล้ว; owner ยังต้องออก task specification/implementation authorization แยก และอนุมัติ pending decisions ก่อนใช้; versioned context/capability plan ก่อน NPC integration; approved enemy/Player unavailable scheduler ก่อน terminal cutover; Godot actual version และ fresh regression evidence ก่อน runtime PR; owner play/keyboard/visual acceptance ก่อน merge presentation. ไม่ต้องรอ Final Turn System เพื่อ review data แต่ไม่ถือว่า prototype clock settles ระบบนั้น.
 
 **Inherited Evidence — ไม่ใช่ผลรัน M4:** [PR #43](https://github.com/shanwinder/wanderer/pull/43) ทดสอบ source `5e54b6f5bcc5ada73cbd07c4dbdeca99256d2378` ด้วย engine `4.7.2.stable.official.ed1daf0bf`; executable และ exact commands อยู่ใน [run-record](../tests/combat/evidence/m3a-04/run-record.json) และ [reproduction guide](../tests/combat/README.md#verification-and-durable-evidence). Expected เดิมคือทุก stage ผ่าน ไม่มี unexpected errors และ Legacy ตรง baseline; recorded actual คือ **64/64 stages PASS, 34 focused Main cases / 507,851 checks**, zero unexpected errors/timeouts, negative suite มี five expected errors แยกต่างหาก, Legacy **6 cases / 5,892 frames identical**, **97/97 source hashes matching** ใน record เดิม. Per-frame checks ไม่ใช่ independent cases. [Results](../tests/combat/evidence/m3a-04/final-results.json), [logs/exits](../tests/combat/evidence/m3a-04/logs.zip), [trace comparison](../tests/combat/evidence/m3a-04/trace-comparison.json). ไม่อ้างว่ารันทดสอบ merge commit หรือ M4 แล้ว.
 
 **Historical documentation verification — original PR HEAD `fb17694`:** ตรวจ git diff/scope, local Markdown links/anchors, cross references/state invariants/transition timing, current milestone status และ approval boundaries, inherited source SHA-256 manifest และ `git diff --check`; **ผลตรวจเอกสาร:** Markdown 14 ไฟล์, local links 285 รายการ (fragment links 63), broken links 0, table-width errors 0; decisions 17 / future scenarios 28 / Mermaid 2 ภาพครบ; source hashes ตรง manifest เดิม 97/97; `git diff --check` ผ่าน. ตัวเลข source hashes เป็น integrity check ไม่ใช่ผลรัน engine ใหม่. เปลี่ยนเฉพาะ root README/docs index/spec นี้. ไม่มี gameplay/scene/config/assets/test assertion/balance/evidence JSON-ZIP diff. **Godot/import/parse/runtime/full regression/F5/F6/keyboard/visual acceptance: NOT RUN ในงานนี้** เพราะ documentation only. Matrix§13 เป็น future test design ทั้งหมด; source integrity check ไม่ใช่ runtime verification. Owner overall M3A-05 PASS คง attribution/ข้อจำกัดเดิม.
 
 **Review-fix documentation validation — PR #45 เดิม:** เทียบ reviewed HEAD `fb176943ddeea09513a02bf722c65441a800021e`; diff เฉพาะ Markdown 3 ไฟล์เดิม. ตรวจ Markdown 14 ไฟล์: local links 285 รายการ รวม fragment links 63, broken links 0; headers/delimiters/column widths ของทุกตารางสอดคล้องกัน; D01–D17 ครบและทุกแถว PENDING OWNER APPROVAL; A01–A39 ครบ ไม่ซ้ำ/ไม่ข้ามเลข. A01/A10/A11/A23 ชี้ขอบเขตเดิมให้ชัด; เพิ่ม A29–A32 สำหรับ summary และ A33–A39 สำหรับ Guidance. D09/D11/D14 เปลี่ยนข้อเสนอ; D15 เปลี่ยนเฉพาะ dependency wording จาก expiry เป็น boundary ตาม D09; D01/D02/D12 ไม่เปลี่ยน. R1 contract paragraph และ Mermaid ทั้ง2 code blocks ตรง reviewed HEAD; เพิ่มข้อความจำกัด diagram/lifecycle ให้ Party. ตรวจเนื้อหา Party/Enemy initial-ID coverage, normal vs exceptional Guidance identity และ approval boundaries ด้วย inspection. Source/test/config/assets 97/97 hashes ตรง manifest เดิม; `git diff --check` ผ่าน. Source integrity และเอกสารไม่ใช่ผล runtime: **Godot และ future acceptance scenarios NOT RUN**; inherited engine evidence ยังคง PR #43 ข้างบนเท่านั้น. Mermaid ไม่ได้ render ใน browser.
+
+**Owner-approval closure validation — 5 พฤศจิกายน 2026 (Asia/Bangkok):** ตรวจเทียบ initial PR HEAD `a82c81f90987dd63cebc1736a1987fb1ca014abc` และ actual base `9cb5e8dced6aa6e1719b4c86c04c23c00c46ef60`; diff เฉพาะ Markdown 3 ไฟล์เดิม. Local Markdown links **286 รายการ / fragment links 63 / broken 0** ใน Markdown 14 ไฟล์; tables 86 ชุด column widths สอดคล้อง; D01–D17 ครบ โดย D01 A/D02 B/D12 A approved design และอีก14ข้อ Pending. Acceptance Matrix §13 (A01–A39) ตรง initial HEAD ทุกอักขระและยัง Proposed/NOT RUN; §8 summary/Enemy partition และ §11 normal/exceptional Guidance/R1 corrections ตรง initial HEAD ทุกอักขระ. Mermaid2ภาพตรวจ topology/labels ด้วย inspection; เปลี่ยน label ภาพ future state เพื่อแยก D01 approved กับ RESCUE/death/RETREAT Pending โดยไม่เปลี่ยน edges; **ไม่ได้ render Mermaid**. Source/test/config/assets SHA-256 **97/97 ตรง manifest PR #43** เป็น integrity check ใหม่ ไม่ใช่ runtime verification. `git diff --check` ผ่าน; ไม่มี runtime/scene/test/asset/config/balance/evidence diff. **Godot/import/parse/runtime/full regression/F5/F6/keyboard/visual acceptance และ A01–A39: NOT RUN** ใน closure นี้. ผล engine PASS ทั้งหมดเป็น inherited PR #43 เท่านั้น. Review comments สองรายการเป็น COMMENTED; follow-up ยอมรับ corrections ครบและไม่พบ unresolved inline threads ณก่อน closure; merge/check state ต้อง recheck บน final pushed HEAD ก่อน merge.
 
 ## 17. Learning Notes
 
@@ -472,4 +496,4 @@ Future manual gate ต้อง record engine/commit/command(entry)/expected-act
 8. **Clock ต้องมี boundary:** ล้มท้ายรอบ 3 ตาม candidate grace ยัง B2; ลองนับรอบ 4/5 และใส่ rescue ก่อน close 5. หากนับไม่ตรงกันแสดงว่า contract ยังต้องปรับก่อน coding.
 9. **Design ไม่ใช่ Approval/Verification:** Mermaid กับ expected table ช่วยคิด ไม่ทำให้ transition ได้รับอนุมัติหรือ tests ผ่าน. Owner ต้องเลือก Dxx; future task ต้องเก็บ actual results และข้อจำกัดเอง.
 
-**Mandatory Stop:** ส่ง Draft PR สำหรับ owner review แล้วหยุด. **M4 Architecture — Proposed / Awaiting Owner Review.** ไม่ merge/auto-merge ไม่เริ่ม M4 Runtime/Scene/UI/NPC Policy หรือ milestone อื่น.
+**Mandatory Stop ของ closure นี้:** หลัง validation ให้ merge PR #45 และ cleanup feature branch ตามคำสั่ง owner แล้วหยุด. **M4 Architecture — Design Review Completed / Partially Owner Approved (D01/D02/D12)**. ไม่ enable auto-merge; ไม่เริ่ม M4-01 implementation ไม่สร้าง runtime branch/PR และไม่เริ่ม milestone อื่น.
