@@ -1,0 +1,10 @@
+{
+  "expected": "Exact Legacy equality against fresh canonical and inherited pre-cutover reference",
+  "actual": "PASS",
+  "cases": 6,
+  "frames": 5892,
+  "canonical_commit": "70922a60cdfcb10c2507bab6b6e8a434a213a037",
+  "candidate_commit": "0b3fd961b305e6c74027f35203b77505457f5409",
+  "inherited_reference_commit": "1728c5e678c5065278d1251d50449a8820eb5dae",
+  "inherited_reference": "PR #43 reference-results/run-record; not rerun in M4-01"
+}

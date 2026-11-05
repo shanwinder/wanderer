@@ -1,0 +1,107 @@
+{
+  "task": "M4-01 — Isolated Data/State Proof Candidate",
+  "date": "2026-11-05",
+  "timezone": "Asia/Bangkok",
+  "repository": "shanwinder/wanderer",
+  "canonical_branch": "visual-combat-test-1",
+  "canonical_commit": "70922a60cdfcb10c2507bab6b6e8a434a213a037",
+  "branch": "codex/m4-01-isolated-data-state-proof",
+  "tested_commit": "0b3fd961b305e6c74027f35203b77505457f5409",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "executable": "/Applications/Godot.app/Contents/MacOS/Godot",
+  "preflight": {
+    "clean": true,
+    "local_remote_merge_base": "70922a60cdfcb10c2507bab6b6e8a434a213a037",
+    "PR45": "GitHub merged=true, merge_commit_sha equals canonical",
+    "open_PRs": [
+      2,
+      17
+    ],
+    "duplicate_M4_01": "none before branch; GitHub branch search empty, open PRs inspected, live remote feature head absent",
+    "authority": "owner M4-01 implementation request in chat, D01 A / D02 B / D12 A only"
+  },
+  "isolation": "new RefCounted Party runtime, capability-gated copy registry and fixture Encounter; no production dependency on scripts/m4",
+  "commands": {
+    "focused_initial": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m4-01-focused-20261105-1 --m4-data-proof",
+    "focused_fixed": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m4-01-focused-20261105-2 --m4-data-proof",
+    "canonical": "python3 /tmp/wanderer-m4-01-canonical-source-20261105/tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m4-01-canonical-20261105 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --guidance-decision-proof --guidance-main-proof --cutover-baseline /tmp/wanderer-m3a04-reference-20261105-2",
+    "final": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m4-01-final-20261105 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --guidance-decision-proof --guidance-main-proof --m4-data-proof --cutover-baseline /tmp/wanderer-m3a04-reference-20261105-2"
+  },
+  "canonical": {
+    "fresh_export_of_commit": "70922a60cdfcb10c2507bab6b6e8a434a213a037",
+    "stages": 64,
+    "exit_code": 0,
+    "all_pass": true
+  },
+  "final": {
+    "stages": 69,
+    "exit_code": 0,
+    "all_pass": true,
+    "independent_M4_cases": 78,
+    "M4_assertion_checks": 525,
+    "M4_per_frame_checks": 0,
+    "guidance_main_cases": 34,
+    "guidance_main_checks_including_per_frame": 507851,
+    "unexpected_engine_errors": 0,
+    "timeouts": 0,
+    "negative_expected_errors": 5,
+    "all_stage_exit_codes": 0,
+    "source_hash_matches": 105,
+    "canonical_protected_files_unchanged": 81,
+    "original_manifest_protected_matches": 96,
+    "inherited_suite_counts_identical": 18
+  },
+  "legacy_differential": {
+    "expected": "Exact Legacy equality against fresh canonical and inherited pre-cutover reference",
+    "actual": "PASS",
+    "cases": 6,
+    "frames": 5892,
+    "canonical_commit": "70922a60cdfcb10c2507bab6b6e8a434a213a037",
+    "candidate_commit": "0b3fd961b305e6c74027f35203b77505457f5409",
+    "inherited_reference_commit": "1728c5e678c5065278d1251d50449a8820eb5dae",
+    "inherited_reference": "PR #43 reference-results/run-record; not rerun in M4-01"
+  },
+  "development": [
+    {
+      "run": "focused-1",
+      "tested_source": "uncommitted implementation based on canonical",
+      "runner_exit": 1,
+      "independent_cases": 77,
+      "checks": 519,
+      "failures": 2,
+      "engine_errors": 0,
+      "cause": "new compatibility fixture read pre-round context lacking mandatory declared enemy hits; production contract intentionally requires active round",
+      "fix": "start real DEFEND round before validating context, restart fixture before checking original HP0->DEFEAT; no production code/expectation weakened"
+    },
+    {
+      "run": "focused-2",
+      "tested_source": "uncommitted implementation later committed as tested_commit (UID metadata retained afterward)",
+      "runner_exit": 0,
+      "independent_cases": 78,
+      "checks": 525,
+      "failures": 0
+    },
+    {
+      "check": "Python py_compile initially blocked from system cache write by sandbox; in-memory compile then passed; no code change"
+    }
+  ],
+  "acceptance_scope": {
+    "A01": "DATA ONLY: HP0->DOWN; no B2/clock/terminal migration",
+    "A19": "DATA ONLY: owned copies/no raw heal API; no RESCUE rule",
+    "A21": "DATA ONLY: invalid pairs/reconstruction/requests; no gameplay transitions"
+  },
+  "pending_decisions": "D03–D11 and D13–D17 remain PENDING OWNER APPROVAL",
+  "not_run": [
+    "Agent GUI F5/F6/manual keyboard/visual acceptance",
+    "A01–A39 whole gameplay scenarios",
+    "Rescue, bleed-out/death trigger, retreat action, terminal migration, summary/archive, NPC policy"
+  ],
+  "limitations": [
+    "GDScript underscores are an API convention, not hostile-code security; internal reflection/direct field writes are outside public API contract",
+    "authorize_fixture_damage is an explicit opt-in test authority, not a gameplay authentication endpoint",
+    "single-threaded synchronous transaction; no multiplayer/concurrency guarantee",
+    "DEAD and ALIVE/RETREATED only seeded validated fixture states; no gameplay transitions",
+    "all tested source hashes match final source; later documentation/evidence-only commit does not imply a second engine run"
+  ],
+  "stop": "Draft PR only; independent review pending; no merge, auto-merge, branch cleanup or M4-02–05 work"
+}

@@ -2,6 +2,8 @@
 
 **M4 Architecture — Design Review Completed / D01, D02, D12 Owner Approved**
 
+> **Current implementation pointer — 5 พฤศจิกายน 2026:** owner ออก task/authorization แยกสำหรับ **M4-01 — Isolated Data/State Proof Candidate** แล้ว. สถานะปัจจุบันอยู่ที่ [Milestone Authority](README.md#current-status-and-next-roadmap), contract/evidence/Thai learning notes อยู่ใน [Actor guide](../tests/actors/README.md#m4-01--isolated-datastate-proof-candidate). ข้อความ NOT STARTED/mandatory stop และ verification records ด้านล่างเป็น checkpoint ของ architecture closure PR #45; ไม่ใช่สถานะล่าสุดของ M4-01. Decision register และ Acceptance Matrix เดิมคงเดิม; data subset A01/A19/A21 ที่ proof ตรวจไม่ทำให้ gameplay ทั้งแถวผ่านหรือ pending decisions ได้รับอนุมัติ.
+
 วันที่ 5 พฤศจิกายน 2026 (Asia/Bangkok) • **Design Only / Partially Owner Approved** • D01/D02/D12 = **APPROVED DESIGN**; D03–D11 และ D13–D17 = **PENDING OWNER APPROVAL**
 
 ## 1. Executive Summary

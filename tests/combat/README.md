@@ -106,6 +106,15 @@ neither issue. Only the final run supplies the PASS results above.
    no old damage/action should resume. Check command locking and the existing
    44px lunge, compact formation, pacing and animation visually.
 
+## Optional M4-01 isolated data/state proof
+
+Add `--m4-data-proof` to parse the isolated Party lifecycle model/registry/Encounter
+and run the data harness. It works independently and adds five stages; default
+runner behavior and all existing expectations remain unchanged. Current candidate:
+78 independent cases / 525 checks (zero per-frame checks); full69stages PASS.
+See [contract, exact commands, fresh evidence and Thai learning notes](../actors/README.md#m4-01--isolated-datastate-proof-candidate).
+This does not enable lifecycle gameplay in Main or Legacy.
+
 ## Optional M2B-01 actor data proof
 
 Add `--actor-proof` to parse and execute the isolated actor data tests. Use both

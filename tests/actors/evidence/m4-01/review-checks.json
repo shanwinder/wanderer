@@ -1,0 +1,47 @@
+{
+  "actual": "PASS",
+  "command": "python3 /tmp/wanderer-m4-01-review-checks.py",
+  "markdown_files": 14,
+  "local_links": 317,
+  "fragment_links": 72,
+  "tables": 90,
+  "errors": [],
+  "unexpected_changed_files": [],
+  "production_references_to_M4": [],
+  "architecture_acceptance_matrix_byte_identical": true,
+  "decision_register_byte_identical": true,
+  "decision_rows": 17,
+  "approved": 3,
+  "pending": 14,
+  "source_integrity": "source-comparison.json: 105/105 commit/snapshot/current; canonical protected81/81; inherited unchanged96/96",
+  "archive_checks": [
+    {
+      "path": "canonical-logs.zip",
+      "entries": 191,
+      "actual": "PASS"
+    },
+    {
+      "path": "development-logs.zip",
+      "entries": 86,
+      "actual": "PASS"
+    },
+    {
+      "path": "logs.zip",
+      "entries": 207,
+      "actual": "PASS"
+    },
+    {
+      "path": "regression-scenarios.zip",
+      "entries": 17,
+      "actual": "PASS"
+    },
+    {
+      "path": "traces.zip",
+      "entries": 3,
+      "actual": "PASS"
+    }
+  ],
+  "manual_visual": "NOT RUN",
+  "independent_review": "PENDING; self-inspection is not independent approval",
+  "git_diff_check": "PASS"
+}
