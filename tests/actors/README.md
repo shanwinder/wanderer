@@ -1,5 +1,7 @@
 # Actor Definition, Runtime State & Encounter Ownership
 
+Proof ล่าสุด: [M4-01 — Isolated Data/State Proof Candidate](#m4-01--isolated-datastate-proof-candidate) — แยกจาก production; ยังรอ review.
+
 หัวข้อ M2B-01 ด้านล่างเป็นบันทึกขอบเขต/ผลเดิมจาก PR #33. สถานะปัจจุบันและ migration ใหม่อยู่ที่ [M2B-02](#m2b-02--single-source-encounter-hp); milestone authority อยู่ที่ [index](../../docs/README.md#current-status-and-next-roadmap).
 
 ## M2B-01 — Shared Actor Definition & Runtime State
@@ -621,3 +623,207 @@ M2C-04 **NOT IMPLEMENTED**, M2B-03 Item Implementation **DEFERRED**.
 
 ลองไล่ P4 ใน `party_turn_proof.gd`: หา `begin_round("DEFEND")` → Player slot → NPC1 HELP
 → อ่าน HP10 → NPC2 ATTACK. จากนั้นดู P11/P12 ว่าทำไม callback เก่าจึงไม่เปลี่ยน HP ใหม่.
+
+## M4-01 — Isolated Data/State Proof Candidate
+
+วันที่ **5 พฤศจิกายน 2026 (Asia/Bangkok)**; owner อนุญาต implementation โดยตรงในคำสั่ง
+“WANDERER — M4-01 Isolated Data / State Proof”. ฐาน canonical `visual-combat-test-1` คือ
+`70922a60cdfcb10c2507bab6b6e8a434a213a037` หลัง PR #45 merged; local HEAD,
+fetched remote/live remote และ merge-base ตรงกัน, working tree สะอาดก่อนเริ่ม.
+ตรวจ open PR #2/#17, local/remote branches แล้วไม่มี M4-01 ซ้ำ; ไม่รวม PR เหล่านั้น.
+Branch เดียว `codex/m4-01-isolated-data-state-proof`. **Candidate — implementation บน feature
+branch และ automated data proof ผ่านแล้ว; ยังรอ Independent Code Review ไม่ใช่ merged/owner acceptance.**
+[Milestone Authority](../../docs/README.md#current-status-and-next-roadmap) และ
+[approved design / pending register](../../docs/M4_Down_Help_Death_Retreat_Architecture.md#14-open-decision-register).
+
+### Goal / isolation strategy
+
+พิสูจน์ D01 Option A, D02 Option B, D12 Option A เฉพาะข้อมูล/ownership/authorized fixture damage.
+Source inspection พบว่า production ActorRuntimeState มีแต่ HP, `can_act()` อ่าน HP>0 และ raw
+`heal()` เพิ่มจาก HP0 ได้; Registry reconstruct ด้วย original HP snapshot; FullPartyEncounter ใช้
+classes เหล่านี้จริง; Resolver และ Guidance Layer ตรวจ exact schemas. จึงใช้ counterpart แยก:
+
+| Source | หน้าที่ |
+|---|---|
+| [isolated_actor_state.gd](../../scripts/m4/isolated_actor_state.gd) | RuntimeState เฉพาะ Party; validated factory/snapshot reconstruction; ไม่มี raw damage/heal setter |
+| [isolated_registry.gd](../../scripts/m4/isolated_registry.gd) | copy-in/copy-out; เก็บ owned runtime หนึ่งชุดต่อ ID; commit ต้องมี Encounter-owned capability |
+| [isolated_encounter.gd](../../scripts/m4/isolated_encounter.gd) | validated Restart; session/generation/revision; explicit fixture grant และ exactly-once application |
+| [m4_data_state_proof.gd](m4_data_state_proof.gd) | independent data cases, exact rejection/no-delta checks, production compatibility |
+
+ทั้งหมดใช้ RefCounted ไม่ใช้ Resource/shared singleton. Production ไม่ preload M4 files,
+ไม่แก้ original RuntimeState/Registry/FullPartyEncounter/GuidedEncounter/Resolver/Decision Layer,
+scenes/UI/Tween/animation/sprites/config. ไม่มี HP authority สำรองใน Encounter;
+Registry ถือ RuntimeState ส่วน snapshots เป็นข้อมูลที่คัดลอกเพื่ออ่าน.
+
+### Data / snapshot contract
+
+| LifeState | Participation | HP | Derived `eligible` |
+|---|---|---|---|
+| ALIVE | PRESENT | int 1..Max | true |
+| DOWN | PRESENT | int 0 | false |
+| DEAD | PRESENT | int 0 | false |
+| ALIVE | RETREATED | int 1..Max; รักษาค่า fixture เดิม | false |
+
+DOWN/RETREATED และ DEAD/RETREATED reject; ALIVE HP0, DOWN/DEAD HP>0 และ HP นอกช่วง reject.
+`UNAVAILABLE` ไม่ใช่ LifeState. `eligible` หมายถึงข้อมูลความพร้อมใน proof เท่านั้น;
+ไม่เพิ่ม action-specific targeting/queue/terminal rules ของ M4 ที่ยัง Pending.
+
+`create(definition, fixture)` รับ exact fields `current_hp:int`, `life_state:String`,
+`participation:String`; Definition ต้องผ่าน factory เดิมและ role PLAYER/NPC.
+Invalid input คืน null โดยไม่คืน partial state; ไม่แปลง bool/float/string เป็น int.
+Snapshot ใหม่มี **8 fields** เท่านั้น:
+
+| Field | Type / constraint |
+|---|---|
+| `schema_version` | int = 1 |
+| `actor_id` | String ตรง validated Definition |
+| `role` | String PLAYER/NPC ตรง Definition |
+| `max_hp` | int > 0 ตรง Definition.base_max_hp |
+| `current_hp` | int 0..max_hp และสอดคล้อง LifeState |
+| `life_state` | String ALIVE/DOWN/DEAD ตาม valid pair |
+| `participation` | String PRESENT/RETREATED ตาม valid pair |
+| `eligible` | bool คำนวณจาก ALIVE/PRESENT; caller เปลี่ยนค่าตอน reconstruction ไม่ได้ |
+
+`from_snapshot()` ตรวจ exact fields/types/invariants/identity/derived value แล้วสร้าง object ใหม่.
+Backing dictionary เป็น read-only scalar data; ทุก accessor คืน detached copy.
+Registry row เป็น exact `definition`, `state`, `membership`; Encounter snapshot เป็น
+`schema_version`, `session_id`, `generation`, `revision`, `actors`. Registry ไม่เปิด owned reference.
+Duplicate ID/invalid runtime/foreign ID/role/max/derived field reject ก่อน publish.
+ไม่มี unregister/archive/summary API ใน proof; unregister เดิมใน production ไม่ได้เปลี่ยนเป็น Death/Retreat.
+
+Enemy ใช้ original ActorRuntimeState ที่ registry copy เข้าใหม่; HP0 คืน exact original fields
+`actor_id/current_hp/max_hp/can_act=false` **ไม่มี LifeState/Participation และไม่มี DEAD mapping**.
+Snapshot ใหม่นี้ไม่ถูกส่งเข้า Resolver หรือ Guidance v1. Production compatibility checks ยืนยัน
+original runtime4fields / actor8fields / Guidance request8fields และ unknown life fields ยัง reject.
+
+### Fixture authorization / atomicity / generation
+
+Request ใหม่ต้องมี exact **6 fields**: `session_id:int`, `generation:int`, `revision:int`,
+`operation_id:String` (stable lowercase ID), `actor_id:String`, `amount:int>=0`.
+อ่าน identity จาก current snapshot แล้วเรียก `authorize_fixture_damage(request)` อย่างชัดแจ้ง;
+ได้ `AUTHORIZED/FIXTURE_ONLY` พร้อม token (6 fields เดิม + `authorization_id:int>0`).
+การ authorize ไม่เปลี่ยน HP/life/revision. นี่เป็น authority ของ opt-in test harness
+ไม่ใช่ gameplay authentication หรือ NPC action ใหม่.
+
+`apply_fixture_damage(token)` ตรวจ exact fields/types, known actor, session, generation,
+operation ID/duplicate ledger, revision, Party ALIVE/PRESENT, amount และเทียบ token ทุก field
+กับ Encounter-owned grant. Wrong/foreign/forged/altered/duplicate/stale request คืน
+`REJECTED`, `reason_code`, `hp_delta=0`; ไม่มี partial HP/life/revision mutation.
+Operation ID ที่ authorize แล้วออกซ้ำไม่ได้; rejected apply ไม่ consume grant ที่ยัง valid.
+หากอีก operation commit ไปแล้ว grant revision เก่าจะ `STALE_REVISION`; ต้องอ่านภาพใหม่
+และออก operation ID ใหม่ ไม่ reuse grant เก่า.
+
+เมื่อผ่านทุก gate: clamp amount ก่อนลบเพื่อรองรับ INT64_MAX → คำนวณ HP ใหม่ → สร้าง candidate
+ที่ ALIVE/PRESENT หรือ DOWN/PRESENT → Registry replace owned object ครั้งเดียว → Encounter
+บันทึก used operation และเพิ่ม revision1. ไม่มี callback/await ระหว่าง commit จึงไม่มี observer
+เห็น HP0 แต่ยัง ALIVE. Damage0 เป็น authorized no-op ของ HP แต่ consume operation/increment
+revision ครั้งเดียว; replay ยัง reject. Model ไม่มี heal/rescue/retreat/death/bleed-out API.
+DEAD และ ALIVE/RETREATED สร้างได้เฉพาะ validated fixtures เพื่อทดสอบ invariants.
+
+Restart ตรวจทั้ง fixture roster ใน candidate Registry ก่อนสลับ; ถ้ารายการท้ายผิดก็ไม่เปลี่ยน
+actor/generation/grants ใด ๆ. สำเร็จแล้ว generation+1, revision0, ล้าง grants/used ledger
+และสร้าง state ใหม่จาก fixture. session คงเดิมใน Encounter เดิม; Encounter อีกตัวมี session ต่างกัน.
+Authorization serial ไม่ recycle. Token เก่า reject `STALE_GENERATION` แม้ actor/operation ID
+ถูกใช้ซ้ำ; snapshots/fixture references รุ่นเก่าแก้รุ่นใหม่ไม่ได้. ไม่เปลี่ยน production Restart/queue/Guidance revision.
+
+### Verification / durable evidence
+
+**Actual engine:** `4.7.2.stable.official.ed1daf0bf`, executable
+`/Applications/Godot.app/Contents/MacOS/Godot`. **Tested commit:**
+`0b3fd961b305e6c74027f35203b77505457f5409`; engine run ใช้ source ที่ commit แล้ว.
+เอกสาร/evidence commit ภายหลังไม่ใช่การอ้างว่ารัน engine ใหม่บน documentation HEAD.
+Source105/105files ของ snapshot/current tree/commit ตรงกัน; protected files จาก canonical81/81
+ตรงทุก byte; inherited PR #43 manifest96/96ไม่เปลี่ยน (ยกเว้น runner ที่อนุญาต optional flag).
+
+| Run / expected | Actual | Exit |
+|---|---|---|
+| Focused initial: invariants + compatibility ต้องผ่าน | FAIL:77cases/519checks/2failures; fixture ใหม่อ่าน context ก่อนมี enemy declarations | 1 |
+| Focused corrected: ใช้ real production active-round context | PASS:78cases/525checks; ทุก gate เดิมคงอยู่ | 0 |
+| Fresh canonical export `70922a6`, all existing flags | PASS:64stages | 0 |
+| Final committed feature, all flags + `--m4-data-proof` | PASS:69stages; M4 **78 independent cases / 525 assertion checks / 0 per-frame checks** | 0 |
+| Existing 18 executable suite counts เทียบ fresh canonical | ตรงทุกจำนวน; original assertions ไม่ลด | 0 |
+| Legacy differential กับ fresh canonical และ inherited pre-cutover reference | **6 cases / 5,892 frames identical** | 0 |
+
+ทุก stage ของ canonical/final exit0; **unexpected engine/script errors0, timeouts0**.
+Negative suite **983checks และ exactly5expected errors** แยกจาก unexpected errors.
+Guidance Main34cases/507,851checks; Guidance Data66,641; Decision1,192; Combat14,395;
+counts ของ regression รวม per-frame checks จึงไม่ใช่ independent casesจำนวนเท่านั้น.
+M4 case IDs/expected/actual/check counts อยู่ใน scenario JSON; data-driven inputs เป็น case แยก,
+assertionsหลายรายการภายใน case เดียวไม่ถูกนับเป็น casesเพิ่ม.
+
+Optional flag ไม่เปลี่ยน runner default; fresh output ทุกครั้ง:
+
+```sh
+python3 tests/combat/verify.py \
+  --godot /Applications/Godot.app/Contents/MacOS/Godot \
+  --output /tmp/wanderer-m4-01-focused-20261105-2 --m4-data-proof
+
+python3 tests/combat/verify.py \
+  --godot /Applications/Godot.app/Contents/MacOS/Godot \
+  --output /tmp/wanderer-m4-01-final-20261105 \
+  --npc-proof --actor-proof --ownership-proof --party-foundation-proof \
+  --party-turn-proof --party-playable-proof --presentation-proof \
+  --autonomous-main-proof --main-cutover-proof --guidance-data-proof \
+  --guidance-decision-proof --guidance-main-proof --m4-data-proof \
+  --cutover-baseline /tmp/wanderer-m3a04-reference-20261105-2
+```
+
+คำสั่งข้างต้นเป็น exact commands ที่รันแล้ว; rerun ต้องเปลี่ยน output ให้ใหม่.
+Cutover baseline44stages เป็น **inherited reference ของ PR #43** บน `1728c5e`, ไม่ใช่รัน reference
+ใหม่ในงานนี้; ตรวจ results ตรง durable record เดิม. Fresh canonical64stages และ final69stages
+เป็นผลใหม่ของงานนี้. สำหรับ reconstruct reference จากเครื่องใหม่ให้ใช้
+[original reference command/setup](../combat/evidence/m3a-04/run-record.json).
+
+หลักฐาน:
+
+- [Run record: exact commands/commits/exit codes/engine/scope/limitations](evidence/m4-01/run-record.json)
+- [Final results69](evidence/m4-01/final-results.json), [fresh canonical64](evidence/m4-01/canonical-results.json), [M4 scenarios / before-after](evidence/m4-01/m4-data-scenarios.json)
+- [Final raw logs/engine logs/exits](evidence/m4-01/logs.zip), [canonical logs](evidence/m4-01/canonical-logs.zip), [failed+corrected development logs](evidence/m4-01/development-logs.zip)
+- [Documentation/scope/archives/approval-boundary checks](evidence/m4-01/review-checks.json)
+- [Source hashes](evidence/m4-01/source-sha256.json), [source comparison](evidence/m4-01/source-comparison.json), [unchanged18suite counts](evidence/m4-01/inherited-counts.json)
+- [Legacy comparison](evidence/m4-01/trace-comparison.json), [full traces](evidence/m4-01/traces.zip), [regression scenarios](evidence/m4-01/regression-scenarios.zip), [cutover gates](evidence/m4-01/cutover-release-gates.json), [rollback](evidence/m4-01/rollback.json)
+
+A01/A19/A21 อ้าง **เฉพาะ approved data subset**: HP0→DOWN; copy/ownership/no raw heal bypass;
+invalid pairs/forged transition requests no-delta. ไม่มี B2/grace/RESCUE/death/Retreat/reentry/terminal
+migration expected values. A01–A39 ทั้งแถวยังคง **Proposed / NOT RUN** ใน architecture matrix.
+
+### Learning notes — ภาษาไทย ตาม v0.4
+
+**Goal:** ทำนายข้อมูลหลัง operation และอธิบายว่าใครมีสิทธิ์เปลี่ยนได้.
+**Concept:** HP เป็นจำนวน, LifeState/Participation เป็นความหมาย, Encounter เป็นผู้อนุญาต.
+**Do:** เริ่ม factory→copy Registry→authorized damage→Restart ทีละชั้นใน files ข้างบน.
+**Observe:** อ่าน expected/actual จาก engine จริง. **Explain/Adjust:** รอบแรก contextก่อนรอบยังไม่มี
+enemy declarationsจึงถูก validatorปฏิเสธ; แก้เวลาตั้ง fixture ไม่แก้ validator. **Commit:**
+source commitข้างบนและแยก documentation/evidenceออกจากข้ออ้างว่า gameplayผ่าน visual review.
+
+1. **HP ต่างจาก LifeState:** HP3→0 คือคำนวณจำนวน; ALIVE→DOWN คือเปลี่ยนความหมายที่ D01 อนุมัติ.
+   HP0อย่างเดียวบอกไม่ได้ว่า DOWN หรือ DEAD จึงห้ามใช้ `hp==0` แล้วเขียน DEAD อัตโนมัติ.
+2. **LifeState ต่างจาก Participation:** “สภาพชีวิต” กับ “ยังอยู่สนามไหม” คน ALIVE/RETREATED
+   ยังมี HPเดิมแต่ eligible=false. DOWN/RETREATED ไม่ผ่าน factoryเพราะเป็น invalid pair;
+   ไม่ได้แปลว่างานนี้อนุมัติ carry/evacuationแล้ว.
+3. **HP0 ไม่ใช่ DEAD:** case `authorized_down_player` รันจริงก่อน HP3/ALIVE/PRESENT;
+   authorized damage10 clampลงได้3 → HP0/DOWN/PRESENT/eligible=false, delta−3.
+   **Expected=Actual: PASS**; replayคืน DUPLICATE_OPERATION/delta0. NPCใช้กฎ dataเดียวกัน.
+   DEADใช้ fixture HP0แยกเท่านั้น; ไม่มี clockหรือ triggerทำให้ตาย.
+4. **เหตุใด Registryต้อง copy:** ถ้าเก็บ objectของ callerตรง ๆ callerอาจเปลี่ยน stateผ่าน referenceเดิม.
+   Proofใช้ mutable snapshot providerที่ validตอน registerแล้วเปลี่ยนเป็น ALIVE/HP10ภายหลัง;
+   owned DOWN/HP0ยังคงเดิม. Copy reconstructionต้องรักษา LifeStateด้วย ไม่สร้างใหม่จาก HPอย่างเดียว.
+5. **Encounterอนุญาต Transition:** UIหรือ snapshotไม่มีข้อมูลว่าเป็น sessionไหนและ operationใช้แล้วหรือยัง.
+   Grantที่ตรวจ identity/amountแล้วจึงเป็นขอบเขตการอนุญาต; tokenถูกแก้ amount/actorจะ UNAUTHORIZED.
+6. **Atomic Mutation:** สร้างผลใหม่ที่ถูกต้องครบก่อน replace stateครั้งเดียว. ไม่เขียน HP0ก่อนแล้วค่อย
+   validate DOWNภายหลัง เพราะถ้าขั้นหลังผิดจะเหลือ ALIVE/HP0ที่ผิด invariant.
+7. **Snapshot Isolation:** snapshotเหมือนรูปถ่ายข้อมูล. แก้รูปให้ HP10ไม่ได้รักษาคนจริง;
+   testsแก้ nested state/definitionและลบ dictionaryสำเนาแล้วเจ้าของข้อมูลยังเหมือนเดิม.
+8. **Generationกันงานเก่า:** Restartเหมือนเปลี่ยนรุ่นเอกสาร คนชื่อ playerและ operationชื่อเดิมอาจอยู่ต่อ
+   แต่ใบอนุญาตรุ่นเก่าไม่ใช่ใบรุ่นใหม่. Valid restartให้ generation+1; invalid restartไม่เพิ่มรุ่น
+   และ grantเดิมยังใช้ได้เพราะไม่มีบางส่วนถูก resetไปแล้ว.
+9. **Isolated Proofยังไม่ใช่ Playable M4:** dataรองรับ DOWN/DEAD/RETREATEDไม่ได้ให้ปุ่ม/actionหรือ
+   NPC policyใหม่. Mainยัง HP0→DEFEAT, HELP≤30%/+4/once, Guidance v1/eight fields/R1เดิม.
+   ต้อง reviewและอนุมัติงานถัดไปก่อนเชื่อม gameplay.
+
+**Limitations / stop:** GDScript underscoreเป็นข้อตกลง internal ไม่ใช่ security/private enforcement;
+ไม่อ้างป้องกัน hostile reflectionหรือ codeที่จงใจเขียน internal fields. Transactionเป็น synchronous
+single-threaded proof ไม่รับรอง multiplayer/concurrency. Agent GUI/F5/F6/manual keyboard/visual
+acceptance **NOT RUN**; headlessไม่พิสูจน์ visual quality. Speed0.70/lunge44px/Compact Formation/
+saved homesไม่แก้. D03–D11/D13–D17ยัง Pending; M4-02–05ไม่เริ่ม.
+**หยุดที่ Draft PR เพื่อ Independent Code Review; ไม่ merge/auto-merge/ลบ branch.**

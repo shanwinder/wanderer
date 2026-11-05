@@ -28,6 +28,7 @@ def main():
     parser.add_argument("--guidance-data-proof", action="store_true", help="Also verify M3A-02 data-only Guidance contracts and lifecycle")
     parser.add_argument("--guidance-decision-proof", action="store_true", help="Verify M3A-03 isolated Guidance decision layer and current Main boundary (does not toggle policy)")
     parser.add_argument("--guidance-main-proof", action="store_true", help="Verify M3A-04 production Guidance in real Main scene and R1 revision")
+    parser.add_argument("--m4-data-proof", action="store_true", help="Verify isolated M4-01 Party lifecycle data, authorization, copies and generation safety")
     parser.add_argument("--cutover-baseline", type=Path, help="Passing merged-base output directory for trace/count comparison")
     args = parser.parse_args()
     if args.main_cutover_proof:
@@ -77,7 +78,7 @@ def main():
         passed = code == 0 and sorted(errors) == sorted(expected_errors)
         if name == "version":
             passed = passed and "4.7.2.stable" in log
-        if name in ("gameplay", "invalid-actions", "npc-proof", "npc-playable", "actor-proof", "ownership-proof", "party-foundation-proof", "party-turn-proof", "party-playable-proof", "presentation-proof", "autonomous-main-proof", "main-cutover-proof", "main-cutover-f5-startup", "rollback-f5-startup", "rollback-gameplay", "guidance-data-proof", "guidance-decision-proof", "guidance-main-proof"):
+        if name in ("gameplay", "invalid-actions", "npc-proof", "npc-playable", "actor-proof", "ownership-proof", "party-foundation-proof", "party-turn-proof", "party-playable-proof", "presentation-proof", "autonomous-main-proof", "main-cutover-proof", "main-cutover-f5-startup", "rollback-f5-startup", "rollback-gameplay", "guidance-data-proof", "guidance-decision-proof", "guidance-main-proof", "m4-data-proof"):
             passed = passed and re.search(r"RESULT: \d+ checks, 0 failures", log) is not None
         result = {"step": name, "status": "PASS" if passed else "FAIL",
                   "exit_code": code, "timed_out": timed_out, "command": command,
@@ -168,6 +169,12 @@ def main():
                 run("guidance-main-parse-" + Path(script).stem, ["--script", "res://" + script, "--check-only"])
             run("guidance-main-proof", [*timing, "--script", "res://tests/combat/guidance_main_integration.gd", "--",
                                         "--report=" + str(output / "guidance-main-scenarios.json")])
+        if args.m4_data_proof:
+            for script in ["scripts/m4/isolated_actor_state.gd", "scripts/m4/isolated_registry.gd",
+                           "scripts/m4/isolated_encounter.gd", "tests/actors/m4_data_state_proof.gd"]:
+                run("m4-parse-" + Path(script).stem, ["--script", "res://" + script, "--check-only"])
+            run("m4-data-proof", [*timing, "--script", "res://tests/actors/m4_data_state_proof.gd", "--",
+                                  "--report=" + str(output / "m4-data-scenarios.json")])
         if args.main_cutover_proof:
             for script in ["tests/combat/main_cutover_proof.gd", "tests/combat/main_cutover_startup_probe.gd"]:
                 run("cutover-parse-" + Path(script).stem, ["--script", "res://" + script, "--check-only"])
