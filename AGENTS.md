@@ -10,7 +10,9 @@
 
 ## Game principles and scope
 
-- Player controls only their own adventurer. NPC companions retain independent decisions; future Guidance is a suggestion, not direct puppet control. Current scripted ATK/GUARD rules are a prototype, not proof that autonomy is implemented.
+- Player controls only their own adventurer. NPC companions retain independent decisions; Guidance is a suggestion, not direct puppet control.
+- Autonomous Main uses production `GuidedEncounter` and the approved Guidance Decision Layer. NPCs decide independently under the approved prototype policy when their own slot begins. Full NPC AI and persistent personality remain unimplemented.
+- Legacy F6 retains its original scripted ATK/GUARD combat rules. These Legacy rules alone are not proof of NPC autonomy.
 - Preserve the accepted combat baseline unless the task explicitly authorizes a change: `combat_speed_scale = 0.70`, `SHORT_LUNGE_DISTANCE = 44.0` and Compact Formation. Allied root positions are NPC1 `(320,480)`, NPC2 `(405,435)`, NPC3 `(475,509)`, Player `(570,465)`; Enemy A `(970,506)` and B `(1100,424)`. Actions return to their saved home positions.
 - Preserve damage/HP, Guard semantics, target validity, queue order, command locking, Restart cancellation and victory/defeat behavior when working outside those systems. Do not change tests or constants merely to obtain a PASS.
 - Work only on the assigned milestone and acceptance criteria. M3A-04 is merged and M3A-05 has Owner-Reported Acceptance; the next milestone proposals in [the documentation index](docs/README.md#next-milestone-proposals--pending-owner-approval) await owner approval and their own reviewed task. Documentation work does not authorize gameplay, scene, animation, combat logic or NPC AI changes. Do not begin the next milestone automatically.
