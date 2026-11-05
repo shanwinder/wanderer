@@ -2,7 +2,7 @@
 
 **M4 Architecture — Design Review Completed / D01, D02, D12 Owner Approved**
 
-> **Current implementation pointer — 5 พฤศจิกายน 2026:** owner ออก task/authorization แยกสำหรับ **M4-01 — Isolated Data/State Proof Candidate** แล้ว. สถานะปัจจุบันอยู่ที่ [Milestone Authority](README.md#current-status-and-next-roadmap), contract/evidence/Thai learning notes อยู่ใน [Actor guide](../tests/actors/README.md#m4-01--isolated-datastate-proof-candidate). ข้อความ NOT STARTED/mandatory stop และ verification records ด้านล่างเป็น checkpoint ของ architecture closure PR #45; ไม่ใช่สถานะล่าสุดของ M4-01. Decision register และ Acceptance Matrix เดิมคงเดิม; data subset A01/A19/A21 ที่ proof ตรวจไม่ทำให้ gameplay ทั้งแถวผ่านหรือ pending decisions ได้รับอนุมัติ.
+> **Current implementation pointer — 5 พฤศจิกายน 2026:** **M4-01 — Isolated Data/State Proof Implemented / Merged / Automated Proof Recorded** ผ่าน [PR #46](https://github.com/shanwinder/wanderer/pull/46), merge `e6c3cab7291a3cd45dcacdf48406cf48f0d67118`. Inherited PR #46 evidence: 78 cases/525 checks,69 stages,Legacy6cases/5,892frames บน tested `0b3fd961b305e6c74027f35203b77505457f5409`, engine `4.7.2.stable.official.ed1daf0bf`; [exact commands/results/limitations](../tests/actors/evidence/m4-01/run-record.json). ไม่ใช่ผลรันใหม่หรือ Playable M4. [M4-02 Contract Proposed / Awaiting Owner Decisions](M4_02_Rescue_Clock_Death_Contract.md) ขยายข้อเสนอ RESCUE/resource/clock/death และ future matrix โดยไม่อนุมัติ D03–D06/D09/D13/D17 หรือ runtime; D10/D15-dependent tests blocked/deferred. สถานะปัจจุบันอยู่ที่ [Milestone Authority](README.md#current-status-and-next-roadmap). ข้อความ NOT STARTED/mandatory stop และ verification records ด้านล่างเป็น **historical architecture closure PR #45**; ไม่ใช่สถานะล่าสุด. Decision register และ A01–A39 เดิมคงเดิม; M4-01 ตรวจเฉพาะ approved data subsets A01/A19/A21 ไม่ทำให้ทั้งแถวผ่าน.
 
 วันที่ 5 พฤศจิกายน 2026 (Asia/Bangkok) • **Design Only / Partially Owner Approved** • D01/D02/D12 = **APPROVED DESIGN**; D03–D11 และ D13–D17 = **PENDING OWNER APPROVAL**
 
@@ -16,7 +16,7 @@
 | D02 — **APPROVED / Option B** | แยก LifeState ALIVE/DOWN/DEAD กับ Participation PRESENT/RETREATED; valid pairs เฉพาะ ALIVE/PRESENT, DOWN/PRESENT, DEAD/PRESENT, ALIVE/RETREATED. ActorRuntimeState ถือ state; Encounter อนุญาต transition; Registry preserve state/copy isolation; UI/Presenter อ่าน snapshot; reject invalid pairs; unregister ไม่ใช่ Death/Retreat; ไม่เพิ่ม Enemy lifecycle ใน first proof |
 | D12 — **APPROVED / Option A** | เริ่ม M4-01 — Isolated Data/State Proof จาก ownership, transitions และ invariants; ไม่รวม Main integration, UI/animation, NPC policy, RESCUE/RETREAT actions, Guidance v1 หรือ Legacy F6. ต้องมี task specification และ implementation authorization แยกก่อนเขียนโค้ด |
 
-**Status vocabulary:** **APPROVED DESIGN** คือ owner เลือกทิศทางเฉพาะข้อ; **PROPOSED RULE** คือกฎที่เสนอและยัง **PENDING OWNER APPROVAL**. **IMPLEMENTED** ต้องมีโค้ดจริง; **VERIFIED** ต้องมีผลทดสอบพร้อม engine/commit/command/expected-actual/evidence; **OWNER-REPORTED ACCEPTANCE** คือคำรับรองเจ้าของและต้องคง attribution. M4-01 = **NOT STARTED / NOT IMPLEMENTED**; M4 Runtime = **NOT STARTED**; ไม่มี M4 Verified. A01–A39 ยัง **Proposed / NOT RUN** รวมกรณีที่แตะ design ที่อนุมัติแล้ว.
+**Historical PR #45 status vocabulary/checkpoint (latest implementation pointer above):** **APPROVED DESIGN** คือ owner เลือกทิศทางเฉพาะข้อ; **PROPOSED RULE** คือกฎที่เสนอและยัง **PENDING OWNER APPROVAL**. **IMPLEMENTED** ต้องมีโค้ดจริง; **VERIFIED** ต้องมีผลทดสอบพร้อม engine/commit/command/expected-actual/evidence; **OWNER-REPORTED ACCEPTANCE** คือคำรับรองเจ้าของและต้องคง attribution. M4-01 = **NOT STARTED / NOT IMPLEMENTED**; M4 Runtime = **NOT STARTED**; ไม่มี M4 Verified. A01–A39 ยัง **Proposed / NOT RUN** รวมกรณีที่แตะ design ที่อนุมัติแล้ว.
 
 **Approval exclusions:** D03–D11 และ D13–D17 ยัง Pending รวม RESCUE/HP/resource, bleed-out/death timing, retreat success, NPC priorities, target/Guidance extension, terminal/survivor summary, Enemy lifecycle extension, scheduler, consent, carry/Down attack/stabilization/aftercare. การอนุมัติขอบเขตไม่เพิ่ม Enemy lifecycle ใน D01/D02 ไม่อนุมัติ summary proposals ทั้งชุดของ D11/D14.
 
@@ -447,6 +447,8 @@ D01/D02/D12 = **APPROVED DESIGN** ตาม Owner Approval Source ใน §1 ว
 | D17 | Down attack/stabilize/aftercare | ไม่มี | defer; terminal freezes Down as Down | attack Down/partial stabilize/post combat consequence | A สำหรับ first proof | ยังไม่ครบ v0.1§14; ไม่ auto heal/auto kill | D05,D06,D10,D13 | PENDING OWNER APPROVAL |
 
 ## 15. Recommended First Proof และ Implementation Breakdown
+
+> **Historical preparation checkpoint ของ PR #45:** M4-01 ในตาราง/รายละเอียดด้านล่างต่อมา implemented/merged ผ่าน PR #46 แล้ว. Current M4-02 preparation เป็น [Design Gate contract](M4_02_Rescue_Clock_Death_Contract.md); proposalsของ runtimeถัดไปยังต้อง owner decisions/authorization แยก. ไม่ใช้ NOT STARTED เดิมเริ่ม M4-01ซ้ำ.
 
 **D12 อนุมัติแนวทางและลำดับเริ่ม M4-01 — Isolated Data/State Proof เท่านั้น; implementation ยัง NOT STARTED.** ตารางแยกงานภายใต้ M4 design ไม่ใช่ roadmap คู่ขนาน; authority สถานะยังอยู่ index. M4-02–05 ยัง Proposed. ทุก task ต้อง specification/implementation authorization แยก; ห้ามเริ่มโค้ดใน PR นี้.
 
