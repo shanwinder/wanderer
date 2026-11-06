@@ -7,6 +7,8 @@ const Definition = preload("res://scripts/actors/actor_definition.gd")
 const PartyState = preload("res://scripts/m4/isolated_actor_state.gd")
 const EnemyState = preload("res://scripts/actors/actor_runtime_state.gd")
 const Registry = preload("res://scripts/m4/isolated_registry.gd")
+# Fixture-issued operation IDs own this prefix across every round/generation.
+const SLOT_OPERATION_PREFIX = "slot_"
 const REQUEST_FIELDS = ["version", "session", "generation", "operation_id", "kind", "helper_id", "target_id", "window_id"]
 const ACTION_FIELDS = ["version", "session", "generation", "operation_id", "kind", "helper_id", "target_id", "window_id", "episode_id", "lock_revision", "authorization_id", "slot_id", "amount"]
 const EVENT_FIELDS = ["version", "kind", "issuer_id", "session", "generation", "round_id", "event_id", "witness_id", "sealed_revision", "authorization_id"]
@@ -370,6 +372,10 @@ func lock_rescue(request: Variant, authority: Variant) -> Dictionary:
 		return _reply("M4_INVALID_PHASE")
 	if request.kind != "RESCUE" or not Definition.valid_actor_id(request.operation_id):
 		return _reply("M4_INVALID_FIELDS")
+	# Reserve the whole namespace, including not-yet-issued future slot IDs.
+	# Reject before candidate construction or authorization serial allocation.
+	if request.operation_id.begins_with(SLOT_OPERATION_PREFIX):
+		return _reply("M4_RESERVED_OPERATION_ID")
 	if _root.actions.has(request.operation_id):
 		return _reply("M4_DUPLICATE_OPERATION")
 	reason = rescue_eligibility(snapshot(), request.helper_id, request.target_id)
@@ -402,7 +408,7 @@ func lock_fixture_slot(slot_id: Variant, authority: Variant) -> Dictionary:
 		return _reply("M4_INVALID_FIELDS")
 	for slot in _root.plan[_root.round_index].slots:
 		if slot.slot_id == slot_id:
-			var operation: String = "slot_%s_%s" % [_root.round_id, slot_id]
+			var operation: String = "%s%s_%s" % [SLOT_OPERATION_PREFIX, _root.round_id, slot_id]
 			if _root.actions.has(operation):
 				return _reply("M4_DUPLICATE_OPERATION")
 			if not actor_snapshot(slot.helper_id).state.eligible or not actor_snapshot(slot.target_id).state.eligible:

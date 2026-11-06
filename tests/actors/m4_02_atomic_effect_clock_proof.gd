@@ -599,10 +599,37 @@ func _boundary_cases() -> void:
 	end()
 
 
+func _operation_namespace_cases() -> void:
+	for affected_round in [3, 4]:
+		begin("R48-01-" + ("current-round" if affected_round == 3 else "future-round"),
+			"OPEN round3; caller attempts issuer-owned operation ID before any slot is issued")
+		var e = fresh()
+		var operation: String = "slot_%s_damage_p" % affected_round
+		var result: Dictionary = observe(e, "lock_rescue", [request(e, operation), authority],
+			"M4_RESERVED_OPERATION_ID", "N-all", "REJECTED")
+		check(not result.has("token"), "reserved name never receives a grant")
+		if result.status != "REJECTED":
+			# Record this regression without secondary missing-token/receipt errors.
+			end()
+			continue
+		close(e)
+		if affected_round == 4:
+			advance(e, 4)
+			close(e)
+		var view: Dictionary = e.snapshot()
+		check(view.phase == "CLOSED" and view.round_id == affected_round, "affected round closes normally")
+		check(view.actions[operation].token.kind == "FIXTURE_DAMAGE" and view.actions[operation].phase == "COMPLETED",
+			"reserved key belongs only to the real completed fixture slot")
+		check(view.witness.receipts.damage_p == operation and view.witness.outstanding.is_empty(),
+			"real slot receipt satisfies owned finite witness")
+		end()
+
+
 func _run() -> void:
 	_rescue_cases()
 	_clock_cases()
 	_boundary_cases()
+	_operation_namespace_cases()
 	var report: Dictionary = {"cases": cases, "independent_cases": cases.size(), "assertion_checks": checks,
 		"per_frame_checks": 0, "failures": failures,
 		"blocked": [{"id": "M402-06", "status": "BLOCKED", "reason": "Natural close forbids pending impact; validator-only case separate"},
