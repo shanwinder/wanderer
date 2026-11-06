@@ -385,7 +385,8 @@ func _clock_cases() -> void:
 	advance(e, 4)
 	result = close(e)
 	check(result.episodes.is_empty() and e.snapshot().episodes.t.budget == 0 and e.snapshot().actors.has("t"), "dead excluded and retained")
-	observe(e, "apply_round_closed", [{"actor_id": "t", "current_hp": 0}], "M4_INVALID_EVENT", "N-all")
+	advance(e, 5)
+	observe(e, "lock_rescue", [{"actor_id": "t", "current_hp": 0}, authority], "M4_INVALID_FIELDS", "N-all")
 	end()
 	for inject in [false, true]:
 		begin("M402-29-" + str(inject), "two eligible actors J B1/T B2 entry2; candidate validation failure after second eligible row T")
@@ -405,10 +406,11 @@ func _clock_cases() -> void:
 	begin("M402-30", "rescued e1 then down e2 round4; old consumed token")
 	e = fresh()
 	var old: Dictionary = e.snapshot().episodes.t.duplicate(true)
-	var token: Dictionary = rescue(e)
 	close(e)
 	advance(e, 4)
+	var token: Dictionary = rescue(e)
 	observe(e, "fixture_damage", ["t", 1, authority], "M4_FIXTURE_DAMAGE")
+	observe(e, "impact", [token], "M4_DUPLICATE_OPERATION", "N-all")
 	check(e.snapshot().episodes.t.episode_id != old.episode_id and e.snapshot().episodes.t.entry_round == 4, "new episode")
 	close(e)
 	check(e.snapshot().episodes.t.budget == 2, "new entry grace")
@@ -441,7 +443,7 @@ func _boundary_cases() -> void:
 		e = fresh()
 		token = lock(e) if phase == "OPEN" else {}
 		events = sealed(e) if phase == "SEALED" else []
-		for malformed in ["duplicate", "last_row", "pair", "clock", "budget_type", "extra", "slot", "help"]:
+		for malformed in ["duplicate", "last_row", "pair", "clock", "budget_type", "extra", "slot", "help", "event_id"]:
 			var f: Dictionary = fixture()
 			match malformed:
 				"duplicate": f.actors.append(f.actors[0].duplicate(true))
@@ -452,6 +454,7 @@ func _boundary_cases() -> void:
 				"extra": f.actors[0].state.extra = true
 				"slot": f.round_plan[0].slots.append(f.round_plan[0].slots[0].duplicate(true))
 				"help": f.help_reference.h = true
+				"event_id": f.round_plan[1].event_ids[0] = f.round_plan[0].event_ids[0]
 			observe(e, "restart", [f, authority], "M4_INVALID_RESTART", "N-all")
 		observe(e, "impact" if phase == "OPEN" else "apply_round_closed", [token if phase == "OPEN" else events[0]], "M4_RESCUED" if phase == "OPEN" else "M4_ROUND_CLOSED")
 		end()
@@ -536,8 +539,10 @@ func _boundary_cases() -> void:
 	var f: Dictionary = fixture()
 	state(f, "j", "ALIVE", 7, "RETREATED")
 	e = fresh(f)
+	slots(e)
 	observe(e, "unsupported_transition", ["DOWN_TO_RETREATED"], "M4_EVACUATION_UNSUPPORTED", "N-all")
-	var result: Dictionary = close(e)
+	events = observe(e, "seal", [authority], "M4_ROUND_SEALED").tokens
+	var result: Dictionary = observe(e, "apply_round_closed", [events[0]], "M4_ROUND_CLOSED")
 	check(result.episodes.size() == 1 and result.episodes[0].actor_id == "t" and result.episodes[0].reason_code == "M4_BLEED_GRACE", "only DOWN grace")
 	check(e.actor_snapshot("j").state.participation == "RETREATED", "retreated preserved")
 	end()

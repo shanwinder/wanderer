@@ -258,6 +258,7 @@ func restart(fixture: Variant, authority: Variant) -> Dictionary:
 	if players != 1:
 		return _reply("M4_INVALID_RESTART")
 	var previous: int = 0
+	var event_ids: Dictionary = {}
 	for plan in c.plan:
 		if not PartyState.exact_fields(plan, ["round_id", "slots", "event_ids"]) or typeof(plan.round_id) != TYPE_INT \
 			or plan.round_id <= previous or (previous > 0 and plan.round_id != previous + 1) \
@@ -273,11 +274,10 @@ func restart(fixture: Variant, authority: Variant) -> Dictionary:
 				or typeof(slot.amount) != TYPE_INT or slot.amount < 0:
 				return _reply("M4_INVALID_RESTART")
 			ids[slot.slot_id] = true
-		ids = {}
 		for event_id in plan.event_ids:
-			if typeof(event_id) != TYPE_STRING or not Definition.valid_actor_id(event_id) or ids.has(event_id):
+			if typeof(event_id) != TYPE_STRING or not Definition.valid_actor_id(event_id) or event_ids.has(event_id):
 				return _reply("M4_INVALID_RESTART")
-			ids[event_id] = true
+			event_ids[event_id] = true
 	c.round_id = c.plan[0].round_id
 	for id in fixture.help_reference:
 		if not c.help_reference.has(id):
