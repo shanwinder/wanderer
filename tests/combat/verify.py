@@ -29,6 +29,7 @@ def main():
     parser.add_argument("--guidance-decision-proof", action="store_true", help="Verify M3A-03 isolated Guidance decision layer and current Main boundary (does not toggle policy)")
     parser.add_argument("--guidance-main-proof", action="store_true", help="Verify M3A-04 production Guidance in real Main scene and R1 revision")
     parser.add_argument("--m4-data-proof", action="store_true", help="Verify isolated M4-01 Party lifecycle data, authorization, copies and generation safety")
+    parser.add_argument("--m4-atomic-clock-proof", action="store_true", help="Verify isolated M4-02 atomic rescue, finite witnessed clock, death and strict seal")
     parser.add_argument("--cutover-baseline", type=Path, help="Passing merged-base output directory for trace/count comparison")
     args = parser.parse_args()
     if args.main_cutover_proof:
@@ -78,8 +79,17 @@ def main():
         passed = code == 0 and sorted(errors) == sorted(expected_errors)
         if name == "version":
             passed = passed and "4.7.2.stable" in log
-        if name in ("gameplay", "invalid-actions", "npc-proof", "npc-playable", "actor-proof", "ownership-proof", "party-foundation-proof", "party-turn-proof", "party-playable-proof", "presentation-proof", "autonomous-main-proof", "main-cutover-proof", "main-cutover-f5-startup", "rollback-f5-startup", "rollback-gameplay", "guidance-data-proof", "guidance-decision-proof", "guidance-main-proof", "m4-data-proof"):
+        if name in ("gameplay", "invalid-actions", "npc-proof", "npc-playable", "actor-proof", "ownership-proof", "party-foundation-proof", "party-turn-proof", "party-playable-proof", "presentation-proof", "autonomous-main-proof", "main-cutover-proof", "main-cutover-f5-startup", "rollback-f5-startup", "rollback-gameplay", "guidance-data-proof", "guidance-decision-proof", "guidance-main-proof", "m4-data-proof", "m4-atomic-clock-proof"):
             passed = passed and re.search(r"RESULT: \d+ checks, 0 failures", log) is not None
+        if name == "m4-atomic-clock-proof":
+            try:
+                report = json.loads((output / "m4-02-scenarios.json").read_text())
+                passed = passed and report["failures"] == 0 and report["independent_cases"] == len(report["cases"]) \
+                    and len({case["id"] for case in report["cases"]}) == len(report["cases"]) \
+                    and sum(case["assertion_count"] for case in report["cases"]) == report["assertion_checks"] \
+                    and all(case["actual"] == "PASS" for case in report["cases"])
+            except (OSError, ValueError, KeyError, TypeError):
+                passed = False
         result = {"step": name, "status": "PASS" if passed else "FAIL",
                   "exit_code": code, "timed_out": timed_out, "command": command,
                   "errors": errors, "log": name + ".log"}
@@ -175,6 +185,12 @@ def main():
                 run("m4-parse-" + Path(script).stem, ["--script", "res://" + script, "--check-only"])
             run("m4-data-proof", [*timing, "--script", "res://tests/actors/m4_data_state_proof.gd", "--",
                                   "--report=" + str(output / "m4-data-scenarios.json")])
+        if args.m4_atomic_clock_proof:
+            for script in ["scripts/m4/isolated_rescue_clock_encounter.gd", "tests/actors/m4_02_diagnostic_encounter.gd",
+                           "tests/actors/m4_02_atomic_effect_clock_proof.gd"]:
+                run("m402-parse-" + Path(script).stem, ["--script", "res://" + script, "--check-only"])
+            run("m4-atomic-clock-proof", [*timing, "--script", "res://tests/actors/m4_02_atomic_effect_clock_proof.gd", "--",
+                                          "--report=" + str(output / "m4-02-scenarios.json")])
         if args.main_cutover_proof:
             for script in ["tests/combat/main_cutover_proof.gd", "tests/combat/main_cutover_startup_probe.gd"]:
                 run("cutover-parse-" + Path(script).stem, ["--script", "res://" + script, "--check-only"])
