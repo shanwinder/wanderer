@@ -1,0 +1,134 @@
+{
+  "task": "M4-02 — Isolated Atomic Effect / Clock Proof Candidate",
+  "date": "2026-11-06",
+  "timezone": "Asia/Bangkok",
+  "repository": "shanwinder/wanderer",
+  "canonical_branch": "visual-combat-test-1",
+  "canonical_commit": "4969f32d5de1d1795968bdab5c3a85bbfe00c460",
+  "branch": "codex/m4-02-isolated-atomic-effect-clock-proof",
+  "tested_commit": "fe4d36bc030505375934ec8bf995638b7004094f",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "executable": "/Applications/Godot.app/Contents/MacOS/Godot",
+  "authority": "Explicit owner M4-02 Implementation request in chat, 6 November 2026; isolated only, no merge",
+  "preflight": {
+    "initial_tree_clean": true,
+    "local_tracking_live_remote_merge_base": "4969f32d5de1d1795968bdab5c3a85bbfe00c460",
+    "PR46_merge": "e6c3cab7291a3cd45dcacdf48406cf48f0d67118",
+    "PR47_merge": "4969f32d5de1d1795968bdab5c3a85bbfe00c460",
+    "old_feature_branches": "absent locally and on live remote; no outstanding feature refs",
+    "duplicate_implementation_branch_PR": "none before creation",
+    "open_PRs": [
+      2,
+      17
+    ],
+    "PR2_PR17": "untouched"
+  },
+  "commands": {
+    "canonical": "python3 /tmp/wanderer-m4-02-canonical-source-20261106/tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m4-02-canonical-20261106 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --guidance-decision-proof --guidance-main-proof --m4-data-proof --cutover-baseline /tmp/wanderer-m3a04-reference-20261105-2",
+    "final": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m4-02-final-20261106-2 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --guidance-decision-proof --guidance-main-proof --m4-data-proof --m4-atomic-clock-proof --cutover-baseline /tmp/wanderer-m3a04-reference-20261105-2",
+    "evidence_packaging": "python3 /tmp/wanderer-m4-02-package.py (session-only evidence packaging helper)",
+    "documentation_integrity": "python3 /tmp/wanderer-m4-02-review.py (session-only checker); git diff --check"
+  },
+  "canonical": {
+    "fresh_archive_commit": "4969f32d5de1d1795968bdab5c3a85bbfe00c460",
+    "stages": 69,
+    "exit_code": 0,
+    "all_pass": true
+  },
+  "final": {
+    "stages": 73,
+    "exit_code": 0,
+    "all_pass": true,
+    "independent_focused_cases": 53,
+    "assertion_checks": 1137,
+    "per_frame_checks": 0,
+    "failures": 0,
+    "unchanged_m4_01_cases": 78,
+    "unchanged_m4_01_checks": 525,
+    "inherited_suite_counts_identical": 19,
+    "legacy_cases": 6,
+    "legacy_frames": 5892,
+    "negative_expected_errors": 5,
+    "unexpected_engine_errors": 0,
+    "timeouts": 0,
+    "all_stage_exits": 0,
+    "tested_source_hashes_match": 111,
+    "canonical_protected_files_unchanged": 89,
+    "original_manifest_files_unchanged": 104
+  },
+  "expected": "All executable approved isolated effects/invariants pass, existing counts/reasons/traces and protected source retained; blocked/deferred excluded",
+  "actual": "PASS within recorded executable scope; M402-24 authenticated wrong-round subcase unreachable, M402-06 end-to-end BLOCKED, D01-D05 BLOCKED/DEFERRED",
+  "development": [
+    {
+      "run": "wanderer-m4-02-focused-20261106-1",
+      "results": "/tmp/wanderer-m4-02-focused-20261106-1/results.json",
+      "runner_exit": 1,
+      "cause": "Sandbox blocked certificates/editor settings during import; no gameplay ran; no criteria changed",
+      "source": "uncommitted development",
+      "commands_recorded": "development-logs.zip: results.json per-stage exact commands",
+      "command": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m4-02-focused-20261106-1 --m4-atomic-clock-proof --m4-data-proof"
+    },
+    {
+      "run": "wanderer-m4-02-focused-20261106-2",
+      "results": "/tmp/wanderer-m4-02-focused-20261106-2/results.json",
+      "runner_exit": 0,
+      "cause": "PASS; subsequent review strengthened candidate invariants/test ordering/event ID uniqueness; no production edits",
+      "source": "uncommitted development",
+      "commands_recorded": "development-logs.zip: results.json per-stage exact commands",
+      "command": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m4-02-focused-20261106-2 --m4-atomic-clock-proof --m4-data-proof"
+    },
+    {
+      "run": "wanderer-m4-02-focused-20261106-3",
+      "results": "/tmp/wanderer-m4-02-focused-20261106-3/results.json",
+      "runner_exit": 0,
+      "cause": "PASS; subsequent review strengthened candidate invariants/test ordering/event ID uniqueness; no production edits",
+      "source": "uncommitted development",
+      "commands_recorded": "development-logs.zip: results.json per-stage exact commands",
+      "command": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m4-02-focused-20261106-3 --m4-atomic-clock-proof --m4-data-proof"
+    },
+    {
+      "run": "wanderer-m4-02-final-20261106",
+      "results": "/tmp/wanderer-m4-02-final-20261106/results.json",
+      "runner_exit": 0,
+      "cause": "PASS; subsequent review strengthened candidate invariants/test ordering/event ID uniqueness; no production edits",
+      "source": "a50610c3d3560d766a265e7b6ba59eb4480e0fb7",
+      "commands_recorded": "development-logs.zip: results.json per-stage exact commands",
+      "command": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m4-02-final-20261106 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --guidance-decision-proof --guidance-main-proof --m4-data-proof --m4-atomic-clock-proof --cutover-baseline /tmp/wanderer-m3a04-reference-20261105-2"
+    },
+    {
+      "check": "First documentation checker ran before its own review-checks.json existed; reported that one missing target. After output creation, rerun has 0 errors. Initial report retained in development-logs.zip:documentation/initial-review-checks.json."
+    }
+  ],
+  "reference_provenance": {
+    "actual": "PASS",
+    "expected": "Exact Legacy trace equality with fresh canonical and attributed pre-cutover reference",
+    "cases": 6,
+    "frames": 5892,
+    "canonical_commit": "4969f32d5de1d1795968bdab5c3a85bbfe00c460",
+    "tested_commit": "fe4d36bc030505375934ec8bf995638b7004094f",
+    "reference_commit": "1728c5e678c5065278d1251d50449a8820eb5dae",
+    "reference": "Inherited PR #43 reference, not rerun; results equal durable M4-01 reference-results.json"
+  },
+  "not_run": [
+    "GUI/F5/F6 manual keyboard/visual acceptance",
+    "M402-06 death-before-pending-rescue integration",
+    "M402-24 authenticated unconsumed wrong-round event (no legal issuer path)",
+    "M402-D01/D02/D04 BLOCKED; D03/D05 DEFERRED",
+    "Production queue/terminal migration, NPC rescue/retreat policy, Main integration, M4-03"
+  ],
+  "limitations": [
+    "Synchronous single-threaded correctness; no concurrency/multiplayer guarantee",
+    "Underscore/capability API is harness convention, not hostile-code security",
+    "Fixture issuer is not production queue authority",
+    "Full registry reconstruction suitable for bounded proof; no production performance claim",
+    "Documentation/evidence delivery commit after tested source is not a second Godot run"
+  ],
+  "stop": "Draft PR, independent review/owner gate pending; no merge/auto-merge/branch cleanup/follow-on",
+  "evidence_checks": {
+    "authorized_Abort_no_fake_completion": {
+      "actual": "PASS",
+      "calls": 5,
+      "expected": "action grants/phases/consumption, witness receipts/outstanding retained; no manufactured completion"
+    }
+  }
+}

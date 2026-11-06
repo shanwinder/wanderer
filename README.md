@@ -34,7 +34,7 @@ project.godot            Godot project configuration
 
 The canonical `visual-combat-test-1` defaults to Autonomous. Open `res://scenes/combat/combat_prototype.tscn` with **F6** for the preserved Legacy entry.
 
-Current status (5 November 2026):
+Current status (6 November 2026):
 
 - **Implemented:** Player + NPC1/2/3 versus Enemy A (15 HP) and Enemy B (12 HP), target selection, surviving-target fallback, queued actions, victory/defeat and Restart.
 - **Legacy F6:** NPCs take real actions under deterministic prototype rules: after Player Attack, NPC1/3 attack and NPC2 guards Player; after Player Defend, all three attack. These rules are **not an autonomous NPC decision system**.
@@ -56,7 +56,7 @@ Current status (5 November 2026):
 - **M3A-05 — COMPLETED; Owner-Reported Acceptance: PASS.** Source: owner's closure request in ChatGPT dated **5 November 2026 (Asia/Bangkok)**, reporting merge and overall acceptance. **Owner-reported acceptance; per-scenario independent evidence not supplied.** No new agent Godot, GUI, keyboard or visual acceptance run was performed for this documentation task. [Acceptance closure and preserved historical checklist](tests/combat/README.md#m3a-05-owner-acceptance--completed).
 - **M4 Architecture — Design Review Completed / D01, D02, D12 Owner Approved:** [PR #45](https://github.com/shanwinder/wanderer/pull/45); D03–D06/D09/D13/D17 มี scoped Isolated Proof approval ตามรายการถัดไป; D07/D08/D10/D11/D14/D15/D16 และ full-game extensions ยัง **PENDING**. [Specification / approval scope](docs/M4_Down_Help_Death_Retreat_Architecture.md).
 - **M4-01 — Isolated Data/State Proof Implemented / Merged / Automated Proof Recorded:** [PR #46](https://github.com/shanwinder/wanderer/pull/46) merged ที่ `e6c3cab7291a3cd45dcacdf48406cf48f0d67118`. **Inherited Evidence จาก PR #46 ไม่ใช่ผลรันใหม่:** Godot `4.7.2.stable.official.ed1daf0bf`, tested `0b3fd961b305e6c74027f35203b77505457f5409`, **78 cases / 525 checks / 69 stages PASS**, Legacy **6 cases / 5,892 frames identical**. [Contract / exact commands / evidence](tests/actors/README.md#m4-01--isolated-datastate-proof-candidate). ไม่ใช่ Playable/Full M4; Main Player HP0→DEFEAT คงเดิม.
-- **M4-02 Isolated Proof Decisions Owner Approved / Awaiting Implementation Authorization:** owner เลือก D03B/D04B/D05A/D06A และ D09/D13/D17A เฉพาะ Isolated Proof ใน chat วันที่ 6 พฤศจิกายน 2026. [Approval source / scope / contract](docs/M4_02_Rescue_Clock_Death_Contract.md#10-owner-decision-register-and-exact-approval-wording). ยังไม่อนุญาต runtime/merge; D10/D15 และ pending integration decisions เดิมคงอยู่. M402 matrix Proposed/NOT RUN, blocked/deferred cases คงเดิม. [Milestone Authority](docs/README.md#current-status-and-next-roadmap).
+- **M4-02 — Isolated Atomic Effect / Clock Proof Candidate:** owner authorized isolated runtime implementation on 6 November 2026, based on merged PR #47 (`4969f32`). Separate RESCUE, episode/resource accounting, finite witnessed ROUND_CLOSED, B2/grace/death and Strict Seal are implemented on the feature branch; independent review pending. [Current implementation, exact schemas, evidence and Thai learning notes](tests/actors/README.md#m4-02--isolated-atomic-effect--clock-proof-candidate). M402-06 end-to-end and D01–D05 remain blocked/deferred; production integration and M4-03 are not started. [Milestone Authority](docs/README.md#current-status-and-next-roadmap).
 
 Read [AGENTS.md](AGENTS.md) before agent work. Current status lives in the [documentation index](docs/README.md); older design snapshots are not completion reports.
 

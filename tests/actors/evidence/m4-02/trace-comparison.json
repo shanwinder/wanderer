@@ -1,0 +1,10 @@
+{
+  "actual": "PASS",
+  "expected": "Exact Legacy trace equality with fresh canonical and attributed pre-cutover reference",
+  "cases": 6,
+  "frames": 5892,
+  "canonical_commit": "4969f32d5de1d1795968bdab5c3a85bbfe00c460",
+  "tested_commit": "fe4d36bc030505375934ec8bf995638b7004094f",
+  "reference_commit": "1728c5e678c5065278d1251d50449a8820eb5dae",
+  "reference": "Inherited PR #43 reference, not rerun; results equal durable M4-01 reference-results.json"
+}

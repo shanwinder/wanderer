@@ -1,0 +1,116 @@
+[
+  {
+    "suite": "autonomous-main-proof",
+    "canonical_checks": 787617,
+    "candidate_checks": 787617,
+    "actual": "PASS"
+  },
+  {
+    "suite": "gameplay",
+    "canonical_checks": 14395,
+    "candidate_checks": 14395,
+    "actual": "PASS"
+  },
+  {
+    "suite": "invalid-actions",
+    "canonical_checks": 983,
+    "candidate_checks": 983,
+    "actual": "PASS"
+  },
+  {
+    "suite": "presentation-proof",
+    "canonical_checks": 8319,
+    "candidate_checks": 8319,
+    "actual": "PASS"
+  },
+  {
+    "suite": "npc-proof",
+    "canonical_checks": 412,
+    "candidate_checks": 412,
+    "actual": "PASS"
+  },
+  {
+    "suite": "npc-playable",
+    "canonical_checks": 5166,
+    "candidate_checks": 5166,
+    "actual": "PASS"
+  },
+  {
+    "suite": "actor-proof",
+    "canonical_checks": 122,
+    "candidate_checks": 122,
+    "actual": "PASS"
+  },
+  {
+    "suite": "ownership-proof",
+    "canonical_checks": 219,
+    "candidate_checks": 219,
+    "actual": "PASS"
+  },
+  {
+    "suite": "party-foundation-proof",
+    "canonical_checks": 382,
+    "candidate_checks": 382,
+    "actual": "PASS"
+  },
+  {
+    "suite": "party-turn-proof",
+    "canonical_checks": 1250,
+    "candidate_checks": 1250,
+    "actual": "PASS"
+  },
+  {
+    "suite": "party-playable-proof",
+    "canonical_checks": 260800,
+    "candidate_checks": 260800,
+    "actual": "PASS"
+  },
+  {
+    "suite": "guidance-data-proof",
+    "canonical_checks": 66641,
+    "candidate_checks": 66641,
+    "actual": "PASS"
+  },
+  {
+    "suite": "guidance-decision-proof",
+    "canonical_checks": 1192,
+    "candidate_checks": 1192,
+    "actual": "PASS"
+  },
+  {
+    "suite": "guidance-main-proof",
+    "canonical_checks": 507851,
+    "candidate_checks": 507851,
+    "actual": "PASS"
+  },
+  {
+    "suite": "m4-data-proof",
+    "canonical_checks": 525,
+    "candidate_checks": 525,
+    "actual": "PASS"
+  },
+  {
+    "suite": "main-cutover-proof",
+    "canonical_checks": 801351,
+    "candidate_checks": 801351,
+    "actual": "PASS"
+  },
+  {
+    "suite": "main-cutover-f5-startup",
+    "canonical_checks": 9,
+    "candidate_checks": 9,
+    "actual": "PASS"
+  },
+  {
+    "suite": "rollback-f5-startup",
+    "canonical_checks": 5,
+    "candidate_checks": 5,
+    "actual": "PASS"
+  },
+  {
+    "suite": "rollback-gameplay",
+    "canonical_checks": 14395,
+    "candidate_checks": 14395,
+    "actual": "PASS"
+  }
+]
