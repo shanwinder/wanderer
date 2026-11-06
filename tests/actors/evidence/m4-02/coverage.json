@@ -1,0 +1,419 @@
+{
+  "independent_focused_cases": 55,
+  "assertion_checks": 1188,
+  "per_frame_checks": 0,
+  "failure_count": 0,
+  "matrix_rows_are_not_executable_case_count": true,
+  "coverage": [
+    {
+      "id": "M402-01",
+      "focused_cases": [
+        "M402-01"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-02",
+      "focused_cases": [
+        "M402-02"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-03",
+      "focused_cases": [
+        "M402-03"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-04",
+      "focused_cases": [
+        "M402-04"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-05",
+      "focused_cases": [
+        "M402-05"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-06",
+      "focused_cases": [
+        "M402-06-validator-only"
+      ],
+      "status": "BLOCKED end-to-end",
+      "actual": "pure detached eligibility validator PASS only; pending-impact seal rejection independently covered by M402-35"
+    },
+    {
+      "id": "M402-07",
+      "focused_cases": [
+        "M402-07"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-08",
+      "focused_cases": [
+        "M402-08"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-09",
+      "focused_cases": [
+        "M402-09"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-10",
+      "focused_cases": [
+        "M402-10"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-11",
+      "focused_cases": [
+        "M402-11"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-12",
+      "focused_cases": [
+        "M402-12-DOWNPRESENT",
+        "M402-12-DEADPRESENT",
+        "M402-12-ALIVERETREATED"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-13",
+      "focused_cases": [
+        "M402-13"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-14",
+      "focused_cases": [
+        "M402-14"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-15",
+      "focused_cases": [
+        "M402-15"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-16",
+      "focused_cases": [
+        "M402-16"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-17",
+      "focused_cases": [
+        "M402-17"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-18",
+      "focused_cases": [
+        "M402-18"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-19",
+      "focused_cases": [
+        "M402-19"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-20",
+      "focused_cases": [
+        "M402-20"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-21",
+      "focused_cases": [
+        "M402-21"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-22",
+      "focused_cases": [
+        "M402-22"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-23",
+      "focused_cases": [
+        "M402-23"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-24",
+      "focused_cases": [
+        "M402-24"
+      ],
+      "status": "PARTIAL",
+      "actual": "malformed/forged/altered round events PASS; authenticated unconsumed wrong-round event cannot be issued by Strict Seal, not run"
+    },
+    {
+      "id": "M402-25",
+      "focused_cases": [
+        "M402-25"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-26",
+      "focused_cases": [
+        "M402-26"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-27",
+      "focused_cases": [
+        "M402-27"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-28",
+      "focused_cases": [
+        "M402-28"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-29",
+      "focused_cases": [
+        "M402-29-false",
+        "M402-29-true"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-30",
+      "focused_cases": [
+        "M402-30"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-31",
+      "focused_cases": [
+        "M402-31"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-32",
+      "focused_cases": [
+        "M402-32-OPEN",
+        "M402-32-SEALED"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-33",
+      "focused_cases": [
+        "M402-33"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-34",
+      "focused_cases": [
+        "M402-34-OPEN",
+        "M402-34-SEALED"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-35",
+      "focused_cases": [
+        "M402-35"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-36",
+      "focused_cases": [
+        "M402-36-empty",
+        "M402-36-all_down",
+        "M402-36-no_enemy",
+        "M402-36-player_down",
+        "M402-36-finite-boundary"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-37",
+      "focused_cases": [
+        "M402-37"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-38",
+      "focused_cases": [
+        "M402-38-DOWN",
+        "M402-38-DEAD"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-39",
+      "focused_cases": [
+        "M402-39-copy"
+      ],
+      "status": "PASS with external verification",
+      "evidence": [
+        "m4-02-scenarios.json",
+        "scenarios.zip:final/m4-data-scenarios.json"
+      ]
+    },
+    {
+      "id": "M402-40",
+      "focused_cases": [],
+      "status": "PASS with external verification",
+      "evidence": [
+        "final-results.json",
+        "inherited-counts.json",
+        "trace-comparison.json"
+      ]
+    },
+    {
+      "id": "M402-41",
+      "focused_cases": [],
+      "status": "PASS with external verification",
+      "evidence": [
+        "final-results.json",
+        "source-comparison.json"
+      ]
+    },
+    {
+      "id": "M402-42",
+      "focused_cases": [
+        "M402-42"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-43",
+      "focused_cases": [
+        "M402-43"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-44",
+      "focused_cases": [
+        "M402-44"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-45",
+      "focused_cases": [
+        "M402-45"
+      ],
+      "status": "PASS",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "M402-D01",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "M402-D02",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "M402-D03",
+      "status": "DEFERRED"
+    },
+    {
+      "id": "M402-D04",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "M402-D05",
+      "status": "DEFERRED"
+    },
+    {
+      "id": "R48-01-current-round",
+      "status": "PASS",
+      "preconditions": "OPEN round3; caller attempts issuer-owned operation ID before any slot is issued",
+      "expected": "M4_RESERVED_OPERATION_ID/N-all/no token; actual fixture slot completes and closes affected round",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "R48-01-future-round",
+      "status": "PASS",
+      "preconditions": "OPEN round3; caller attempts issuer-owned operation ID before any slot is issued",
+      "expected": "M4_RESERVED_OPERATION_ID/N-all/no token; actual fixture slot completes and closes affected round",
+      "evidence": "m4-02-scenarios.json"
+    }
+  ]
+}

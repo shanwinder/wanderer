@@ -1,6 +1,6 @@
 # Actor Definition, Runtime State & Encounter Ownership
 
-Proof ล่าสุด: [M4-01 — Isolated Data/State Proof Candidate](#m4-01--isolated-datastate-proof-candidate) — แยกจาก production; ยังรอ review.
+Proof ล่าสุด: [M4-02 — Isolated Atomic Effect / Clock Proof Candidate](#m4-02--isolated-atomic-effect--clock-proof-candidate) — แยกจาก production/M4-01; รอ independent review.
 
 หัวข้อ M2B-01 ด้านล่างเป็นบันทึกขอบเขต/ผลเดิมจาก PR #33. สถานะปัจจุบันและ migration ใหม่อยู่ที่ [M2B-02](#m2b-02--single-source-encounter-hp); milestone authority อยู่ที่ [index](../../docs/README.md#current-status-and-next-roadmap).
 
@@ -626,7 +626,7 @@ M2C-04 **NOT IMPLEMENTED**, M2B-03 Item Implementation **DEFERRED**.
 
 ## M4-01 — Isolated Data/State Proof Candidate
 
-> **Current status — 5 พฤศจิกายน 2026:** **M4-01 — Isolated Data/State Proof Implemented / Merged / Automated Proof Recorded**. [PR #46](https://github.com/shanwinder/wanderer/pull/46) merged ที่ `e6c3cab7291a3cd45dcacdf48406cf48f0d67118`; tested sourceยัง `0b3fd961b305e6c74027f35203b77505457f5409`. 78 cases/525 checks,69 stages PASS,Legacy6cases/5,892framesด้านล่างเป็น **Inherited Evidenceจาก PR #46 ไม่ใช่รันใหม่ใน M4-02**. ชื่อ Candidate/ข้อความ review pending/stop/“งานนี้” ด้านล่างเก็บ checkpointการส่ง PR #46และ original verification attribution. M4-02 มี scoped owner approval เฉพาะเอกสาร [Isolated Proof decisions owner approved / implementation not authorized](../../docs/M4_02_Rescue_Clock_Death_Contract.md#10-owner-decision-register-and-exact-approval-wording); ไม่เปลี่ยน M4-01 proof code/tests/evidence, ไม่ใช่ Playable/Full M4. [Index](../../docs/README.md#current-status-and-next-roadmap) ถือสถานะล่าสุด.
+> **Current status — 5 พฤศจิกายน 2026:** **M4-01 — Isolated Data/State Proof Implemented / Merged / Automated Proof Recorded**. [PR #46](https://github.com/shanwinder/wanderer/pull/46) merged ที่ `e6c3cab7291a3cd45dcacdf48406cf48f0d67118`; tested sourceยัง `0b3fd961b305e6c74027f35203b77505457f5409`. 78 cases/525 checks,69 stages PASS,Legacy6cases/5,892framesด้านล่างเป็น **Inherited Evidenceจาก PR #46 ไม่ใช่รันใหม่ใน M4-02**. ชื่อ Candidate/ข้อความ review pending/stop/“งานนี้” ด้านล่างเก็บ checkpointการส่ง PR #46และ original verification attribution. Historical PR #47 checkpoint: M4-02 มี scoped owner approval เฉพาะเอกสาร [reviewed design approval](../../docs/M4_02_Rescue_Clock_Death_Contract.md#10-owner-decision-register-and-exact-approval-wording); ไม่เปลี่ยน M4-01 proof code/tests/evidence, ไม่ใช่ Playable/Full M4. [Index](../../docs/README.md#current-status-and-next-roadmap) ถือสถานะล่าสุด.
 
 วันที่ **5 พฤศจิกายน 2026 (Asia/Bangkok)**; owner อนุญาต implementation โดยตรงในคำสั่ง
 “WANDERER — M4-01 Isolated Data / State Proof”. ฐาน canonical `visual-combat-test-1` คือ
@@ -829,3 +829,203 @@ single-threaded proof ไม่รับรอง multiplayer/concurrency. Agent
 acceptance **NOT RUN**; headlessไม่พิสูจน์ visual quality. Speed0.70/lunge44px/Compact Formation/
 saved homesไม่แก้. D03–D11/D13–D17ยัง Pending; M4-02–05ไม่เริ่ม.
 **หยุดที่ Draft PR เพื่อ Independent Code Review; ไม่ merge/auto-merge/ลบ branch.**
+
+## M4-02 — Isolated Atomic Effect / Clock Proof Candidate
+
+**Implemented Candidate / independent review pending — 6 พฤศจิกายน 2026 (Asia/Bangkok).**
+Owner authorization: task “WANDERER — M4-02 Isolated Atomic Effect / Clock Proof Implementation”
+ใน chat วันที่นี้ อนุญาต isolated runtime/tests/runner/docs/evidence โดยตรง; ไม่อนุญาต merge.
+Canonical local/tracking/live remote/merge-base ตรง `4969f32d5de1d1795968bdab5c3a85bbfe00c460`;
+GitHub ยืนยัน PR #46/#47 merged. Initial tree สะอาด; local/live remote ไม่มี branches ของ
+PR #46/#47 หรืองาน M4-02 implementation ซ้ำ; open PRs มี #2/#17 ซึ่งไม่ได้แก้.
+Branch: `codex/m4-02-isolated-atomic-effect-clock-proof`.
+[Binding contract](../../docs/M4_02_Rescue_Clock_Death_Contract.md) และ
+[index](../../docs/README.md#current-status-and-next-roadmap) ถือ design/milestone authority ตามลำดับ.
+
+### Design-to-code mapping and ownership
+
+| Reviewed requirement | Implementation / boundary |
+|---|---|
+| Separate opt-in aggregate | [IsolatedRescueClockEncounter](../../scripts/m4/isolated_rescue_clock_encounter.gd), RefCounted composition; ไม่สืบ/แก้ production หรือ M4-01 Encounter |
+| Single HP/LifeState/Participation owner | Published `_root.registry` owns validated Party/Enemy runtimes; snapshot ไม่มี runtime references. Episodes ไม่มี HP mirror |
+| Candidate construction / publication | `snapshot` → scratch actors/ledgers → `_registry` reconstruct ด้วย M4-01 factories → `_valid_candidate` → inert diagnostic gate → `_root = candidate` ครั้งเดียว; ไม่มี await/signal/Tween/UI callback |
+| RESCUE | `lock_rescue` → `impact` → `complete` หรือ `cancel`; owned grant ตรวจครบทุก field, lock revision เป็น audit; current eligibility/episode/use ตรวจซ้ำที่ impact |
+| Finite fixture issuer | `lock_fixture_slot` → real fixture damage impact → completion receipt; `seal` ตรวจ owned witness/receipts/outstanding/availability แล้วออก exact event grants. Issuer อยู่ใน aggregate เดียว ลด authority ซ้ำ |
+| Strict Seal | OPEN→SEALED→CLOSED หรือ OPEN/SEALED→ABORTED; `next_round` เฉพาะ CLOSED และ next identity ใน finite plan; ไม่ unseal/reopen/reseal |
+| Single clock / batch death | `apply_round_closed`: authenticate → identity → event/semantic dedup → round/phase/witness/sealed revision → batch from pre-tick root → candidate validation → publish CLOSED |
+| Abort / Restart | `authorize_abort` เฉพาะ OPEN, `abort_round` OPEN/SEALED; `restart` validate whole roster/plan/clock/use ก่อนเปลี่ยน generation; SEALED ต้อง Abort ก่อน valid reset |
+| Diagnostic fault seam | [Test-only subclass](m4_02_diagnostic_encounter.gd) override inert validation/comparison hooks; no real root write, concurrency หรือ production reference |
+| Proof / optional runner | [Focused scenarios](m4_02_atomic_effect_clock_proof.gd); `--m4-atomic-clock-proof` เพิ่ม parse3+execute1; JSON count/status validation; default runner/original expectations คงเดิม |
+
+`schema_version=2` diagnostic root มี session/generation/revision/round/index/window/phase,
+finite plan, registry-owned actors, episodes/serial, rescue uses, read-only HELP fixture reference,
+action grants/results/consumption, witness expected slots/receipts/outstanding/abort/phase/revision,
+event grants/consumption, semantic close keys, authorization serial และ Abort grants/consumption/count.
+ทุก read เป็น detached copy. HELP reference เป็น fixture sentinel ไม่ใช่ production HELP authority.
+
+### Exact schemas and API boundary
+
+สำหรับ request/token/event: field ที่ไม่ได้ระบุเป็น int ต้องเป็น String; ไม่มี unknown fields/coercion.
+Token/request version ต้องเป็น int1. Actor/operation/slot/event IDs ผ่าน existing valid-ID rules.
+
+| Input | Exact fields / types |
+|---|---|
+| RESCUE request (8) | `version:int, session:int, generation:int, operation_id, kind=RESCUE, helper_id, target_id, window_id` |
+| Owned action token (13) | request8 + `episode_id, lock_revision:int, authorization_id:int, slot_id, amount:int`; Rescue slot empty/amount0; fixture damage kind `FIXTURE_DAMAGE`/episode empty |
+| Owned ROUND_CLOSED event (10) | `version:int, kind=ROUND_CLOSED, issuer_id=M402_FINITE_FIXTURE, session:int, generation:int, round_id:int, event_id, witness_id, sealed_revision:int, authorization_id:int` |
+| Abort token (7) | `version:int, session:int, generation:int, operation_id, kind=ABORT, round_id:int, authorization_id:int` |
+| Restart fixture (4) | `actors:Array, round_plan:Array, clocks:Dictionary, help_reference:Dictionary` |
+| Actor fixture entry | `definition` existing exact4-field ActorDefinition; `state` M4-01 exact3-field Party seed or Enemy `{current_hp:int}` |
+| Finite plan row | `{round_id:int, slots:Array, event_ids:Array[String]}`; consecutive increasing rounds, unique event IDs across generation; no automatic iteration |
+| Fixture slot row | `{slot_id:String, helper_id:String, target_id:String, amount:int>=0}`; IDs must belong to Party, unique slots per round |
+| Optional DOWN clock seed | actor-keyed `{entry_round:int>=1, budget:int∈[1,2]}`; current-entry requires B2; initial/default DOWN B2/current round; DEAD gets inactive B0 |
+| Optional HELP reference | Party-ID keyed int0/1; omitted Party defaults1; cannot change through effects |
+
+Fixture capability ต้องตรง object ที่ constructor รับสำหรับ restart/lock/fixture damage/slot/seal/
+next-round/Abort authorization. Impact/completion/cancel/close/Abort ใช้ exact owned tokens.
+Grant edits ไม่สร้างสิทธิ์; changed session/generation ตรวจเป็น identity reason ก่อน lookup reused IDs.
+**Operation namespace (R48-01):** prefix `slot_` สงวนให้ fixture issuer ทั้งหมด รวม IDs ของรอบอนาคต.
+Caller RESCUE ที่ใช้ prefix นี้รับ `REJECTED / M4_RESERVED_OPERATION_ID` ก่อน `_issue_action()`;
+N-all รวม HP/state/episodes/resources/grants/authorization serial/witness/revision. Existing
+shape/identity/authority/phase/ID-validity gates ยังมาก่อน namespace gate. Internal slot token
+ยังมี operation ID `slot_<round>_<slot>` เดิม; request8/action13/event10 schemas ไม่เปลี่ยน.
+
+Action identity อยู่ใน root ของ session/generation/operation; event key เป็น session/generation/issuer/event;
+semantic key เป็น session/generation/round. Authorization serial ไม่ reset ข้าม generation.
+
+RESCUE success: `DOWN/PRESENT HP0 → ALIVE/PRESENT HP1`, clock inactive และ helper use1→0
+พร้อม consumed impact/result/revision+1. Completion ไม่ทำ effect ซ้ำ. Valid one-shot SKIP ใช้ revision1
+และ settle operation แต่ไม่เปลี่ยน actors/episodes/uses/HELP; rejected call เป็น N-all ทั้ง root.
+ไม่มี retarget, extra slot, item/MP/inventory cost, revival หรือ raw heal/retreat/death setter.
+
+Fixture proof ใช้ actual declared damage1 ต่อ Player, impact และ completion จริงเพื่อสร้าง receipt.
+นี่ไม่ใช่ DEFEND ปลอมหรือ production slot; slots มีจำนวนจำกัดและ effects ไม่เพิ่ม expected slots.
+Seal ต้อง Player/active Party/Enemy available; dependency fail ไม่สร้าง rounds/outcome/death.
+`seal` ออก finite event IDs สองใบสำหรับ round เดียวเพื่อทดสอบ semantic dedup ด้วย owned second grant;
+ใบที่สองไม่ใช่ tick เพิ่ม. Caller boolean หรือ receipt dictionary ไม่ใช่ authorization input.
+
+### Actual executable coverage and evidence
+
+Actual executable/version: `/Applications/Godot.app/Contents/MacOS/Godot`,
+`4.7.2.stable.official.ed1daf0bf`. Tested commit หลัง R48-01: `a8dda626aa268bc243dfaac827b70a5465eaa7e9`.
+Expected ทุก executable suite ผ่าน/ไม่มี unexpected errors/Legacy ตรง canonical; actual ตรง expected:
+
+| Fresh run / check | Recorded actual |
+|---|---|
+| Focused M4-02 | **55 independent cases / 1,188 assertions / 0 failures / 0 per-frame checks** |
+| Original M4-01 | **78 independent cases / 525 checks**, original files unchanged |
+| Canonical `4969f32` all existing flags | **69 stages PASS**, runner/stage exits0 |
+| Feature tested commit all flags + M4-02 | **73 stages PASS**, runner/stage exits0 |
+| Existing executable suite counts | **19/19 identical** to fresh canonical; per-frame checks remain part of inherited counts |
+| Legacy differential | **6 cases / 5,892 frames identical** to fresh canonical and attributed pre-cutover reference |
+| Error accounting | unexpected0/timeouts0; negative suite **5 expected errors** separately |
+| Tested source hashes | **111/111** match committed source, tested snapshot and delivery source |
+| Protected source | **89/89** canonical production/M4-01/config/scene/asset/test code files unchanged; **104/104** prior source-manifest entries unchanged excluding authorized runner |
+
+Initial sandboxed import failed on system certificate/editor settings access (exit0 with errors,
+correctly classified FAIL); no gameplay ran. Preserved logs, then reran with required system access.
+Focused development runs2/3 passed52cases/1,021checks; initial full candidate passed73stages/
+53cases/1,129checks. Final corrections add cross-round event-ID uniqueness and exact M402-30/37
+ordering; reviewed delivery `36d6c9d` recorded53cases/1,137checks. That historical evidence is retained in [review-history.zip](evidence/m4-02/review-history.zip). R48-01 current run above passes55cases/1,188checks; original53 case assertion counts are identical. No production expectation weakened.
+
+M402 matrix มีหลาย subcases จึงไม่ใช่ “45 executable cases”. `M402-06-validator-only`
+ตรวจ detached DEAD eligibility เท่านั้น; end-to-end death-before-pending-rescue ยังคง **BLOCKED**.
+M402-24 malformed/forged/wrong-round-shaped events ทดสอบได้; authenticated unused wrong-round event
+ไม่มี issuance path ภายใต้ Strict Seal จึงไม่อ้างว่ารัน subcase นั้น. ไม่มี bypass/fake receipt/event.
+M402-39 รวม snapshot-copy proof กับ unchanged M4-01 run; M402-40/41 อาศัย fresh full regression,
+Guidance/R1 suites และ protected-source comparison แยกจาก focused-case counts.
+M402-D01/D02/D04 **BLOCKED**; D03/D05 **DEFERRED** ตาม D10/D15/production integration.
+
+Raw per-call before/after roots, exact inputs, actual effects/reasons และ assertions อยู่ใน
+[scenario archive](evidence/m4-02/scenarios.zip); [scenario summary](evidence/m4-02/m4-02-scenarios.json)
+เก็บ state/clock/resource before/after และ full-root no-delta results พร้อม archive pointer.
+[Exact commands/engine/commit/exits](evidence/m4-02/run-record.json),
+[final stages](evidence/m4-02/final-results.json), [fresh canonical](evidence/m4-02/canonical-results.json),
+[raw logs](evidence/m4-02/logs.zip), [canonical logs](evidence/m4-02/canonical-logs.zip),
+[development logs](evidence/m4-02/development-logs.zip),
+[source manifest](evidence/m4-02/source-sha256.json), [source integrity](evidence/m4-02/source-comparison.json),
+[Legacy differential](evidence/m4-02/trace-comparison.json), [traces](evidence/m4-02/traces.zip),
+[inherited counts](evidence/m4-02/inherited-counts.json), [coverage mapping](evidence/m4-02/coverage.json),
+[review checks](evidence/m4-02/review-checks.json).
+
+### Thai learning notes — Goal → Concept → Do → Observe → Explain → Adjust → Commit
+
+1. **M4-01 กับ M4-02:** M4-01 พิสูจน์ข้อมูลและ HP0→DOWN; M4-02 เพิ่มผล RESCUE และ clock
+   ใน counterpart ใหม่ จึงไม่เปลี่ยนความหมาย snapshot/test เดิม.
+2. **RESCUE ต่างจาก HELP:** HELP เดิมรักษา Player ที่ยังมีชีวิต ≤30%, +4, once.
+   RESCUE นี้ฟื้น DOWN ที่0เป็น1HP ใช้ budget คนละเล่ม จึงไม่ consume/reset HELP.
+3. **Down Episode:** คนเดิมล้มครั้งใหม่เป็น e2; grant ที่ล็อก e1 ใช้กับ e2 ไม่ได้.
+   Observe: J ช่วย e1 → Tโดน damage1จน DOWN/e2 → Hใช้ e1 ได้ SKIP/episode-changed ไม่ช่วย e2.
+4. **Atomic HP+budget:** ก่อนช่วย `(HP0,DOWN,B2 active,R1)`; หลังช่วย
+   `(HP1,ALIVE,clock inactive,R0)`. หาก validate ไม่ผ่าน เหลือชุดก่อนทั้งหมด;
+   ไม่มี HP1แต่ R1 หรือ R0แต่ยัง DOWN. Candidate เป็นกระดาษทด ไม่ใช่ HP owner อีกชุด.
+5. **ROUND_CLOSED ต่างจาก animation completion:** callback ของ action ให้ receipt ได้
+   แต่ไม่เดิน clock. ต้องครบ finite witness ไม่มี pending impact/completion แล้ว seal/close จริง.
+6. **Strict Seal:** SEALED เหมือนปิดซองข้อมูลรอบนั้น รับเฉพาะ close หรือ Abort ที่ออกไว้ก่อน;
+   damage/rescue/complete/cancel/new lock/reseal ไม่แก้ซอง. Next round ต้อง identity ใหม่หลัง CLOSED.
+7. **Abort ต่างจาก rejected event:** rejected event ไม่เปลี่ยนอะไร; valid Abort เพิ่ม phase/revision/
+   accounting เป็น ABORTED โดยไม่ tick/death/consume close หรือสร้าง completion ปลอม.
+8. **Grace round:** Expected และ tested: down round3 B2 → close3 B2 → close4 B1 → close5 DEAD/B0.
+   B2 ไม่ได้สัญญาว่าจะมีสอง playable rounds เพราะ scheduler/terminal ยัง pending.
+9. **Batch atomic:** คำนวณ J/T จาก before เดียว; candidate อาจมี JDEAD/Ttick หรือสอง DEAD.
+   Test-only failure หลังคำนวณ actorที่สองทิ้งทั้ง candidate รวม consumption; ไม่มีครึ่ง batch.
+10. **DEAD ไม่ใช่ลบ save:** เก็บ actor/definition/HP0/clock0ใน encounter เดิมและไม่รับ RESCUE/HEAL;
+    Restart สร้าง generation ใหม่ เป็น fixture reset ไม่ใช่ action คืนชีพ/permadeath implementation.
+11. **Isolated ยังไม่ใช่ playable feature:** ไม่มีปุ่ม RESCUE/bleed UI/NPC rescue policy,
+    Main ยัง Player HP0→DEFEAT; production/Guidance/Legacy ใช้ authority เดิม.
+12. **D10/D15:** เมื่อ Player DOWN/all Party DOWN/no Enemy, fixture boundary หยุดด้วย dependency
+    แทนแต่ง scheduler/terminal rules. ผล automated proof ไม่อนุมัติ pending decisions.
+
+**Limits / final stop:** synchronous single-threaded correctness; GDScript underscores/capability
+เป็น harness convention ไม่ใช่ hostile-code security/multiplayer guarantee. Full candidate registry
+reconstruction เหมาะกับ proof ขนาดเล็ก ยังไม่มี production performance claim.
+Agent GUI/F5/F6/manual keyboard/visual acceptance **NOT RUN**; native headless startup checks
+ไม่ใช่ manual acceptance. No scene/asset/presentation changes. Independent review และ owner gate ถัดไปยังรอ.
+หยุดหลัง Draft PR; ไม่ merge/auto-merge/cleanup branches, ไม่เริ่ม M4-03/Main/NPC/terminal integration.
+
+
+### R48-01 — Operation ID namespace review fix
+
+Owner task “PR #48 Review Fix R48-01”, 6 พฤศจิกายน 2026 (Asia/Bangkok), อนุญาต fix บน branch/PR เดิม.
+อ่าน [Independent Review5795418762](https://github.com/shanwinder/wanderer/pull/48#pullrequestreview-5795418762)
+บน `36d6c9dee54118614a845c6e1827315df9989127`; local/live remote ตรง reviewed HEAD, tree สะอาด,
+canonical/merge-base ยัง `4969f32`. Draft/unmerged; #2/#17 ไม่แตะ.
+
+**Root cause:** `lock_rescue()` ยอมรับ caller operation ID ที่มี prefix `slot_` ขณะที่ issuer สร้าง
+key รูป `slot_<round>_<slot>` ใน `_root.actions` เดียวกัน. การ cancel/complete ไม่ลบ historical key
+จึงจอง key ของ slot ปัจจุบันหรืออนาคตไว้ได้ ทำให้ real receipt ไม่ครบและ seal ไม่สำเร็จ.
+
+**Fix:** ใช้ `SLOT_OPERATION_PREFIX` ร่วมกันใน issuer และ RESCUE admission; reject prefix นี้ทั้งหมด
+ด้วย `M4_RESERVED_OPERATION_ID` ก่อนสร้าง grant/candidate/เพิ่ม serial. ไม่ล้าง ledger เพื่อแก้ deadlock,
+ไม่เปลี่ยน tokens/requests/slot behavior หรือ bypass Strict Seal.
+
+| Added regression ID | Exact input in OPEN round3 | Expected and actual |
+|---|---|---|
+| R48-01-current-round | RESCUE h→t, `operation_id=slot_3_damage_p` | REJECTED/reserved/N-all/no token; real round3 slot locks, applies damage, completes receipt, seals and closes normally |
+| R48-01-future-round | RESCUE h→t, `operation_id=slot_4_damage_p` | REJECTED/reserved/N-all/no token; real round3 closes, validated next round4 opens, real round4 slot locks/applies/completes/seals/closes |
+
+Both tests assert final CLOSED, exact issuer key belongs to COMPLETED FIXTURE_DAMAGE, real receipt
+matches the key and outstanding is empty. Whole-root equality on rejection includes resource/episode/
+authorization/consumption/revision accounting. Existing53 cases retain all1,137 assertions; added2 cases
+supply51 assertions, giving **55 cases / 1,188 assertions / 0 failures** (zero per-frame assertions).
+M402-01–45 matrix/statuses and blocked/deferred dependencies remain unchanged; supplemental IDs are
+recorded in [coverage.json](evidence/m4-02/coverage.json), not renumbered into M402.
+
+**Fresh verification:** actual Godot `4.7.2.stable.official.ed1daf0bf`; focused+M4-01 run passes;
+committed source `a8dda626aa268bc243dfaac827b70a5465eaa7e9` full run **73/73 PASS**;
+fresh canonical **69/69 PASS**. M4-01 **78 cases/525 checks**; all19 inherited counts identical;
+Legacy **6 cases/5,892 frames identical**; final/canonical exits0, unexpected0/timeouts0,
+negative suite exactly5 expected errors.111/111 tested hashes and89/89 protected canonical files match;
+request/action/event schema lines and runner byte-identical to reviewed HEAD.
+
+Pre-fix red run reproduces the current collision and fails11 assertions plus2 secondary missing-event/
+receipt script errors; future case was not reached in that failed harness path. Logs and failed source
+are preserved in [development logs](evidence/m4-02/development-logs.zip). The regression harness now
+records failed admission without cascading missing-token errors. This is not counted as a successful
+or complete55-case run. Both current/future cases pass in the corrected focused/full runs.
+Reviewed17 evidence files are preserved losslessly in [history](evidence/m4-02/review-history.zip).
+[Exact new commands/commits/exits](evidence/m4-02/run-record.json) and raw snapshots remain linked above.
+
+Await independent follow-up review; no claim that the reviewer has accepted the fix. Existing
+M402-06/D01–D05/M402-24 limitations and GUI/manual visual NOT RUN remain. No merge/auto-merge,
+production change, M4-03 or branch cleanup.

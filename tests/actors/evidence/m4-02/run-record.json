@@ -1,0 +1,124 @@
+{
+  "task": "M4-02 — R48-01 Review Fix / Isolated Atomic Effect Clock Proof Candidate",
+  "date": "2026-11-06",
+  "timezone": "Asia/Bangkok",
+  "repository": "shanwinder/wanderer",
+  "canonical_branch": "visual-combat-test-1",
+  "canonical_commit": "4969f32d5de1d1795968bdab5c3a85bbfe00c460",
+  "branch": "codex/m4-02-isolated-atomic-effect-clock-proof",
+  "tested_commit": "a8dda626aa268bc243dfaac827b70a5465eaa7e9",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "executable": "/Applications/Godot.app/Contents/MacOS/Godot",
+  "authority": "Explicit owner PR #48 Review Fix R48-01 request, 6 November 2026; same Draft PR, no merge",
+  "preflight": {
+    "initial_tree_clean": true,
+    "initial_local_and_remote_head": "36d6c9dee54118614a845c6e1827315df9989127",
+    "canonical_local_tracking_live_remote_merge_base": "4969f32d5de1d1795968bdab5c3a85bbfe00c460",
+    "PR48": "Draft/open/unmerged, base canonical, same task branch",
+    "PR2_PR17": "untouched"
+  },
+  "commands": {
+    "canonical": "python3 /tmp/wanderer-m4-02-canonical-source-20261106/tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-r48-01-canonical-20261106 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --guidance-decision-proof --guidance-main-proof --m4-data-proof --cutover-baseline /tmp/wanderer-m3a04-reference-20261105-2",
+    "final": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-r48-01-final-20261106 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --guidance-decision-proof --guidance-main-proof --m4-data-proof --m4-atomic-clock-proof --cutover-baseline /tmp/wanderer-m3a04-reference-20261105-2",
+    "focused": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-r48-01-focused-20261106 --m4-atomic-clock-proof --m4-data-proof",
+    "red": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-r48-01-red-20261106 --m4-atomic-clock-proof --m4-data-proof",
+    "packaging": "python3 /tmp/wanderer-r48-01-package.py (session evidence helper)",
+    "documentation_integrity": "python3 /tmp/wanderer-r48-01-review.py (session checker); git diff --check"
+  },
+  "canonical": {
+    "fresh_archive_commit": "4969f32d5de1d1795968bdab5c3a85bbfe00c460",
+    "stages": 69,
+    "exit_code": 0,
+    "all_pass": true,
+    "source_hashes_match_commit": 105
+  },
+  "final": {
+    "stages": 73,
+    "exit_code": 0,
+    "all_pass": true,
+    "independent_focused_cases": 55,
+    "assertion_checks": 1188,
+    "per_frame_checks": 0,
+    "failures": 0,
+    "unchanged_m4_01_cases": 78,
+    "unchanged_m4_01_checks": 525,
+    "inherited_suite_counts_identical": 19,
+    "legacy_cases": 6,
+    "legacy_frames": 5892,
+    "negative_expected_errors": 5,
+    "unexpected_engine_errors": 0,
+    "timeouts": 0,
+    "all_stage_exits": 0,
+    "tested_source_hashes_match": 111,
+    "canonical_protected_files_unchanged": 89,
+    "original_manifest_files_unchanged": 104
+  },
+  "expected": "All executable approved isolated effects/invariants pass, existing counts/reasons/traces and protected source retained; blocked/deferred excluded",
+  "actual": "PASS within recorded executable scope; M402-24 authenticated wrong-round subcase unreachable, M402-06 end-to-end BLOCKED, D01-D05 BLOCKED/DEFERRED",
+  "development": [
+    {
+      "run": "wanderer-r48-01-red-20261106",
+      "runner_exit": 1,
+      "runtime_source": "36d6c9dee54118614a845c6e1827315df9989127",
+      "test_source": "new R48-01 regression before guarded failure-path handling",
+      "actual": "Current-round reserved ID wrongly AUTHORIZED, real slot rejected DUPLICATE, seal blocked. 11 assertions failed; 2 secondary script errors from missing event/receipt; future case not reached. This failed run is not a completed 55-case proof.",
+      "evidence": "development-logs.zip"
+    },
+    {
+      "run": "wanderer-r48-01-focused-20261106",
+      "runner_exit": 0,
+      "actual": "55 independent cases / 1188 assertions / 0 failures; unchanged original M4-01 78 cases / 525 checks",
+      "evidence": "development-logs.zip"
+    }
+  ],
+  "reference_provenance": {
+    "actual": "PASS",
+    "expected": "Exact Legacy trace equality with fresh canonical and attributed pre-cutover reference",
+    "cases": 6,
+    "frames": 5892,
+    "canonical_commit": "4969f32d5de1d1795968bdab5c3a85bbfe00c460",
+    "tested_commit": "a8dda626aa268bc243dfaac827b70a5465eaa7e9",
+    "reference_commit": "1728c5e678c5065278d1251d50449a8820eb5dae",
+    "reference": "Inherited PR #43 reference, not rerun; results equal durable M4-01 reference-results.json"
+  },
+  "not_run": [
+    "GUI/F5/F6 manual keyboard/visual acceptance",
+    "M402-06 death-before-pending-rescue integration",
+    "M402-24 authenticated unconsumed wrong-round event (no legal issuer path)",
+    "M402-D01/D02/D04 BLOCKED; D03/D05 DEFERRED",
+    "Production queue/terminal migration, NPC rescue/retreat policy, Main integration, M4-03"
+  ],
+  "limitations": [
+    "Synchronous single-threaded correctness; no concurrency/multiplayer guarantee",
+    "Underscore/capability API is harness convention, not hostile-code security",
+    "Fixture issuer is not production queue authority",
+    "Full registry reconstruction suitable for bounded proof; no production performance claim",
+    "Documentation/evidence delivery commit after tested source is not a second Godot run"
+  ],
+  "stop": "Draft PR, independent review/owner gate pending; no merge/auto-merge/branch cleanup/follow-on",
+  "reviewed_head": "36d6c9dee54118614a845c6e1827315df9989127",
+  "review_url": "https://github.com/shanwinder/wanderer/pull/48#pullrequestreview-5795418762",
+  "history": "review-history.zip preserves all 17 evidence files byte-for-byte from reviewed HEAD36d6c9d, including prior failure records",
+  "fix": {
+    "root_cause": "caller RESCUE and issuer slot operations shared action ID keys; cancelled/settled RESCUE could permanently preempt current/future slot key",
+    "namespace": "entire slot_ prefix reserved to fixture issuer, independent of finite plan or current round",
+    "reason_code": "M4_RESERVED_OPERATION_ID",
+    "gate": "after existing shape/identity/authority/phase/ID validity checks, before grants/candidate/authorization serial allocation",
+    "schemas": "request8/action13/event10 unchanged; internal slot_<round>_<slot> token IDs preserved",
+    "regressions": [
+      "R48-01-current-round: slot_3_damage_p",
+      "R48-01-future-round: slot_4_damage_p"
+    ]
+  },
+  "preservation_checks": {
+    "original_focused_cases": 53,
+    "original_assertions": 1137,
+    "old_case_assertion_counts_identical": true,
+    "request_action_event_schemas_byte_identical": true,
+    "runner_byte_identical_to_reviewed": true,
+    "only_tested_source_hash_changes_since_review": [
+      "scripts/m4/isolated_rescue_clock_encounter.gd",
+      "tests/actors/m4_02_atomic_effect_clock_proof.gd"
+    ]
+  }
+}

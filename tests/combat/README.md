@@ -1193,3 +1193,27 @@ Acceptance matrix เดิมมีขอบเขตดังนี้; ทุ
 - [ ] F6 Legacy: no Guidance controls; NPC2 Guard Player; original HP/target fallback/both kill orders/queue, direct scene remains available.
 - [ ] Compare0.70pacing/44pxlunge/Compact Formation, idle/poses/guarded recoil, floating damage/heal/flash/spark, EnemyB tint/scale, return homes. Exact pixel/timing assertions are automated; owner judges feel.
 - [ ] Owner can explain requested Guidance, actual NPC choice, response reason and actual applied/skipped effect without reading source. Keep M3A-05 pending until owner records acceptance.
+
+## Optional M4-02 isolated atomic effect / clock proof
+
+Add `--m4-atomic-clock-proof` to parse the new isolated aggregate, its test-only
+fault subclass and focused harness, then execute the proof (four additional stages).
+It works independently; keep `--m4-data-proof` for the unchanged original proof.
+The runner checks exit status, unexpected Script/Engine errors, the success marker,
+and machine-readable scenario counts/status. Default behavior and all existing
+flags/negative error expectations are unchanged.
+
+For complete reproduction, use the all-flags commands and reference provenance in
+[the M4-02 run record](../actors/evidence/m4-02/run-record.json). Commands require a
+fresh output directory and the actual Godot 4.7.2 executable. The pre-cutover
+44-stage reference is inherited and verified against its durable record; current
+canonical and feature runs are fresh. See [schemas, actual coverage, evidence and
+Thai learning notes](../actors/README.md#m4-02--isolated-atomic-effect--clock-proof-candidate).
+This isolated proof enables no production RESCUE/clock/death or UI.
+
+
+R48-01 refresh: the same optional flag also executes the current/future operation-ID
+collision regressions. Current total is55focused cases/1,188assertions; original
+M4-01 remains78cases/525checks. Fresh full73/canonical69stages pass and Legacy
+6cases/5,892frames match. See [namespace fix and actual evidence](../actors/README.md#r48-01--operation-id-namespace-review-fix).
+No runner code or existing expectations changed in this review fix.
