@@ -1,0 +1,207 @@
+{
+  "actual": "PASS",
+  "errors": [],
+  "changed_file_scope": [
+    "README.md",
+    "docs/README.md",
+    "scripts/m4/isolated_queue_outcome_encounter.gd",
+    "scripts/m4/isolated_queue_outcome_encounter.gd.uid",
+    "scripts/m4/m403_queue_adapter.gd",
+    "scripts/m4/m403_queue_adapter.gd.uid",
+    "tests/actors/README.md",
+    "tests/actors/evidence/m4-03a/canonical-logs.zip",
+    "tests/actors/evidence/m4-03a/canonical-results.json",
+    "tests/actors/evidence/m4-03a/coverage.json",
+    "tests/actors/evidence/m4-03a/development-logs.zip",
+    "tests/actors/evidence/m4-03a/final-results.json",
+    "tests/actors/evidence/m4-03a/inherited-counts.json",
+    "tests/actors/evidence/m4-03a/logs.zip",
+    "tests/actors/evidence/m4-03a/m4-03a-scenarios.json",
+    "tests/actors/evidence/m4-03a/reference-provenance.json",
+    "tests/actors/evidence/m4-03a/review-checks.json",
+    "tests/actors/evidence/m4-03a/run-record.json",
+    "tests/actors/evidence/m4-03a/source-comparison.json",
+    "tests/actors/evidence/m4-03a/source-sha256.json",
+    "tests/actors/evidence/m4-03a/tooling.zip",
+    "tests/actors/evidence/m4-03a/trace-comparison.json",
+    "tests/actors/m4_03_queue_foundation_proof.gd",
+    "tests/actors/m4_03_queue_foundation_proof.gd.uid",
+    "tests/combat/README.md",
+    "tests/combat/verify.py"
+  ],
+  "preexisting_unchanged_blobs_outside_allowed": 303,
+  "tested_source_hashes_match_commit_snapshot_delivery": 117,
+  "Markdown_files": 16,
+  "local_links": 432,
+  "fragments": 95,
+  "optional_report_validator_adversarial_checks": [
+    {
+      "case": "count bool",
+      "actual": "PASS"
+    },
+    {
+      "case": "count fraction",
+      "actual": "PASS"
+    },
+    {
+      "case": "missing case",
+      "actual": "PASS"
+    },
+    {
+      "case": "duplicate case ID",
+      "actual": "PASS"
+    },
+    {
+      "case": "failed case",
+      "actual": "PASS"
+    },
+    {
+      "case": "skipped case",
+      "actual": "PASS"
+    },
+    {
+      "case": "missing assertion",
+      "actual": "PASS"
+    },
+    {
+      "case": "false assertion",
+      "actual": "PASS"
+    },
+    {
+      "case": "bool assertion",
+      "actual": "PASS"
+    },
+    {
+      "case": "wrong case count",
+      "actual": "PASS"
+    },
+    {
+      "case": "extra root",
+      "actual": "PASS"
+    },
+    {
+      "case": "nonzero failures",
+      "actual": "PASS"
+    },
+    {
+      "case": "frame count",
+      "actual": "PASS"
+    },
+    {
+      "case": "duplicate JSON key",
+      "actual": "PASS"
+    },
+    {
+      "case": "nonfinite NaN",
+      "actual": "PASS"
+    },
+    {
+      "case": "nonfinite infinity",
+      "actual": "PASS"
+    },
+    {
+      "case": "malformed JSON",
+      "actual": "PASS"
+    },
+    {
+      "case": "missing stdout",
+      "actual": "PASS"
+    },
+    {
+      "case": "wrong total stdout",
+      "actual": "PASS"
+    },
+    {
+      "case": "duplicate summary",
+      "actual": "PASS"
+    }
+  ],
+  "existing_runner_lines_removed": false,
+  "archive_integrity": [
+    {
+      "file": "development-logs.zip",
+      "entries": 460,
+      "actual": "PASS"
+    },
+    {
+      "file": "logs.zip",
+      "entries": 246,
+      "actual": "PASS"
+    },
+    {
+      "file": "canonical-logs.zip",
+      "entries": 233,
+      "actual": "PASS"
+    },
+    {
+      "file": "tooling.zip",
+      "entries": 2,
+      "actual": "PASS"
+    }
+  ],
+  "operations_contract_audit": [
+    {
+      "operation": "advance",
+      "input": "exact5/types",
+      "authority": "external owned capability",
+      "identity": "session/generation/queue",
+      "phase": "OPEN",
+      "revision": "expected current; +1 unavailable only",
+      "mutation": "one unavailable disposition/cursor only",
+      "result": "READY/APPLIED or REJECTED with exact reason",
+      "rejection": "N-all",
+      "retry": "READY/rejection repeatable",
+      "duplicate": "published skip replay stale revision",
+      "snapshot": "detached",
+      "test": "focused scenario assertions and full before/after roots"
+    },
+    {
+      "operation": "restart",
+      "input": "exact6 envelope/exact fixture/actor/plan schemas",
+      "authority": "external owned capability",
+      "identity": "session/current generation/queue",
+      "phase": "UNINITIALIZED/OPEN only; no legal SEALED transition in A",
+      "revision": "expected current; G+1/revision0",
+      "mutation": "complete detached candidate root once",
+      "result": "APPLIED/RESTARTED or REJECTED with exact reason",
+      "rejection": "N-all",
+      "retry": "old generation rejects",
+      "duplicate": "recycled actor IDs do not recycle queue identity",
+      "snapshot": "detached",
+      "test": "invalid last actor/plan retains valid opportunity; old request rejection"
+    },
+    {
+      "operation": "reads/progress diagnostic",
+      "input": "no mutation request; actor ID or exact7 pure facts",
+      "authority": "none to read",
+      "identity": "copy of current root; pure synthetic facts never imported",
+      "phase": "no publication",
+      "revision": "unchanged",
+      "mutation": "none",
+      "result": "derived view only",
+      "rejection": "N-all",
+      "retry": "same inputs same result",
+      "duplicate": "no grants/receipts/counters",
+      "snapshot": "deep detached",
+      "test": "copy isolation and R49-01 predicate-only cases; full M403-44 deferred"
+    }
+  ],
+  "cross_contract": [
+    "source/API/test schemas aligned",
+    "all invalid mutations N-all",
+    "revision only on publication",
+    "dispositions never receipts",
+    "snapshots never authority",
+    "reset identity binds generation",
+    "full M403 scenarios not promoted by A subsets"
+  ],
+  "not_run": [
+    "independent code/evidence review",
+    "GUI/keyboard/visual acceptance",
+    "B/C action/close/terminal integration"
+  ],
+  "commands": [
+    "python3 /tmp/wanderer_m403a_review.py",
+    "git diff --check"
+  ]
+}

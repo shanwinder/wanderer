@@ -1217,3 +1217,29 @@ collision regressions. Current total is55focused cases/1,188assertions; original
 M4-01 remains78cases/525checks. Fresh full73/canonical69stages pass and Legacy
 6cases/5,892frames match. See [namespace fix and actual evidence](../actors/README.md#r48-01--operation-id-namespace-review-fix).
 No runner code or existing expectations changed in this review fix.
+
+## Optional M4-03A isolated queue foundation proof
+
+`--m4-queue-foundation-proof` adds three parse checks and the new focused executable
+proof. It does not alter default behavior or existing proof/negative-test gates.
+Its report validation requires exact JSON shape/types, unique sequential M403A
+case IDs, actual assertion details and matching counts/stdout. Duplicate keys,
+nonfinite constants, errors, failures, nonzero exits and timeouts fail verification.
+No real action, completion receipt, seal/round close, retreat or terminal API exists
+in this foundation. [API, Thai notes and actual coverage](../actors/README.md#m4-03a--isolated-queue--eligibility-foundation).
+
+```sh
+python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m403a-new-full --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --guidance-decision-proof --guidance-main-proof --m4-data-proof --m4-atomic-clock-proof --m4-queue-foundation-proof --cutover-baseline /tmp/wanderer-m3a04-reference-20261105-2
+```
+
+Use fresh paths and an available, provenanced pre-cutover reference. The local
+44-stage reference above is inherited; its results match the durable M4-01 record,
+and 77 tracked source files match commit `1728c5e678c5065278d1251d50449a8820eb5dae`.
+It is not a newly executed reference. Fresh canonical `67d68bb` all-flags run has
+73 PASS stages; candidate `ad0e95c` adds four for77 PASS. Focused94cases/1,165assertions,
+M40178/525 and M40255/1,188 unchanged; Legacy6cases/5,892frames identical.
+[Exact engine/commands/commits, exits and limitations](../actors/evidence/m4-03a/run-record.json),
+[canonical](../actors/evidence/m4-03a/canonical-results.json),
+[final](../actors/evidence/m4-03a/final-results.json),
+[raw logs](../actors/evidence/m4-03a/logs.zip).
+GUI/keyboard/visual acceptance NOT RUN; M403-44 full boundary proof deferred to B/C.

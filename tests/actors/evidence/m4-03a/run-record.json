@@ -1,0 +1,124 @@
+{
+  "task": "M4-03A — Isolated Queue / Eligibility Foundation Implemented Candidate",
+  "date": "2026-11-07",
+  "timezone": "Asia/Bangkok",
+  "repository": "shanwinder/wanderer",
+  "canonical_branch": "visual-combat-test-1",
+  "canonical_commit": "67d68bb1f78fa8efedcb719079a4487c531c49d4",
+  "tested_source_sha": "ad0e95ced3a7f52651d4dc671ef64634d3d148f9",
+  "branch": "codex/m4-03a-isolated-queue-eligibility-foundation",
+  "delivery_head": {
+    "resolution": "Exact final SHA recorded in Draft PR body and final owner report; git rev-parse HEAD on delivered branch",
+    "reason": "A committed file cannot contain its own Git commit hash; this record and its source-manifest proof travel with delivery",
+    "tested_relation": "Only four authorized Markdown files and new evidence added after tested source; all 117 source hashes verified"
+  },
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "executable": "/Applications/Godot.app/Contents/MacOS/Godot",
+  "authorization": "Owner attached M4-03A implementation task dated 7 November 2026; A only, Draft PR and stop",
+  "preflight": {
+    "initial_tree_clean": true,
+    "initial_branch": "visual-combat-test-1",
+    "local_fetched_live_merge_base": "67d68bb1f78fa8efedcb719079a4487c531c49d4",
+    "PR49_merged": true,
+    "PR49_merge_sha": "67d68bb1f78fa8efedcb719079a4487c531c49d4",
+    "PR49_local_remote_branch_absent": true,
+    "dedicated_M403A_branch_PR_before_work": "none",
+    "PR2_PR17": "open/unmerged; head commits fac99aa/c162d63 not ancestors of canonical; untouched"
+  },
+  "commands": {
+    "version": "/Applications/Godot.app/Contents/MacOS/Godot --version",
+    "canonical": "python3 /tmp/wanderer-m403a-canonical-source-20261107/tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m403a-canonical-20261107-2 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --guidance-decision-proof --guidance-main-proof --m4-data-proof --m4-atomic-clock-proof --cutover-baseline /tmp/wanderer-m3a04-reference-20261105-2",
+    "final": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m403a-final-20261107 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --guidance-decision-proof --guidance-main-proof --m4-data-proof --m4-atomic-clock-proof --m4-queue-foundation-proof --cutover-baseline /tmp/wanderer-m3a04-reference-20261105-2",
+    "focused": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m403a-development-20261107-3 --m4-queue-foundation-proof",
+    "packaging": "python3 /tmp/wanderer_m403a_package.py",
+    "review": "python3 /tmp/wanderer_m403a_review.py; git diff --check",
+    "canonical_source": "git archive 67d68bb1f78fa8efedcb719079a4487c531c49d4 | tar -x -C /tmp/wanderer-m403a-canonical-source-20261107; git init and git add in that disposable source only"
+  },
+  "execution_access": "Final/canonical commands executed outside filesystem sandbox for macOS certificate/settings access, same engine/test conditions; no test gate changes",
+  "outputs": {
+    "canonical": "/private/tmp/wanderer-m403a-canonical-20261107-2",
+    "final": "/private/tmp/wanderer-m403a-final-20261107",
+    "reference": "/private/tmp/wanderer-m3a04-reference-20261105-2"
+  },
+  "expected": "Focused A proof PASS; inherited suites/counts/source unchanged; Legacy exact; no unexpected errors/timeouts",
+  "actual": {
+    "status": "PASS within A executable scope",
+    "canonical_stages": 73,
+    "candidate_stages": 77,
+    "runner_exit_codes": {
+      "canonical": 0,
+      "final": 0,
+      "focused_corrected": 0
+    },
+    "all_stage_exit_codes": 0,
+    "independent_cases": 94,
+    "assertion_checks": 1165,
+    "per_frame_checks": 0,
+    "M401_cases": 78,
+    "M401_checks": 525,
+    "M402_cases": 55,
+    "M402_checks": 1188,
+    "identical_inherited_count_suites": 20,
+    "legacy_cases": 6,
+    "legacy_frames": 5892,
+    "negative_expected_errors": 5,
+    "unexpected_errors": 0,
+    "timeouts": 0,
+    "tested_source_hashes": 117,
+    "canonical_protected_source_hashes": 110
+  },
+  "reference_provenance": {
+    "file": "reference-provenance.json",
+    "source_matches": 77,
+    "stages": 44,
+    "inherited_not_rerun": true
+  },
+  "development": [
+    {
+      "run": "wanderer-m403a-canonical-20261107",
+      "runner_exit": 1,
+      "status": "FAIL — sandbox environment",
+      "actual": "Unchanged canonical import exits0 but reports macOS CA/settings errors; not counted as verified baseline"
+    },
+    {
+      "run": "wanderer-m403a-development-20261107-1",
+      "runner_exit": 1,
+      "status": "FAIL — code defect",
+      "actual": "83 cases,1045 checks,3 failed assertions and3 engine errors: invalid-type actor ID compared to String; fixed exists guard"
+    },
+    {
+      "run": "wanderer-m403a-development-20261107-2",
+      "runner_exit": 1,
+      "status": "FAIL — harness defect despite Godot exit0",
+      "actual": "92 cases,1139 checks,0 assertion failures but10 engine errors formatting wrong-type capability; runner correctly fails"
+    },
+    {
+      "run": "wanderer-m403a-development-20261107-3",
+      "runner_exit": 0,
+      "status": "PASS — corrected focused run",
+      "actual": "94 cases,1165 assertions,0 failures/errors; no failed run relabelled PASS"
+    }
+  ],
+  "not_run": [
+    "M403-44 seal/open-next end-to-end",
+    "legal SEALED Abort/Restart",
+    "actual completion producer B/C",
+    "effect/action callbacks",
+    "terminal/outcome/summary",
+    "M402-06 end-to-end",
+    "M402-24 full integration",
+    "GUI/F5/F6 manual keyboard/visual acceptance",
+    "M4-03B/C implementation",
+    "NPC rescue/retreat policy",
+    "production integration"
+  ],
+  "limits": [
+    "Finite foundation, no real effect/completion producer; eligible opportunity remains current",
+    "Pure diagnostic facts do not prove M403-44 end-to-end; no seal/open-next API",
+    "No legal SEALED transition in A; Abort-before-Restart integration deferred",
+    "Roster cap discrepancy recorded from actual isolated validators; no arbitrary caps added",
+    "Synchronous single-threaded proof; capability/underscore conventions are not hostile-code security",
+    "117 tested hashes verified after documentation/evidence changes; no second runtime run claimed"
+  ],
+  "stop": "Draft PR / Awaiting Independent Code & Evidence Review; no merge, auto-merge, branch deletion or B/C follow-on"
+}

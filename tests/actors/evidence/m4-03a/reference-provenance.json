@@ -1,0 +1,318 @@
+{
+  "status": "PASS",
+  "commit": "1728c5e678c5065278d1251d50449a8820eb5dae",
+  "inherited_not_rerun": true,
+  "results_equal_durable_record": true,
+  "durable_record": "tests/actors/evidence/m4-01/reference-results.json",
+  "stages": 44,
+  "tracked_source_matches": [
+    {
+      "path": "art/references/generated/chatgpt_2026-08-05_14-04-14.png",
+      "sha256": "77e8a8804b6d48b1f84f0506f2477cd2c5df808430256dcebcdbe7281edb66f0"
+    },
+    {
+      "path": "art/references/generated/chatgpt_2026-08-07_14-30-00.png",
+      "sha256": "ee48f028aeb47be703cfae48646d3f974781931eb4eb429a4d542e33c4f2e459"
+    },
+    {
+      "path": "art/references/generated/chatgpt_2026-08-07_14-30-15.png",
+      "sha256": "9c69cf88bc38db4b55ab5061c35cd4e5641812854aab5bd750615d1f535c649e"
+    },
+    {
+      "path": "art/references/generated/chatgpt_2026-08-10_09-49-29.png",
+      "sha256": "e7c83b0b238f2c8e2fab5d1f49149073d04bf0a70586f532302e78c335c77ec1"
+    },
+    {
+      "path": "art/references/generated/chatgpt_2026-08-10_09-50-33.png",
+      "sha256": "11ec8d537fc77da84b1d98601f049b5a35b5d5bd2e73e024af3cfe517d9220ba"
+    },
+    {
+      "path": "art/references/generated/chatgpt_2026-08-12_01-48-34.png",
+      "sha256": "c0f4a1b598cfe021b8cb58711bee3ff1ed2fe4d4d36b2914a9799b31c605873c"
+    },
+    {
+      "path": "art/references/generated/chatgpt_2026-08-12_01-48-44.png",
+      "sha256": "ce47e98e7e518a383c7551799c4ff6580344c5538fb77a66679c144f55f2f815"
+    },
+    {
+      "path": "art/references/generated/chatgpt_2026-08-16_23-54-47.png",
+      "sha256": "34dd54c841617794c712c894f8a5ce3595c1fe8589736ed1a297c20702a57efc"
+    },
+    {
+      "path": "art/references/legacy/rondo.png",
+      "sha256": "3dec803c5ce9f928dbb79c73892e92aba6178d911dcb78e356bf08edf1e8b246"
+    },
+    {
+      "path": "art/references/legacy/untitled_01.png",
+      "sha256": "906f24dc7154f3088b66024d68d7eb1225e21667d4bec275daf58ba7dafd9512"
+    },
+    {
+      "path": "art/references/legacy/untitled_02.png",
+      "sha256": "9af18847416250b75335535a6b253460bd5a8b17e1bda0f4c3285aafeeb37ddf"
+    },
+    {
+      "path": "art/references/legacy/untitled_03.png",
+      "sha256": "a91d38a86a23c037d771f0be288be2d24e84b3aa34b94ec454488e9bea7da65a"
+    },
+    {
+      "path": "art/references/legacy/untitled_04.png",
+      "sha256": "ed787b7b1db68a490ee51552288cef6561798ae53eb82246aad2b2588d11d20d"
+    },
+    {
+      "path": "art/references/player/hero_01.png",
+      "sha256": "07fddf0511f1810252b8a28e7aa92b555a3ebe81e4e6513d525a87a741045889"
+    },
+    {
+      "path": "art/references/player/hero_02.png",
+      "sha256": "31a7dee9095eda21891de0a5ac598364710c9c0179c787c226b15270d4a46af3"
+    },
+    {
+      "path": "art/references/screenshots/screenshot_2026-08-12_21-51-02.png",
+      "sha256": "73fc239d3718f4cab6bf48d686108a48ede6403e319e441a655b1c912b521b15"
+    },
+    {
+      "path": "art/references/screenshots/screenshot_2026-08-14_00-54-09.png",
+      "sha256": "2069d978cdd902020cfa1c1dce5fc663caab2a8db8e16debacd9be77c116fba3"
+    },
+    {
+      "path": "art/references/screenshots/screenshot_2026-08-15_06-42-08.png",
+      "sha256": "1514f5580779f62b2f7a79f44055d1658a5e0ef8403d4635fa2bc4b2e29f6483"
+    },
+    {
+      "path": "art/references/screenshots/screenshot_2026-08-15_06-43-05.png",
+      "sha256": "db7b4c00119c17918667beead0e7ba137bc833676b967dfe7d287a0c2d5fb45b"
+    },
+    {
+      "path": "art/references/screenshots/screenshot_2026-08-15_06-43-55.png",
+      "sha256": "206df2f339d4ed084c92df6840fa9b25fee34cd6d3385a1032eda22783e24d5c"
+    },
+    {
+      "path": "assets/sprites/characters/npc_01/battle/idle/npc_01_idle.png",
+      "sha256": "438d9cb0dbc5dfc6ab3d8c68a57968eeb0b2f2443094b1f4f03e50c7e0faa20f"
+    },
+    {
+      "path": "assets/sprites/characters/npc_02/battle/idle/npc_02_idle.png",
+      "sha256": "6c21b5cfea66abd4f75fd37b120b7f80757e989696a7ef948672413416c43099"
+    },
+    {
+      "path": "assets/sprites/characters/npc_03/battle/idle/npc_03_idle.png",
+      "sha256": "969520e7dad7431d97a6b2bb35ef6647d72d53f87c9f8e54ee0ebda678c0e50a"
+    },
+    {
+      "path": "assets/sprites/characters/player/battle/idle/player_idle_01.png",
+      "sha256": "106b688fb1824c018dda3c080e05b67cb0dec76a3ac2c53783d2688c09027ac8"
+    },
+    {
+      "path": "assets/sprites/characters/player/battle/idle/player_idle_02.png",
+      "sha256": "d1e8bf52d48d75d17fcf0e23c1285ab1872620461feb1e79d6f62070df0e5a68"
+    },
+    {
+      "path": "assets/sprites/enemies/enemy_01/battle/idle/enemy_01_idle.png",
+      "sha256": "edde3d2da37ca0cbbdbb772489a7d593951e7ccb5baa5914b43a953aa4cc8902"
+    },
+    {
+      "path": "icon.svg",
+      "sha256": "6c80384360a5b269d1054bfb27241258154e2cc8167c522016fdc1820e84e0f8"
+    },
+    {
+      "path": "project.godot",
+      "sha256": "f5d966461191ce947ff0b7cba2635edb992e9a293cf0bb8265b08103011509d8"
+    },
+    {
+      "path": "scenes/combat/combat_autonomous_optin.tscn",
+      "sha256": "e3554e2123489bb4c60f8c8335925323440827df6126584255e05c69dce873e5"
+    },
+    {
+      "path": "scenes/combat/combat_prototype.tscn",
+      "sha256": "3f34a7e784dff2ca17bde1d6b12f3f739d7c1fd4b06483d207ae0e48fb374750"
+    },
+    {
+      "path": "scenes/combat/full_party_proof.tscn",
+      "sha256": "586dfa6ebce62e58fc08e2c25ec54d8d466e2d27531b588a06777d8fd6e4466b"
+    },
+    {
+      "path": "scenes/npc/npc_autonomy_proof.tscn",
+      "sha256": "29ef70acf53bf14d986341a032a54bd2d96395a877af844b0c2072ba2da54974"
+    },
+    {
+      "path": "scripts/actors/actor_definition.gd",
+      "sha256": "4896e969d823a81da0a7841a69db4523006ff8a207de10a12b1bb8a40a90ead3"
+    },
+    {
+      "path": "scripts/actors/actor_definition.gd.uid",
+      "sha256": "06871133191eb241dff87ce289cd06da5b847f2013b2fb34d05a505e40252610"
+    },
+    {
+      "path": "scripts/actors/actor_registry.gd",
+      "sha256": "3e5a843eeb80bcba9159a9e305a56e184077df4cde34f88db1758c72029090b1"
+    },
+    {
+      "path": "scripts/actors/actor_registry.gd.uid",
+      "sha256": "a3d503e669a6d069592da04d6a5daa48cd5ad374f10b2973dd789d55757e21ca"
+    },
+    {
+      "path": "scripts/actors/actor_runtime_state.gd",
+      "sha256": "465a16db923706de4aec1926f335e7c1b8ea88e009915bab0a49fbf7991d5d76"
+    },
+    {
+      "path": "scripts/actors/actor_runtime_state.gd.uid",
+      "sha256": "643976fdb502a4e674f85fc6e30921bb480fa45b70b91111a2b9ee45058ab997"
+    },
+    {
+      "path": "scripts/combat/combat_presentation_adapter.gd",
+      "sha256": "ba829f81dd9d34550021533569e4e7fe39c271be66978425ad74333037c22c36"
+    },
+    {
+      "path": "scripts/combat/combat_presentation_adapter.gd.uid",
+      "sha256": "a99f835dd9001c5965055aa59582304e5f62d3d53c494d07a72ec4a1e65ab6ff"
+    },
+    {
+      "path": "scripts/combat/combat_prototype.gd",
+      "sha256": "8334a1f8c4977d264a1498510b391835d89b8638d7684a0d7102b4c74bb2d3b2"
+    },
+    {
+      "path": "scripts/combat/combat_prototype.gd.uid",
+      "sha256": "5f379a69dceca54b91ea09dc199c9c75f6d43adeb531c2c9b61e2364dcae1f68"
+    },
+    {
+      "path": "scripts/combat/combat_targets.gd",
+      "sha256": "f9a0c13b001651ec538e10eb99815fd5e1b58c09b7480ce51cd2a8f93abd2b6c"
+    },
+    {
+      "path": "scripts/combat/combat_targets.gd.uid",
+      "sha256": "13f478f0bc9412555bea33e7f8f3d512caa94203f5acba8b32fa3f1c698fbe18"
+    },
+    {
+      "path": "scripts/combat/combat_turn_flow.gd",
+      "sha256": "fced86f5923990887f47107121e4839d4980f6b67b91407ba950221385688300"
+    },
+    {
+      "path": "scripts/combat/combat_turn_flow.gd.uid",
+      "sha256": "01b48d7163d9d3dd7d1895e7acca8d34bbb6b2d80b390e3ab25d78482ae1db34"
+    },
+    {
+      "path": "scripts/combat/full_party_encounter.gd",
+      "sha256": "39457f28f7f64759c5a15d34eea4b1b99e82488ecb5260bf1c3d7c0e84502c0c"
+    },
+    {
+      "path": "scripts/combat/full_party_encounter.gd.uid",
+      "sha256": "79dff825046cabfd93bba5eade940e60d49e79826f94fe9fb1f8d567319d37df"
+    },
+    {
+      "path": "scripts/combat/full_party_proof.gd",
+      "sha256": "a6d3f21dd9f4a6540d108dfa6319726b18a803ec2fb4616724cd94932b5d7a4e"
+    },
+    {
+      "path": "scripts/combat/full_party_proof.gd.uid",
+      "sha256": "b6c7387475bf8de62aec744411e1dda982d3b00884ca85939fc5cef966063c8b"
+    },
+    {
+      "path": "scripts/npc/npc_autonomy_proof.gd",
+      "sha256": "ee2eeb50d828c3e2f26ec0221c2f567f9a60909c92a1a61d7546a07c67672903"
+    },
+    {
+      "path": "scripts/npc/npc_autonomy_proof.gd.uid",
+      "sha256": "68e1213b3ecabf0d0bfd14e41defc9bb364f1f5713d0f1078a75b7a335ec5e65"
+    },
+    {
+      "path": "scripts/npc/npc_decision_resolver.gd",
+      "sha256": "4c043ad1db5e2955fbfabb6fbef4273a1a0ce5f2b8816cc2b036d066658d81ed"
+    },
+    {
+      "path": "scripts/npc/npc_decision_resolver.gd.uid",
+      "sha256": "19ba48f3ed8c2018ef82234384c18ec6a49a88c5517991fb3bd41793276bc2aa"
+    },
+    {
+      "path": "scripts/npc/npc_proof_encounter.gd",
+      "sha256": "c0ee13e41e5a186da48e6a5033548f961ac4aec335a1f86d233c20da2f1368cd"
+    },
+    {
+      "path": "scripts/npc/npc_proof_encounter.gd.uid",
+      "sha256": "86f799639c4e11bcde4184bb2a8d450a8ba1df267598407b13edbf73713e4ba0"
+    },
+    {
+      "path": "tests/actors/actor_data_proof.gd",
+      "sha256": "79c99b92eaa56a74b88d96f6a28f21e76a925284958def20b29e79391b7dd046"
+    },
+    {
+      "path": "tests/actors/actor_data_proof.gd.uid",
+      "sha256": "f97692d31c0da0a3a74cb689351347ee5ac0e6ef092d643eb37f5726c6e323b6"
+    },
+    {
+      "path": "tests/actors/actor_ownership_proof.gd",
+      "sha256": "7c40330295016a2fb634ac392ad88be861f0a5d83fc3688764a7b09b9747c13e"
+    },
+    {
+      "path": "tests/actors/actor_ownership_proof.gd.uid",
+      "sha256": "e9282dea26567e2b96a972132e3a65955eda4dfd0781344fb73041fe35115f55"
+    },
+    {
+      "path": "tests/actors/party_foundation_proof.gd",
+      "sha256": "a14b897362820c7b70e77a35a4ac5113dfbfe038f4b15a4250cea9c47768f2e7"
+    },
+    {
+      "path": "tests/actors/party_foundation_proof.gd.uid",
+      "sha256": "bb5672556bdbe444833aae9787106bf7645481e187799952eb65d998a0f6e9a1"
+    },
+    {
+      "path": "tests/actors/party_turn_proof.gd",
+      "sha256": "31d56ca958562c7b05792bf9bc6cf79ac893ab8a386091b769061fc94e0d2e29"
+    },
+    {
+      "path": "tests/actors/party_turn_proof.gd.uid",
+      "sha256": "a99802a635207ea84e3285d76ba54b6404235bc36a5505ab10eefdb825462d3c"
+    },
+    {
+      "path": "tests/combat/autonomous_main_integration.gd",
+      "sha256": "89f16b0d60248cd4b69401c0ec7e23c6b0047a17f250610aecacbbb1c78413f1"
+    },
+    {
+      "path": "tests/combat/autonomous_main_integration.gd.uid",
+      "sha256": "2d948c83b2cc8c4b8f92b8330380b949f752d273a26ff83dfb4dbcca26fb9570"
+    },
+    {
+      "path": "tests/combat/party_playable_integration.gd",
+      "sha256": "2ba3d6bdcff08686e6f3a1e4e23588d09c73b04347926c7168e9f4bd860ea443"
+    },
+    {
+      "path": "tests/combat/party_playable_integration.gd.uid",
+      "sha256": "95d6a87688b3d667260c8dd52d8a4636fbf29742433793db20d6edc9373fc184"
+    },
+    {
+      "path": "tests/combat/presentation_boundary.gd",
+      "sha256": "1112430efbdcd2a0f774a1504260f4db283bbeb64bda76c982b3b250ec87460f"
+    },
+    {
+      "path": "tests/combat/presentation_boundary.gd.uid",
+      "sha256": "c61c2a082d21a929e9fcc99cf8f1d4cb74cda872e9e77975ee2306d188b9b2fd"
+    },
+    {
+      "path": "tests/combat/queue_regression.gd",
+      "sha256": "b58315562e314e606fcfc9cfe0df14db2f4548992ff0506dd318dd5513d55b92"
+    },
+    {
+      "path": "tests/combat/queue_regression.gd.uid",
+      "sha256": "bf50cf0a049966ef18c9322698e11bd94e23628bb2472971283f2c2531992514"
+    },
+    {
+      "path": "tests/combat/verify.py",
+      "sha256": "52aa8d29281f6fd68a05c4f296a6d3ba49f105f9de5fc042fdd927fcf9491191"
+    },
+    {
+      "path": "tests/npc/decision_effect_proof.gd",
+      "sha256": "65dec3aa060a5a1566d736041a35d4c9a0d2309b18e6c20422f676873a92d9ca"
+    },
+    {
+      "path": "tests/npc/decision_effect_proof.gd.uid",
+      "sha256": "2cc34e6bc81835199644488a59313890b4dd6cdc21b4425f3aed8927e7b8bb19"
+    },
+    {
+      "path": "tests/npc/playable_integration.gd",
+      "sha256": "3bb936ee174e5e380931fa3475eb559227e465207a07742ca37e036cd42608d6"
+    },
+    {
+      "path": "tests/npc/playable_integration.gd.uid",
+      "sha256": "6406376782950db4c29156c5b24f1ecc7700c56a099345d94579980020366308"
+    }
+  ]
+}

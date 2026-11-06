@@ -1,6 +1,6 @@
 # Actor Definition, Runtime State & Encounter Ownership
 
-Proof ล่าสุด: [M4-02 — Isolated Atomic Effect / Clock Proof Candidate](#m4-02--isolated-atomic-effect--clock-proof-candidate) — แยกจาก production/M4-01; รอ independent review.
+Proof ล่าสุด: [M4-03A — Isolated Queue / Eligibility Foundation](#m4-03a--isolated-queue--eligibility-foundation) — isolated candidate / รอ independent code/evidence review; current milestone authority อยู่ที่ index.
 
 หัวข้อ M2B-01 ด้านล่างเป็นบันทึกขอบเขต/ผลเดิมจาก PR #33. สถานะปัจจุบันและ migration ใหม่อยู่ที่ [M2B-02](#m2b-02--single-source-encounter-hp); milestone authority อยู่ที่ [index](../../docs/README.md#current-status-and-next-roadmap).
 
@@ -1029,3 +1029,218 @@ Reviewed17 evidence files are preserved losslessly in [history](evidence/m4-02/r
 Await independent follow-up review; no claim that the reviewer has accepted the fix. Existing
 M402-06/D01–D05/M402-24 limitations and GUI/manual visual NOT RUN remain. No merge/auto-merge,
 production change, M4-03 or branch cleanup.
+
+## M4-03A — Isolated Queue / Eligibility Foundation
+
+**Implemented Candidate / Awaiting Independent Code & Evidence Review — 7 November 2026.**
+Separate owner task explicitly authorizes A runtime, focused tests, optional runner hook,
+documentation and evidence. [PR #49](https://github.com/shanwinder/wanderer/pull/49)
+merged at `67d68bb1f78fa8efedcb719079a4487c531c49d4`; its design approval alone was
+not implementation authorization. Current milestone authority remains the
+[index](../../docs/README.md#current-status-and-next-roadmap). Older Candidate and
+NOT RUN statements above retain their historical attribution.
+
+### Goal, source findings and ownership
+
+Answer who exists, who is actionable, which opportunity they own, and whether an
+invalid request can damage the queue. This is an executable foundation, not playable M4.
+
+| Source inspected | Existing ownership / boundary preserved |
+|---|---|
+| M4-01 Party state / Registry / Encounter | Definition immutable baseline; four validated Party pairs; Registry validates/copies runtimes, detached snapshots; original fixture damage/revision/grant and Restart APIs unchanged |
+| M4-02 aggregate / Strict Seal | One registry/root, episode/use/action/event ledgers; real fixture effect and completion issuer; session/G/revision/semantic close identity. OPEN→SEALED→CLOSED or explicit Abort; SEALED reset requires Abort. A never wraps its public mutations or borrows its receipts |
+| FullParty / GuidedEncounter / NPC Resolver | Production owns action grants, HP/Guard/HELP, queue and terminal; slot decisions independent under approved policy. Resolver still returns PLAYER_DEFEATED at Player0; production SKIP tokens are not A's unavailable dispositions |
+| Existing focused proofs / verify.py | Original M401/M402 assertions and reason codes untouched; fresh snapshot/import/parse/startup, optional proof flags, unexpected-error and timeout failure gates retained |
+
+[Encounter](../../scripts/m4/isolated_queue_outcome_encounter.gd) owns one `_root`;
+published `_root.registry` alone owns actor state. The
+[adapter](../../scripts/m4/m403_queue_adapter.gd) has **no live state**, only pure
+queue construction, eligibility, candidate validation and diagnostic calculations.
+Candidate snapshots are temporary detached data, reconstructed through the unchanged
+M4 factories/Registry before one root swap. No sequential writes to two aggregates.
+Atomicity means synchronous single-threaded publication, not hostile-code security.
+GDScript underscore fields/methods and fixture capability objects follow existing
+repository conventions; callers must not write internal fields.
+
+Snapshot exact18: `schema_version,session,generation,revision,phase,round_id,round_index,
+plan,initial_party,initial_enemies,actors,queue,active_operation,authorizations,
+action_receipts,clocks,outcome,summary`. `registry` objects are never returned.
+A owns no effect producer: active_operation is null and all five final dictionary
+domains are empty. The reserved empty domains cannot be populated by a fixture,
+advance request or candidate. Empty outcome/summary do not claim a classifier ran.
+
+**Roster source discrepancy:** M4-01 accepts valid unique actors without roster
+counts. M4-02 requires exactly one Player but does **not** impose NPC≤3, Enemy≤2
+or even a nonempty Enemy set. Those numeric caps belong to production FullParty's
+validator. A follows isolated factories without inventing those caps, adds the
+required nonempty Enemy roster, and tests the discrepancy explicitly. Example
+fixtures retain Player+3NPC+2Enemy; minimum Player+Enemy and a larger finite fixture
+are also proven. No dynamic unregister/addition exists within a generation.
+Player first, then NPCs in fixture encounter order, then Enemies in fixture order;
+Party/Enemy sets disjoint and complete. Every configured round must name that exact
+order once; caller cannot supply slot/opportunity IDs.
+
+### Exact API and protocol
+
+`Encounter.new(capability)` starts session identity, G0/revision0/UNINITIALIZED.
+No owner is issued through a read. Save the capability externally for authorized
+fixture operations. All reads return detached copies; wrong actor ID/type returns
+an empty actor row and five false eligibility predicates.
+
+| API | Exact input / result |
+|---|---|
+| `snapshot()` / `queue_snapshot()` | Detached complete view / queue dictionary; no mutation |
+| `actor_snapshot(id)` / `eligibility_snapshot(id)` | Detached M4 registry row / five derived predicates |
+| `current_opportunity()` | Detached current exact3 `opportunity_id,slot_id,actor_id`, or empty at uninitialized/drained boundary; no consumption or token |
+| `advance(request,capability)` | Exact5 `version:int=1,session:int,generation:int,expected_revision:int,queue_id:String`; either READY/SLOT_READY without publication, or one unavailable disposition and one cursor/revision increment |
+| `restart(request,capability)` | Same exact5 plus `fixture:Dictionary`; validates all actors/plan then publishes G+1/revision0, new queue/cursor0/dispositions empty. Explicit envelope adds optimistic identity/revision to the suggested fixture-only notation |
+| `progress_diagnostic()` | Derived read-only projection; never cached in root or recorded as queue phase |
+
+Fixture exact2 `actors:Array,round_plan:Array`. Each actor row exact2
+`definition,state`: original Definition exact4 and Party fixture exact3 or Enemy
+`{current_hp:int}`. Plan nonempty, each row exact2 `round_id:int>0,actor_order:Array`;
+subsequent round IDs consecutive, strictly typed, with overflow guarded. Order must
+match the complete initial roster in **every** entry. A reserves only plan[0]; later
+entries are validated but no open-next API executes them.
+
+Queue exact5 `queue_id,phase,opportunities,cursor,dispositions`:
+queue IDs include `m403/queue/session/generation/round`; each opportunity's slot and
+opportunity IDs use separate internal suffixes plus ordinal, never actor-chosen
+keys. Domain separation prevents
+current/future `slot_3_p`/`slot_4_p` actor names from preempting issuer identities.
+A queue is READY until all opportunities disposed, then DRAINED; READY means
+foundation inspection, **not gameplay round admission**. No RUNNING/action lock
+or effect authority is implied by READY. Round remains OPEN; no SUSPENDED stored.
+
+Disposition exact4 `slot_id:String,actor_id:String,kind:String=UNAVAILABLE,
+observed_revision:int` records the pre-advance revision. Each successful advance
+moves one cursor position, no loop, never passes an eligible actor. A-only invariant
+revision==cursor follows because no other within-generation writer exists. An
+eligible opportunity is returned indefinitely without creating/consuming a grant.
+A future real action/completion producer must be separately reviewed before it can
+dispose an eligible opportunity; there is no caller completion import.
+
+**Reason precedence:** exact request fields/version/types → session → generation →
+owned capability → phase → queue identity → expected revision → fixture/domain →
+complete candidate validation → publication. Session is a signed nonzero engine
+instance identity; no positive-only assumption. Shapes/types use no coercion.
+
+| Gate / result | Reason (`M403_` prefix) / revision |
+|---|---|
+| Missing/unknown fields, wrong scalar type/version | INVALID_FIELDS / N-all |
+| Foreign session / old generation | FOREIGN_SESSION / STALE_GENERATION / N-all |
+| Missing, wrong-type, foreign capability | UNAUTHORIZED / N-all |
+| Advance before initialized; reset outside UNINITIALIZED/OPEN | INVALID_PHASE / N-all; SEALED is not legally reachable in A |
+| Wrong queue / stale request revision | WRONG_QUEUE / STALE_REVISION / N-all |
+| Malformed actor/roster/lifecycle/finite plan | INVALID_RESTART / N-all |
+| Invalid detached candidate or forbidden transition | INVALID_CANDIDATE / N-all |
+| Eligible current slot | READY / SLOT_READY / N-all |
+| Unavailable current slot | APPLIED / SLOT_UNAVAILABLE / revision+1, cursor+1, disposition only |
+| Drained queue | REJECTED / BOUNDARY_DEPENDENCY / N-all; no automatic seal/next round |
+| Valid reset | APPLIED / RESTARTED / G+1, revision0 |
+
+Repeated READY reads are identical; replay after a published unavailable disposition
+gets STALE_REVISION (there is no request-ID/duplicate-action ledger in A). Repeated
+boundary denials issue nothing and return the same reason. Invalid Restart preserves
+the legitimate current opportunity and original fixture input. Old G requests reject
+before looking up reused IDs. Entire-root equality covers actors, registry snapshots,
+queue, cursor, G/revision, dispositions, plan/round identity and all inert domains.
+
+### Eligibility and deferred boundaries
+
+| Party state | actor_present | actor_actionable |
+|---|---|---|
+| ALIVE/PRESENT HP>0 | true | true |
+| DOWN/PRESENT HP0 | true | false |
+| DEAD/PRESENT HP0 | true | false |
+| ALIVE/RETREATED HP>0 | false | false |
+
+Enemy presence means retained Registry membership; HP>0 actionable, HP0 unavailable,
+no DEAD inference. `actor_exists` is independent of presence/actionability.
+`slot_eligible` additionally needs an undisposed owned opportunity;
+`queue_opportunity_available` additionally requires the cursor's current slot and
+OPEN/READY/no active operation. No duplicated gameplay eligibility switch exists.
+
+**Receipt safety:** no impact, completion, seal/close, Abort, open-round/next-round,
+Self-RETREAT, classifier, frozen-summary or arbitrary receipt import API exists.
+Unavailable dispositions are not DEFEND/SKIP actions or receipts. Candidate tests
+invoke internal validators/publication rejection with **invalid detached** data;
+they do not publish fake effects, valid receipts, CLOSED/SEALED or terminal roots.
+Legal SEALED→Abort→Restart and callback replay after real lock/impact are deferred
+with their B/C producers. Pure phase-validator rejection is the only A evidence.
+
+R49-01's pure adapter predicate takes exact7 diagnostic facts: `round_phase:String,
+queue_phase:String,pending:bool,completed_actions:int,active_party:int,
+active_enemies:int,has_next_round:bool`. On nonterminal active-side facts with no
+pending work it projects NO_REAL_PROGRESS for OPEN/DRAINED/zero actual completions,
+or PLAN_EXHAUSTED for CLOSED/no next entry. SUSPENDED is **derived only**. Synthetic
+predicate inputs are labelled PURE_PREDICATE_NOT_GAMEPLAY; never imported or treated
+as completion witnesses. A cannot naturally produce the full nonterminal drained or
+CLOSED boundary. Both full boundary operations remain deferred; no M403-44
+end-to-end PASS, no new operation added just to return its expected code. Fully
+unavailable A rosters are not falsely labelled nonterminal suspension.
+
+### Actual verification, coverage and reproduction
+
+Godot `4.7.2.stable.official.ed1daf0bf`, executable
+`/Applications/Godot.app/Contents/MacOS/Godot`, tested source `ad0e95c` (full SHA in
+run record). **94 M403A cases / 1,165 assertions / zero failures / zero per-frame checks.**
+Each assertion has an actual boolean record; counts match case detail and stdout.
+Fresh canonical **73 stages**, final candidate **77 stages**, all PASS. Unchanged
+M4-01 **78/525**; M4-02 **55/1,188**. Final unexpected errors/timeouts0; negative
+suite's five expected errors separate. Legacy **6 cases / 5,892 frames identical**
+to fresh canonical and the attributed pre-cutover reference. This is local Godot
+verification, not CI/independent review or manual visual acceptance.
+
+[Run record and exact commands](evidence/m4-03a/run-record.json),
+[focused scenarios and assertion detail](evidence/m4-03a/m4-03a-scenarios.json),
+[full coverage map](evidence/m4-03a/coverage.json),
+[final results](evidence/m4-03a/final-results.json),
+[fresh canonical](evidence/m4-03a/canonical-results.json),
+[source integrity](evidence/m4-03a/source-comparison.json),
+[inherited counts](evidence/m4-03a/inherited-counts.json),
+[Legacy differential](evidence/m4-03a/trace-comparison.json),
+[self-review checks](evidence/m4-03a/review-checks.json),
+[final raw logs](evidence/m4-03a/logs.zip),
+[canonical logs](evidence/m4-03a/canonical-logs.zip),
+[development failures/source snapshots](evidence/m4-03a/development-logs.zip).
+
+Coverage of M403-11/37/38/39/40 is **PARTIAL / FOUNDATION-ONLY**: unavailable Player
+cursor/identity, stale advance/reset requests and pending opportunity retention;
+no real action callbacks. M403-44 **DEFERRED TO B/C**, pure predicates only.
+M403-47/48 **FULLY PROVEN for this A candidate's regression/preservation scope**;
+no historical design matrix row rewritten. Other M403 gameplay scenarios deferred.
+M402-06 remains BLOCKED end-to-end, M402-24 PARTIAL. Actual individual M403A case
+expectations/inputs/results/before-after snapshots are in the scenario report.
+
+```sh
+python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m403a-new-focused --m4-queue-foundation-proof
+```
+
+Use a new directory each run. All-flags canonical/candidate reproduction and
+reference provenance are in run-record; source checkout must match its tested SHA.
+The opt-in hook adds three parse stages and one proof stage. Default and inherited
+flag behavior is unchanged. It rejects malformed/duplicate-key/nonfinite JSON,
+wrong types/counts/IDs, missing assertion detail, failures and stdout mismatches;
+engine errors/nonzero exits/timeouts independently fail. Development failures are
+separate from verified runs; no expectations or original assertions were weakened.
+
+### Thai learning notes — Goal → Concept → Do → Observe → Explain → Adjust → Commit
+
+1. **Roster กับ Queue:** roster คือรายชื่อเริ่มต้นที่ต้องเก็บครบ แม้ล้มหรือออกสนาม;
+   queue คือโอกาสเรียงตามรายชื่อนั้นในรอบที่กำหนด ไม่ลบชื่อคนที่ไม่พร้อม.
+2. **Opportunity กับ Action:** โอกาสบอกว่าใครอยู่ตำแหน่งนี้ แต่ยังไม่ได้โจมตีหรือ
+   ป้องกัน การอ่าน NPC ที่พร้อมไม่ทำให้เกิด token หรือ damage.
+3. **Eligibility กับ Decision:** ดู ALIVE/PRESENT/HP และสิทธิ์ slot ว่าทำได้หรือไม่;
+   การเลือกช่วยหรือถอยเป็น policy อีกงานหนึ่ง ไม่มี NPC AI ใหม่ใน A.
+4. **Disposition กับ Receipt:** ข้าม Player DOWN แล้ว cursor ไป NPC ได้ เป็นบันทึก
+   ว่าโอกาสใช้ไม่ได้ ไม่ใช่ receipt ว่าทำ action เสร็จ และไม่ทำให้ clock เดิน.
+5. **Revision กับ Generation:** revision นับ publication ใน encounter รุ่นเดียว;
+   Restart เปลี่ยน generation แม้ใช้ actor ID เดิม จึงกัน request เก่าข้ามรุ่น.
+6. **Atomic Restart:** ตรวจ actor สุดท้ายและแผนทั้งหมดก่อนเปลี่ยน root ถ้าผิด
+   คนแรกก็ไม่ถูก reset และคิวเดิมยังเดินต่อได้ ทดลองดู rejected reset ใน report.
+7. **Copy Snapshot:** เปลี่ยน HP/cursor ในสำเนาเป็นการเขียนบนกระดาษอีกใบ;
+   authority ต้องคงเดิม ไม่เช่นนั้น UI จะเปลี่ยนผลรบได้โดยไม่มีสิทธิ์.
+8. **ยังไม่ใช่ Playable M4:** ทำ → รัน → ดู assertion/before-after → อธิบาย →
+   แก้ข้อผิดพลาดชนิดข้อมูล → commit source ที่ตรวจแล้ว เราพิสูจน์ฐานข้อมูล/คิว;
+   ไม่มี RESCUE/RETREAT ใหม่ ไม่มีผลจบรบหรือฉากเล่นใหม่. หยุด Draft รอ review.
