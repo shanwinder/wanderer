@@ -1210,3 +1210,10 @@ fresh output directory and the actual Godot 4.7.2 executable. The pre-cutover
 canonical and feature runs are fresh. See [schemas, actual coverage, evidence and
 Thai learning notes](../actors/README.md#m4-02--isolated-atomic-effect--clock-proof-candidate).
 This isolated proof enables no production RESCUE/clock/death or UI.
+
+
+R48-01 refresh: the same optional flag also executes the current/future operation-ID
+collision regressions. Current total is55focused cases/1,188assertions; original
+M4-01 remains78cases/525checks. Fresh full73/canonical69stages pass and Legacy
+6cases/5,892frames match. See [namespace fix and actual evidence](../actors/README.md#r48-01--operation-id-namespace-review-fix).
+No runner code or existing expectations changed in this review fix.

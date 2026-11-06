@@ -1,7 +1,7 @@
 {
   "actual": "PASS",
   "canonical_commit": "4969f32d5de1d1795968bdab5c3a85bbfe00c460",
-  "tested_commit": "fe4d36bc030505375934ec8bf995638b7004094f",
+  "tested_commit": "a8dda626aa268bc243dfaac827b70a5465eaa7e9",
   "tested_source_files": 111,
   "matches": [
     {
@@ -486,10 +486,10 @@
     },
     {
       "path": "scripts/m4/isolated_rescue_clock_encounter.gd",
-      "sha256": "588e4ca2aaad750fe7cebb2ebe2499b6a11cf4156a9b5d6d407cad883751fa8d",
-      "committed": "588e4ca2aaad750fe7cebb2ebe2499b6a11cf4156a9b5d6d407cad883751fa8d",
-      "snapshot": "588e4ca2aaad750fe7cebb2ebe2499b6a11cf4156a9b5d6d407cad883751fa8d",
-      "current": "588e4ca2aaad750fe7cebb2ebe2499b6a11cf4156a9b5d6d407cad883751fa8d",
+      "sha256": "fca891508ae2f6339e58eb5aee651eabfc0e0fd757e80c5c16b9d146f525b348",
+      "committed": "fca891508ae2f6339e58eb5aee651eabfc0e0fd757e80c5c16b9d146f525b348",
+      "snapshot": "fca891508ae2f6339e58eb5aee651eabfc0e0fd757e80c5c16b9d146f525b348",
+      "current": "fca891508ae2f6339e58eb5aee651eabfc0e0fd757e80c5c16b9d146f525b348",
       "actual": "PASS"
     },
     {
@@ -630,10 +630,10 @@
     },
     {
       "path": "tests/actors/m4_02_atomic_effect_clock_proof.gd",
-      "sha256": "3ff221aaa4e3adfa4da3473f8e1b92a942640362e551c8403940513a944e3a4f",
-      "committed": "3ff221aaa4e3adfa4da3473f8e1b92a942640362e551c8403940513a944e3a4f",
-      "snapshot": "3ff221aaa4e3adfa4da3473f8e1b92a942640362e551c8403940513a944e3a4f",
-      "current": "3ff221aaa4e3adfa4da3473f8e1b92a942640362e551c8403940513a944e3a4f",
+      "sha256": "3070f3c70b1477e993d69b66c924249559b8c607e1443d3f0a606d5ae713ee10",
+      "committed": "3070f3c70b1477e993d69b66c924249559b8c607e1443d3f0a606d5ae713ee10",
+      "snapshot": "3070f3c70b1477e993d69b66c924249559b8c607e1443d3f0a606d5ae713ee10",
+      "current": "3070f3c70b1477e993d69b66c924249559b8c607e1443d3f0a606d5ae713ee10",
       "actual": "PASS"
     },
     {

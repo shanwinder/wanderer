@@ -884,6 +884,12 @@ Token/request version ต้องเป็น int1. Actor/operation/slot/event 
 Fixture capability ต้องตรง object ที่ constructor รับสำหรับ restart/lock/fixture damage/slot/seal/
 next-round/Abort authorization. Impact/completion/cancel/close/Abort ใช้ exact owned tokens.
 Grant edits ไม่สร้างสิทธิ์; changed session/generation ตรวจเป็น identity reason ก่อน lookup reused IDs.
+**Operation namespace (R48-01):** prefix `slot_` สงวนให้ fixture issuer ทั้งหมด รวม IDs ของรอบอนาคต.
+Caller RESCUE ที่ใช้ prefix นี้รับ `REJECTED / M4_RESERVED_OPERATION_ID` ก่อน `_issue_action()`;
+N-all รวม HP/state/episodes/resources/grants/authorization serial/witness/revision. Existing
+shape/identity/authority/phase/ID-validity gates ยังมาก่อน namespace gate. Internal slot token
+ยังมี operation ID `slot_<round>_<slot>` เดิม; request8/action13/event10 schemas ไม่เปลี่ยน.
+
 Action identity อยู่ใน root ของ session/generation/operation; event key เป็น session/generation/issuer/event;
 semantic key เป็น session/generation/round. Authorization serial ไม่ reset ข้าม generation.
 
@@ -901,12 +907,12 @@ Seal ต้อง Player/active Party/Enemy available; dependency fail ไม่
 ### Actual executable coverage and evidence
 
 Actual executable/version: `/Applications/Godot.app/Contents/MacOS/Godot`,
-`4.7.2.stable.official.ed1daf0bf`. Tested commit: `fe4d36bc030505375934ec8bf995638b7004094f`.
+`4.7.2.stable.official.ed1daf0bf`. Tested commit หลัง R48-01: `a8dda626aa268bc243dfaac827b70a5465eaa7e9`.
 Expected ทุก executable suite ผ่าน/ไม่มี unexpected errors/Legacy ตรง canonical; actual ตรง expected:
 
 | Fresh run / check | Recorded actual |
 |---|---|
-| Focused M4-02 | **53 independent cases / 1,137 assertions / 0 failures / 0 per-frame checks** |
+| Focused M4-02 | **55 independent cases / 1,188 assertions / 0 failures / 0 per-frame checks** |
 | Original M4-01 | **78 independent cases / 525 checks**, original files unchanged |
 | Canonical `4969f32` all existing flags | **69 stages PASS**, runner/stage exits0 |
 | Feature tested commit all flags + M4-02 | **73 stages PASS**, runner/stage exits0 |
@@ -920,7 +926,7 @@ Initial sandboxed import failed on system certificate/editor settings access (ex
 correctly classified FAIL); no gameplay ran. Preserved logs, then reran with required system access.
 Focused development runs2/3 passed52cases/1,021checks; initial full candidate passed73stages/
 53cases/1,129checks. Final corrections add cross-round event-ID uniqueness and exact M402-30/37
-ordering; final recorded run above passes53cases/1,137checks. No production expectation weakened.
+ordering; reviewed delivery `36d6c9d` recorded53cases/1,137checks. That historical evidence is retained in [review-history.zip](evidence/m4-02/review-history.zip). R48-01 current run above passes55cases/1,188checks; original53 case assertion counts are identical. No production expectation weakened.
 
 M402 matrix มีหลาย subcases จึงไม่ใช่ “45 executable cases”. `M402-06-validator-only`
 ตรวจ detached DEAD eligibility เท่านั้น; end-to-end death-before-pending-rescue ยังคง **BLOCKED**.
@@ -976,3 +982,50 @@ reconstruction เหมาะกับ proof ขนาดเล็ก ยัง
 Agent GUI/F5/F6/manual keyboard/visual acceptance **NOT RUN**; native headless startup checks
 ไม่ใช่ manual acceptance. No scene/asset/presentation changes. Independent review และ owner gate ถัดไปยังรอ.
 หยุดหลัง Draft PR; ไม่ merge/auto-merge/cleanup branches, ไม่เริ่ม M4-03/Main/NPC/terminal integration.
+
+
+### R48-01 — Operation ID namespace review fix
+
+Owner task “PR #48 Review Fix R48-01”, 6 พฤศจิกายน 2026 (Asia/Bangkok), อนุญาต fix บน branch/PR เดิม.
+อ่าน [Independent Review5795418762](https://github.com/shanwinder/wanderer/pull/48#pullrequestreview-5795418762)
+บน `36d6c9dee54118614a845c6e1827315df9989127`; local/live remote ตรง reviewed HEAD, tree สะอาด,
+canonical/merge-base ยัง `4969f32`. Draft/unmerged; #2/#17 ไม่แตะ.
+
+**Root cause:** `lock_rescue()` ยอมรับ caller operation ID ที่มี prefix `slot_` ขณะที่ issuer สร้าง
+key รูป `slot_<round>_<slot>` ใน `_root.actions` เดียวกัน. การ cancel/complete ไม่ลบ historical key
+จึงจอง key ของ slot ปัจจุบันหรืออนาคตไว้ได้ ทำให้ real receipt ไม่ครบและ seal ไม่สำเร็จ.
+
+**Fix:** ใช้ `SLOT_OPERATION_PREFIX` ร่วมกันใน issuer และ RESCUE admission; reject prefix นี้ทั้งหมด
+ด้วย `M4_RESERVED_OPERATION_ID` ก่อนสร้าง grant/candidate/เพิ่ม serial. ไม่ล้าง ledger เพื่อแก้ deadlock,
+ไม่เปลี่ยน tokens/requests/slot behavior หรือ bypass Strict Seal.
+
+| Added regression ID | Exact input in OPEN round3 | Expected and actual |
+|---|---|---|
+| R48-01-current-round | RESCUE h→t, `operation_id=slot_3_damage_p` | REJECTED/reserved/N-all/no token; real round3 slot locks, applies damage, completes receipt, seals and closes normally |
+| R48-01-future-round | RESCUE h→t, `operation_id=slot_4_damage_p` | REJECTED/reserved/N-all/no token; real round3 closes, validated next round4 opens, real round4 slot locks/applies/completes/seals/closes |
+
+Both tests assert final CLOSED, exact issuer key belongs to COMPLETED FIXTURE_DAMAGE, real receipt
+matches the key and outstanding is empty. Whole-root equality on rejection includes resource/episode/
+authorization/consumption/revision accounting. Existing53 cases retain all1,137 assertions; added2 cases
+supply51 assertions, giving **55 cases / 1,188 assertions / 0 failures** (zero per-frame assertions).
+M402-01–45 matrix/statuses and blocked/deferred dependencies remain unchanged; supplemental IDs are
+recorded in [coverage.json](evidence/m4-02/coverage.json), not renumbered into M402.
+
+**Fresh verification:** actual Godot `4.7.2.stable.official.ed1daf0bf`; focused+M4-01 run passes;
+committed source `a8dda626aa268bc243dfaac827b70a5465eaa7e9` full run **73/73 PASS**;
+fresh canonical **69/69 PASS**. M4-01 **78 cases/525 checks**; all19 inherited counts identical;
+Legacy **6 cases/5,892 frames identical**; final/canonical exits0, unexpected0/timeouts0,
+negative suite exactly5 expected errors.111/111 tested hashes and89/89 protected canonical files match;
+request/action/event schema lines and runner byte-identical to reviewed HEAD.
+
+Pre-fix red run reproduces the current collision and fails11 assertions plus2 secondary missing-event/
+receipt script errors; future case was not reached in that failed harness path. Logs and failed source
+are preserved in [development logs](evidence/m4-02/development-logs.zip). The regression harness now
+records failed admission without cascading missing-token errors. This is not counted as a successful
+or complete55-case run. Both current/future cases pass in the corrected focused/full runs.
+Reviewed17 evidence files are preserved losslessly in [history](evidence/m4-02/review-history.zip).
+[Exact new commands/commits/exits](evidence/m4-02/run-record.json) and raw snapshots remain linked above.
+
+Await independent follow-up review; no claim that the reviewer has accepted the fix. Existing
+M402-06/D01–D05/M402-24 limitations and GUI/manual visual NOT RUN remain. No merge/auto-merge,
+production change, M4-03 or branch cleanup.

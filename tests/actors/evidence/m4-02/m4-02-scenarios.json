@@ -1,5 +1,5 @@
 {
-  "assertion_checks": 1137,
+  "assertion_checks": 1188,
   "blocked": [
     {
       "id": "M402-06",
@@ -31019,6 +31019,1135 @@
         "abort_count": 0,
         "full_root_sha256": "2ec35cc036ffdafe37e420d0db336cdcd84084a1933c70d35c951774aa741788"
       }
+    },
+    {
+      "actual": "PASS",
+      "assertion_count": 19,
+      "failure_count": 0,
+      "id": "R48-01-current-round",
+      "preconditions": "OPEN round3; caller attempts issuer-owned operation ID before any slot is issued",
+      "steps": [
+        {
+          "actual_result": {
+            "hp_delta": 0,
+            "reason_code": "M4_RESERVED_OPERATION_ID",
+            "status": "REJECTED"
+          },
+          "exact_input": [
+            {
+              "generation": 1,
+              "helper_id": "h",
+              "kind": "RESCUE",
+              "operation_id": "slot_3_damage_p",
+              "session": -9223371792142301725,
+              "target_id": "t",
+              "version": 1,
+              "window_id": "-9223371792142301725/1/3"
+            },
+            "<owned fixture capability>"
+          ],
+          "expected_invariant": "N-all",
+          "expected_reason": "M4_RESERVED_OPERATION_ID",
+          "method": "lock_rescue",
+          "N_all_actual": true,
+          "N_effect_actual": "not required",
+          "before_root_sha256": "d11b432a8f86583cc8475e8bae1da3da3c0a78b1e4544ec4707f22a5e1e8389d",
+          "after_root_sha256": "d11b432a8f86583cc8475e8bae1da3da3c0a78b1e4544ec4707f22a5e1e8389d"
+        },
+        {
+          "actual_result": {
+            "reason_code": "M4_FIXTURE_AUTHORIZED",
+            "status": "AUTHORIZED",
+            "token": {
+              "amount": 1,
+              "authorization_id": 1,
+              "episode_id": "",
+              "generation": 1,
+              "helper_id": "p",
+              "kind": "FIXTURE_DAMAGE",
+              "lock_revision": 0,
+              "operation_id": "slot_3_damage_p",
+              "session": -9223371792142301725,
+              "slot_id": "damage_p",
+              "target_id": "p",
+              "version": 1,
+              "window_id": "-9223371792142301725/1/3"
+            }
+          },
+          "exact_input": [
+            "damage_p",
+            "<owned fixture capability>"
+          ],
+          "expected_invariant": "",
+          "expected_reason": "M4_FIXTURE_AUTHORIZED",
+          "method": "lock_fixture_slot",
+          "N_all_actual": "not required",
+          "N_effect_actual": "not required",
+          "before_root_sha256": "d11b432a8f86583cc8475e8bae1da3da3c0a78b1e4544ec4707f22a5e1e8389d",
+          "after_root_sha256": "71617a938c543280e5d37a677e4c93a96ea0567c4273434d1f1deec65ea4de2d"
+        },
+        {
+          "actual_result": {
+            "clock_after": {},
+            "clock_before": {},
+            "episode_id": "",
+            "helper_id": "p",
+            "hp_delta": -1,
+            "life_after": "ALIVE",
+            "life_before": "ALIVE",
+            "operation_id": "slot_3_damage_p",
+            "reason_code": "M4_FIXTURE_DAMAGE",
+            "rescue_use_delta": 0,
+            "revision": 2,
+            "status": "APPLIED",
+            "target_id": "p"
+          },
+          "exact_input": [
+            {
+              "amount": 1,
+              "authorization_id": 1,
+              "episode_id": "",
+              "generation": 1,
+              "helper_id": "p",
+              "kind": "FIXTURE_DAMAGE",
+              "lock_revision": 0,
+              "operation_id": "slot_3_damage_p",
+              "session": -9223371792142301725,
+              "slot_id": "damage_p",
+              "target_id": "p",
+              "version": 1,
+              "window_id": "-9223371792142301725/1/3"
+            }
+          ],
+          "expected_invariant": "",
+          "expected_reason": "M4_FIXTURE_DAMAGE",
+          "method": "impact",
+          "N_all_actual": "not required",
+          "N_effect_actual": "not required",
+          "before_root_sha256": "71617a938c543280e5d37a677e4c93a96ea0567c4273434d1f1deec65ea4de2d",
+          "after_root_sha256": "ef14a78199522cf8ad84fafd661453745ce4c418866bf9c23f2cc7f047c1aca8"
+        },
+        {
+          "actual_result": {
+            "hp_delta": 0,
+            "reason_code": "M4_ACTION_COMPLETED",
+            "status": "APPLIED"
+          },
+          "exact_input": [
+            {
+              "amount": 1,
+              "authorization_id": 1,
+              "episode_id": "",
+              "generation": 1,
+              "helper_id": "p",
+              "kind": "FIXTURE_DAMAGE",
+              "lock_revision": 0,
+              "operation_id": "slot_3_damage_p",
+              "session": -9223371792142301725,
+              "slot_id": "damage_p",
+              "target_id": "p",
+              "version": 1,
+              "window_id": "-9223371792142301725/1/3"
+            }
+          ],
+          "expected_invariant": "",
+          "expected_reason": "M4_ACTION_COMPLETED",
+          "method": "complete",
+          "N_all_actual": "not required",
+          "N_effect_actual": "not required",
+          "before_root_sha256": "ef14a78199522cf8ad84fafd661453745ce4c418866bf9c23f2cc7f047c1aca8",
+          "after_root_sha256": "82329f100412cbaab6d581a4c15cb8c96cd7a919c632f8440a26a3f217656f18"
+        },
+        {
+          "actual_result": {
+            "reason_code": "M4_ROUND_SEALED",
+            "status": "AUTHORIZED",
+            "tokens": [
+              {
+                "authorization_id": 2,
+                "event_id": "c3",
+                "generation": 1,
+                "issuer_id": "M402_FINITE_FIXTURE",
+                "kind": "ROUND_CLOSED",
+                "round_id": 3,
+                "sealed_revision": 4,
+                "session": -9223371792142301725,
+                "version": 1,
+                "witness_id": "-9223371792142301725/1/3"
+              },
+              {
+                "authorization_id": 3,
+                "event_id": "alternate_c3",
+                "generation": 1,
+                "issuer_id": "M402_FINITE_FIXTURE",
+                "kind": "ROUND_CLOSED",
+                "round_id": 3,
+                "sealed_revision": 4,
+                "session": -9223371792142301725,
+                "version": 1,
+                "witness_id": "-9223371792142301725/1/3"
+              }
+            ]
+          },
+          "exact_input": [
+            "<owned fixture capability>"
+          ],
+          "expected_invariant": "",
+          "expected_reason": "M4_ROUND_SEALED",
+          "method": "seal",
+          "N_all_actual": "not required",
+          "N_effect_actual": "not required",
+          "before_root_sha256": "82329f100412cbaab6d581a4c15cb8c96cd7a919c632f8440a26a3f217656f18",
+          "after_root_sha256": "d8c2900c56fc7ba3f82ffe9aa9f5b0a45a2a5a049c47719eb4cad127b61c0767"
+        },
+        {
+          "actual_result": {
+            "episodes": [
+              {
+                "actor_id": "t",
+                "budget_after": 2,
+                "budget_before": 2,
+                "episode_id": "-9223371792142301725/1/1",
+                "reason_code": "M4_BLEED_GRACE"
+              }
+            ],
+            "hp_delta": 0,
+            "reason_code": "M4_ROUND_CLOSED",
+            "status": "APPLIED"
+          },
+          "exact_input": [
+            {
+              "authorization_id": 2,
+              "event_id": "c3",
+              "generation": 1,
+              "issuer_id": "M402_FINITE_FIXTURE",
+              "kind": "ROUND_CLOSED",
+              "round_id": 3,
+              "sealed_revision": 4,
+              "session": -9223371792142301725,
+              "version": 1,
+              "witness_id": "-9223371792142301725/1/3"
+            }
+          ],
+          "expected_invariant": "",
+          "expected_reason": "M4_ROUND_CLOSED",
+          "method": "apply_round_closed",
+          "N_all_actual": "not required",
+          "N_effect_actual": "not required",
+          "before_root_sha256": "d8c2900c56fc7ba3f82ffe9aa9f5b0a45a2a5a049c47719eb4cad127b61c0767",
+          "after_root_sha256": "29c6264568168c0e5e3d48e99437c02744c31c6841ff06e1c286bae868cb054b"
+        }
+      ],
+      "raw_evidence": "scenarios.zip:final/m4-02-scenarios.json#R48-01-current-round",
+      "before": {
+        "session": -9223371792142301725,
+        "generation": 1,
+        "revision": 0,
+        "phase": "OPEN",
+        "round_id": 3,
+        "actors": {
+          "enemy": {
+            "definition": {
+              "actor_id": "enemy",
+              "base_max_hp": 10,
+              "display_name": "enemy",
+              "role": "ENEMY"
+            },
+            "membership": "ENEMY",
+            "state": {
+              "actor_id": "enemy",
+              "can_act": true,
+              "current_hp": 10,
+              "max_hp": 10
+            }
+          },
+          "h": {
+            "definition": {
+              "actor_id": "h",
+              "base_max_hp": 10,
+              "display_name": "h",
+              "role": "NPC"
+            },
+            "membership": "PARTY",
+            "state": {
+              "actor_id": "h",
+              "current_hp": 10,
+              "eligible": true,
+              "life_state": "ALIVE",
+              "max_hp": 10,
+              "participation": "PRESENT",
+              "role": "NPC",
+              "schema_version": 1
+            }
+          },
+          "j": {
+            "definition": {
+              "actor_id": "j",
+              "base_max_hp": 10,
+              "display_name": "j",
+              "role": "NPC"
+            },
+            "membership": "PARTY",
+            "state": {
+              "actor_id": "j",
+              "current_hp": 10,
+              "eligible": true,
+              "life_state": "ALIVE",
+              "max_hp": 10,
+              "participation": "PRESENT",
+              "role": "NPC",
+              "schema_version": 1
+            }
+          },
+          "p": {
+            "definition": {
+              "actor_id": "p",
+              "base_max_hp": 10,
+              "display_name": "p",
+              "role": "PLAYER"
+            },
+            "membership": "PARTY",
+            "state": {
+              "actor_id": "p",
+              "current_hp": 10,
+              "eligible": true,
+              "life_state": "ALIVE",
+              "max_hp": 10,
+              "participation": "PRESENT",
+              "role": "PLAYER",
+              "schema_version": 1
+            }
+          },
+          "t": {
+            "definition": {
+              "actor_id": "t",
+              "base_max_hp": 10,
+              "display_name": "t",
+              "role": "NPC"
+            },
+            "membership": "PARTY",
+            "state": {
+              "actor_id": "t",
+              "current_hp": 0,
+              "eligible": false,
+              "life_state": "DOWN",
+              "max_hp": 10,
+              "participation": "PRESENT",
+              "role": "NPC",
+              "schema_version": 1
+            }
+          }
+        },
+        "episodes": {
+          "t": {
+            "active": true,
+            "budget": 2,
+            "entry_round": 3,
+            "episode_id": "-9223371792142301725/1/1"
+          }
+        },
+        "rescue_uses": {
+          "h": 1,
+          "j": 1,
+          "p": 1,
+          "t": 1
+        },
+        "help_reference": {
+          "h": 1,
+          "j": 1,
+          "p": 1,
+          "t": 1
+        },
+        "abort_count": 0,
+        "full_root_sha256": "d11b432a8f86583cc8475e8bae1da3da3c0a78b1e4544ec4707f22a5e1e8389d"
+      },
+      "after": {
+        "session": -9223371792142301725,
+        "generation": 1,
+        "revision": 5,
+        "phase": "CLOSED",
+        "round_id": 3,
+        "actors": {
+          "enemy": {
+            "definition": {
+              "actor_id": "enemy",
+              "base_max_hp": 10,
+              "display_name": "enemy",
+              "role": "ENEMY"
+            },
+            "membership": "ENEMY",
+            "state": {
+              "actor_id": "enemy",
+              "can_act": true,
+              "current_hp": 10,
+              "max_hp": 10
+            }
+          },
+          "h": {
+            "definition": {
+              "actor_id": "h",
+              "base_max_hp": 10,
+              "display_name": "h",
+              "role": "NPC"
+            },
+            "membership": "PARTY",
+            "state": {
+              "actor_id": "h",
+              "current_hp": 10,
+              "eligible": true,
+              "life_state": "ALIVE",
+              "max_hp": 10,
+              "participation": "PRESENT",
+              "role": "NPC",
+              "schema_version": 1
+            }
+          },
+          "j": {
+            "definition": {
+              "actor_id": "j",
+              "base_max_hp": 10,
+              "display_name": "j",
+              "role": "NPC"
+            },
+            "membership": "PARTY",
+            "state": {
+              "actor_id": "j",
+              "current_hp": 10,
+              "eligible": true,
+              "life_state": "ALIVE",
+              "max_hp": 10,
+              "participation": "PRESENT",
+              "role": "NPC",
+              "schema_version": 1
+            }
+          },
+          "p": {
+            "definition": {
+              "actor_id": "p",
+              "base_max_hp": 10,
+              "display_name": "p",
+              "role": "PLAYER"
+            },
+            "membership": "PARTY",
+            "state": {
+              "actor_id": "p",
+              "current_hp": 9,
+              "eligible": true,
+              "life_state": "ALIVE",
+              "max_hp": 10,
+              "participation": "PRESENT",
+              "role": "PLAYER",
+              "schema_version": 1
+            }
+          },
+          "t": {
+            "definition": {
+              "actor_id": "t",
+              "base_max_hp": 10,
+              "display_name": "t",
+              "role": "NPC"
+            },
+            "membership": "PARTY",
+            "state": {
+              "actor_id": "t",
+              "current_hp": 0,
+              "eligible": false,
+              "life_state": "DOWN",
+              "max_hp": 10,
+              "participation": "PRESENT",
+              "role": "NPC",
+              "schema_version": 1
+            }
+          }
+        },
+        "episodes": {
+          "t": {
+            "active": true,
+            "budget": 2,
+            "entry_round": 3,
+            "episode_id": "-9223371792142301725/1/1"
+          }
+        },
+        "rescue_uses": {
+          "h": 1,
+          "j": 1,
+          "p": 1,
+          "t": 1
+        },
+        "help_reference": {
+          "h": 1,
+          "j": 1,
+          "p": 1,
+          "t": 1
+        },
+        "abort_count": 0,
+        "full_root_sha256": "29c6264568168c0e5e3d48e99437c02744c31c6841ff06e1c286bae868cb054b"
+      }
+    },
+    {
+      "actual": "PASS",
+      "assertion_count": 32,
+      "failure_count": 0,
+      "id": "R48-01-future-round",
+      "preconditions": "OPEN round3; caller attempts issuer-owned operation ID before any slot is issued",
+      "steps": [
+        {
+          "actual_result": {
+            "hp_delta": 0,
+            "reason_code": "M4_RESERVED_OPERATION_ID",
+            "status": "REJECTED"
+          },
+          "exact_input": [
+            {
+              "generation": 1,
+              "helper_id": "h",
+              "kind": "RESCUE",
+              "operation_id": "slot_4_damage_p",
+              "session": -9223371788182878766,
+              "target_id": "t",
+              "version": 1,
+              "window_id": "-9223371788182878766/1/3"
+            },
+            "<owned fixture capability>"
+          ],
+          "expected_invariant": "N-all",
+          "expected_reason": "M4_RESERVED_OPERATION_ID",
+          "method": "lock_rescue",
+          "N_all_actual": true,
+          "N_effect_actual": "not required",
+          "before_root_sha256": "f77a18c5500e0f16cc05b7354b00adbdaf7ffb3c611345513b616f7913b60a79",
+          "after_root_sha256": "f77a18c5500e0f16cc05b7354b00adbdaf7ffb3c611345513b616f7913b60a79"
+        },
+        {
+          "actual_result": {
+            "reason_code": "M4_FIXTURE_AUTHORIZED",
+            "status": "AUTHORIZED",
+            "token": {
+              "amount": 1,
+              "authorization_id": 1,
+              "episode_id": "",
+              "generation": 1,
+              "helper_id": "p",
+              "kind": "FIXTURE_DAMAGE",
+              "lock_revision": 0,
+              "operation_id": "slot_3_damage_p",
+              "session": -9223371788182878766,
+              "slot_id": "damage_p",
+              "target_id": "p",
+              "version": 1,
+              "window_id": "-9223371788182878766/1/3"
+            }
+          },
+          "exact_input": [
+            "damage_p",
+            "<owned fixture capability>"
+          ],
+          "expected_invariant": "",
+          "expected_reason": "M4_FIXTURE_AUTHORIZED",
+          "method": "lock_fixture_slot",
+          "N_all_actual": "not required",
+          "N_effect_actual": "not required",
+          "before_root_sha256": "f77a18c5500e0f16cc05b7354b00adbdaf7ffb3c611345513b616f7913b60a79",
+          "after_root_sha256": "53ff018f07ff73be9b106e6eb20c491c25fffb208a0310bcb69778f4891c1094"
+        },
+        {
+          "actual_result": {
+            "clock_after": {},
+            "clock_before": {},
+            "episode_id": "",
+            "helper_id": "p",
+            "hp_delta": -1,
+            "life_after": "ALIVE",
+            "life_before": "ALIVE",
+            "operation_id": "slot_3_damage_p",
+            "reason_code": "M4_FIXTURE_DAMAGE",
+            "rescue_use_delta": 0,
+            "revision": 2,
+            "status": "APPLIED",
+            "target_id": "p"
+          },
+          "exact_input": [
+            {
+              "amount": 1,
+              "authorization_id": 1,
+              "episode_id": "",
+              "generation": 1,
+              "helper_id": "p",
+              "kind": "FIXTURE_DAMAGE",
+              "lock_revision": 0,
+              "operation_id": "slot_3_damage_p",
+              "session": -9223371788182878766,
+              "slot_id": "damage_p",
+              "target_id": "p",
+              "version": 1,
+              "window_id": "-9223371788182878766/1/3"
+            }
+          ],
+          "expected_invariant": "",
+          "expected_reason": "M4_FIXTURE_DAMAGE",
+          "method": "impact",
+          "N_all_actual": "not required",
+          "N_effect_actual": "not required",
+          "before_root_sha256": "53ff018f07ff73be9b106e6eb20c491c25fffb208a0310bcb69778f4891c1094",
+          "after_root_sha256": "7c83f6e0d431fe4223b5000940640eeb80a60d732b425e5c8f7a69c982248543"
+        },
+        {
+          "actual_result": {
+            "hp_delta": 0,
+            "reason_code": "M4_ACTION_COMPLETED",
+            "status": "APPLIED"
+          },
+          "exact_input": [
+            {
+              "amount": 1,
+              "authorization_id": 1,
+              "episode_id": "",
+              "generation": 1,
+              "helper_id": "p",
+              "kind": "FIXTURE_DAMAGE",
+              "lock_revision": 0,
+              "operation_id": "slot_3_damage_p",
+              "session": -9223371788182878766,
+              "slot_id": "damage_p",
+              "target_id": "p",
+              "version": 1,
+              "window_id": "-9223371788182878766/1/3"
+            }
+          ],
+          "expected_invariant": "",
+          "expected_reason": "M4_ACTION_COMPLETED",
+          "method": "complete",
+          "N_all_actual": "not required",
+          "N_effect_actual": "not required",
+          "before_root_sha256": "7c83f6e0d431fe4223b5000940640eeb80a60d732b425e5c8f7a69c982248543",
+          "after_root_sha256": "88a7f699251b449d598daad9fb2b5418433e34b436e6e47a0ce2a22965cc2dd5"
+        },
+        {
+          "actual_result": {
+            "reason_code": "M4_ROUND_SEALED",
+            "status": "AUTHORIZED",
+            "tokens": [
+              {
+                "authorization_id": 2,
+                "event_id": "c3",
+                "generation": 1,
+                "issuer_id": "M402_FINITE_FIXTURE",
+                "kind": "ROUND_CLOSED",
+                "round_id": 3,
+                "sealed_revision": 4,
+                "session": -9223371788182878766,
+                "version": 1,
+                "witness_id": "-9223371788182878766/1/3"
+              },
+              {
+                "authorization_id": 3,
+                "event_id": "alternate_c3",
+                "generation": 1,
+                "issuer_id": "M402_FINITE_FIXTURE",
+                "kind": "ROUND_CLOSED",
+                "round_id": 3,
+                "sealed_revision": 4,
+                "session": -9223371788182878766,
+                "version": 1,
+                "witness_id": "-9223371788182878766/1/3"
+              }
+            ]
+          },
+          "exact_input": [
+            "<owned fixture capability>"
+          ],
+          "expected_invariant": "",
+          "expected_reason": "M4_ROUND_SEALED",
+          "method": "seal",
+          "N_all_actual": "not required",
+          "N_effect_actual": "not required",
+          "before_root_sha256": "88a7f699251b449d598daad9fb2b5418433e34b436e6e47a0ce2a22965cc2dd5",
+          "after_root_sha256": "98b897c0cc00aff4457779f2f5cd3dfdf731e92243685e82eb2aca5beb2761f4"
+        },
+        {
+          "actual_result": {
+            "episodes": [
+              {
+                "actor_id": "t",
+                "budget_after": 2,
+                "budget_before": 2,
+                "episode_id": "-9223371788182878766/1/1",
+                "reason_code": "M4_BLEED_GRACE"
+              }
+            ],
+            "hp_delta": 0,
+            "reason_code": "M4_ROUND_CLOSED",
+            "status": "APPLIED"
+          },
+          "exact_input": [
+            {
+              "authorization_id": 2,
+              "event_id": "c3",
+              "generation": 1,
+              "issuer_id": "M402_FINITE_FIXTURE",
+              "kind": "ROUND_CLOSED",
+              "round_id": 3,
+              "sealed_revision": 4,
+              "session": -9223371788182878766,
+              "version": 1,
+              "witness_id": "-9223371788182878766/1/3"
+            }
+          ],
+          "expected_invariant": "",
+          "expected_reason": "M4_ROUND_CLOSED",
+          "method": "apply_round_closed",
+          "N_all_actual": "not required",
+          "N_effect_actual": "not required",
+          "before_root_sha256": "98b897c0cc00aff4457779f2f5cd3dfdf731e92243685e82eb2aca5beb2761f4",
+          "after_root_sha256": "6e902fefb5968a8678dfb6d0497cc1bb428f8de613c14de636aeaf7431875a1b"
+        },
+        {
+          "actual_result": {
+            "hp_delta": 0,
+            "reason_code": "M4_NEXT_ROUND",
+            "status": "APPLIED"
+          },
+          "exact_input": [
+            4,
+            "<owned fixture capability>"
+          ],
+          "expected_invariant": "",
+          "expected_reason": "M4_NEXT_ROUND",
+          "method": "next_round",
+          "N_all_actual": "not required",
+          "N_effect_actual": "not required",
+          "before_root_sha256": "6e902fefb5968a8678dfb6d0497cc1bb428f8de613c14de636aeaf7431875a1b",
+          "after_root_sha256": "5609d25c564ec60d4d63f218216d90922c0f7421f65d83558ef6f0d11883a1c5"
+        },
+        {
+          "actual_result": {
+            "reason_code": "M4_FIXTURE_AUTHORIZED",
+            "status": "AUTHORIZED",
+            "token": {
+              "amount": 1,
+              "authorization_id": 4,
+              "episode_id": "",
+              "generation": 1,
+              "helper_id": "p",
+              "kind": "FIXTURE_DAMAGE",
+              "lock_revision": 6,
+              "operation_id": "slot_4_damage_p",
+              "session": -9223371788182878766,
+              "slot_id": "damage_p",
+              "target_id": "p",
+              "version": 1,
+              "window_id": "-9223371788182878766/1/4"
+            }
+          },
+          "exact_input": [
+            "damage_p",
+            "<owned fixture capability>"
+          ],
+          "expected_invariant": "",
+          "expected_reason": "M4_FIXTURE_AUTHORIZED",
+          "method": "lock_fixture_slot",
+          "N_all_actual": "not required",
+          "N_effect_actual": "not required",
+          "before_root_sha256": "5609d25c564ec60d4d63f218216d90922c0f7421f65d83558ef6f0d11883a1c5",
+          "after_root_sha256": "33b02af673c9c3967b6e759000e538dfa9e6739e08d37e9cdf89edd6938ca8c4"
+        },
+        {
+          "actual_result": {
+            "clock_after": {},
+            "clock_before": {},
+            "episode_id": "",
+            "helper_id": "p",
+            "hp_delta": -1,
+            "life_after": "ALIVE",
+            "life_before": "ALIVE",
+            "operation_id": "slot_4_damage_p",
+            "reason_code": "M4_FIXTURE_DAMAGE",
+            "rescue_use_delta": 0,
+            "revision": 8,
+            "status": "APPLIED",
+            "target_id": "p"
+          },
+          "exact_input": [
+            {
+              "amount": 1,
+              "authorization_id": 4,
+              "episode_id": "",
+              "generation": 1,
+              "helper_id": "p",
+              "kind": "FIXTURE_DAMAGE",
+              "lock_revision": 6,
+              "operation_id": "slot_4_damage_p",
+              "session": -9223371788182878766,
+              "slot_id": "damage_p",
+              "target_id": "p",
+              "version": 1,
+              "window_id": "-9223371788182878766/1/4"
+            }
+          ],
+          "expected_invariant": "",
+          "expected_reason": "M4_FIXTURE_DAMAGE",
+          "method": "impact",
+          "N_all_actual": "not required",
+          "N_effect_actual": "not required",
+          "before_root_sha256": "33b02af673c9c3967b6e759000e538dfa9e6739e08d37e9cdf89edd6938ca8c4",
+          "after_root_sha256": "cf0117b992bc894001f90214bbd349109cfce98cf174ee720930428a577e5571"
+        },
+        {
+          "actual_result": {
+            "hp_delta": 0,
+            "reason_code": "M4_ACTION_COMPLETED",
+            "status": "APPLIED"
+          },
+          "exact_input": [
+            {
+              "amount": 1,
+              "authorization_id": 4,
+              "episode_id": "",
+              "generation": 1,
+              "helper_id": "p",
+              "kind": "FIXTURE_DAMAGE",
+              "lock_revision": 6,
+              "operation_id": "slot_4_damage_p",
+              "session": -9223371788182878766,
+              "slot_id": "damage_p",
+              "target_id": "p",
+              "version": 1,
+              "window_id": "-9223371788182878766/1/4"
+            }
+          ],
+          "expected_invariant": "",
+          "expected_reason": "M4_ACTION_COMPLETED",
+          "method": "complete",
+          "N_all_actual": "not required",
+          "N_effect_actual": "not required",
+          "before_root_sha256": "cf0117b992bc894001f90214bbd349109cfce98cf174ee720930428a577e5571",
+          "after_root_sha256": "ba6c9590fd5a28b26f227051ac59c79b8f1a5d7de7131cb5c671815662840253"
+        },
+        {
+          "actual_result": {
+            "reason_code": "M4_ROUND_SEALED",
+            "status": "AUTHORIZED",
+            "tokens": [
+              {
+                "authorization_id": 5,
+                "event_id": "c4",
+                "generation": 1,
+                "issuer_id": "M402_FINITE_FIXTURE",
+                "kind": "ROUND_CLOSED",
+                "round_id": 4,
+                "sealed_revision": 10,
+                "session": -9223371788182878766,
+                "version": 1,
+                "witness_id": "-9223371788182878766/1/4"
+              },
+              {
+                "authorization_id": 6,
+                "event_id": "alternate_c4",
+                "generation": 1,
+                "issuer_id": "M402_FINITE_FIXTURE",
+                "kind": "ROUND_CLOSED",
+                "round_id": 4,
+                "sealed_revision": 10,
+                "session": -9223371788182878766,
+                "version": 1,
+                "witness_id": "-9223371788182878766/1/4"
+              }
+            ]
+          },
+          "exact_input": [
+            "<owned fixture capability>"
+          ],
+          "expected_invariant": "",
+          "expected_reason": "M4_ROUND_SEALED",
+          "method": "seal",
+          "N_all_actual": "not required",
+          "N_effect_actual": "not required",
+          "before_root_sha256": "ba6c9590fd5a28b26f227051ac59c79b8f1a5d7de7131cb5c671815662840253",
+          "after_root_sha256": "8c58d1fe607bb6cd77746e316978757457433333f143e888ab2aa58c5c564cb1"
+        },
+        {
+          "actual_result": {
+            "episodes": [
+              {
+                "actor_id": "t",
+                "budget_after": 1,
+                "budget_before": 2,
+                "episode_id": "-9223371788182878766/1/1",
+                "reason_code": "M4_BLEED_TICK"
+              }
+            ],
+            "hp_delta": 0,
+            "reason_code": "M4_ROUND_CLOSED",
+            "status": "APPLIED"
+          },
+          "exact_input": [
+            {
+              "authorization_id": 5,
+              "event_id": "c4",
+              "generation": 1,
+              "issuer_id": "M402_FINITE_FIXTURE",
+              "kind": "ROUND_CLOSED",
+              "round_id": 4,
+              "sealed_revision": 10,
+              "session": -9223371788182878766,
+              "version": 1,
+              "witness_id": "-9223371788182878766/1/4"
+            }
+          ],
+          "expected_invariant": "",
+          "expected_reason": "M4_ROUND_CLOSED",
+          "method": "apply_round_closed",
+          "N_all_actual": "not required",
+          "N_effect_actual": "not required",
+          "before_root_sha256": "8c58d1fe607bb6cd77746e316978757457433333f143e888ab2aa58c5c564cb1",
+          "after_root_sha256": "b081f8cd6a2e0f02331623406298830eabb295a677065509533c85958ec62559"
+        }
+      ],
+      "raw_evidence": "scenarios.zip:final/m4-02-scenarios.json#R48-01-future-round",
+      "before": {
+        "session": -9223371788182878766,
+        "generation": 1,
+        "revision": 0,
+        "phase": "OPEN",
+        "round_id": 3,
+        "actors": {
+          "enemy": {
+            "definition": {
+              "actor_id": "enemy",
+              "base_max_hp": 10,
+              "display_name": "enemy",
+              "role": "ENEMY"
+            },
+            "membership": "ENEMY",
+            "state": {
+              "actor_id": "enemy",
+              "can_act": true,
+              "current_hp": 10,
+              "max_hp": 10
+            }
+          },
+          "h": {
+            "definition": {
+              "actor_id": "h",
+              "base_max_hp": 10,
+              "display_name": "h",
+              "role": "NPC"
+            },
+            "membership": "PARTY",
+            "state": {
+              "actor_id": "h",
+              "current_hp": 10,
+              "eligible": true,
+              "life_state": "ALIVE",
+              "max_hp": 10,
+              "participation": "PRESENT",
+              "role": "NPC",
+              "schema_version": 1
+            }
+          },
+          "j": {
+            "definition": {
+              "actor_id": "j",
+              "base_max_hp": 10,
+              "display_name": "j",
+              "role": "NPC"
+            },
+            "membership": "PARTY",
+            "state": {
+              "actor_id": "j",
+              "current_hp": 10,
+              "eligible": true,
+              "life_state": "ALIVE",
+              "max_hp": 10,
+              "participation": "PRESENT",
+              "role": "NPC",
+              "schema_version": 1
+            }
+          },
+          "p": {
+            "definition": {
+              "actor_id": "p",
+              "base_max_hp": 10,
+              "display_name": "p",
+              "role": "PLAYER"
+            },
+            "membership": "PARTY",
+            "state": {
+              "actor_id": "p",
+              "current_hp": 10,
+              "eligible": true,
+              "life_state": "ALIVE",
+              "max_hp": 10,
+              "participation": "PRESENT",
+              "role": "PLAYER",
+              "schema_version": 1
+            }
+          },
+          "t": {
+            "definition": {
+              "actor_id": "t",
+              "base_max_hp": 10,
+              "display_name": "t",
+              "role": "NPC"
+            },
+            "membership": "PARTY",
+            "state": {
+              "actor_id": "t",
+              "current_hp": 0,
+              "eligible": false,
+              "life_state": "DOWN",
+              "max_hp": 10,
+              "participation": "PRESENT",
+              "role": "NPC",
+              "schema_version": 1
+            }
+          }
+        },
+        "episodes": {
+          "t": {
+            "active": true,
+            "budget": 2,
+            "entry_round": 3,
+            "episode_id": "-9223371788182878766/1/1"
+          }
+        },
+        "rescue_uses": {
+          "h": 1,
+          "j": 1,
+          "p": 1,
+          "t": 1
+        },
+        "help_reference": {
+          "h": 1,
+          "j": 1,
+          "p": 1,
+          "t": 1
+        },
+        "abort_count": 0,
+        "full_root_sha256": "f77a18c5500e0f16cc05b7354b00adbdaf7ffb3c611345513b616f7913b60a79"
+      },
+      "after": {
+        "session": -9223371788182878766,
+        "generation": 1,
+        "revision": 11,
+        "phase": "CLOSED",
+        "round_id": 4,
+        "actors": {
+          "enemy": {
+            "definition": {
+              "actor_id": "enemy",
+              "base_max_hp": 10,
+              "display_name": "enemy",
+              "role": "ENEMY"
+            },
+            "membership": "ENEMY",
+            "state": {
+              "actor_id": "enemy",
+              "can_act": true,
+              "current_hp": 10,
+              "max_hp": 10
+            }
+          },
+          "h": {
+            "definition": {
+              "actor_id": "h",
+              "base_max_hp": 10,
+              "display_name": "h",
+              "role": "NPC"
+            },
+            "membership": "PARTY",
+            "state": {
+              "actor_id": "h",
+              "current_hp": 10,
+              "eligible": true,
+              "life_state": "ALIVE",
+              "max_hp": 10,
+              "participation": "PRESENT",
+              "role": "NPC",
+              "schema_version": 1
+            }
+          },
+          "j": {
+            "definition": {
+              "actor_id": "j",
+              "base_max_hp": 10,
+              "display_name": "j",
+              "role": "NPC"
+            },
+            "membership": "PARTY",
+            "state": {
+              "actor_id": "j",
+              "current_hp": 10,
+              "eligible": true,
+              "life_state": "ALIVE",
+              "max_hp": 10,
+              "participation": "PRESENT",
+              "role": "NPC",
+              "schema_version": 1
+            }
+          },
+          "p": {
+            "definition": {
+              "actor_id": "p",
+              "base_max_hp": 10,
+              "display_name": "p",
+              "role": "PLAYER"
+            },
+            "membership": "PARTY",
+            "state": {
+              "actor_id": "p",
+              "current_hp": 8,
+              "eligible": true,
+              "life_state": "ALIVE",
+              "max_hp": 10,
+              "participation": "PRESENT",
+              "role": "PLAYER",
+              "schema_version": 1
+            }
+          },
+          "t": {
+            "definition": {
+              "actor_id": "t",
+              "base_max_hp": 10,
+              "display_name": "t",
+              "role": "NPC"
+            },
+            "membership": "PARTY",
+            "state": {
+              "actor_id": "t",
+              "current_hp": 0,
+              "eligible": false,
+              "life_state": "DOWN",
+              "max_hp": 10,
+              "participation": "PRESENT",
+              "role": "NPC",
+              "schema_version": 1
+            }
+          }
+        },
+        "episodes": {
+          "t": {
+            "active": true,
+            "budget": 1,
+            "entry_round": 3,
+            "episode_id": "-9223371788182878766/1/1"
+          }
+        },
+        "rescue_uses": {
+          "h": 1,
+          "j": 1,
+          "p": 1,
+          "t": 1
+        },
+        "help_reference": {
+          "h": 1,
+          "j": 1,
+          "p": 1,
+          "t": 1
+        },
+        "abort_count": 0,
+        "full_root_sha256": "b081f8cd6a2e0f02331623406298830eabb295a677065509533c85958ec62559"
+      }
     }
   ],
   "external_verification": [
@@ -31027,6 +32156,6 @@
     "M402-41 Guidance regression/protected source hashes"
   ],
   "failures": 0,
-  "independent_cases": 53,
+  "independent_cases": 55,
   "per_frame_checks": 0
 }

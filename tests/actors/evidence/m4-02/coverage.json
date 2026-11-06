@@ -1,6 +1,6 @@
 {
-  "independent_focused_cases": 53,
-  "assertion_checks": 1137,
+  "independent_focused_cases": 55,
+  "assertion_checks": 1188,
   "per_frame_checks": 0,
   "failure_count": 0,
   "matrix_rows_are_not_executable_case_count": true,
@@ -400,6 +400,20 @@
     {
       "id": "M402-D05",
       "status": "DEFERRED"
+    },
+    {
+      "id": "R48-01-current-round",
+      "status": "PASS",
+      "preconditions": "OPEN round3; caller attempts issuer-owned operation ID before any slot is issued",
+      "expected": "M4_RESERVED_OPERATION_ID/N-all/no token; actual fixture slot completes and closes affected round",
+      "evidence": "m4-02-scenarios.json"
+    },
+    {
+      "id": "R48-01-future-round",
+      "status": "PASS",
+      "preconditions": "OPEN round3; caller attempts issuer-owned operation ID before any slot is issued",
+      "expected": "M4_RESERVED_OPERATION_ID/N-all/no token; actual fixture slot completes and closes affected round",
+      "evidence": "m4-02-scenarios.json"
     }
   ]
 }
