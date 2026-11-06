@@ -468,19 +468,23 @@ No projectile/animation system, full personality AI, Item System, inventory/econ
 
 ### Formal Owner Approval — 7 November 2026 (Asia/Bangkok)
 
-**Owner Approval Source:** user's explicit chat task “WANDERER — M4-03 Owner Design Approval & Decision Register Update”, dated **7 November 2026 (Asia/Bangkok)**, identifying reviewed HEAD `90b9b5c510c06b55c9501fd009043eb9897e35c8`. Exact formal selections from that instruction:
+**Owner Approval Source:** the owner's direct ChatGPT message dated **7 November 2026 (Asia/Bangkok)**, beginning **“ผมอนุมัติ”**, explicitly selecting the five Option-A decisions. The direct wording below is transcribed in [Independent Review R49-02, 5807468528](https://github.com/shanwinder/wanderer/pull/49#pullrequestreview-5807468528):
 
-> **D07 = Option A:** ถอนตัวสำเร็จเมื่อใช้ Self-RETREAT ถูกต้อง
+> ผมอนุมัติ
 >
-> **D10 = Option A:** ตัดสิน Terminal Outcome จากสถานะ Party/Enemy
+> D07 A — ถอนตัวสำเร็จเมื่อใช้ Self-RETREAT ถูกต้อง
 >
-> **D11 = Option A:** แยก Party Lifecycle Summary และ Enemy Combat Summary
+> D10 A — ตัดสินผลจากสถานะ Party/Enemy
 >
-> **D14 = Option A:** Enemy ยังคงใช้ HP/Availability เดิม
+> D11 A — แยก Party Lifecycle และ Enemy Summary
 >
-> **D15 = Option A:** NPC/Enemy ที่มีสิทธิ์ยังเดินคิวต่อได้เมื่อ Player DOWN
+> D14 A — Enemy ใช้ HP/Availability เดิม
+>
+> D15 A — NPC/Enemy ที่มีสิทธิ์ยังเดินคิวต่อได้เมื่อ Player DOWN
 
-All five are **APPROVED DESIGN / Option A — M4-03 Isolated Proof Scope Only**. Owner explicitly binds this approval to reviewed **§4–§9**, including Terminal Precedence, Strict Rejection/R49-01, Finite Scheduler and Summary Ownership. Those sections, their reason precedence and all 48 M403 rows are preserved byte-for-byte from the reviewed HEAD. Historical `B` feasibility markers mean owner-approval prerequisites at the review checkpoint; those five selections are now satisfied for isolated design only. They do not remove separate implementation-task/prerequisite gates, remaining full D09 dependencies, diagnostic/unreachable labels or NOT RUN status.
+**Codex Recording Prompt (assistant-authored):** “WANDERER — M4-03 Owner Design Approval & Decision Register Update” is the subsequent assistant-authored documentation/recording prompt, supplied to Codex to record those decisions against reviewed HEAD `90b9b5c510c06b55c9501fd009043eb9897e35c8`. Its title and expanded technical labels are not the owner's original approval wording. It records the approved choices; it is not an independent owner authorization for runtime, merge or full D09 integration.
+
+All five are **APPROVED DESIGN / Option A — M4-03 Isolated Proof Scope Only**. **Scope attribution:** Isolated Proof Scope and reviewed **§4–§9**, including Terminal Precedence, Strict Rejection/R49-01, Finite Scheduler and Summary Ownership, are the reviewed contextual contract governing implementation planning, reflected in the subsequent recording prompt. The direct owner message approves the five Option-A decisions; it does not literally name §4–§9 or state those expanded scope labels. This contextual interpretation preserves the existing technical approval boundary and supplies no independent authorization for runtime, merge, production or full D09 integration. Those sections, their reason precedence and all 48 M403 rows are preserved byte-for-byte from the reviewed HEAD. Historical `B` feasibility markers mean owner-approval prerequisites at the review checkpoint; those five selections are now satisfied for isolated design only. They do not remove separate implementation-task/prerequisite gates, remaining full D09 dependencies, diagnostic/unreachable labels or NOT RUN status.
 
 **Independent review attribution:** [Follow-up Design Review 5807203009](https://github.com/shanwinder/wanderer/pull/49#pullrequestreview-5807203009) reviewed `90b9b5c…` and recorded **R49-01 RESOLVED / M4-03 Design Consistency Review PASS (documentation scope)**. Reviewer inspected GitHub text/commits; did not run local checker, Godot, GUI or CI. Review acceptance is distinct from this explicit owner selection. This approval-record update awaits independent follow-up and separate owner merge authorization.
 
