@@ -1,6 +1,6 @@
 # M4-03 — Queue / Retreat / Outcome Contract & Owner Decision Gate
 
-**Design proposal — 6 พฤศจิกายน 2026 (Asia/Bangkok).** Task authorization permits source inspection, architecture analysis, Markdown and a Draft PR only. **D07/D10/D11/D14/D15 = PROPOSED / PENDING OWNER APPROVAL. Implementation is NOT authorized.** Statements below marked proposed, including APIs, reasons, expected outcomes and decomposition, are alternatives for review; they are neither approved gameplay rules nor test results.
+**Current design approval — 7 November 2026 (Asia/Bangkok): D07/D10/D11/D14/D15 = APPROVED DESIGN / Option A — M4-03 Isolated Proof Scope Only.** Owner source and exact selections are recorded in §12. **M4-03 Design Decisions Approved / Awaiting Implementation Task Authorization.** PR #49 remains Design-Only / Draft / unmerged; implementation is NOT authorized. Original proposal/conditional wording records design intent and alternatives, not runtime or verification. Current scoped approval supersedes historical pending wording only for these five isolated decisions; full production extensions remain Pending.
 
 [Documentation index](README.md#current-status-and-next-roadmap) is the sole Milestone Authority. This specification extends the [M4 Architecture](M4_Down_Help_Death_Retreat_Architecture.md) and [M4-02 contract](M4_02_Rescue_Clock_Death_Contract.md); it does not replace their historical decision/evidence records. A01–A39, M401, M402 and M3 assertions are unchanged. No M4-04/M4-05 work is authorized.
 
@@ -36,7 +36,7 @@ Read AGENTS/root/index, architecture, M4-02, actor/combat test guides, v0.1 and 
 
 PR #48 expected all executable suites PASS, no unexpected errors/timeouts and equal Legacy traces; recorded actual agrees within that scope: all final exits0, five expected negative errors accounted separately, 19 inherited suite counts equal, 111 tested hashes match and89 protected files unchanged. Exact commands/engine/commits/expected-actual: [run-record](../tests/actors/evidence/m4-02/run-record.json); [73-stage results](../tests/actors/evidence/m4-02/final-results.json), [canonical69](../tests/actors/evidence/m4-02/canonical-results.json), [focused scenarios](../tests/actors/evidence/m4-02/m4-02-scenarios.json), [coverage](../tests/actors/evidence/m4-02/coverage.json), [logs](../tests/actors/evidence/m4-02/logs.zip), [Legacy differential](../tests/actors/evidence/m4-02/trace-comparison.json). None is a new run on `383598f` or this design HEAD.
 
-**Coverage retained:** M402-06 BLOCKED end-to-end (pending rescue prevents natural close/death); M402-24 PARTIAL (authenticated unused wrong-round event has no legal issuer path); M402-D01/D02/D04 BLOCKED, D03/D05 DEFERRED. D10/D15 and production extensions remain Pending. Manual GUI/Keyboard/Visual Acceptance NOT RUN. M4-02 is not Production Gameplay Integration. Candidate/pending statements in prior test guides/contracts remain historical checkpoints, superseded only by the index's current milestone status.
+**Coverage retained:** M402-06 BLOCKED end-to-end (pending rescue prevents natural close/death); M402-24 PARTIAL (authenticated unused wrong-round event has no legal issuer path); M402-D01/D02/D04 BLOCKED, D03/D05 DEFERRED. D10/D15 isolated design is now approved; production extensions remain Pending. Historical M402 blocked/partial coverage is unchanged. Manual GUI/Keyboard/Visual Acceptance NOT RUN. M4-02 is not Production Gameplay Integration. Candidate/pending statements in prior test guides/contracts remain historical checkpoints, superseded only by the index's current milestone status.
 
 ## 2. Source architecture and design alternatives
 
@@ -72,15 +72,15 @@ M403 may reuse validated state/Registry factories and the **semantics** of M4-02
 
 ## 3. Owner decision package
 
-All five rows and their refinements below are **PROPOSED / PENDING OWNER APPROVAL**. Choosing A is a recommendation, not an approval record.
+Owner selected **Option A for all five decisions — APPROVED DESIGN / Option A — M4-03 Isolated Proof Scope Only** on 7 November 2026; exact source/scope is in §12. Alternatives, suggested approval wording and “if not approved” consequences below preserve the reviewed decision package. They do not override this approval record. Only the scoped five decisions and reviewed isolated §4–§9 contract are approved; no implementation or production extension is authorized.
 
 | Decision | Option A | Option B | Recommendation / scenario impact | Status |
 |---|---|---|---|---|
-| D07 Retreat success | Deterministic valid self-retreat at owned impact | Threat/escape contest, rule/resource inputs still to design | A: healthy Player's valid slot exits only Player; B could consume a real slot but leave them PRESENT after failure | PENDING OWNER APPROVAL |
-| D10 Terminal outcome | Party/enemy active-state classifier, withdrawal distinctions, frozen result | Preserve immediate Player-unavailable DEFEAT | A: Player DOWN + live NPC continues; B ends before NPC can rescue in that encounter | PENDING OWNER APPROVAL |
-| D11 Summary | Separate Party Lifecycle / Enemy Combat rows | Unified lifecycle rows; requires approved Enemy mapping | A: DOWN ally stays DOWN and Enemy HP0 says unavailable; B cannot assign Enemy DEAD without D14 expansion | PENDING OWNER APPROVAL |
-| D14 Enemy scope | Existing HP/availability only, no lifecycle migration | Design Enemy DOWN/DEAD/RETREAT in later scope | A keeps proof small; B changes target/outcome/clock domains and needs a new reviewed package | PENDING OWNER APPROVAL |
-| D15 Player unavailable | Deterministic eligible NPC/Enemy slot continuation, no Player command | Suspend at Player-unavailable boundary | A enables scheduler-only continuation; B freezes clock/progress pending explicit recovery decision, never auto-kills | PENDING OWNER APPROVAL |
+| D07 Retreat success | Deterministic valid self-retreat at owned impact | Threat/escape contest, rule/resource inputs still to design | A: healthy Player's valid slot exits only Player; B could consume a real slot but leave them PRESENT after failure | APPROVED DESIGN / Option A — M4-03 Isolated Proof Scope Only |
+| D10 Terminal outcome | Party/enemy active-state classifier, withdrawal distinctions, frozen result | Preserve immediate Player-unavailable DEFEAT | A: Player DOWN + live NPC continues; B ends before NPC can rescue in that encounter | APPROVED DESIGN / Option A — M4-03 Isolated Proof Scope Only |
+| D11 Summary | Separate Party Lifecycle / Enemy Combat rows | Unified lifecycle rows; requires approved Enemy mapping | A: DOWN ally stays DOWN and Enemy HP0 says unavailable; B cannot assign Enemy DEAD without D14 expansion | APPROVED DESIGN / Option A — M4-03 Isolated Proof Scope Only |
+| D14 Enemy scope | Existing HP/availability only, no lifecycle migration | Design Enemy DOWN/DEAD/RETREAT in later scope | A keeps proof small; B changes target/outcome/clock domains and needs a new reviewed package | APPROVED DESIGN / Option A — M4-03 Isolated Proof Scope Only |
+| D15 Player unavailable | Deterministic eligible NPC/Enemy slot continuation, no Player command | Suspend at Player-unavailable boundary | A enables scheduler-only continuation; B freezes clock/progress pending explicit recovery decision, never auto-kills | APPROVED DESIGN / Option A — M4-03 Isolated Proof Scope Only |
 
 ### D07 — self-retreat
 
@@ -396,6 +396,8 @@ Keep A→B→C as three separately scoped/reviewed PRs. A isolates opportunity a
 
 ### M4-03A — Isolated Queue / Eligibility Foundation
 
+**Current gate:** eligible for preparation of a separate reviewed Implementation Task; no implementation authorized. D10A/D15A design is approved only in the isolated scope.
+
 - **Dependencies:** approved file/API task, D02 data model; review of passive skip/cursor identity contract. Any Player-unavailable automatic continuation or natural close requires D15 plus coherent D10 choice; A does not infer either.
 - **Exact scope:** new finite isolated queue value/adapter, stable initial IDs/order, live eligibility reads, unique opportunities, authenticated dispositions/actual receipts, one active token, atomic reset/generation. Pure inspection/step foundation; reject at terminal/round-admission dependencies with N-all; progress diagnostics are read-only. No effect/terminal/NPC policy assumed.
 - **Likely new files (proposed, do not create now):** `scripts/m4/m403_queue_adapter.gd`, `scripts/m4/isolated_queue_outcome_encounter.gd`, `tests/actors/m4_03_queue_foundation_proof.gd`; required `.gd.uid`; optional runner hook only with exact authorization, existing docs and new evidence directory then.
@@ -407,7 +409,9 @@ Keep A→B→C as three separately scoped/reviewed PRs. A isolates opportunity a
 
 ### M4-03B — Isolated RETREAT Transaction
 
-- **Dependencies:** reviewed/merged A, **D07-A approval and separate implementation task**. D10/D15 terminal-dependent cases remain blocked until C decisions; first proof fixture retains another active Party/Enemy.
+**Current gate:** D07A Design Approved; requires separate explicit implementation authorization and reviewed prerequisite A. D10/D15 terminal design selection is complete; executable coverage still requires the authorized C task/prerequisites.
+
+- **Dependencies:** reviewed/merged A, **D07-A approval and separate implementation task**. D10/D15 terminal-dependent implementation remains gated by the separate C task/prerequisites; first proof fixture retains another active Party/Enemy.
 - **Exact scope:** current-slot self-target lock/impact/complete/cancel, atomic ALIVE/PRESENT→ALIVE/RETREATED, guard release, retained IDs, later exclusion, duplicate/stale/invalid/no-delta handling. No clock/outcome bypass for last-active retreat.
 - **Likely files:** new aggregate from A, optional `scripts/m4/m403_effect_candidates.gd`, new `tests/actors/m4_03_retreat_proof.gd`/UID, narrowly authorized optional runner/docs/evidence.
 - **Forbidden:** same production/original-M4/test/evidence files as A; no RETREAT/RESCUE button, new Guidance or NPC rescue/retreat choice, balance/animation change.
@@ -417,6 +421,8 @@ Keep A→B→C as three separately scoped/reviewed PRs. A isolates opportunity a
 - **Risk:** cancellation becoming a free extra action, eligibility check blocking completion, partial guard/state commit, result masking invalid-phase reasons.
 
 ### M4-03C — Terminal / Summary / Continuation Proof
+
+**Current gate:** D10A/D11A/D14A/D15A Design Approved; requires separate explicit implementation authorization and reviewed prerequisite tasks. D08/D16/full D09 production integration remain Pending.
 
 - **Dependencies:** reviewed A/B, **D10/D11/D14/D15 chosen explicitly**, D07 for retreat cases, approved isolated adapter/witness schema/terminal settlement lane. D09 strict isolation preserved; **full D09 production integration remains BLOCKED**. D08/D16 are not supplied by this task: fixture action choices only, no new NPC policy.
 - **Exact scope:** serial finite eligible-slot continuation, no Player input while unavailable, no extra rescued slot, D10 pure classifier and atomic terminal freeze, new witnessed round close with inherited clock semantics, terminal-before-close precedence, separated immutable summaries, Abort/Restart. End-to-end natural autonomous NPC rescue remains outside scope until M4-04 decisions/task.
@@ -460,22 +466,36 @@ No projectile/animation system, full personality AI, Item System, inventory/econ
 
 ## 12. Owner approval gate and learning notes
 
-### Ready-to-use wording — suggested only, NOT an approval record
+### Formal Owner Approval — 7 November 2026 (Asia/Bangkok)
 
-Owner may select each option independently, but incompatible pairs must be reconciled before implementation. For example D10-B immediately defeats Player, so D15-A cannot promise continuation in that condition. D11-B requires D14 expansion; D14-A must keep two summary domains. D07-A alone does not authorize last-active terminal handling.
+**Owner Approval Source:** user's explicit chat task “WANDERER — M4-03 Owner Design Approval & Decision Register Update”, dated **7 November 2026 (Asia/Bangkok)**, identifying reviewed HEAD `90b9b5c510c06b55c9501fd009043eb9897e35c8`. Exact formal selections from that instruction:
 
-> “ผมเลือก D07=… / D10=… / D11=… / D14=… / D15=… เฉพาะขอบเขต isolated M4-03 ตามเอกสารฉบับที่ review แล้ว รวม precedence และ Strict Seal/terminal completion boundaries ที่ระบุ. นี่เป็น Design Approval เท่านั้น ยังไม่อนุญาต implementation, full D09 production integration, D08/D16 policy, M4-04/M4-05 หรือ merge. ส่วนที่ไม่ได้เลือกยัง Pending.”
+> **D07 = Option A:** ถอนตัวสำเร็จเมื่อใช้ Self-RETREAT ถูกต้อง
+>
+> **D10 = Option A:** ตัดสิน Terminal Outcome จากสถานะ Party/Enemy
+>
+> **D11 = Option A:** แยก Party Lifecycle Summary และ Enemy Combat Summary
+>
+> **D14 = Option A:** Enemy ยังคงใช้ HP/Availability เดิม
+>
+> **D15 = Option A:** NPC/Enemy ที่มีสิทธิ์ยังเดินคิวต่อได้เมื่อ Player DOWN
 
-If choosing the recommended set, replace each ellipsis with **Option A** only on explicit owner instruction. Preserve exact owner wording/date/commit attribution when later recorded; do not infer from silence, approval of the documentation PR or merge of previous work.
+All five are **APPROVED DESIGN / Option A — M4-03 Isolated Proof Scope Only**. Owner explicitly binds this approval to reviewed **§4–§9**, including Terminal Precedence, Strict Rejection/R49-01, Finite Scheduler and Summary Ownership. Those sections, their reason precedence and all 48 M403 rows are preserved byte-for-byte from the reviewed HEAD. Historical `B` feasibility markers mean owner-approval prerequisites at the review checkpoint; those five selections are now satisfied for isolated design only. They do not remove separate implementation-task/prerequisite gates, remaining full D09 dependencies, diagnostic/unreachable labels or NOT RUN status.
+
+**Independent review attribution:** [Follow-up Design Review 5807203009](https://github.com/shanwinder/wanderer/pull/49#pullrequestreview-5807203009) reviewed `90b9b5c…` and recorded **R49-01 RESOLVED / M4-03 Design Consistency Review PASS (documentation scope)**. Reviewer inspected GitHub text/commits; did not run local checker, Godot, GUI or CI. Review acceptance is distinct from this explicit owner selection. This approval-record update awaits independent follow-up and separate owner merge authorization.
+
+**D10/D15 coherence:** D10A classifies active Party/Enemy, so Player DOWN alone is nonterminal when an eligible NPC and Enemy remain; D15A permits finite eligible-slot continuation without a fake Player command. No-actionable-Party, terminal-before-close and post-terminal settlement follow the reviewed contract. Fixture action choice is not new NPC policy; Resolver/Guidance/Production remain unchanged.
+
+**Pending boundaries:** D08 NPC Rescue/Retreat Decision Policy, D16 Refusal/Consent, full D09 Production Queue/Target/Guidance Integration, M4-04 Autonomous Decision Extension, M4-05 Playable Integration, Production Cutover and every extension outside isolated scope. Existing M4-01/M4-02 approvals/proofs remain unchanged. No fake receipt, round close or Player command; no inferred runtime, merge, branch-deletion or visual acceptance permission.
 
 | Gate | Required evidence / current boundary |
 |---|---|
-| Design Approval | Explicit owner choices/scope + reconciled dependencies; five choices currently PENDING |
-| Implementation Authorization | New reviewed task, file/API boundary and selected A/B/C step; NOT GIVEN |
-| Automated Verification | Actual new engine/commit/command/results/logs; M403 NOT RUN, PR #48 inherited only |
-| Independent Review | Separate reviewer examines design then future code/evidence; this PR awaits Independent Design Review |
-| Merge Authorization | New explicit instruction for this PR; NOT GIVEN; never auto-merge |
-| Playable / Visual Acceptance | Separate manual scenario/keyboard/visual evidence; NOT RUN, not implied by isolated headless proof |
+| Design Approval | D07A/D10A/D11A/D14A/D15A APPROVED DESIGN — M4-03 isolated scope only; exact owner source above |
+| Implementation Authorization | Separate reviewed task/file/API scope and explicit authorization for A/B/C; NOT GIVEN. A may prepare a task; B requires reviewed A; C requires reviewed prerequisite tasks |
+| Automated Verification | M403-01–48 PROPOSED / NOT RUN; PR #48 evidence inherited only |
+| Independent Review | Reviewed contract at90b9b5c passed follow-up; this approval-record amendment awaits independent follow-up |
+| Merge Authorization | Separate explicit owner instruction for PR #49; NOT GIVEN; Draft/unmerged, no auto-merge |
+| Playable / Visual Acceptance | NOT RUN; isolated design approval does not establish playable/visual acceptance |
 
 ### Thai learning notes — v0.4
 
@@ -499,4 +519,6 @@ This task checks Git diff scope, Markdown file/fragment links, table widths, dec
 
 **Godot Runtime/Full Regression/GUI/Visual Acceptance NOT RUN — Design-Only Task.** No new engine result, performance, visual quality, playable autonomy or full M4 claim. Existing failed/partial/blocked records are not rewritten. Mermaid rendering is not required: state/transition tables are the review artifact.
 
-**Mandatory stop:** deliver the documentation Draft PR; keep **M4-03 — Queue / Retreat / Outcome Contract Proposed / Awaiting Owner Decisions** as the index status. Await Independent Follow-up Review for R49-01 before the Owner Decision Gate. No merge/auto-merge/branch cleanup, no implementation of A/B/C, no M4-04/M4-05 and no inferred approval.
+**Owner approval-record validation — 7 November 2026:** temporary documentation checker `python3 /tmp/m403_approval_validate.py` and `git diff --check` PASS:16 Markdown files/408 local links/90 fragments/124 tables/errors0. D01–D17 register complete: only the five authorized status cells changed; other12 rows byte-identical. Reviewed §§4–§9 (including R49-01/reason precedence and all48 M403 rows) and Architecture A01–A39 byte-identical to90b9b5c. All304 tracked blobs outside the four authorized Markdown paths unchanged;111/111 PR #48 source hashes match. No runtime/test/runner/scene/config/asset/evidence changes. Godot NOT RUN — Documentation-Only Task; inherited evidence is not new verification. This record update awaits independent follow-up and separate merge authorization.
+
+**Mandatory stop:** push the approval-record update to the same Draft PR #49; current index status is **M4-03 Design Decisions Approved / Awaiting Implementation Task Authorization**. Await Independent Follow-up Review of this documentation update and separate Owner Merge Authorization. No merge/auto-merge/branch cleanup, no implementation of A/B/C, no M4-04/M4-05 and no inferred approval.
