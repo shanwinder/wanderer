@@ -1,0 +1,1060 @@
+{
+  "actual": "PASS",
+  "canonical_commit": "67d68bb1f78fa8efedcb719079a4487c531c49d4",
+  "tested_commit": "ad0e95ced3a7f52651d4dc671ef64634d3d148f9",
+  "tested_source_files": 117,
+  "matches": [
+    {
+      "path": "art/references/generated/chatgpt_2026-08-05_14-04-14.png",
+      "sha256": "77e8a8804b6d48b1f84f0506f2477cd2c5df808430256dcebcdbe7281edb66f0",
+      "tested_commit": "77e8a8804b6d48b1f84f0506f2477cd2c5df808430256dcebcdbe7281edb66f0",
+      "snapshot": "77e8a8804b6d48b1f84f0506f2477cd2c5df808430256dcebcdbe7281edb66f0",
+      "current": "77e8a8804b6d48b1f84f0506f2477cd2c5df808430256dcebcdbe7281edb66f0",
+      "actual": "PASS"
+    },
+    {
+      "path": "art/references/generated/chatgpt_2026-08-07_14-30-00.png",
+      "sha256": "ee48f028aeb47be703cfae48646d3f974781931eb4eb429a4d542e33c4f2e459",
+      "tested_commit": "ee48f028aeb47be703cfae48646d3f974781931eb4eb429a4d542e33c4f2e459",
+      "snapshot": "ee48f028aeb47be703cfae48646d3f974781931eb4eb429a4d542e33c4f2e459",
+      "current": "ee48f028aeb47be703cfae48646d3f974781931eb4eb429a4d542e33c4f2e459",
+      "actual": "PASS"
+    },
+    {
+      "path": "art/references/generated/chatgpt_2026-08-07_14-30-15.png",
+      "sha256": "9c69cf88bc38db4b55ab5061c35cd4e5641812854aab5bd750615d1f535c649e",
+      "tested_commit": "9c69cf88bc38db4b55ab5061c35cd4e5641812854aab5bd750615d1f535c649e",
+      "snapshot": "9c69cf88bc38db4b55ab5061c35cd4e5641812854aab5bd750615d1f535c649e",
+      "current": "9c69cf88bc38db4b55ab5061c35cd4e5641812854aab5bd750615d1f535c649e",
+      "actual": "PASS"
+    },
+    {
+      "path": "art/references/generated/chatgpt_2026-08-10_09-49-29.png",
+      "sha256": "e7c83b0b238f2c8e2fab5d1f49149073d04bf0a70586f532302e78c335c77ec1",
+      "tested_commit": "e7c83b0b238f2c8e2fab5d1f49149073d04bf0a70586f532302e78c335c77ec1",
+      "snapshot": "e7c83b0b238f2c8e2fab5d1f49149073d04bf0a70586f532302e78c335c77ec1",
+      "current": "e7c83b0b238f2c8e2fab5d1f49149073d04bf0a70586f532302e78c335c77ec1",
+      "actual": "PASS"
+    },
+    {
+      "path": "art/references/generated/chatgpt_2026-08-10_09-50-33.png",
+      "sha256": "11ec8d537fc77da84b1d98601f049b5a35b5d5bd2e73e024af3cfe517d9220ba",
+      "tested_commit": "11ec8d537fc77da84b1d98601f049b5a35b5d5bd2e73e024af3cfe517d9220ba",
+      "snapshot": "11ec8d537fc77da84b1d98601f049b5a35b5d5bd2e73e024af3cfe517d9220ba",
+      "current": "11ec8d537fc77da84b1d98601f049b5a35b5d5bd2e73e024af3cfe517d9220ba",
+      "actual": "PASS"
+    },
+    {
+      "path": "art/references/generated/chatgpt_2026-08-12_01-48-34.png",
+      "sha256": "c0f4a1b598cfe021b8cb58711bee3ff1ed2fe4d4d36b2914a9799b31c605873c",
+      "tested_commit": "c0f4a1b598cfe021b8cb58711bee3ff1ed2fe4d4d36b2914a9799b31c605873c",
+      "snapshot": "c0f4a1b598cfe021b8cb58711bee3ff1ed2fe4d4d36b2914a9799b31c605873c",
+      "current": "c0f4a1b598cfe021b8cb58711bee3ff1ed2fe4d4d36b2914a9799b31c605873c",
+      "actual": "PASS"
+    },
+    {
+      "path": "art/references/generated/chatgpt_2026-08-12_01-48-44.png",
+      "sha256": "ce47e98e7e518a383c7551799c4ff6580344c5538fb77a66679c144f55f2f815",
+      "tested_commit": "ce47e98e7e518a383c7551799c4ff6580344c5538fb77a66679c144f55f2f815",
+      "snapshot": "ce47e98e7e518a383c7551799c4ff6580344c5538fb77a66679c144f55f2f815",
+      "current": "ce47e98e7e518a383c7551799c4ff6580344c5538fb77a66679c144f55f2f815",
+      "actual": "PASS"
+    },
+    {
+      "path": "art/references/generated/chatgpt_2026-08-16_23-54-47.png",
+      "sha256": "34dd54c841617794c712c894f8a5ce3595c1fe8589736ed1a297c20702a57efc",
+      "tested_commit": "34dd54c841617794c712c894f8a5ce3595c1fe8589736ed1a297c20702a57efc",
+      "snapshot": "34dd54c841617794c712c894f8a5ce3595c1fe8589736ed1a297c20702a57efc",
+      "current": "34dd54c841617794c712c894f8a5ce3595c1fe8589736ed1a297c20702a57efc",
+      "actual": "PASS"
+    },
+    {
+      "path": "art/references/legacy/rondo.png",
+      "sha256": "3dec803c5ce9f928dbb79c73892e92aba6178d911dcb78e356bf08edf1e8b246",
+      "tested_commit": "3dec803c5ce9f928dbb79c73892e92aba6178d911dcb78e356bf08edf1e8b246",
+      "snapshot": "3dec803c5ce9f928dbb79c73892e92aba6178d911dcb78e356bf08edf1e8b246",
+      "current": "3dec803c5ce9f928dbb79c73892e92aba6178d911dcb78e356bf08edf1e8b246",
+      "actual": "PASS"
+    },
+    {
+      "path": "art/references/legacy/untitled_01.png",
+      "sha256": "906f24dc7154f3088b66024d68d7eb1225e21667d4bec275daf58ba7dafd9512",
+      "tested_commit": "906f24dc7154f3088b66024d68d7eb1225e21667d4bec275daf58ba7dafd9512",
+      "snapshot": "906f24dc7154f3088b66024d68d7eb1225e21667d4bec275daf58ba7dafd9512",
+      "current": "906f24dc7154f3088b66024d68d7eb1225e21667d4bec275daf58ba7dafd9512",
+      "actual": "PASS"
+    },
+    {
+      "path": "art/references/legacy/untitled_02.png",
+      "sha256": "9af18847416250b75335535a6b253460bd5a8b17e1bda0f4c3285aafeeb37ddf",
+      "tested_commit": "9af18847416250b75335535a6b253460bd5a8b17e1bda0f4c3285aafeeb37ddf",
+      "snapshot": "9af18847416250b75335535a6b253460bd5a8b17e1bda0f4c3285aafeeb37ddf",
+      "current": "9af18847416250b75335535a6b253460bd5a8b17e1bda0f4c3285aafeeb37ddf",
+      "actual": "PASS"
+    },
+    {
+      "path": "art/references/legacy/untitled_03.png",
+      "sha256": "a91d38a86a23c037d771f0be288be2d24e84b3aa34b94ec454488e9bea7da65a",
+      "tested_commit": "a91d38a86a23c037d771f0be288be2d24e84b3aa34b94ec454488e9bea7da65a",
+      "snapshot": "a91d38a86a23c037d771f0be288be2d24e84b3aa34b94ec454488e9bea7da65a",
+      "current": "a91d38a86a23c037d771f0be288be2d24e84b3aa34b94ec454488e9bea7da65a",
+      "actual": "PASS"
+    },
+    {
+      "path": "art/references/legacy/untitled_04.png",
+      "sha256": "ed787b7b1db68a490ee51552288cef6561798ae53eb82246aad2b2588d11d20d",
+      "tested_commit": "ed787b7b1db68a490ee51552288cef6561798ae53eb82246aad2b2588d11d20d",
+      "snapshot": "ed787b7b1db68a490ee51552288cef6561798ae53eb82246aad2b2588d11d20d",
+      "current": "ed787b7b1db68a490ee51552288cef6561798ae53eb82246aad2b2588d11d20d",
+      "actual": "PASS"
+    },
+    {
+      "path": "art/references/player/hero_01.png",
+      "sha256": "07fddf0511f1810252b8a28e7aa92b555a3ebe81e4e6513d525a87a741045889",
+      "tested_commit": "07fddf0511f1810252b8a28e7aa92b555a3ebe81e4e6513d525a87a741045889",
+      "snapshot": "07fddf0511f1810252b8a28e7aa92b555a3ebe81e4e6513d525a87a741045889",
+      "current": "07fddf0511f1810252b8a28e7aa92b555a3ebe81e4e6513d525a87a741045889",
+      "actual": "PASS"
+    },
+    {
+      "path": "art/references/player/hero_02.png",
+      "sha256": "31a7dee9095eda21891de0a5ac598364710c9c0179c787c226b15270d4a46af3",
+      "tested_commit": "31a7dee9095eda21891de0a5ac598364710c9c0179c787c226b15270d4a46af3",
+      "snapshot": "31a7dee9095eda21891de0a5ac598364710c9c0179c787c226b15270d4a46af3",
+      "current": "31a7dee9095eda21891de0a5ac598364710c9c0179c787c226b15270d4a46af3",
+      "actual": "PASS"
+    },
+    {
+      "path": "art/references/screenshots/screenshot_2026-08-12_21-51-02.png",
+      "sha256": "73fc239d3718f4cab6bf48d686108a48ede6403e319e441a655b1c912b521b15",
+      "tested_commit": "73fc239d3718f4cab6bf48d686108a48ede6403e319e441a655b1c912b521b15",
+      "snapshot": "73fc239d3718f4cab6bf48d686108a48ede6403e319e441a655b1c912b521b15",
+      "current": "73fc239d3718f4cab6bf48d686108a48ede6403e319e441a655b1c912b521b15",
+      "actual": "PASS"
+    },
+    {
+      "path": "art/references/screenshots/screenshot_2026-08-14_00-54-09.png",
+      "sha256": "2069d978cdd902020cfa1c1dce5fc663caab2a8db8e16debacd9be77c116fba3",
+      "tested_commit": "2069d978cdd902020cfa1c1dce5fc663caab2a8db8e16debacd9be77c116fba3",
+      "snapshot": "2069d978cdd902020cfa1c1dce5fc663caab2a8db8e16debacd9be77c116fba3",
+      "current": "2069d978cdd902020cfa1c1dce5fc663caab2a8db8e16debacd9be77c116fba3",
+      "actual": "PASS"
+    },
+    {
+      "path": "art/references/screenshots/screenshot_2026-08-15_06-42-08.png",
+      "sha256": "1514f5580779f62b2f7a79f44055d1658a5e0ef8403d4635fa2bc4b2e29f6483",
+      "tested_commit": "1514f5580779f62b2f7a79f44055d1658a5e0ef8403d4635fa2bc4b2e29f6483",
+      "snapshot": "1514f5580779f62b2f7a79f44055d1658a5e0ef8403d4635fa2bc4b2e29f6483",
+      "current": "1514f5580779f62b2f7a79f44055d1658a5e0ef8403d4635fa2bc4b2e29f6483",
+      "actual": "PASS"
+    },
+    {
+      "path": "art/references/screenshots/screenshot_2026-08-15_06-43-05.png",
+      "sha256": "db7b4c00119c17918667beead0e7ba137bc833676b967dfe7d287a0c2d5fb45b",
+      "tested_commit": "db7b4c00119c17918667beead0e7ba137bc833676b967dfe7d287a0c2d5fb45b",
+      "snapshot": "db7b4c00119c17918667beead0e7ba137bc833676b967dfe7d287a0c2d5fb45b",
+      "current": "db7b4c00119c17918667beead0e7ba137bc833676b967dfe7d287a0c2d5fb45b",
+      "actual": "PASS"
+    },
+    {
+      "path": "art/references/screenshots/screenshot_2026-08-15_06-43-55.png",
+      "sha256": "206df2f339d4ed084c92df6840fa9b25fee34cd6d3385a1032eda22783e24d5c",
+      "tested_commit": "206df2f339d4ed084c92df6840fa9b25fee34cd6d3385a1032eda22783e24d5c",
+      "snapshot": "206df2f339d4ed084c92df6840fa9b25fee34cd6d3385a1032eda22783e24d5c",
+      "current": "206df2f339d4ed084c92df6840fa9b25fee34cd6d3385a1032eda22783e24d5c",
+      "actual": "PASS"
+    },
+    {
+      "path": "assets/sprites/characters/npc_01/battle/idle/npc_01_idle.png",
+      "sha256": "438d9cb0dbc5dfc6ab3d8c68a57968eeb0b2f2443094b1f4f03e50c7e0faa20f",
+      "tested_commit": "438d9cb0dbc5dfc6ab3d8c68a57968eeb0b2f2443094b1f4f03e50c7e0faa20f",
+      "snapshot": "438d9cb0dbc5dfc6ab3d8c68a57968eeb0b2f2443094b1f4f03e50c7e0faa20f",
+      "current": "438d9cb0dbc5dfc6ab3d8c68a57968eeb0b2f2443094b1f4f03e50c7e0faa20f",
+      "actual": "PASS"
+    },
+    {
+      "path": "assets/sprites/characters/npc_02/battle/idle/npc_02_idle.png",
+      "sha256": "6c21b5cfea66abd4f75fd37b120b7f80757e989696a7ef948672413416c43099",
+      "tested_commit": "6c21b5cfea66abd4f75fd37b120b7f80757e989696a7ef948672413416c43099",
+      "snapshot": "6c21b5cfea66abd4f75fd37b120b7f80757e989696a7ef948672413416c43099",
+      "current": "6c21b5cfea66abd4f75fd37b120b7f80757e989696a7ef948672413416c43099",
+      "actual": "PASS"
+    },
+    {
+      "path": "assets/sprites/characters/npc_03/battle/idle/npc_03_idle.png",
+      "sha256": "969520e7dad7431d97a6b2bb35ef6647d72d53f87c9f8e54ee0ebda678c0e50a",
+      "tested_commit": "969520e7dad7431d97a6b2bb35ef6647d72d53f87c9f8e54ee0ebda678c0e50a",
+      "snapshot": "969520e7dad7431d97a6b2bb35ef6647d72d53f87c9f8e54ee0ebda678c0e50a",
+      "current": "969520e7dad7431d97a6b2bb35ef6647d72d53f87c9f8e54ee0ebda678c0e50a",
+      "actual": "PASS"
+    },
+    {
+      "path": "assets/sprites/characters/player/battle/idle/player_idle_01.png",
+      "sha256": "106b688fb1824c018dda3c080e05b67cb0dec76a3ac2c53783d2688c09027ac8",
+      "tested_commit": "106b688fb1824c018dda3c080e05b67cb0dec76a3ac2c53783d2688c09027ac8",
+      "snapshot": "106b688fb1824c018dda3c080e05b67cb0dec76a3ac2c53783d2688c09027ac8",
+      "current": "106b688fb1824c018dda3c080e05b67cb0dec76a3ac2c53783d2688c09027ac8",
+      "actual": "PASS"
+    },
+    {
+      "path": "assets/sprites/characters/player/battle/idle/player_idle_02.png",
+      "sha256": "d1e8bf52d48d75d17fcf0e23c1285ab1872620461feb1e79d6f62070df0e5a68",
+      "tested_commit": "d1e8bf52d48d75d17fcf0e23c1285ab1872620461feb1e79d6f62070df0e5a68",
+      "snapshot": "d1e8bf52d48d75d17fcf0e23c1285ab1872620461feb1e79d6f62070df0e5a68",
+      "current": "d1e8bf52d48d75d17fcf0e23c1285ab1872620461feb1e79d6f62070df0e5a68",
+      "actual": "PASS"
+    },
+    {
+      "path": "assets/sprites/enemies/enemy_01/battle/idle/enemy_01_idle.png",
+      "sha256": "edde3d2da37ca0cbbdbb772489a7d593951e7ccb5baa5914b43a953aa4cc8902",
+      "tested_commit": "edde3d2da37ca0cbbdbb772489a7d593951e7ccb5baa5914b43a953aa4cc8902",
+      "snapshot": "edde3d2da37ca0cbbdbb772489a7d593951e7ccb5baa5914b43a953aa4cc8902",
+      "current": "edde3d2da37ca0cbbdbb772489a7d593951e7ccb5baa5914b43a953aa4cc8902",
+      "actual": "PASS"
+    },
+    {
+      "path": "icon.svg",
+      "sha256": "6c80384360a5b269d1054bfb27241258154e2cc8167c522016fdc1820e84e0f8",
+      "tested_commit": "6c80384360a5b269d1054bfb27241258154e2cc8167c522016fdc1820e84e0f8",
+      "snapshot": "6c80384360a5b269d1054bfb27241258154e2cc8167c522016fdc1820e84e0f8",
+      "current": "6c80384360a5b269d1054bfb27241258154e2cc8167c522016fdc1820e84e0f8",
+      "actual": "PASS"
+    },
+    {
+      "path": "project.godot",
+      "sha256": "387ddc8a195e42ff4f22f21d124270ecec339a83e7051d4e6f85e55e86188154",
+      "tested_commit": "387ddc8a195e42ff4f22f21d124270ecec339a83e7051d4e6f85e55e86188154",
+      "snapshot": "387ddc8a195e42ff4f22f21d124270ecec339a83e7051d4e6f85e55e86188154",
+      "current": "387ddc8a195e42ff4f22f21d124270ecec339a83e7051d4e6f85e55e86188154",
+      "actual": "PASS"
+    },
+    {
+      "path": "scenes/combat/combat_autonomous_optin.tscn",
+      "sha256": "e3554e2123489bb4c60f8c8335925323440827df6126584255e05c69dce873e5",
+      "tested_commit": "e3554e2123489bb4c60f8c8335925323440827df6126584255e05c69dce873e5",
+      "snapshot": "e3554e2123489bb4c60f8c8335925323440827df6126584255e05c69dce873e5",
+      "current": "e3554e2123489bb4c60f8c8335925323440827df6126584255e05c69dce873e5",
+      "actual": "PASS"
+    },
+    {
+      "path": "scenes/combat/combat_prototype.tscn",
+      "sha256": "3f34a7e784dff2ca17bde1d6b12f3f739d7c1fd4b06483d207ae0e48fb374750",
+      "tested_commit": "3f34a7e784dff2ca17bde1d6b12f3f739d7c1fd4b06483d207ae0e48fb374750",
+      "snapshot": "3f34a7e784dff2ca17bde1d6b12f3f739d7c1fd4b06483d207ae0e48fb374750",
+      "current": "3f34a7e784dff2ca17bde1d6b12f3f739d7c1fd4b06483d207ae0e48fb374750",
+      "actual": "PASS"
+    },
+    {
+      "path": "scenes/combat/full_party_proof.tscn",
+      "sha256": "586dfa6ebce62e58fc08e2c25ec54d8d466e2d27531b588a06777d8fd6e4466b",
+      "tested_commit": "586dfa6ebce62e58fc08e2c25ec54d8d466e2d27531b588a06777d8fd6e4466b",
+      "snapshot": "586dfa6ebce62e58fc08e2c25ec54d8d466e2d27531b588a06777d8fd6e4466b",
+      "current": "586dfa6ebce62e58fc08e2c25ec54d8d466e2d27531b588a06777d8fd6e4466b",
+      "actual": "PASS"
+    },
+    {
+      "path": "scenes/npc/npc_autonomy_proof.tscn",
+      "sha256": "29ef70acf53bf14d986341a032a54bd2d96395a877af844b0c2072ba2da54974",
+      "tested_commit": "29ef70acf53bf14d986341a032a54bd2d96395a877af844b0c2072ba2da54974",
+      "snapshot": "29ef70acf53bf14d986341a032a54bd2d96395a877af844b0c2072ba2da54974",
+      "current": "29ef70acf53bf14d986341a032a54bd2d96395a877af844b0c2072ba2da54974",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/actors/actor_definition.gd",
+      "sha256": "4896e969d823a81da0a7841a69db4523006ff8a207de10a12b1bb8a40a90ead3",
+      "tested_commit": "4896e969d823a81da0a7841a69db4523006ff8a207de10a12b1bb8a40a90ead3",
+      "snapshot": "4896e969d823a81da0a7841a69db4523006ff8a207de10a12b1bb8a40a90ead3",
+      "current": "4896e969d823a81da0a7841a69db4523006ff8a207de10a12b1bb8a40a90ead3",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/actors/actor_definition.gd.uid",
+      "sha256": "06871133191eb241dff87ce289cd06da5b847f2013b2fb34d05a505e40252610",
+      "tested_commit": "06871133191eb241dff87ce289cd06da5b847f2013b2fb34d05a505e40252610",
+      "snapshot": "06871133191eb241dff87ce289cd06da5b847f2013b2fb34d05a505e40252610",
+      "current": "06871133191eb241dff87ce289cd06da5b847f2013b2fb34d05a505e40252610",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/actors/actor_registry.gd",
+      "sha256": "3e5a843eeb80bcba9159a9e305a56e184077df4cde34f88db1758c72029090b1",
+      "tested_commit": "3e5a843eeb80bcba9159a9e305a56e184077df4cde34f88db1758c72029090b1",
+      "snapshot": "3e5a843eeb80bcba9159a9e305a56e184077df4cde34f88db1758c72029090b1",
+      "current": "3e5a843eeb80bcba9159a9e305a56e184077df4cde34f88db1758c72029090b1",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/actors/actor_registry.gd.uid",
+      "sha256": "a3d503e669a6d069592da04d6a5daa48cd5ad374f10b2973dd789d55757e21ca",
+      "tested_commit": "a3d503e669a6d069592da04d6a5daa48cd5ad374f10b2973dd789d55757e21ca",
+      "snapshot": "a3d503e669a6d069592da04d6a5daa48cd5ad374f10b2973dd789d55757e21ca",
+      "current": "a3d503e669a6d069592da04d6a5daa48cd5ad374f10b2973dd789d55757e21ca",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/actors/actor_runtime_state.gd",
+      "sha256": "465a16db923706de4aec1926f335e7c1b8ea88e009915bab0a49fbf7991d5d76",
+      "tested_commit": "465a16db923706de4aec1926f335e7c1b8ea88e009915bab0a49fbf7991d5d76",
+      "snapshot": "465a16db923706de4aec1926f335e7c1b8ea88e009915bab0a49fbf7991d5d76",
+      "current": "465a16db923706de4aec1926f335e7c1b8ea88e009915bab0a49fbf7991d5d76",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/actors/actor_runtime_state.gd.uid",
+      "sha256": "643976fdb502a4e674f85fc6e30921bb480fa45b70b91111a2b9ee45058ab997",
+      "tested_commit": "643976fdb502a4e674f85fc6e30921bb480fa45b70b91111a2b9ee45058ab997",
+      "snapshot": "643976fdb502a4e674f85fc6e30921bb480fa45b70b91111a2b9ee45058ab997",
+      "current": "643976fdb502a4e674f85fc6e30921bb480fa45b70b91111a2b9ee45058ab997",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/combat/combat_presentation_adapter.gd",
+      "sha256": "ba829f81dd9d34550021533569e4e7fe39c271be66978425ad74333037c22c36",
+      "tested_commit": "ba829f81dd9d34550021533569e4e7fe39c271be66978425ad74333037c22c36",
+      "snapshot": "ba829f81dd9d34550021533569e4e7fe39c271be66978425ad74333037c22c36",
+      "current": "ba829f81dd9d34550021533569e4e7fe39c271be66978425ad74333037c22c36",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/combat/combat_presentation_adapter.gd.uid",
+      "sha256": "a99f835dd9001c5965055aa59582304e5f62d3d53c494d07a72ec4a1e65ab6ff",
+      "tested_commit": "a99f835dd9001c5965055aa59582304e5f62d3d53c494d07a72ec4a1e65ab6ff",
+      "snapshot": "a99f835dd9001c5965055aa59582304e5f62d3d53c494d07a72ec4a1e65ab6ff",
+      "current": "a99f835dd9001c5965055aa59582304e5f62d3d53c494d07a72ec4a1e65ab6ff",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/combat/combat_prototype.gd",
+      "sha256": "b2e1763158f55e4da48557c930d677ec9bc572bcd8e38611961963774edc8979",
+      "tested_commit": "b2e1763158f55e4da48557c930d677ec9bc572bcd8e38611961963774edc8979",
+      "snapshot": "b2e1763158f55e4da48557c930d677ec9bc572bcd8e38611961963774edc8979",
+      "current": "b2e1763158f55e4da48557c930d677ec9bc572bcd8e38611961963774edc8979",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/combat/combat_prototype.gd.uid",
+      "sha256": "5f379a69dceca54b91ea09dc199c9c75f6d43adeb531c2c9b61e2364dcae1f68",
+      "tested_commit": "5f379a69dceca54b91ea09dc199c9c75f6d43adeb531c2c9b61e2364dcae1f68",
+      "snapshot": "5f379a69dceca54b91ea09dc199c9c75f6d43adeb531c2c9b61e2364dcae1f68",
+      "current": "5f379a69dceca54b91ea09dc199c9c75f6d43adeb531c2c9b61e2364dcae1f68",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/combat/combat_targets.gd",
+      "sha256": "f9a0c13b001651ec538e10eb99815fd5e1b58c09b7480ce51cd2a8f93abd2b6c",
+      "tested_commit": "f9a0c13b001651ec538e10eb99815fd5e1b58c09b7480ce51cd2a8f93abd2b6c",
+      "snapshot": "f9a0c13b001651ec538e10eb99815fd5e1b58c09b7480ce51cd2a8f93abd2b6c",
+      "current": "f9a0c13b001651ec538e10eb99815fd5e1b58c09b7480ce51cd2a8f93abd2b6c",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/combat/combat_targets.gd.uid",
+      "sha256": "13f478f0bc9412555bea33e7f8f3d512caa94203f5acba8b32fa3f1c698fbe18",
+      "tested_commit": "13f478f0bc9412555bea33e7f8f3d512caa94203f5acba8b32fa3f1c698fbe18",
+      "snapshot": "13f478f0bc9412555bea33e7f8f3d512caa94203f5acba8b32fa3f1c698fbe18",
+      "current": "13f478f0bc9412555bea33e7f8f3d512caa94203f5acba8b32fa3f1c698fbe18",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/combat/combat_turn_flow.gd",
+      "sha256": "fced86f5923990887f47107121e4839d4980f6b67b91407ba950221385688300",
+      "tested_commit": "fced86f5923990887f47107121e4839d4980f6b67b91407ba950221385688300",
+      "snapshot": "fced86f5923990887f47107121e4839d4980f6b67b91407ba950221385688300",
+      "current": "fced86f5923990887f47107121e4839d4980f6b67b91407ba950221385688300",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/combat/combat_turn_flow.gd.uid",
+      "sha256": "01b48d7163d9d3dd7d1895e7acca8d34bbb6b2d80b390e3ab25d78482ae1db34",
+      "tested_commit": "01b48d7163d9d3dd7d1895e7acca8d34bbb6b2d80b390e3ab25d78482ae1db34",
+      "snapshot": "01b48d7163d9d3dd7d1895e7acca8d34bbb6b2d80b390e3ab25d78482ae1db34",
+      "current": "01b48d7163d9d3dd7d1895e7acca8d34bbb6b2d80b390e3ab25d78482ae1db34",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/combat/full_party_encounter.gd",
+      "sha256": "bdcce1057ced5f1b5869a43f5fa3030b5c637ed5afb80347e255c9bbf2265bea",
+      "tested_commit": "bdcce1057ced5f1b5869a43f5fa3030b5c637ed5afb80347e255c9bbf2265bea",
+      "snapshot": "bdcce1057ced5f1b5869a43f5fa3030b5c637ed5afb80347e255c9bbf2265bea",
+      "current": "bdcce1057ced5f1b5869a43f5fa3030b5c637ed5afb80347e255c9bbf2265bea",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/combat/full_party_encounter.gd.uid",
+      "sha256": "79dff825046cabfd93bba5eade940e60d49e79826f94fe9fb1f8d567319d37df",
+      "tested_commit": "79dff825046cabfd93bba5eade940e60d49e79826f94fe9fb1f8d567319d37df",
+      "snapshot": "79dff825046cabfd93bba5eade940e60d49e79826f94fe9fb1f8d567319d37df",
+      "current": "79dff825046cabfd93bba5eade940e60d49e79826f94fe9fb1f8d567319d37df",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/combat/full_party_proof.gd",
+      "sha256": "a6d3f21dd9f4a6540d108dfa6319726b18a803ec2fb4616724cd94932b5d7a4e",
+      "tested_commit": "a6d3f21dd9f4a6540d108dfa6319726b18a803ec2fb4616724cd94932b5d7a4e",
+      "snapshot": "a6d3f21dd9f4a6540d108dfa6319726b18a803ec2fb4616724cd94932b5d7a4e",
+      "current": "a6d3f21dd9f4a6540d108dfa6319726b18a803ec2fb4616724cd94932b5d7a4e",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/combat/full_party_proof.gd.uid",
+      "sha256": "b6c7387475bf8de62aec744411e1dda982d3b00884ca85939fc5cef966063c8b",
+      "tested_commit": "b6c7387475bf8de62aec744411e1dda982d3b00884ca85939fc5cef966063c8b",
+      "snapshot": "b6c7387475bf8de62aec744411e1dda982d3b00884ca85939fc5cef966063c8b",
+      "current": "b6c7387475bf8de62aec744411e1dda982d3b00884ca85939fc5cef966063c8b",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/combat/guidance_messages.gd",
+      "sha256": "988f6abb94da723508acbacd5ef749a98b60dfae622c9e0d0431caa0e525cbf1",
+      "tested_commit": "988f6abb94da723508acbacd5ef749a98b60dfae622c9e0d0431caa0e525cbf1",
+      "snapshot": "988f6abb94da723508acbacd5ef749a98b60dfae622c9e0d0431caa0e525cbf1",
+      "current": "988f6abb94da723508acbacd5ef749a98b60dfae622c9e0d0431caa0e525cbf1",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/combat/guidance_messages.gd.uid",
+      "sha256": "8f5156bea85b8cd38a74b9bb533f8d6a82210525e772fbc07011c4dd50274711",
+      "tested_commit": "8f5156bea85b8cd38a74b9bb533f8d6a82210525e772fbc07011c4dd50274711",
+      "snapshot": "8f5156bea85b8cd38a74b9bb533f8d6a82210525e772fbc07011c4dd50274711",
+      "current": "8f5156bea85b8cd38a74b9bb533f8d6a82210525e772fbc07011c4dd50274711",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/combat/guided_encounter.gd",
+      "sha256": "b262ec3f865539c46b2d3494904ccad08e5eb2bc14a37eb336a37fb206c44d0c",
+      "tested_commit": "b262ec3f865539c46b2d3494904ccad08e5eb2bc14a37eb336a37fb206c44d0c",
+      "snapshot": "b262ec3f865539c46b2d3494904ccad08e5eb2bc14a37eb336a37fb206c44d0c",
+      "current": "b262ec3f865539c46b2d3494904ccad08e5eb2bc14a37eb336a37fb206c44d0c",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/combat/guided_encounter.gd.uid",
+      "sha256": "a6c4af7a6b88c54b8ac4003e14a2aafa1f17421ed70b6eb8c6d8fa588b0c1586",
+      "tested_commit": "a6c4af7a6b88c54b8ac4003e14a2aafa1f17421ed70b6eb8c6d8fa588b0c1586",
+      "snapshot": "a6c4af7a6b88c54b8ac4003e14a2aafa1f17421ed70b6eb8c6d8fa588b0c1586",
+      "current": "a6c4af7a6b88c54b8ac4003e14a2aafa1f17421ed70b6eb8c6d8fa588b0c1586",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/m4/isolated_actor_state.gd",
+      "sha256": "0c69dee1657a2c7af40ee82a97577be1eed4a3f6964e6a6982bf92e5434481ac",
+      "tested_commit": "0c69dee1657a2c7af40ee82a97577be1eed4a3f6964e6a6982bf92e5434481ac",
+      "snapshot": "0c69dee1657a2c7af40ee82a97577be1eed4a3f6964e6a6982bf92e5434481ac",
+      "current": "0c69dee1657a2c7af40ee82a97577be1eed4a3f6964e6a6982bf92e5434481ac",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/m4/isolated_actor_state.gd.uid",
+      "sha256": "12e89f2fef4baa6b94e95b873ad816fcebc89436018b939aee298b2496626597",
+      "tested_commit": "12e89f2fef4baa6b94e95b873ad816fcebc89436018b939aee298b2496626597",
+      "snapshot": "12e89f2fef4baa6b94e95b873ad816fcebc89436018b939aee298b2496626597",
+      "current": "12e89f2fef4baa6b94e95b873ad816fcebc89436018b939aee298b2496626597",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/m4/isolated_encounter.gd",
+      "sha256": "a80857e12939d867c112c891f47725891954b34a3312d1fe11e0d74e4c5fc724",
+      "tested_commit": "a80857e12939d867c112c891f47725891954b34a3312d1fe11e0d74e4c5fc724",
+      "snapshot": "a80857e12939d867c112c891f47725891954b34a3312d1fe11e0d74e4c5fc724",
+      "current": "a80857e12939d867c112c891f47725891954b34a3312d1fe11e0d74e4c5fc724",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/m4/isolated_encounter.gd.uid",
+      "sha256": "1b4e62812470c66c101af38134876f2dec5017589bee5dd504840fca26058ffb",
+      "tested_commit": "1b4e62812470c66c101af38134876f2dec5017589bee5dd504840fca26058ffb",
+      "snapshot": "1b4e62812470c66c101af38134876f2dec5017589bee5dd504840fca26058ffb",
+      "current": "1b4e62812470c66c101af38134876f2dec5017589bee5dd504840fca26058ffb",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/m4/isolated_queue_outcome_encounter.gd",
+      "sha256": "2a817f2dc97c5d51e6704f5b1e69c98d8a99defa037330f39180edab3701f879",
+      "tested_commit": "2a817f2dc97c5d51e6704f5b1e69c98d8a99defa037330f39180edab3701f879",
+      "snapshot": "2a817f2dc97c5d51e6704f5b1e69c98d8a99defa037330f39180edab3701f879",
+      "current": "2a817f2dc97c5d51e6704f5b1e69c98d8a99defa037330f39180edab3701f879",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/m4/isolated_queue_outcome_encounter.gd.uid",
+      "sha256": "d1960be97ceed581a72b087e640e467982b04a58f7605d7a752d12bff0db30b8",
+      "tested_commit": "d1960be97ceed581a72b087e640e467982b04a58f7605d7a752d12bff0db30b8",
+      "snapshot": "d1960be97ceed581a72b087e640e467982b04a58f7605d7a752d12bff0db30b8",
+      "current": "d1960be97ceed581a72b087e640e467982b04a58f7605d7a752d12bff0db30b8",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/m4/isolated_registry.gd",
+      "sha256": "e6c74332632f366dab379a282cb347f177448b51d24432bda4374d4fef8a7e68",
+      "tested_commit": "e6c74332632f366dab379a282cb347f177448b51d24432bda4374d4fef8a7e68",
+      "snapshot": "e6c74332632f366dab379a282cb347f177448b51d24432bda4374d4fef8a7e68",
+      "current": "e6c74332632f366dab379a282cb347f177448b51d24432bda4374d4fef8a7e68",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/m4/isolated_registry.gd.uid",
+      "sha256": "1e607607d6b8b9865ac407efe41bad62f982b8c4ccae63044a796d54b8d3d763",
+      "tested_commit": "1e607607d6b8b9865ac407efe41bad62f982b8c4ccae63044a796d54b8d3d763",
+      "snapshot": "1e607607d6b8b9865ac407efe41bad62f982b8c4ccae63044a796d54b8d3d763",
+      "current": "1e607607d6b8b9865ac407efe41bad62f982b8c4ccae63044a796d54b8d3d763",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/m4/isolated_rescue_clock_encounter.gd",
+      "sha256": "fca891508ae2f6339e58eb5aee651eabfc0e0fd757e80c5c16b9d146f525b348",
+      "tested_commit": "fca891508ae2f6339e58eb5aee651eabfc0e0fd757e80c5c16b9d146f525b348",
+      "snapshot": "fca891508ae2f6339e58eb5aee651eabfc0e0fd757e80c5c16b9d146f525b348",
+      "current": "fca891508ae2f6339e58eb5aee651eabfc0e0fd757e80c5c16b9d146f525b348",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/m4/isolated_rescue_clock_encounter.gd.uid",
+      "sha256": "ebd7f94980d5f58361ae3747c8390ad7757027c90a07bdf27d67e6876d4237cb",
+      "tested_commit": "ebd7f94980d5f58361ae3747c8390ad7757027c90a07bdf27d67e6876d4237cb",
+      "snapshot": "ebd7f94980d5f58361ae3747c8390ad7757027c90a07bdf27d67e6876d4237cb",
+      "current": "ebd7f94980d5f58361ae3747c8390ad7757027c90a07bdf27d67e6876d4237cb",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/m4/m403_queue_adapter.gd",
+      "sha256": "db7c9dc698976e3b27430d0ac4551fa7d2e610f3e6e306b29aba5c9c521d9603",
+      "tested_commit": "db7c9dc698976e3b27430d0ac4551fa7d2e610f3e6e306b29aba5c9c521d9603",
+      "snapshot": "db7c9dc698976e3b27430d0ac4551fa7d2e610f3e6e306b29aba5c9c521d9603",
+      "current": "db7c9dc698976e3b27430d0ac4551fa7d2e610f3e6e306b29aba5c9c521d9603",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/m4/m403_queue_adapter.gd.uid",
+      "sha256": "6c7f01c16091788dc45b23832985cc2e53d07dccaa0e2d50f45bf41d90e00e5d",
+      "tested_commit": "6c7f01c16091788dc45b23832985cc2e53d07dccaa0e2d50f45bf41d90e00e5d",
+      "snapshot": "6c7f01c16091788dc45b23832985cc2e53d07dccaa0e2d50f45bf41d90e00e5d",
+      "current": "6c7f01c16091788dc45b23832985cc2e53d07dccaa0e2d50f45bf41d90e00e5d",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/npc/guidance_data_contract.gd",
+      "sha256": "4e0ff19a18a2cfcd6863d20d6d497724fe5069a9563968e163e7352dee856328",
+      "tested_commit": "4e0ff19a18a2cfcd6863d20d6d497724fe5069a9563968e163e7352dee856328",
+      "snapshot": "4e0ff19a18a2cfcd6863d20d6d497724fe5069a9563968e163e7352dee856328",
+      "current": "4e0ff19a18a2cfcd6863d20d6d497724fe5069a9563968e163e7352dee856328",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/npc/guidance_data_contract.gd.uid",
+      "sha256": "6054bdb4f03cbea48fc2dfef076ed5426caf91f77a6c5f58d27e75b09f5f18cb",
+      "tested_commit": "6054bdb4f03cbea48fc2dfef076ed5426caf91f77a6c5f58d27e75b09f5f18cb",
+      "snapshot": "6054bdb4f03cbea48fc2dfef076ed5426caf91f77a6c5f58d27e75b09f5f18cb",
+      "current": "6054bdb4f03cbea48fc2dfef076ed5426caf91f77a6c5f58d27e75b09f5f18cb",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/npc/guidance_decision_layer.gd",
+      "sha256": "1116e937c7fd0ca9a802e494dac795408b78d0cbc8c2c6567d34091dc1ec67f3",
+      "tested_commit": "1116e937c7fd0ca9a802e494dac795408b78d0cbc8c2c6567d34091dc1ec67f3",
+      "snapshot": "1116e937c7fd0ca9a802e494dac795408b78d0cbc8c2c6567d34091dc1ec67f3",
+      "current": "1116e937c7fd0ca9a802e494dac795408b78d0cbc8c2c6567d34091dc1ec67f3",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/npc/guidance_decision_layer.gd.uid",
+      "sha256": "fa6e40eb3bada5e186782174ca0dfff32561efd648f57d001dac7e2a25340706",
+      "tested_commit": "fa6e40eb3bada5e186782174ca0dfff32561efd648f57d001dac7e2a25340706",
+      "snapshot": "fa6e40eb3bada5e186782174ca0dfff32561efd648f57d001dac7e2a25340706",
+      "current": "fa6e40eb3bada5e186782174ca0dfff32561efd648f57d001dac7e2a25340706",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/npc/guided_decision_proof_encounter.gd",
+      "sha256": "7874358b5ae8ca4eded5c92f66b675f0612979ecbde36056c764f28e61bde66d",
+      "tested_commit": "7874358b5ae8ca4eded5c92f66b675f0612979ecbde36056c764f28e61bde66d",
+      "snapshot": "7874358b5ae8ca4eded5c92f66b675f0612979ecbde36056c764f28e61bde66d",
+      "current": "7874358b5ae8ca4eded5c92f66b675f0612979ecbde36056c764f28e61bde66d",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/npc/guided_decision_proof_encounter.gd.uid",
+      "sha256": "a96dbf1479d2eee7f93b3b0765a887def44a212b29a77042f2d06a96d1665763",
+      "tested_commit": "a96dbf1479d2eee7f93b3b0765a887def44a212b29a77042f2d06a96d1665763",
+      "snapshot": "a96dbf1479d2eee7f93b3b0765a887def44a212b29a77042f2d06a96d1665763",
+      "current": "a96dbf1479d2eee7f93b3b0765a887def44a212b29a77042f2d06a96d1665763",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/npc/npc_autonomy_proof.gd",
+      "sha256": "ee2eeb50d828c3e2f26ec0221c2f567f9a60909c92a1a61d7546a07c67672903",
+      "tested_commit": "ee2eeb50d828c3e2f26ec0221c2f567f9a60909c92a1a61d7546a07c67672903",
+      "snapshot": "ee2eeb50d828c3e2f26ec0221c2f567f9a60909c92a1a61d7546a07c67672903",
+      "current": "ee2eeb50d828c3e2f26ec0221c2f567f9a60909c92a1a61d7546a07c67672903",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/npc/npc_autonomy_proof.gd.uid",
+      "sha256": "68e1213b3ecabf0d0bfd14e41defc9bb364f1f5713d0f1078a75b7a335ec5e65",
+      "tested_commit": "68e1213b3ecabf0d0bfd14e41defc9bb364f1f5713d0f1078a75b7a335ec5e65",
+      "snapshot": "68e1213b3ecabf0d0bfd14e41defc9bb364f1f5713d0f1078a75b7a335ec5e65",
+      "current": "68e1213b3ecabf0d0bfd14e41defc9bb364f1f5713d0f1078a75b7a335ec5e65",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/npc/npc_decision_resolver.gd",
+      "sha256": "4c043ad1db5e2955fbfabb6fbef4273a1a0ce5f2b8816cc2b036d066658d81ed",
+      "tested_commit": "4c043ad1db5e2955fbfabb6fbef4273a1a0ce5f2b8816cc2b036d066658d81ed",
+      "snapshot": "4c043ad1db5e2955fbfabb6fbef4273a1a0ce5f2b8816cc2b036d066658d81ed",
+      "current": "4c043ad1db5e2955fbfabb6fbef4273a1a0ce5f2b8816cc2b036d066658d81ed",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/npc/npc_decision_resolver.gd.uid",
+      "sha256": "19ba48f3ed8c2018ef82234384c18ec6a49a88c5517991fb3bd41793276bc2aa",
+      "tested_commit": "19ba48f3ed8c2018ef82234384c18ec6a49a88c5517991fb3bd41793276bc2aa",
+      "snapshot": "19ba48f3ed8c2018ef82234384c18ec6a49a88c5517991fb3bd41793276bc2aa",
+      "current": "19ba48f3ed8c2018ef82234384c18ec6a49a88c5517991fb3bd41793276bc2aa",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/npc/npc_proof_encounter.gd",
+      "sha256": "c0ee13e41e5a186da48e6a5033548f961ac4aec335a1f86d233c20da2f1368cd",
+      "tested_commit": "c0ee13e41e5a186da48e6a5033548f961ac4aec335a1f86d233c20da2f1368cd",
+      "snapshot": "c0ee13e41e5a186da48e6a5033548f961ac4aec335a1f86d233c20da2f1368cd",
+      "current": "c0ee13e41e5a186da48e6a5033548f961ac4aec335a1f86d233c20da2f1368cd",
+      "actual": "PASS"
+    },
+    {
+      "path": "scripts/npc/npc_proof_encounter.gd.uid",
+      "sha256": "86f799639c4e11bcde4184bb2a8d450a8ba1df267598407b13edbf73713e4ba0",
+      "tested_commit": "86f799639c4e11bcde4184bb2a8d450a8ba1df267598407b13edbf73713e4ba0",
+      "snapshot": "86f799639c4e11bcde4184bb2a8d450a8ba1df267598407b13edbf73713e4ba0",
+      "current": "86f799639c4e11bcde4184bb2a8d450a8ba1df267598407b13edbf73713e4ba0",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/actors/actor_data_proof.gd",
+      "sha256": "79c99b92eaa56a74b88d96f6a28f21e76a925284958def20b29e79391b7dd046",
+      "tested_commit": "79c99b92eaa56a74b88d96f6a28f21e76a925284958def20b29e79391b7dd046",
+      "snapshot": "79c99b92eaa56a74b88d96f6a28f21e76a925284958def20b29e79391b7dd046",
+      "current": "79c99b92eaa56a74b88d96f6a28f21e76a925284958def20b29e79391b7dd046",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/actors/actor_data_proof.gd.uid",
+      "sha256": "f97692d31c0da0a3a74cb689351347ee5ac0e6ef092d643eb37f5726c6e323b6",
+      "tested_commit": "f97692d31c0da0a3a74cb689351347ee5ac0e6ef092d643eb37f5726c6e323b6",
+      "snapshot": "f97692d31c0da0a3a74cb689351347ee5ac0e6ef092d643eb37f5726c6e323b6",
+      "current": "f97692d31c0da0a3a74cb689351347ee5ac0e6ef092d643eb37f5726c6e323b6",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/actors/actor_ownership_proof.gd",
+      "sha256": "7c40330295016a2fb634ac392ad88be861f0a5d83fc3688764a7b09b9747c13e",
+      "tested_commit": "7c40330295016a2fb634ac392ad88be861f0a5d83fc3688764a7b09b9747c13e",
+      "snapshot": "7c40330295016a2fb634ac392ad88be861f0a5d83fc3688764a7b09b9747c13e",
+      "current": "7c40330295016a2fb634ac392ad88be861f0a5d83fc3688764a7b09b9747c13e",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/actors/actor_ownership_proof.gd.uid",
+      "sha256": "e9282dea26567e2b96a972132e3a65955eda4dfd0781344fb73041fe35115f55",
+      "tested_commit": "e9282dea26567e2b96a972132e3a65955eda4dfd0781344fb73041fe35115f55",
+      "snapshot": "e9282dea26567e2b96a972132e3a65955eda4dfd0781344fb73041fe35115f55",
+      "current": "e9282dea26567e2b96a972132e3a65955eda4dfd0781344fb73041fe35115f55",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/actors/m4_02_atomic_effect_clock_proof.gd",
+      "sha256": "3070f3c70b1477e993d69b66c924249559b8c607e1443d3f0a606d5ae713ee10",
+      "tested_commit": "3070f3c70b1477e993d69b66c924249559b8c607e1443d3f0a606d5ae713ee10",
+      "snapshot": "3070f3c70b1477e993d69b66c924249559b8c607e1443d3f0a606d5ae713ee10",
+      "current": "3070f3c70b1477e993d69b66c924249559b8c607e1443d3f0a606d5ae713ee10",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/actors/m4_02_atomic_effect_clock_proof.gd.uid",
+      "sha256": "10c80b5e1b79524465019486e56882efb269aab6525f1ea245f5bfcd4336e656",
+      "tested_commit": "10c80b5e1b79524465019486e56882efb269aab6525f1ea245f5bfcd4336e656",
+      "snapshot": "10c80b5e1b79524465019486e56882efb269aab6525f1ea245f5bfcd4336e656",
+      "current": "10c80b5e1b79524465019486e56882efb269aab6525f1ea245f5bfcd4336e656",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/actors/m4_02_diagnostic_encounter.gd",
+      "sha256": "0afb97a21600513c6a64b0bce39663a04d12250dd4aa8b03711427854b9dcdd1",
+      "tested_commit": "0afb97a21600513c6a64b0bce39663a04d12250dd4aa8b03711427854b9dcdd1",
+      "snapshot": "0afb97a21600513c6a64b0bce39663a04d12250dd4aa8b03711427854b9dcdd1",
+      "current": "0afb97a21600513c6a64b0bce39663a04d12250dd4aa8b03711427854b9dcdd1",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/actors/m4_02_diagnostic_encounter.gd.uid",
+      "sha256": "8e8de88a6133baecc7da1557d6f3c3fdd9549358b554cfb9eeae6e6315ac55ef",
+      "tested_commit": "8e8de88a6133baecc7da1557d6f3c3fdd9549358b554cfb9eeae6e6315ac55ef",
+      "snapshot": "8e8de88a6133baecc7da1557d6f3c3fdd9549358b554cfb9eeae6e6315ac55ef",
+      "current": "8e8de88a6133baecc7da1557d6f3c3fdd9549358b554cfb9eeae6e6315ac55ef",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/actors/m4_03_queue_foundation_proof.gd",
+      "sha256": "0f7e895ede8393c95749a8ec1fa9a86532fcabac90042d84154e68817827357c",
+      "tested_commit": "0f7e895ede8393c95749a8ec1fa9a86532fcabac90042d84154e68817827357c",
+      "snapshot": "0f7e895ede8393c95749a8ec1fa9a86532fcabac90042d84154e68817827357c",
+      "current": "0f7e895ede8393c95749a8ec1fa9a86532fcabac90042d84154e68817827357c",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/actors/m4_03_queue_foundation_proof.gd.uid",
+      "sha256": "6e45735280fa76b041fb7b81b2a98accf5823404a6068a4fd8d9d2c4c234da3c",
+      "tested_commit": "6e45735280fa76b041fb7b81b2a98accf5823404a6068a4fd8d9d2c4c234da3c",
+      "snapshot": "6e45735280fa76b041fb7b81b2a98accf5823404a6068a4fd8d9d2c4c234da3c",
+      "current": "6e45735280fa76b041fb7b81b2a98accf5823404a6068a4fd8d9d2c4c234da3c",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/actors/m4_data_state_proof.gd",
+      "sha256": "09065bac573ea962f39f5adb52e6a1af440afbf8cc3f552f27fbb5c2220839e8",
+      "tested_commit": "09065bac573ea962f39f5adb52e6a1af440afbf8cc3f552f27fbb5c2220839e8",
+      "snapshot": "09065bac573ea962f39f5adb52e6a1af440afbf8cc3f552f27fbb5c2220839e8",
+      "current": "09065bac573ea962f39f5adb52e6a1af440afbf8cc3f552f27fbb5c2220839e8",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/actors/m4_data_state_proof.gd.uid",
+      "sha256": "5350b5ad2b3b1237fcbf06bcc7e3675f4ccb62ae92db2339a51b3912544cfc7e",
+      "tested_commit": "5350b5ad2b3b1237fcbf06bcc7e3675f4ccb62ae92db2339a51b3912544cfc7e",
+      "snapshot": "5350b5ad2b3b1237fcbf06bcc7e3675f4ccb62ae92db2339a51b3912544cfc7e",
+      "current": "5350b5ad2b3b1237fcbf06bcc7e3675f4ccb62ae92db2339a51b3912544cfc7e",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/actors/party_foundation_proof.gd",
+      "sha256": "a14b897362820c7b70e77a35a4ac5113dfbfe038f4b15a4250cea9c47768f2e7",
+      "tested_commit": "a14b897362820c7b70e77a35a4ac5113dfbfe038f4b15a4250cea9c47768f2e7",
+      "snapshot": "a14b897362820c7b70e77a35a4ac5113dfbfe038f4b15a4250cea9c47768f2e7",
+      "current": "a14b897362820c7b70e77a35a4ac5113dfbfe038f4b15a4250cea9c47768f2e7",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/actors/party_foundation_proof.gd.uid",
+      "sha256": "bb5672556bdbe444833aae9787106bf7645481e187799952eb65d998a0f6e9a1",
+      "tested_commit": "bb5672556bdbe444833aae9787106bf7645481e187799952eb65d998a0f6e9a1",
+      "snapshot": "bb5672556bdbe444833aae9787106bf7645481e187799952eb65d998a0f6e9a1",
+      "current": "bb5672556bdbe444833aae9787106bf7645481e187799952eb65d998a0f6e9a1",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/actors/party_turn_proof.gd",
+      "sha256": "31d56ca958562c7b05792bf9bc6cf79ac893ab8a386091b769061fc94e0d2e29",
+      "tested_commit": "31d56ca958562c7b05792bf9bc6cf79ac893ab8a386091b769061fc94e0d2e29",
+      "snapshot": "31d56ca958562c7b05792bf9bc6cf79ac893ab8a386091b769061fc94e0d2e29",
+      "current": "31d56ca958562c7b05792bf9bc6cf79ac893ab8a386091b769061fc94e0d2e29",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/actors/party_turn_proof.gd.uid",
+      "sha256": "a99802a635207ea84e3285d76ba54b6404235bc36a5505ab10eefdb825462d3c",
+      "tested_commit": "a99802a635207ea84e3285d76ba54b6404235bc36a5505ab10eefdb825462d3c",
+      "snapshot": "a99802a635207ea84e3285d76ba54b6404235bc36a5505ab10eefdb825462d3c",
+      "current": "a99802a635207ea84e3285d76ba54b6404235bc36a5505ab10eefdb825462d3c",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/combat/autonomous_main_integration.gd",
+      "sha256": "38c8db8ac6c630a9d594340a65a2bb2d492bd3b27db5f81f6c94659445bf1747",
+      "tested_commit": "38c8db8ac6c630a9d594340a65a2bb2d492bd3b27db5f81f6c94659445bf1747",
+      "snapshot": "38c8db8ac6c630a9d594340a65a2bb2d492bd3b27db5f81f6c94659445bf1747",
+      "current": "38c8db8ac6c630a9d594340a65a2bb2d492bd3b27db5f81f6c94659445bf1747",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/combat/autonomous_main_integration.gd.uid",
+      "sha256": "2d948c83b2cc8c4b8f92b8330380b949f752d273a26ff83dfb4dbcca26fb9570",
+      "tested_commit": "2d948c83b2cc8c4b8f92b8330380b949f752d273a26ff83dfb4dbcca26fb9570",
+      "snapshot": "2d948c83b2cc8c4b8f92b8330380b949f752d273a26ff83dfb4dbcca26fb9570",
+      "current": "2d948c83b2cc8c4b8f92b8330380b949f752d273a26ff83dfb4dbcca26fb9570",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/combat/guidance_main_integration.gd",
+      "sha256": "8d4d21d36dcf4500d5a8fcd505763d0897562d0801bfa2d1d9bcf90bc9f96811",
+      "tested_commit": "8d4d21d36dcf4500d5a8fcd505763d0897562d0801bfa2d1d9bcf90bc9f96811",
+      "snapshot": "8d4d21d36dcf4500d5a8fcd505763d0897562d0801bfa2d1d9bcf90bc9f96811",
+      "current": "8d4d21d36dcf4500d5a8fcd505763d0897562d0801bfa2d1d9bcf90bc9f96811",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/combat/guidance_main_integration.gd.uid",
+      "sha256": "c9cb453d2303e2803aa2fb8bcbef55bf0f0748ee71c1a939d7cfff348805bad1",
+      "tested_commit": "c9cb453d2303e2803aa2fb8bcbef55bf0f0748ee71c1a939d7cfff348805bad1",
+      "snapshot": "c9cb453d2303e2803aa2fb8bcbef55bf0f0748ee71c1a939d7cfff348805bad1",
+      "current": "c9cb453d2303e2803aa2fb8bcbef55bf0f0748ee71c1a939d7cfff348805bad1",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/combat/main_cutover_proof.gd",
+      "sha256": "f8f7dac98ed8b9e08417691eed420ded4844c346f88179f6a5228b01d2980171",
+      "tested_commit": "f8f7dac98ed8b9e08417691eed420ded4844c346f88179f6a5228b01d2980171",
+      "snapshot": "f8f7dac98ed8b9e08417691eed420ded4844c346f88179f6a5228b01d2980171",
+      "current": "f8f7dac98ed8b9e08417691eed420ded4844c346f88179f6a5228b01d2980171",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/combat/main_cutover_proof.gd.uid",
+      "sha256": "2513a10cb23940c8da3e50415d3c11fa4a3a4646130a51687547516ff6ac9217",
+      "tested_commit": "2513a10cb23940c8da3e50415d3c11fa4a3a4646130a51687547516ff6ac9217",
+      "snapshot": "2513a10cb23940c8da3e50415d3c11fa4a3a4646130a51687547516ff6ac9217",
+      "current": "2513a10cb23940c8da3e50415d3c11fa4a3a4646130a51687547516ff6ac9217",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/combat/main_cutover_startup_probe.gd",
+      "sha256": "03a1449c54b6db8be98b76a4192a1703be9024a27aa2fb6fbe7829030f995bc2",
+      "tested_commit": "03a1449c54b6db8be98b76a4192a1703be9024a27aa2fb6fbe7829030f995bc2",
+      "snapshot": "03a1449c54b6db8be98b76a4192a1703be9024a27aa2fb6fbe7829030f995bc2",
+      "current": "03a1449c54b6db8be98b76a4192a1703be9024a27aa2fb6fbe7829030f995bc2",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/combat/main_cutover_startup_probe.gd.uid",
+      "sha256": "1ddbb91258cfdeb7b35601ded931b56889d791c1341974daea967f0785d9fd70",
+      "tested_commit": "1ddbb91258cfdeb7b35601ded931b56889d791c1341974daea967f0785d9fd70",
+      "snapshot": "1ddbb91258cfdeb7b35601ded931b56889d791c1341974daea967f0785d9fd70",
+      "current": "1ddbb91258cfdeb7b35601ded931b56889d791c1341974daea967f0785d9fd70",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/combat/party_playable_integration.gd",
+      "sha256": "2ba3d6bdcff08686e6f3a1e4e23588d09c73b04347926c7168e9f4bd860ea443",
+      "tested_commit": "2ba3d6bdcff08686e6f3a1e4e23588d09c73b04347926c7168e9f4bd860ea443",
+      "snapshot": "2ba3d6bdcff08686e6f3a1e4e23588d09c73b04347926c7168e9f4bd860ea443",
+      "current": "2ba3d6bdcff08686e6f3a1e4e23588d09c73b04347926c7168e9f4bd860ea443",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/combat/party_playable_integration.gd.uid",
+      "sha256": "95d6a87688b3d667260c8dd52d8a4636fbf29742433793db20d6edc9373fc184",
+      "tested_commit": "95d6a87688b3d667260c8dd52d8a4636fbf29742433793db20d6edc9373fc184",
+      "snapshot": "95d6a87688b3d667260c8dd52d8a4636fbf29742433793db20d6edc9373fc184",
+      "current": "95d6a87688b3d667260c8dd52d8a4636fbf29742433793db20d6edc9373fc184",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/combat/presentation_boundary.gd",
+      "sha256": "1112430efbdcd2a0f774a1504260f4db283bbeb64bda76c982b3b250ec87460f",
+      "tested_commit": "1112430efbdcd2a0f774a1504260f4db283bbeb64bda76c982b3b250ec87460f",
+      "snapshot": "1112430efbdcd2a0f774a1504260f4db283bbeb64bda76c982b3b250ec87460f",
+      "current": "1112430efbdcd2a0f774a1504260f4db283bbeb64bda76c982b3b250ec87460f",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/combat/presentation_boundary.gd.uid",
+      "sha256": "c61c2a082d21a929e9fcc99cf8f1d4cb74cda872e9e77975ee2306d188b9b2fd",
+      "tested_commit": "c61c2a082d21a929e9fcc99cf8f1d4cb74cda872e9e77975ee2306d188b9b2fd",
+      "snapshot": "c61c2a082d21a929e9fcc99cf8f1d4cb74cda872e9e77975ee2306d188b9b2fd",
+      "current": "c61c2a082d21a929e9fcc99cf8f1d4cb74cda872e9e77975ee2306d188b9b2fd",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/combat/queue_regression.gd",
+      "sha256": "b58315562e314e606fcfc9cfe0df14db2f4548992ff0506dd318dd5513d55b92",
+      "tested_commit": "b58315562e314e606fcfc9cfe0df14db2f4548992ff0506dd318dd5513d55b92",
+      "snapshot": "b58315562e314e606fcfc9cfe0df14db2f4548992ff0506dd318dd5513d55b92",
+      "current": "b58315562e314e606fcfc9cfe0df14db2f4548992ff0506dd318dd5513d55b92",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/combat/queue_regression.gd.uid",
+      "sha256": "bf50cf0a049966ef18c9322698e11bd94e23628bb2472971283f2c2531992514",
+      "tested_commit": "bf50cf0a049966ef18c9322698e11bd94e23628bb2472971283f2c2531992514",
+      "snapshot": "bf50cf0a049966ef18c9322698e11bd94e23628bb2472971283f2c2531992514",
+      "current": "bf50cf0a049966ef18c9322698e11bd94e23628bb2472971283f2c2531992514",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/combat/verify.py",
+      "sha256": "191e2df1a7b36d401315571793f0189850ac83d04281a99ae4512d79e22d7600",
+      "tested_commit": "191e2df1a7b36d401315571793f0189850ac83d04281a99ae4512d79e22d7600",
+      "snapshot": "191e2df1a7b36d401315571793f0189850ac83d04281a99ae4512d79e22d7600",
+      "current": "191e2df1a7b36d401315571793f0189850ac83d04281a99ae4512d79e22d7600",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/npc/decision_effect_proof.gd",
+      "sha256": "65dec3aa060a5a1566d736041a35d4c9a0d2309b18e6c20422f676873a92d9ca",
+      "tested_commit": "65dec3aa060a5a1566d736041a35d4c9a0d2309b18e6c20422f676873a92d9ca",
+      "snapshot": "65dec3aa060a5a1566d736041a35d4c9a0d2309b18e6c20422f676873a92d9ca",
+      "current": "65dec3aa060a5a1566d736041a35d4c9a0d2309b18e6c20422f676873a92d9ca",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/npc/decision_effect_proof.gd.uid",
+      "sha256": "2cc34e6bc81835199644488a59313890b4dd6cdc21b4425f3aed8927e7b8bb19",
+      "tested_commit": "2cc34e6bc81835199644488a59313890b4dd6cdc21b4425f3aed8927e7b8bb19",
+      "snapshot": "2cc34e6bc81835199644488a59313890b4dd6cdc21b4425f3aed8927e7b8bb19",
+      "current": "2cc34e6bc81835199644488a59313890b4dd6cdc21b4425f3aed8927e7b8bb19",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/npc/guidance_data_proof.gd",
+      "sha256": "8bc04a4fe079b59231c1a3afbcf8aab5056c3b2d45a72e06bb2dc7543ce083e2",
+      "tested_commit": "8bc04a4fe079b59231c1a3afbcf8aab5056c3b2d45a72e06bb2dc7543ce083e2",
+      "snapshot": "8bc04a4fe079b59231c1a3afbcf8aab5056c3b2d45a72e06bb2dc7543ce083e2",
+      "current": "8bc04a4fe079b59231c1a3afbcf8aab5056c3b2d45a72e06bb2dc7543ce083e2",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/npc/guidance_data_proof.gd.uid",
+      "sha256": "1eaf407ad3d8f3ea03b855b46a8dc04edc69b60adad652ec6909e7ac615974ce",
+      "tested_commit": "1eaf407ad3d8f3ea03b855b46a8dc04edc69b60adad652ec6909e7ac615974ce",
+      "snapshot": "1eaf407ad3d8f3ea03b855b46a8dc04edc69b60adad652ec6909e7ac615974ce",
+      "current": "1eaf407ad3d8f3ea03b855b46a8dc04edc69b60adad652ec6909e7ac615974ce",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/npc/guidance_decision_proof.gd",
+      "sha256": "e5359ece255aba27f640d44f20f2536acdea7c3cb30efbd42d18ee06b82389dd",
+      "tested_commit": "e5359ece255aba27f640d44f20f2536acdea7c3cb30efbd42d18ee06b82389dd",
+      "snapshot": "e5359ece255aba27f640d44f20f2536acdea7c3cb30efbd42d18ee06b82389dd",
+      "current": "e5359ece255aba27f640d44f20f2536acdea7c3cb30efbd42d18ee06b82389dd",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/npc/guidance_decision_proof.gd.uid",
+      "sha256": "7ca96398b4ddd1b05fc59aa02cd506089c21ea219fb0ff28159daf05fdaa3fb5",
+      "tested_commit": "7ca96398b4ddd1b05fc59aa02cd506089c21ea219fb0ff28159daf05fdaa3fb5",
+      "snapshot": "7ca96398b4ddd1b05fc59aa02cd506089c21ea219fb0ff28159daf05fdaa3fb5",
+      "current": "7ca96398b4ddd1b05fc59aa02cd506089c21ea219fb0ff28159daf05fdaa3fb5",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/npc/playable_integration.gd",
+      "sha256": "3bb936ee174e5e380931fa3475eb559227e465207a07742ca37e036cd42608d6",
+      "tested_commit": "3bb936ee174e5e380931fa3475eb559227e465207a07742ca37e036cd42608d6",
+      "snapshot": "3bb936ee174e5e380931fa3475eb559227e465207a07742ca37e036cd42608d6",
+      "current": "3bb936ee174e5e380931fa3475eb559227e465207a07742ca37e036cd42608d6",
+      "actual": "PASS"
+    },
+    {
+      "path": "tests/npc/playable_integration.gd.uid",
+      "sha256": "6406376782950db4c29156c5b24f1ecc7700c56a099345d94579980020366308",
+      "tested_commit": "6406376782950db4c29156c5b24f1ecc7700c56a099345d94579980020366308",
+      "snapshot": "6406376782950db4c29156c5b24f1ecc7700c56a099345d94579980020366308",
+      "current": "6406376782950db4c29156c5b24f1ecc7700c56a099345d94579980020366308",
+      "actual": "PASS"
+    }
+  ],
+  "canonical_snapshot_matches_commit": 111,
+  "canonical_protected_source_matches": 110,
+  "protected_files": [
+    "art/references/generated/chatgpt_2026-08-05_14-04-14.png",
+    "art/references/generated/chatgpt_2026-08-07_14-30-00.png",
+    "art/references/generated/chatgpt_2026-08-07_14-30-15.png",
+    "art/references/generated/chatgpt_2026-08-10_09-49-29.png",
+    "art/references/generated/chatgpt_2026-08-10_09-50-33.png",
+    "art/references/generated/chatgpt_2026-08-12_01-48-34.png",
+    "art/references/generated/chatgpt_2026-08-12_01-48-44.png",
+    "art/references/generated/chatgpt_2026-08-16_23-54-47.png",
+    "art/references/legacy/rondo.png",
+    "art/references/legacy/untitled_01.png",
+    "art/references/legacy/untitled_02.png",
+    "art/references/legacy/untitled_03.png",
+    "art/references/legacy/untitled_04.png",
+    "art/references/player/hero_01.png",
+    "art/references/player/hero_02.png",
+    "art/references/screenshots/screenshot_2026-08-12_21-51-02.png",
+    "art/references/screenshots/screenshot_2026-08-14_00-54-09.png",
+    "art/references/screenshots/screenshot_2026-08-15_06-42-08.png",
+    "art/references/screenshots/screenshot_2026-08-15_06-43-05.png",
+    "art/references/screenshots/screenshot_2026-08-15_06-43-55.png",
+    "assets/sprites/characters/npc_01/battle/idle/npc_01_idle.png",
+    "assets/sprites/characters/npc_02/battle/idle/npc_02_idle.png",
+    "assets/sprites/characters/npc_03/battle/idle/npc_03_idle.png",
+    "assets/sprites/characters/player/battle/idle/player_idle_01.png",
+    "assets/sprites/characters/player/battle/idle/player_idle_02.png",
+    "assets/sprites/enemies/enemy_01/battle/idle/enemy_01_idle.png",
+    "icon.svg",
+    "project.godot",
+    "scenes/combat/combat_autonomous_optin.tscn",
+    "scenes/combat/combat_prototype.tscn",
+    "scenes/combat/full_party_proof.tscn",
+    "scenes/npc/npc_autonomy_proof.tscn",
+    "scripts/actors/actor_definition.gd",
+    "scripts/actors/actor_definition.gd.uid",
+    "scripts/actors/actor_registry.gd",
+    "scripts/actors/actor_registry.gd.uid",
+    "scripts/actors/actor_runtime_state.gd",
+    "scripts/actors/actor_runtime_state.gd.uid",
+    "scripts/combat/combat_presentation_adapter.gd",
+    "scripts/combat/combat_presentation_adapter.gd.uid",
+    "scripts/combat/combat_prototype.gd",
+    "scripts/combat/combat_prototype.gd.uid",
+    "scripts/combat/combat_targets.gd",
+    "scripts/combat/combat_targets.gd.uid",
+    "scripts/combat/combat_turn_flow.gd",
+    "scripts/combat/combat_turn_flow.gd.uid",
+    "scripts/combat/full_party_encounter.gd",
+    "scripts/combat/full_party_encounter.gd.uid",
+    "scripts/combat/full_party_proof.gd",
+    "scripts/combat/full_party_proof.gd.uid",
+    "scripts/combat/guidance_messages.gd",
+    "scripts/combat/guidance_messages.gd.uid",
+    "scripts/combat/guided_encounter.gd",
+    "scripts/combat/guided_encounter.gd.uid",
+    "scripts/m4/isolated_actor_state.gd",
+    "scripts/m4/isolated_actor_state.gd.uid",
+    "scripts/m4/isolated_encounter.gd",
+    "scripts/m4/isolated_encounter.gd.uid",
+    "scripts/m4/isolated_registry.gd",
+    "scripts/m4/isolated_registry.gd.uid",
+    "scripts/m4/isolated_rescue_clock_encounter.gd",
+    "scripts/m4/isolated_rescue_clock_encounter.gd.uid",
+    "scripts/npc/guidance_data_contract.gd",
+    "scripts/npc/guidance_data_contract.gd.uid",
+    "scripts/npc/guidance_decision_layer.gd",
+    "scripts/npc/guidance_decision_layer.gd.uid",
+    "scripts/npc/guided_decision_proof_encounter.gd",
+    "scripts/npc/guided_decision_proof_encounter.gd.uid",
+    "scripts/npc/npc_autonomy_proof.gd",
+    "scripts/npc/npc_autonomy_proof.gd.uid",
+    "scripts/npc/npc_decision_resolver.gd",
+    "scripts/npc/npc_decision_resolver.gd.uid",
+    "scripts/npc/npc_proof_encounter.gd",
+    "scripts/npc/npc_proof_encounter.gd.uid",
+    "tests/actors/actor_data_proof.gd",
+    "tests/actors/actor_data_proof.gd.uid",
+    "tests/actors/actor_ownership_proof.gd",
+    "tests/actors/actor_ownership_proof.gd.uid",
+    "tests/actors/m4_02_atomic_effect_clock_proof.gd",
+    "tests/actors/m4_02_atomic_effect_clock_proof.gd.uid",
+    "tests/actors/m4_02_diagnostic_encounter.gd",
+    "tests/actors/m4_02_diagnostic_encounter.gd.uid",
+    "tests/actors/m4_data_state_proof.gd",
+    "tests/actors/m4_data_state_proof.gd.uid",
+    "tests/actors/party_foundation_proof.gd",
+    "tests/actors/party_foundation_proof.gd.uid",
+    "tests/actors/party_turn_proof.gd",
+    "tests/actors/party_turn_proof.gd.uid",
+    "tests/combat/autonomous_main_integration.gd",
+    "tests/combat/autonomous_main_integration.gd.uid",
+    "tests/combat/guidance_main_integration.gd",
+    "tests/combat/guidance_main_integration.gd.uid",
+    "tests/combat/main_cutover_proof.gd",
+    "tests/combat/main_cutover_proof.gd.uid",
+    "tests/combat/main_cutover_startup_probe.gd",
+    "tests/combat/main_cutover_startup_probe.gd.uid",
+    "tests/combat/party_playable_integration.gd",
+    "tests/combat/party_playable_integration.gd.uid",
+    "tests/combat/presentation_boundary.gd",
+    "tests/combat/presentation_boundary.gd.uid",
+    "tests/combat/queue_regression.gd",
+    "tests/combat/queue_regression.gd.uid",
+    "tests/npc/decision_effect_proof.gd",
+    "tests/npc/decision_effect_proof.gd.uid",
+    "tests/npc/guidance_data_proof.gd",
+    "tests/npc/guidance_data_proof.gd.uid",
+    "tests/npc/guidance_decision_proof.gd",
+    "tests/npc/guidance_decision_proof.gd.uid",
+    "tests/npc/playable_integration.gd",
+    "tests/npc/playable_integration.gd.uid"
+  ],
+  "allowed_existing_source_change": "tests/combat/verify.py optional hook only",
+  "post_test_changes": "Markdown and new evidence only; runtime/test/runner/UID hashes remain identical"
+}

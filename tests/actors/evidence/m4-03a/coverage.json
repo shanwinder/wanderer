@@ -1,0 +1,127 @@
+{
+  "scope": "A foundation only; no promotion of historical M403 design rows",
+  "case_count": 94,
+  "assertion_count": 1165,
+  "per_frame_checks": 0,
+  "matrix": [
+    {
+      "id": "M403-11",
+      "status": "PARTIAL / FOUNDATION-ONLY",
+      "cases": [
+        "M403A-14"
+      ],
+      "proven": "Unavailable dispositions and stopping at eligible NPC, actors/plan unchanged",
+      "deferred": "Required preceding real Player/NPC action receipts; eligible-to-Enemy traversal after real completions"
+    },
+    {
+      "id": "M403-37",
+      "status": "PARTIAL / FOUNDATION-ONLY",
+      "cases": [
+        "M403A-45"
+      ],
+      "proven": "Generation reset and stale advance/reset request rejection",
+      "deferred": "LOCKED/APPLIED action callbacks require B/C"
+    },
+    {
+      "id": "M403-38",
+      "status": "PARTIAL / FOUNDATION-ONLY",
+      "cases": [
+        "M403A-45"
+      ],
+      "proven": "Reused actor IDs do not accept old generation queue requests",
+      "deferred": "Real action/close/Abort grants absent"
+    },
+    {
+      "id": "M403-39",
+      "status": "PARTIAL / FOUNDATION-ONLY",
+      "cases": [
+        "M403A-46",
+        "M403A-47",
+        "M403A-48",
+        "M403A-49",
+        "M403A-50",
+        "M403A-51",
+        "M403A-52",
+        "M403A-53",
+        "M403A-54",
+        "M403A-55",
+        "M403A-56",
+        "M403A-57",
+        "M403A-58",
+        "M403A-59",
+        "M403A-60",
+        "M403A-61",
+        "M403A-62",
+        "M403A-63",
+        "M403A-64",
+        "M403A-65",
+        "M403A-66",
+        "M403A-67",
+        "M403A-68",
+        "M403A-69",
+        "M403A-70"
+      ],
+      "proven": "Malformed/duplicate fixtures are N-all and legitimate old queue opportunity remains usable",
+      "deferred": "Pending real effect retains ability to impact"
+    },
+    {
+      "id": "M403-40",
+      "status": "PARTIAL / FOUNDATION-ONLY",
+      "cases": [
+        "M403A-29",
+        "M403A-30",
+        "M403A-31",
+        "M403A-32",
+        "M403A-33",
+        "M403A-34",
+        "M403A-35",
+        "M403A-36",
+        "M403A-37",
+        "M403A-38",
+        "M403A-39",
+        "M403A-40",
+        "M403A-41",
+        "M403A-42"
+      ],
+      "proven": "Stale revision and forged/missing capability reject before cursor publication",
+      "deferred": "Owned action lock/forged token authorization ID"
+    },
+    {
+      "id": "M403-44",
+      "status": "DEFERRED TO B/C",
+      "cases": [
+        "M403A-92",
+        "M403A-93"
+      ],
+      "proven": "Pure R49-01 SUSPENDED predicates, read-only repeatability, no stored phase",
+      "deferred": "Both full nonterminal boundaries, real seal/open-next operations, retry/stale revisions against those boundaries; NOT end-to-end PASS"
+    },
+    {
+      "id": "M403-47",
+      "status": "FULLY PROVEN",
+      "scope": "This A candidate regression/preservation only",
+      "evidence": [
+        "final-results.json",
+        "inherited-counts.json",
+        "source-comparison.json"
+      ],
+      "proven": "Unchanged Guidance v1/R1/Pending/Frozen/Restart assertions and protected production hashes"
+    },
+    {
+      "id": "M403-48",
+      "status": "FULLY PROVEN",
+      "scope": "This A candidate automated regression only, not playable/visual acceptance",
+      "evidence": [
+        "final-results.json",
+        "canonical-results.json",
+        "trace-comparison.json"
+      ],
+      "proven": "Fresh all-flags candidate/canonical and exact Legacy differential; new A cases separate"
+    }
+  ],
+  "other_M403_gameplay_rows": "DEFERRED TO B/C / NOT RUN, historical table unchanged",
+  "M402-06": "BLOCKED DEPENDENCY — pending-rescue end-to-end proof unchanged",
+  "M402-24": "PARTIAL — original authenticated unused wrong-round issuer path still absent",
+  "SEALED_restart": "BLOCKED DEPENDENCY — legal SEALED/Abort producer absent; validator rejection only",
+  "GUI_keyboard_visual_acceptance": "NOT RUN"
+}
