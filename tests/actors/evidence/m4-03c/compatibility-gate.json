@@ -2,7 +2,7 @@
   "id": "C51-ARCH-01",
   "actual": "PASS within isolated automated scope",
   "canonical": "2c59e8d8e27c92c92344adcba9eded0d297cc547",
-  "tested_source": "5b37e061027649c6ef4be5c61a963659a82ed939",
+  "tested_source": "d583b4b6fdd3226178e4f5b4e916c874a82d83c4",
   "original_A": {
     "report": "m4-03a-scenarios.json",
     "canonical": {

@@ -1,7 +1,7 @@
 {
   "actual": "PASS",
   "errors": [],
-  "tested_source": "5b37e061027649c6ef4be5c61a963659a82ed939",
+  "tested_source": "d583b4b6fdd3226178e4f5b4e916c874a82d83c4",
   "changed_file_scope": [
     "README.md",
     "docs/README.md",
@@ -30,9 +30,12 @@
     "tests/actors/evidence/m4-03c/logs.zip",
     "tests/actors/evidence/m4-03c/m4-03c-scenarios.zip",
     "tests/actors/evidence/m4-03c/packaging-audit-history.json",
+    "tests/actors/evidence/m4-03c/pre-r52-evidence.zip",
     "tests/actors/evidence/m4-03c/protected-files.json",
     "tests/actors/evidence/m4-03c/queue-continuation.json",
     "tests/actors/evidence/m4-03c/r49-two-boundaries.json",
+    "tests/actors/evidence/m4-03c/r52-01.json",
+    "tests/actors/evidence/m4-03c/r52-development-logs.zip",
     "tests/actors/evidence/m4-03c/reference-provenance.json",
     "tests/actors/evidence/m4-03c/regression-comparison.json",
     "tests/actors/evidence/m4-03c/review-checks.json",
@@ -52,8 +55,8 @@
   "tested_source_hashes_verified": 131,
   "protected_existing_blobs": 351,
   "Markdown_files": 16,
-  "local_links": 479,
-  "fragments": 102,
+  "local_links": 484,
+  "fragments": 103,
   "optional_report_adversarial_audit": [
     {
       "case": "bool independent count",
@@ -164,6 +167,11 @@
       "actual": "PASS"
     },
     {
+      "path": "pre-r52-evidence.zip",
+      "entries": 30,
+      "actual": "PASS"
+    },
+    {
       "path": "logs.zip",
       "entries": 283,
       "actual": "PASS"
@@ -180,11 +188,16 @@
     },
     {
       "path": "tooling.zip",
-      "entries": 6,
+      "entries": 4,
+      "actual": "PASS"
+    },
+    {
+      "path": "r52-development-logs.zip",
+      "entries": 87,
       "actual": "PASS"
     }
   ],
-  "case_index_assertions_exact": 5458,
+  "case_index_assertions_exact": 6054,
   "raw_report_preserved_exactly": true,
   "original_contracts_and_AB_assertions": "unchanged",
   "independent_review": "PENDING; this is self-audit only",

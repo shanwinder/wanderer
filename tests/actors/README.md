@@ -1470,7 +1470,7 @@ R49 boundaries. [Compatibility evidence](evidence/m4-03c/compatibility-gate.json
 
 All scalar fields are strictly typed; version is integer1. Base request exact5 =
 `version:int,session:int,generation:int,expected_revision:int,queue_id:String`.
-Round request exact6 adds `round_id:int`. All capability arguments require the owned
+OPEN request exact6 adds `round_id:int`. All capability arguments require the owned
 fixture capability; it is a harness authority, not a Player-issued NPC command.
 
 | API | Exact schema and behavior |
@@ -1482,9 +1482,9 @@ fixture capability; it is a harness authority, not a Player-issued NPC command.
 | `lock_fixture_attack(request,capability)` | Lock9 + `target_id:String,amount:int` (exact11), kindATTACK. Current eligible slot, opposing target, positive amount≤target maxHP; bound into immutable token. No damage0/no-op receipt. Enemy target must equal admission declaration, even if it has since become unavailable |
 | `lock_fixture_rescue(request,capability)` | Lock9 + `target_id:String` (exact10), kindRESCUE. Distinct DOWN Party/current episode, eligible Party helper/use1. HP1/retire episode/use0 atomically; no slot reinsertion/refund |
 | `impact/complete/cancel(token)` | Exact owned full token equality. RETREAT/RESCUE token15 retains A/B identity fields; ATTACK adds `amount:int` (exact16). Immutable window/lock revision/episode; no caller effect/result import. Impact applies or settles SKIPPED once; only Complete creates real receipt; Cancel is pre-impact only |
-| `seal(request,capability)` | Round6; OPEN/admitted/DRAINED, all opportunities owned/accounted, no pending,≥1 real completed receipt, active sides/nonterminal. Freeze owned witness12 and issue close event11 once; no clock/HP delta |
+| `seal(request,capability)` | Base5 (exact5); OPEN/admitted/DRAINED, all opportunities owned/accounted, no pending,≥1 real completed receipt, active sides/nonterminal. Freeze owned witness12 and issue close event11 once; no clock/HP delta |
 | `close(event)` | Exact11 M403-owned event; authenticate equality, unused primary/semantic identity, SEALED/current Q/R/witness/revision. One batch grace/tick/death + consumption + CLOSED, then classifier consistency gate, all one publication |
-| `authorize_abort(request,capability)` | Round6 + `request_id:String,kind:String=ABORT` (exact8); admitted OPEN/no active action. Separate request namespace, reserved issuer prefixes. Return token10=`version,kind,issuer_id,session,generation,round_id,queue_id,authorization_id,request_id,issued_revision` |
+| `authorize_abort(request,capability)` | Base5 + `request_id:String` (exact6); round/kind/authorization identity derived by the owned issuer; admitted OPEN/no active action. Separate request namespace, reserved issuer prefixes. Return token10=`version,kind,issuer_id,session,generation,round_id,queue_id,authorization_id,request_id,issued_revision` |
 | `abort(token)` | Exact owned token10, issuerM403_ISOLATED_ABORT. OPEN/SEALED current round only, grant pre-issued OPEN. ABORTED/STOPPED + administrative outcome/summary/consumption, no tick/effect/receipt. A LOCKED action is invalidated, never terminal-completed |
 | `summary_snapshot(identity)` | Exact4=`version:int,session:int,generation:int,outcome_id:String`. Before freeze ABSENT/SUMMARY_NOT_FROZEN; matching frozen read returns detached outcome/summary with no mutation; stale G rejects |
 
@@ -1545,7 +1545,7 @@ no fake close, tick, slot, stored SUSPENDED or infinite generator.
 ### Reproducible verification and honest coverage
 
 Godot `4.7.2.stable.official.ed1daf0bf`, source
-`5b37e061027649c6ef4be5c61a963659a82ed939`: **97 cases /5,458 assertions /0 failures**,
+`d583b4b6fdd3226178e4f5b4e916c874a82d83c4`: **115 cases /6,054 assertions /0 failures**,
 zero per-frame checks. Fresh canonical **82/82**, candidate **88/88 stages PASS**;
 A94/1,165, B150/3,339, M40178/525, M40255/1,188 unchanged. All inherited suite counts
 retained; Legacy6cases/5,892frames identical. All final exits0, unexpected errors0,
@@ -1594,3 +1594,10 @@ Adjust/Commit: เทียบ before/after และ assertionจริง, com
 
 หยุดหลัง Draft PR เท่านั้น: no merge/auto-merge/delete feature branch, M4-04/M4-05,
 D08/D16/full D09, production integration, aftercare/persistence หรือ UI.
+
+
+### R52-01 — Exact request schema correction
+
+แก้ตาม approved M4-03 §4 โดยไม่แก้ Design Contract: SEAL exact5 และ AUTHORIZE_ABORT exact6; caller ห้ามส่ง `round_id` หรือ `kind`. OPEN ยังเป็น exact6 เพื่อ explicit admission. ระบบใช้ current owned round/queue/issuer สร้าง event และ Abort token; close exact11/witness exact12 คงเดิม. ประเด็นการเรียนรู้: helper ที่ใช้ schema ผิดเหมือน implementation ทำให้ test ผ่านได้ จึงเพิ่ม positive/negative public API proof ที่อิง contract โดยตรง.
+
+C98–115 เพิ่ม 18 cases: extra fields, missing/wrong-type ทุก field, capability/session/generation/queue/revision, duplicate-before-stale precedence, exact5/exact6 success ในสองรอบและ retained identity ข้ามรอบ. C37–49 เดิมรันซ้ำด้วย schema ที่แก้แล้วสำหรับ strict real receipts, NO_REAL_PROGRESS/PLAN_EXHAUSTED, Abort-first/Close-first และ Restart. [R52-01 evidence and failure history](evidence/m4-03c/r52-01.json); [pre-fix evidence archive](evidence/m4-03c/pre-r52-evidence.zip). รอ independent follow-up ใน Draft PR #52 เดิม; ไม่มี merge/auto-merge/งานถัดไป.

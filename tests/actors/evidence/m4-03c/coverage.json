@@ -1,6 +1,6 @@
 {
   "scope": "M4-03C isolated implementation-status register; original48 design rows unchanged",
-  "source_commit": "5b37e061027649c6ef4be5c61a963659a82ed939",
+  "source_commit": "d583b4b6fdd3226178e4f5b4e916c874a82d83c4",
   "rows": [
     {
       "id": "M403-01",

@@ -1300,8 +1300,8 @@ Choose a fresh output path. The reference is the verified original pre-cutover
 Focused reproduction can use just `--m4-outcome-summary-proof`; full regression above
 is required for delivery.
 
-Verified Godot4.7.2 on `5b37e061027649c6ef4be5c61a963659a82ed939`:
-**97 C cases/5,458 assertions**, fresh canonical **82/82**, candidate **88/88 PASS**;
+Verified Godot4.7.2 on `d583b4b6fdd3226178e4f5b4e916c874a82d83c4`:
+**115 C cases/6,054 assertions**, fresh canonical **82/82**, candidate **88/88 PASS**;
 A94/1,165, B150/3,339, M40178/525, M40255/1,188 retained, Legacy6cases/5,892frames
 identical. All final exits0/unexpected errors0/timeouts0; negative five expected errors
 separate. A failed development fixture attempted to change an admission Enemy target
@@ -1311,3 +1311,6 @@ or inherited assertions.
 [API/schema/Thai notes and explicit partial/diagnostic/unreachable coverage](../actors/README.md#m4-03c--isolated-terminal--summary--continuation-proof).
 No production/Main/Legacy/Guidance/NPC policy, balance, scene or presentation change;
 manual GUI/F5/F6/keyboard/visual NOT RUN. Independent review remains pending.
+
+
+R52-01 refresh: same Draft PR #52, tested source above, **115 C cases /6,054 assertions**. All original A/B/M401/M402 and M2/M3/Main/Guidance flags rerun; canonical82/candidate88 PASS and Legacy6/5,892 identical. [Exact request correction, run history and hashes](../actors/evidence/m4-03c/r52-01.json). The sandboxed import failure is retained; manual GUI/visual NOT RUN. Await independent follow-up; do not merge.

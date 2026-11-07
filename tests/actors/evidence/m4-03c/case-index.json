@@ -1,12 +1,12 @@
 {
   "suite": "M4-03C terminal summary continuation",
-  "source_commit": "5b37e061027649c6ef4be5c61a963659a82ed939",
-  "independent_cases": 97,
-  "assertion_checks": 5458,
+  "source_commit": "d583b4b6fdd3226178e4f5b4e916c874a82d83c4",
+  "independent_cases": 115,
+  "assertion_checks": 6054,
   "failures": 0,
   "per_frame_checks": 0,
-  "raw_report_sha256": "7baa9eb31f3dff303c8b7778954c691a0f36de95c148572c5640499d863f7436",
-  "raw_report_bytes": 24354556,
+  "raw_report_sha256": "128e225773079a7dd6786d1138d9a11a00d62fbd94e036ca522f75caafdd8997",
+  "raw_report_bytes": 27303315,
   "cases": [
     {
       "id": "M403C-01",
@@ -36294,6 +36294,3972 @@
           "actual": {},
           "N_all": null,
           "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/96/steps/16"
+        }
+      ]
+    },
+    {
+      "id": "M403C-98",
+      "expected": "R52-01 seal rejects extra caller round_id before capability/revision, N-all",
+      "actual": "PASS",
+      "assertion_count": 19,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/97",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/97/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/97/steps/1"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/97/steps/2"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/97/steps/3"
+        }
+      ]
+    },
+    {
+      "id": "M403C-99",
+      "expected": "R52-01 seal rejects extra caller kind before capability/revision, N-all",
+      "actual": "PASS",
+      "assertion_count": 19,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/98",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/98/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/98/steps/1"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/98/steps/2"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/98/steps/3"
+        }
+      ]
+    },
+    {
+      "id": "M403C-100",
+      "expected": "R52-01 seal missing/wrong-type version rejects N-all",
+      "actual": "PASS",
+      "assertion_count": 19,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/99",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/99/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/99/steps/1"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/99/steps/2"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/99/steps/3"
+        }
+      ]
+    },
+    {
+      "id": "M403C-101",
+      "expected": "R52-01 seal missing/wrong-type session rejects N-all",
+      "actual": "PASS",
+      "assertion_count": 19,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/100",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/100/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/100/steps/1"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/100/steps/2"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/100/steps/3"
+        }
+      ]
+    },
+    {
+      "id": "M403C-102",
+      "expected": "R52-01 seal missing/wrong-type generation rejects N-all",
+      "actual": "PASS",
+      "assertion_count": 19,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/101",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/101/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/101/steps/1"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/101/steps/2"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/101/steps/3"
+        }
+      ]
+    },
+    {
+      "id": "M403C-103",
+      "expected": "R52-01 seal missing/wrong-type expected_revision rejects N-all",
+      "actual": "PASS",
+      "assertion_count": 19,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/102",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/102/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/102/steps/1"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/102/steps/2"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/102/steps/3"
+        }
+      ]
+    },
+    {
+      "id": "M403C-104",
+      "expected": "R52-01 seal missing/wrong-type queue_id rejects N-all",
+      "actual": "PASS",
+      "assertion_count": 19,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/103",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/103/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/103/steps/1"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/103/steps/2"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/103/steps/3"
+        }
+      ]
+    },
+    {
+      "id": "M403C-105",
+      "expected": "R52-01 seal exact request identity/revision/capability gates N-all",
+      "actual": "PASS",
+      "assertion_count": 28,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_FOREIGN_SESSION actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_FOREIGN_SESSION\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_STALE_GENERATION actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_STALE_GENERATION\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_WRONG_QUEUE actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_WRONG_QUEUE\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_STALE_REVISION actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_STALE_REVISION\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_UNAUTHORIZED actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_UNAUTHORIZED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/104",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/104/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/104/steps/1"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_FOREIGN_SESSION",
+          "actual": {
+            "reason_code": "M403_FOREIGN_SESSION",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/104/steps/2"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_STALE_GENERATION",
+          "actual": {
+            "reason_code": "M403_STALE_GENERATION",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/104/steps/3"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_WRONG_QUEUE",
+          "actual": {
+            "reason_code": "M403_WRONG_QUEUE",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/104/steps/4"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_STALE_REVISION",
+          "actual": {
+            "reason_code": "M403_STALE_REVISION",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/104/steps/5"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_UNAUTHORIZED",
+          "actual": {
+            "reason_code": "M403_UNAUTHORIZED",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/104/steps/6"
+        }
+      ]
+    },
+    {
+      "id": "M403C-106",
+      "expected": "R52-01 authorize_abort rejects extra caller round_id before capability/revision, N-all",
+      "actual": "PASS",
+      "assertion_count": 19,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/105",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/105/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/105/steps/1"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/105/steps/2"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/105/steps/3"
+        }
+      ]
+    },
+    {
+      "id": "M403C-107",
+      "expected": "R52-01 authorize_abort rejects extra caller kind before capability/revision, N-all",
+      "actual": "PASS",
+      "assertion_count": 19,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/106",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/106/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/106/steps/1"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/106/steps/2"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/106/steps/3"
+        }
+      ]
+    },
+    {
+      "id": "M403C-108",
+      "expected": "R52-01 authorize_abort missing/wrong-type version rejects N-all",
+      "actual": "PASS",
+      "assertion_count": 19,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/107",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/107/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/107/steps/1"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/107/steps/2"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/107/steps/3"
+        }
+      ]
+    },
+    {
+      "id": "M403C-109",
+      "expected": "R52-01 authorize_abort missing/wrong-type session rejects N-all",
+      "actual": "PASS",
+      "assertion_count": 19,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/108",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/108/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/108/steps/1"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/108/steps/2"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/108/steps/3"
+        }
+      ]
+    },
+    {
+      "id": "M403C-110",
+      "expected": "R52-01 authorize_abort missing/wrong-type generation rejects N-all",
+      "actual": "PASS",
+      "assertion_count": 19,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/109",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/109/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/109/steps/1"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/109/steps/2"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/109/steps/3"
+        }
+      ]
+    },
+    {
+      "id": "M403C-111",
+      "expected": "R52-01 authorize_abort missing/wrong-type expected_revision rejects N-all",
+      "actual": "PASS",
+      "assertion_count": 19,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/110",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/110/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/110/steps/1"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/110/steps/2"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/110/steps/3"
+        }
+      ]
+    },
+    {
+      "id": "M403C-112",
+      "expected": "R52-01 authorize_abort missing/wrong-type queue_id rejects N-all",
+      "actual": "PASS",
+      "assertion_count": 19,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/111",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/111/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/111/steps/1"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/111/steps/2"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/111/steps/3"
+        }
+      ]
+    },
+    {
+      "id": "M403C-113",
+      "expected": "R52-01 authorize_abort missing/wrong-type request_id rejects N-all",
+      "actual": "PASS",
+      "assertion_count": 19,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_INVALID_FIELDS actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_FIELDS\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/112",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/112/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/112/steps/1"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/112/steps/2"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_INVALID_FIELDS",
+          "actual": {
+            "reason_code": "M403_INVALID_FIELDS",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/112/steps/3"
+        }
+      ]
+    },
+    {
+      "id": "M403C-114",
+      "expected": "R52-01 authorize_abort exact request identity/revision/capability gates N-all",
+      "actual": "PASS",
+      "assertion_count": 28,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_FOREIGN_SESSION actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_FOREIGN_SESSION\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_STALE_GENERATION actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_STALE_GENERATION\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_WRONG_QUEUE actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_WRONG_QUEUE\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_STALE_REVISION actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_STALE_REVISION\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_UNAUTHORIZED actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_UNAUTHORIZED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/113",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/113/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/113/steps/1"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_FOREIGN_SESSION",
+          "actual": {
+            "reason_code": "M403_FOREIGN_SESSION",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/113/steps/2"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_STALE_GENERATION",
+          "actual": {
+            "reason_code": "M403_STALE_GENERATION",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/113/steps/3"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_WRONG_QUEUE",
+          "actual": {
+            "reason_code": "M403_WRONG_QUEUE",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/113/steps/4"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_STALE_REVISION",
+          "actual": {
+            "reason_code": "M403_STALE_REVISION",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/113/steps/5"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_UNAUTHORIZED",
+          "actual": {
+            "reason_code": "M403_UNAUTHORIZED",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/113/steps/6"
+        }
+      ]
+    },
+    {
+      "id": "M403C-115",
+      "expected": "R52-01 approved exact5/exact6 succeed in two owned rounds; old identities cannot cross rounds",
+      "actual": "PASS",
+      "assertion_count": 255,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "approved exact6 authorization request",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_ABORT_AUTHORIZED actual { \"status\": \"AUTHORIZED\", \"reason_code\": \"M403_ABORT_AUTHORIZED\", &\"token\": { \"version\": 1, \"kind\": \"ABORT\", \"issuer_id\": \"M403_ISOLATED_ABORT\", \"session\": -9223368860491577892, \"generation\": 1, \"round_id\": 3, \"queue_id\": \"m403/queue/-9223368860491577892/1/3\", \"authorization_id\": 1, \"request_id\": \"round_3\", \"issued_revision\": 2 } }",
+          "passed": true
+        },
+        {
+          "description": "exact status AUTHORIZED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "issuer derives current round/kind/monotonic authorization identity",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_DUPLICATE_OPERATION actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_DUPLICATE_OPERATION\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "lock_fixture_attack reason expected M403_ACTION_LOCKED actual { \"status\": \"AUTHORIZED\", \"reason_code\": \"M403_ACTION_LOCKED\", &\"token\": { \"version\": 1, \"session\": -9223368860491577892, \"generation\": 1, \"round_id\": 3, \"queue_id\": \"m403/queue/-9223368860491577892/1/3\", \"slot_id\": \"m403/queue/-9223368860491577892/1/3/slot/0\", \"action_id\": 1, \"actor_id\": \"p\", \"kind\": \"ATTACK\", \"target_id\": \"a\", \"lock_revision\": 2, \"authorization_id\": 1, \"window_id\": \"m403/queue/-9223368860491577892/1/3/slot/0/attack\", \"request_id\": \"request_2\", \"episode_id\": \"\", &\"amount\": 1 } }",
+          "passed": true
+        },
+        {
+          "description": "exact status AUTHORIZED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "impact reason expected M403_FIXTURE_DAMAGE actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "complete reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "lock_fixture_attack reason expected M403_ACTION_LOCKED actual { \"status\": \"AUTHORIZED\", \"reason_code\": \"M403_ACTION_LOCKED\", &\"token\": { \"version\": 1, \"session\": -9223368860491577892, \"generation\": 1, \"round_id\": 3, \"queue_id\": \"m403/queue/-9223368860491577892/1/3\", \"slot_id\": \"m403/queue/-9223368860491577892/1/3/slot/1\", \"action_id\": 2, \"actor_id\": \"n\", \"kind\": \"ATTACK\", \"target_id\": \"a\", \"lock_revision\": 5, \"authorization_id\": 2, \"window_id\": \"m403/queue/-9223368860491577892/1/3/slot/1/attack\", \"request_id\": \"request_5\", \"episode_id\": \"\", &\"amount\": 1 } }",
+          "passed": true
+        },
+        {
+          "description": "exact status AUTHORIZED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "impact reason expected M403_FIXTURE_DAMAGE actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "complete reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "lock_fixture_attack reason expected M403_ACTION_LOCKED actual { \"status\": \"AUTHORIZED\", \"reason_code\": \"M403_ACTION_LOCKED\", &\"token\": { \"version\": 1, \"session\": -9223368860491577892, \"generation\": 1, \"round_id\": 3, \"queue_id\": \"m403/queue/-9223368860491577892/1/3\", \"slot_id\": \"m403/queue/-9223368860491577892/1/3/slot/2\", \"action_id\": 3, \"actor_id\": \"t\", \"kind\": \"ATTACK\", \"target_id\": \"a\", \"lock_revision\": 8, \"authorization_id\": 3, \"window_id\": \"m403/queue/-9223368860491577892/1/3/slot/2/attack\", \"request_id\": \"request_8\", \"episode_id\": \"\", &\"amount\": 1 } }",
+          "passed": true
+        },
+        {
+          "description": "exact status AUTHORIZED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "impact reason expected M403_FIXTURE_DAMAGE actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "complete reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "lock_fixture_attack reason expected M403_ACTION_LOCKED actual { \"status\": \"AUTHORIZED\", \"reason_code\": \"M403_ACTION_LOCKED\", &\"token\": { \"version\": 1, \"session\": -9223368860491577892, \"generation\": 1, \"round_id\": 3, \"queue_id\": \"m403/queue/-9223368860491577892/1/3\", \"slot_id\": \"m403/queue/-9223368860491577892/1/3/slot/3\", \"action_id\": 4, \"actor_id\": \"a\", \"kind\": \"ATTACK\", \"target_id\": \"p\", \"lock_revision\": 11, \"authorization_id\": 4, \"window_id\": \"m403/queue/-9223368860491577892/1/3/slot/3/attack\", \"request_id\": \"request_11\", \"episode_id\": \"\", &\"amount\": 1 } }",
+          "passed": true
+        },
+        {
+          "description": "exact status AUTHORIZED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "impact reason expected M403_FIXTURE_DAMAGE actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "complete reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "finite queue drained through owned work/dispositions",
+          "passed": true
+        },
+        {
+          "description": "approved exact5 seal request",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_ROUND_SEALED actual { \"status\": \"AUTHORIZED\", \"reason_code\": \"M403_ROUND_SEALED\", &\"event\": { \"version\": 1, \"kind\": \"ROUND_CLOSED\", \"issuer_id\": \"M403_ISOLATED_QUEUE\", \"session\": -9223368860491577892, \"generation\": 1, \"round_id\": 3, \"event_id\": \"m403/queue/-9223368860491577892/1/3/close\", \"witness_id\": \"m403/queue/-9223368860491577892/1/3/witness\", \"sealed_revision\": 15, \"authorization_id\": 1, \"queue_id\": \"m403/queue/-9223368860491577892/1/3\" } }",
+          "passed": true
+        },
+        {
+          "description": "exact status AUTHORIZED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "owned close exact11 and witness exact12 unchanged",
+          "passed": true
+        },
+        {
+          "description": "owned round and real completion receipts",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_INVALID_PHASE actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_PHASE\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_INVALID_PHASE actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_PHASE\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "close reason expected M403_ROUND_CLOSED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_CLOSED\", &\"episodes\": [] }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "approved exact6 authorization request",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_ABORT_AUTHORIZED actual { \"status\": \"AUTHORIZED\", \"reason_code\": \"M403_ABORT_AUTHORIZED\", &\"token\": { \"version\": 1, \"kind\": \"ABORT\", \"issuer_id\": \"M403_ISOLATED_ABORT\", \"session\": -9223368860491577892, \"generation\": 1, \"round_id\": 4, \"queue_id\": \"m403/queue/-9223368860491577892/1/4\", \"authorization_id\": 2, \"request_id\": \"round_4\", \"issued_revision\": 18 } }",
+          "passed": true
+        },
+        {
+          "description": "exact status AUTHORIZED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "issuer derives current round/kind/monotonic authorization identity",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_DUPLICATE_OPERATION actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_DUPLICATE_OPERATION\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "next-round grant identity distinct",
+          "passed": true
+        },
+        {
+          "description": "abort reason expected M403_INVALID_ROUND actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_ROUND\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "close reason expected M403_DUPLICATE_ROUND_CLOSED actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_DUPLICATE_ROUND_CLOSED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_WRONG_QUEUE actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_WRONG_QUEUE\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_DUPLICATE_OPERATION actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_DUPLICATE_OPERATION\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "lock_fixture_attack reason expected M403_ACTION_LOCKED actual { \"status\": \"AUTHORIZED\", \"reason_code\": \"M403_ACTION_LOCKED\", &\"token\": { \"version\": 1, \"session\": -9223368860491577892, \"generation\": 1, \"round_id\": 4, \"queue_id\": \"m403/queue/-9223368860491577892/1/4\", \"slot_id\": \"m403/queue/-9223368860491577892/1/4/slot/0\", \"action_id\": 5, \"actor_id\": \"p\", \"kind\": \"ATTACK\", \"target_id\": \"a\", \"lock_revision\": 18, \"authorization_id\": 5, \"window_id\": \"m403/queue/-9223368860491577892/1/4/slot/0/attack\", \"request_id\": \"request_18\", \"episode_id\": \"\", &\"amount\": 1 } }",
+          "passed": true
+        },
+        {
+          "description": "exact status AUTHORIZED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "impact reason expected M403_FIXTURE_DAMAGE actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "complete reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "lock_fixture_attack reason expected M403_ACTION_LOCKED actual { \"status\": \"AUTHORIZED\", \"reason_code\": \"M403_ACTION_LOCKED\", &\"token\": { \"version\": 1, \"session\": -9223368860491577892, \"generation\": 1, \"round_id\": 4, \"queue_id\": \"m403/queue/-9223368860491577892/1/4\", \"slot_id\": \"m403/queue/-9223368860491577892/1/4/slot/1\", \"action_id\": 6, \"actor_id\": \"n\", \"kind\": \"ATTACK\", \"target_id\": \"a\", \"lock_revision\": 21, \"authorization_id\": 6, \"window_id\": \"m403/queue/-9223368860491577892/1/4/slot/1/attack\", \"request_id\": \"request_21\", \"episode_id\": \"\", &\"amount\": 1 } }",
+          "passed": true
+        },
+        {
+          "description": "exact status AUTHORIZED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "impact reason expected M403_FIXTURE_DAMAGE actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "complete reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "lock_fixture_attack reason expected M403_ACTION_LOCKED actual { \"status\": \"AUTHORIZED\", \"reason_code\": \"M403_ACTION_LOCKED\", &\"token\": { \"version\": 1, \"session\": -9223368860491577892, \"generation\": 1, \"round_id\": 4, \"queue_id\": \"m403/queue/-9223368860491577892/1/4\", \"slot_id\": \"m403/queue/-9223368860491577892/1/4/slot/2\", \"action_id\": 7, \"actor_id\": \"t\", \"kind\": \"ATTACK\", \"target_id\": \"a\", \"lock_revision\": 24, \"authorization_id\": 7, \"window_id\": \"m403/queue/-9223368860491577892/1/4/slot/2/attack\", \"request_id\": \"request_24\", \"episode_id\": \"\", &\"amount\": 1 } }",
+          "passed": true
+        },
+        {
+          "description": "exact status AUTHORIZED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "impact reason expected M403_FIXTURE_DAMAGE actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "complete reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "lock_fixture_attack reason expected M403_ACTION_LOCKED actual { \"status\": \"AUTHORIZED\", \"reason_code\": \"M403_ACTION_LOCKED\", &\"token\": { \"version\": 1, \"session\": -9223368860491577892, \"generation\": 1, \"round_id\": 4, \"queue_id\": \"m403/queue/-9223368860491577892/1/4\", \"slot_id\": \"m403/queue/-9223368860491577892/1/4/slot/3\", \"action_id\": 8, \"actor_id\": \"a\", \"kind\": \"ATTACK\", \"target_id\": \"p\", \"lock_revision\": 27, \"authorization_id\": 8, \"window_id\": \"m403/queue/-9223368860491577892/1/4/slot/3/attack\", \"request_id\": \"request_27\", \"episode_id\": \"\", &\"amount\": 1 } }",
+          "passed": true
+        },
+        {
+          "description": "exact status AUTHORIZED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "impact reason expected M403_FIXTURE_DAMAGE actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "complete reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "finite queue drained through owned work/dispositions",
+          "passed": true
+        },
+        {
+          "description": "approved exact5 seal request",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_ROUND_SEALED actual { \"status\": \"AUTHORIZED\", \"reason_code\": \"M403_ROUND_SEALED\", &\"event\": { \"version\": 1, \"kind\": \"ROUND_CLOSED\", \"issuer_id\": \"M403_ISOLATED_QUEUE\", \"session\": -9223368860491577892, \"generation\": 1, \"round_id\": 4, \"event_id\": \"m403/queue/-9223368860491577892/1/4/close\", \"witness_id\": \"m403/queue/-9223368860491577892/1/4/witness\", \"sealed_revision\": 31, \"authorization_id\": 2, \"queue_id\": \"m403/queue/-9223368860491577892/1/4\" } }",
+          "passed": true
+        },
+        {
+          "description": "exact status AUTHORIZED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "owned close exact11 and witness exact12 unchanged",
+          "passed": true
+        },
+        {
+          "description": "owned round and real completion receipts",
+          "passed": true
+        },
+        {
+          "description": "seal reason expected M403_INVALID_PHASE actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_PHASE\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "authorize_abort reason expected M403_INVALID_PHASE actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_INVALID_PHASE\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status REJECTED",
+          "passed": true
+        },
+        {
+          "description": "N-all entire root incl journal/serial/resources/summary",
+          "passed": true
+        },
+        {
+          "description": "close reason expected M403_ROUND_CLOSED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_CLOSED\", &\"episodes\": [] }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/1"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_ABORT_AUTHORIZED",
+          "actual": {
+            "reason_code": "M403_ABORT_AUTHORIZED",
+            "status": "AUTHORIZED",
+            "token": {
+              "authorization_id": 1,
+              "generation": 1,
+              "issued_revision": 2,
+              "issuer_id": "M403_ISOLATED_ABORT",
+              "kind": "ABORT",
+              "queue_id": "m403/queue/-9223368860491577892/1/3",
+              "request_id": "round_3",
+              "round_id": 3,
+              "session": -9223368860491577892,
+              "version": 1
+            }
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/2"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_DUPLICATE_OPERATION",
+          "actual": {
+            "reason_code": "M403_DUPLICATE_OPERATION",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/3"
+        },
+        {
+          "method_or_kind": "lock_fixture_attack",
+          "expected_reason": "M403_ACTION_LOCKED",
+          "actual": {
+            "reason_code": "M403_ACTION_LOCKED",
+            "status": "AUTHORIZED",
+            "token": {
+              "action_id": 1,
+              "actor_id": "p",
+              "amount": 1,
+              "authorization_id": 1,
+              "episode_id": "",
+              "generation": 1,
+              "kind": "ATTACK",
+              "lock_revision": 2,
+              "queue_id": "m403/queue/-9223368860491577892/1/3",
+              "request_id": "request_2",
+              "round_id": 3,
+              "session": -9223368860491577892,
+              "slot_id": "m403/queue/-9223368860491577892/1/3/slot/0",
+              "target_id": "a",
+              "version": 1,
+              "window_id": "m403/queue/-9223368860491577892/1/3/slot/0/attack"
+            }
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/4"
+        },
+        {
+          "method_or_kind": "impact",
+          "expected_reason": "M403_FIXTURE_DAMAGE",
+          "actual": {
+            "reason_code": "M403_FIXTURE_DAMAGE",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/5"
+        },
+        {
+          "method_or_kind": "complete",
+          "expected_reason": "M403_ACTION_COMPLETED",
+          "actual": {
+            "reason_code": "M403_ACTION_COMPLETED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/6"
+        },
+        {
+          "method_or_kind": "lock_fixture_attack",
+          "expected_reason": "M403_ACTION_LOCKED",
+          "actual": {
+            "reason_code": "M403_ACTION_LOCKED",
+            "status": "AUTHORIZED",
+            "token": {
+              "action_id": 2,
+              "actor_id": "n",
+              "amount": 1,
+              "authorization_id": 2,
+              "episode_id": "",
+              "generation": 1,
+              "kind": "ATTACK",
+              "lock_revision": 5,
+              "queue_id": "m403/queue/-9223368860491577892/1/3",
+              "request_id": "request_5",
+              "round_id": 3,
+              "session": -9223368860491577892,
+              "slot_id": "m403/queue/-9223368860491577892/1/3/slot/1",
+              "target_id": "a",
+              "version": 1,
+              "window_id": "m403/queue/-9223368860491577892/1/3/slot/1/attack"
+            }
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/7"
+        },
+        {
+          "method_or_kind": "impact",
+          "expected_reason": "M403_FIXTURE_DAMAGE",
+          "actual": {
+            "reason_code": "M403_FIXTURE_DAMAGE",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/8"
+        },
+        {
+          "method_or_kind": "complete",
+          "expected_reason": "M403_ACTION_COMPLETED",
+          "actual": {
+            "reason_code": "M403_ACTION_COMPLETED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/9"
+        },
+        {
+          "method_or_kind": "lock_fixture_attack",
+          "expected_reason": "M403_ACTION_LOCKED",
+          "actual": {
+            "reason_code": "M403_ACTION_LOCKED",
+            "status": "AUTHORIZED",
+            "token": {
+              "action_id": 3,
+              "actor_id": "t",
+              "amount": 1,
+              "authorization_id": 3,
+              "episode_id": "",
+              "generation": 1,
+              "kind": "ATTACK",
+              "lock_revision": 8,
+              "queue_id": "m403/queue/-9223368860491577892/1/3",
+              "request_id": "request_8",
+              "round_id": 3,
+              "session": -9223368860491577892,
+              "slot_id": "m403/queue/-9223368860491577892/1/3/slot/2",
+              "target_id": "a",
+              "version": 1,
+              "window_id": "m403/queue/-9223368860491577892/1/3/slot/2/attack"
+            }
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/10"
+        },
+        {
+          "method_or_kind": "impact",
+          "expected_reason": "M403_FIXTURE_DAMAGE",
+          "actual": {
+            "reason_code": "M403_FIXTURE_DAMAGE",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/11"
+        },
+        {
+          "method_or_kind": "complete",
+          "expected_reason": "M403_ACTION_COMPLETED",
+          "actual": {
+            "reason_code": "M403_ACTION_COMPLETED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/12"
+        },
+        {
+          "method_or_kind": "lock_fixture_attack",
+          "expected_reason": "M403_ACTION_LOCKED",
+          "actual": {
+            "reason_code": "M403_ACTION_LOCKED",
+            "status": "AUTHORIZED",
+            "token": {
+              "action_id": 4,
+              "actor_id": "a",
+              "amount": 1,
+              "authorization_id": 4,
+              "episode_id": "",
+              "generation": 1,
+              "kind": "ATTACK",
+              "lock_revision": 11,
+              "queue_id": "m403/queue/-9223368860491577892/1/3",
+              "request_id": "request_11",
+              "round_id": 3,
+              "session": -9223368860491577892,
+              "slot_id": "m403/queue/-9223368860491577892/1/3/slot/3",
+              "target_id": "p",
+              "version": 1,
+              "window_id": "m403/queue/-9223368860491577892/1/3/slot/3/attack"
+            }
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/13"
+        },
+        {
+          "method_or_kind": "impact",
+          "expected_reason": "M403_FIXTURE_DAMAGE",
+          "actual": {
+            "reason_code": "M403_FIXTURE_DAMAGE",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/14"
+        },
+        {
+          "method_or_kind": "complete",
+          "expected_reason": "M403_ACTION_COMPLETED",
+          "actual": {
+            "reason_code": "M403_ACTION_COMPLETED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/15"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_ROUND_SEALED",
+          "actual": {
+            "event": {
+              "authorization_id": 1,
+              "event_id": "m403/queue/-9223368860491577892/1/3/close",
+              "generation": 1,
+              "issuer_id": "M403_ISOLATED_QUEUE",
+              "kind": "ROUND_CLOSED",
+              "queue_id": "m403/queue/-9223368860491577892/1/3",
+              "round_id": 3,
+              "sealed_revision": 15,
+              "session": -9223368860491577892,
+              "version": 1,
+              "witness_id": "m403/queue/-9223368860491577892/1/3/witness"
+            },
+            "reason_code": "M403_ROUND_SEALED",
+            "status": "AUTHORIZED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/16"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_INVALID_PHASE",
+          "actual": {
+            "reason_code": "M403_INVALID_PHASE",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/17"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_INVALID_PHASE",
+          "actual": {
+            "reason_code": "M403_INVALID_PHASE",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/18"
+        },
+        {
+          "method_or_kind": "close",
+          "expected_reason": "M403_ROUND_CLOSED",
+          "actual": {
+            "episodes": [],
+            "reason_code": "M403_ROUND_CLOSED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/19"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/20"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_ABORT_AUTHORIZED",
+          "actual": {
+            "reason_code": "M403_ABORT_AUTHORIZED",
+            "status": "AUTHORIZED",
+            "token": {
+              "authorization_id": 2,
+              "generation": 1,
+              "issued_revision": 18,
+              "issuer_id": "M403_ISOLATED_ABORT",
+              "kind": "ABORT",
+              "queue_id": "m403/queue/-9223368860491577892/1/4",
+              "request_id": "round_4",
+              "round_id": 4,
+              "session": -9223368860491577892,
+              "version": 1
+            }
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/21"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_DUPLICATE_OPERATION",
+          "actual": {
+            "reason_code": "M403_DUPLICATE_OPERATION",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/22"
+        },
+        {
+          "method_or_kind": "abort",
+          "expected_reason": "M403_INVALID_ROUND",
+          "actual": {
+            "reason_code": "M403_INVALID_ROUND",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/23"
+        },
+        {
+          "method_or_kind": "close",
+          "expected_reason": "M403_DUPLICATE_ROUND_CLOSED",
+          "actual": {
+            "reason_code": "M403_DUPLICATE_ROUND_CLOSED",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/24"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_WRONG_QUEUE",
+          "actual": {
+            "reason_code": "M403_WRONG_QUEUE",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/25"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_DUPLICATE_OPERATION",
+          "actual": {
+            "reason_code": "M403_DUPLICATE_OPERATION",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/26"
+        },
+        {
+          "method_or_kind": "lock_fixture_attack",
+          "expected_reason": "M403_ACTION_LOCKED",
+          "actual": {
+            "reason_code": "M403_ACTION_LOCKED",
+            "status": "AUTHORIZED",
+            "token": {
+              "action_id": 5,
+              "actor_id": "p",
+              "amount": 1,
+              "authorization_id": 5,
+              "episode_id": "",
+              "generation": 1,
+              "kind": "ATTACK",
+              "lock_revision": 18,
+              "queue_id": "m403/queue/-9223368860491577892/1/4",
+              "request_id": "request_18",
+              "round_id": 4,
+              "session": -9223368860491577892,
+              "slot_id": "m403/queue/-9223368860491577892/1/4/slot/0",
+              "target_id": "a",
+              "version": 1,
+              "window_id": "m403/queue/-9223368860491577892/1/4/slot/0/attack"
+            }
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/27"
+        },
+        {
+          "method_or_kind": "impact",
+          "expected_reason": "M403_FIXTURE_DAMAGE",
+          "actual": {
+            "reason_code": "M403_FIXTURE_DAMAGE",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/28"
+        },
+        {
+          "method_or_kind": "complete",
+          "expected_reason": "M403_ACTION_COMPLETED",
+          "actual": {
+            "reason_code": "M403_ACTION_COMPLETED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/29"
+        },
+        {
+          "method_or_kind": "lock_fixture_attack",
+          "expected_reason": "M403_ACTION_LOCKED",
+          "actual": {
+            "reason_code": "M403_ACTION_LOCKED",
+            "status": "AUTHORIZED",
+            "token": {
+              "action_id": 6,
+              "actor_id": "n",
+              "amount": 1,
+              "authorization_id": 6,
+              "episode_id": "",
+              "generation": 1,
+              "kind": "ATTACK",
+              "lock_revision": 21,
+              "queue_id": "m403/queue/-9223368860491577892/1/4",
+              "request_id": "request_21",
+              "round_id": 4,
+              "session": -9223368860491577892,
+              "slot_id": "m403/queue/-9223368860491577892/1/4/slot/1",
+              "target_id": "a",
+              "version": 1,
+              "window_id": "m403/queue/-9223368860491577892/1/4/slot/1/attack"
+            }
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/30"
+        },
+        {
+          "method_or_kind": "impact",
+          "expected_reason": "M403_FIXTURE_DAMAGE",
+          "actual": {
+            "reason_code": "M403_FIXTURE_DAMAGE",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/31"
+        },
+        {
+          "method_or_kind": "complete",
+          "expected_reason": "M403_ACTION_COMPLETED",
+          "actual": {
+            "reason_code": "M403_ACTION_COMPLETED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/32"
+        },
+        {
+          "method_or_kind": "lock_fixture_attack",
+          "expected_reason": "M403_ACTION_LOCKED",
+          "actual": {
+            "reason_code": "M403_ACTION_LOCKED",
+            "status": "AUTHORIZED",
+            "token": {
+              "action_id": 7,
+              "actor_id": "t",
+              "amount": 1,
+              "authorization_id": 7,
+              "episode_id": "",
+              "generation": 1,
+              "kind": "ATTACK",
+              "lock_revision": 24,
+              "queue_id": "m403/queue/-9223368860491577892/1/4",
+              "request_id": "request_24",
+              "round_id": 4,
+              "session": -9223368860491577892,
+              "slot_id": "m403/queue/-9223368860491577892/1/4/slot/2",
+              "target_id": "a",
+              "version": 1,
+              "window_id": "m403/queue/-9223368860491577892/1/4/slot/2/attack"
+            }
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/33"
+        },
+        {
+          "method_or_kind": "impact",
+          "expected_reason": "M403_FIXTURE_DAMAGE",
+          "actual": {
+            "reason_code": "M403_FIXTURE_DAMAGE",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/34"
+        },
+        {
+          "method_or_kind": "complete",
+          "expected_reason": "M403_ACTION_COMPLETED",
+          "actual": {
+            "reason_code": "M403_ACTION_COMPLETED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/35"
+        },
+        {
+          "method_or_kind": "lock_fixture_attack",
+          "expected_reason": "M403_ACTION_LOCKED",
+          "actual": {
+            "reason_code": "M403_ACTION_LOCKED",
+            "status": "AUTHORIZED",
+            "token": {
+              "action_id": 8,
+              "actor_id": "a",
+              "amount": 1,
+              "authorization_id": 8,
+              "episode_id": "",
+              "generation": 1,
+              "kind": "ATTACK",
+              "lock_revision": 27,
+              "queue_id": "m403/queue/-9223368860491577892/1/4",
+              "request_id": "request_27",
+              "round_id": 4,
+              "session": -9223368860491577892,
+              "slot_id": "m403/queue/-9223368860491577892/1/4/slot/3",
+              "target_id": "p",
+              "version": 1,
+              "window_id": "m403/queue/-9223368860491577892/1/4/slot/3/attack"
+            }
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/36"
+        },
+        {
+          "method_or_kind": "impact",
+          "expected_reason": "M403_FIXTURE_DAMAGE",
+          "actual": {
+            "reason_code": "M403_FIXTURE_DAMAGE",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/37"
+        },
+        {
+          "method_or_kind": "complete",
+          "expected_reason": "M403_ACTION_COMPLETED",
+          "actual": {
+            "reason_code": "M403_ACTION_COMPLETED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/38"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_ROUND_SEALED",
+          "actual": {
+            "event": {
+              "authorization_id": 2,
+              "event_id": "m403/queue/-9223368860491577892/1/4/close",
+              "generation": 1,
+              "issuer_id": "M403_ISOLATED_QUEUE",
+              "kind": "ROUND_CLOSED",
+              "queue_id": "m403/queue/-9223368860491577892/1/4",
+              "round_id": 4,
+              "sealed_revision": 31,
+              "session": -9223368860491577892,
+              "version": 1,
+              "witness_id": "m403/queue/-9223368860491577892/1/4/witness"
+            },
+            "reason_code": "M403_ROUND_SEALED",
+            "status": "AUTHORIZED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/39"
+        },
+        {
+          "method_or_kind": "seal",
+          "expected_reason": "M403_INVALID_PHASE",
+          "actual": {
+            "reason_code": "M403_INVALID_PHASE",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/40"
+        },
+        {
+          "method_or_kind": "authorize_abort",
+          "expected_reason": "M403_INVALID_PHASE",
+          "actual": {
+            "reason_code": "M403_INVALID_PHASE",
+            "status": "REJECTED"
+          },
+          "N_all": true,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/41"
+        },
+        {
+          "method_or_kind": "close",
+          "expected_reason": "M403_ROUND_CLOSED",
+          "actual": {
+            "episodes": [],
+            "reason_code": "M403_ROUND_CLOSED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/114/steps/42"
         }
       ]
     }

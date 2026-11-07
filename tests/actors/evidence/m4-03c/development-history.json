@@ -64,11 +64,49 @@
     "source_commit": "b110e605ab25690ee18a27c7fb3570c3c74952c0",
     "runner_exit": 0,
     "stages": 88,
-    "case_count": 97,
-    "assertions": 5458,
+    "case_count": 115,
+    "assertions": 6054,
     "assertion_failures": 0,
     "unexpected_errors": 0,
     "timed_out": false,
     "note": "Subsequent packaging audit required adding missing before/after observations for direct B calls in C33; behavior and assertions unchanged. Final rerun uses trace-corrected tested SHA."
+  },
+  {
+    "run": "/tmp/wanderer-r52-focused-1",
+    "actual": "FAIL",
+    "runner_exit": 1,
+    "stages": 2,
+    "errors": [
+      {
+        "step": "import",
+        "errors": [
+          "Condition \"ret != noErr\" is true. Returning: \"\"",
+          "Cannot save file '/Users/depa/Library/Application Support/Godot/editor_settings-4.7.tres'.",
+          "Error saving editor settings to /Users/depa/Library/Application Support/Godot/editor_settings-4.7.tres"
+        ]
+      }
+    ],
+    "note": "Sandbox import exited0 but emitted macOS certificate/editor-settings errors; rejected, not counted PASS.",
+    "evidence": "r52-development-logs.zip!/focused-1"
+  },
+  {
+    "run": "/tmp/wanderer-r52-focused-2",
+    "actual": "PASS",
+    "runner_exit": 0,
+    "stages": 24,
+    "errors": [
+      {
+        "step": "invalid-actions",
+        "errors": [
+          "Combat Turn Flow: ไม่มี Action ถัดไปหลัง NPC",
+          "Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง",
+          "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+          "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+          "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action"
+        ]
+      }
+    ],
+    "note": "Fresh corrected source; 115 cases/6054 assertions; original A/B unchanged.",
+    "evidence": "r52-development-logs.zip!/focused-2"
   }
 ]

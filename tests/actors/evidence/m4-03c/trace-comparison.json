@@ -3,7 +3,7 @@
   "cases": 6,
   "frames": 5892,
   "canonical": "2c59e8d8e27c92c92344adcba9eded0d297cc547",
-  "tested_source": "5b37e061027649c6ef4be5c61a963659a82ed939",
+  "tested_source": "d583b4b6fdd3226178e4f5b4e916c874a82d83c4",
   "precutover_reference": "1728c5e678c5065278d1251d50449a8820eb5dae",
   "trace_sha256": "84c88e7843023c01b50d8f49be370b02d8c7d584cad8e992fbec4fffca9496c1",
   "candidate_equal_canonical": true,

@@ -1,6 +1,6 @@
 {
   "actual": "PASS within stated C scope; self-audit, independent review PENDING",
-  "source_commit": "5b37e061027649c6ef4be5c61a963659a82ed939",
+  "source_commit": "d583b4b6fdd3226178e4f5b4e916c874a82d83c4",
   "domains": [
     {
       "domain": "Actor Lifecycle",
@@ -22,7 +22,7 @@
     },
     {
       "domain": "Round Lifecycle",
-      "schema_authority_transition": "exact6 requests; finite admission OPEN->SEALED->CLOSED, preissued Abort->ABORTED; no unseal; events exact11 and witness12",
+      "schema_authority_transition": "OPEN exact6 / SEAL exact5 / AUTHORIZE_ABORT exact6; finite admission OPEN->SEALED->CLOSED, preissued Abort->ABORTED; no unseal; events exact11 and witness12",
       "cases": "C34-45/C74-82",
       "publication": "one expected revision/root swap; strict protocol identity/phase/resource gates; rejections whole-root N-all; duplicate handling evidenced in referenced cases"
     },

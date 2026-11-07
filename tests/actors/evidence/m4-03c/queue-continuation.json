@@ -1,5 +1,5 @@
 {
-  "source_commit": "5b37e061027649c6ef4be5c61a963659a82ed939",
+  "source_commit": "d583b4b6fdd3226178e4f5b4e916c874a82d83c4",
   "engine": "4.7.2.stable.official.ed1daf0bf",
   "command": "run-record.json commands.final; stage m4-outcome-summary-proof",
   "expected": "Actual Player DOWN/rescue/next-round NPC continuation; immutable Enemy declaration and genuine SKIPPED completion; no Player slot reinsertion or autonomous decision claim",
@@ -2302,5 +2302,5 @@
       ]
     }
   ],
-  "raw_report_sha256": "7baa9eb31f3dff303c8b7778954c691a0f36de95c148572c5640499d863f7436"
+  "raw_report_sha256": "128e225773079a7dd6786d1138d9a11a00d62fbd94e036ca522f75caafdd8997"
 }

@@ -1,7 +1,7 @@
 {
   "actual": "PASS",
   "canonical": "2c59e8d8e27c92c92344adcba9eded0d297cc547",
-  "tested_source": "5b37e061027649c6ef4be5c61a963659a82ed939",
+  "tested_source": "d583b4b6fdd3226178e4f5b4e916c874a82d83c4",
   "tested_source_hashes": 131,
   "canonical_snapshot_hashes": 121,
   "protected_existing_blobs": 351,
@@ -378,7 +378,7 @@
     },
     {
       "path": "scripts/m4/m403_terminal_rules.gd",
-      "sha256": "f6447eab47ac0bba4918419a68bdc6a8567828c297e11e4bf85f9d0c8f8ec419",
+      "sha256": "206cc0333d55d1eafc219890fc6ab8370ddd0c2dc20bd5f9645334adb4dca9a0",
       "commit_snapshot_delivery_match": true
     },
     {
@@ -488,7 +488,7 @@
     },
     {
       "path": "tests/actors/m4_03_outcome_summary_proof.gd",
-      "sha256": "db632aa0966e4651c7358368da591cb2fab079b691a00cf1a521d50a6da52810",
+      "sha256": "604286f756a2fd680805123facc2433ba4d9c8183dc8bb0c78b5dbc774c2a426",
       "commit_snapshot_delivery_match": true
     },
     {
