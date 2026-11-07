@@ -418,7 +418,7 @@ func _lock_retreat(request: Variant, authority: Variant) -> Dictionary:
 	if not Queue.actionable(row):
 		return _reply("M403_ACTOR_UNAVAILABLE")
 	var before: Dictionary = snapshot()
-	if Queue.active_party(before) <= 1:
+	if Queue.active_party(before) <= 1 or Queue.active_enemies(before) == 0:
 		return _reply("M403_BOUNDARY_DEPENDENCY")
 	var token: Dictionary = Queue.retreat_token(before, request)
 	var reason: String = _publish_retreat("LOCK", token, before.revision)
@@ -457,7 +457,8 @@ func _settle_retreat(token: Variant, operation: String) -> Dictionary:
 	if not reason.is_empty():
 		return _reply(reason)
 	var before: Dictionary = snapshot()
-	if operation == "IMPACT" and Queue.actionable(before.actors[token.actor_id]) and Queue.active_party(before) <= 1:
+	if operation == "IMPACT" and (Queue.active_enemies(before) == 0 \
+		or (Queue.actionable(before.actors[token.actor_id]) and Queue.active_party(before) <= 1)):
 		return _reply("M403_BOUNDARY_DEPENDENCY")
 	reason = _publish_retreat(operation, token, before.revision)
 	if not reason.is_empty():
@@ -488,15 +489,17 @@ func _retreat_transition_reason(before: Dictionary, operation: String, token: Di
 			or token != Queue.retreat_token(before, {"slot_id": op.slot_id, "actor_id": op.actor_id,
 				"request_id": token.request_id}) \
 			or token.request_id.is_empty() or _reserved(token.request_id) \
-			or before.actors[op.actor_id].membership != "PARTY" or not Queue.actionable(before.actors[op.actor_id]) \
-			or Queue.active_party(before) <= 1:
+			or before.actors[op.actor_id].membership != "PARTY" or not Queue.actionable(before.actors[op.actor_id]):
 			return "M403_INVALID_CANDIDATE"
 		for grant in before.authorizations.values():
 			if grant.token.request_id == token.request_id:
 				return "M403_INVALID_CANDIDATE"
+		if Queue.active_party(before) <= 1 or Queue.active_enemies(before) == 0:
+			return "M403_BOUNDARY_DEPENDENCY"
 	else:
 		if operation not in ["IMPACT", "COMPLETE", "CANCEL"] or not _token_reason(token, operation).is_empty():
 			return "M403_INVALID_CANDIDATE"
-		if operation == "IMPACT" and Queue.actionable(before.actors[token.actor_id]) and Queue.active_party(before) <= 1:
+		if operation == "IMPACT" and (Queue.active_enemies(before) == 0 \
+			or (Queue.actionable(before.actors[token.actor_id]) and Queue.active_party(before) <= 1)):
 			return "M403_BOUNDARY_DEPENDENCY"
 	return ""

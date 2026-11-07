@@ -167,6 +167,13 @@ static func active_party(view: Dictionary) -> int:
 	return count
 
 
+static func active_enemies(view: Dictionary) -> int:
+	var count: int = 0
+	for id in view.initial_enemies:
+		count += int(actionable(view.actors[id]))
+	return count
+
+
 static func retreat_token(view: Dictionary, request: Dictionary) -> Dictionary:
 	var id: int = view.authorizations.size() + 1
 	return {"version": 1, "session": view.session, "generation": view.generation,

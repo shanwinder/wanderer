@@ -17,6 +17,7 @@ class RejectingEncounter:
 class BoundaryObservation:
 	extends "res://scripts/m4/m403_effect_candidates.gd"
 	var observe_last_active: bool = false
+	var observe_no_enemies: bool = false
 
 	func snapshot() -> Dictionary:
 		var c: Dictionary = super.snapshot()
@@ -25,6 +26,10 @@ class BoundaryObservation:
 				c.actors[id].state.current_hp = 0
 				c.actors[id].state.life_state = "DOWN"
 				c.actors[id].state.eligible = false
+		if observe_no_enemies:
+			for id in c.initial_enemies:
+				c.actors[id].state.current_hp = 0
+				c.actors[id].state.can_act = false
 		return c
 
 
@@ -342,18 +347,17 @@ func _retreat_success() -> void:
 	observe(e, "lock_self_retreat", r, authority, "M403_WRONG_SLOT", "REJECTED", true)
 	check(e.snapshot().action_receipts.is_empty() and e.queue_snapshot().cursor == 1, "no refund/free action or receipt")
 	end()
-	begin("Finite all-cancel queue plus enemy unavailable drains once with no fake round close")
+	begin("Nonterminal all-cancel Party queue skips unavailable enemy then stops at living enemy")
 	var f: Dictionary = fixture()
 	state(f, "a", "", 0)
-	state(f, "b", "", 0)
 	e = bfresh(f)
 	for i in range(4):
 		t = lock(e, "cancel-%s" % i)
 		settle(e, "cancel", t, "M403_ACTION_CANCELLED", "APPLIED")
 	advance(e)
-	advance(e)
-	advance(e, "M403_BOUNDARY_DEPENDENCY", "REJECTED", true)
-	check(e.queue_snapshot().cursor == 6 and e.queue_snapshot().phase == "DRAINED", "finite six opportunities disposed")
+	advance(e, "M403_SLOT_READY", "READY", true)
+	check(e.queue_snapshot().cursor == 5 and e.queue_snapshot().phase == "READY", "finite traversal stops at living Enemy B")
+	check(e.current_opportunity().actor_id == "b", "no fake Enemy action/receipt or artificial drain")
 	check(e.snapshot().phase == "OPEN" and e.snapshot().action_receipts.is_empty(), "no fake completion/round")
 	for method in ["seal", "close", "open_round", "abort", "classify", "import_receipt", "lock_rescue"]:
 		check(not e.has_method(method), "C/other producers absent " + method)
@@ -676,6 +680,95 @@ func _bounded_diagnostics() -> void:
 	end()
 
 
+func _r51_nonterminal_gate() -> void:
+	begin("R51-01 all Enemy HP0: identical RETREAT requests reject N-all without grants or serial consumption")
+	var f: Dictionary = fixture()
+	for id in ["a", "b"]: state(f, id, "", 0)
+	var e = bfresh(f)
+	var before: Dictionary = e.snapshot()
+	var r: Dictionary = lock_request(e)
+	for i in range(3):
+		observe(e, "lock_self_retreat", r, authority, "M403_BOUNDARY_DEPENDENCY", "REJECTED", true)
+	check(e.snapshot() == before and before.revision == 0 and before.queue.cursor == 0, "entire root including revision/cursor unchanged")
+	check(e.snapshot().authorizations.is_empty() and e.snapshot().action_receipts.is_empty()
+		and e.snapshot().active_operation == null, "no grant/receipt/active token or derived serial allocation")
+	check(e.snapshot().outcome.is_empty() and e.snapshot().summary.is_empty(), "no fake terminal classification/freeze")
+	observe(e, "restart", reset_request(e, fixture()), authority, "M403_RESTARTED", "APPLIED", false)
+	var t: Dictionary = lock(e)
+	check(t.action_id == 1 and t.authorization_id == 1, "corrected legal fixture starts at first owned serial")
+	settle(e, "impact", t, "M403_RETREATED", "APPLIED")
+	settle(e, "complete", t, "M403_ACTION_COMPLETED", "APPLIED")
+	end()
+	for variant in range(7):
+		begin("R51-01 zero Enemy precedence variant%s beats boundary dependency" % variant)
+		e = bfresh(f)
+		r = lock_request(e)
+		var cap: Variant = authority
+		var reason: String = "M403_INVALID_FIELDS"
+		match variant:
+			0: r.target_id = "p"
+			1:
+				cap = null
+				reason = "M403_UNAUTHORIZED"
+			2:
+				r.queue_id = "wrong"
+				reason = "M403_WRONG_QUEUE"
+			3:
+				r.expected_revision = -1
+				reason = "M403_STALE_REVISION"
+			4:
+				r.session += 1
+				reason = "M403_FOREIGN_SESSION"
+			5:
+				r.slot_id = "wrong"
+				reason = "M403_WRONG_SLOT"
+			6:
+				r.request_id = "slot_4_future"
+				reason = "M403_RESERVED_OPERATION_ID"
+		observe(e, "lock_self_retreat", r, cap, reason, "REJECTED", true)
+		end()
+	begin("R51-01 authoritative LOCK publication rejects zero Enemy dependency without candidate import")
+	e = bfresh(f)
+	before = e.snapshot()
+	t = Adapter.retreat_token(before, lock_request(e))
+	check(e._retreat_transition_reason(before, "LOCK", t) == "M403_BOUNDARY_DEPENDENCY", "owned publication boundary rejects zero Enemy LOCK")
+	check(e._publish_retreat("LOCK", t, before.revision) == "M403_BOUNDARY_DEPENDENCY", "private publication gate also checks boundary")
+	check(e.snapshot() == before, "publication gate refusal full N-all")
+	current.steps.append({"kind": "AUTHORITATIVE_LOCK_GATE", "input": t, "before": before, "after": e.snapshot()})
+	end()
+	begin("R51-01 DIAGNOSTIC-ONLY zero Enemy observation before impact blocks effect and publication")
+	var observed = BoundaryObservation.new(authority)
+	observe(observed, "restart", reset_request(observed, fixture()), authority, "M403_RESTARTED", "APPLIED", false)
+	t = lock(observed)
+	before = observed.snapshot()
+	observed.observe_no_enemies = true
+	var scratch: Dictionary = observed.snapshot()
+	settle(observed, "impact", t, "M403_BOUNDARY_DEPENDENCY", "REJECTED", true)
+	check(observed._retreat_transition_reason(scratch, "IMPACT", t) == "M403_BOUNDARY_DEPENDENCY", "publication revalidation denies effect")
+	check(observed._publish_retreat("IMPACT", t, before.revision) == "M403_BOUNDARY_DEPENDENCY", "authoritative publication cannot bypass zero Enemy check")
+	observed.observe_no_enemies = false
+	check(observed.snapshot() == before, "real root unchanged; no Enemy damage producer or partial retreat")
+	current.steps.append({"kind": "DETACHED_ZERO_ENEMY_OBSERVATION_NOT_DAMAGE", "input": scratch, "before": before, "after": observed.snapshot()})
+	settle(observed, "cancel", t, "M403_ACTION_CANCELLED", "APPLIED")
+	end()
+	for method in ["COMPLETE", "CANCEL"]:
+		begin("R51-01 DIAGNOSTIC-ONLY zero Enemy boundary does not revoke owned " + method)
+		e = bfresh()
+		t = lock(e)
+		if method == "COMPLETE": settle(e, "impact", t, "M403_RETREATED", "APPLIED")
+		before = e.snapshot()
+		scratch = before.duplicate(true)
+		for id in scratch.initial_enemies:
+			scratch.actors[id].state.current_hp = 0
+			scratch.actors[id].state.can_act = false
+		check(e._token_reason(t, method) == "", "legal owned settlement token still authorized")
+		check(e._retreat_transition_reason(scratch, method, t) == "", "boundary gate applies only to new Lock/Impact")
+		check(e.snapshot() == before, "pure settlement diagnostic cannot publish Enemy state")
+		current.steps.append({"kind": "PURE_SETTLEMENT_ADMISSION_NOT_DAMAGE", "input": scratch, "before": before, "after": e.snapshot()})
+		settle(e, method.to_lower(), t, "M403_ACTION_COMPLETED" if method == "COMPLETE" else "M403_ACTION_CANCELLED", "APPLIED")
+		end()
+
+
 func _run() -> void:
 	_compatibility()
 	_real_compatibility()
@@ -686,6 +779,7 @@ func _run() -> void:
 	_candidate_integrity()
 	_bounded_diagnostics()
 	_publication_failures()
+	_r51_nonterminal_gate()
 	var report: Dictionary = {"suite": "M4-03B retreat transaction", "independent_cases": cases.size(),
 		"assertion_checks": checks, "failures": failures, "per_frame_checks": 0, "cases": cases,
 		"deferred": ["RESCUE live interleaving", "M4-03C terminal/round integration"]}
