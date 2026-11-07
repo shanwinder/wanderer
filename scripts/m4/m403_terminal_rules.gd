@@ -40,21 +40,21 @@ static func reserved(id: String) -> bool:
 
 static func protocol(v: Dictionary, op: String, p: Variant) -> String:
 	var fields: Array
-	if op in ["OPEN", "SEAL"]: fields = ROUND
-	elif op == "ADVANCE": fields = BASE
+	if op == "OPEN": fields = ROUND
+	elif op in ["ADVANCE", "SEAL"]: fields = BASE
 	elif op in ["RETREAT", "ATTACK", "RESCUE"]:
 		fields = LOCK + (["target_id", "amount"] if op == "ATTACK" else (["target_id"] if op == "RESCUE" else []))
 	elif op in TOKEN_OPS:
 		if typeof(p) != TYPE_DICTIONARY: return "M403_INVALID_FIELDS"
 		fields = TOKEN + (["amount"] if p.get("kind") == "ATTACK" else [])
 	elif op == "CLOSE": fields = EVENT
-	elif op == "AUTHORIZE_ABORT": fields = ROUND + ["request_id", "kind"]
+	elif op == "AUTHORIZE_ABORT": fields = BASE + ["request_id"]
 	elif op == "ABORT": fields = ABORT
 	else: return "M403_INVALID_FIELDS"
 	if not typed(p, fields): return "M403_INVALID_EVENT" if op == "CLOSE" else "M403_INVALID_FIELDS"
 	if op in ["RETREAT", "ATTACK", "RESCUE"] and (p.kind != op or p.request_id.is_empty()):
 		return "M403_INVALID_FIELDS"
-	if op == "AUTHORIZE_ABORT" and (p.kind != "ABORT" or p.request_id.is_empty()): return "M403_INVALID_FIELDS"
+	if op == "AUTHORIZE_ABORT" and p.request_id.is_empty(): return "M403_INVALID_FIELDS"
 	if op == "CLOSE" and (p.kind != "ROUND_CLOSED" or p.issuer_id != "M403_ISOLATED_QUEUE"): return "M403_INVALID_EVENT"
 	if op == "ABORT" and (p.kind != "ABORT" or p.issuer_id != "M403_ISOLATED_ABORT"): return "M403_INVALID_FIELDS"
 	if p.session != v.session: return "M403_FOREIGN_SESSION"

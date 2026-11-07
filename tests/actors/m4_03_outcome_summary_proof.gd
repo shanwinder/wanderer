@@ -179,13 +179,13 @@ func drain(e, real: bool = true) -> void:
 
 
 func seal_close(e) -> Dictionary:
-	var result: Dictionary = call_checked(e, "seal", request(e, true), "M403_ROUND_SEALED", "AUTHORIZED", authority, false)
+	var result: Dictionary = call_checked(e, "seal", request(e), "M403_ROUND_SEALED", "AUTHORIZED", authority, false)
 	return call_checked(e, "close", result.get("event", {}), "M403_ROUND_CLOSED", "APPLIED", null, false)
 
 
 func abort_grant(e) -> Dictionary:
-	var r: Dictionary = request(e, true)
-	r.merge({"kind": "ABORT", "request_id": "abort_%s" % r.expected_revision})
+	var r: Dictionary = request(e)
+	r.merge({"request_id": "abort_%s" % r.expected_revision})
 	return call_checked(e, "authorize_abort", r, "M403_ABORT_AUTHORIZED", "AUTHORIZED", authority, false).get("token", {})
 
 
@@ -229,8 +229,8 @@ func _architecture() -> void:
 
 
 func abort_grant_attempt(e) -> Dictionary:
-	var r: Dictionary = request(e, true)
-	r.merge({"kind": "ABORT", "request_id": "pending_abort"})
+	var r: Dictionary = request(e)
+	r.merge({"request_id": "pending_abort"})
 	return call_checked(e, "authorize_abort", r, "M403_ACTION_IN_PROGRESS", "REJECTED", authority)
 
 
@@ -354,7 +354,7 @@ func _atomic_terminal() -> void:
 
 		call_checked(e, "impact", t, "M403_DUPLICATE_OPERATION")
 		call_checked(e, "cancel", t, "M403_OUTCOME_FROZEN")
-		call_checked(e, "seal", request(e, true), "M403_OUTCOME_FROZEN", "REJECTED", authority)
+		call_checked(e, "seal", request(e), "M403_OUTCOME_FROZEN", "REJECTED", authority)
 		call_checked(e, "lock_self_retreat", lock_request(e, "RETREAT"), "M403_OUTCOME_FROZEN", "REJECTED", authority)
 		call_checked(e, "complete", t, "M403_ACTION_COMPLETED", "APPLIED", null, false)
 		check(e.snapshot().active_operation == null and e.queue_snapshot().phase == "STOPPED", "causal completion clears outstanding once")
@@ -423,7 +423,7 @@ func _continuation() -> void:
 	var historical: Dictionary = e.queue_snapshot().dispositions.duplicate(true)
 	var t: Dictionary = lock(e, "RESCUE", "p")
 	check(t.episode_id == e.snapshot().clocks.p.episode_id, "RESCUE binds exact live episode")
-	call_checked(e, "seal", request(e, true), "M403_ROUND_NOT_CLOSABLE", "REJECTED", authority)
+	call_checked(e, "seal", request(e), "M403_ROUND_NOT_CLOSABLE", "REJECTED", authority)
 	call_checked(e, "lock_fixture_attack", lock_request(e, "ATTACK", "a"), "M403_ACTION_IN_PROGRESS", "REJECTED", authority)
 	impact_complete(e, t, "M403_RESCUED")
 	check(e.actor_snapshot("p").state.current_hp == 1 and e.actor_snapshot("p").state.life_state == "ALIVE", "legitimate HP0→1 rescue")
@@ -480,12 +480,12 @@ func _rounds_clocks() -> void:
 	for round_number in range(3):
 		drain(e)
 		var before: Dictionary = e.snapshot()
-		var event: Dictionary = call_checked(e, "seal", request(e, true), "M403_ROUND_SEALED", "AUTHORIZED", authority, false).event
+		var event: Dictionary = call_checked(e, "seal", request(e), "M403_ROUND_SEALED", "AUTHORIZED", authority, false).event
 		var sealed: Dictionary = e.snapshot()
 		check(sealed.witness.size() == 12 and event.size() == 11, "exact approved witness12/event11")
 		check(sealed.witness.action_receipts == Rules.receipt_set(before) and sealed.witness.dispositions == before.queue.dispositions, "only owned real ledger populates witness")
 		check(sealed.actors == before.actors and sealed.clocks == before.clocks, "seal never ticks/effects")
-		call_checked(e, "seal", request(e, true), "M403_INVALID_PHASE", "REJECTED", authority)
+		call_checked(e, "seal", request(e), "M403_INVALID_PHASE", "REJECTED", authority)
 		call_checked(e, "open_round", request(e, true), "M403_INVALID_PHASE", "REJECTED", authority)
 		call_checked(e, "advance", request(e), "M403_INVALID_PHASE", "REJECTED", authority)
 		call_checked(e, "lock_fixture_attack", lock_request(e, "ATTACK", "a"), "M403_INVALID_PHASE", "REJECTED", authority)
@@ -529,7 +529,7 @@ func _rounds_clocks() -> void:
 	f.clocks = {"p": {"entry_round": 2, "budget": 2}, "t": {"entry_round": 2, "budget": 1}}
 	e = fresh(f, true, FaultEncounter.new(authority))
 	drain(e)
-	var event: Dictionary = call_checked(e, "seal", request(e, true), "M403_ROUND_SEALED", "AUTHORIZED", authority, false).event
+	var event: Dictionary = call_checked(e, "seal", request(e), "M403_ROUND_SEALED", "AUTHORIZED", authority, false).event
 	e.fault = "clock"
 	call_checked(e, "close", event, "M403_INVALID_CANDIDATE")
 	e.fault = ""
@@ -562,11 +562,11 @@ func _rounds_clocks() -> void:
 	e = fresh(f, true, StaleCloseEncounter.new(authority))
 	var ab: Dictionary = abort_grant(e)
 	drain(e)
-	var stale_event: Dictionary = call_checked(e, "seal", request(e, true), "M403_ROUND_SEALED", "AUTHORIZED", authority, false).event
+	var stale_event: Dictionary = call_checked(e, "seal", request(e), "M403_ROUND_SEALED", "AUTHORIZED", authority, false).event
 	e.stale_close = true
 	call_checked(e, "close", stale_event, "M403_STALE_REVISION")
 	e.stale_close = false
-	call_checked(e, "seal", request(e, true), "M403_INVALID_PHASE", "REJECTED", authority)
+	call_checked(e, "seal", request(e), "M403_INVALID_PHASE", "REJECTED", authority)
 	call_checked(e, "abort", ab, "M403_ABORTED", "APPLIED", null, false)
 	call_checked(e, "restart", reset_request(e, fixture()), "M403_RESTARTED", "APPLIED", authority, false)
 	end()
@@ -577,7 +577,7 @@ func _r49() -> void:
 	var e = fresh(fixture(1))
 	drain(e, false)
 	check(e.snapshot().action_receipts.is_empty() and e.snapshot().phase == "OPEN", "only real cancellations, no fabricated receipt")
-	var r: Dictionary = request(e, true)
+	var r: Dictionary = request(e)
 	for _i in range(2): call_checked(e, "seal", r, "M403_NO_REAL_PROGRESS", "REJECTED", authority)
 	var before: Dictionary = e.snapshot()
 	for _i in range(2):
@@ -591,7 +591,7 @@ func _r49() -> void:
 	begin("M403-44 V2 actual final CLOSED/nonterminal/finite exhaustion: retry/diagnostic/stale all N-all")
 	e = fresh(fixture(1))
 	drain(e)
-	var sealed: Dictionary = call_checked(e, "seal", request(e, true), "M403_ROUND_SEALED", "AUTHORIZED", authority, false)
+	var sealed: Dictionary = call_checked(e, "seal", request(e), "M403_ROUND_SEALED", "AUTHORIZED", authority, false)
 	var stale: Dictionary = request(e, true, true)
 	call_checked(e, "close", sealed.event, "M403_ROUND_CLOSED", "APPLIED", null, false)
 	r = request(e, true, true)
@@ -610,7 +610,7 @@ func _abort_restart() -> void:
 		var e = fresh()
 		var ab: Dictionary = abort_grant(e)
 		drain(e)
-		var event: Dictionary = call_checked(e, "seal", request(e, true), "M403_ROUND_SEALED", "AUTHORIZED", authority, false).event
+		var event: Dictionary = call_checked(e, "seal", request(e), "M403_ROUND_SEALED", "AUTHORIZED", authority, false).event
 		call_checked(e, "authorize_abort", request(e, true), "M403_INVALID_FIELDS", "REJECTED", authority)
 		call_checked(e, "restart", reset_request(e, fixture()), "M403_INVALID_PHASE", "REJECTED", authority)
 		if order == "abort_first":
@@ -738,7 +738,7 @@ func _security() -> void:
 		begin("Strict close event/issuer/semantic identity rejects forgery variant %s" % variant)
 		var e = fresh()
 		drain(e)
-		var event: Dictionary = call_checked(e, "seal", request(e, true), "M403_ROUND_SEALED", "AUTHORIZED", authority, false).event
+		var event: Dictionary = call_checked(e, "seal", request(e), "M403_ROUND_SEALED", "AUTHORIZED", authority, false).event
 		var bad: Dictionary = event.duplicate(true)
 		var reason: String = "M403_INVALID_EVENT"
 		match variant:
@@ -860,6 +860,85 @@ func _diagnostics() -> void:
 	end()
 
 
+func abort_request(e, id: String = "schema_abort") -> Dictionary:
+	var r: Dictionary = request(e)
+	r.request_id = id
+	return r
+
+
+func _r52_schema() -> void:
+	for method in ["seal", "authorize_abort"]:
+		for field in (["round_id", "kind"]):
+			begin("R52-01 %s rejects extra caller %s before capability/revision, N-all" % [method, field])
+			var e = fresh()
+			var r: Dictionary = request(e) if method == "seal" else abort_request(e)
+			r[field] = e.snapshot().round_id if field == "round_id" else "ABORT"
+			call_checked(e, method, r, "M403_INVALID_FIELDS", "REJECTED", authority)
+			r.expected_revision -= 1
+			call_checked(e, method, r, "M403_INVALID_FIELDS", "REJECTED", null)
+			end()
+		var fields: Array = ["version", "session", "generation", "expected_revision", "queue_id"]
+		if method == "authorize_abort": fields.append("request_id")
+		for field in fields:
+			begin("R52-01 %s missing/wrong-type %s rejects N-all" % [method, field])
+			var e = fresh()
+			var valid: Dictionary = request(e) if method == "seal" else abort_request(e)
+			var r: Dictionary = valid.duplicate(true)
+			r.erase(field)
+			call_checked(e, method, r, "M403_INVALID_FIELDS", "REJECTED", authority)
+			r = valid.duplicate(true)
+			r[field] = 1 if typeof(valid[field]) == TYPE_STRING else str(valid[field])
+			call_checked(e, method, r, "M403_INVALID_FIELDS", "REJECTED", authority)
+			end()
+		begin("R52-01 %s exact request identity/revision/capability gates N-all" % method)
+		var e = fresh()
+		for field in ["session", "generation", "queue_id", "expected_revision"]:
+			var r: Dictionary = request(e) if method == "seal" else abort_request(e)
+			var reasons: Dictionary = {"session": "M403_FOREIGN_SESSION", "generation": "M403_STALE_GENERATION",
+				"queue_id": "M403_WRONG_QUEUE", "expected_revision": "M403_STALE_REVISION"}
+			r[field] = "foreign" if field == "queue_id" else r[field] + 1
+			call_checked(e, method, r, reasons[field], "REJECTED", authority)
+		var r: Dictionary = request(e) if method == "seal" else abort_request(e)
+		call_checked(e, method, r, "M403_UNAUTHORIZED", "REJECTED", RefCounted.new())
+		end()
+
+	begin("R52-01 approved exact5/exact6 succeed in two owned rounds; old identities cannot cross rounds")
+	var e = fresh(fixture(2))
+	var old_grant: Dictionary = {}
+	var old_event: Dictionary = {}
+	var old_seal: Dictionary = {}
+	for round_number in [3, 4]:
+		var r: Dictionary = abort_request(e, "round_%s" % round_number)
+		check(r.keys().size() == 6 and not r.has("round_id") and not r.has("kind"), "approved exact6 authorization request")
+		var grant: Dictionary = call_checked(e, "authorize_abort", r, "M403_ABORT_AUTHORIZED", "AUTHORIZED", authority, false).token
+		check(grant.round_id == round_number and grant.queue_id == e.snapshot().queue.queue_id and grant.kind == "ABORT"
+			and grant.issuer_id == "M403_ISOLATED_ABORT" and grant.authorization_id == round_number - 2, "issuer derives current round/kind/monotonic authorization identity")
+		call_checked(e, "authorize_abort", r, "M403_DUPLICATE_OPERATION", "REJECTED", authority)
+		if round_number == 4:
+			check(grant.authorization_id != old_grant.authorization_id and grant.queue_id != old_grant.queue_id, "next-round grant identity distinct")
+			call_checked(e, "abort", old_grant, "M403_INVALID_ROUND")
+			call_checked(e, "close", old_event, "M403_DUPLICATE_ROUND_CLOSED")
+			call_checked(e, "seal", old_seal, "M403_WRONG_QUEUE", "REJECTED", authority)
+			var duplicate: Dictionary = abort_request(e, "round_3")
+			duplicate.expected_revision -= 1
+			call_checked(e, "authorize_abort", duplicate, "M403_DUPLICATE_OPERATION", "REJECTED", authority)
+		drain(e)
+		var sr: Dictionary = request(e)
+		check(sr.keys().size() == 5 and not sr.has("round_id"), "approved exact5 seal request")
+		var event: Dictionary = call_checked(e, "seal", sr, "M403_ROUND_SEALED", "AUTHORIZED", authority, false).event
+		check(event.size() == 11 and e.snapshot().witness.size() == 12, "owned close exact11 and witness exact12 unchanged")
+		check(event.round_id == round_number and event.queue_id == grant.queue_id and not e.snapshot().witness.action_receipts.is_empty(), "owned round and real completion receipts")
+		call_checked(e, "seal", request(e), "M403_INVALID_PHASE", "REJECTED", authority)
+		call_checked(e, "authorize_abort", abort_request(e, "sealed"), "M403_INVALID_PHASE", "REJECTED", authority)
+		call_checked(e, "close", event, "M403_ROUND_CLOSED", "APPLIED", null, false)
+		if round_number == 3:
+			old_grant = grant
+			old_event = event
+			old_seal = sr
+			call_checked(e, "open_round", request(e, true, true), "M403_ROUND_OPENED", "APPLIED", authority, false)
+	end()
+
+
 func _run() -> void:
 	_architecture()
 	_classifier()
@@ -870,6 +949,7 @@ func _run() -> void:
 	_abort_restart()
 	_security()
 	_diagnostics()
+	_r52_schema()
 	var report: Dictionary = {"suite": "M4-03C terminal summary continuation", "independent_cases": cases.size(),
 		"assertion_checks": checks, "failures": failures, "per_frame_checks": 0, "cases": cases,
 		"deferred": ["D08/D16/full D09/production integration", "M402-06 BLOCKED and M402-24 PARTIAL unchanged",
