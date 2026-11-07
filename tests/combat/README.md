@@ -1279,3 +1279,35 @@ retain both the initial harness parse failure and the genuine old-runtime reprod
 Original A94/1,165 and all prior M4/production assertions remain unchanged. Completion/
 Cancel are not subject to the new admission gate. No terminal classifier or production
 integration; await independent follow-up review.
+
+
+## Optional M4-03C isolated terminal / summary / continuation proof
+
+`--m4-outcome-summary-proof` adds five C parse stages and one focused proof stage.
+Original default/A/B/M401/M402/Main/Legacy/Guidance gates remain unchanged; the runner
+diff is additive only. C report validation separately enforces exact JSON schema,
+sequential unique C IDs, actual Boolean assertions/count sum, zero failures and exact
+stdout/JSON CASE/RESULT agreement. Duplicate JSON keys/nonfinite constants, missing
+reports, nonzero exits, unexpected Godot errors (even exit0) and timeouts fail.
+
+```sh
+python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m403c-new-full --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --guidance-decision-proof --guidance-main-proof --m4-data-proof --m4-atomic-clock-proof --m4-queue-foundation-proof --m4-retreat-transaction-proof --m4-outcome-summary-proof --cutover-baseline /tmp/wanderer-m3a04-reference-20261105-2
+```
+
+Choose a fresh output path. The reference is the verified original pre-cutover
+44-stage record/source, inherited, not a rerun or a substitute for fresh canonical.
+[Exact commands/commits/reference provenance/evidence](../actors/evidence/m4-03c/run-record.json).
+Focused reproduction can use just `--m4-outcome-summary-proof`; full regression above
+is required for delivery.
+
+Verified Godot4.7.2 on `5b37e061027649c6ef4be5c61a963659a82ed939`:
+**97 C cases/5,458 assertions**, fresh canonical **82/82**, candidate **88/88 PASS**;
+A94/1,165, B150/3,339, M40178/525, M40255/1,188 retained, Legacy6cases/5,892frames
+identical. All final exits0/unexpected errors0/timeouts0; negative five expected errors
+separate. A failed development fixture attempted to change an admission Enemy target
+after rescue; raw failure/source is retained, then corrected without weakening runtime
+or inherited assertions.
+
+[API/schema/Thai notes and explicit partial/diagnostic/unreachable coverage](../actors/README.md#m4-03c--isolated-terminal--summary--continuation-proof).
+No production/Main/Legacy/Guidance/NPC policy, balance, scene or presentation change;
+manual GUI/F5/F6/keyboard/visual NOT RUN. Independent review remains pending.

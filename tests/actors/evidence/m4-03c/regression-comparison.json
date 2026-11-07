@@ -1,0 +1,210 @@
+{
+  "actual": "PASS",
+  "original_M4_reports": [
+    {
+      "report": "m4-03a-scenarios.json",
+      "canonical": {
+        "independent_cases": 94,
+        "assertion_checks": 1165,
+        "failures": 0
+      },
+      "candidate": {
+        "independent_cases": 94,
+        "assertion_checks": 1165,
+        "failures": 0
+      },
+      "actual": "PASS",
+      "canonical_sha256": "7c97860ee3d56ce6902ce2c3f1e78c40ef8590f3359971ae07f3292bcc044161",
+      "candidate_sha256": "7c97860ee3d56ce6902ce2c3f1e78c40ef8590f3359971ae07f3292bcc044161",
+      "note": "session identities differ; compare counts and original test sources, not raw report hash equality"
+    },
+    {
+      "report": "m4-03b-scenarios.json",
+      "canonical": {
+        "independent_cases": 150,
+        "assertion_checks": 3339,
+        "failures": 0
+      },
+      "candidate": {
+        "independent_cases": 150,
+        "assertion_checks": 3339,
+        "failures": 0
+      },
+      "actual": "PASS",
+      "canonical_sha256": "138010d4308df01a2e077408b4b17daf6fbf18b12f8c8564e6de66dcb90d3a91",
+      "candidate_sha256": "138010d4308df01a2e077408b4b17daf6fbf18b12f8c8564e6de66dcb90d3a91",
+      "note": "session identities differ; compare counts and original test sources, not raw report hash equality"
+    },
+    {
+      "report": "m4-data-scenarios.json",
+      "canonical": {
+        "independent_cases": 78,
+        "checks": 525,
+        "failures": 0
+      },
+      "candidate": {
+        "independent_cases": 78,
+        "checks": 525,
+        "failures": 0
+      },
+      "actual": "PASS",
+      "canonical_sha256": "1e20054cc5ca5d939335b056e33b8cc15a4226c907f4d49f5a90ccadf62d771c",
+      "candidate_sha256": "1e20054cc5ca5d939335b056e33b8cc15a4226c907f4d49f5a90ccadf62d771c",
+      "note": "session identities differ; compare counts and original test sources, not raw report hash equality"
+    },
+    {
+      "report": "m4-02-scenarios.json",
+      "canonical": {
+        "independent_cases": 55,
+        "assertion_checks": 1188,
+        "failures": 0
+      },
+      "candidate": {
+        "independent_cases": 55,
+        "assertion_checks": 1188,
+        "failures": 0
+      },
+      "actual": "PASS",
+      "canonical_sha256": "8c98ac0f637c9335cf10f20dc6f29868efe6bbe9f7ca9b3aff0a846172ea32c5",
+      "candidate_sha256": "8c98ac0f637c9335cf10f20dc6f29868efe6bbe9f7ca9b3aff0a846172ea32c5",
+      "note": "session identities differ; compare counts and original test sources, not raw report hash equality"
+    }
+  ],
+  "all_inherited_counts": [
+    {
+      "suite": "autonomous-main-proof",
+      "canonical": 787617,
+      "candidate": 787617,
+      "actual": "PASS"
+    },
+    {
+      "suite": "gameplay",
+      "canonical": 14395,
+      "candidate": 14395,
+      "actual": "PASS"
+    },
+    {
+      "suite": "invalid-actions",
+      "canonical": 983,
+      "candidate": 983,
+      "actual": "PASS"
+    },
+    {
+      "suite": "presentation-proof",
+      "canonical": 8319,
+      "candidate": 8319,
+      "actual": "PASS"
+    },
+    {
+      "suite": "npc-proof",
+      "canonical": 412,
+      "candidate": 412,
+      "actual": "PASS"
+    },
+    {
+      "suite": "npc-playable",
+      "canonical": 5166,
+      "candidate": 5166,
+      "actual": "PASS"
+    },
+    {
+      "suite": "actor-proof",
+      "canonical": 122,
+      "candidate": 122,
+      "actual": "PASS"
+    },
+    {
+      "suite": "ownership-proof",
+      "canonical": 219,
+      "candidate": 219,
+      "actual": "PASS"
+    },
+    {
+      "suite": "party-foundation-proof",
+      "canonical": 382,
+      "candidate": 382,
+      "actual": "PASS"
+    },
+    {
+      "suite": "party-turn-proof",
+      "canonical": 1250,
+      "candidate": 1250,
+      "actual": "PASS"
+    },
+    {
+      "suite": "party-playable-proof",
+      "canonical": 260800,
+      "candidate": 260800,
+      "actual": "PASS"
+    },
+    {
+      "suite": "guidance-data-proof",
+      "canonical": 66641,
+      "candidate": 66641,
+      "actual": "PASS"
+    },
+    {
+      "suite": "guidance-decision-proof",
+      "canonical": 1192,
+      "candidate": 1192,
+      "actual": "PASS"
+    },
+    {
+      "suite": "guidance-main-proof",
+      "canonical": 507851,
+      "candidate": 507851,
+      "actual": "PASS"
+    },
+    {
+      "suite": "m4-data-proof",
+      "canonical": 525,
+      "candidate": 525,
+      "actual": "PASS"
+    },
+    {
+      "suite": "m4-atomic-clock-proof",
+      "canonical": 1188,
+      "candidate": 1188,
+      "actual": "PASS"
+    },
+    {
+      "suite": "m4-queue-foundation-proof",
+      "canonical": 1165,
+      "candidate": 1165,
+      "actual": "PASS"
+    },
+    {
+      "suite": "m4-retreat-transaction-proof",
+      "canonical": 3339,
+      "candidate": 3339,
+      "actual": "PASS"
+    },
+    {
+      "suite": "main-cutover-proof",
+      "canonical": 801351,
+      "candidate": 801351,
+      "actual": "PASS"
+    },
+    {
+      "suite": "main-cutover-f5-startup",
+      "canonical": 9,
+      "candidate": 9,
+      "actual": "PASS"
+    },
+    {
+      "suite": "rollback-f5-startup",
+      "canonical": 5,
+      "candidate": 5,
+      "actual": "PASS"
+    },
+    {
+      "suite": "rollback-gameplay",
+      "canonical": 14395,
+      "candidate": 14395,
+      "actual": "PASS"
+    }
+  ],
+  "unchanged_assertions_verified": "source-comparison.json / protected-files.json",
+  "original_M402_06": "BLOCKED end-to-end unchanged",
+  "original_M402_24": "PARTIAL unchanged"
+}

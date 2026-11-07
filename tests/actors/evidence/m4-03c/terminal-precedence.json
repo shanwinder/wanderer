@@ -1,0 +1,1684 @@
+{
+  "source_commit": "5b37e061027649c6ef4be5c61a963659a82ed939",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "command": "run-record.json commands.final; stage m4-outcome-summary-proof",
+  "expected": "Six pure D10 branches and E0 withdrawal/all-DEAD edges; validated seeded admission freezes; not simultaneous gameplay damage",
+  "actual": "PASS within stated scope",
+  "exit_code": 0,
+  "failures": 0,
+  "unexpected_errors": 0,
+  "timed_out": false,
+  "cases": [
+    {
+      "id": "M403C-08",
+      "expected": "D10-A pure precedence branch 1 plus legal initial admission boundary",
+      "actual": "PASS",
+      "assertion_count": 15,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "exact six-branch outcome/reason",
+          "passed": true
+        },
+        {
+          "description": "pure classification N-all",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/7",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/7/steps/0"
+        },
+        {
+          "method_or_kind": "DETACHED_CLASSIFIER_NOT_SIMULTANEOUS_DAMAGE",
+          "expected_reason": null,
+          "actual": {
+            "encounter_outcome": "ACTIVE",
+            "reason_code": "M403_CONTINUE",
+            "status": "CLASSIFIED"
+          },
+          "N_all": null,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/7/steps/1"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/7/steps/2"
+        }
+      ]
+    },
+    {
+      "id": "M403C-09",
+      "expected": "D10-A pure precedence branch 2 plus legal initial admission boundary",
+      "actual": "PASS",
+      "assertion_count": 17,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "exact six-branch outcome/reason",
+          "passed": true
+        },
+        {
+          "description": "pure classification N-all",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_OUTCOME_FROZEN actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_OUTCOME_FROZEN\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "initial terminal freeze has complete same-root summary",
+          "passed": true
+        },
+        {
+          "description": "no auto rescue/death/tick",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/8",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/8/steps/0"
+        },
+        {
+          "method_or_kind": "DETACHED_CLASSIFIER_NOT_SIMULTANEOUS_DAMAGE",
+          "expected_reason": null,
+          "actual": {
+            "encounter_outcome": "VICTORY",
+            "reason_code": "M403_ENEMIES_UNAVAILABLE",
+            "status": "CLASSIFIED"
+          },
+          "N_all": null,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/8/steps/1"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_OUTCOME_FROZEN",
+          "actual": {
+            "reason_code": "M403_OUTCOME_FROZEN",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/8/steps/2"
+        }
+      ]
+    },
+    {
+      "id": "M403C-10",
+      "expected": "D10-A pure precedence branch 3 plus legal initial admission boundary",
+      "actual": "PASS",
+      "assertion_count": 17,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "exact six-branch outcome/reason",
+          "passed": true
+        },
+        {
+          "description": "pure classification N-all",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_OUTCOME_FROZEN actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_OUTCOME_FROZEN\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "initial terminal freeze has complete same-root summary",
+          "passed": true
+        },
+        {
+          "description": "no auto rescue/death/tick",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/9",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/9/steps/0"
+        },
+        {
+          "method_or_kind": "DETACHED_CLASSIFIER_NOT_SIMULTANEOUS_DAMAGE",
+          "expected_reason": null,
+          "actual": {
+            "encounter_outcome": "PARTY_RETREAT",
+            "reason_code": "M403_ALL_PARTY_RETREATED",
+            "status": "CLASSIFIED"
+          },
+          "N_all": null,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/9/steps/1"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_OUTCOME_FROZEN",
+          "actual": {
+            "reason_code": "M403_OUTCOME_FROZEN",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/9/steps/2"
+        }
+      ]
+    },
+    {
+      "id": "M403C-11",
+      "expected": "D10-A pure precedence branch 4 plus legal initial admission boundary",
+      "actual": "PASS",
+      "assertion_count": 17,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "exact six-branch outcome/reason",
+          "passed": true
+        },
+        {
+          "description": "pure classification N-all",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_OUTCOME_FROZEN actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_OUTCOME_FROZEN\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "initial terminal freeze has complete same-root summary",
+          "passed": true
+        },
+        {
+          "description": "no auto rescue/death/tick",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/10",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/10/steps/0"
+        },
+        {
+          "method_or_kind": "DETACHED_CLASSIFIER_NOT_SIMULTANEOUS_DAMAGE",
+          "expected_reason": null,
+          "actual": {
+            "encounter_outcome": "MIXED_WITHDRAWAL",
+            "reason_code": "M403_ESCAPED_WITH_LEFT_BEHIND",
+            "status": "CLASSIFIED"
+          },
+          "N_all": null,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/10/steps/1"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_OUTCOME_FROZEN",
+          "actual": {
+            "reason_code": "M403_OUTCOME_FROZEN",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/10/steps/2"
+        }
+      ]
+    },
+    {
+      "id": "M403C-12",
+      "expected": "D10-A pure precedence branch 5 plus legal initial admission boundary",
+      "actual": "PASS",
+      "assertion_count": 17,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "exact six-branch outcome/reason",
+          "passed": true
+        },
+        {
+          "description": "pure classification N-all",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_OUTCOME_FROZEN actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_OUTCOME_FROZEN\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "initial terminal freeze has complete same-root summary",
+          "passed": true
+        },
+        {
+          "description": "no auto rescue/death/tick",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/11",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/11/steps/0"
+        },
+        {
+          "method_or_kind": "DETACHED_CLASSIFIER_NOT_SIMULTANEOUS_DAMAGE",
+          "expected_reason": null,
+          "actual": {
+            "encounter_outcome": "DEFEAT",
+            "reason_code": "M403_MUTUAL_INCAPACITATION",
+            "status": "CLASSIFIED"
+          },
+          "N_all": null,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/11/steps/1"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_OUTCOME_FROZEN",
+          "actual": {
+            "reason_code": "M403_OUTCOME_FROZEN",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/11/steps/2"
+        }
+      ]
+    },
+    {
+      "id": "M403C-13",
+      "expected": "D10-A pure precedence branch 6 plus legal initial admission boundary",
+      "actual": "PASS",
+      "assertion_count": 17,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "exact six-branch outcome/reason",
+          "passed": true
+        },
+        {
+          "description": "pure classification N-all",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_OUTCOME_FROZEN actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_OUTCOME_FROZEN\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "initial terminal freeze has complete same-root summary",
+          "passed": true
+        },
+        {
+          "description": "no auto rescue/death/tick",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/12",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/12/steps/0"
+        },
+        {
+          "method_or_kind": "DETACHED_CLASSIFIER_NOT_SIMULTANEOUS_DAMAGE",
+          "expected_reason": null,
+          "actual": {
+            "encounter_outcome": "DEFEAT",
+            "reason_code": "M403_NO_ACTIVE_PARTY",
+            "status": "CLASSIFIED"
+          },
+          "N_all": null,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/12/steps/1"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_OUTCOME_FROZEN",
+          "actual": {
+            "reason_code": "M403_OUTCOME_FROZEN",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/12/steps/2"
+        }
+      ]
+    },
+    {
+      "id": "M403C-14",
+      "expected": "Detached/seeded terminal precedence edge PARTY_RETREAT; no simultaneous damage claim",
+      "actual": "PASS",
+      "assertion_count": 15,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "withdrawal beats mutual even E0; all-DEAD is no-active defeat",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_OUTCOME_FROZEN actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_OUTCOME_FROZEN\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "all initial DOWN/DEAD/RETREATED rows retained",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/13",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/13/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_OUTCOME_FROZEN",
+          "actual": {
+            "reason_code": "M403_OUTCOME_FROZEN",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/13/steps/1"
+        }
+      ]
+    },
+    {
+      "id": "M403C-15",
+      "expected": "Detached/seeded terminal precedence edge MIXED_WITHDRAWAL; no simultaneous damage claim",
+      "actual": "PASS",
+      "assertion_count": 15,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "withdrawal beats mutual even E0; all-DEAD is no-active defeat",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_OUTCOME_FROZEN actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_OUTCOME_FROZEN\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "all initial DOWN/DEAD/RETREATED rows retained",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/14",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/14/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_OUTCOME_FROZEN",
+          "actual": {
+            "reason_code": "M403_OUTCOME_FROZEN",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/14/steps/1"
+        }
+      ]
+    },
+    {
+      "id": "M403C-16",
+      "expected": "Detached/seeded terminal precedence edge ALL_DEAD; no simultaneous damage claim",
+      "actual": "PASS",
+      "assertion_count": 15,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "withdrawal beats mutual even E0; all-DEAD is no-active defeat",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_OUTCOME_FROZEN actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_OUTCOME_FROZEN\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "all initial DOWN/DEAD/RETREATED rows retained",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/15",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/15/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_OUTCOME_FROZEN",
+          "actual": {
+            "reason_code": "M403_OUTCOME_FROZEN",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/15/steps/1"
+        }
+      ]
+    },
+    {
+      "id": "M403C-17",
+      "expected": "Malformed complete classifier roster rejected variant 0",
+      "actual": "PASS",
+      "assertion_count": 15,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "empty/malformed is never victory",
+          "passed": true
+        },
+        {
+          "description": "pure invalid input cannot publish",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/16",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/16/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/16/steps/1"
+        }
+      ]
+    },
+    {
+      "id": "M403C-18",
+      "expected": "Malformed complete classifier roster rejected variant 1",
+      "actual": "PASS",
+      "assertion_count": 15,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "empty/malformed is never victory",
+          "passed": true
+        },
+        {
+          "description": "pure invalid input cannot publish",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/17",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/17/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/17/steps/1"
+        }
+      ]
+    },
+    {
+      "id": "M403C-19",
+      "expected": "Malformed complete classifier roster rejected variant 2",
+      "actual": "PASS",
+      "assertion_count": 15,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "empty/malformed is never victory",
+          "passed": true
+        },
+        {
+          "description": "pure invalid input cannot publish",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/18",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/18/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/18/steps/1"
+        }
+      ]
+    },
+    {
+      "id": "M403C-20",
+      "expected": "Malformed complete classifier roster rejected variant 3",
+      "actual": "PASS",
+      "assertion_count": 15,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "empty/malformed is never victory",
+          "passed": true
+        },
+        {
+          "description": "pure invalid input cannot publish",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/19",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/19/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/19/steps/1"
+        }
+      ]
+    },
+    {
+      "id": "M403C-21",
+      "expected": "Malformed complete classifier roster rejected variant 4",
+      "actual": "PASS",
+      "assertion_count": 15,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "empty/malformed is never victory",
+          "passed": true
+        },
+        {
+          "description": "pure invalid input cannot publish",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/20",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/20/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/20/steps/1"
+        }
+      ]
+    },
+    {
+      "id": "M403C-22",
+      "expected": "Malformed complete classifier roster rejected variant 5",
+      "actual": "PASS",
+      "assertion_count": 15,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "empty/malformed is never victory",
+          "passed": true
+        },
+        {
+          "description": "pure invalid input cannot publish",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/21",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/21/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/21/steps/1"
+        }
+      ]
+    },
+    {
+      "id": "M403C-23",
+      "expected": "Malformed complete classifier roster rejected variant 6",
+      "actual": "PASS",
+      "assertion_count": 15,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "empty/malformed is never victory",
+          "passed": true
+        },
+        {
+          "description": "pure invalid input cannot publish",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/22",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/22/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/22/steps/1"
+        }
+      ]
+    },
+    {
+      "id": "M403C-24",
+      "expected": "Malformed complete classifier roster rejected variant 7",
+      "actual": "PASS",
+      "assertion_count": 15,
+      "failure_count": 0,
+      "assertions": [
+        {
+          "description": "restart reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "open_round reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+          "passed": true
+        },
+        {
+          "description": "exact status APPLIED",
+          "passed": true
+        },
+        {
+          "description": "at most one root publication",
+          "passed": true
+        },
+        {
+          "description": "generation changes only on Restart",
+          "passed": true
+        },
+        {
+          "description": "all domains + global revision/event replay validate",
+          "passed": true
+        },
+        {
+          "description": "global event count independent of cursor/action ledger",
+          "passed": true
+        },
+        {
+          "description": "N-effect actor state for accounting/boundary",
+          "passed": true
+        },
+        {
+          "description": "empty/malformed is never victory",
+          "passed": true
+        },
+        {
+          "description": "pure invalid input cannot publish",
+          "passed": true
+        }
+      ],
+      "raw_case_pointer": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/23",
+      "steps": [
+        {
+          "method_or_kind": "restart",
+          "expected_reason": "M403_RESTARTED",
+          "actual": {
+            "reason_code": "M403_RESTARTED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/23/steps/0"
+        },
+        {
+          "method_or_kind": "open_round",
+          "expected_reason": "M403_ROUND_OPENED",
+          "actual": {
+            "reason_code": "M403_ROUND_OPENED",
+            "status": "APPLIED"
+          },
+          "N_all": false,
+          "full_input_and_snapshots": "m4-03c-scenarios.zip!/m4-03c-scenarios.json#/cases/23/steps/1"
+        }
+      ]
+    }
+  ],
+  "raw_report_sha256": "7baa9eb31f3dff303c8b7778954c691a0f36de95c148572c5640499d863f7436"
+}

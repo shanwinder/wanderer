@@ -1,0 +1,511 @@
+{
+  "scope": "M4-03C isolated implementation-status register; original48 design rows unchanged",
+  "source_commit": "5b37e061027649c6ef4be5c61a963659a82ed939",
+  "rows": [
+    {
+      "id": "M403-01",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-27"
+      ],
+      "scope_and_limits": "C effect transactions + unchanged original B",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-02",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-58"
+      ],
+      "scope_and_limits": "wrong-slot + inherited B",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-03",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-34"
+      ],
+      "scope_and_limits": "admitted DOWN Player unavailable; B keeps original pre-C fixture semantics",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-04",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-16",
+        "M403C-33"
+      ],
+      "scope_and_limits": "inherited B unavailable DEAD/RETREATED admission; C seed phases are stricter before admission",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-05",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-65",
+        "M403C-66",
+        "M403C-67",
+        "M403C-68",
+        "M403C-69",
+        "M403C-70",
+        "M403C-71",
+        "M403C-72",
+        "M403C-73"
+      ],
+      "scope_and_limits": "owned request duplicates",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-06",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-25",
+        "M403C-26",
+        "M403C-27",
+        "M403C-28"
+      ],
+      "scope_and_limits": "one impact/receipt with replay denial",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-07",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-46",
+        "M403C-47",
+        "M403C-48"
+      ],
+      "scope_and_limits": "old generation token callbacks",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-08",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-37"
+      ],
+      "scope_and_limits": "actual legal SEALED fixture",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-09",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-42"
+      ],
+      "scope_and_limits": "owned cancellation-only queue + inherited B late-impact rejection",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-10",
+      "status": "DIAGNOSTIC-ONLY",
+      "case_ids": [
+        "M403C-94"
+      ],
+      "scope_and_limits": "detached actor-unavailable revalidation; no live mid-action producer",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-11",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-37"
+      ],
+      "scope_and_limits": "real unavailable dispositions while Player DOWN",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-12",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-34",
+        "M403C-35"
+      ],
+      "scope_and_limits": "actual admission/skip/eligible NPC continuation",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-13",
+      "status": "PARTIAL",
+      "case_ids": [
+        "M403C-34"
+      ],
+      "scope_and_limits": "Player unavailable fixture slot rejects; no production command/Guidance API or PLAYER_INPUT_UNAVAILABLE reason added",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-14",
+      "status": "DIAGNOSTIC-ONLY",
+      "case_ids": [
+        "M403C-95"
+      ],
+      "scope_and_limits": "detached Player DOWN after impact; no legal serial producer",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-15",
+      "status": "DIAGNOSTIC-ONLY",
+      "case_ids": [
+        "M403C-96"
+      ],
+      "scope_and_limits": "detached Player DOWN with NPC locked; no legal serial producer",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-16",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-34"
+      ],
+      "scope_and_limits": "real RESCUE and no disposed-slot reinsertion",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-17",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-34"
+      ],
+      "scope_and_limits": "actual close/new admission; uses/history preserved",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-18",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-36"
+      ],
+      "scope_and_limits": "Player retreat and eligible remaining actors; real witnessed close",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-19",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-13"
+      ],
+      "scope_and_limits": "all-DOWN valid admission freeze, no death/tick",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-20",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-16"
+      ],
+      "scope_and_limits": "all-DEAD valid admission freeze",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-21",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-27",
+        "M403C-14"
+      ],
+      "scope_and_limits": "legal whole-Party RETREAT plus E0 precedence seed",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-22",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-26"
+      ],
+      "scope_and_limits": "last-active mixed withdrawal and causal completion",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-23",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-25"
+      ],
+      "scope_and_limits": "real final Enemy HP0 hit freezes before close",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-24",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-34"
+      ],
+      "scope_and_limits": "owned RESCUE pending excludes second action; not M402-06 race",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-25",
+      "status": "UNREACHABLE BY DESIGN",
+      "case_ids": [
+        "M403C-25",
+        "M403C-97"
+      ],
+      "scope_and_limits": "literal last stable planned slot is Enemy and cannot kill own Enemy domain; earlier legal final-Enemy effect/no close proven",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-26",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-12"
+      ],
+      "scope_and_limits": "pure mutual classification plus seeded admission only; no simultaneous damage",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-27",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-15"
+      ],
+      "scope_and_limits": "pure/seeded E0 mixed withdrawal precedence only",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-28",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-25",
+        "M403C-26",
+        "M403C-27",
+        "M403C-28"
+      ],
+      "scope_and_limits": "immutable matching result reads; new work denied",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-29",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-37",
+        "M403C-38"
+      ],
+      "scope_and_limits": "legal real witness, batch death and duplicate close",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-30",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-12"
+      ],
+      "scope_and_limits": "validated terminal-seed admission, no empty close",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-31",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-25"
+      ],
+      "scope_and_limits": "exact separated summary domain/retained states",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-32",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-26"
+      ],
+      "scope_and_limits": "mixed DOWN/DEAD/RETREATED full initial rows",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-33",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-29",
+        "M403C-30",
+        "M403C-31",
+        "M403C-32"
+      ],
+      "scope_and_limits": "diagnostic invalid-candidate injection proves actual runtime N-all, not a corrupt gameplay producer",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-34",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-25",
+        "M403C-26",
+        "M403C-27",
+        "M403C-28"
+      ],
+      "scope_and_limits": "nested detached read isolation",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-35",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-34"
+      ],
+      "scope_and_limits": "ABSENT before freeze",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-36",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-25",
+        "M403C-26",
+        "M403C-27",
+        "M403C-28"
+      ],
+      "scope_and_limits": "frozen reset and stale read",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-37",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-46",
+        "M403C-47"
+      ],
+      "scope_and_limits": "real LOCKED/APPLIED reset",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-38",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-44",
+        "M403C-45",
+        "M403C-46",
+        "M403C-47",
+        "M403C-48"
+      ],
+      "scope_and_limits": "old action/close/Abort identities reject after restart",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-39",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-83",
+        "M403C-84",
+        "M403C-85",
+        "M403C-86",
+        "M403C-87",
+        "M403C-88",
+        "M403C-89",
+        "M403C-90",
+        "M403C-91"
+      ],
+      "scope_and_limits": "invalid fixture retains real old action",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-40",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-59",
+        "M403C-65",
+        "M403C-66",
+        "M403C-67",
+        "M403C-68"
+      ],
+      "scope_and_limits": "revision and owned token exact equality + inherited B",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-41",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-44",
+        "M403C-45"
+      ],
+      "scope_and_limits": "both serial orders; no concurrency claim",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-42",
+      "status": "PARTIAL",
+      "case_ids": [
+        "M403C-37",
+        "M403C-41",
+        "M403C-44"
+      ],
+      "scope_and_limits": "legal SEALED new work/Restart/reseal restrictions and recovery proven; pending completable action in SEALED excluded by seal, no fake token used",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-43",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-60",
+        "M403C-61"
+      ],
+      "scope_and_limits": "current/future reserved namespaces and unchanged B",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-44",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-42",
+        "M403C-43"
+      ],
+      "scope_and_limits": "both real boundary operations + retries/read-only diagnostics/stale N-all",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-45",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-17",
+        "M403C-18",
+        "M403C-19",
+        "M403C-20",
+        "M403C-21",
+        "M403C-22",
+        "M403C-23",
+        "M403C-24",
+        "M403C-29",
+        "M403C-30",
+        "M403C-31",
+        "M403C-32",
+        "M403C-83",
+        "M403C-84",
+        "M403C-85"
+      ],
+      "scope_and_limits": "complete malformed roster/summary rejection",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-46",
+      "status": "FULLY PROVEN",
+      "case_ids": [
+        "M403C-25",
+        "M403C-93"
+      ],
+      "scope_and_limits": "Enemy HP availability only and Party-only RETREAT denial",
+      "evidence": "case-index.json + raw m4-03c-scenarios.zip"
+    },
+    {
+      "id": "M403-47",
+      "status": "FULLY PROVEN",
+      "case_ids": [],
+      "scope_and_limits": "automated unchanged production/Guidance source and full current flags; no manual/production integration claim",
+      "evidence": "regression-comparison.json / source-comparison.json / trace-comparison.json"
+    },
+    {
+      "id": "M403-48",
+      "status": "FULLY PROVEN",
+      "case_ids": [],
+      "scope_and_limits": "fresh canonical82/candidate88; protected files/counts/Legacy; manual visual NOT RUN",
+      "evidence": "regression-comparison.json / source-comparison.json / trace-comparison.json"
+    }
+  ],
+  "additional_unreachable": "A causal SKIPPED terminal has no current legal producer because a skip changes no P/E. Natural-close terminal: P/E positive at seal; only preexisting DOWN tick; P/E unchanged. C97. No synthetic lethal SEALED effect.",
+  "historical_limits": [
+    "M402-06 BLOCKED end-to-end",
+    "M402-24 PARTIAL"
+  ],
+  "not_run": [
+    "GUI/F5/F6/keyboard/visual",
+    "autonomous NPC policy",
+    "production M4 integration"
+  ]
+}
