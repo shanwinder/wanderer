@@ -1,0 +1,978 @@
+{
+  "scope": "B-only; original design matrices unchanged",
+  "rows": {
+    "M403-01": {
+      "status": "FULLY PROVEN",
+      "scope": "B isolated automated transaction/preservation only",
+      "evidence": [
+        "M403B-12"
+      ]
+    },
+    "M403-02": {
+      "status": "FULLY PROVEN",
+      "scope": "B isolated automated transaction/preservation only",
+      "evidence": [
+        "M403B-36"
+      ]
+    },
+    "M403-03": {
+      "status": "FULLY PROVEN",
+      "scope": "B isolated automated transaction/preservation only",
+      "evidence": [
+        "M403B-46"
+      ]
+    },
+    "M403-04": {
+      "status": "FULLY PROVEN",
+      "scope": "B isolated automated transaction/preservation only",
+      "evidence": [
+        "M403B-47",
+        "M403B-48"
+      ]
+    },
+    "M403-05": {
+      "status": "FULLY PROVEN",
+      "scope": "B isolated automated transaction/preservation only",
+      "evidence": [
+        "M403B-50"
+      ]
+    },
+    "M403-06": {
+      "status": "FULLY PROVEN",
+      "scope": "B isolated automated transaction/preservation only",
+      "evidence": [
+        "M403B-12",
+        "M403B-13"
+      ]
+    },
+    "M403-07": {
+      "status": "FULLY PROVEN",
+      "scope": "B isolated automated transaction/preservation only",
+      "evidence": [
+        "M403B-68",
+        "M403B-69",
+        "M403B-70",
+        "M403B-71"
+      ]
+    },
+    "M403-09": {
+      "status": "FULLY PROVEN",
+      "scope": "B isolated automated transaction/preservation only",
+      "evidence": [
+        "M403B-15"
+      ]
+    },
+    "M403-40": {
+      "status": "FULLY PROVEN",
+      "scope": "B isolated automated transaction/preservation only",
+      "evidence": [
+        "M403B-38",
+        "M403B-63"
+      ]
+    },
+    "M403-43": {
+      "status": "FULLY PROVEN",
+      "scope": "B isolated automated transaction/preservation only",
+      "evidence": [
+        "M403B-42",
+        "M403B-43",
+        "M403B-44",
+        "M403B-45"
+      ]
+    },
+    "M403-47": {
+      "status": "FULLY PROVEN",
+      "scope": "B isolated automated transaction/preservation only",
+      "evidence": [
+        "protected-files.json",
+        "inherited-counts.json"
+      ]
+    },
+    "M403-48": {
+      "status": "FULLY PROVEN",
+      "scope": "B isolated automated transaction/preservation only",
+      "evidence": [
+        "final-results.json",
+        "source-comparison.json",
+        "trace-comparison.json"
+      ]
+    },
+    "M403-08": {
+      "status": "NOT RUN / DEFERRED TO C",
+      "reason": "No legal SEALED producer; no fake SEALED fixture"
+    },
+    "M403-10": {
+      "status": "DIAGNOSTIC-ONLY",
+      "evidence": [
+        "M403B-129",
+        "M403B-130",
+        "M403B-131"
+      ],
+      "reason": "Pure bounded changed-actor observation; no legal aggregate damage/RESCUE producer or live completion/restart from SKIPPED"
+    },
+    "M403-22": {
+      "status": "PARTIAL / BOUNDED; outcome DEFERRED TO C",
+      "evidence": [
+        "M403B-51",
+        "M403B-132",
+        "M403B-133"
+      ],
+      "reason": "Pre-lock N-all legal test; changed availability before impact uses detached diagnostic overlay; no outcome/freeze/terminal settlement"
+    },
+    "M403-16": {
+      "status": "BLOCKED DEPENDENCY / DEFERRED TO C",
+      "evidence": [
+        "M403B-02"
+      ],
+      "reason": "Pure restored history does not establish legal RESCUE interleaving"
+    },
+    "M403-44": {
+      "status": "DEFERRED TO C",
+      "reason": "No real seal/close/open-next-round producer"
+    },
+    "M402-06": {
+      "status": "BLOCKED end-to-end"
+    },
+    "M402-24": {
+      "status": "PARTIAL unchanged"
+    }
+  },
+  "case_index": [
+    {
+      "id": "M403B-01",
+      "expected": "N50-INT-01A pure structural revision independent of cursor; legal A skip revision",
+      "assertion_count": 13,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-02",
+      "expected": "N50-INT-01B historical unavailability independent of future restored eligibility, no reinsertion",
+      "assertion_count": 13,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-03",
+      "expected": "Forged historical disposition 0 rejected structurally and N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-04",
+      "expected": "Forged historical disposition 1 rejected structurally and N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-05",
+      "expected": "Forged historical disposition 2 rejected structurally and N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-06",
+      "expected": "Forged historical disposition 3 rejected structurally and N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-07",
+      "expected": "Forged historical disposition 4 rejected structurally and N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-08",
+      "expected": "Forged historical disposition 5 rejected structurally and N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-09",
+      "expected": "Forged historical disposition 6 rejected structurally and N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-10",
+      "expected": "N50-INT-01A real lock/impact/completion interleaved unavailable skip uses actual revision",
+      "assertion_count": 92,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-11",
+      "expected": "N50-INT-01A cancellation revision2 cursor1 followed by unavailable skip",
+      "assertion_count": 29,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-12",
+      "expected": "Valid p self-retreat has immutable exact15 token, retained ID/HP and one owned receipt",
+      "assertion_count": 59,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-13",
+      "expected": "Valid n1 self-retreat has immutable exact15 token, retained ID/HP and one owned receipt",
+      "assertion_count": 79,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-14",
+      "expected": "Player DOWN skipped; eligible NPC owns real retreat and completion without Player command",
+      "assertion_count": 43,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-15",
+      "expected": "Pre-impact cancellation consumes one slot; replay reason precedence is exact",
+      "assertion_count": 32,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-16",
+      "expected": "Finite all-cancel queue plus enemy unavailable drains once with no fake round close",
+      "assertion_count": 102,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-17",
+      "expected": "Lock exact schema rejects missing or wrong-type field version",
+      "assertion_count": 10,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-18",
+      "expected": "Lock exact schema rejects missing or wrong-type field session",
+      "assertion_count": 10,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-19",
+      "expected": "Lock exact schema rejects missing or wrong-type field generation",
+      "assertion_count": 10,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-20",
+      "expected": "Lock exact schema rejects missing or wrong-type field expected_revision",
+      "assertion_count": 10,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-21",
+      "expected": "Lock exact schema rejects missing or wrong-type field queue_id",
+      "assertion_count": 10,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-22",
+      "expected": "Lock exact schema rejects missing or wrong-type field slot_id",
+      "assertion_count": 10,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-23",
+      "expected": "Lock exact schema rejects missing or wrong-type field request_id",
+      "assertion_count": 10,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-24",
+      "expected": "Lock exact schema rejects missing or wrong-type field actor_id",
+      "assertion_count": 10,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-25",
+      "expected": "Lock exact schema rejects missing or wrong-type field kind",
+      "assertion_count": 10,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-26",
+      "expected": "Lock protocol/authentication/domain precedence variant0 is N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-27",
+      "expected": "Lock protocol/authentication/domain precedence variant1 is N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-28",
+      "expected": "Lock protocol/authentication/domain precedence variant2 is N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-29",
+      "expected": "Lock protocol/authentication/domain precedence variant3 is N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-30",
+      "expected": "Lock protocol/authentication/domain precedence variant4 is N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-31",
+      "expected": "Lock protocol/authentication/domain precedence variant5 is N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-32",
+      "expected": "Lock protocol/authentication/domain precedence variant6 is N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-33",
+      "expected": "Lock protocol/authentication/domain precedence variant7 is N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-34",
+      "expected": "Lock protocol/authentication/domain precedence variant8 is N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-35",
+      "expected": "Lock protocol/authentication/domain precedence variant9 is N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-36",
+      "expected": "Lock protocol/authentication/domain precedence variant10 is N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-37",
+      "expected": "Lock protocol/authentication/domain precedence variant11 is N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-38",
+      "expected": "Lock protocol/authentication/domain precedence variant12 is N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-39",
+      "expected": "Lock protocol/authentication/domain precedence variant13 is N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-40",
+      "expected": "Lock protocol/authentication/domain precedence variant14 is N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-41",
+      "expected": "Lock protocol/authentication/domain precedence variant15 is N-all",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-42",
+      "expected": "Reserved current/future namespace cannot be preempted by slot_3_p",
+      "assertion_count": 15,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-43",
+      "expected": "Reserved current/future namespace cannot be preempted by slot_4_p",
+      "assertion_count": 15,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-44",
+      "expected": "Reserved current/future namespace cannot be preempted by slot_999_future",
+      "assertion_count": 15,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-45",
+      "expected": "Reserved current/future namespace cannot be preempted by m403/queue/foreign/slot/99",
+      "assertion_count": 15,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-46",
+      "expected": "Unavailable actor DOWN/PRESENT lock rejects without effect",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-47",
+      "expected": "Unavailable actor DEAD/PRESENT lock rejects without effect",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-48",
+      "expected": "Unavailable actor ALIVE/RETREATED lock rejects without effect",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-49",
+      "expected": "Enemy current slot cannot RETREAT; D14 HP state remains original",
+      "assertion_count": 23,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-50",
+      "expected": "Duplicate request checked before phase/current revision; active action blocks second grant and skip",
+      "assertion_count": 34,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-51",
+      "expected": "Last-active Party retreat rejects before lock with complete N-all and no terminal producer",
+      "assertion_count": 8,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-52",
+      "expected": "Owned token field version cannot be removed, mistyped or altered",
+      "assertion_count": 29,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-53",
+      "expected": "Owned token field session cannot be removed, mistyped or altered",
+      "assertion_count": 29,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-54",
+      "expected": "Owned token field generation cannot be removed, mistyped or altered",
+      "assertion_count": 29,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-55",
+      "expected": "Owned token field round_id cannot be removed, mistyped or altered",
+      "assertion_count": 29,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-56",
+      "expected": "Owned token field queue_id cannot be removed, mistyped or altered",
+      "assertion_count": 29,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-57",
+      "expected": "Owned token field slot_id cannot be removed, mistyped or altered",
+      "assertion_count": 29,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-58",
+      "expected": "Owned token field action_id cannot be removed, mistyped or altered",
+      "assertion_count": 29,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-59",
+      "expected": "Owned token field actor_id cannot be removed, mistyped or altered",
+      "assertion_count": 29,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-60",
+      "expected": "Owned token field kind cannot be removed, mistyped or altered",
+      "assertion_count": 29,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-61",
+      "expected": "Owned token field target_id cannot be removed, mistyped or altered",
+      "assertion_count": 29,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-62",
+      "expected": "Owned token field lock_revision cannot be removed, mistyped or altered",
+      "assertion_count": 29,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-63",
+      "expected": "Owned token field authorization_id cannot be removed, mistyped or altered",
+      "assertion_count": 29,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-64",
+      "expected": "Owned token field window_id cannot be removed, mistyped or altered",
+      "assertion_count": 29,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-65",
+      "expected": "Owned token field request_id cannot be removed, mistyped or altered",
+      "assertion_count": 29,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-66",
+      "expected": "Owned token field episode_id cannot be removed, mistyped or altered",
+      "assertion_count": 29,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-67",
+      "expected": "Foreign encounter and malformed root tokens reject without exposing domain",
+      "assertion_count": 52,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-68",
+      "expected": "Restart from LOCKED clears all accounting and stales every old callback",
+      "assertion_count": 35,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-69",
+      "expected": "Restart from APPLIED clears all accounting and stales every old callback",
+      "assertion_count": 51,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-70",
+      "expected": "Restart from COMPLETED clears all accounting and stales every old callback",
+      "assertion_count": 62,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-71",
+      "expected": "Restart from CANCELLED clears all accounting and stales every old callback",
+      "assertion_count": 46,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-72",
+      "expected": "Invalid restart retains pending legitimate token through impact/completion",
+      "assertion_count": 41,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-73",
+      "expected": "Candidate accounting integrity LOCKED fault0 rejects whole root",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-74",
+      "expected": "Candidate accounting integrity LOCKED fault1 rejects whole root",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-75",
+      "expected": "Candidate accounting integrity LOCKED fault2 rejects whole root",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-76",
+      "expected": "Candidate accounting integrity LOCKED fault3 rejects whole root",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-77",
+      "expected": "Candidate accounting integrity LOCKED fault4 rejects whole root",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-78",
+      "expected": "Candidate accounting integrity LOCKED fault5 rejects whole root",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-79",
+      "expected": "Candidate accounting integrity LOCKED fault6 rejects whole root",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-80",
+      "expected": "Candidate accounting integrity LOCKED fault7 rejects whole root",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-81",
+      "expected": "Candidate accounting integrity LOCKED fault8 rejects whole root",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-82",
+      "expected": "Candidate accounting integrity LOCKED fault9 rejects whole root",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-83",
+      "expected": "Candidate accounting integrity APPLIED fault0 rejects whole root",
+      "assertion_count": 30,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-84",
+      "expected": "Candidate accounting integrity APPLIED fault1 rejects whole root",
+      "assertion_count": 30,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-85",
+      "expected": "Candidate accounting integrity APPLIED fault2 rejects whole root",
+      "assertion_count": 30,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-86",
+      "expected": "Candidate accounting integrity APPLIED fault3 rejects whole root",
+      "assertion_count": 30,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-87",
+      "expected": "Candidate accounting integrity APPLIED fault4 rejects whole root",
+      "assertion_count": 30,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-88",
+      "expected": "Candidate accounting integrity APPLIED fault5 rejects whole root",
+      "assertion_count": 30,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-89",
+      "expected": "Candidate accounting integrity APPLIED fault6 rejects whole root",
+      "assertion_count": 30,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-90",
+      "expected": "Candidate accounting integrity APPLIED fault7 rejects whole root",
+      "assertion_count": 30,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-91",
+      "expected": "Candidate accounting integrity APPLIED fault8 rejects whole root",
+      "assertion_count": 30,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-92",
+      "expected": "Candidate accounting integrity APPLIED fault9 rejects whole root",
+      "assertion_count": 30,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-93",
+      "expected": "Candidate accounting integrity COMPLETED fault0 rejects whole root",
+      "assertion_count": 41,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-94",
+      "expected": "Candidate accounting integrity COMPLETED fault1 rejects whole root",
+      "assertion_count": 41,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-95",
+      "expected": "Candidate accounting integrity COMPLETED fault2 rejects whole root",
+      "assertion_count": 41,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-96",
+      "expected": "Candidate accounting integrity COMPLETED fault3 rejects whole root",
+      "assertion_count": 41,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-97",
+      "expected": "Candidate accounting integrity COMPLETED fault4 rejects whole root",
+      "assertion_count": 41,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-98",
+      "expected": "Candidate accounting integrity COMPLETED fault5 rejects whole root",
+      "assertion_count": 41,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-99",
+      "expected": "Candidate accounting integrity COMPLETED fault6 rejects whole root",
+      "assertion_count": 41,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-100",
+      "expected": "Candidate accounting integrity COMPLETED fault7 rejects whole root",
+      "assertion_count": 41,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-101",
+      "expected": "Candidate accounting integrity COMPLETED fault8 rejects whole root",
+      "assertion_count": 41,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-102",
+      "expected": "Candidate accounting integrity COMPLETED fault9 rejects whole root",
+      "assertion_count": 41,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-103",
+      "expected": "Candidate accounting integrity CANCELLED fault0 rejects whole root",
+      "assertion_count": 25,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-104",
+      "expected": "Candidate accounting integrity CANCELLED fault1 rejects whole root",
+      "assertion_count": 25,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-105",
+      "expected": "Candidate accounting integrity CANCELLED fault2 rejects whole root",
+      "assertion_count": 25,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-106",
+      "expected": "Candidate accounting integrity CANCELLED fault3 rejects whole root",
+      "assertion_count": 25,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-107",
+      "expected": "Candidate accounting integrity CANCELLED fault4 rejects whole root",
+      "assertion_count": 25,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-108",
+      "expected": "Candidate accounting integrity CANCELLED fault5 rejects whole root",
+      "assertion_count": 25,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-109",
+      "expected": "Candidate accounting integrity CANCELLED fault6 rejects whole root",
+      "assertion_count": 25,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-110",
+      "expected": "Candidate accounting integrity CANCELLED fault7 rejects whole root",
+      "assertion_count": 25,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-111",
+      "expected": "Candidate accounting integrity CANCELLED fault8 rejects whole root",
+      "assertion_count": 25,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-112",
+      "expected": "Candidate accounting integrity CANCELLED fault9 rejects whole root",
+      "assertion_count": 25,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-113",
+      "expected": "Malformed candidate with owned action fault0 fails closed without engine error",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-114",
+      "expected": "Malformed candidate with owned action fault1 fails closed without engine error",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-115",
+      "expected": "Malformed candidate with owned action fault2 fails closed without engine error",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-116",
+      "expected": "Malformed candidate with owned action fault3 fails closed without engine error",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-117",
+      "expected": "Malformed candidate with owned action fault4 fails closed without engine error",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-118",
+      "expected": "Malformed candidate with owned action fault5 fails closed without engine error",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-119",
+      "expected": "Malformed candidate with owned action fault6 fails closed without engine error",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-120",
+      "expected": "Malformed candidate with owned action fault7 fails closed without engine error",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-121",
+      "expected": "Malformed candidate with owned action fault8 fails closed without engine error",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-122",
+      "expected": "Malformed candidate with owned action fault9 fails closed without engine error",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-123",
+      "expected": "Malformed candidate with owned action fault10 fails closed without engine error",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-124",
+      "expected": "Malformed candidate with owned action fault11 fails closed without engine error",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-125",
+      "expected": "Malformed candidate with owned action fault12 fails closed without engine error",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-126",
+      "expected": "Malformed candidate with owned action fault13 fails closed without engine error",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-127",
+      "expected": "Malformed candidate with owned action fault14 fails closed without engine error",
+      "assertion_count": 14,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-128",
+      "expected": "Forged plausible historical observation cannot rewrite authentic prior history",
+      "assertion_count": 11,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-129",
+      "expected": "DIAGNOSTIC-ONLY impact revalidation DOWN/PRESENT; no legal damage producer claimed",
+      "assertion_count": 17,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-130",
+      "expected": "DIAGNOSTIC-ONLY impact revalidation DEAD/PRESENT; no legal damage producer claimed",
+      "assertion_count": 17,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-131",
+      "expected": "DIAGNOSTIC-ONLY impact revalidation ALIVE/RETREATED; no legal damage producer claimed",
+      "assertion_count": 17,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-132",
+      "expected": "DIAGNOSTIC-ONLY last-active pre-impact dependency after legal lock; no concurrent producer",
+      "assertion_count": 13,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-133",
+      "expected": "DIAGNOSTIC-ONLY actual pre-impact boundary rejection with detached last-active observation",
+      "assertion_count": 25,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-134",
+      "expected": "Candidate-validation failure during LOCK is N-all; legitimate retry still works",
+      "assertion_count": 15,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-135",
+      "expected": "Candidate-validation failure during IMPACT is N-all; legitimate retry still works",
+      "assertion_count": 29,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-136",
+      "expected": "Candidate-validation failure during COMPLETE is N-all; legitimate retry still works",
+      "assertion_count": 40,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-137",
+      "expected": "Candidate-validation failure during CANCEL is N-all; legitimate retry still works",
+      "assertion_count": 24,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-138",
+      "expected": "Detached snapshots/grants/receipts cannot mutate published authority",
+      "assertion_count": 39,
+      "actual": "PASS"
+    }
+  ],
+  "not_run": [
+    "manual GUI/F5/F6/keyboard/visual",
+    "legal SEALED Abort/Restart",
+    "live SKIPPED Restart",
+    "terminal/outcome/summary",
+    "NPC policy",
+    "production integration"
+  ]
+}

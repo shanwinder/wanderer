@@ -1,0 +1,170 @@
+{
+  "task": "M4-03B — Isolated RETREAT Transaction Implemented Candidate / Awaiting Independent Code & Evidence Review",
+  "date": "2026-11-08",
+  "timezone": "Asia/Bangkok",
+  "repository": "shanwinder/wanderer",
+  "canonical_branch": "visual-combat-test-1",
+  "canonical_commit": "5cf53e0d145d3a518fcedd458ba2a892eb52cb1f",
+  "tested_source_sha": "62cd64ae4f681a553e282881cac994d90f0d0d03",
+  "branch": "codex/m4-03b-isolated-retreat-transaction",
+  "delivery_head": {
+    "resolution": "Exact final SHA in Draft PR body/final report; git rev-parse HEAD on delivered branch",
+    "reason": "Committed run-record cannot contain its own Git hash",
+    "tested_relation": "Only four authorized Markdown files/new evidence after tested source; every tested source hash rechecked"
+  },
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "executable": "/Applications/Godot.app/Contents/MacOS/Godot",
+  "authorization": "Owner attached B-only implementation task; subsequent explicit reply selects opt-in B subclass in allowed new file to preserve A absent-API assertions",
+  "preflight": {
+    "initial_tree_clean": true,
+    "initial_branch": "visual-combat-test-1",
+    "local_fetched_live_merge_base": "5cf53e0d145d3a518fcedd458ba2a892eb52cb1f",
+    "PR50_merged": true,
+    "PR50_merge_sha": "5cf53e0d145d3a518fcedd458ba2a892eb52cb1f",
+    "PR50_merged_at": "2026-11-07T07:13:05Z",
+    "PR50_single_parent_squash": "5cf53e0d145d3a518fcedd458ba2a892eb52cb1f 67d68bb1f78fa8efedcb719079a4487c531c49d4",
+    "PR50_branch_absent_local_remote": true,
+    "duplicate_B_branch_PR_before_work": "none; live open search #2/#17 only",
+    "PR2_PR17": "open/unmerged/untouched; not ancestors of canonical",
+    "review": "https://github.com/shanwinder/wanderer/pull/50#pullrequestreview-5809782726"
+  },
+  "commands": {
+    "version": "/Applications/Godot.app/Contents/MacOS/Godot --version",
+    "canonical": "python3 /tmp/wanderer-m403b-canonical-source-20261108/tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m403b-canonical-20261108 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --guidance-decision-proof --guidance-main-proof --m4-data-proof --m4-atomic-clock-proof --m4-queue-foundation-proof --cutover-baseline /tmp/wanderer-m3a04-reference-20261105-2",
+    "final": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m403b-final-20261108 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --guidance-decision-proof --guidance-main-proof --m4-data-proof --m4-atomic-clock-proof --m4-queue-foundation-proof --m4-retreat-transaction-proof --cutover-baseline /tmp/wanderer-m3a04-reference-20261105-2",
+    "gate": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m403b-gate-20261108 --m4-queue-foundation-proof --m4-retreat-transaction-proof",
+    "canonical_source": "git archive 5cf53e0d145d3a518fcedd458ba2a892eb52cb1f | tar -x -C /tmp/wanderer-m403b-canonical-source-20261108; git init and git add only in disposable source",
+    "package": "python3 /tmp/wanderer_m403b_package.py",
+    "audit": "python3 /tmp/wanderer_m403b_review.py; git diff --check",
+    "development": [
+      "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m403b-dev1-20261108 --m4-queue-foundation-proof --m4-retreat-transaction-proof",
+      "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m403b-dev2-20261108 --m4-queue-foundation-proof --m4-retreat-transaction-proof",
+      "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m403b-dev3-20261108 --m4-queue-foundation-proof --m4-retreat-transaction-proof",
+      "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m403b-dev4-20261108 --m4-queue-foundation-proof --m4-retreat-transaction-proof"
+    ]
+  },
+  "outputs": {
+    "canonical": "/private/tmp/wanderer-m403b-canonical-20261108",
+    "final": "/private/tmp/wanderer-m403b-final-20261108",
+    "reference": "/private/tmp/wanderer-m3a04-reference-20261105-2"
+  },
+  "execution_access": "Godot executed with macOS settings/certificate access outside filesystem sandbox; git metadata required ordinary escalation; no auto-review rejection",
+  "expected": "B/A/M401/M402 and all inherited suites PASS; Legacy identical; protected source unchanged; no unexpected errors/timeouts",
+  "actual": {
+    "status": "PASS in B scope; independent review pending",
+    "canonical_stages": 77,
+    "candidate_stages": 82,
+    "canonical_runner_exit": 0,
+    "final_runner_exit": 0,
+    "all_final_stage_exits": 0,
+    "independent_cases": 138,
+    "assertion_checks": 3138,
+    "failures": 0,
+    "per_frame_checks": 0,
+    "M403A_cases": 94,
+    "M403A_assertions": 1165,
+    "M401_cases": 78,
+    "M401_checks": 525,
+    "M402_cases": 55,
+    "M402_assertions": 1188,
+    "identical_inherited_count_suites": 21,
+    "legacy_cases": 6,
+    "legacy_frames": 5892,
+    "negative_expected_errors": 5,
+    "unexpected_errors": 0,
+    "timeouts": 0,
+    "tested_source_hashes": 121,
+    "protected_source_hashes": 114,
+    "preexisting_unchanged_blobs_outside_authorized": 322
+  },
+  "development": [
+    {
+      "run": "/tmp/wanderer-m403b-gate-20261108",
+      "runner_exit": 0,
+      "independent_cases": 9,
+      "assertions": 75,
+      "failures": 0,
+      "unexpected_errors": 0,
+      "actual": "PASS; developmental scope only; gate predates action APIs"
+    },
+    {
+      "run": "/tmp/wanderer-m403b-dev1-20261108",
+      "runner_exit": 1,
+      "independent_cases": 116,
+      "assertions": 2173,
+      "failures": 1,
+      "unexpected_errors": 0,
+      "actual": "FAIL — harness fault supplied original COMPLETED phase instead of invalid phase; runtime gate correctly accepted valid unchanged shape; corrected fault only"
+    },
+    {
+      "run": "/tmp/wanderer-m403b-dev2-20261108",
+      "runner_exit": 0,
+      "independent_cases": 122,
+      "assertions": 2296,
+      "failures": 0,
+      "unexpected_errors": 0,
+      "actual": "PASS"
+    },
+    {
+      "run": "/tmp/wanderer-m403b-dev3-20261108",
+      "runner_exit": 0,
+      "independent_cases": 123,
+      "assertions": 2928,
+      "failures": 0,
+      "unexpected_errors": 0,
+      "actual": "PASS"
+    },
+    {
+      "run": "/tmp/wanderer-m403b-dev4-20261108",
+      "runner_exit": 0,
+      "independent_cases": 138,
+      "assertions": 3138,
+      "failures": 0,
+      "unexpected_errors": 0,
+      "actual": "PASS"
+    }
+  ],
+  "evidence": [
+    "canonical-logs.zip",
+    "canonical-results.json",
+    "compatibility-gate.json",
+    "contract-audit.json",
+    "coverage.json",
+    "development-logs.zip",
+    "final-results.json",
+    "inherited-counts.json",
+    "logs.zip",
+    "m4-03a-regression.json",
+    "m4-03b-scenarios.json",
+    "m4-regression-comparison.json",
+    "packaging-audit-history.json",
+    "protected-files.json",
+    "reference-provenance.json",
+    "review-checks.json",
+    "run-record.json",
+    "source-comparison.json",
+    "source-sha256.json",
+    "tooling.zip",
+    "trace-comparison.json"
+  ],
+  "not_run": [
+    "manual GUI/F5/F6/keyboard/visual",
+    "legal SEALED/Abort/Restart",
+    "live SKIPPED Restart",
+    "legal damage/RESCUE interleaving",
+    "terminal/outcome/summary/settlement",
+    "Guard-domain integration",
+    "C/M4-04/M4-05",
+    "production integration"
+  ],
+  "remaining_dependencies": [
+    "M403-08 deferred to C/no producer",
+    "M403-10 diagnostic-only",
+    "M403-22 outcome deferred to C; B rejects last-active",
+    "M403-16 pure historical compatibility not actual rescue",
+    "M402-06 BLOCKED / M402-24 PARTIAL unchanged",
+    "C needs reviewed additions to revision event accounting for new producers"
+  ],
+  "stop": "Draft PR; independent code/evidence review; no merge/auto-merge/delete branch/follow-on",
+  "packaging_audit_history": "packaging-audit-history.json"
+}

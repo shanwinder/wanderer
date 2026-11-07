@@ -1243,3 +1243,30 @@ M40178/525 and M40255/1,188 unchanged; Legacy6cases/5,892frames identical.
 [final](../actors/evidence/m4-03a/final-results.json),
 [raw logs](../actors/evidence/m4-03a/logs.zip).
 GUI/keyboard/visual acceptance NOT RUN; M403-44 full boundary proof deferred to B/C.
+
+
+## Optional M4-03B isolated RETREAT transaction proof
+
+Add `--m4-retreat-transaction-proof` for four parse stages plus the focused B suite.
+Uses the owner-selected opt-in subclass; A's unchanged absent-B-API assertions still
+run through `--m4-queue-foundation-proof`. B report validation is separate/additive;
+existing runner lines/gates remain unchanged. Exact JSON fields, unique sequential
+case IDs, actual assertion booleans/count sum, stdout summary and CASE lines must agree.
+
+Fresh8November2026 on source `62cd64ae4f681a553e282881cac994d90f0d0d03`:
+Godot4.7.2, B138cases/3,138assertions, canonical77/candidate82stages PASS;
+A94/1,165, M40178/525, M40255/1,188, Legacy6cases/5,892frames identical.
+Unexpected errors/timeouts0, all exits0; negative exactly5 expected errors separate.
+[Exact API/schema/limits](../actors/README.md#m4-03b--isolated-retreat-transaction),
+[durable run record and full commands](../actors/evidence/m4-03b/run-record.json).
+
+```sh
+python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m403b-final-20261108 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --guidance-decision-proof --guidance-main-proof --m4-data-proof --m4-atomic-clock-proof --m4-queue-foundation-proof --m4-retreat-transaction-proof --cutover-baseline /tmp/wanderer-m3a04-reference-20261105-2
+```
+
+Choose a fresh output path; the reference path above is inherited pre-cutover evidence,
+not the77-stage canonical run. [Reference provenance](../actors/evidence/m4-03b/reference-provenance.json)
+checks its44 results against durable M401 evidence and source against its own commit.
+No new pre-cutover reference run claimed. SKIPPED interleaving is diagnostic-only;
+SEALED/terminal/last-active outcome deferred to C. Guard integration/manual visual
+acceptance NOT RUN. Stop at Draft PR; no merge/auto-merge or next milestone.

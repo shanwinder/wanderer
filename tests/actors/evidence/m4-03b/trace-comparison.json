@@ -1,0 +1,14 @@
+{
+  "actual": "PASS",
+  "expected": "Exact Legacy equality: candidate / fresh canonical / provenanced pre-cutover reference",
+  "canonical": "5cf53e0d145d3a518fcedd458ba2a892eb52cb1f",
+  "tested": "62cd64ae4f681a553e282881cac994d90f0d0d03",
+  "reference": "1728c5e678c5065278d1251d50449a8820eb5dae",
+  "cases": 6,
+  "frames": 5892,
+  "hashes": {
+    "canonical": "cf1b4874c4538b96af5976e11a0431a7ae5308c09eebdafaacc5a11ece37cba6",
+    "candidate": "cf1b4874c4538b96af5976e11a0431a7ae5308c09eebdafaacc5a11ece37cba6",
+    "reference": "cf1b4874c4538b96af5976e11a0431a7ae5308c09eebdafaacc5a11ece37cba6"
+  }
+}

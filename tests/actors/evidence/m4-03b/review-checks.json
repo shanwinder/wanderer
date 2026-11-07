@@ -1,0 +1,399 @@
+{
+  "actual": "PASS",
+  "errors": [],
+  "changed_file_scope": [
+    "README.md",
+    "docs/README.md",
+    "scripts/m4/isolated_queue_outcome_encounter.gd",
+    "scripts/m4/m403_effect_candidates.gd",
+    "scripts/m4/m403_effect_candidates.gd.uid",
+    "scripts/m4/m403_queue_adapter.gd",
+    "tests/actors/README.md",
+    "tests/actors/evidence/m4-03b/canonical-logs.zip",
+    "tests/actors/evidence/m4-03b/canonical-results.json",
+    "tests/actors/evidence/m4-03b/compatibility-gate.json",
+    "tests/actors/evidence/m4-03b/contract-audit.json",
+    "tests/actors/evidence/m4-03b/coverage.json",
+    "tests/actors/evidence/m4-03b/development-logs.zip",
+    "tests/actors/evidence/m4-03b/final-results.json",
+    "tests/actors/evidence/m4-03b/inherited-counts.json",
+    "tests/actors/evidence/m4-03b/logs.zip",
+    "tests/actors/evidence/m4-03b/m4-03a-regression.json",
+    "tests/actors/evidence/m4-03b/m4-03b-scenarios.json",
+    "tests/actors/evidence/m4-03b/m4-regression-comparison.json",
+    "tests/actors/evidence/m4-03b/packaging-audit-history.json",
+    "tests/actors/evidence/m4-03b/protected-files.json",
+    "tests/actors/evidence/m4-03b/reference-provenance.json",
+    "tests/actors/evidence/m4-03b/review-checks.json",
+    "tests/actors/evidence/m4-03b/run-record.json",
+    "tests/actors/evidence/m4-03b/source-comparison.json",
+    "tests/actors/evidence/m4-03b/source-sha256.json",
+    "tests/actors/evidence/m4-03b/tooling.zip",
+    "tests/actors/evidence/m4-03b/trace-comparison.json",
+    "tests/actors/m4_03_retreat_proof.gd",
+    "tests/actors/m4_03_retreat_proof.gd.uid",
+    "tests/combat/README.md",
+    "tests/combat/verify.py"
+  ],
+  "tested_source_hashes_verified": 121,
+  "preexisting_unchanged_blobs_outside_allowed": 322,
+  "Markdown_files": 16,
+  "local_links": 449,
+  "fragments": 98,
+  "optional_report_adversarial_audit": [
+    {
+      "case": "bool independent count",
+      "actual": "PASS"
+    },
+    {
+      "case": "fraction assertion count",
+      "actual": "PASS"
+    },
+    {
+      "case": "missing case",
+      "actual": "PASS"
+    },
+    {
+      "case": "duplicate ID",
+      "actual": "PASS"
+    },
+    {
+      "case": "case FAIL",
+      "actual": "PASS"
+    },
+    {
+      "case": "case SKIP",
+      "actual": "PASS"
+    },
+    {
+      "case": "missing assertion",
+      "actual": "PASS"
+    },
+    {
+      "case": "false boolean",
+      "actual": "PASS"
+    },
+    {
+      "case": "integer masquerades boolean",
+      "actual": "PASS"
+    },
+    {
+      "case": "zero case count",
+      "actual": "PASS"
+    },
+    {
+      "case": "extra root field",
+      "actual": "PASS"
+    },
+    {
+      "case": "nonzero failures",
+      "actual": "PASS"
+    },
+    {
+      "case": "nonzero perframe",
+      "actual": "PASS"
+    },
+    {
+      "case": "duplicate JSON key",
+      "actual": "PASS"
+    },
+    {
+      "case": "NaN",
+      "actual": "PASS"
+    },
+    {
+      "case": "Infinity",
+      "actual": "PASS"
+    },
+    {
+      "case": "malformed JSON",
+      "actual": "PASS"
+    },
+    {
+      "case": "missing stdout",
+      "actual": "PASS"
+    },
+    {
+      "case": "wrong stdout total",
+      "actual": "PASS"
+    },
+    {
+      "case": "duplicate stdout summary",
+      "actual": "PASS"
+    }
+  ],
+  "existing_runner_lines_removed": false,
+  "archive_integrity": [
+    {
+      "path": "development-logs.zip",
+      "entries": 310,
+      "actual": "PASS"
+    },
+    {
+      "path": "logs.zip",
+      "entries": 264,
+      "actual": "PASS"
+    },
+    {
+      "path": "canonical-logs.zip",
+      "entries": 248,
+      "actual": "PASS"
+    },
+    {
+      "path": "tooling.zip",
+      "entries": 3,
+      "actual": "PASS"
+    }
+  ],
+  "contract_self_audit": {
+    "actual": "PASS in B scope; independent review pending",
+    "mandatory_questions": [
+      {
+        "question": "Lock revision without cursor",
+        "answer": "PASS within tested scope",
+        "evidence": [
+          "M403B-10"
+        ]
+      },
+      {
+        "question": "Impact participation without disposal",
+        "answer": "PASS within tested scope",
+        "evidence": [
+          "M403B-10",
+          "M403B-12"
+        ]
+      },
+      {
+        "question": "Same token completes after RETREATED",
+        "answer": "PASS within tested scope",
+        "evidence": [
+          "M403B-12",
+          "M403B-13"
+        ]
+      },
+      {
+        "question": "Completion never repeats effect",
+        "answer": "PASS within tested scope",
+        "evidence": [
+          "M403B-12"
+        ]
+      },
+      {
+        "question": "Cancel no extra/free action",
+        "answer": "PASS within tested scope",
+        "evidence": [
+          "M403B-15"
+        ]
+      },
+      {
+        "question": "Historical restored actor no new slot",
+        "answer": "PASS within tested scope",
+        "evidence": [
+          "M403B-02"
+        ]
+      },
+      {
+        "question": "History independent of current eligibility",
+        "answer": "PASS within tested scope",
+        "evidence": [
+          "M403B-02"
+        ]
+      },
+      {
+        "question": "Full-root rejection N-all",
+        "answer": "PASS within tested scope",
+        "evidence": [
+          "M403B-113",
+          "M403B-114",
+          "M403B-115",
+          "M403B-116",
+          "M403B-117",
+          "M403B-118",
+          "M403B-119",
+          "M403B-120",
+          "M403B-121",
+          "M403B-122",
+          "M403B-123",
+          "M403B-124",
+          "M403B-125",
+          "M403B-126",
+          "M403B-127",
+          "M403B-134",
+          "M403B-135",
+          "M403B-136",
+          "M403B-137"
+        ]
+      },
+      {
+        "question": "Old generation replay denied",
+        "answer": "PASS within tested scope",
+        "evidence": [
+          "M403B-68",
+          "M403B-69",
+          "M403B-70",
+          "M403B-71"
+        ]
+      },
+      {
+        "question": "Reserved future issuer namespace",
+        "answer": "PASS within tested scope",
+        "evidence": [
+          "M403B-42",
+          "M403B-43",
+          "M403B-44",
+          "M403B-45"
+        ]
+      },
+      {
+        "question": "Last-active blocked before partial effect",
+        "answer": "PASS within tested scope",
+        "evidence": [
+          "M403B-51",
+          "M403B-132",
+          "M403B-133"
+        ]
+      },
+      {
+        "question": "Original A validators/tests compatible",
+        "answer": "PASS within tested scope",
+        "evidence": [
+          "m4-03a-regression.json",
+          "protected-files.json"
+        ]
+      },
+      {
+        "question": "No fake receipt/arbitrary import",
+        "answer": "PASS within tested scope",
+        "evidence": [
+          "M403B-16",
+          "M403B-73",
+          "M403B-74",
+          "M403B-75",
+          "M403B-76",
+          "M403B-77",
+          "M403B-78",
+          "M403B-79",
+          "M403B-80",
+          "M403B-81",
+          "M403B-82",
+          "M403B-83",
+          "M403B-84",
+          "M403B-85",
+          "M403B-86",
+          "M403B-87",
+          "M403B-88",
+          "M403B-89",
+          "M403B-90",
+          "M403B-91",
+          "M403B-92",
+          "M403B-93",
+          "M403B-94",
+          "M403B-95",
+          "M403B-96",
+          "M403B-97",
+          "M403B-98",
+          "M403B-99",
+          "M403B-100",
+          "M403B-101",
+          "M403B-102",
+          "M403B-103",
+          "M403B-104",
+          "M403B-105",
+          "M403B-106",
+          "M403B-107",
+          "M403B-108",
+          "M403B-109",
+          "M403B-110",
+          "M403B-111",
+          "M403B-112"
+        ]
+      }
+    ],
+    "API_audit": [
+      {
+        "input": "lock_self_retreat(request,capability)",
+        "authority": "owned capability",
+        "identity": "exact session/generation/full queue-slot-token identity",
+        "phase": "OPEN/current eligible Party slot/no active",
+        "revision": "expected current; +1",
+        "state_change": "owned LOCKED token/ledger; cursor unchanged",
+        "result": "AUTHORIZED/RETREAT_LOCKED",
+        "duplicate": "DUPLICATE_OPERATION",
+        "rejection": "N-all",
+        "test": "m4-03b-scenarios.json"
+      },
+      {
+        "input": "impact(token)",
+        "authority": "exact owned token",
+        "identity": "exact session/generation/full queue-slot-token identity",
+        "phase": "LOCKED/current slot",
+        "revision": "current publication revision; +1, immutable lock_revision",
+        "state_change": "self participation RETREATED or semantic SKIPPED; cursor unchanged",
+        "result": "APPLIED/RETREATED or SKIPPED/ACTOR_UNAVAILABLE",
+        "duplicate": "DUPLICATE_OPERATION; cancelled ACTION_CANCELLED",
+        "rejection": "N-all",
+        "test": "m4-03b-scenarios.json"
+      },
+      {
+        "input": "complete(token)",
+        "authority": "exact owned token",
+        "identity": "exact session/generation/full queue-slot-token identity",
+        "phase": "APPLIED/SKIPPED; no actor eligibility check",
+        "revision": "current +1",
+        "state_change": "COMPLETED + owned receipt; cursor+1; no effect",
+        "result": "APPLIED/ACTION_COMPLETED",
+        "duplicate": "DUPLICATE_OPERATION; cancelled ACTION_CANCELLED",
+        "rejection": "N-all",
+        "test": "m4-03b-scenarios.json"
+      },
+      {
+        "input": "cancel(token)",
+        "authority": "exact owned token",
+        "identity": "exact session/generation/full queue-slot-token identity",
+        "phase": "LOCKED only",
+        "revision": "current +1",
+        "state_change": "CANCELLED disposition/cursor+1; no receipt/effect",
+        "result": "APPLIED/ACTION_CANCELLED",
+        "duplicate": "DUPLICATE_OPERATION",
+        "rejection": "N-all",
+        "test": "m4-03b-scenarios.json"
+      },
+      {
+        "input": "restart(request,capability)",
+        "authority": "owned capability",
+        "identity": "exact session/generation/full queue-slot-token identity",
+        "phase": "UNINITIALIZED/OPEN; legal SEALED not implemented",
+        "revision": "G+1/revision0",
+        "state_change": "whole validated fixture/root; no old grants/receipts",
+        "result": "APPLIED/RESTARTED",
+        "duplicate": "old generation rejected",
+        "rejection": "N-all",
+        "test": "m4-03b-scenarios.json"
+      }
+    ],
+    "limits": [
+      "Historical restoration is pure structural",
+      "SKIPPED revalidation/last-active after lock diagnostic-only",
+      "No Guard ledger; exact schemas contain no stale guard authority; production Guard untouched",
+      "C must generalize serial event accounting for its reviewed producers",
+      "Synchronous single-threaded underscore/capability convention, not hostile-code isolation"
+    ]
+  },
+  "independent_review": "PENDING; self-audit is not independent acceptance",
+  "not_run": [
+    "manual GUI/F5/F6/keyboard/visual",
+    "legal SEALED/Abort/Restart",
+    "live SKIPPED Restart",
+    "legal damage/RESCUE interleaving",
+    "terminal/outcome/summary/settlement",
+    "Guard-domain integration",
+    "C/M4-04/M4-05",
+    "production integration"
+  ],
+  "packaging_failure_history": [
+    {
+      "command": "python3 /tmp/wanderer_m403b_package.py (first attempt)",
+      "actual": "FAIL KeyError assertion_checks: original M401 report uses checks; packaging field mapping corrected; no runtime/source/test change"
+    }
+  ]
+}
