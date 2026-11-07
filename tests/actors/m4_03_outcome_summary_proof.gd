@@ -397,11 +397,17 @@ func _atomic_terminal() -> void:
 		var e = B.new(authority)
 		# Original B root is intentionally checked through its own unchanged API.
 		var before: Dictionary = e.snapshot()
-		var result: Dictionary = e.restart(reset_request(e, f), authority)
+		var reset_input: Dictionary = reset_request(e, f)
+		var result: Dictionary = e.restart(reset_input, authority)
 		check(result.reason_code == "M403_RESTARTED", "original B fixture valid")
+		current.steps.append({"method": "B.restart", "input": reset_input, "expected_reason": "M403_RESTARTED",
+			"expected_status": "APPLIED", "N_all": false, "actual": result, "before": before, "after": e.snapshot()})
 		before = e.snapshot()
-		result = e.lock_self_retreat(lock_request(e, "RETREAT"), authority)
+		var lock_input: Dictionary = lock_request(e, "RETREAT")
+		result = e.lock_self_retreat(lock_input, authority)
 		check(result.reason_code == "M403_BOUNDARY_DEPENDENCY" and e.snapshot() == before, "original R51-01/last-active gate N-all")
+		current.steps.append({"method": "B.lock_self_retreat", "input": lock_input, "expected_reason": "M403_BOUNDARY_DEPENDENCY",
+			"expected_status": "REJECTED", "N_all": true, "actual": result, "before": before, "after": e.snapshot()})
 	end()
 
 
