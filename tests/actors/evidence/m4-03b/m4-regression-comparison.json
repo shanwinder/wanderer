@@ -1,0 +1,44 @@
+{
+  "actual": "PASS",
+  "suite_reports": {
+    "M401": {
+      "canonical": {
+        "independent_cases": 78,
+        "checks": 525,
+        "failures": 0
+      },
+      "candidate": {
+        "independent_cases": 78,
+        "checks": 525,
+        "failures": 0
+      },
+      "unchanged_test_source": true
+    },
+    "M402": {
+      "canonical": {
+        "independent_cases": 55,
+        "assertion_checks": 1188,
+        "failures": 0
+      },
+      "candidate": {
+        "independent_cases": 55,
+        "assertion_checks": 1188,
+        "failures": 0
+      },
+      "unchanged_test_source": true
+    },
+    "M403A": {
+      "canonical": {
+        "independent_cases": 94,
+        "assertion_checks": 1165,
+        "failures": 0
+      },
+      "candidate": {
+        "independent_cases": 94,
+        "assertion_checks": 1165,
+        "failures": 0
+      },
+      "unchanged_test_source": true
+    }
+  }
+}

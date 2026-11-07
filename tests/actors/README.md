@@ -1244,3 +1244,178 @@ separate from verified runs; no expectations or original assertions were weakene
 8. **ยังไม่ใช่ Playable M4:** ทำ → รัน → ดู assertion/before-after → อธิบาย →
    แก้ข้อผิดพลาดชนิดข้อมูล → commit source ที่ตรวจแล้ว เราพิสูจน์ฐานข้อมูล/คิว;
    ไม่มี RESCUE/RETREAT ใหม่ ไม่มีผลจบรบหรือฉากเล่นใหม่. หยุด Draft รอ review.
+
+
+## M4-03B — Isolated RETREAT Transaction
+
+**Implemented Candidate / Awaiting Independent Code & Evidence Review**,8November2026.
+Canonical PR50 squash `5cf53e0d145d3a518fcedd458ba2a892eb52cb1f`; source tested
+`c4a7c488726983e0d29fb3b085e34f5d855895cb`. Owner explicitly authorized B only and
+selected an opt-in subclass because the **unchanged A test asserts B APIs absent**.
+[Milestone authority](../../docs/README.md#current-status-and-next-roadmap) owns status;
+[run record](evidence/m4-03b/run-record.json) owns commands/engine/outputs/delivery resolution.
+
+### Architecture, exact APIs and schemas
+
+Instantiate [m403_effect_candidates.gd](../../scripts/m4/m403_effect_candidates.gd)
+for B. Despite its allowed filename, this is a thin **opt-in Encounter facade**;
+it inherits [isolated_queue_outcome_encounter.gd](../../scripts/m4/isolated_queue_outcome_encounter.gd),
+including the single `_root`, Registry and `_publish` gate. It does not wrap another
+live Encounter. A retains its original public APIs. All candidate calculations are
+pure in [m403_queue_adapter.gd](../../scripts/m4/m403_queue_adapter.gd).
+
+| API | Exact input / result |
+|---|---|
+| `lock_self_retreat(request,capability)` | Exact9: `version:int=1, session:int, generation:int, expected_revision:int, queue_id:String, slot_id:String, request_id:String, actor_id:String, kind:String=RETREAT`; no target. AUTHORIZED / M403_RETREAT_LOCKED + detached token |
+| `impact(token)` | Exact owned token; APPLIED / M403_RETREATED or semantic SKIPPED / M403_ACTOR_UNAVAILABLE; revalidate current authority/state, not `lock_revision` equality |
+| `complete(token)` | APPLIED/SKIPPED only; APPLIED / M403_ACTION_COMPLETED; one real receipt, cursor+1; actor need not still be eligible |
+| `cancel(token)` | LOCKED only; APPLIED / M403_ACTION_CANCELLED; cursor+1, no effect, receipt or clock |
+| inherited `advance/restart` | Original exact5/exact6 envelopes; WAIT_ACTION advance rejects ACTION_IN_PROGRESS; restart clears all action ledgers/active token |
+
+Exact15 immutable token fields:
+`version:int,session:int,generation:int,round_id:int,queue_id:String,slot_id:String,
+action_id:int,actor_id:String,kind:String,target_id:String,lock_revision:int,
+authorization_id:int,window_id:String,request_id:String,episode_id:String`.
+Version1/kindRETREAT/target=self/episode empty. Action/auth serials are issuer-owned
+`authorizations.size()+1`, generation-bound; failed lock/publication consumes nothing.
+Window=`slot_id + /retreat`. Entire `slot_` and `m403/` namespaces reserved, including
+future slots/rounds. Request reuse rejects before allocation; owned full equality,
+phase, current opportunity and consumption are checked before effect.
+
+Root exact fields remain unchanged. Authorizations are keyed by integer action ID;
+exact grant row=`token,phase,impact_reason,impact_revision,disposed_revision`.
+Initial revisions−1 mean absent; impact/disposal revisions record **post-publication**
+revision. Active operation is null or the owned action ID. Exact completion receipt:
+`action_id:int,authorization_id:int,slot_id:String,actor_id:String,queue_id:String,
+completed_revision:int,impact_reason:String`. Only COMPLETE creates it; no import API.
+Receipt identity/result/revision must equal the corresponding completed grant.
+
+UNAVAILABLE disposition keeps A's four fields and adds two:
+`slot_id:String,actor_id:String,kind:String=UNAVAILABLE,observed_revision:int,
+issuer_id:String=M403_ISOLATED_QUEUE,observed_actor:Dictionary`.
+Observed actor is the exact detached Registry row (`definition,state,membership`),
+validated using original factories; immutable definition/membership match current
+roster, but historical state need not match live eligibility. `observed_revision`
+is the actual **pre-publication** revision. COMPLETED/CANCELLED dispositions use
+`slot_id,actor_id,kind,observed_revision,issuer_id,action_id:int`, without an observed
+actor copy. They must match an owned grant/disposal revision. No old live root/import
+compatibility is promised: restart constructs the new schema; historical evidence
+stays unchanged. Original A scenario behavior/assertions/counts are retained.
+
+### N50-INT-01 and lifecycle accounting
+
+Revision counts every authorized publication; cursor counts dispositions. Lock and
+Impact leave cursor unchanged; Complete, Cancel and unavailable Skip advance once.
+Queue phases: READY (current opportunity, not automatic action admission), WAIT_ACTION
+(owned pending action), DRAINED (finite queue consumed; no round close). Action phases:
+NONE→LOCKED→APPLIED→COMPLETED, LOCKED→CANCELLED, LOCKED→SKIPPED→COMPLETED.
+
+Whole-root validation reconstructs the exact receipt set, one active grant, unique
+slots/requests, every historical disposition, and a gap-free, duplicate-free set of
+revision events. B's serial lifecycle has lock at L+1, impact L+2 and completion L+3
+(or cancel L+2); no legal concurrent producer exists here. C must extend this event
+accounting when adding reviewed producers, rather than claiming B supports them now.
+Every publication compares the **whole candidate** to the legal pure transition from
+current authority. Historical plausible-but-forged observations may pass structural
+checks but cannot be published. No validator disabled and no fake receipts.
+
+- **N50-INT-01A PASS:** real publications/interleaved skips (B10–11), actual revision
+  differs from cursor/index; stale/duplicate/forged requests reject N-all.
+- **N50-INT-01B PASS — structural scope:** B02 proves previously disposed Player can
+  be ALIVE in a pure future model without slot reinsertion; forged history rejected.
+  No legal aggregate RESCUE producer; **M403-16 end-to-end not claimed**.
+- **N50-INT-01C PASS:** original A source/assertions unchanged,94cases/1,165assertions.
+  Preliminary pre-action gate is archived separately with its source snapshot.
+
+### Atomicity, rejection and boundaries
+
+Request precedence: exact types/shape/version/kind → session/generation → capability
+→ duplicate request → phase/active/queue/current slot → expected revision → reserved
+namespace → Party/actionability → P>1 AND E>0 boundary dependency → candidate validation.
+Token precedence: shape/types/version → session/generation → full owned equality
+→ duplicate/cancelled accounting → phase/current queue/slot → legal action phase
+→ domain revalidation → current revision/candidate gate. Cancel replay is
+DUPLICATE_OPERATION; impact/complete of cancelled action is ACTION_CANCELLED.
+Lock_revision remains immutable audit. Rejection is **N-all**, including counters,
+grants, receipts and root revision. Successful Lock/Complete/Cancel are N-effect;
+Impact changes only self participation and derived eligibility, plus action accounting.
+All unrelated actors, HP/maxHP/IDs/roster/round/clock/outcome/summary remain unchanged.
+
+B has **no Guard ledger or production Guard field**. Exact root/actor schemas admit
+no stale guard authority in this scope; production Guard is untouched. Guard-domain
+release integration is deferred, not marked verified. Zero-active-Enemy and last-active-Party retreat
+reject BOUNDARY_DEPENDENCY before lock/effect; changed availability before impact is
+only a detached observation diagnostic (no legal live producer). Legal pending token
+can still cancel; no partial retreat or encounter outcome is invented.
+
+### Fresh verification and coverage limits
+
+Engine `/Applications/Godot.app/Contents/MacOS/Godot`,
+`4.7.2.stable.official.ed1daf0bf`. **150 independent cases /3,339 assertions /0 failures**,
+zero per-frame checks. Fresh R51-01 canonical77/candidate82stages PASS; all exits0, no
+unexpected errors/timeouts; five expected negative errors separate. A94/1,165,
+M40178/525, M40255/1,188; all21 inherited suite counts identical. Legacy6cases/
+5,892frames identical to fresh canonical and the provenanced inherited pre-cutover
+reference. Failed development run retained (a no-op fault test, corrected without
+changing runtime constants or inherited tests). GUI/F5/F6/keyboard/visual NOT RUN.
+
+| M403 rows | Actual scope |
+|---|---|
+|01–07,09,40,43|FULLY PROVEN in B's isolated transaction domain; actual API lifecycle/replays/identity|
+|08|NOT RUN / DEFERRED TO C; no legal SEALED producer, no fake sealed fixture|
+|10|DIAGNOSTIC-ONLY / pure bounded candidate revalidation and completion; no legal mid-action damage producer|
+|22|B rejection boundary proven; terminal outcome/freeze/settlement DEFERRED TO C|
+|47–48|FULLY PROVEN for automated preservation/regression in this candidate; no manual/production adoption claim|
+
+[Coverage and case mapping](evidence/m4-03b/coverage.json),
+[every input/before-after/assertion](evidence/m4-03b/m4-03b-scenarios.json),
+[compatibility gate](evidence/m4-03b/compatibility-gate.json),
+[contract self-audit](evidence/m4-03b/review-checks.json),
+[source hashes](evidence/m4-03b/source-comparison.json),
+[Legacy](evidence/m4-03b/trace-comparison.json),
+[raw logs/development history](evidence/m4-03b/run-record.json).
+No terminal classifier/summary/settlement, new RESCUE/damage/HELP producers,
+round seal/close/abort/next-round, autonomous policy, Guidance/UI or production changes.
+SKIPPED Restart not executable through a legal producer; SEALED Abort/Restart deferred.
+M402-06 remains BLOCKED / M402-24 PARTIAL. No C/M4-04/M4-05 work started.
+
+### บทเรียนสั้น ๆ
+
+Revision เปรียบเหมือนเลขรายการบันทึกทุกครั้งที่ระบบเผยแพร่ข้อมูล ส่วน Cursor คือ
+ตำแหน่งสิทธิ์เล่นที่ยังไม่จบ จึงต้องแยกกัน: Lock จองสิทธิ์, Impact ให้ผลจริง,
+Completion ปิดสิทธิ์, Cancel ใช้สิทธิ์ไปโดยไม่ให้ผล การข้าม Player ตอน DOWN เป็น
+ประวัติว่า “ตอนนั้นทำไม่ได้” ไม่ใช่คำสั่งว่าต้อง DOWN ตลอดไป การฟื้นในอนาคตจึงต้อง
+รักษาประวัติเดิมและไม่คืน slot ส่วน receipt ต้องมาจาก completion จริงเท่านั้น.
+
+
+### R51-01 — Nonterminal RETREAT admission fix candidate
+
+[Independent finding](https://github.com/shanwinder/wanderer/pull/51#pullrequestreview-5814945108)
+on reviewed HEAD `f8dd844a80bd0a7cfb013fcacff4acf21eb0af45`: P>1 alone admitted
+all-Enemy-HP0 fixtures, which require D10-A's VICTORY boundary. B does not implement
+that classifier; new Lock must require **Active Party >1 AND Active Enemy >0**.
+`active_enemies(view)` derives availability from authoritative initial Enemy IDs and
+validated Registry rows (existing HP/can_act only; no Enemy lifecycle or mirror).
+
+Public Lock preserves schema/session/generation/capability/duplicate/phase/queue/slot/
+revision/reserved/domain precedence, then returns REJECTED/BOUNDARY_DEPENDENCY/N-all
+for either boundary. Impact authenticates the owned token first, then blocks E=0;
+when the actor remains actionable, P≤1 still blocks. The authoritative transition/
+publication gate repeats these checks before building/publishing an effect. Existing
+Complete/Cancel admission does not inspect this new boundary and remains unchanged.
+
+B16 now cancels Party slots with Enemy A0/Enemy B10, skips A once, then returns B READY
+without consumption; it no longer claims that actions may drain a terminal E=0 seed.
+New **B139–150** cover repeated zero-Enemy Lock N-all, no grants/receipts/counters,
+precedence variants, publication-gate refusal, restored legal nonterminal Lock/Impact/
+Complete and bounded zero-Enemy pre-impact/settlement observations. The original
+last-active tests remain. **Changing Enemy availability mid-action is diagnostic-only**;
+no damage producer or fake terminal result is introduced.
+
+[Current R51-01 evidence](evidence/m4-03b/r51-01.json) records150cases/3,339assertions,
+reviewed→tested→delivery attribution and red/green history. Initial development harness
+had a duplicate-local parse error (engine exit0 correctly failed the runner); corrected
+harness against the reviewed runtime reproduced18failed assertions in150cases. Fixed
+source passes; neither failed run is relabelled PASS. [Pre-fix evidence archive](evidence/m4-03b/pre-r51-evidence.zip)
+preserves original138/3,138 records and logs exactly. Existing older-milestone evidence
+is unchanged. **R51-01 awaits independent follow-up review**, not owner merge approval.

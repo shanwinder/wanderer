@@ -1,0 +1,12 @@
+[
+  {
+    "operation": "initial evidence packaging",
+    "actual": "FAIL KeyError assertion_checks",
+    "cause": "M401 uses checks field; corrected mapping, no runtime/source change"
+  },
+  {
+    "operation": "first documentation/evidence audit",
+    "actual": "FAIL one link",
+    "cause": "review-checks.json was linked before its first creation by that audit; subsequent audit checks actual generated file"
+  }
+]

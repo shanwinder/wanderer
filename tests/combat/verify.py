@@ -60,6 +60,55 @@ def validate_m403a_report(path, log):
         return False
 
 
+def validate_m403b_report(path, log):
+    """Strict optional-hook report validation; no change to inherited gates."""
+    def unique_object(pairs):
+        value = {}
+        for key, item in pairs:
+            if key in value:
+                raise ValueError("duplicate JSON key")
+            value[key] = item
+        return value
+
+    def invalid_constant(value):
+        raise ValueError("nonfinite JSON number: " + value)
+
+    try:
+        report = json.loads(path.read_text(), object_pairs_hook=unique_object, parse_constant=invalid_constant)
+        if type(report) is not dict or set(report) != {"suite", "independent_cases", "assertion_checks",
+                                                      "failures", "per_frame_checks", "cases", "deferred"}:
+            return False
+        if report["suite"] != "M4-03B retreat transaction" or type(report["cases"]) is not list \
+                or type(report["deferred"]) is not list or not all(type(x) is str for x in report["deferred"]):
+            return False
+        for key in ("independent_cases", "assertion_checks", "failures", "per_frame_checks"):
+            if type(report[key]) is not int:
+                return False
+        cases = report["cases"]
+        if not cases or report["independent_cases"] != len(cases) or report["failures"] != 0 \
+                or report["per_frame_checks"] != 0:
+            return False
+        for index, case in enumerate(cases, 1):
+            if type(case) is not dict or set(case) != {"id", "expected", "steps", "assertions",
+                                                        "assertion_count", "failure_count", "actual"}:
+                return False
+            if case["id"] != f"M403B-{index:02d}" or type(case["expected"]) is not str \
+                    or type(case["steps"]) is not list or type(case["assertions"]) is not list \
+                    or type(case["assertion_count"]) is not int or case["assertion_count"] <= 0 \
+                    or type(case["failure_count"]) is not int or case["failure_count"] != 0 \
+                    or case["actual"] != "PASS" or len(case["assertions"]) != case["assertion_count"]:
+                return False
+            for assertion in case["assertions"]:
+                if type(assertion) is not dict or set(assertion) != {"description", "passed"} \
+                        or type(assertion["description"]) is not str or assertion["passed"] is not True:
+                    return False
+        return sum(c["assertion_count"] for c in cases) == report["assertion_checks"] \
+            and re.findall(r"^RESULT: (\d+) checks, 0 failures$", log, re.MULTILINE) == [str(report["assertion_checks"])] \
+            and re.findall(r"^CASE (M403B-\d+): PASS$", log, re.MULTILINE) == [c["id"] for c in cases]
+    except (OSError, ValueError, KeyError, TypeError):
+        return False
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--godot", default="godot")
@@ -80,6 +129,7 @@ def main():
     parser.add_argument("--m4-data-proof", action="store_true", help="Verify isolated M4-01 Party lifecycle data, authorization, copies and generation safety")
     parser.add_argument("--m4-atomic-clock-proof", action="store_true", help="Verify isolated M4-02 atomic rescue, finite witnessed clock, death and strict seal")
     parser.add_argument("--m4-queue-foundation-proof", action="store_true", help="Verify isolated M4-03A queue identity, eligibility, cursor and atomic Restart only")
+    parser.add_argument("--m4-retreat-transaction-proof", action="store_true", help="Verify isolated M4-03B owned self-retreat transactions")
     parser.add_argument("--cutover-baseline", type=Path, help="Passing merged-base output directory for trace/count comparison")
     args = parser.parse_args()
     if args.main_cutover_proof:
@@ -142,6 +192,8 @@ def main():
                 passed = False
         if name == "m4-queue-foundation-proof":
             passed = passed and validate_m403a_report(output / "m4-03a-scenarios.json", log)
+        if name == "m4-retreat-transaction-proof":
+            passed = passed and validate_m403b_report(output / "m4-03b-scenarios.json", log)
         result = {"step": name, "status": "PASS" if passed else "FAIL",
                   "exit_code": code, "timed_out": timed_out, "command": command,
                   "errors": errors, "log": name + ".log"}
@@ -249,6 +301,12 @@ def main():
                 run("m403a-parse-" + Path(script).stem, ["--script", "res://" + script, "--check-only"])
             run("m4-queue-foundation-proof", [*timing, "--script", "res://tests/actors/m4_03_queue_foundation_proof.gd", "--",
                                               "--report=" + str(output / "m4-03a-scenarios.json")])
+        if args.m4_retreat_transaction_proof:
+            for script in ["scripts/m4/m403_effect_candidates.gd", "scripts/m4/m403_queue_adapter.gd", "scripts/m4/isolated_queue_outcome_encounter.gd",
+                           "tests/actors/m4_03_retreat_proof.gd"]:
+                run("m403b-parse-" + Path(script).stem, ["--script", "res://" + script, "--check-only"])
+            run("m4-retreat-transaction-proof", [*timing, "--script", "res://tests/actors/m4_03_retreat_proof.gd", "--",
+                                               "--report=" + str(output / "m4-03b-scenarios.json")])
         if args.main_cutover_proof:
             for script in ["tests/combat/main_cutover_proof.gd", "tests/combat/main_cutover_startup_probe.gd"]:
                 run("cutover-parse-" + Path(script).stem, ["--script", "res://" + script, "--check-only"])
