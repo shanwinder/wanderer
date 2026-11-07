@@ -1,7 +1,7 @@
 {
   "actual": "PASS",
   "canonical_commit": "5cf53e0d145d3a518fcedd458ba2a892eb52cb1f",
-  "tested_commit": "62cd64ae4f681a553e282881cac994d90f0d0d03",
+  "tested_commit": "c4a7c488726983e0d29fb3b085e34f5d855895cb",
   "tested_source_files": 121,
   "canonical_source_files": 117,
   "canonical_snapshot_matches_commit": true,
@@ -415,7 +415,7 @@
     },
     {
       "path": "scripts/m4/isolated_queue_outcome_encounter.gd",
-      "sha256": "79d36c95f44b14aac3aa3ffd25c3020612d51419008b3a4a83c173b0ba97d5f4",
+      "sha256": "50e0368f5402a877f2acd0d2494066a1f11e3e630a2a0f99a9a963f6cc53b447",
       "commit_snapshot_delivery_match": true
     },
     {
@@ -455,7 +455,7 @@
     },
     {
       "path": "scripts/m4/m403_queue_adapter.gd",
-      "sha256": "b89464d7de44e208cf0a1a23d830a547e03fc165721949492f98a543c7dfc6ff",
+      "sha256": "dccedca3e2df88f4cc51ea7ea5a2c5baf856a4e38bbb14d57137425ac8fdeabc",
       "commit_snapshot_delivery_match": true
     },
     {
@@ -575,7 +575,7 @@
     },
     {
       "path": "tests/actors/m4_03_retreat_proof.gd",
-      "sha256": "11cf86f35e54e6307f1fff634a984c97fc0a1448bd6ab72980df261354d3179e",
+      "sha256": "0d16cc05f60e9aa1505b6692264e0ae0bc94bce0e2172c5c162a4db17d246b55",
       "commit_snapshot_delivery_match": true
     },
     {
@@ -729,5 +729,5 @@
       "commit_snapshot_delivery_match": true
     }
   ],
-  "post_test_changes": "Only four authorized Markdown files and new B evidence; no runtime/test/runner/UID delta"
+  "post_test_changes": "Only four authorized Markdown files and B evidence refresh; no runtime/test/runner/UID delta"
 }

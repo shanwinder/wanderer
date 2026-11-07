@@ -22,7 +22,9 @@
     "tests/actors/evidence/m4-03b/m4-03b-scenarios.json",
     "tests/actors/evidence/m4-03b/m4-regression-comparison.json",
     "tests/actors/evidence/m4-03b/packaging-audit-history.json",
+    "tests/actors/evidence/m4-03b/pre-r51-evidence.zip",
     "tests/actors/evidence/m4-03b/protected-files.json",
+    "tests/actors/evidence/m4-03b/r51-01.json",
     "tests/actors/evidence/m4-03b/reference-provenance.json",
     "tests/actors/evidence/m4-03b/review-checks.json",
     "tests/actors/evidence/m4-03b/run-record.json",
@@ -38,7 +40,7 @@
   "tested_source_hashes_verified": 121,
   "preexisting_unchanged_blobs_outside_allowed": 322,
   "Markdown_files": 16,
-  "local_links": 449,
+  "local_links": 453,
   "fragments": 98,
   "optional_report_adversarial_audit": [
     {
@@ -126,7 +128,12 @@
   "archive_integrity": [
     {
       "path": "development-logs.zip",
-      "entries": 310,
+      "entries": 179,
+      "actual": "PASS"
+    },
+    {
+      "path": "pre-r51-evidence.zip",
+      "entries": 21,
       "actual": "PASS"
     },
     {
@@ -314,7 +321,7 @@
         "input": "lock_self_retreat(request,capability)",
         "authority": "owned capability",
         "identity": "exact session/generation/full queue-slot-token identity",
-        "phase": "OPEN/current eligible Party slot/no active",
+        "phase": "OPEN/current eligible Party slot/no active/P>1/E>0",
         "revision": "expected current; +1",
         "state_change": "owned LOCKED token/ledger; cursor unchanged",
         "result": "AUTHORIZED/RETREAT_LOCKED",
@@ -326,7 +333,7 @@
         "input": "impact(token)",
         "authority": "exact owned token",
         "identity": "exact session/generation/full queue-slot-token identity",
-        "phase": "LOCKED/current slot",
+        "phase": "LOCKED/current slot/E>0",
         "revision": "current publication revision; +1, immutable lock_revision",
         "state_change": "self participation RETREATED or semantic SKIPPED; cursor unchanged",
         "result": "APPLIED/RETREATED or SKIPPED/ACTOR_UNAVAILABLE",
@@ -377,7 +384,15 @@
       "No Guard ledger; exact schemas contain no stale guard authority; production Guard untouched",
       "C must generalize serial event accounting for its reviewed producers",
       "Synchronous single-threaded underscore/capability convention, not hostile-code isolation"
-    ]
+    ],
+    "R51-01": {
+      "lock_nonterminal": "PASS B139–147",
+      "impact_dependency": "PASS B148 diagnostic-only; public and publication gate refuse",
+      "owned_complete_cancel_unchanged": "PASS B149–150 pure domain-boundary diagnostic plus legal actual settlement",
+      "original_last_active": "PASS B51/B132–133 retained",
+      "terminal_classifier": "NOT IMPLEMENTED",
+      "reason_precedence": "request schema/types/version/kind → session/generation → capability → duplicate → phase/active → queue/current slot → revision → reserved namespace → Party/actionability → P>1/E>0 boundary → candidate; token schema/session/generation/full equality/duplicate/phase/current slot/legal action phase precede E0 impact boundary"
+    }
   },
   "independent_review": "PENDING; self-audit is not independent acceptance",
   "not_run": [
@@ -390,10 +405,38 @@
     "C/M4-04/M4-05",
     "production integration"
   ],
-  "packaging_failure_history": [
+  "historical_pre_R51_packaging_failure_history": [
     {
       "command": "python3 /tmp/wanderer_m403b_package.py (first attempt)",
       "actual": "FAIL KeyError assertion_checks: original M401 report uses checks; packaging field mapping corrected; no runtime/source/test change"
     }
-  ]
+  ],
+  "R51-01": "FIX CANDIDATE / Awaiting independent follow-up review",
+  "changed_files_from_reviewed_head": [
+    "README.md",
+    "docs/README.md",
+    "scripts/m4/isolated_queue_outcome_encounter.gd",
+    "scripts/m4/m403_queue_adapter.gd",
+    "tests/actors/README.md",
+    "tests/actors/evidence/m4-03b/canonical-logs.zip",
+    "tests/actors/evidence/m4-03b/canonical-results.json",
+    "tests/actors/evidence/m4-03b/contract-audit.json",
+    "tests/actors/evidence/m4-03b/coverage.json",
+    "tests/actors/evidence/m4-03b/development-logs.zip",
+    "tests/actors/evidence/m4-03b/final-results.json",
+    "tests/actors/evidence/m4-03b/logs.zip",
+    "tests/actors/evidence/m4-03b/m4-03b-scenarios.json",
+    "tests/actors/evidence/m4-03b/pre-r51-evidence.zip",
+    "tests/actors/evidence/m4-03b/r51-01.json",
+    "tests/actors/evidence/m4-03b/review-checks.json",
+    "tests/actors/evidence/m4-03b/run-record.json",
+    "tests/actors/evidence/m4-03b/source-comparison.json",
+    "tests/actors/evidence/m4-03b/source-sha256.json",
+    "tests/actors/evidence/m4-03b/tooling.zip",
+    "tests/actors/evidence/m4-03b/trace-comparison.json",
+    "tests/actors/m4_03_retreat_proof.gd",
+    "tests/combat/README.md"
+  ],
+  "pre_fix_evidence_payloads_exactly_preserved": 21,
+  "current_development_history": "r51-01.json"
 }

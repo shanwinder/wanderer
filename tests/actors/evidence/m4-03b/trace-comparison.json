@@ -2,7 +2,7 @@
   "actual": "PASS",
   "expected": "Exact Legacy equality: candidate / fresh canonical / provenanced pre-cutover reference",
   "canonical": "5cf53e0d145d3a518fcedd458ba2a892eb52cb1f",
-  "tested": "62cd64ae4f681a553e282881cac994d90f0d0d03",
+  "tested": "c4a7c488726983e0d29fb3b085e34f5d855895cb",
   "reference": "1728c5e678c5065278d1251d50449a8820eb5dae",
   "cases": 6,
   "frames": 5892,

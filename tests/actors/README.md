@@ -1250,7 +1250,7 @@ separate from verified runs; no expectations or original assertions were weakene
 
 **Implemented Candidate / Awaiting Independent Code & Evidence Review**,8November2026.
 Canonical PR50 squash `5cf53e0d145d3a518fcedd458ba2a892eb52cb1f`; source tested
-`62cd64ae4f681a553e282881cac994d90f0d0d03`. Owner explicitly authorized B only and
+`c4a7c488726983e0d29fb3b085e34f5d855895cb`. Owner explicitly authorized B only and
 selected an opt-in subclass because the **unchanged A test asserts B APIs absent**.
 [Milestone authority](../../docs/README.md#current-status-and-next-roadmap) owns status;
 [run record](evidence/m4-03b/run-record.json) owns commands/engine/outputs/delivery resolution.
@@ -1331,7 +1331,7 @@ checks but cannot be published. No validator disabled and no fake receipts.
 
 Request precedence: exact types/shape/version/kind → session/generation → capability
 → duplicate request → phase/active/queue/current slot → expected revision → reserved
-namespace → Party/actionability → last-active dependency → candidate validation.
+namespace → Party/actionability → P>1 AND E>0 boundary dependency → candidate validation.
 Token precedence: shape/types/version → session/generation → full owned equality
 → duplicate/cancelled accounting → phase/current queue/slot → legal action phase
 → domain revalidation → current revision/candidate gate. Cancel replay is
@@ -1343,16 +1343,16 @@ All unrelated actors, HP/maxHP/IDs/roster/round/clock/outcome/summary remain unc
 
 B has **no Guard ledger or production Guard field**. Exact root/actor schemas admit
 no stale guard authority in this scope; production Guard is untouched. Guard-domain
-release integration is deferred, not marked verified. Last-active Party retreat
-rejects BOUNDARY_DEPENDENCY before lock/effect; changed availability before impact is
+release integration is deferred, not marked verified. Zero-active-Enemy and last-active-Party retreat
+reject BOUNDARY_DEPENDENCY before lock/effect; changed availability before impact is
 only a detached observation diagnostic (no legal live producer). Legal pending token
 can still cancel; no partial retreat or encounter outcome is invented.
 
 ### Fresh verification and coverage limits
 
 Engine `/Applications/Godot.app/Contents/MacOS/Godot`,
-`4.7.2.stable.official.ed1daf0bf`. **138 independent cases /3,138 assertions /0 failures**,
-zero per-frame checks. Fresh canonical77/candidate82stages PASS; all exits0, no
+`4.7.2.stable.official.ed1daf0bf`. **150 independent cases /3,339 assertions /0 failures**,
+zero per-frame checks. Fresh R51-01 canonical77/candidate82stages PASS; all exits0, no
 unexpected errors/timeouts; five expected negative errors separate. A94/1,165,
 M40178/525, M40255/1,188; all21 inherited suite counts identical. Legacy6cases/
 5,892frames identical to fresh canonical and the provenanced inherited pre-cutover
@@ -1386,3 +1386,36 @@ Revision เปรียบเหมือนเลขรายการบั�
 Completion ปิดสิทธิ์, Cancel ใช้สิทธิ์ไปโดยไม่ให้ผล การข้าม Player ตอน DOWN เป็น
 ประวัติว่า “ตอนนั้นทำไม่ได้” ไม่ใช่คำสั่งว่าต้อง DOWN ตลอดไป การฟื้นในอนาคตจึงต้อง
 รักษาประวัติเดิมและไม่คืน slot ส่วน receipt ต้องมาจาก completion จริงเท่านั้น.
+
+
+### R51-01 — Nonterminal RETREAT admission fix candidate
+
+[Independent finding](https://github.com/shanwinder/wanderer/pull/51#pullrequestreview-5814945108)
+on reviewed HEAD `f8dd844a80bd0a7cfb013fcacff4acf21eb0af45`: P>1 alone admitted
+all-Enemy-HP0 fixtures, which require D10-A's VICTORY boundary. B does not implement
+that classifier; new Lock must require **Active Party >1 AND Active Enemy >0**.
+`active_enemies(view)` derives availability from authoritative initial Enemy IDs and
+validated Registry rows (existing HP/can_act only; no Enemy lifecycle or mirror).
+
+Public Lock preserves schema/session/generation/capability/duplicate/phase/queue/slot/
+revision/reserved/domain precedence, then returns REJECTED/BOUNDARY_DEPENDENCY/N-all
+for either boundary. Impact authenticates the owned token first, then blocks E=0;
+when the actor remains actionable, P≤1 still blocks. The authoritative transition/
+publication gate repeats these checks before building/publishing an effect. Existing
+Complete/Cancel admission does not inspect this new boundary and remains unchanged.
+
+B16 now cancels Party slots with Enemy A0/Enemy B10, skips A once, then returns B READY
+without consumption; it no longer claims that actions may drain a terminal E=0 seed.
+New **B139–150** cover repeated zero-Enemy Lock N-all, no grants/receipts/counters,
+precedence variants, publication-gate refusal, restored legal nonterminal Lock/Impact/
+Complete and bounded zero-Enemy pre-impact/settlement observations. The original
+last-active tests remain. **Changing Enemy availability mid-action is diagnostic-only**;
+no damage producer or fake terminal result is introduced.
+
+[Current R51-01 evidence](evidence/m4-03b/r51-01.json) records150cases/3,339assertions,
+reviewed→tested→delivery attribution and red/green history. Initial development harness
+had a duplicate-local parse error (engine exit0 correctly failed the runner); corrected
+harness against the reviewed runtime reproduced18failed assertions in150cases. Fixed
+source passes; neither failed run is relabelled PASS. [Pre-fix evidence archive](evidence/m4-03b/pre-r51-evidence.zip)
+preserves original138/3,138 records and logs exactly. Existing older-milestone evidence
+is unchanged. **R51-01 awaits independent follow-up review**, not owner merge approval.

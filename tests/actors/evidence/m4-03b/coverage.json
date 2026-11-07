@@ -230,8 +230,8 @@
     },
     {
       "id": "M403B-16",
-      "expected": "Finite all-cancel queue plus enemy unavailable drains once with no fake round close",
-      "assertion_count": 102,
+      "expected": "Nonterminal all-cancel Party queue skips unavailable enemy then stops at living enemy",
+      "assertion_count": 99,
       "actual": "PASS"
     },
     {
@@ -965,6 +965,78 @@
       "expected": "Detached snapshots/grants/receipts cannot mutate published authority",
       "assertion_count": 39,
       "actual": "PASS"
+    },
+    {
+      "id": "M403B-139",
+      "expected": "R51-01 all Enemy HP0: identical RETREAT requests reject N-all without grants or serial consumption",
+      "assertion_count": 55,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-140",
+      "expected": "R51-01 zero Enemy precedence variant0 beats boundary dependency",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-141",
+      "expected": "R51-01 zero Enemy precedence variant1 beats boundary dependency",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-142",
+      "expected": "R51-01 zero Enemy precedence variant2 beats boundary dependency",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-143",
+      "expected": "R51-01 zero Enemy precedence variant3 beats boundary dependency",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-144",
+      "expected": "R51-01 zero Enemy precedence variant4 beats boundary dependency",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-145",
+      "expected": "R51-01 zero Enemy precedence variant5 beats boundary dependency",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-146",
+      "expected": "R51-01 zero Enemy precedence variant6 beats boundary dependency",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-147",
+      "expected": "R51-01 authoritative LOCK publication rejects zero Enemy dependency without candidate import",
+      "assertion_count": 7,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-148",
+      "expected": "R51-01 DIAGNOSTIC-ONLY zero Enemy observation before impact blocks effect and publication",
+      "assertion_count": 27,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-149",
+      "expected": "R51-01 DIAGNOSTIC-ONLY zero Enemy boundary does not revoke owned COMPLETE",
+      "assertion_count": 41,
+      "actual": "PASS"
+    },
+    {
+      "id": "M403B-150",
+      "expected": "R51-01 DIAGNOSTIC-ONLY zero Enemy boundary does not revoke owned CANCEL",
+      "assertion_count": 25,
+      "actual": "PASS"
     }
   ],
   "not_run": [
@@ -974,5 +1046,26 @@
     "terminal/outcome/summary",
     "NPC policy",
     "production integration"
-  ]
+  ],
+  "R51-01": {
+    "status": "FIX CANDIDATE / Awaiting Independent Follow-up Review",
+    "cases": [
+      "M403B-139",
+      "M403B-140",
+      "M403B-141",
+      "M403B-142",
+      "M403B-143",
+      "M403B-144",
+      "M403B-145",
+      "M403B-146",
+      "M403B-147",
+      "M403B-148",
+      "M403B-149",
+      "M403B-150"
+    ],
+    "public_lock": "P>1 AND E>0; repeated E0 request BOUNDARY_DEPENDENCY/N-all",
+    "impact": "E0 refuses before candidate effect publication; diagnostic-only changed availability",
+    "completion_cancel": "owned settlement unchanged; pure changed-Enemy observation, no damage producer",
+    "corrected_B16": "nonterminal E>0 cancel/skip ends at living Enemy; no artificial drain"
+  }
 }
