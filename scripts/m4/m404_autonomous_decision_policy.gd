@@ -67,7 +67,9 @@ static func decide(c: Variant) -> Dictionary:
 		code = "M404_URGENT_RESCUE"
 	elif player.eligible and player.current_hp * 100 <= player.max_hp * 30 and actor.help_uses == null:
 		# No authoritative HELP ledger in C: unknown is never silently zero.
-		return output(c.identity.duplicate(true), "HELP_UNAVAILABLE", "DESIGN_BLOCKED")
+		var blocked: Dictionary = output(c.identity.duplicate(true), "M404_INVALID_CONTEXT", "DESIGN_BLOCKED")
+		blocked.decision_reason.excluded = [{"action": "HELP", "target_id": c.player_id, "code": "HELP_UNAVAILABLE"}]
+		return blocked
 	elif player.eligible and player.current_hp * 100 <= player.max_hp * 30 and actor.help_uses == 1:
 		selected = choice("HELP", c.player_id)
 		code = "PLAYER_LOW_HP_HELP"
