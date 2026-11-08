@@ -1,0 +1,232 @@
+[
+  {
+    "suite": "invalid-actions",
+    "canonical": [
+      "983"
+    ],
+    "candidate": [
+      "983"
+    ],
+    "equal": true
+  },
+  {
+    "suite": "npc-playable",
+    "canonical": [
+      "5166"
+    ],
+    "candidate": [
+      "5166"
+    ],
+    "equal": true
+  },
+  {
+    "suite": "m4-data-proof",
+    "canonical": [
+      "525"
+    ],
+    "candidate": [
+      "525"
+    ],
+    "equal": true
+  },
+  {
+    "suite": "main-cutover-f5-startup",
+    "canonical": [
+      "9"
+    ],
+    "candidate": [
+      "9"
+    ],
+    "equal": true
+  },
+  {
+    "suite": "rollback-f5-startup",
+    "canonical": [
+      "5"
+    ],
+    "candidate": [
+      "5"
+    ],
+    "equal": true
+  },
+  {
+    "suite": "presentation-proof",
+    "canonical": [
+      "8319"
+    ],
+    "candidate": [
+      "8319"
+    ],
+    "equal": true
+  },
+  {
+    "suite": "guidance-main-proof",
+    "canonical": [
+      "507851"
+    ],
+    "candidate": [
+      "507851"
+    ],
+    "equal": true
+  },
+  {
+    "suite": "rollback-gameplay",
+    "canonical": [
+      "14395"
+    ],
+    "candidate": [
+      "14395"
+    ],
+    "equal": true
+  },
+  {
+    "suite": "party-turn-proof",
+    "canonical": [
+      "1250"
+    ],
+    "candidate": [
+      "1250"
+    ],
+    "equal": true
+  },
+  {
+    "suite": "party-playable-proof",
+    "canonical": [
+      "260800"
+    ],
+    "candidate": [
+      "260800"
+    ],
+    "equal": true
+  },
+  {
+    "suite": "guidance-data-proof",
+    "canonical": [
+      "66641"
+    ],
+    "candidate": [
+      "66641"
+    ],
+    "equal": true
+  },
+  {
+    "suite": "party-foundation-proof",
+    "canonical": [
+      "382"
+    ],
+    "candidate": [
+      "382"
+    ],
+    "equal": true
+  },
+  {
+    "suite": "m4-retreat-transaction-proof",
+    "canonical": [
+      "3339"
+    ],
+    "candidate": [
+      "3339"
+    ],
+    "equal": true
+  },
+  {
+    "suite": "ownership-proof",
+    "canonical": [
+      "219"
+    ],
+    "candidate": [
+      "219"
+    ],
+    "equal": true
+  },
+  {
+    "suite": "actor-proof",
+    "canonical": [
+      "122"
+    ],
+    "candidate": [
+      "122"
+    ],
+    "equal": true
+  },
+  {
+    "suite": "main-cutover-proof",
+    "canonical": [
+      "801351"
+    ],
+    "candidate": [
+      "801351"
+    ],
+    "equal": true
+  },
+  {
+    "suite": "gameplay",
+    "canonical": [
+      "14395"
+    ],
+    "candidate": [
+      "14395"
+    ],
+    "equal": true
+  },
+  {
+    "suite": "m4-atomic-clock-proof",
+    "canonical": [
+      "1188"
+    ],
+    "candidate": [
+      "1188"
+    ],
+    "equal": true
+  },
+  {
+    "suite": "m4-outcome-summary-proof",
+    "canonical": [
+      "6054"
+    ],
+    "candidate": [
+      "6054"
+    ],
+    "equal": true
+  },
+  {
+    "suite": "guidance-decision-proof",
+    "canonical": [
+      "1192"
+    ],
+    "candidate": [
+      "1192"
+    ],
+    "equal": true
+  },
+  {
+    "suite": "npc-proof",
+    "canonical": [
+      "412"
+    ],
+    "candidate": [
+      "412"
+    ],
+    "equal": true
+  },
+  {
+    "suite": "autonomous-main-proof",
+    "canonical": [
+      "787617"
+    ],
+    "candidate": [
+      "787617"
+    ],
+    "equal": true
+  },
+  {
+    "suite": "m4-queue-foundation-proof",
+    "canonical": [
+      "1165"
+    ],
+    "candidate": [
+      "1165"
+    ],
+    "equal": true
+  }
+]

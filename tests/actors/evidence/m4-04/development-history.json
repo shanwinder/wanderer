@@ -1,0 +1,9 @@
+{
+  "sandbox_baseline": "FAIL despite exit0: macOS CA certificate/editor settings errors; fresh normal-access rerun PASS",
+  "parse1": "FAIL: Projection conflicts with Godot builtin type; renamed OrderProjection; raw log archived",
+  "direct_focused1_2": "Assertions PASS but sandbox CA engine error means invalid runtime run; not used as final evidence",
+  "first_full": "94 stages PASS at 693afe0; second full94 PASS at c492f47; both superseded after final D16 metadata correction",
+  "source_capture_limit": "Early direct development source snapshots were not retained; logs/results retained. Final canonical/candidate source manifests and git commits are authoritative.",
+  "preflight": "Combined escalation approval review timed out before executing; retry fetch/live verification succeeded; not a source/test failure",
+  "packaging_audit_correction": "Initial reference audit assumed source-sha256.json existed in old44-stage output; missing file caught. Corrected to hash actual retained snapshot files against git commit and inherited hash record. No engine PASS fabricated."
+}

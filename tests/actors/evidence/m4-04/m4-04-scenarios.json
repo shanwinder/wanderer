@@ -1,0 +1,3852 @@
+{
+	"assertion_checks": 458,
+	"cases": [
+		{
+			"actual": "PASS",
+			"assertion_count": 15,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "expected candidate DEFEND actual { \"schema_version\": 1, \"identity\": { \"session\": -9223372000901200439, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"DEFEND\", \"target_id\": \"n\", \"episode_id\": <null> }, \"selected\": { \"action\": \"DEFEND\", \"target_id\": \"n\", \"episode_id\": <null> }, \"decision_reason\": { \"code\": \"SELF_LOW_HP_THREAT\", \"excluded\": [{ \"action\": \"RESCUE\", \"target_id\": \"p\", \"code\": \"HIGHER_PRIORITY\" }] }, \"guidance_relation\": { \"response\": \"NONE\", \"reason\": \"NO_GUIDANCE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"DEFEND\" }, \"refusal_type\": \"HELPER_PRIORITY\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected SELF_LOW_HP_THREAT",
+					"passed": true
+				},
+				{
+					"description": "exact target n",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				},
+				{
+					"description": "helper agency distinct from recipient refusal",
+					"passed": true
+				},
+				{
+					"description": "expected candidate RESCUE actual { \"schema_version\": 1, \"identity\": { \"session\": -9223372000901200439, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"RESCUE\", \"target_id\": \"p\", \"episode_id\": \"labelled_p1\" }, \"selected\": { \"action\": \"RESCUE\", \"target_id\": \"p\", \"episode_id\": \"labelled_p1\" }, \"decision_reason\": { \"code\": \"M404_URGENT_RESCUE\", \"excluded\": [] }, \"guidance_relation\": { \"response\": \"NONE\", \"reason\": \"NO_GUIDANCE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"RESCUE\" }, \"refusal_type\": \"NONE\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected M404_URGENT_RESCUE",
+					"passed": true
+				},
+				{
+					"description": "exact target p",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Safety first versus urgent rescue; no active recipient refusal",
+			"failure_count": 0,
+			"id": "M404-001",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "SELF_LOW_HP_THREAT",
+					"expected_reason": "SELF_LOW_HP_THREAT"
+				},
+				{
+					"actual_reason": "M404_URGENT_RESCUE",
+					"expected_reason": "M404_URGENT_RESCUE"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 13,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "expected candidate ATTACK actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371985298389559, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"ATTACK\", \"target_id\": \"a\", \"episode_id\": <null> }, \"selected\": { \"action\": \"ATTACK\", \"target_id\": \"a\", \"episode_id\": <null> }, \"decision_reason\": { \"code\": \"ATTACK_AVAILABLE_ENEMY\", \"excluded\": [] }, \"guidance_relation\": { \"response\": \"NONE\", \"reason\": \"NO_GUIDANCE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"ATTACK\" }, \"refusal_type\": \"NONE\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected ATTACK_AVAILABLE_ENEMY",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				},
+				{
+					"description": "expected candidate DEFEND actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371985298389559, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"DEFEND\", \"target_id\": \"n\", \"episode_id\": <null> }, \"selected\": { \"action\": \"DEFEND\", \"target_id\": \"n\", \"episode_id\": <null> }, \"decision_reason\": { \"code\": \"SELF_LOW_HP_THREAT\", \"excluded\": [] }, \"guidance_relation\": { \"response\": \"NONE\", \"reason\": \"NO_GUIDANCE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"DEFEND\" }, \"refusal_type\": \"NONE\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected SELF_LOW_HP_THREAT",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				},
+				{
+					"description": "no enemies no fake attack/defend",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "First valid hit, never aggregate or forecast",
+			"failure_count": 0,
+			"id": "M404-002",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "ATTACK_AVAILABLE_ENEMY",
+					"expected_reason": "ATTACK_AVAILABLE_ENEMY"
+				},
+				{
+					"actual_reason": "SELF_LOW_HP_THREAT",
+					"expected_reason": "SELF_LOW_HP_THREAT"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 9,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "expected candidate DEFEND actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371969695578679, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"DEFEND\", \"target_id\": \"n\", \"episode_id\": <null> }, \"selected\": { \"action\": \"DEFEND\", \"target_id\": \"n\", \"episode_id\": <null> }, \"decision_reason\": { \"code\": \"SELF_LETHAL_THREAT\", \"excluded\": [] }, \"guidance_relation\": { \"response\": \"NONE\", \"reason\": \"NO_GUIDANCE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"DEFEND\" }, \"refusal_type\": \"NONE\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected SELF_LETHAL_THREAT",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Lethal-hit Safety reason when not low HP",
+			"failure_count": 0,
+			"id": "M404-003",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "SELF_LETHAL_THREAT",
+					"expected_reason": "SELF_LETHAL_THREAT"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 18,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "expected candidate RESCUE actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371954092767799, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"RESCUE\", \"target_id\": \"t\", \"episode_id\": \"labelled_t1\" }, \"selected\": { \"action\": \"RESCUE\", \"target_id\": \"t\", \"episode_id\": \"labelled_t1\" }, \"decision_reason\": { \"code\": \"M404_URGENT_RESCUE\", \"excluded\": [] }, \"guidance_relation\": { \"response\": \"NONE\", \"reason\": \"NO_GUIDANCE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"RESCUE\" }, \"refusal_type\": \"NONE\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected M404_URGENT_RESCUE",
+					"passed": true
+				},
+				{
+					"description": "exact target t",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				},
+				{
+					"description": "expected candidate HELP actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371954092767799, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"HELP\", \"target_id\": \"p\", \"episode_id\": <null> }, \"selected\": { \"action\": \"HELP\", \"target_id\": \"p\", \"episode_id\": <null> }, \"decision_reason\": { \"code\": \"PLAYER_LOW_HP_HELP\", \"excluded\": [{ \"action\": \"RESCUE\", \"target_id\": \"t\", \"code\": \"HIGHER_PRIORITY\" }] }, \"guidance_relation\": { \"response\": \"NONE\", \"reason\": \"NO_GUIDANCE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"HELP\" }, \"refusal_type\": \"HELPER_PRIORITY\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected PLAYER_LOW_HP_HELP",
+					"passed": true
+				},
+				{
+					"description": "exact target p",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				},
+				{
+					"description": "expected candidate RESCUE actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371954092767799, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"RESCUE\", \"target_id\": \"t\", \"episode_id\": \"labelled_t1\" }, \"selected\": { \"action\": \"RESCUE\", \"target_id\": \"t\", \"episode_id\": \"labelled_t1\" }, \"decision_reason\": { \"code\": \"M404_NONURGENT_RESCUE\", \"excluded\": [] }, \"guidance_relation\": { \"response\": \"NONE\", \"reason\": \"NO_GUIDANCE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"RESCUE\" }, \"refusal_type\": \"NONE\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected M404_NONURGENT_RESCUE",
+					"passed": true
+				},
+				{
+					"description": "exact target t",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Urgent vs HELP vs nonurgent changes one budget",
+			"failure_count": 0,
+			"id": "M404-004",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "M404_URGENT_RESCUE",
+					"expected_reason": "M404_URGENT_RESCUE"
+				},
+				{
+					"actual_reason": "PLAYER_LOW_HP_HELP",
+					"expected_reason": "PLAYER_LOW_HP_HELP"
+				},
+				{
+					"actual_reason": "M404_NONURGENT_RESCUE",
+					"expected_reason": "M404_NONURGENT_RESCUE"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 10,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "expected candidate RESCUE actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371938489956919, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"RESCUE\", \"target_id\": \"t\", \"episode_id\": \"labelled_t1\" }, \"selected\": { \"action\": \"RESCUE\", \"target_id\": \"t\", \"episode_id\": \"labelled_t1\" }, \"decision_reason\": { \"code\": \"M404_URGENT_RESCUE\", \"excluded\": [] }, \"guidance_relation\": { \"response\": \"NONE\", \"reason\": \"NO_GUIDANCE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"RESCUE\" }, \"refusal_type\": \"NONE\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected M404_URGENT_RESCUE",
+					"passed": true
+				},
+				{
+					"description": "exact target t",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Grace boundary [1, 2, \"M404_URGENT_RESCUE\"]",
+			"failure_count": 0,
+			"id": "M404-005",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "M404_URGENT_RESCUE",
+					"expected_reason": "M404_URGENT_RESCUE"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 10,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "expected candidate RESCUE actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371922887146039, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"RESCUE\", \"target_id\": \"t\", \"episode_id\": \"labelled_t1\" }, \"selected\": { \"action\": \"RESCUE\", \"target_id\": \"t\", \"episode_id\": \"labelled_t1\" }, \"decision_reason\": { \"code\": \"M404_NONURGENT_RESCUE\", \"excluded\": [] }, \"guidance_relation\": { \"response\": \"NONE\", \"reason\": \"NO_GUIDANCE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"RESCUE\" }, \"refusal_type\": \"NONE\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected M404_NONURGENT_RESCUE",
+					"passed": true
+				},
+				{
+					"description": "exact target t",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Grace boundary [2, 2, \"M404_NONURGENT_RESCUE\"]",
+			"failure_count": 0,
+			"id": "M404-006",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "M404_NONURGENT_RESCUE",
+					"expected_reason": "M404_NONURGENT_RESCUE"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 10,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "expected candidate RESCUE actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371907284335159, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"RESCUE\", \"target_id\": \"t\", \"episode_id\": \"labelled_t1\" }, \"selected\": { \"action\": \"RESCUE\", \"target_id\": \"t\", \"episode_id\": \"labelled_t1\" }, \"decision_reason\": { \"code\": \"M404_NONURGENT_RESCUE\", \"excluded\": [] }, \"guidance_relation\": { \"response\": \"NONE\", \"reason\": \"NO_GUIDANCE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"RESCUE\" }, \"refusal_type\": \"NONE\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected M404_NONURGENT_RESCUE",
+					"passed": true
+				},
+				{
+					"description": "exact target t",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Grace boundary [2, 3, \"M404_NONURGENT_RESCUE\"]",
+			"failure_count": 0,
+			"id": "M404-007",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "M404_NONURGENT_RESCUE",
+					"expected_reason": "M404_NONURGENT_RESCUE"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 7,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "B1/grace invalid",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Grace boundary [1, 3, \"INVALID\"]",
+			"failure_count": 0,
+			"id": "M404-008",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 16,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "expected candidate RESCUE actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371876078713399, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"RESCUE\", \"target_id\": \"t\", \"episode_id\": \"labelled_t1\" }, \"selected\": { \"action\": \"RESCUE\", \"target_id\": \"t\", \"episode_id\": \"labelled_t1\" }, \"decision_reason\": { \"code\": \"M404_URGENT_RESCUE\", \"excluded\": [] }, \"guidance_relation\": { \"response\": \"NONE\", \"reason\": \"NO_GUIDANCE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"RESCUE\" }, \"refusal_type\": \"NONE\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected M404_URGENT_RESCUE",
+					"passed": true
+				},
+				{
+					"description": "exact target t",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				},
+				{
+					"description": "expected candidate RESCUE actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371876078713399, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"RESCUE\", \"target_id\": \"t\", \"episode_id\": \"labelled_t1\" }, \"selected\": { \"action\": \"RESCUE\", \"target_id\": \"t\", \"episode_id\": \"labelled_t1\" }, \"decision_reason\": { \"code\": \"M404_URGENT_RESCUE\", \"excluded\": [] }, \"guidance_relation\": { \"response\": \"NONE\", \"reason\": \"NO_GUIDANCE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"RESCUE\" }, \"refusal_type\": \"NONE\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected M404_URGENT_RESCUE",
+					"passed": true
+				},
+				{
+					"description": "exact target t",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				},
+				{
+					"description": "duplicate live ordinal rejects",
+					"passed": true
+				},
+				{
+					"description": "comparator-only equal ordinal stable tie",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Multiple DOWN budget/age/stable comparator, no Player favoritism",
+			"failure_count": 0,
+			"id": "M404-009",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "M404_URGENT_RESCUE",
+					"expected_reason": "M404_URGENT_RESCUE"
+				},
+				{
+					"actual_reason": "M404_URGENT_RESCUE",
+					"expected_reason": "M404_URGENT_RESCUE"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 10,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "expected candidate ATTACK actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371860475902519, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"ATTACK\", \"target_id\": \"a\", \"episode_id\": <null> }, \"selected\": { \"action\": \"ATTACK\", \"target_id\": \"a\", \"episode_id\": <null> }, \"decision_reason\": { \"code\": \"ATTACK_AVAILABLE_ENEMY\", \"excluded\": [{ \"action\": \"RESCUE\", \"target_id\": \"t\", \"code\": \"NO_RESCUE_USE\" }] }, \"guidance_relation\": { \"response\": \"NONE\", \"reason\": \"NO_GUIDANCE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"ATTACK\" }, \"refusal_type\": \"NONE\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected ATTACK_AVAILABLE_ENEMY",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				},
+				{
+					"description": "explicit no use reason",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "No resource is inability, not helper or recipient refusal",
+			"failure_count": 0,
+			"id": "M404-010",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "ATTACK_AVAILABLE_ENEMY",
+					"expected_reason": "ATTACK_AVAILABLE_ENEMY"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 10,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "expected candidate RETREAT actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371844873091639, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"RETREAT\", \"target_id\": \"n\", \"episode_id\": <null> }, \"selected\": { \"action\": \"RETREAT\", \"target_id\": \"n\", \"episode_id\": <null> }, \"decision_reason\": { \"code\": \"M404_SELF_PRESERVATION_RETREAT\", \"excluded\": [] }, \"guidance_relation\": { \"response\": \"NONE\", \"reason\": \"NO_GUIDANCE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"RETREAT\" }, \"refusal_type\": \"NONE\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected M404_SELF_PRESERVATION_RETREAT",
+					"passed": true
+				},
+				{
+					"description": "exact target n",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "O3 exact threshold 30",
+			"failure_count": 0,
+			"id": "M404-011",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "M404_SELF_PRESERVATION_RETREAT",
+					"expected_reason": "M404_SELF_PRESERVATION_RETREAT"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 10,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "expected candidate ATTACK actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371829270280759, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"ATTACK\", \"target_id\": \"a\", \"episode_id\": <null> }, \"selected\": { \"action\": \"ATTACK\", \"target_id\": \"a\", \"episode_id\": <null> }, \"decision_reason\": { \"code\": \"ATTACK_AVAILABLE_ENEMY\", \"excluded\": [] }, \"guidance_relation\": { \"response\": \"NONE\", \"reason\": \"NO_GUIDANCE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"ATTACK\" }, \"refusal_type\": \"NONE\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected ATTACK_AVAILABLE_ENEMY",
+					"passed": true
+				},
+				{
+					"description": "exact target a",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "O3 exact threshold 31",
+			"failure_count": 0,
+			"id": "M404-012",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "ATTACK_AVAILABLE_ENEMY",
+					"expected_reason": "ATTACK_AVAILABLE_ENEMY"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 23,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "expected candidate RESCUE actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371813667469879, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"RESCUE\", \"target_id\": \"t\", \"episode_id\": \"labelled_t1\" }, \"selected\": { \"action\": \"RESCUE\", \"target_id\": \"t\", \"episode_id\": \"labelled_t1\" }, \"decision_reason\": { \"code\": \"M404_URGENT_RESCUE\", \"excluded\": [] }, \"guidance_relation\": { \"response\": \"NONE\", \"reason\": \"NO_GUIDANCE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"RESCUE\" }, \"refusal_type\": \"NONE\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected M404_URGENT_RESCUE",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				},
+				{
+					"description": "expected candidate RESCUE actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371813667469879, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"RESCUE\", \"target_id\": \"t\", \"episode_id\": \"labelled_t1\" }, \"selected\": { \"action\": \"RESCUE\", \"target_id\": \"t\", \"episode_id\": \"labelled_t1\" }, \"decision_reason\": { \"code\": \"M404_NONURGENT_RESCUE\", \"excluded\": [] }, \"guidance_relation\": { \"response\": \"NONE\", \"reason\": \"NO_GUIDANCE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"RESCUE\" }, \"refusal_type\": \"NONE\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected M404_NONURGENT_RESCUE",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				},
+				{
+					"description": "expected candidate HELP actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371813667469879, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"HELP\", \"target_id\": \"p\", \"episode_id\": <null> }, \"selected\": { \"action\": \"HELP\", \"target_id\": \"p\", \"episode_id\": <null> }, \"decision_reason\": { \"code\": \"PLAYER_LOW_HP_HELP\", \"excluded\": [{ \"action\": \"RESCUE\", \"target_id\": \"t\", \"code\": \"HIGHER_PRIORITY\" }] }, \"guidance_relation\": { \"response\": \"NONE\", \"reason\": \"NO_GUIDANCE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"HELP\" }, \"refusal_type\": \"HELPER_PRIORITY\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected PLAYER_LOW_HP_HELP",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				},
+				{
+					"description": "HELP displaces legal nonurgent rescue with helper priority",
+					"passed": true
+				},
+				{
+					"description": "expected candidate DEFEND actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371813667469879, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"DEFEND\", \"target_id\": \"n\", \"episode_id\": <null> }, \"selected\": { \"action\": \"DEFEND\", \"target_id\": \"n\", \"episode_id\": <null> }, \"decision_reason\": { \"code\": \"SELF_LOW_HP_THREAT\", \"excluded\": [{ \"action\": \"HELP\", \"target_id\": \"p\", \"code\": \"HIGHER_PRIORITY\" }, { \"action\": \"RESCUE\", \"target_id\": \"t\", \"code\": \"HIGHER_PRIORITY\" }] }, \"guidance_relation\": { \"response\": \"NONE\", \"reason\": \"NO_GUIDANCE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"DEFEND\" }, \"refusal_type\": \"HELPER_PRIORITY\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected SELF_LOW_HP_THREAT",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				},
+				{
+					"description": "expected candidate DEFEND actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371813667469879, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"DEFEND\", \"target_id\": \"n\", \"episode_id\": <null> }, \"selected\": { \"action\": \"DEFEND\", \"target_id\": \"n\", \"episode_id\": <null> }, \"decision_reason\": { \"code\": \"SELF_LOW_HP_THREAT\", \"excluded\": [{ \"action\": \"RESCUE\", \"target_id\": \"t\", \"code\": \"NO_RESCUE_USE\" }, { \"action\": \"HELP\", \"target_id\": \"p\", \"code\": \"HIGHER_PRIORITY\" }] }, \"guidance_relation\": { \"response\": \"NONE\", \"reason\": \"NO_GUIDANCE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"DEFEND\" }, \"refusal_type\": \"HELPER_PRIORITY\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected SELF_LOW_HP_THREAT",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				},
+				{
+					"description": "Safety displaces legal HELP even when rescue unavailable",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "RETREAT loses to every higher priority",
+			"failure_count": 0,
+			"id": "M404-013",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "M404_URGENT_RESCUE",
+					"expected_reason": "M404_URGENT_RESCUE"
+				},
+				{
+					"actual_reason": "M404_NONURGENT_RESCUE",
+					"expected_reason": "M404_NONURGENT_RESCUE"
+				},
+				{
+					"actual_reason": "PLAYER_LOW_HP_HELP",
+					"expected_reason": "PLAYER_LOW_HP_HELP"
+				},
+				{
+					"actual_reason": "SELF_LOW_HP_THREAT",
+					"expected_reason": "SELF_LOW_HP_THREAT"
+				},
+				{
+					"actual_reason": "SELF_LOW_HP_THREAT",
+					"expected_reason": "SELF_LOW_HP_THREAT"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 7,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "valid exact recursive context",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Acquire schema test context",
+			"failure_count": 0,
+			"id": "M404-014",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema schema_version missing",
+			"failure_count": 0,
+			"id": "M404-015",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema schema_version wrong_type",
+			"failure_count": 0,
+			"id": "M404-016",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema identity missing",
+			"failure_count": 0,
+			"id": "M404-017",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema identity wrong_type",
+			"failure_count": 0,
+			"id": "M404-018",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema source missing",
+			"failure_count": 0,
+			"id": "M404-019",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema source wrong_type",
+			"failure_count": 0,
+			"id": "M404-020",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema actor_id missing",
+			"failure_count": 0,
+			"id": "M404-021",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema actor_id wrong_type",
+			"failure_count": 0,
+			"id": "M404-022",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema player_id missing",
+			"failure_count": 0,
+			"id": "M404-023",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema player_id wrong_type",
+			"failure_count": 0,
+			"id": "M404-024",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema party missing",
+			"failure_count": 0,
+			"id": "M404-025",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema party wrong_type",
+			"failure_count": 0,
+			"id": "M404-026",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema enemies missing",
+			"failure_count": 0,
+			"id": "M404-027",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema enemies wrong_type",
+			"failure_count": 0,
+			"id": "M404-028",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema queue missing",
+			"failure_count": 0,
+			"id": "M404-029",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema queue wrong_type",
+			"failure_count": 0,
+			"id": "M404-030",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema declared_hits missing",
+			"failure_count": 0,
+			"id": "M404-031",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema declared_hits wrong_type",
+			"failure_count": 0,
+			"id": "M404-032",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema frozen_guidance missing",
+			"failure_count": 0,
+			"id": "M404-033",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema frozen_guidance wrong_type",
+			"failure_count": 0,
+			"id": "M404-034",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema profile missing",
+			"failure_count": 0,
+			"id": "M404-035",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema profile wrong_type",
+			"failure_count": 0,
+			"id": "M404-036",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema boundary missing",
+			"failure_count": 0,
+			"id": "M404-037",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid top field no action/no error",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Top schema boundary wrong_type",
+			"failure_count": 0,
+			"id": "M404-038",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema identity session",
+			"failure_count": 0,
+			"id": "M404-039",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema identity generation",
+			"failure_count": 0,
+			"id": "M404-040",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema identity round_id",
+			"failure_count": 0,
+			"id": "M404-041",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema identity snapshot_revision",
+			"failure_count": 0,
+			"id": "M404-042",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema identity extra",
+			"failure_count": 0,
+			"id": "M404-043",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema source adapter_version",
+			"failure_count": 0,
+			"id": "M404-044",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema source owner_kind",
+			"failure_count": 0,
+			"id": "M404-045",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema source owner_revision",
+			"failure_count": 0,
+			"id": "M404-046",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema source observation_id",
+			"failure_count": 0,
+			"id": "M404-047",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema source extra",
+			"failure_count": 0,
+			"id": "M404-048",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema queue queue_id",
+			"failure_count": 0,
+			"id": "M404-049",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema queue slot_id",
+			"failure_count": 0,
+			"id": "M404-050",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema queue opportunity_id",
+			"failure_count": 0,
+			"id": "M404-051",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema queue slot_actor_id",
+			"failure_count": 0,
+			"id": "M404-052",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema queue cursor",
+			"failure_count": 0,
+			"id": "M404-053",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema queue round_phase",
+			"failure_count": 0,
+			"id": "M404-054",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema queue queue_phase",
+			"failure_count": 0,
+			"id": "M404-055",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema queue extra",
+			"failure_count": 0,
+			"id": "M404-056",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema party actor_id",
+			"failure_count": 0,
+			"id": "M404-057",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema party role",
+			"failure_count": 0,
+			"id": "M404-058",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema party current_hp",
+			"failure_count": 0,
+			"id": "M404-059",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema party max_hp",
+			"failure_count": 0,
+			"id": "M404-060",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema party life_state",
+			"failure_count": 0,
+			"id": "M404-061",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema party participation",
+			"failure_count": 0,
+			"id": "M404-062",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema party eligible",
+			"failure_count": 0,
+			"id": "M404-063",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema party help_uses",
+			"failure_count": 0,
+			"id": "M404-064",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema party rescue_uses",
+			"failure_count": 0,
+			"id": "M404-065",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema party episode",
+			"failure_count": 0,
+			"id": "M404-066",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema party extra",
+			"failure_count": 0,
+			"id": "M404-067",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema enemies actor_id",
+			"failure_count": 0,
+			"id": "M404-068",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema enemies current_hp",
+			"failure_count": 0,
+			"id": "M404-069",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema enemies max_hp",
+			"failure_count": 0,
+			"id": "M404-070",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema enemies available",
+			"failure_count": 0,
+			"id": "M404-071",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema enemies extra",
+			"failure_count": 0,
+			"id": "M404-072",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema declared_hits actor_id",
+			"failure_count": 0,
+			"id": "M404-073",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema declared_hits target_id",
+			"failure_count": 0,
+			"id": "M404-074",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema declared_hits damage",
+			"failure_count": 0,
+			"id": "M404-075",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "nested field rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Nested exact schema declared_hits extra",
+			"failure_count": 0,
+			"id": "M404-076",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid input no decision",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Strict type/consent/identity adversary float",
+			"failure_count": 0,
+			"id": "M404-077",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid input no decision",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Strict type/consent/identity adversary bool",
+			"failure_count": 0,
+			"id": "M404-078",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid input no decision",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Strict type/consent/identity adversary consent",
+			"failure_count": 0,
+			"id": "M404-079",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid input no decision",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Strict type/consent/identity adversary episode",
+			"failure_count": 0,
+			"id": "M404-080",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid input no decision",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Strict type/consent/identity adversary profile",
+			"failure_count": 0,
+			"id": "M404-081",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "invalid input no decision",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Strict type/consent/identity adversary frozen",
+			"failure_count": 0,
+			"id": "M404-082",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 7,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "fully nested labelled fixture valid",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Prepare episode/frozen exact nested fixtures",
+			"failure_count": 0,
+			"id": "M404-083",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested episode/episode_id",
+			"failure_count": 0,
+			"id": "M404-084",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested episode/entry_round",
+			"failure_count": 0,
+			"id": "M404-085",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested episode/budget",
+			"failure_count": 0,
+			"id": "M404-086",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested episode/active",
+			"failure_count": 0,
+			"id": "M404-087",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested episode/entry_order",
+			"failure_count": 0,
+			"id": "M404-088",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested episode/extra",
+			"failure_count": 0,
+			"id": "M404-089",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested binding/identity",
+			"failure_count": 0,
+			"id": "M404-090",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested binding/record",
+			"failure_count": 0,
+			"id": "M404-091",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested binding/extra",
+			"failure_count": 0,
+			"id": "M404-092",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested guidance_identity/encounter_id",
+			"failure_count": 0,
+			"id": "M404-093",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested guidance_identity/generation",
+			"failure_count": 0,
+			"id": "M404-094",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested guidance_identity/round_id",
+			"failure_count": 0,
+			"id": "M404-095",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested guidance_identity/guidance_revision",
+			"failure_count": 0,
+			"id": "M404-096",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested guidance_identity/snapshot_revision",
+			"failure_count": 0,
+			"id": "M404-097",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested guidance_identity/extra",
+			"failure_count": 0,
+			"id": "M404-098",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested frozen_record/guidance_type",
+			"failure_count": 0,
+			"id": "M404-099",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested frozen_record/issuer_player_id",
+			"failure_count": 0,
+			"id": "M404-100",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested frozen_record/preferred_target_id",
+			"failure_count": 0,
+			"id": "M404-101",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested frozen_record/encounter_id",
+			"failure_count": 0,
+			"id": "M404-102",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested frozen_record/generation",
+			"failure_count": 0,
+			"id": "M404-103",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested frozen_record/round_id",
+			"failure_count": 0,
+			"id": "M404-104",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested frozen_record/guidance_revision",
+			"failure_count": 0,
+			"id": "M404-105",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested frozen_record/extra",
+			"failure_count": 0,
+			"id": "M404-106",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested profile/schema_version",
+			"failure_count": 0,
+			"id": "M404-107",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested profile/actor_id",
+			"failure_count": 0,
+			"id": "M404-108",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested profile/player_id",
+			"failure_count": 0,
+			"id": "M404-109",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested profile/discipline",
+			"failure_count": 0,
+			"id": "M404-110",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested profile/trust",
+			"failure_count": 0,
+			"id": "M404-111",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested profile/compassion",
+			"failure_count": 0,
+			"id": "M404-112",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested profile/courage",
+			"failure_count": 0,
+			"id": "M404-113",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 1,
+			"assertions": [
+				{
+					"description": "missing/extra nested field safely rejected",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Exact nested profile/extra",
+			"failure_count": 0,
+			"id": "M404-114",
+			"steps": []
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 19,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "forged queue field queue_id",
+					"passed": true
+				},
+				{
+					"description": "forged queue field slot_id",
+					"passed": true
+				},
+				{
+					"description": "forged queue field opportunity_id",
+					"passed": true
+				},
+				{
+					"description": "forged queue field slot_actor_id",
+					"passed": true
+				},
+				{
+					"description": "forged queue field cursor",
+					"passed": true
+				},
+				{
+					"description": "forged queue field round_phase",
+					"passed": true
+				},
+				{
+					"description": "forged queue field queue_phase",
+					"passed": true
+				},
+				{
+					"description": "caller HELP resource not authority",
+					"passed": true
+				},
+				{
+					"description": "caller Frozen/Profile cannot bind to live owner",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_UNAUTHORIZED actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_UNAUTHORIZED\" }",
+					"passed": true
+				},
+				{
+					"description": "wrong capability no token/action",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "current Player slot is not fake NPC opportunity",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE OWNED TRANSACTION",
+			"expected": "Owner compares full context, not an observation label",
+			"failure_count": 0,
+			"id": "M404-115",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "M403_UNAUTHORIZED",
+					"expected_reason": "M403_UNAUTHORIZED"
+				},
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 11,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "expected candidate RESCUE actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371731542997559, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"RESCUE\", \"target_id\": \"p\", \"episode_id\": \"labelled_p1\" }, \"selected\": { \"action\": \"RESCUE\", \"target_id\": \"p\", \"episode_id\": \"labelled_p1\" }, \"decision_reason\": { \"code\": \"M404_URGENT_RESCUE\", \"excluded\": [] }, \"guidance_relation\": { \"response\": \"NONE\", \"reason\": \"NO_GUIDANCE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"RESCUE\" }, \"refusal_type\": \"NONE\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected M404_URGENT_RESCUE",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				},
+				{
+					"description": "independent rescue never FOLLOWED HELP",
+					"passed": true
+				},
+				{
+					"description": "Frozen immutable, no fake HP",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Frozen suggestion during Player DOWN NONE",
+			"failure_count": 0,
+			"id": "M404-116",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "M404_URGENT_RESCUE",
+					"expected_reason": "M404_URGENT_RESCUE"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 11,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "expected candidate RESCUE actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371715940186679, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"RESCUE\", \"target_id\": \"p\", \"episode_id\": \"labelled_p1\" }, \"selected\": { \"action\": \"RESCUE\", \"target_id\": \"p\", \"episode_id\": \"labelled_p1\" }, \"decision_reason\": { \"code\": \"M404_URGENT_RESCUE\", \"excluded\": [] }, \"guidance_relation\": { \"response\": \"REFUSED\", \"reason\": \"M404_SITUATION_PRIORITY\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"RESCUE\" }, \"refusal_type\": \"NONE\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected M404_URGENT_RESCUE",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				},
+				{
+					"description": "independent rescue never FOLLOWED HELP",
+					"passed": true
+				},
+				{
+					"description": "Frozen immutable, no fake HP",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Frozen suggestion during Player DOWN ATTACK",
+			"failure_count": 0,
+			"id": "M404-117",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "M404_URGENT_RESCUE",
+					"expected_reason": "M404_URGENT_RESCUE"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 11,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "expected candidate RESCUE actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371700337375799, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"RESCUE\", \"target_id\": \"p\", \"episode_id\": \"labelled_p1\" }, \"selected\": { \"action\": \"RESCUE\", \"target_id\": \"p\", \"episode_id\": \"labelled_p1\" }, \"decision_reason\": { \"code\": \"M404_URGENT_RESCUE\", \"excluded\": [] }, \"guidance_relation\": { \"response\": \"REFUSED\", \"reason\": \"M404_SITUATION_PRIORITY\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"RESCUE\" }, \"refusal_type\": \"NONE\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected M404_URGENT_RESCUE",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				},
+				{
+					"description": "independent rescue never FOLLOWED HELP",
+					"passed": true
+				},
+				{
+					"description": "Frozen immutable, no fake HP",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Frozen suggestion during Player DOWN HELP",
+			"failure_count": 0,
+			"id": "M404-118",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "M404_URGENT_RESCUE",
+					"expected_reason": "M404_URGENT_RESCUE"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 11,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "expected candidate RESCUE actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371684734564919, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"RESCUE\", \"target_id\": \"p\", \"episode_id\": \"labelled_p1\" }, \"selected\": { \"action\": \"RESCUE\", \"target_id\": \"p\", \"episode_id\": \"labelled_p1\" }, \"decision_reason\": { \"code\": \"M404_URGENT_RESCUE\", \"excluded\": [] }, \"guidance_relation\": { \"response\": \"REFUSED\", \"reason\": \"M404_SITUATION_PRIORITY\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"RESCUE\" }, \"refusal_type\": \"NONE\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected M404_URGENT_RESCUE",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				},
+				{
+					"description": "independent rescue never FOLLOWED HELP",
+					"passed": true
+				},
+				{
+					"description": "Frozen immutable, no fake HP",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Frozen suggestion during Player DOWN FOCUS_TARGET",
+			"failure_count": 0,
+			"id": "M404-119",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "M404_URGENT_RESCUE",
+					"expected_reason": "M404_URGENT_RESCUE"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 9,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "exact v1 response",
+					"passed": true
+				},
+				{
+					"description": "causal target change",
+					"passed": true
+				},
+				{
+					"description": "baseline/selected distinct",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Genuine existing Layer causality focus a",
+			"failure_count": 0,
+			"id": "M404-120",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 9,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "exact v1 response",
+					"passed": true
+				},
+				{
+					"description": "causal target change",
+					"passed": true
+				},
+				{
+					"description": "baseline/selected distinct",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Genuine existing Layer causality focus b",
+			"failure_count": 0,
+			"id": "M404-121",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 11,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "expected candidate ATTACK actual { \"schema_version\": 1, \"identity\": { \"session\": -9223371637456370231, \"generation\": 1, \"round_id\": 3, \"snapshot_revision\": 4 }, \"baseline\": { \"action\": \"ATTACK\", \"target_id\": \"a\", \"episode_id\": <null> }, \"selected\": { \"action\": \"ATTACK\", \"target_id\": \"a\", \"episode_id\": <null> }, \"decision_reason\": { \"code\": \"ATTACK_AVAILABLE_ENEMY\", \"excluded\": [{ \"action\": \"RESCUE\", \"target_id\": \"p\", \"code\": \"NO_RESCUE_USE\" }] }, \"guidance_relation\": { \"response\": \"NOT_APPLICABLE\", \"reason\": \"M404_GUIDANCE_NOT_APPLICABLE\", \"behavior_changed\": false }, \"legal_effect\": { \"status\": \"CANDIDATE_ONLY\", \"required_transaction\": \"ATTACK\" }, \"refusal_type\": \"NONE\" }",
+					"passed": true
+				},
+				{
+					"description": "decision reason expected ATTACK_AVAILABLE_ENEMY",
+					"passed": true
+				},
+				{
+					"description": "exact target a",
+					"passed": true
+				},
+				{
+					"description": "pure N-all, candidate only",
+					"passed": true
+				},
+				{
+					"description": "unsupported v1 delegation explicitly not applicable",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE PURE POLICY",
+			"expected": "Unsupported Player DOWN context does not delegate into v1",
+			"failure_count": 0,
+			"id": "M404-122",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "ATTACK_AVAILABLE_ENEMY",
+					"expected_reason": "ATTACK_AVAILABLE_ENEMY"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 7,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner context acquired before labelled fixture derivation",
+					"passed": true
+				},
+				{
+					"description": "same-identity exceptional lifecycle no re-arm",
+					"passed": true
+				}
+			],
+			"classification": "DIAGNOSTIC-ONLY",
+			"expected": "D09 exceptional boundary has no executable action",
+			"failure_count": 0,
+			"id": "M404-123",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 20,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "owner-bound attack candidate",
+					"passed": true
+				},
+				{
+					"description": "reads N-all",
+					"passed": true
+				},
+				{
+					"description": "foreign/stale identity session",
+					"passed": true
+				},
+				{
+					"description": "foreign/stale identity generation",
+					"passed": true
+				},
+				{
+					"description": "foreign/stale identity round_id",
+					"passed": true
+				},
+				{
+					"description": "foreign/stale identity snapshot_revision",
+					"passed": true
+				},
+				{
+					"description": "forged source observation_id",
+					"passed": true
+				},
+				{
+					"description": "forged source owner_kind",
+					"passed": true
+				},
+				{
+					"description": "forged source owner_revision",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_LOCKED actual { \"status\": \"AUTHORIZED\", \"reason_code\": \"M403_ACTION_LOCKED\", &\"token\": { \"version\": 1, \"session\": -9223371606250748471, \"generation\": 1, \"round_id\": 3, \"queue_id\": \"m403/queue/-9223371606250748471/1/3\", \"slot_id\": \"m403/queue/-9223371606250748471/1/3/slot/1\", \"action_id\": 2, \"actor_id\": \"n\", \"kind\": \"ATTACK\", \"target_id\": \"a\", \"lock_revision\": 4, \"authorization_id\": 2, \"window_id\": \"m403/queue/-9223371606250748471/1/3/slot/1/attack\", \"request_id\": \"owned_attack\", \"episode_id\": \"\", &\"amount\": 5 } }",
+					"passed": true
+				},
+				{
+					"description": "old context after lock rejects",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_DUPLICATE_OPERATION actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_DUPLICATE_OPERATION\" }",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE OWNED TRANSACTION",
+			"expected": "Real ATTACK, owner binding and forged/stale input",
+			"failure_count": 0,
+			"id": "M404-124",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "M403_ACTION_LOCKED",
+					"expected_reason": "M403_ACTION_LOCKED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "M403_DUPLICATE_OPERATION",
+					"expected_reason": "M403_DUPLICATE_OPERATION"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 13,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_SLOT_UNAVAILABLE actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_SLOT_UNAVAILABLE\" }",
+					"passed": true
+				},
+				{
+					"description": "older owner creation, not arbitrary ID",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESCUED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "real HP1 and consumed helper use",
+					"passed": true
+				},
+				{
+					"description": "next NPC sees actual latest state",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESCUED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "separate real resource",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE OWNED TRANSACTION",
+			"expected": "Real urgent rescue and next NPC fresh target, resource exactly once",
+			"failure_count": 0,
+			"id": "M404-125",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_SLOT_UNAVAILABLE",
+					"expected_reason": "M403_SLOT_UNAVAILABLE"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 12,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "approved self-preservation",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_RETREATED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "real retained-ID retreat",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_DUPLICATE_OPERATION actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_DUPLICATE_OPERATION\" }",
+					"passed": true
+				},
+				{
+					"description": "duplicate N-all",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE OWNED TRANSACTION",
+			"expected": "Real O3 RETREAT and immutable owned completion",
+			"failure_count": 0,
+			"id": "M404-126",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "M403_DUPLICATE_OPERATION",
+					"expected_reason": "M403_DUPLICATE_OPERATION"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 7,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_FIXTURE_DAMAGE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "HELP execution O6 dependency explicit",
+					"passed": true
+				},
+				{
+					"description": "no receipt/HP/resource write",
+					"passed": true
+				}
+			],
+			"classification": "BLOCKED DEPENDENCY",
+			"expected": "HELP absent authority blocks rather than spending fake resource",
+			"failure_count": 0,
+			"id": "M404-127",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				}
+			]
+		},
+		{
+			"actual": "PASS",
+			"assertion_count": 33,
+			"assertions": [
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_SLOT_UNAVAILABLE actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_SLOT_UNAVAILABLE\" }",
+					"passed": true
+				},
+				{
+					"description": "seeded DOWN derives from actual preparation",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESCUED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_CANCELLED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_CANCELLED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_CANCELLED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_CANCELLED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_DOWN_ENTERED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "new DOWN ordinal from authenticated impact journal",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_TARGET_UNAVAILABLE actual { \"status\": \"SKIPPED\", \"reason_code\": \"M403_TARGET_UNAVAILABLE\" }",
+					"passed": true
+				},
+				{
+					"description": "real serial Enemy second hit sees prior DOWN, no fabricated interleaving",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_SEALED actual { \"status\": \"AUTHORIZED\", \"reason_code\": \"M403_ROUND_SEALED\", &\"event\": { \"version\": 1, \"kind\": \"ROUND_CLOSED\", \"issuer_id\": \"M403_ISOLATED_QUEUE\", \"session\": -9223371476915190294, \"generation\": 1, \"round_id\": 3, \"event_id\": \"m403/queue/-9223371476915190294/1/3/close\", \"witness_id\": \"m403/queue/-9223371476915190294/1/3/witness\", \"sealed_revision\": 16, \"authorization_id\": 1, \"queue_id\": \"m403/queue/-9223371476915190294/1/3\" } }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_CLOSED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_CLOSED\", &\"episodes\": [{ \"actor_id\": \"n\", \"episode_id\": \"m403/episode/-9223371476915190294/1/2\", \"before\": 2, \"after\": 2, \"reason_code\": \"M403_BLEED_GRACE\" }] }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_CANCELLED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_CANCELLED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_SLOT_UNAVAILABLE actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_SLOT_UNAVAILABLE\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_CANCELLED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_CANCELLED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_CANCELLED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_CANCELLED\" }",
+					"passed": true
+				},
+				{
+					"description": "actual owned impact { \"status\": \"APPLIED\", \"reason_code\": \"M403_DOWN_ENTERED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ACTION_COMPLETED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ACTION_COMPLETED\" }",
+					"passed": true
+				},
+				{
+					"description": "genuine owned completion receipt",
+					"passed": true
+				},
+				{
+					"description": "same actor re-DOWN new global ordinal, no ID decoding",
+					"passed": true
+				},
+				{
+					"description": "forged root cannot masquerade as replay",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_RESTARTED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_RESTARTED\" }",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_ROUND_OPENED actual { \"status\": \"APPLIED\", \"reason_code\": \"M403_ROUND_OPENED\" }",
+					"passed": true
+				},
+				{
+					"description": "Restart resets ordinal generation",
+					"passed": true
+				},
+				{
+					"description": "old-generation context cannot authorize",
+					"passed": true
+				},
+				{
+					"description": "reason expected M403_STALE_GENERATION actual { \"status\": \"REJECTED\", \"reason_code\": \"M403_STALE_GENERATION\" }",
+					"passed": true
+				}
+			],
+			"classification": "EXECUTABLE OWNED TRANSACTION",
+			"expected": "Seed/journal projection and Restart stale authority",
+			"failure_count": 0,
+			"id": "M404-128",
+			"steps": [
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_SLOT_UNAVAILABLE",
+					"expected_reason": "M403_SLOT_UNAVAILABLE"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "M403_ACTION_CANCELLED",
+					"expected_reason": "M403_ACTION_CANCELLED"
+				},
+				{
+					"actual_reason": "M403_ACTION_CANCELLED",
+					"expected_reason": "M403_ACTION_CANCELLED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "M403_TARGET_UNAVAILABLE",
+					"expected_reason": "M403_TARGET_UNAVAILABLE"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "M403_ROUND_SEALED",
+					"expected_reason": "M403_ROUND_SEALED"
+				},
+				{
+					"actual_reason": "M403_ROUND_CLOSED",
+					"expected_reason": "M403_ROUND_CLOSED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_ACTION_CANCELLED",
+					"expected_reason": "M403_ACTION_CANCELLED"
+				},
+				{
+					"actual_reason": "M403_SLOT_UNAVAILABLE",
+					"expected_reason": "M403_SLOT_UNAVAILABLE"
+				},
+				{
+					"actual_reason": "M403_ACTION_CANCELLED",
+					"expected_reason": "M403_ACTION_CANCELLED"
+				},
+				{
+					"actual_reason": "M403_ACTION_CANCELLED",
+					"expected_reason": "M403_ACTION_CANCELLED"
+				},
+				{
+					"actual_reason": "M403_ACTION_COMPLETED",
+					"expected_reason": "M403_ACTION_COMPLETED"
+				},
+				{
+					"actual_reason": "M403_RESTARTED",
+					"expected_reason": "M403_RESTARTED"
+				},
+				{
+					"actual_reason": "M403_ROUND_OPENED",
+					"expected_reason": "M403_ROUND_OPENED"
+				},
+				{
+					"actual_reason": "M403_STALE_GENERATION",
+					"expected_reason": "M403_STALE_GENERATION"
+				}
+			]
+		}
+	],
+	"deferred": [
+		"O4 conscious consent/recipient refusal",
+		"O6 real DEFEND/HELP bridge BLOCKED DEPENDENCY",
+		"O7 mid-action changed-state SKIP DIAGNOSTIC ONLY",
+		"production D09 Pending/R1 tested in unchanged Guidance suite, not M403 executor",
+		"manual GUI/F5/F6/visual NOT RUN"
+	],
+	"failures": 0,
+	"independent_cases": 128,
+	"per_frame_checks": 0,
+	"source_sha256": {
+		"scripts/m4/m404_autonomous_decision_policy.gd": "095078c4571d28fc37021c76048e9ff2be4d3facb1b3acd6b3ab288fcf9dcf4c",
+		"scripts/m4/m404_decision_context.gd": "23e1c2ea1e06fbe48183578289fb5c44f014b5400db689b670be1d0cc325baf2",
+		"scripts/m4/m404_decision_facade.gd": "b88d9e59b80b7dbff44f4754bcf97c5898c0ec5473c4d22a3f14872eb44ccb26",
+		"scripts/m4/m404_episode_order_projection.gd": "d7d86e93a370cd6bfe0d80798baf38aca9875bdabc50edbc4c42a9edcdeeb025",
+		"tests/actors/m4_04_autonomous_decision_proof.gd": "4ba0b81d12f28783508cade790c4abcbac699ee44aa7fe2ec4b2f1af46cd73c4"
+	},
+	"suite": "M4-04 autonomous decision"
+}

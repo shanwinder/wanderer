@@ -1,0 +1,511 @@
+{
+	"architecture_acceptance": {
+		"A01": "DATA ONLY: HP0->DOWN; no B2/clock/terminal migration",
+		"A19": "DATA ONLY: owned copies/no raw heal API; no RESCUE rule",
+		"A21": "DATA ONLY: invalid pairs/reconstruction/requests; no gameplay transitions"
+	},
+	"cases": [
+		{
+			"actual": "PASS",
+			"checks": 9,
+			"expected": "valid pair round-trips with HP and derived eligibility preserved",
+			"id": "valid_PLAYER_ALIVE_PRESENT"
+		},
+		{
+			"actual": "PASS",
+			"checks": 9,
+			"expected": "valid pair round-trips with HP and derived eligibility preserved",
+			"id": "valid_PLAYER_DOWN_PRESENT"
+		},
+		{
+			"actual": "PASS",
+			"checks": 9,
+			"expected": "valid pair round-trips with HP and derived eligibility preserved",
+			"id": "valid_PLAYER_DEAD_PRESENT"
+		},
+		{
+			"actual": "PASS",
+			"checks": 9,
+			"expected": "valid pair round-trips with HP and derived eligibility preserved",
+			"id": "valid_PLAYER_ALIVE_RETREATED"
+		},
+		{
+			"actual": "PASS",
+			"checks": 9,
+			"expected": "valid pair round-trips with HP and derived eligibility preserved",
+			"id": "valid_NPC_ALIVE_PRESENT"
+		},
+		{
+			"actual": "PASS",
+			"checks": 9,
+			"expected": "valid pair round-trips with HP and derived eligibility preserved",
+			"id": "valid_NPC_DOWN_PRESENT"
+		},
+		{
+			"actual": "PASS",
+			"checks": 9,
+			"expected": "valid pair round-trips with HP and derived eligibility preserved",
+			"id": "valid_NPC_DEAD_PRESENT"
+		},
+		{
+			"actual": "PASS",
+			"checks": 9,
+			"expected": "valid pair round-trips with HP and derived eligibility preserved",
+			"id": "valid_NPC_ALIVE_RETREATED"
+		},
+		{
+			"actual": "PASS",
+			"checks": 2,
+			"expected": "invalid fixture returns null; no partial state",
+			"id": "invalid_pair_hp_0_DOWN_RETREATED"
+		},
+		{
+			"actual": "PASS",
+			"checks": 2,
+			"expected": "invalid fixture returns null; no partial state",
+			"id": "invalid_pair_hp_0_DEAD_RETREATED"
+		},
+		{
+			"actual": "PASS",
+			"checks": 2,
+			"expected": "invalid fixture returns null; no partial state",
+			"id": "invalid_pair_hp_0_ALIVE_PRESENT"
+		},
+		{
+			"actual": "PASS",
+			"checks": 2,
+			"expected": "invalid fixture returns null; no partial state",
+			"id": "invalid_pair_hp_0_ALIVE_RETREATED"
+		},
+		{
+			"actual": "PASS",
+			"checks": 2,
+			"expected": "invalid fixture returns null; no partial state",
+			"id": "invalid_pair_hp_1_DOWN_PRESENT"
+		},
+		{
+			"actual": "PASS",
+			"checks": 2,
+			"expected": "invalid fixture returns null; no partial state",
+			"id": "invalid_pair_hp_1_DEAD_PRESENT"
+		},
+		{
+			"actual": "PASS",
+			"checks": 2,
+			"expected": "invalid fixture returns null; no partial state",
+			"id": "invalid_pair_hp_-1_DOWN_PRESENT"
+		},
+		{
+			"actual": "PASS",
+			"checks": 2,
+			"expected": "invalid fixture returns null; no partial state",
+			"id": "invalid_pair_hp_11_ALIVE_PRESENT"
+		},
+		{
+			"actual": "PASS",
+			"checks": 2,
+			"expected": "invalid fixture returns null; no partial state",
+			"id": "invalid_pair_hp_1_UNAVAILABLE_PRESENT"
+		},
+		{
+			"actual": "PASS",
+			"checks": 2,
+			"expected": "invalid fixture returns null; no partial state",
+			"id": "invalid_pair_hp_1_ALIVE_ABSENT"
+		},
+		{
+			"actual": "PASS",
+			"checks": 7,
+			"expected": "missing/unknown/malformed scalar fields reject without coercion",
+			"id": "fixture_types_current_hp"
+		},
+		{
+			"actual": "PASS",
+			"checks": 7,
+			"expected": "missing/unknown/malformed scalar fields reject without coercion",
+			"id": "fixture_types_life_state"
+		},
+		{
+			"actual": "PASS",
+			"checks": 7,
+			"expected": "missing/unknown/malformed scalar fields reject without coercion",
+			"id": "fixture_types_participation"
+		},
+		{
+			"actual": "PASS",
+			"checks": 9,
+			"expected": "bare definitions, enemy party lifecycle, non-dictionaries and extra fields reject",
+			"id": "factory_boundaries"
+		},
+		{
+			"actual": "PASS",
+			"checks": 7,
+			"expected": "strict snapshot type/value and identity checks reject forged copies",
+			"id": "snapshot_contract_schema_version"
+		},
+		{
+			"actual": "PASS",
+			"checks": 7,
+			"expected": "strict snapshot type/value and identity checks reject forged copies",
+			"id": "snapshot_contract_actor_id"
+		},
+		{
+			"actual": "PASS",
+			"checks": 7,
+			"expected": "strict snapshot type/value and identity checks reject forged copies",
+			"id": "snapshot_contract_role"
+		},
+		{
+			"actual": "PASS",
+			"checks": 7,
+			"expected": "strict snapshot type/value and identity checks reject forged copies",
+			"id": "snapshot_contract_max_hp"
+		},
+		{
+			"actual": "PASS",
+			"checks": 7,
+			"expected": "strict snapshot type/value and identity checks reject forged copies",
+			"id": "snapshot_contract_current_hp"
+		},
+		{
+			"actual": "PASS",
+			"checks": 7,
+			"expected": "strict snapshot type/value and identity checks reject forged copies",
+			"id": "snapshot_contract_life_state"
+		},
+		{
+			"actual": "PASS",
+			"checks": 7,
+			"expected": "strict snapshot type/value and identity checks reject forged copies",
+			"id": "snapshot_contract_participation"
+		},
+		{
+			"actual": "PASS",
+			"checks": 7,
+			"expected": "strict snapshot type/value and identity checks reject forged copies",
+			"id": "snapshot_contract_eligible"
+		},
+		{
+			"actual": "PASS",
+			"checks": 16,
+			"expected": "unknown fields, version, derived eligibility and identity mismatches rejected on reconstruction and registration",
+			"id": "snapshot_unknown_and_identity"
+		},
+		{
+			"actual": "PASS",
+			"checks": 15,
+			"expected": "one owned state per ID; detached nested reads; invalid registration never replaces state",
+			"id": "registry_ownership"
+		},
+		{
+			"actual": "PASS",
+			"checks": 2,
+			"expected": "registry reconstructs its own state even from a retained mutable snapshot provider",
+			"id": "party_mutable_reference_copy_in"
+		},
+		{
+			"actual": "PASS",
+			"checks": 5,
+			"expected": "Enemy HP0 retains production availability only; mutable source runtime cannot mutate registry",
+			"id": "enemy_copy_in_out"
+		},
+		{
+			"actual": "PASS",
+			"checks": 10,
+			"expected": "authorized lethal damage commits HP0 and DOWN together once; never DEAD",
+			"id": "authorized_down_player"
+		},
+		{
+			"actual": "PASS",
+			"checks": 10,
+			"expected": "authorized lethal damage commits HP0 and DOWN together once; never DEAD",
+			"id": "authorized_down_npc_01"
+		},
+		{
+			"actual": "PASS",
+			"checks": 6,
+			"expected": "zero is one authorized no-op; partial damage stays ALIVE; INT64_MAX clamps safely",
+			"id": "damage_boundary_0"
+		},
+		{
+			"actual": "PASS",
+			"checks": 6,
+			"expected": "zero is one authorized no-op; partial damage stays ALIVE; INT64_MAX clamps safely",
+			"id": "damage_boundary_1"
+		},
+		{
+			"actual": "PASS",
+			"checks": 6,
+			"expected": "zero is one authorized no-op; partial damage stays ALIVE; INT64_MAX clamps safely",
+			"id": "damage_boundary_9223372036854775807"
+		},
+		{
+			"actual": "PASS",
+			"checks": 5,
+			"expected": "invalid amount rejected before issuance and at application, with no mutation",
+			"id": "invalid_amount_-1"
+		},
+		{
+			"actual": "PASS",
+			"checks": 5,
+			"expected": "invalid amount rejected before issuance and at application, with no mutation",
+			"id": "invalid_amount_<null>"
+		},
+		{
+			"actual": "PASS",
+			"checks": 5,
+			"expected": "invalid amount rejected before issuance and at application, with no mutation",
+			"id": "invalid_amount_true"
+		},
+		{
+			"actual": "PASS",
+			"checks": 5,
+			"expected": "invalid amount rejected before issuance and at application, with no mutation",
+			"id": "invalid_amount_1.0"
+		},
+		{
+			"actual": "PASS",
+			"checks": 5,
+			"expected": "invalid amount rejected before issuance and at application, with no mutation",
+			"id": "invalid_amount_3"
+		},
+		{
+			"actual": "PASS",
+			"checks": 5,
+			"expected": "invalid amount rejected before issuance and at application, with no mutation",
+			"id": "invalid_amount_[]"
+		},
+		{
+			"actual": "PASS",
+			"checks": 5,
+			"expected": "invalid amount rejected before issuance and at application, with no mutation",
+			"id": "invalid_amount_{  }"
+		},
+		{
+			"actual": "PASS",
+			"checks": 5,
+			"expected": "identity/state/operation validation rejects: UNKNOWN_ACTOR",
+			"id": "request_actor_id_missing"
+		},
+		{
+			"actual": "PASS",
+			"checks": 5,
+			"expected": "identity/state/operation validation rejects: UNKNOWN_ACTOR",
+			"id": "request_actor_id_../player"
+		},
+		{
+			"actual": "PASS",
+			"checks": 5,
+			"expected": "identity/state/operation validation rejects: UNKNOWN_ACTOR",
+			"id": "request_actor_id_1"
+		},
+		{
+			"actual": "PASS",
+			"checks": 5,
+			"expected": "identity/state/operation validation rejects: FOREIGN_SESSION",
+			"id": "request_session_id_0"
+		},
+		{
+			"actual": "PASS",
+			"checks": 5,
+			"expected": "identity/state/operation validation rejects: STALE_GENERATION",
+			"id": "request_generation_0"
+		},
+		{
+			"actual": "PASS",
+			"checks": 5,
+			"expected": "identity/state/operation validation rejects: STALE_REVISION",
+			"id": "request_revision_-1"
+		},
+		{
+			"actual": "PASS",
+			"checks": 5,
+			"expected": "identity/state/operation validation rejects: INVALID_IDENTITY_TYPE",
+			"id": "request_generation_1.0"
+		},
+		{
+			"actual": "PASS",
+			"checks": 5,
+			"expected": "identity/state/operation validation rejects: INVALID_IDENTITY_TYPE",
+			"id": "request_session_id_true"
+		},
+		{
+			"actual": "PASS",
+			"checks": 5,
+			"expected": "identity/state/operation validation rejects: INVALID_IDENTITY_TYPE",
+			"id": "request_revision_0"
+		},
+		{
+			"actual": "PASS",
+			"checks": 5,
+			"expected": "identity/state/operation validation rejects: INVALID_OPERATION_ID",
+			"id": "request_operation_id_"
+		},
+		{
+			"actual": "PASS",
+			"checks": 5,
+			"expected": "identity/state/operation validation rejects: INVALID_OPERATION_ID",
+			"id": "request_operation_id_1"
+		},
+		{
+			"actual": "PASS",
+			"checks": 5,
+			"expected": "identity/state/operation validation rejects: PARTY_ONLY",
+			"id": "request_actor_id_enemy_a"
+		},
+		{
+			"actual": "PASS",
+			"checks": 49,
+			"expected": "unissued, altered, foreign and malformed grants cannot mutate owned state; valid grant remains usable",
+			"id": "authorization_tampering"
+		},
+		{
+			"actual": "PASS",
+			"checks": 8,
+			"expected": "new proof request requires exact fields; unknown/missing fields rejected",
+			"id": "strict_authorization_request"
+		},
+		{
+			"actual": "PASS",
+			"checks": 12,
+			"expected": "fixture states preserved; no damage/heal/rescue/retreat/death triggers exposed",
+			"id": "ineligible_DOWN"
+		},
+		{
+			"actual": "PASS",
+			"checks": 12,
+			"expected": "fixture states preserved; no damage/heal/rescue/retreat/death triggers exposed",
+			"id": "ineligible_DEAD"
+		},
+		{
+			"actual": "PASS",
+			"checks": 12,
+			"expected": "fixture states preserved; no damage/heal/rescue/retreat/death triggers exposed",
+			"id": "ineligible_ALIVE"
+		},
+		{
+			"actual": "PASS",
+			"checks": 4,
+			"expected": "a second grant from old revision is stale after a different operation commits",
+			"id": "stale_revision"
+		},
+		{
+			"actual": "PASS",
+			"checks": 12,
+			"expected": "restart rebuilds fixtures, rejects old tokens despite reused actor/operation IDs, and isolates old views",
+			"id": "restart_generation"
+		},
+		{
+			"actual": "PASS",
+			"checks": 4,
+			"expected": "invalid whole-roster replacement leaves state/generation and previously issued grants usable",
+			"id": "invalid_restart_0"
+		},
+		{
+			"actual": "PASS",
+			"checks": 4,
+			"expected": "invalid whole-roster replacement leaves state/generation and previously issued grants usable",
+			"id": "invalid_restart_1"
+		},
+		{
+			"actual": "PASS",
+			"checks": 4,
+			"expected": "invalid whole-roster replacement leaves state/generation and previously issued grants usable",
+			"id": "invalid_restart_2"
+		},
+		{
+			"actual": "PASS",
+			"checks": 4,
+			"expected": "invalid whole-roster replacement leaves state/generation and previously issued grants usable",
+			"id": "invalid_restart_3"
+		},
+		{
+			"actual": "PASS",
+			"checks": 4,
+			"expected": "invalid whole-roster replacement leaves state/generation and previously issued grants usable",
+			"id": "invalid_restart_4"
+		},
+		{
+			"actual": "PASS",
+			"checks": 4,
+			"expected": "invalid whole-roster replacement leaves state/generation and previously issued grants usable",
+			"id": "invalid_restart_5"
+		},
+		{
+			"actual": "PASS",
+			"checks": 4,
+			"expected": "invalid whole-roster replacement leaves state/generation and previously issued grants usable",
+			"id": "invalid_restart_6"
+		},
+		{
+			"actual": "PASS",
+			"checks": 4,
+			"expected": "invalid whole-roster replacement leaves state/generation and previously issued grants usable",
+			"id": "invalid_restart_7"
+		},
+		{
+			"actual": "PASS",
+			"checks": 4,
+			"expected": "invalid whole-roster replacement leaves state/generation and previously issued grants usable",
+			"id": "invalid_restart_8"
+		},
+		{
+			"actual": "PASS",
+			"checks": 4,
+			"expected": "invalid whole-roster replacement leaves state/generation and previously issued grants usable",
+			"id": "invalid_restart_9"
+		},
+		{
+			"actual": "PASS",
+			"checks": 4,
+			"expected": "invalid whole-roster replacement leaves state/generation and previously issued grants usable",
+			"id": "invalid_restart_10"
+		},
+		{
+			"actual": "PASS",
+			"checks": 4,
+			"expected": "invalid whole-roster replacement leaves state/generation and previously issued grants usable",
+			"id": "invalid_restart_11"
+		},
+		{
+			"actual": "PASS",
+			"checks": 19,
+			"expected": "original runtime/registry/Resolver/Guidance schemas and Main HP0 defeat unchanged",
+			"id": "production_contract"
+		}
+	],
+	"checks": 525,
+	"example": {
+		"actual": "PASS",
+		"after": {
+			"actor_id": "player",
+			"current_hp": 0,
+			"eligible": false,
+			"life_state": "DOWN",
+			"max_hp": 10,
+			"participation": "PRESENT",
+			"role": "PLAYER",
+			"schema_version": 1
+		},
+		"before": {
+			"actor_id": "player",
+			"current_hp": 3,
+			"eligible": true,
+			"life_state": "ALIVE",
+			"max_hp": 10,
+			"participation": "PRESENT",
+			"role": "PLAYER",
+			"schema_version": 1
+		},
+		"expected": "HP3 ALIVE/PRESENT -> damage10 clamped -3 -> HP0 DOWN/PRESENT",
+		"result": {
+			"hp_delta": -3,
+			"reason_code": "HP_ZERO_DOWN",
+			"status": "APPLIED"
+		}
+	},
+	"failures": 0,
+	"independent_cases": 78,
+	"per_frame_checks": 0,
+	"task": "M4-01 Isolated Data/State Proof Candidate"
+}

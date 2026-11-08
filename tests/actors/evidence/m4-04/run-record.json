@@ -1,0 +1,42 @@
+{
+  "canonical": "0c5eef193da6265d1e7f502123711ba4753625ce",
+  "tested_source": "6187a4ff6dea0a5a983c21171e92db53eff6cd63",
+  "delivery_head_resolution": "PR body + git HEAD; only docs/evidence may follow tested source",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "godot": "/Applications/Godot.app/Contents/MacOS/Godot",
+  "canonical_stages": 88,
+  "candidate_stages": 94,
+  "focused": {
+    "cases": 128,
+    "assertions": 458,
+    "failures": 0,
+    "per_frame_checks": 0
+  },
+  "expected": "all stages PASS, no unexpected errors/timeouts, inherited checks and Legacy identical, strict report valid",
+  "actual": "PASS within isolated/pure/supported transaction coverage; explicit partial/blocked/diagnostic slices in coverage.json",
+  "commands": {
+    "canonical": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m404-canonical-20261108-2 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --guidance-decision-proof --guidance-main-proof --m4-data-proof --m4-atomic-clock-proof --m4-queue-foundation-proof --m4-retreat-transaction-proof --m4-outcome-summary-proof --cutover-baseline /tmp/wanderer-m3a04-reference-20261105-2",
+    "candidate": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-m404-final-20261108-3 --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --guidance-decision-proof --guidance-main-proof --m4-data-proof --m4-atomic-clock-proof --m4-queue-foundation-proof --m4-retreat-transaction-proof --m4-outcome-summary-proof --m4-autonomous-decision-proof --cutover-baseline /tmp/wanderer-m3a04-reference-20261105-2",
+    "focused": "15-stage strict focused run /tmp/wanderer-m404-focused-20261108-2 at 693afe0:128/453; final focused stage rerun within full final at tested_source:128/458",
+    "version": "/Applications/Godot.app/Contents/MacOS/Godot --headless --version"
+  },
+  "negative_errors": {
+    "expected": 5,
+    "actual_canonical": 5,
+    "actual_candidate": 5
+  },
+  "runtime_exits": "all final exits0 /timeouts0; five expected negative errors separate",
+  "protected_count": 130,
+  "tested_manifest_count": 141,
+  "inherited_suite_counts_equal": 23,
+  "manual_acceptance": "NOT RUN: GUI/F5/F6/keyboard/visual",
+  "scope_limits": "See coverage.json; O4/O6/O7 not implemented; original M4 blocked/partial rows unchanged; production no change",
+  "stop": "Draft PR for Independent Code & Evidence Review; no merge/auto-merge/delete branch/M4-05/production",
+  "strict_validator_variants_rejected": 36,
+  "documentation_audit": {
+    "files": 5,
+    "local_links": 398,
+    "fragments": 88,
+    "errors": 0
+  }
+}

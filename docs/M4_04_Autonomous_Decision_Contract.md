@@ -1,6 +1,8 @@
 # M4-04 — Autonomous Decision Contract & Owner Approval Gate
 
-**O1-A / O2-A / O3-A / O5-A — OWNER APPROVED FOR M4-04 ISOLATED IMPLEMENTATION**, 8 November 2026 (Asia/Bangkok), on canonical `0c5eef193da6265d1e7f502123711ba4753625ce`. This delivery records the approval in documentation; runtime remains NOT STARTED / NOT VERIFIED. Cases remain **PROPOSED / NOT RUN**. O4 conscious consent is deferred; O6 real HELP/Guard bridge needs separate authorization; O7 interleavings remain diagnostic/deferred without legal producers. Production integration and M4-05 are outside approval. [Milestone authority](README.md#current-status-and-next-roadmap) remains in the index.
+**O1-A/O2-A/O3-A/O5-A: OWNER APPROVED for isolated implementation. M4-04 isolated implementation: IMPLEMENTED CANDIDATE. PR #55: DRAFT / Awaiting Independent Follow-up Review.** Canonical `6cd7b842c07e308203f61bbaaff6339233567c68` includes [PR #54](https://github.com/shanwinder/wanderer/pull/54)'s approved Decision Register. Existing branch `codex/m4-04-isolated-autonomous-decision-proof` is rebased onto that canonical for G55-DOC-01; §2.1 remains the approved design authority. [Prior independent review](https://github.com/shanwinder/wanderer/pull/55#pullrequestreview-5818357540) inspected old delivery `af3c4161a0d5e72bafec46ae07561be5ec1fdc7c` and requested this reconciliation.
+
+**Recorded focused proof: 128 cases / 458 assertions**, originally executed on `6187a4ff6dea0a5a983c21171e92db53eff6cd63`; original [run record](../tests/actors/evidence/m4-04/run-record.json) remains unchanged. Separate [post-rebase source, commands, regression and audit record](../tests/actors/evidence/m4-04/post-r54-rebase.json) attributes the new runs to their actual source. Pure candidates and real C-owned ATTACK/RESCUE/RETREAT transactions remain distinct. **No full Production Integration. No Manual GUI/Visual Acceptance** (GUI/F5/F6/keyboard/visual NOT RUN). HELP/DEFEND real effect bridge is **BLOCKED DEPENDENCY / PURE POLICY ONLY**; O4 consent deferred and O7 interleaving producers diagnostic/deferred. No M4-05 authorization. [API and coverage limits](../tests/actors/README.md#m4-04--isolated-autonomous-decision-proof).
 
 ## 1. Baseline and authority
 
@@ -8,9 +10,9 @@
 
 Initial working tree clean; open PR search found only #2/#17, no duplicate M4-04 PR; live M4-04 branch search empty. Task branch: `codex/m4-04-autonomous-decision-design-gate`. No merge/cherry-pick of unrelated proposals.
 
-**Current approval-record baseline:** local/fetched/live canonical and feature merge-base `0c5eef193da6265d1e7f502123711ba4753625ce`; [PR #53](https://github.com/shanwinder/wanderer/pull/53) merged at this SHA. [Independent design review 5816930180](https://github.com/shanwinder/wanderer/pull/53#pullrequestreview-5816930180) reviewed `e4bf563d179c005b395c2ed64767d8438f7d2aa6` and recorded DESIGN-ONLY REVIEW PASS; O1/O2/O3/O5 were still pending at that historical review. The subsequent explicit owner approval in §2.1 closes those design subdecisions within isolated scope, not runtime verification. Initial tree clean; no duplicate open M4-04 PR/remote branch; #2/#17 remain unrelated. Approval-record branch: `codex/m4-04-owner-subdecision-approval`.
+**Historical PR #54 approval-record baseline:** local/fetched/live canonical and feature merge-base `0c5eef193da6265d1e7f502123711ba4753625ce`; [PR #53](https://github.com/shanwinder/wanderer/pull/53) merged at this SHA. [Independent design review 5816930180](https://github.com/shanwinder/wanderer/pull/53#pullrequestreview-5816930180) reviewed `e4bf563d179c005b395c2ed64767d8438f7d2aa6` and recorded DESIGN-ONLY REVIEW PASS; O1/O2/O3/O5 were still pending at that historical review. The subsequent explicit owner approval in §2.1 closes those design subdecisions within isolated scope, not runtime verification. Initial tree clean; no duplicate open M4-04 PR/remote branch; #2/#17 remain unrelated. Approval-record branch: `codex/m4-04-owner-subdecision-approval`.
 
-**Inherited C evidence only:** Godot `4.7.2.stable.official.ed1daf0bf`, executable `/Applications/Godot.app/Contents/MacOS/Godot`, tested source `d583b4b6fdd3226178e4f5b4e916c874a82d83c4`; recorded 115 cases/6,054 assertions, canonical 82/candidate 88 stages PASS, Legacy 6 cases/5,892 frames identical. Expected/actual, full commands, exits, failed attempts and source attribution remain in [run record](../tests/actors/evidence/m4-03c/run-record.json) and [R52 record](../tests/actors/evidence/m4-03c/r52-01.json). No new Godot run on this document or merge SHA. M403-10/14/15 DIAGNOSTIC-ONLY; M403-13/42 PARTIAL; M402-06 BLOCKED end-to-end/M402-24 PARTIAL remain so. No playable/visual acceptance claim.
+**Inherited C evidence only:** Godot `4.7.2.stable.official.ed1daf0bf`, executable `/Applications/Godot.app/Contents/MacOS/Godot`, tested source `d583b4b6fdd3226178e4f5b4e916c874a82d83c4`; recorded 115 cases/6,054 assertions, canonical 82/candidate 88 stages PASS, Legacy 6 cases/5,892 frames identical. Expected/actual, full commands, exits, failed attempts and source attribution remain in [run record](../tests/actors/evidence/m4-03c/run-record.json) and [R52 record](../tests/actors/evidence/m4-03c/r52-01.json). This paragraph describes inherited C evidence only; current M4-04 runs are recorded separately above. M403-10/14/15 DIAGNOSTIC-ONLY; M403-13/42 PARTIAL; M402-06 BLOCKED end-to-end/M402-24 PARTIAL remain so. No playable/visual acceptance claim.
 
 ## 2. Owner decision register
 
@@ -48,7 +50,7 @@ Inspected on the verified base; **inspection is not runtime verification**:
 | [Isolated actor state](../scripts/m4/isolated_actor_state.gd), [rescue/clock owner](../scripts/m4/isolated_rescue_clock_encounter.gd) | Party lifecycle/eligibility, active episode, entry round/budget, helper rescue ledger; one owned publication | Copies are observations, not authority. Current episode stores opaque ID, entry_round, budget, active; no explicit per-episode order field |
 | [Queue adapter](../scripts/m4/m403_queue_adapter.gd), [terminal owner](../scripts/m4/m403_terminal_encounter.gd) | Prepared opportunity identity differs from actionable current slot; disposed slots never reinsert; terminal/close/continuation owned separately | Policy output cannot issue opportunity, seal witness, action token or receipt. C has no production Player Command/Guidance bridge |
 
-O5-A approved pure adapter observes one coherent owner snapshot at current slot start, derives eligibility and candidate explanations, then returns data only. No mutation, callbacks, random choice, wall-clock urgency or persistent personality. Any later executor must independently authenticate/revalidate and use existing owned transaction gates; designing it is not implementation authorization.
+O5-A approved pure adapter observes one coherent owner snapshot at current slot start, derives eligibility and candidate explanations, then returns data only. No mutation, callbacks, random choice, wall-clock urgency or persistent personality. The isolated candidate facade independently authenticates/revalidates and delegates supported actions to existing C-owned transaction gates; HELP/DEFEND effect execution remains blocked.
 
 ### 3.1 Exact input schema — O5-A approved, isolated only
 
@@ -146,7 +148,7 @@ Existing validation precedence is retained: running request may receive COMMAND_
 
 ## 7. Paired and adversarial acceptance design
 
-**Every row: PROPOSED / NOT RUN.** Expected behavior uses the approved O1-A/O2-A/O3-A/O5-A rules; executable evidence remains absent. Pure comparator/fixture diagnostics are labelled; no historical C evidence makes any M404 row PASS. [Original A01–A39](M4_Down_Help_Death_Retreat_Architecture.md#13-acceptance-matrix--future-scenarios-not-run) retain their historical text and status. A references map only the stated slice, not whole-row completion.
+**Historical PR #54 design matrix: PROPOSED / NOT RUN at that checkpoint.** Expected behavior uses the approved O1-A/O2-A/O3-A/O5-A rules. These design rows are preserved, not globally relabelled PASS; the implementation mapping below identifies executed slices and remaining gaps. Pure comparator/fixture diagnostics are labelled; no historical C evidence makes any M404 row PASS. [Original A01–A39](M4_Down_Help_Death_Retreat_Architecture.md#13-acceptance-matrix--future-scenarios-not-run) retain their historical text and status. A references map only the stated slice, not whole-row completion.
 
 | ID / pair | Controlled input / adversarial variant | Expected decision and actual-effect boundary | Mapping |
 |---|---|---|---|
@@ -174,22 +176,32 @@ Existing validation precedence is retained: running request may receive COMMAND_
 | M404-22 O3-A action eligibility | HP0/DOWN, DEAD, ALIVE/RETREATED, disposed/noncurrent slot, terminal or no active Enemy vs eligible low-HP NPC | No selectable action in invalid/unavailable boundary; no fake RETREAT/receipt/opportunity; valid case candidate only | A07,A24 |
 | M404-23 O2-A replay provenance | Seed then real journal creates episodes, re-DOWN, Restart; pair forged/detached/missing/mixed-revision creation order | Ordinals match owner creation replay, new episode new ordinal and generation reset; invalid provenance yields INVALID_INPUT/no action/no mutation | A09,A38 |
 
-No new executable cases are written. Future runtime task must identify real producers for each effect/interleaving, preserve original tests/constants, run appropriate fresh Godot regression and record engine/source/commands/expected-actual/logs. Pure decision success cannot prove transaction completion or visual quality.
+### 7.1 Implemented candidate coverage mapping
+
+[Executed cases and assertions](../tests/actors/evidence/m4-04/m4-04-scenarios.json) and [M404-01–20 mapping](../tests/actors/evidence/m4-04/coverage.json) record 121 pure cases, five owned-transaction cases, one diagnostic-only case and one blocked-dependency case. M404-08/10/11/16/18/20 remain PARTIAL; M404-15 is DIAGNOSTIC-ONLY and M404-17 BLOCKED DEPENDENCY. No design row is wholly passed by a pure fixture or inherited C evidence.
+
+| Additional approved design group | Executed proof slices (M404 case IDs) | Remaining boundary |
+|---|---|---|
+| M404-21 O3 threshold | 011/012/013 (exact30%,31%, higher priority), 126 (owned RETREAT) | No production RETREAT integration or visual acceptance |
+| M404-22 O3 eligibility | 057–067 (nested Party schema), 049–056 (nested queue schema), 115/124/126/128 (owner binding, stale context and transaction lifecycle) | PARTIAL: schema rejection and owned boundary slices only; the complete unavailable/lifecycle/terminal/no-Enemy matrix is not independently enumerated by M404 |
+| M404-23 O2 replay provenance | 009 (ranking and comparator-only tie), 084–089 (episode schema including ordinal), 115/124 (current owner binding), 128 (real later DOWN/re-DOWN/Restart) | Comparator tie is pure-only; duplicate live ordinals reject; no production performance claim |
+
+Pure decision success cannot prove transaction completion or visual quality. Source, commands, exact case mapping and fresh results are audited in the separate post-rebase record.
 
 ## 8. Risks, remaining owner subdecisions and stop
 
-| ID | Open dependency / risk | Review needed before runtime |
+| ID | Open dependency / risk | Candidate evidence / remaining review |
 |---|---|---|
-| O1 D08 urgency | **APPROVED O1-A**, §2.1 | Implement approved B1/no-grace formula and boundary cases; not verified |
-| O2 D08 ranking | **APPROVED O2-A**, §2.1; explicit order absent in current runtime | Owner replay/history extraction and root validation required; no opaque-ID decoding or provenance fallback |
-| O3 D08 RETREAT | **APPROVED O3-A**, §2.1; new isolated HP≤30% gameplay rule | Implement only after higher priorities false and legal slot/nonterminal/Enemy gates; no trait behavior |
+| O1 D08 urgency | **APPROVED O1-A**, §2.1 | Implemented candidate; executed urgency/grace pairs in focused proof |
+| O2 D08 ranking | **APPROVED O2-A**, §2.1; order projected by isolated candidate | Candidate validates seed/journal replay against current root; no opaque-ID decoding or provenance fallback |
+| O3 D08 RETREAT | **APPROVED O3-A**, §2.1; new isolated HP≤30% gameplay rule | Candidate requires higher priorities false and legal slot/nonterminal/Enemy gates; no trait behavior |
 | O4 D16 consent | Conscious-DOWN and recipient refusal not modeled | Separate contract/approval; keep no active consent/refusal for unconscious DOWN |
-| O5 D09 adapter | **APPROVED O5-A**, §§2.1/3–4, isolated only | Owner-bound exact schemas and validation required; full production D09 outside approval |
+| O5 D09 adapter | **APPROVED O5-A**, §§2.1/3–4, isolated only | Candidate exact schemas/current-root binding covered; full production D09 outside approval |
 | O6 Effect bridge | C has no HELP/Guard/production Guidance integration; output does not authorize execution | Separate reviewed owner/executor seam, current slot/episode revalidation, real receipts and retained no-progress limitations |
 | O7 Evidence | Proposed cases may lack legal effect producers; historical C diagnostic/partial rows remain | Label pure/diagnostic/blocked accurately; never create fake actions, receipts or opportunities to close a test |
 
-Learning check: explain why “decided RESCUE” does not mean “rescued”, why no-use is not recipient refusal, why HP-positive recovery cannot re-arm old Pending, and why global episode age differs from per-actor episode count. Review the paired cases before implementing anything.
+Learning check: explain why “decided RESCUE” does not mean “rescued”, why no-use is not recipient refusal, why HP-positive recovery cannot re-arm old Pending, and why global episode age differs from per-actor episode count. Compare the paired pure cases with the supported owned-transaction cases.
 
-Documentation audit covers approval attribution, code-backed statements, local Markdown links/fragments, milestone consistency, preserved historical cases, `git diff --check` and the four-file allowlist. **Godot/import/parse/gameplay/regression, GUI/F5/F6/keyboard/visual acceptance: NOT RUN in this documentation task.** Historical tests remain attributed to their original commits/PRs.
+Current reconciliation retains the approved §2.1 and architecture register byte-for-byte. Documentation links, anchors, source hashes and fresh Godot results are recorded in [post-rebase evidence](../tests/actors/evidence/m4-04/post-r54-rebase.json); original run records remain attributed to their original source. Manual GUI/F5/F6/keyboard/visual acceptance NOT RUN.
 
-**Approval-record delivery stop:** Draft PR for review of the recorded O1-A/O2-A/O3-A/O5-A isolated implementation approvals. This change contains documentation only; runtime remains NOT STARTED. Do not merge/auto-merge/delete branch or start M4-05/production integration. A runtime task must define reviewable implementation files, tests and evidence within this approved isolated contract; O4/O6/O7 are not implicitly authorized.
+**Delivery stop:** existing Draft PR #55 / Awaiting Independent Follow-up Code & Evidence Review. Do not merge, enable auto-merge, delete the branch, create a replacement PR, start M4-05 or integrate Production/Main/Legacy/Guidance. O4/O6/O7 remain deferred/blocked as described above.

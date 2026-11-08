@@ -1,0 +1,12 @@
+{
+  "fresh_canonical_vs_candidate": true,
+  "cases": 6,
+  "frames": 5892,
+  "historical_reference_comparison": {
+    "expected": "Exact Legacy trace equality to pre-cutover merged base",
+    "cases": 6,
+    "frames": 5892,
+    "actual": "PASS"
+  },
+  "historical_reference": "/tmp/wanderer-m3a04-reference-20261105-2 (execution inherited; release gates compare its actual source/traces)"
+}

@@ -1314,3 +1314,7 @@ manual GUI/F5/F6/keyboard/visual NOT RUN. Independent review remains pending.
 
 
 R52-01 refresh: same Draft PR #52, tested source above, **115 C cases /6,054 assertions**. All original A/B/M401/M402 and M2/M3/Main/Guidance flags rerun; canonical82/candidate88 PASS and Legacy6/5,892 identical. [Exact request correction, run history and hashes](../actors/evidence/m4-03c/r52-01.json). The sandboxed import failure is retained; manual GUI/visual NOT RUN. Await independent follow-up; do not merge.
+
+## Optional M4-04 autonomous decision proof
+
+Use `--m4-autonomous-decision-proof` for additive exact-schema/provenance/pure-policy/supported C transaction verification. [API, coverage and Thai learning notes](../actors/README.md#m4-04--isolated-autonomous-decision-proof), [actual engine/commits/complete commands/results/failure history](../actors/evidence/m4-04/run-record.json). Fresh canonical88/candidate94 stages; M404128cases/458assertions. Runner requires 128 unique sequential case IDs, boolean assertions and exact totals/stdout, matching expected/actual step reasons, case classification, strict JSON and matching source hashes; nonzero exit/unexpected errors/timeouts reject. Malformed-report/stdout tests are archived separately. Original proofs/Legacy semantics unchanged. O4 deferred; HELP/DEFEND effects BLOCKED DEPENDENCY, live HELP source unknown; no fake effects/receipts. O7 mid-action producers diagnostic/deferred; manual GUI/visual NOT RUN. Stop at Draft PR for independent code/evidence review.

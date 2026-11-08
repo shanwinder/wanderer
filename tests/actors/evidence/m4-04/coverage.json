@@ -1,0 +1,210 @@
+{
+  "design_rows": [
+    {
+      "design_id": "M404-01",
+      "case_ids": [
+        "001"
+      ],
+      "classification": "EXECUTABLE PURE POLICY",
+      "limits": "Safety versus urgent rescue"
+    },
+    {
+      "design_id": "M404-02",
+      "case_ids": [
+        "002",
+        "003"
+      ],
+      "classification": "EXECUTABLE PURE POLICY",
+      "limits": "first-valid hit and reason precedence"
+    },
+    {
+      "design_id": "M404-03",
+      "case_ids": [
+        "004"
+      ],
+      "classification": "EXECUTABLE PURE POLICY",
+      "limits": "Urgent versus HELP; O6 effect blocked"
+    },
+    {
+      "design_id": "M404-04",
+      "case_ids": [
+        "005",
+        "006",
+        "007",
+        "008"
+      ],
+      "classification": "EXECUTABLE PURE POLICY",
+      "limits": "Grace boundaries/nonurgent"
+    },
+    {
+      "design_id": "M404-05",
+      "case_ids": [
+        "009"
+      ],
+      "classification": "EXECUTABLE PURE POLICY",
+      "limits": "budget ranking"
+    },
+    {
+      "design_id": "M404-06",
+      "case_ids": [
+        "009"
+      ],
+      "classification": "EXECUTABLE PURE POLICY",
+      "limits": "episode age; equal ordinal comparator-only; duplicate live rejects"
+    },
+    {
+      "design_id": "M404-07",
+      "case_ids": [
+        "125",
+        "128"
+      ],
+      "classification": "EXECUTABLE OWNED TRANSACTION",
+      "limits": "next NPC fresh decision; re-DOWN provenance"
+    },
+    {
+      "design_id": "M404-08",
+      "case_ids": [
+        "010",
+        "127"
+      ],
+      "classification": "PARTIAL",
+      "limits": "no-use pure fallback; unknown live HELP blocks"
+    },
+    {
+      "design_id": "M404-09",
+      "case_ids": [
+        "001",
+        "079"
+      ],
+      "classification": "EXECUTABLE PURE POLICY",
+      "limits": "unconscious DOWN no active consent/refusal; unknown consent key rejected"
+    },
+    {
+      "design_id": "M404-10",
+      "case_ids": [
+        "001",
+        "010"
+      ],
+      "classification": "PARTIAL",
+      "limits": "helper priority/inability; recipient refusal unsupported"
+    },
+    {
+      "design_id": "M404-11",
+      "case_ids": [
+        "115",
+        "128"
+      ],
+      "classification": "PARTIAL",
+      "limits": "actual request rejection and legal serial second-hit SKIP, not mid-action RESCUE target mutation"
+    },
+    {
+      "design_id": "M404-12",
+      "case_ids": [
+        "011",
+        "012",
+        "013",
+        "126"
+      ],
+      "classification": "EXECUTABLE OWNED TRANSACTION + PURE POLICY",
+      "limits": "O3 threshold/priority and genuine retreat"
+    },
+    {
+      "design_id": "M404-13",
+      "case_ids": [
+        "125"
+      ],
+      "classification": "EXECUTABLE OWNED TRANSACTION",
+      "limits": "Player DOWN continuation and real rescue"
+    },
+    {
+      "design_id": "M404-14",
+      "case_ids": [
+        "116",
+        "117",
+        "118",
+        "119"
+      ],
+      "classification": "EXECUTABLE PURE POLICY",
+      "limits": "Frozen fixture immutable; no production binding"
+    },
+    {
+      "design_id": "M404-15",
+      "case_ids": [
+        "123"
+      ],
+      "classification": "DIAGNOSTIC-ONLY",
+      "limits": "isolated exception cannot dispatch; production Pending unavailable in C"
+    },
+    {
+      "design_id": "M404-16",
+      "case_ids": [
+        "124",
+        "128"
+      ],
+      "classification": "PARTIAL",
+      "limits": "owner stale identity/Restart proven; production WRONG_ROUND precedence inherited Guidance suite"
+    },
+    {
+      "design_id": "M404-17",
+      "case_ids": [],
+      "classification": "BLOCKED DEPENDENCY",
+      "limits": "no new M403 Pending/unregister API; unchanged production R1 suite runs fresh"
+    },
+    {
+      "design_id": "M404-18",
+      "case_ids": [
+        "125",
+        "128"
+      ],
+      "classification": "PARTIAL",
+      "limits": "disposed Player not reinserted; next actual round admitted; no production command UI"
+    },
+    {
+      "design_id": "M404-19",
+      "case_ids": [
+        "015-114",
+        "115",
+        "124"
+      ],
+      "classification": "EXECUTABLE PURE POLICY + OWNED TRANSACTION",
+      "limits": "recursive schema/types and current-root equality"
+    },
+    {
+      "design_id": "M404-20",
+      "case_ids": [
+        "120",
+        "121",
+        "122"
+      ],
+      "classification": "PARTIAL",
+      "limits": "genuine Layer FOCUS FOLLOWED/MATCHED and unsupported state not delegated; production v1 schema suite unchanged"
+    }
+  ],
+  "int_gates": {
+    "INT01": "owner-bound context/schema/stale/forged rejection; no token from reads",
+    "INT02": "owner replay seed/new DOWN/re-DOWN/Restart; no ID parsing",
+    "INT03": "pure O1/O2/O3 pairs; no new traits",
+    "INT04": "helper/inability/request/real serial effect SKIP distinct; recipient refusal absent",
+    "INT05": "PARTIAL: pure Frozen/Layer plus fresh inherited Guidance suite; no C Player Command/Pending binding",
+    "INT06": "real ATTACK/RESCUE/RETREAT token/impact/receipt; DEFEND/HELP blocked; mid-action O7 deferred"
+  },
+  "classifications": {
+    "EXECUTABLE PURE POLICY": 121,
+    "EXECUTABLE OWNED TRANSACTION": 5,
+    "DIAGNOSTIC-ONLY": 1,
+    "BLOCKED DEPENDENCY": 1
+  },
+  "not_run": [
+    "Manual GUI/F5/F6/keyboard/visual acceptance",
+    "full production D09/Main/Legacy integration",
+    "O4 conscious consent",
+    "O6 real HELP/DEFEND bridge",
+    "O7 mid-action external state producer"
+  ],
+  "inherited_limits": [
+    "M402-06 BLOCKED end-to-end",
+    "M402-24 PARTIAL",
+    "M403-10/14/15 DIAGNOSTIC-ONLY",
+    "M403-13/42 PARTIAL"
+  ]
+}
