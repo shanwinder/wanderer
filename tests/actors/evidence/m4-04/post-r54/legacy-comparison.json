@@ -1,0 +1,8 @@
+{
+  "fresh_canonical_vs_candidate": true,
+  "fresh_vs_retained_pre_cutover_reference": true,
+  "cases": 6,
+  "frames": 5892,
+  "historical_reference_engine_execution": "inherited, not rerun",
+  "all_three_trace_sha256": "97ec6846ab588fe164468effc2e1f1af7271b4713082b374027a1a72bf005414"
+}

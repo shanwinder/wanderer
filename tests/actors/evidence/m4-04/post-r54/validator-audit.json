@@ -1,0 +1,214 @@
+[
+  {
+    "variant": "missing_assertion_checks",
+    "rejected": true
+  },
+  {
+    "variant": "missing_cases",
+    "rejected": true
+  },
+  {
+    "variant": "missing_deferred",
+    "rejected": true
+  },
+  {
+    "variant": "missing_failures",
+    "rejected": true
+  },
+  {
+    "variant": "missing_independent_cases",
+    "rejected": true
+  },
+  {
+    "variant": "missing_per_frame_checks",
+    "rejected": true
+  },
+  {
+    "variant": "missing_source_sha256",
+    "rejected": true
+  },
+  {
+    "variant": "missing_suite",
+    "rejected": true
+  },
+  {
+    "variant": "bool_independent_cases",
+    "rejected": true
+  },
+  {
+    "variant": "bool_assertion_checks",
+    "rejected": true
+  },
+  {
+    "variant": "bool_failures",
+    "rejected": true
+  },
+  {
+    "variant": "bool_per_frame_checks",
+    "rejected": true
+  },
+  {
+    "variant": "case_id",
+    "rejected": true
+  },
+  {
+    "variant": "case_classification",
+    "rejected": true
+  },
+  {
+    "variant": "case_assertion_count",
+    "rejected": true
+  },
+  {
+    "variant": "case_failure_count",
+    "rejected": true
+  },
+  {
+    "variant": "case_actual",
+    "rejected": true
+  },
+  {
+    "variant": "assertion_False",
+    "rejected": true
+  },
+  {
+    "variant": "assertion_1",
+    "rejected": true
+  },
+  {
+    "variant": "assertion_'true'",
+    "rejected": true
+  },
+  {
+    "variant": "assertion_None",
+    "rejected": true
+  },
+  {
+    "variant": "reason_mismatch",
+    "rejected": true
+  },
+  {
+    "variant": "source_forgery",
+    "rejected": true
+  },
+  {
+    "variant": "hidden_case",
+    "rejected": true
+  },
+  {
+    "variant": "bad_json_{",
+    "rejected": true
+  },
+  {
+    "variant": "bad_json_null",
+    "rejected": true
+  },
+  {
+    "variant": "bad_json_{\"suite\": NaN}",
+    "rejected": true
+  },
+  {
+    "variant": "bad_json_{\"suite\":1,\"suite\":2}",
+    "rejected": true
+  },
+  {
+    "variant": "missing_stdout",
+    "rejected": true
+  },
+  {
+    "variant": "missing_case_line",
+    "rejected": true
+  },
+  {
+    "variant": "duplicate_result",
+    "rejected": true
+  },
+  {
+    "variant": "missing_report",
+    "rejected": true
+  },
+  {
+    "variant": "process_nonzero",
+    "rejected": true,
+    "result": {
+      "step": "probe",
+      "status": "FAIL",
+      "exit_code": 1,
+      "timed_out": false,
+      "command": [
+        "fault-injected",
+        "--headless",
+        "--path",
+        "/tmp/wanderer-g55-candidate-run/snapshot",
+        "--log-file",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/m404-wrapper-audit-zjy29yeu/probe.engine.log"
+      ],
+      "errors": [],
+      "log": "probe.log"
+    }
+  },
+  {
+    "variant": "process_unexpected-error",
+    "rejected": true,
+    "result": {
+      "step": "probe",
+      "status": "FAIL",
+      "exit_code": 0,
+      "timed_out": false,
+      "command": [
+        "fault-injected",
+        "--headless",
+        "--path",
+        "/tmp/wanderer-g55-candidate-run/snapshot",
+        "--log-file",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/m404-wrapper-audit-4hv2wg34/probe.engine.log"
+      ],
+      "errors": [
+        "injected engine error"
+      ],
+      "log": "probe.log"
+    }
+  },
+  {
+    "variant": "process_script-error",
+    "rejected": true,
+    "result": {
+      "step": "probe",
+      "status": "FAIL",
+      "exit_code": 0,
+      "timed_out": false,
+      "command": [
+        "fault-injected",
+        "--headless",
+        "--path",
+        "/tmp/wanderer-g55-candidate-run/snapshot",
+        "--log-file",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/m404-wrapper-audit-bli0zqfc/probe.engine.log"
+      ],
+      "errors": [
+        "injected parse error"
+      ],
+      "log": "probe.log"
+    }
+  },
+  {
+    "variant": "process_timeout",
+    "rejected": true,
+    "result": {
+      "step": "probe",
+      "status": "FAIL",
+      "exit_code": 124,
+      "timed_out": true,
+      "command": [
+        "fault-injected",
+        "--headless",
+        "--path",
+        "/tmp/wanderer-g55-candidate-run/snapshot",
+        "--log-file",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/m404-wrapper-audit-txhy6cq2/probe.engine.log"
+      ],
+      "errors": [],
+      "log": "probe.log"
+    }
+  }
+]

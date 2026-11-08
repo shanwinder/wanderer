@@ -1,0 +1,182 @@
+[
+  {
+    "path": "tests/actors/evidence/m4-04/archived-reports.json",
+    "sha256": "328f5074f3687710f86bb8ca4c58e6bed9d90ce9253ece18a55fd1e39ce384db",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/canonical-cutover-release-gates.json",
+    "sha256": "2e8b267d86b145f0c03c28ef9c5728064884b51caf602c5551289ef8aacbf135",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/canonical-guidance-data-scenarios.json",
+    "sha256": "88ed39eaf5dd5b77dbb91c996e2fbca584e28b30f927ab56e87ec0e58394a1f0",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/canonical-guidance-decision-scenarios.json",
+    "sha256": "9380efd8e4856759bff17cd348d3854d732a5c2974498aafd2dd255722780cfa",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/canonical-m4-data-scenarios.json",
+    "sha256": "1e20054cc5ca5d939335b056e33b8cc15a4226c907f4d49f5a90ccadf62d771c",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/canonical-main-cutover-f5-startup.json",
+    "sha256": "db162cfce026263a308049f666022123ca6045bce73c848687c31215b2ec3d0b",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/canonical-results.json",
+    "sha256": "9b3244b9f4023b7150bdd368e6020db7356f35627b28107ce755684601ec7017",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/canonical-rollback-f5-startup.json",
+    "sha256": "01f105fae655b394ffdf51c99545842b5f3bd7b161740e25372d5f348fca4055",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/canonical-rollback.json",
+    "sha256": "19970a0a3da37792ca00ae5c2616f36dbd3b4099183272232ae713de2994f184",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/canonical-source-sha256.json",
+    "sha256": "c6219788c4692a09e92e1ad69c3c3cbb680494b5317c3b81c834673debe0ff5b",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/canonical-trace-comparison.json",
+    "sha256": "d3e192c97870e8e11b59bd8d13f03005b82ade4aab3ea4d16170d162b517ac62",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/case-index.json",
+    "sha256": "2c6f4ca9de81c86d12af2e01648300accf3a372c4fa60604bb747f7b76c2a4ac",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/coverage.json",
+    "sha256": "d1d61280a7bb56fb1148beede74b825e61029e26650e7958239ca3964de55d5e",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/cutover-release-gates.json",
+    "sha256": "2e8b267d86b145f0c03c28ef9c5728064884b51caf602c5551289ef8aacbf135",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/development-history.json",
+    "sha256": "38bf1edd15e9934123b7329f2d73ee261b720833748e86c3c440bcbf171f3bc8",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/development.zip",
+    "sha256": "e9d79bf940ac493c916dd5ae2bf6698cb8a73331dc489368638e08d894358f75",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/evidence-sha256.json",
+    "sha256": "4d60febd81a43713eef3581fa7600170012402d4592fb3f1a7eabacb9823757f",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/final-results.json",
+    "sha256": "b175dc1069d7c67a4ad9433091008ad649e31ec0e37e27106ae07bf736ed533b",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/final-source-sha256.json",
+    "sha256": "d76f9347d9ce1dc521d28ec10ad47d025140fabcce7a93c025447b3ead98b8ec",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/guidance-data-scenarios.json",
+    "sha256": "88ed39eaf5dd5b77dbb91c996e2fbca584e28b30f927ab56e87ec0e58394a1f0",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/guidance-decision-scenarios.json",
+    "sha256": "9380efd8e4856759bff17cd348d3854d732a5c2974498aafd2dd255722780cfa",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/logs.zip",
+    "sha256": "05d0ea0cd254b39a1543bd0e7489f3fd787b8df641cbae18d1423989a6547c0d",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/m4-04-scenarios.json",
+    "sha256": "f28705c344fc6526a8de13e9dd9f837c15cc29e462ebd5e3824e56b3779322c7",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/m4-data-scenarios.json",
+    "sha256": "1e20054cc5ca5d939335b056e33b8cc15a4226c907f4d49f5a90ccadf62d771c",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/main-cutover-f5-startup.json",
+    "sha256": "db162cfce026263a308049f666022123ca6045bce73c848687c31215b2ec3d0b",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/owner-approvals.json",
+    "sha256": "8b0ec3391c079704a9e522353202f095b50c62b711720e8e82d9b62592d1376d",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/reference-provenance.json",
+    "sha256": "d016443cc7e0b8fcfceca02b4e1c5858499be2464ea636338a3398a0cec389bb",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/regression-comparison.json",
+    "sha256": "037cc201b96ada64af568d18c36213c008d025feb36bfebfc8ae96a8dfbb1f9d",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/review-checks.json",
+    "sha256": "b3176ef1b840fd6f7295961443950fb2f6f546137e10790a9e2a8b1ab9fd1d54",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/rollback-f5-startup.json",
+    "sha256": "01f105fae655b394ffdf51c99545842b5f3bd7b161740e25372d5f348fca4055",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/rollback.json",
+    "sha256": "8119b32c3574781c00dc6cbefab3e976a00381fd3bc58523d6cf378301382816",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/run-record.json",
+    "sha256": "e243a4f3be416d0219063aa4d4646ab7b9f776813c024b9f4386e79adfbf31e8",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/source-comparison.json",
+    "sha256": "803b6d84d07c51c40c58cf575bb250d04066859a6f417b8298d7a7299111261b",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/tooling.zip",
+    "sha256": "6e99c80c9dea31ca00891953522e7b1afa4b3f41de77846aa333886dc9d407cd",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/trace-comparison.json",
+    "sha256": "9fe0b6b9ec871e161d2b281d0b93964ffbeea4499acd5d68f0fd2903feee2a58",
+    "equal_original_delivery": true
+  },
+  {
+    "path": "tests/actors/evidence/m4-04/validator-audit.json",
+    "sha256": "0636f506641aea1d54b371ac2ad28a934edf36b67a8eabafceaccf853b7f6181",
+    "equal_original_delivery": true
+  }
+]
