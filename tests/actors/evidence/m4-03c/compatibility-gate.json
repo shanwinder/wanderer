@@ -1,0 +1,61 @@
+{
+  "id": "C51-ARCH-01",
+  "actual": "PASS within isolated automated scope",
+  "canonical": "2c59e8d8e27c92c92344adcba9eded0d297cc547",
+  "tested_source": "d583b4b6fdd3226178e4f5b4e916c874a82d83c4",
+  "original_A": {
+    "report": "m4-03a-scenarios.json",
+    "canonical": {
+      "independent_cases": 94,
+      "assertion_checks": 1165,
+      "failures": 0
+    },
+    "candidate": {
+      "independent_cases": 94,
+      "assertion_checks": 1165,
+      "failures": 0
+    },
+    "actual": "PASS",
+    "canonical_sha256": "7c97860ee3d56ce6902ce2c3f1e78c40ef8590f3359971ae07f3292bcc044161",
+    "candidate_sha256": "7c97860ee3d56ce6902ce2c3f1e78c40ef8590f3359971ae07f3292bcc044161",
+    "note": "session identities differ; compare counts and original test sources, not raw report hash equality"
+  },
+  "original_B": {
+    "report": "m4-03b-scenarios.json",
+    "canonical": {
+      "independent_cases": 150,
+      "assertion_checks": 3339,
+      "failures": 0
+    },
+    "candidate": {
+      "independent_cases": 150,
+      "assertion_checks": 3339,
+      "failures": 0
+    },
+    "actual": "PASS",
+    "canonical_sha256": "138010d4308df01a2e077408b4b17daf6fbf18b12f8c8564e6de66dcb90d3a91",
+    "candidate_sha256": "138010d4308df01a2e077408b4b17daf6fbf18b12f8c8564e6de66dcb90d3a91",
+    "note": "session identities differ; compare counts and original test sources, not raw report hash equality"
+  },
+  "C_architecture_cases": [
+    "M403C-01",
+    "M403C-02",
+    "M403C-03",
+    "M403C-04",
+    "M403C-05",
+    "M403C-06",
+    "M403C-07"
+  ],
+  "multi_round_cases": [
+    "M403C-34",
+    "M403C-37",
+    "M403C-38",
+    "M403C-40",
+    "M403C-43"
+  ],
+  "one_root": "C inherits one _root; only C _publish swaps it; no live wrapped Encounter/Registry; Rules/Classifier/Summary pure",
+  "revision_model": "one successful operation/journal event per revision; full replay from immutable seed; cursor and per-action audit revisions independent",
+  "A_B_source_tests": "unchanged canonical blobs; original absent-API assertions retained",
+  "invalid_phases": "C02-06 candidate/publication N-all",
+  "claim_limits": "Single-thread finite harness; no production security/performance or independent review claim"
+}

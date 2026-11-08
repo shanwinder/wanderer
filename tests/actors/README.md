@@ -1419,3 +1419,185 @@ harness against the reviewed runtime reproduced18failed assertions in150cases. F
 source passes; neither failed run is relabelled PASS. [Pre-fix evidence archive](evidence/m4-03b/pre-r51-evidence.zip)
 preserves original138/3,138 records and logs exactly. Existing older-milestone evidence
 is unchanged. **R51-01 awaits independent follow-up review**, not owner merge approval.
+
+
+## M4-03C — Isolated Terminal / Summary / Continuation Proof
+
+**Implemented Candidate / Awaiting Independent Code & Evidence Review**,8November2026.
+This explicit owner task authorizes isolated C only. PR #51 is now merged at
+`2c59e8d8e27c92c92344adcba9eded0d297cc547`, following the recorded independent
+R51-01 follow-up PASS. The B candidate/pending wording above is its historical
+record; B source/tests/evidence are unchanged. [Current milestone authority](../../docs/README.md#current-status-and-next-roadmap).
+
+### One root and C51-ARCH-01
+
+[m403_terminal_encounter.gd](../../scripts/m4/m403_terminal_encounter.gd) subclasses
+the A authority directly, retaining the inherited `_root`, Registry reconstruction
+and detached accessors. It does not instantiate a wrapped Encounter or second live
+Registry/HP owner. Its override of `_publish` is the sole C root swap; original A/B
+publication and validators are unchanged. Pure modules are
+[classifier](../../scripts/m4/m403_outcome_classifier.gd),
+[summary](../../scripts/m4/m403_summary.gd) and
+[terminal rules](../../scripts/m4/m403_terminal_rules.gd).
+The latter filename groups tightly coupled C transition/clock/fixture calculations
+and replay validation, avoiding a circular clock/effect/summary authority. It holds
+no live state; a separate round-clock owner is unnecessary.
+
+C schema3 adds explicit admission, rescue uses/episode serial, declarations, frozen
+witness, close/semantic ledgers, Abort grants/consumption, terminal stops, prior-round
+queue/witness/declaration history, seed and journal to A's domain fields. `seed` is
+immutable constructor provenance, not current HP; `journal` contains exact successful
+operation/payload/post-revision records. Reconstructing from the validated seed and
+each legal operation proves the entire candidate, including all original IDs,
+actors/clock/resources, action grants/receipts/dispositions, phases and summaries.
+Revision equals journal length; cursor counts opportunities only. Old action-only
+L+2/L+3 accounting is never reused as global clock/event accounting.
+
+Publication authenticates requests/tokens, calculates a detached candidate, validates
+its full reconstruction, compares it with the exact legal transition from current
+root, reconstructs the owned Registry and swaps once. No callback/await/signal occurs
+between final validation and swap. No public root/receipt/witness/summary import or
+raw state setter exists. Underscore methods follow the existing harness convention;
+this is not an adversarial production security model. Full-history replay/copying is
+appropriate to this finite proof; scalability/performance is not established.
+
+**C51-ARCH-01 PASS:** original A94/1,165 and B150/3,339 pass unchanged; no C surface
+added to A/B; C01–07 prove admission separation, invalid phases, revision/cursor and
+larger finite rosters; C34–43 prove actual multi-round candidates/history/clock and
+R49 boundaries. [Compatibility evidence](evidence/m4-03c/compatibility-gate.json).
+
+### Exact C APIs
+
+All scalar fields are strictly typed; version is integer1. Base request exact5 =
+`version:int,session:int,generation:int,expected_revision:int,queue_id:String`.
+OPEN request exact6 adds `round_id:int`. All capability arguments require the owned
+fixture capability; it is a harness authority, not a Player-issued NPC command.
+
+| API | Exact schema and behavior |
+|---|---|
+| `restart(request,capability)` | Base5 + `fixture:Dictionary` (exact6). Fixture exact3=`actors:Array,round_plan:Array,clocks:Dictionary`. Actors/plan use original A/B factories/order; optional per-DOWN seed in clocks exact2=`entry_round:int,budget:int`. Default DOWN B2/current first round; DEAD inactive0. Validate entire fixture before G+1/revision0/OPEN/READY/unadmitted/ABSENT. SEALED rejects; invalid frozen reset N-all |
+| `open_round(request,capability)` | Round6. Initial request binds prepared round; after CLOSED names next finite plan round while authenticating current queue ID. Derive new Q internally, preserve G/actors/resources/history. Admission classifies terminal seeds before any action; finite exhaustion rejects N-all |
+| `advance(request,capability)` | Base5; admitted OPEN only. One unavailable historical disposition/cursor step; eligible read READY/SLOT_READY is N-all. No fake command/action |
+| `lock_self_retreat(request,capability)` | Base5 + `slot_id,request_id,actor_id,kind=RETREAT` (exact9, strings). Self target derived. B keeps P>1/E>0; C permits last-active exit only with full atomic terminal freeze |
+| `lock_fixture_attack(request,capability)` | Lock9 + `target_id:String,amount:int` (exact11), kindATTACK. Current eligible slot, opposing target, positive amount≤target maxHP; bound into immutable token. No damage0/no-op receipt. Enemy target must equal admission declaration, even if it has since become unavailable |
+| `lock_fixture_rescue(request,capability)` | Lock9 + `target_id:String` (exact10), kindRESCUE. Distinct DOWN Party/current episode, eligible Party helper/use1. HP1/retire episode/use0 atomically; no slot reinsertion/refund |
+| `impact/complete/cancel(token)` | Exact owned full token equality. RETREAT/RESCUE token15 retains A/B identity fields; ATTACK adds `amount:int` (exact16). Immutable window/lock revision/episode; no caller effect/result import. Impact applies or settles SKIPPED once; only Complete creates real receipt; Cancel is pre-impact only |
+| `seal(request,capability)` | Base5 (exact5); OPEN/admitted/DRAINED, all opportunities owned/accounted, no pending,≥1 real completed receipt, active sides/nonterminal. Freeze owned witness12 and issue close event11 once; no clock/HP delta |
+| `close(event)` | Exact11 M403-owned event; authenticate equality, unused primary/semantic identity, SEALED/current Q/R/witness/revision. One batch grace/tick/death + consumption + CLOSED, then classifier consistency gate, all one publication |
+| `authorize_abort(request,capability)` | Base5 + `request_id:String` (exact6); round/kind/authorization identity derived by the owned issuer; admitted OPEN/no active action. Separate request namespace, reserved issuer prefixes. Return token10=`version,kind,issuer_id,session,generation,round_id,queue_id,authorization_id,request_id,issued_revision` |
+| `abort(token)` | Exact owned token10, issuerM403_ISOLATED_ABORT. OPEN/SEALED current round only, grant pre-issued OPEN. ABORTED/STOPPED + administrative outcome/summary/consumption, no tick/effect/receipt. A LOCKED action is invalidated, never terminal-completed |
+| `summary_snapshot(identity)` | Exact4=`version:int,session:int,generation:int,outcome_id:String`. Before freeze ABSENT/SUMMARY_NOT_FROZEN; matching frozen read returns detached outcome/summary with no mutation; stale G rejects |
+
+Action token15 fields remain:
+`version,session,generation,round_id,queue_id,slot_id,action_id,actor_id,kind,target_id,
+lock_revision,authorization_id,window_id,request_id,episode_id`.
+Attack `amount` is the only additional C token field. C does not widen original B
+schema or M402 issuer/action/event schema. Request IDs reserve all `slot_`/`m403/`
+keys including future identities; action and Abort request maps are separate domains.
+
+Gate order: exact shape/types/version/kind → session/generation → capability or owned
+full token equality → authenticated duplicate → phase/admission/current Q/slot →
+expected request revision → actor/target/episode/resource → complete candidate.
+Token lock revision is immutable audit; effect revalidates current root. Rejections
+are N-all, including journal/counters/history/frozen result. Read-only eligible-slot
+and summary/diagnostic calls do not publish.
+
+### Terminal, summary, rounds and clocks
+
+D10 exact precedence: P>0/E>0 ACTIVE; P>0/E0 VICTORY; no active Party/all retreated
+PARTY_RETREAT; R>0 plus DOWN/DEAD MIXED_WITHDRAWAL; no active/retreated Party plus E0
+DEFEAT/MUTUAL_INCAPACITATION; otherwise DEFEAT/NO_ACTIVE_PARTY. Malformed/empty
+rosters reject. Classifier tests are separated from initial-boundary freezes and
+legal effect-triggered freezes; none claims simultaneous damage.
+
+Effect + outcome + summary freeze in one publication. OPEN terminal becomes ABORTED,
+future opportunities receive terminal-stop accounting; only the exact APPLIED/SKIPPED
+causal token retains TERMINAL_SETTLING. Current legal terminal producers apply effects;
+a SKIPPED impact changes no P/E, so causal-SKIPPED terminal is unreachable here. Its one completion clears outstanding work,
+creates one receipt and STOPPED, without changing effect/freeze revision/summary or
+making ROUND_CLOSED. Abort has no causal lane for an unimpacted token.
+
+Summary exact11 envelope/domainM403_ISOLATED_SUMMARY, Party row7/final_down exact4
+(or empty), Enemy row4 follow approved §8 unchanged. Full initial stable roster once,
+separate HP availability for Enemy (HP0 never DEAD), actual DOWN/DEAD/RETREATED retained;
+no aftercare/save/UI. C25–32 include missing row/duplicate ID/wrong generation/freeze
+revision rejection and detached-copy/frozen-reset tests.
+
+Witness exact12: `session,generation,round_id,queue_id,witness_id,expected_opportunities,
+action_receipts,dispositions,outstanding,aborted,phase,revision`.
+Close event exact11: `version,kind,issuer_id,session,generation,round_id,event_id,
+witness_id,sealed_revision,authorization_id,queue_id`; issuerM403_ISOLATED_QUEUE.
+One derived queue key encodes the semantic `(session,generation,round_id)` identity;
+a fresh unissued event cannot bypass it. Witness remains the frozen SEALED fact after
+close; round history retains earlier queue/dispositions/declarations. No unseal/reseal.
+
+Natural close alone ticks active DOWN episodes from one pre-close root: entry-round
+B2 grace, next valid closeB1, nextB0/DEAD/PRESENT HP0 inactive, retained ID. Retired
+RESCUE episodes and DEAD never tick. Enemy declaration is first active Party in stable
+order at admission; no retarget after rescue/retreat. Unavailable declared target can
+settle one genuine SKIPPED action, which still requires real completion.
+
+M403-44 **V1 C42 / V2 C43 FULLY PROVEN**: actual fully cancelled OPEN/DRAINED queue
+rejects NO_REAL_PROGRESS; actual final CLOSED nonterminal round rejects PLAN_EXHAUSTED.
+Identical retries, diagnostics twice, stale revisions and whole-root N-all are checked;
+no fake close, tick, slot, stored SUSPENDED or infinite generator.
+
+### Reproducible verification and honest coverage
+
+Godot `4.7.2.stable.official.ed1daf0bf`, source
+`d583b4b6fdd3226178e4f5b4e916c874a82d83c4`: **115 cases /6,054 assertions /0 failures**,
+zero per-frame checks. Fresh canonical **82/82**, candidate **88/88 stages PASS**;
+A94/1,165, B150/3,339, M40178/525, M40255/1,188 unchanged. All inherited suite counts
+retained; Legacy6cases/5,892frames identical. All final exits0, unexpected errors0,
+timeouts0; exactly five expected negative-action errors separate.
+
+[Run record / exact all-flags commands / engine / source and delivery resolution](evidence/m4-03c/run-record.json),
+[case index / all assertion booleans](evidence/m4-03c/case-index.json),
+[exact raw C scenario JSON with every input/before-after root, compressed](evidence/m4-03c/m4-03c-scenarios.zip),
+[all48 M403 mappings](evidence/m4-03c/coverage.json),
+[six-domain transition/contract audit](evidence/m4-03c/contract-audit.json),
+[final88](evidence/m4-03c/final-results.json), [fresh canonical82](evidence/m4-03c/canonical-results.json),
+[regressions](evidence/m4-03c/regression-comparison.json),
+[source integrity](evidence/m4-03c/source-comparison.json),
+[Legacy](evidence/m4-03c/trace-comparison.json),
+[raw final logs/reports](evidence/m4-03c/logs.zip),
+[raw canonical logs/reports](evidence/m4-03c/canonical-logs.zip),
+[development failures and exact changing source](evidence/m4-03c/development-logs.zip),
+[self-audit](evidence/m4-03c/review-checks.json).
+
+| Boundary | Actual status |
+|---|---|
+| M403-08/16/22/44 | FULLY PROVEN in isolated C: legal SEALED rejection, actual RESCUE/no reinsert, last-active terminal settlement, both R49 operations |
+| M403-10/14/15 | DIAGNOSTIC-ONLY C94–96: synthetic detached mid-action actor/Player DOWN, rejected as live history; no legal serial opposing producer |
+| M403-13 | PARTIAL: unavailable Player fixture slot denied; production Player Command/Guidance API and new reason not introduced |
+| M403-25 literal final planned Enemy slot killing last Enemy | UNREACHABLE BY DESIGN; opposing targets only and stable Party→Enemy order. Legal earlier last-Enemy impact/no close is proven |
+| Clock-caused terminal after strict seal | UNREACHABLE BY DESIGN C97: P>0/E>0 seal; tick only prior DOWN, so P/E unchanged. Post-close classifier remains a guard |
+| M403-26/27 | FULLY PROVEN pure precedence/seeded boundary only; no simultaneous damage claim |
+| M403-42 | PARTIAL for a hypothetical pending SEALED action, excluded by strict seal; actual SEALED new-work/Restart denial and Abort recovery proven |
+| Original M402-06 / M402-24 | BLOCKED end-to-end / PARTIAL historical statuses unchanged |
+| Main/Legacy/Guidance/NPC policy/UI/manual visual | Protected unchanged source; automated regressions run. No integration/AI/GUI/keyboard/visual acceptance claim |
+
+### บทเรียนตาม v0.4
+
+Goal คือแยก “ผลเกิดแล้ว” ออกจาก “งานค้างจบแล้ว”: เมื่อโจมตี Enemy ตัวสุดท้าย
+HP0 ผลและ summary ต้องปรากฏพร้อมกัน แต่ completion ของ token เดิมยังต้องจบได้
+อีกครั้งเดียว โดยไม่ตีซ้ำหรือเดิน clock. Concept คือ root เดียวเผยแพร่ทั้ง transaction;
+revision นับการเผยแพร่ ส่วน cursor นับโอกาสที่ใช้แล้ว จึงเป็นคนละตัวเลข.
+
+Do/Observe: อ่าน C34 แล้วเดิน Player DOWN→ถูกข้าม→NPC RESCUE→Player HP1
+แต่ไม่ย้อน cursor; ต่อเมื่อปิดรอบด้วยงานจริงและเปิดรอบใหม่ จึงได้โอกาส Player ใหม่.
+Explain: การช่วยคนเปลี่ยนชีวิต ไม่ได้คืนโอกาสที่ผ่านไป และ Enemy ยังยึด target
+ที่ประกาศตอน admission ไม่เปลี่ยนตามการฟื้น. Development runแรกจับ fixture
+ที่พยายามเปลี่ยน target หลัง rescue; แก้ fixture ให้รอ admission ใหม่ ไม่แก้กฎให้ผ่าน.
+Adjust/Commit: เทียบ before/after และ assertionจริง, commit source ที่ทดสอบ,
+เก็บ failure เดิม แล้วส่ง Draft รอ Independent Code & Evidence Review.
+
+หยุดหลัง Draft PR เท่านั้น: no merge/auto-merge/delete feature branch, M4-04/M4-05,
+D08/D16/full D09, production integration, aftercare/persistence หรือ UI.
+
+
+### R52-01 — Exact request schema correction
+
+แก้ตาม approved M4-03 §4 โดยไม่แก้ Design Contract: SEAL exact5 และ AUTHORIZE_ABORT exact6; caller ห้ามส่ง `round_id` หรือ `kind`. OPEN ยังเป็น exact6 เพื่อ explicit admission. ระบบใช้ current owned round/queue/issuer สร้าง event และ Abort token; close exact11/witness exact12 คงเดิม. ประเด็นการเรียนรู้: helper ที่ใช้ schema ผิดเหมือน implementation ทำให้ test ผ่านได้ จึงเพิ่ม positive/negative public API proof ที่อิง contract โดยตรง.
+
+C98–115 เพิ่ม 18 cases: extra fields, missing/wrong-type ทุก field, capability/session/generation/queue/revision, duplicate-before-stale precedence, exact5/exact6 success ในสองรอบและ retained identity ข้ามรอบ. C37–49 เดิมรันซ้ำด้วย schema ที่แก้แล้วสำหรับ strict real receipts, NO_REAL_PROGRESS/PLAN_EXHAUSTED, Abort-first/Close-first และ Restart. [R52-01 evidence and failure history](evidence/m4-03c/r52-01.json); [pre-fix evidence archive](evidence/m4-03c/pre-r52-evidence.zip). รอ independent follow-up ใน Draft PR #52 เดิม; ไม่มี merge/auto-merge/งานถัดไป.

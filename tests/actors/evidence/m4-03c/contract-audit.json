@@ -1,0 +1,148 @@
+{
+  "actual": "PASS within stated C scope; self-audit, independent review PENDING",
+  "source_commit": "d583b4b6fdd3226178e4f5b4e916c874a82d83c4",
+  "domains": [
+    {
+      "domain": "Actor Lifecycle",
+      "schema_authority_transition": "strict original factories; owned ATTACK/RESCUE/RETREAT; HP0 DOWN/new episode, HP1/retire/use0, B0 DEAD",
+      "cases": "C25-28/C34-40",
+      "publication": "one expected revision/root swap; strict protocol identity/phase/resource gates; rejections whole-root N-all; duplicate handling evidenced in referenced cases"
+    },
+    {
+      "domain": "Action Lifecycle",
+      "schema_authority_transition": "current slot/capability; exact15/16 token; LOCKED->APPLIED/SKIPPED->COMPLETED or CANCELLED; exact owned duplicates",
+      "cases": "C25-28/C36/C46-49/C65-73",
+      "publication": "one expected revision/root swap; strict protocol identity/phase/resource gates; rejections whole-root N-all; duplicate handling evidenced in referenced cases"
+    },
+    {
+      "domain": "Queue / Cursor",
+      "schema_authority_transition": "prepared identity not admitted; one unavailable/cancel/completion disposition; no reinsert; history; terminal stops are not receipts",
+      "cases": "C01-07/C34-37/C42-43",
+      "publication": "one expected revision/root swap; strict protocol identity/phase/resource gates; rejections whole-root N-all; duplicate handling evidenced in referenced cases"
+    },
+    {
+      "domain": "Round Lifecycle",
+      "schema_authority_transition": "OPEN exact6 / SEAL exact5 / AUTHORIZE_ABORT exact6; finite admission OPEN->SEALED->CLOSED, preissued Abort->ABORTED; no unseal; events exact11 and witness12",
+      "cases": "C34-45/C74-82",
+      "publication": "one expected revision/root swap; strict protocol identity/phase/resource gates; rejections whole-root N-all; duplicate handling evidenced in referenced cases"
+    },
+    {
+      "domain": "Encounter Terminal",
+      "schema_authority_transition": "post-effect/post-close consistency classification; initial boundary; atomic freeze with causal lane; no second freeze",
+      "cases": "C08-16/C25-33/C97",
+      "publication": "one expected revision/root swap; strict protocol identity/phase/resource gates; rejections whole-root N-all; duplicate handling evidenced in referenced cases"
+    },
+    {
+      "domain": "Summary Lifecycle",
+      "schema_authority_transition": "ABSENT->FROZEN with one outcome/generation/revision; exact11/7/4 schema; immutable reads; valid reset only",
+      "cases": "C25-34/C46-48",
+      "publication": "one expected revision/root swap; strict protocol identity/phase/resource gates; rejections whole-root N-all; duplicate handling evidenced in referenced cases"
+    }
+  ],
+  "cross_domain_checks": [
+    {
+      "check": "six classifier branches",
+      "evidence": "C08-16",
+      "actual": "PASS in stated scope"
+    },
+    {
+      "check": "outcome + summary one root",
+      "evidence": "C25-32",
+      "actual": "PASS in stated scope"
+    },
+    {
+      "check": "freeze revision stable after complete",
+      "evidence": "C25-28",
+      "actual": "PASS in stated scope"
+    },
+    {
+      "check": "terminal impact no natural close/tick",
+      "evidence": "C25-28",
+      "actual": "PASS in stated scope"
+    },
+    {
+      "check": "only real completed work permits seal",
+      "evidence": "C37/C42",
+      "actual": "PASS in stated scope"
+    },
+    {
+      "check": "no fake action/receipt/Player command",
+      "evidence": "C34-43/C49",
+      "actual": "PASS in stated scope"
+    },
+    {
+      "check": "authenticated retained dispositions",
+      "evidence": "C34-38 + full replay",
+      "actual": "PASS in stated scope"
+    },
+    {
+      "check": "Player DOWN queue order",
+      "evidence": "C34-35",
+      "actual": "PASS in stated scope"
+    },
+    {
+      "check": "RESCUE no old-slot reinsertion",
+      "evidence": "C34",
+      "actual": "PASS in stated scope"
+    },
+    {
+      "check": "last-active C without breaking B R51",
+      "evidence": "C26-28/C33 + original B150",
+      "actual": "PASS in stated scope"
+    },
+    {
+      "check": "one close event one batch",
+      "evidence": "C37-39/C74-82",
+      "actual": "PASS in stated scope"
+    },
+    {
+      "check": "no repeated tick/death",
+      "evidence": "C37-38",
+      "actual": "PASS in stated scope"
+    },
+    {
+      "check": "SEALED new-work denial",
+      "evidence": "C37/C44",
+      "actual": "PASS in stated scope"
+    },
+    {
+      "check": "Abort/Close serial ordering",
+      "evidence": "C44-45",
+      "actual": "PASS in stated scope"
+    },
+    {
+      "check": "R49 actual no-progress/exhaustion N-all",
+      "evidence": "C42-43",
+      "actual": "PASS in stated scope"
+    },
+    {
+      "check": "SUSPENDED diagnostic only",
+      "evidence": "C02/C42-43",
+      "actual": "PASS in stated scope"
+    },
+    {
+      "check": "global journal revision coherence",
+      "evidence": "every successful operation; C01-07",
+      "actual": "PASS in stated scope"
+    },
+    {
+      "check": "original A/B unchanged",
+      "evidence": "regression-comparison.json / protected-files.json",
+      "actual": "PASS in stated scope"
+    },
+    {
+      "check": "M402 issuer isolation",
+      "evidence": "C74 + original M40255",
+      "actual": "PASS in stated scope"
+    },
+    {
+      "check": "no production/NPC policy integration",
+      "evidence": "protected-files.json; source inspection",
+      "actual": "PASS in stated scope"
+    }
+  ],
+  "unreachable_and_deferred": "coverage.json; no natural-clock terminal or simultaneous damage gameplay claim",
+  "architecture_filename_adaptation": "m403_terminal_rules.gd is pure coupled C transition/clock/fixture/replay module; not a live round-clock authority",
+  "restart_phase": "SEALED must preissued Abort before reset; malformed reset prevalidated/N-all",
+  "independent_review": "PENDING; self-audit cannot replace independent code/evidence acceptance"
+}

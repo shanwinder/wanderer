@@ -1,0 +1,205 @@
+{
+  "initial_audit": {
+    "actual": "FAIL",
+    "errors": [
+      "M403C-33 missing observed steps",
+      "broken link tests/actors/README.md -> evidence/m4-03c/review-checks.json"
+    ],
+    "tested_source": "b110e605ab25690ee18a27c7fb3570c3c74952c0",
+    "changed_file_scope": [
+      "README.md",
+      "docs/README.md",
+      "scripts/m4/m403_outcome_classifier.gd",
+      "scripts/m4/m403_outcome_classifier.gd.uid",
+      "scripts/m4/m403_summary.gd",
+      "scripts/m4/m403_summary.gd.uid",
+      "scripts/m4/m403_terminal_encounter.gd",
+      "scripts/m4/m403_terminal_encounter.gd.uid",
+      "scripts/m4/m403_terminal_rules.gd",
+      "scripts/m4/m403_terminal_rules.gd.uid",
+      "tests/actors/README.md",
+      "tests/actors/evidence/m4-03c/abort-restart.json",
+      "tests/actors/evidence/m4-03c/atomic-freeze.json",
+      "tests/actors/evidence/m4-03c/canonical-logs.zip",
+      "tests/actors/evidence/m4-03c/canonical-results.json",
+      "tests/actors/evidence/m4-03c/case-index.json",
+      "tests/actors/evidence/m4-03c/compatibility-gate.json",
+      "tests/actors/evidence/m4-03c/contract-audit.json",
+      "tests/actors/evidence/m4-03c/coverage.json",
+      "tests/actors/evidence/m4-03c/development-history.json",
+      "tests/actors/evidence/m4-03c/development-logs.zip",
+      "tests/actors/evidence/m4-03c/diagnostic-unreachable.json",
+      "tests/actors/evidence/m4-03c/final-results.json",
+      "tests/actors/evidence/m4-03c/logs.zip",
+      "tests/actors/evidence/m4-03c/m4-03c-scenarios.zip",
+      "tests/actors/evidence/m4-03c/protected-files.json",
+      "tests/actors/evidence/m4-03c/queue-continuation.json",
+      "tests/actors/evidence/m4-03c/r49-two-boundaries.json",
+      "tests/actors/evidence/m4-03c/reference-provenance.json",
+      "tests/actors/evidence/m4-03c/regression-comparison.json",
+      "tests/actors/evidence/m4-03c/run-record.json",
+      "tests/actors/evidence/m4-03c/seal-close-clock.json",
+      "tests/actors/evidence/m4-03c/source-comparison.json",
+      "tests/actors/evidence/m4-03c/source-sha256.json",
+      "tests/actors/evidence/m4-03c/summary-integrity.json",
+      "tests/actors/evidence/m4-03c/terminal-precedence.json",
+      "tests/actors/evidence/m4-03c/trace-comparison.json",
+      "tests/actors/m4_03_outcome_summary_proof.gd",
+      "tests/actors/m4_03_outcome_summary_proof.gd.uid",
+      "tests/combat/README.md",
+      "tests/combat/verify.py"
+    ],
+    "tested_source_hashes_verified": 131,
+    "protected_existing_blobs": 351,
+    "Markdown_files": 16,
+    "local_links": 479,
+    "fragments": 102,
+    "optional_report_adversarial_audit": [
+      {
+        "case": "bool independent count",
+        "actual": "PASS"
+      },
+      {
+        "case": "fraction assertion count",
+        "actual": "PASS"
+      },
+      {
+        "case": "missing case",
+        "actual": "PASS"
+      },
+      {
+        "case": "duplicate ID",
+        "actual": "PASS"
+      },
+      {
+        "case": "case FAIL",
+        "actual": "PASS"
+      },
+      {
+        "case": "case SKIP",
+        "actual": "PASS"
+      },
+      {
+        "case": "missing assertion",
+        "actual": "PASS"
+      },
+      {
+        "case": "false Boolean",
+        "actual": "PASS"
+      },
+      {
+        "case": "integer masquerades Boolean",
+        "actual": "PASS"
+      },
+      {
+        "case": "zero case count",
+        "actual": "PASS"
+      },
+      {
+        "case": "extra root field",
+        "actual": "PASS"
+      },
+      {
+        "case": "nonzero failures",
+        "actual": "PASS"
+      },
+      {
+        "case": "nonzero perframe",
+        "actual": "PASS"
+      },
+      {
+        "case": "wrong suite",
+        "actual": "PASS"
+      },
+      {
+        "case": "unknown assertion field",
+        "actual": "PASS"
+      },
+      {
+        "case": "duplicate JSON key",
+        "actual": "PASS"
+      },
+      {
+        "case": "NaN",
+        "actual": "PASS"
+      },
+      {
+        "case": "Infinity",
+        "actual": "PASS"
+      },
+      {
+        "case": "malformed JSON",
+        "actual": "PASS"
+      },
+      {
+        "case": "missing stdout",
+        "actual": "PASS"
+      },
+      {
+        "case": "wrong stdout total",
+        "actual": "PASS"
+      },
+      {
+        "case": "duplicate stdout summary",
+        "actual": "PASS"
+      },
+      {
+        "case": "duplicate stdout CASE",
+        "actual": "PASS"
+      },
+      {
+        "case": "false PASS stdout",
+        "actual": "PASS"
+      },
+      {
+        "case": "missing report",
+        "actual": "PASS"
+      }
+    ],
+    "existing_runner_lines_removed": false,
+    "archive_integrity": [
+      {
+        "path": "development-logs.zip",
+        "entries": 361,
+        "actual": "PASS"
+      },
+      {
+        "path": "logs.zip",
+        "entries": 283,
+        "actual": "PASS"
+      },
+      {
+        "path": "canonical-logs.zip",
+        "entries": 264,
+        "actual": "PASS"
+      },
+      {
+        "path": "m4-03c-scenarios.zip",
+        "entries": 1,
+        "actual": "PASS"
+      }
+    ],
+    "case_index_assertions_exact": 5458,
+    "raw_report_preserved_exactly": true,
+    "original_contracts_and_AB_assertions": "unchanged",
+    "independent_review": "PENDING; this is self-audit only",
+    "not_run": [
+      "D08/D16/full D09/production integration",
+      "M402-06 BLOCKED and M402-24 PARTIAL unchanged",
+      "M403-10/14/15 mid-action unavailability DIAGNOSTIC ONLY; no serial legal producer",
+      "clock-caused terminal and final planned Enemy killing last Enemy UNREACHABLE BY DESIGN",
+      "manual GUI/F5/F6/keyboard/visual NOT RUN",
+      "no NPC autonomous policy or concurrent security claim"
+    ]
+  },
+  "resolution": "C33 actual B calls now record full request/expected/actual/before-after; new committed test SHA and fresh full regression. Initial self-referential review-checks link was checked before that output existed; final audit checks the existing report. Original failures retained; no runtime/assertion weakening.",
+  "temporary_tooling_compile_attempt": {
+    "actual": "FAIL then corrected",
+    "exit_code": 1,
+    "errors": [
+      "SyntaxError: f-string unmatched parenthesis in temporary packaging helper after editing command text",
+      "py_compile attempted a default macOS cache write outside writable roots"
+    ],
+    "resolution": "Moved final flag text into a separate variable; validated temporary helper syntax with builtin compile() without cache writes. Packaging and runtime sources/assertions unaffected."
+  }
+}
