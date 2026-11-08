@@ -59,8 +59,10 @@ static func decide(c: Variant) -> Dictionary:
 	if incoming > 0 and (actor.current_hp * 100 <= actor.max_hp * 30 or incoming >= actor.current_hp):
 		selected = choice("DEFEND", c.actor_id)
 		code = "SELF_LOW_HP_THREAT" if actor.current_hp * 100 <= actor.max_hp * 30 else "SELF_LETHAL_THREAT"
-		if not candidates.is_empty():
+		if not candidates.is_empty() or (player.eligible and player.current_hp * 100 <= player.max_hp * 30 and actor.help_uses == 1):
 			refusal = "HELPER_PRIORITY"
+			if player.eligible and player.current_hp * 100 <= player.max_hp * 30 and actor.help_uses == 1:
+				exclusions.append({"action": "HELP", "target_id": c.player_id, "code": "HIGHER_PRIORITY"})
 			for p in candidates: exclusions.append({"action": "RESCUE", "target_id": p.target_id, "code": "HIGHER_PRIORITY"})
 	elif not candidates.is_empty() and candidates[0].urgent:
 		selected = choice("RESCUE", candidates[0].target_id, candidates[0].episode_id)
@@ -73,6 +75,9 @@ static func decide(c: Variant) -> Dictionary:
 	elif player.eligible and player.current_hp * 100 <= player.max_hp * 30 and actor.help_uses == 1:
 		selected = choice("HELP", c.player_id)
 		code = "PLAYER_LOW_HP_HELP"
+		if not candidates.is_empty():
+			refusal = "HELPER_PRIORITY"
+			for p in candidates: exclusions.append({"action": "RESCUE", "target_id": p.target_id, "code": "HIGHER_PRIORITY"})
 	elif not candidates.is_empty():
 		selected = choice("RESCUE", candidates[0].target_id, candidates[0].episode_id)
 		code = "M404_NONURGENT_RESCUE"

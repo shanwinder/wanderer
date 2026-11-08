@@ -210,9 +210,11 @@ func _priority() -> void:
 	party(c, "t").episode.budget = 2
 	expect(c, "RESCUE", "M404_NONURGENT_RESCUE")
 	party(c, "p").current_hp = 30
-	expect(c, "HELP", "PLAYER_LOW_HP_HELP")
+	check(expect(c, "HELP", "PLAYER_LOW_HP_HELP").refusal_type == "HELPER_PRIORITY", "HELP displaces legal nonurgent rescue with helper priority")
 	c.declared_hits[0].target_id = "n"
 	expect(c, "DEFEND", "SELF_LOW_HP_THREAT")
+	party(c, "n").rescue_uses = 0
+	check(expect(c, "DEFEND", "SELF_LOW_HP_THREAT").refusal_type == "HELPER_PRIORITY", "Safety displaces legal HELP even when rescue unavailable")
 	end()
 
 func _schema() -> void:
