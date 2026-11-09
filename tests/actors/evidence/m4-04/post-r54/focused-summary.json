@@ -1,0 +1,35 @@
+{
+  "independent_cases": 128,
+  "assertion_checks": 458,
+  "failures": 0,
+  "per_frame_checks": 0,
+  "deferred": [
+    "O4 conscious consent/recipient refusal",
+    "O6 real DEFEND/HELP bridge BLOCKED DEPENDENCY",
+    "O7 mid-action changed-state SKIP DIAGNOSTIC ONLY",
+    "production D09 Pending/R1 tested in unchanged Guidance suite, not M403 executor",
+    "manual GUI/F5/F6/visual NOT RUN"
+  ],
+  "source_sha256": {
+    "scripts/m4/m404_autonomous_decision_policy.gd": "095078c4571d28fc37021c76048e9ff2be4d3facb1b3acd6b3ab288fcf9dcf4c",
+    "scripts/m4/m404_decision_context.gd": "23e1c2ea1e06fbe48183578289fb5c44f014b5400db689b670be1d0cc325baf2",
+    "scripts/m4/m404_decision_facade.gd": "b88d9e59b80b7dbff44f4754bcf97c5898c0ec5473c4d22a3f14872eb44ccb26",
+    "scripts/m4/m404_episode_order_projection.gd": "d7d86e93a370cd6bfe0d80798baf38aca9875bdabc50edbc4c42a9edcdeeb025",
+    "tests/actors/m4_04_autonomous_decision_proof.gd": "4ba0b81d12f28783508cade790c4abcbac699ee44aa7fe2ec4b2f1af46cd73c4"
+  },
+  "classifications": {
+    "EXECUTABLE PURE POLICY": 121,
+    "EXECUTABLE OWNED TRANSACTION": 5,
+    "DIAGNOSTIC-ONLY": 1,
+    "BLOCKED DEPENDENCY": 1
+  },
+  "unique_case_ids": true,
+  "every_assertion_true": true,
+  "real_owned_transaction_cases": {
+    "ATTACK": "M404-124",
+    "RESCUE": "M404-125",
+    "RETREAT": "M404-126"
+  },
+  "locked_impact_complete_owned_receipts": "see finish() assertions and actual M403 reason/receipt checks in cases124–126; no mock receipts",
+  "case_128": "real serial Enemy second-hit SKIPPED, not mid-action external mutation"
+}

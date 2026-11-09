@@ -1,0 +1,219 @@
+{
+  "task": "G55-DOC-01 / existing Draft PR55 / post-PR54 canonical reconciliation",
+  "pr54_merge_sha": "6cd7b842c07e308203f61bbaaff6339233567c68",
+  "new_canonical_sha": "6cd7b842c07e308203f61bbaaff6339233567c68",
+  "old_pr55_head": "af3c4161a0d5e72bafec46ae07561be5ec1fdc7c",
+  "original_tested_source_sha": "6187a4ff6dea0a5a983c21171e92db53eff6cd63",
+  "new_pr55_head_at_fresh_run": "abb0727a892127d4b43f880af5890d68859d7f86",
+  "new_tested_source_sha": "abb0727a892127d4b43f880af5890d68859d7f86",
+  "delivery_head_resolution": "Read final live PR55 head_sha / PR body delivery HEAD. A commit cannot contain its own SHA; this evidence names the exact rebased tested ancestor. Only docs/evidence commits follow; final delivery is checked against these source manifests before push.",
+  "preflight": {
+    "initial_branch": "visual-combat-test-1",
+    "initial_local_HEAD": "6cd7b842c07e308203f61bbaaff6339233567c68",
+    "initial_fetched_canonical": "6cd7b842c07e308203f61bbaaff6339233567c68",
+    "live_canonical": "6cd7b842c07e308203f61bbaaff6339233567c68",
+    "local_feature_head": "af3c4161a0d5e72bafec46ae07561be5ec1fdc7c",
+    "fetched_feature_head": "af3c4161a0d5e72bafec46ae07561be5ec1fdc7c",
+    "live_feature_head": "af3c4161a0d5e72bafec46ae07561be5ec1fdc7c",
+    "old_merge_base": "0c5eef193da6265d1e7f502123711ba4753625ce",
+    "new_merge_base": "6cd7b842c07e308203f61bbaaff6339233567c68",
+    "initial_worktree_clean": true,
+    "pr54": "MERGED, exact merge SHA confirmed via GitHub",
+    "pr55": "OPEN / DRAFT / UNMERGED, expected branch and original reviewed HEAD confirmed",
+    "pr2_pr17": "OPEN/DRAFT/UNMERGED, unrelated and untouched"
+  },
+  "rebase": {
+    "command": "git rebase --onto origin/visual-combat-test-1 0c5eef193da6265d1e7f502123711ba4753625ce codex/m4-04-isolated-autonomous-decision-proof",
+    "original_feature_commits": 5,
+    "conflicts": [
+      "README.md",
+      "docs/README.md",
+      "docs/M4_04_Autonomous_Decision_Contract.md"
+    ],
+    "resolution": "Manually combined canonical approved authority with candidate status/evidence; no blanket ours/theirs. Four runtime modules, focused proof, UIDs and runner byte-identical to original tested/delivery sources. Architecture unchanged from new canonical. No unrelated commits."
+  },
+  "documentation_reconciliation": {
+    "README.md": "approved canonical source + candidate/draft/follow-up status, links and remaining scope",
+    "docs/README.md": "one current authority and approved register link; historical C/design checkpoints attributed; stale current design-only statements corrected",
+    "docs/M4_04_Autonomous_Decision_Contract.md": "full canonical §2.1 unchanged; approved §§3–5 retained; current candidate128/458 and limits; original23 design rows preserved and map01–20 plus new21–23 mapping of executed slices/gaps; O4/O6/O7 retained",
+    "tests/actors/README.md": "original delivery paragraph explicitly historical; new post-rebase record link",
+    "tests/combat/README.md": "separate post-rebase reproduction/evidence link",
+    "architecture": "byte-identical to canonical; excluded from PR55 diff"
+  },
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "godot": "/Applications/Godot.app/Contents/MacOS/Godot",
+  "fresh_canonical": {
+    "source": "6cd7b842c07e308203f61bbaaff6339233567c68",
+    "clean_worktree": "/tmp/wanderer-g55-canonical-source",
+    "command": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-g55-canonical-run --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --guidance-decision-proof --guidance-main-proof --m4-data-proof --m4-atomic-clock-proof --m4-queue-foundation-proof --m4-retreat-transaction-proof --m4-outcome-summary-proof --cutover-baseline /tmp/wanderer-m3a04-reference-20261105-2",
+    "stages": 88,
+    "PASS": 88,
+    "process_exit": 0,
+    "unexpected_errors": 0,
+    "timeouts": 0,
+    "expected_negative_errors": 5,
+    "results": "post-r54/canonical-results.json"
+  },
+  "fresh_candidate": {
+    "source": "abb0727a892127d4b43f880af5890d68859d7f86",
+    "command": "python3 tests/combat/verify.py --godot /Applications/Godot.app/Contents/MacOS/Godot --output /tmp/wanderer-g55-candidate-run --npc-proof --actor-proof --ownership-proof --party-foundation-proof --party-turn-proof --party-playable-proof --presentation-proof --autonomous-main-proof --main-cutover-proof --guidance-data-proof --guidance-decision-proof --guidance-main-proof --m4-data-proof --m4-atomic-clock-proof --m4-queue-foundation-proof --m4-retreat-transaction-proof --m4-outcome-summary-proof --m4-autonomous-decision-proof --cutover-baseline /tmp/wanderer-m3a04-reference-20261105-2",
+    "stages": 94,
+    "PASS": 94,
+    "process_exit": 0,
+    "unexpected_errors": 0,
+    "timeouts": 0,
+    "expected_negative_errors": 5,
+    "results": "post-r54/candidate-results.json",
+    "snapshot_manifest": "141 source entries match tested Git commit and snapshot actual bytes; documentation edits after source snapshot do not change runtime/test/runner"
+  },
+  "expected": "88 canonical /94 candidate PASS;128 cases458 assertions all true;36 malformed variants rejected;23 inherited suite counts and Legacy identical; source/approval boundaries unchanged",
+  "actual": "PASS in the bounded isolated proof scope; no manual/production acceptance claimed",
+  "focused": {
+    "independent_cases": 128,
+    "assertion_checks": 458,
+    "failures": 0,
+    "per_frame_checks": 0,
+    "deferred": [
+      "O4 conscious consent/recipient refusal",
+      "O6 real DEFEND/HELP bridge BLOCKED DEPENDENCY",
+      "O7 mid-action changed-state SKIP DIAGNOSTIC ONLY",
+      "production D09 Pending/R1 tested in unchanged Guidance suite, not M403 executor",
+      "manual GUI/F5/F6/visual NOT RUN"
+    ],
+    "source_sha256": {
+      "scripts/m4/m404_autonomous_decision_policy.gd": "095078c4571d28fc37021c76048e9ff2be4d3facb1b3acd6b3ab288fcf9dcf4c",
+      "scripts/m4/m404_decision_context.gd": "23e1c2ea1e06fbe48183578289fb5c44f014b5400db689b670be1d0cc325baf2",
+      "scripts/m4/m404_decision_facade.gd": "b88d9e59b80b7dbff44f4754bcf97c5898c0ec5473c4d22a3f14872eb44ccb26",
+      "scripts/m4/m404_episode_order_projection.gd": "d7d86e93a370cd6bfe0d80798baf38aca9875bdabc50edbc4c42a9edcdeeb025",
+      "tests/actors/m4_04_autonomous_decision_proof.gd": "4ba0b81d12f28783508cade790c4abcbac699ee44aa7fe2ec4b2f1af46cd73c4"
+    },
+    "classifications": {
+      "EXECUTABLE PURE POLICY": 121,
+      "EXECUTABLE OWNED TRANSACTION": 5,
+      "DIAGNOSTIC-ONLY": 1,
+      "BLOCKED DEPENDENCY": 1
+    },
+    "unique_case_ids": true,
+    "every_assertion_true": true,
+    "real_owned_transaction_cases": {
+      "ATTACK": "M404-124",
+      "RESCUE": "M404-125",
+      "RETREAT": "M404-126"
+    },
+    "locked_impact_complete_owned_receipts": "see finish() assertions and actual M403 reason/receipt checks in cases124–126; no mock receipts",
+    "case_128": "real serial Enemy second-hit SKIPPED, not mid-action external mutation"
+  },
+  "original_m4_regression": {
+    "M401": [
+      78,
+      525
+    ],
+    "M402": [
+      55,
+      1188
+    ],
+    "M403A": [
+      94,
+      1165
+    ],
+    "M403B": [
+      150,
+      3339
+    ],
+    "M403C": [
+      115,
+      6054
+    ],
+    "interpretation": "cases/assertions, original suites unchanged and rerun in both full suites"
+  },
+  "inherited_suite_counts": "23/23 equal; post-r54/regression-comparison.json",
+  "legacy": {
+    "fresh_canonical_vs_candidate": true,
+    "fresh_vs_retained_pre_cutover_reference": true,
+    "cases": 6,
+    "frames": 5892,
+    "historical_reference_engine_execution": "inherited, not rerun",
+    "all_three_trace_sha256": "97ec6846ab588fe164468effc2e1f1af7271b4713082b374027a1a72bf005414"
+  },
+  "source_integrity": {
+    "runtime_test_runner_UIDs": "11/11 hashes equal across original tested/original delivery/new tested/current",
+    "protected_original_sources": "130/130 unchanged versus original recorded hash and new canonical",
+    "source_manifests": {
+      "canonical": 131,
+      "candidate": 141
+    },
+    "original_evidence": "36/36 original top-level evidence artifacts byte-identical to old delivery; original evidence-sha256 retained unchanged",
+    "reports_logs": "logs.zip plus archive-entries.json hashes actual archived bytes",
+    "original_evidence_files_unchanged": 36
+  },
+  "validator_audit": {
+    "command": "python3 /tmp/g55_validator_audit.py",
+    "baseline_valid_report": true,
+    "rejected": 36,
+    "report_stdout_variants": 32,
+    "process_variants": 4,
+    "actual_runner_closure": "AST-extracted unchanged run closure; deterministic nonzero/unexpected engine error/script error/timeout injections. Printed FAIL probe lines are expected rejections, not Godot regression failures.",
+    "details": "post-r54/validator-audit.json"
+  },
+  "runtime_review": {
+    "O1": "valid rescue B1 and entry_round<current_round; B2 nonurgent; Safety first",
+    "O2": "budget / owner validated global creation history / stable party order; no Player favoritism/caller order/opaque ID decoding",
+    "O3": "ALIVE/PRESENT NPC current legal slot, active Enemy/nonterminal/higher priorities false, HP<=30%; RETREAT/self reason M404_SELF_PRESERVATION_RETREAT",
+    "O5": "separate exact12/exact8 recursive strict schemas/current owner equality; pure candidate never grants token/receipt; owned C transaction only",
+    "D16": "helper priority/inability/request rejection/actual post-lock SKIPPED distinct; no O4 consent/new Compassion behavior",
+    "protected_v1_R1": "unchanged; full inherited Guidance suites rerun"
+  },
+  "remaining": {
+    "M404": "08/10/11/16/18/20 PARTIAL;15 DIAGNOSTIC-ONLY;17 BLOCKED DEPENDENCY;new design group22 mapped only to available slices and explicitly PARTIAL",
+    "M402": "06 BLOCKED /24 PARTIAL unchanged",
+    "M403": "10/14/15 DIAGNOSTIC;13/42 PARTIAL unchanged",
+    "O4": "conscious consent deferred",
+    "O6": "real HELP/DEFEND bridge blocked / pure policy only; nullable HELP authority unknown",
+    "O7": "legal mid-action external producers diagnostic/deferred; serial second Enemy hit does not close this gap",
+    "production": "no full D09/Pending/Player Command/Main/Legacy integration",
+    "manual_GUI_F5_F6_keyboard_visual": "NOT RUN"
+  },
+  "failed_attempts_and_corrections": [
+    "Initial sandbox git fetch could not write FETCH_HEAD; ls-remote DNS unavailable. Retried with normal-access escalation; fetched/live refs verified before rebase.",
+    "First GitHub list reviews call used repository_full_name instead of repo_full_name; connector schema rejected, corrected and independent review5818357540 read.",
+    "First reconciliation helper searched a nonexistent current-subdecision heading; no code affected. Corrected to canonical Owner subdecisions heading and reran deterministic manual reconciliation; approved section/architecture compared.",
+    "Initial local link audit ran before post-r54-rebase.json existed and correctly rejected seven links to the not-yet-generated artifact. Generated separate record, reran link audit. No runtime failure.",
+    "Additional design mapping draft was checked against actual case-index and corrected before delivery; no test source/assertion changed.",
+    "Original historical development failures remain in unchanged development-history.json/development.zip and are not post-rebase attempts.",
+    "Rebase correctly stopped for conflicts in the three overlapping Markdown files; manually reconciled and continued. Fresh canonical/candidate Godot runs had no failed stages."
+  ],
+  "stop": "Draft PR55 — Updated onto PR54 Canonical / Awaiting Independent Follow-up Code & Evidence Review. DO NOT SQUASH MERGE / AUTO-MERGE / DELETE BRANCH / CREATE REPLACEMENT PR / START M4-05 / MODIFY PRODUCTION MAIN LEGACY GUIDANCE.",
+  "new_pr55_head": {
+    "rebased_head_at_fresh_test": "abb0727a892127d4b43f880af5890d68859d7f86",
+    "final_delivery_head": "Resolved by live PR55 head_sha and PR body; docs/evidence-only descendant of exact tested source"
+  },
+  "documentation_audit": {
+    "files": [
+      "README.md",
+      "docs/README.md",
+      "docs/M4_04_Autonomous_Decision_Contract.md",
+      "tests/actors/README.md",
+      "tests/combat/README.md"
+    ],
+    "local_links": 409,
+    "fragments": 91,
+    "external_references": 57,
+    "external_HTTP": "not exhaustively checked; relevant PR states read through GitHub connector",
+    "errors": [],
+    "approved_section_2_1_byte_identical": true,
+    "approved_section_2_1_sha256": "c37ed05cb2fdb9563ffe11de8a195ddd5e7b39ddb6fe2e890be34116bf242fa1",
+    "architecture_byte_identical": true,
+    "architecture_sha256": "6aa94215cf9cb25a0d3501cb954904b4b15e481202517ba7d5349ac679640fb8",
+    "conflict_markers": 0,
+    "current_authority_sections": "one current implementation status and one canonical approved register; historical checkpoints labelled",
+    "additional_21_23_mapping": "executed slices only, M404-22 explicitly PARTIAL",
+    "runtime_review": "O1/O2/O3/O5 inspected; no runtime/test changes; no new O4/trait/Compassion/production behavior"
+  },
+  "git_checks": {
+    "diff_check": "PASS",
+    "merge_base": "6cd7b842c07e308203f61bbaaff6339233567c68",
+    "architecture_PR_diff": "empty",
+    "source_range_diff": "first three implementation/fix commits patch-identical; only documentation/evidence replay changes; original five commits retained as rebased equivalents",
+    "allowlist": "five Markdown docs plus original M404 modules/UIDs/focused proof/UID/additive runner and tests/actors/evidence/m4-04/** only"
+  }
+}

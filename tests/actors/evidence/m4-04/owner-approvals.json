@@ -1,0 +1,24 @@
+{
+  "source": "Explicit owner approval in this chat and attached M4-04 Isolated Autonomous Decision Extension Implementation; 8 November 2026 Asia/Bangkok",
+  "required_canonical": "0c5eef193da6265d1e7f502123711ba4753625ce",
+  "options": [
+    "O1-A",
+    "O2-A",
+    "O3-A",
+    "O5-A"
+  ],
+  "O1": "valid rescue AND B1 AND entry_round<current_round",
+  "O2": "budget, owner replay-derived generation ordinal, stable party order; no opaque ID decoding",
+  "O3": "legal ALIVE/PRESENT NPC slot, nonterminal, active Enemy, all higher priorities false, HP*100<=maxHP*30; RETREAT self / M404_SELF_PRESERVATION_RETREAT",
+  "O5": "exact12/exact8 isolated owner-bound contract; no action grant from candidate",
+  "deferred": [
+    "O4",
+    "O6",
+    "O7"
+  ],
+  "no_authorization": [
+    "production integration",
+    "M4-05",
+    "merge/auto-merge/branch deletion"
+  ]
+}

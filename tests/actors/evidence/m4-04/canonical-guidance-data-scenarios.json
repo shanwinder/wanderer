@@ -1,0 +1,749 @@
+{
+	"cases": {
+		"D01": {
+			"actual": "PASS",
+			"checks": 5,
+			"evidence": {
+				"active": {},
+				"encounter_id": -9223372007528200753,
+				"generation": 2,
+				"guidance_revision": 0,
+				"pending": {
+					"encounter_id": -9223372007528200753,
+					"generation": 2,
+					"guidance_revision": 0,
+					"guidance_type": "NONE",
+					"issuer_player_id": "player",
+					"preferred_target_id": "",
+					"round_id": 1
+				},
+				"profiles": {
+					"npc_01": {
+						"actor_id": "npc_01",
+						"compassion": "ORDINARY",
+						"courage": "BOLD",
+						"discipline": "PLAN_ORIENTED",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "ESTABLISHED"
+					},
+					"npc_02": {
+						"actor_id": "npc_02",
+						"compassion": "HIGH",
+						"courage": "CAUTIOUS",
+						"discipline": "FLEXIBLE",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "ESTABLISHED"
+					},
+					"npc_03": {
+						"actor_id": "npc_03",
+						"compassion": "ORDINARY",
+						"courage": "BOLD",
+						"discipline": "FLEXIBLE",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "CAUTIOUS"
+					}
+				},
+				"round_id": 1,
+				"schema_version": 1
+			},
+			"expected": "Initial NONE, no frozen Guidance, revision0; existing schemas unchanged",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D02": {
+			"actual": "PASS",
+			"checks": 3,
+			"evidence": {
+				"active": {},
+				"encounter_id": -9223372007528200753,
+				"generation": 2,
+				"guidance_revision": 1,
+				"pending": {
+					"encounter_id": -9223372007528200753,
+					"generation": 2,
+					"guidance_revision": 1,
+					"guidance_type": "ATTACK",
+					"issuer_player_id": "player",
+					"preferred_target_id": "",
+					"round_id": 1
+				},
+				"profiles": {
+					"npc_01": {
+						"actor_id": "npc_01",
+						"compassion": "ORDINARY",
+						"courage": "BOLD",
+						"discipline": "PLAN_ORIENTED",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "ESTABLISHED"
+					},
+					"npc_02": {
+						"actor_id": "npc_02",
+						"compassion": "HIGH",
+						"courage": "CAUTIOUS",
+						"discipline": "FLEXIBLE",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "ESTABLISHED"
+					},
+					"npc_03": {
+						"actor_id": "npc_03",
+						"compassion": "ORDINARY",
+						"courage": "BOLD",
+						"discipline": "FLEXIBLE",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "CAUTIOUS"
+					}
+				},
+				"round_id": 1,
+				"schema_version": 1
+			},
+			"expected": "Accept ATTACK as data only; request detached; revision increments",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D03": {
+			"actual": "PASS",
+			"checks": 3,
+			"evidence": {
+				"active": {},
+				"encounter_id": -9223372007528200753,
+				"generation": 2,
+				"guidance_revision": 2,
+				"pending": {
+					"encounter_id": -9223372007528200753,
+					"generation": 2,
+					"guidance_revision": 2,
+					"guidance_type": "DEFEND",
+					"issuer_player_id": "player",
+					"preferred_target_id": "",
+					"round_id": 1
+				},
+				"profiles": {
+					"npc_01": {
+						"actor_id": "npc_01",
+						"compassion": "ORDINARY",
+						"courage": "BOLD",
+						"discipline": "PLAN_ORIENTED",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "ESTABLISHED"
+					},
+					"npc_02": {
+						"actor_id": "npc_02",
+						"compassion": "HIGH",
+						"courage": "CAUTIOUS",
+						"discipline": "FLEXIBLE",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "ESTABLISHED"
+					},
+					"npc_03": {
+						"actor_id": "npc_03",
+						"compassion": "ORDINARY",
+						"courage": "BOLD",
+						"discipline": "FLEXIBLE",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "CAUTIOUS"
+					}
+				},
+				"round_id": 1,
+				"schema_version": 1
+			},
+			"expected": "Accept DEFEND as data only; request detached; revision increments",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D04": {
+			"actual": "PASS",
+			"checks": 3,
+			"evidence": {
+				"active": {},
+				"encounter_id": -9223372007528200753,
+				"generation": 2,
+				"guidance_revision": 3,
+				"pending": {
+					"encounter_id": -9223372007528200753,
+					"generation": 2,
+					"guidance_revision": 3,
+					"guidance_type": "HELP",
+					"issuer_player_id": "player",
+					"preferred_target_id": "",
+					"round_id": 1
+				},
+				"profiles": {
+					"npc_01": {
+						"actor_id": "npc_01",
+						"compassion": "ORDINARY",
+						"courage": "BOLD",
+						"discipline": "PLAN_ORIENTED",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "ESTABLISHED"
+					},
+					"npc_02": {
+						"actor_id": "npc_02",
+						"compassion": "HIGH",
+						"courage": "CAUTIOUS",
+						"discipline": "FLEXIBLE",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "ESTABLISHED"
+					},
+					"npc_03": {
+						"actor_id": "npc_03",
+						"compassion": "ORDINARY",
+						"courage": "BOLD",
+						"discipline": "FLEXIBLE",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "CAUTIOUS"
+					}
+				},
+				"round_id": 1,
+				"schema_version": 1
+			},
+			"expected": "Accept HELP as data only; request detached; revision increments",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D05": {
+			"actual": "PASS",
+			"checks": 6,
+			"evidence": {
+				"active": {},
+				"encounter_id": -9223372007528200753,
+				"generation": 2,
+				"guidance_revision": 5,
+				"pending": {
+					"encounter_id": -9223372007528200753,
+					"generation": 2,
+					"guidance_revision": 5,
+					"guidance_type": "FOCUS_TARGET",
+					"issuer_player_id": "player",
+					"preferred_target_id": "enemy_b",
+					"round_id": 1
+				},
+				"profiles": {
+					"npc_01": {
+						"actor_id": "npc_01",
+						"compassion": "ORDINARY",
+						"courage": "BOLD",
+						"discipline": "PLAN_ORIENTED",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "ESTABLISHED"
+					},
+					"npc_02": {
+						"actor_id": "npc_02",
+						"compassion": "HIGH",
+						"courage": "CAUTIOUS",
+						"discipline": "FLEXIBLE",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "ESTABLISHED"
+					},
+					"npc_03": {
+						"actor_id": "npc_03",
+						"compassion": "ORDINARY",
+						"courage": "BOLD",
+						"discipline": "FLEXIBLE",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "CAUTIOUS"
+					}
+				},
+				"round_id": 1,
+				"schema_version": 1
+			},
+			"expected": "Accept FOCUS_TARGET as data only; request detached; revision increments",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D06": {
+			"actual": "PASS",
+			"checks": 19,
+			"evidence": {},
+			"expected": "Unknown/wrong-type enums rejected without writes",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D07": {
+			"actual": "PASS",
+			"checks": 16,
+			"evidence": {},
+			"expected": "Only integer schema_version1 accepted",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D08": {
+			"actual": "PASS",
+			"checks": 116,
+			"evidence": {},
+			"expected": "Exact eight fields, strict types and identity bounds; missing/extra rejected",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D09": {
+			"actual": "PASS",
+			"checks": 33,
+			"evidence": {},
+			"expected": "Issuer must be current Player; only FOCUS has a known enemy preference; foreign encounter rejected",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D10": {
+			"actual": "PASS",
+			"checks": 2,
+			"evidence": {},
+			"expected": "Wrong generation rejected",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D11": {
+			"actual": "PASS",
+			"checks": 2,
+			"evidence": {},
+			"expected": "Wrong round rejected",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D12": {
+			"actual": "PASS",
+			"checks": 2,
+			"evidence": {},
+			"expected": "Future/unmatched Guidance revision rejected",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D13": {
+			"actual": "PASS",
+			"checks": 6,
+			"evidence": {
+				"active": {},
+				"encounter_id": -9223372006236355121,
+				"generation": 2,
+				"guidance_revision": 2,
+				"pending": {
+					"encounter_id": -9223372006236355121,
+					"generation": 2,
+					"guidance_revision": 2,
+					"guidance_type": "NONE",
+					"issuer_player_id": "player",
+					"preferred_target_id": "",
+					"round_id": 1
+				},
+				"profiles": {
+					"npc_01": {
+						"actor_id": "npc_01",
+						"compassion": "ORDINARY",
+						"courage": "BOLD",
+						"discipline": "PLAN_ORIENTED",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "ESTABLISHED"
+					},
+					"npc_02": {
+						"actor_id": "npc_02",
+						"compassion": "HIGH",
+						"courage": "CAUTIOUS",
+						"discipline": "FLEXIBLE",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "ESTABLISHED"
+					},
+					"npc_03": {
+						"actor_id": "npc_03",
+						"compassion": "ORDINARY",
+						"courage": "BOLD",
+						"discipline": "FLEXIBLE",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "CAUTIOUS"
+					}
+				},
+				"round_id": 1,
+				"schema_version": 1
+			},
+			"expected": "Exact replay and stale competing edit rejected; fresh NONE accepted",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D14": {
+			"actual": "PASS",
+			"checks": 4,
+			"evidence": {
+				"active": {
+					"encounter_id": -9223372003652663838,
+					"generation": 2,
+					"guidance_revision": 1,
+					"guidance_type": "FOCUS_TARGET",
+					"issuer_player_id": "player",
+					"preferred_target_id": "enemy_b",
+					"round_id": 1
+				},
+				"encounter_id": -9223372003652663838,
+				"generation": 2,
+				"guidance_revision": 1,
+				"pending": {},
+				"profiles": {
+					"npc_01": {
+						"actor_id": "npc_01",
+						"compassion": "ORDINARY",
+						"courage": "BOLD",
+						"discipline": "PLAN_ORIENTED",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "ESTABLISHED"
+					},
+					"npc_02": {
+						"actor_id": "npc_02",
+						"compassion": "HIGH",
+						"courage": "CAUTIOUS",
+						"discipline": "FLEXIBLE",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "ESTABLISHED"
+					},
+					"npc_03": {
+						"actor_id": "npc_03",
+						"compassion": "ORDINARY",
+						"courage": "BOLD",
+						"discipline": "FLEXIBLE",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "CAUTIOUS"
+					}
+				},
+				"round_id": 1,
+				"schema_version": 1
+			},
+			"expected": "Mutating outer/nested pending/active snapshots cannot change owner",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D15": {
+			"actual": "PASS",
+			"checks": 73,
+			"evidence": {
+				"npc_01": {
+					"actor_id": "npc_01",
+					"compassion": "ORDINARY",
+					"courage": "BOLD",
+					"discipline": "PLAN_ORIENTED",
+					"player_id": "player",
+					"schema_version": 1,
+					"trust": "ESTABLISHED"
+				},
+				"npc_02": {
+					"actor_id": "npc_02",
+					"compassion": "HIGH",
+					"courage": "CAUTIOUS",
+					"discipline": "FLEXIBLE",
+					"player_id": "player",
+					"schema_version": 1,
+					"trust": "ESTABLISHED"
+				},
+				"npc_03": {
+					"actor_id": "npc_03",
+					"compassion": "ORDINARY",
+					"courage": "BOLD",
+					"discipline": "FLEXIBLE",
+					"player_id": "player",
+					"schema_version": 1,
+					"trust": "CAUTIOUS"
+				}
+			},
+			"expected": "Profiles use exact versioned fields and four approved trait enums; no self-preservation score",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D16": {
+			"actual": "PASS",
+			"checks": 11,
+			"evidence": {
+				"active": {},
+				"encounter_id": -9223372002360818191,
+				"generation": 3,
+				"guidance_revision": 0,
+				"pending": {
+					"encounter_id": -9223372002360818191,
+					"generation": 3,
+					"guidance_revision": 0,
+					"guidance_type": "NONE",
+					"issuer_player_id": "adventurer",
+					"preferred_target_id": "",
+					"round_id": 1
+				},
+				"profiles": {
+					"npc_01": {
+						"actor_id": "npc_01",
+						"compassion": "ORDINARY",
+						"courage": "BOLD",
+						"discipline": "PLAN_ORIENTED",
+						"player_id": "adventurer",
+						"schema_version": 1,
+						"trust": "ESTABLISHED"
+					},
+					"npc_02": {
+						"actor_id": "npc_02",
+						"compassion": "HIGH",
+						"courage": "CAUTIOUS",
+						"discipline": "FLEXIBLE",
+						"player_id": "adventurer",
+						"schema_version": 1,
+						"trust": "ESTABLISHED"
+					},
+					"npc_03": {
+						"actor_id": "npc_03",
+						"compassion": "ORDINARY",
+						"courage": "BOLD",
+						"discipline": "FLEXIBLE",
+						"player_id": "adventurer",
+						"schema_version": 1,
+						"trust": "CAUTIOUS"
+					}
+				},
+				"round_id": 1,
+				"schema_version": 1
+			},
+			"expected": "Profile isolation, stable-ID reorder/register/remove and current Player binding",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D17": {
+			"actual": "PASS",
+			"checks": 5,
+			"evidence": {
+				"active": {
+					"encounter_id": -9223372000330775071,
+					"generation": 2,
+					"guidance_revision": 1,
+					"guidance_type": "FOCUS_TARGET",
+					"issuer_player_id": "player",
+					"preferred_target_id": "enemy_b",
+					"round_id": 1
+				},
+				"encounter_id": -9223372000330775071,
+				"generation": 2,
+				"guidance_revision": 1,
+				"pending": {},
+				"profiles": {
+					"npc_01": {
+						"actor_id": "npc_01",
+						"compassion": "ORDINARY",
+						"courage": "BOLD",
+						"discipline": "PLAN_ORIENTED",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "ESTABLISHED"
+					},
+					"npc_02": {
+						"actor_id": "npc_02",
+						"compassion": "HIGH",
+						"courage": "CAUTIOUS",
+						"discipline": "FLEXIBLE",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "ESTABLISHED"
+					},
+					"npc_03": {
+						"actor_id": "npc_03",
+						"compassion": "ORDINARY",
+						"courage": "BOLD",
+						"discipline": "FLEXIBLE",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "CAUTIOUS"
+					}
+				},
+				"round_id": 1,
+				"schema_version": 1
+			},
+			"expected": "Atomic freeze only after valid Player command",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D18": {
+			"actual": "PASS",
+			"checks": 12,
+			"evidence": {},
+			"expected": "Rejected Player commands never freeze or lose pending Guidance",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D19": {
+			"actual": "PASS",
+			"checks": 9,
+			"evidence": {},
+			"expected": "Submission rejected before/during/after impact and between queued slots",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D20": {
+			"actual": "PASS",
+			"checks": 40,
+			"evidence": {
+				"active": {},
+				"encounter_id": -9223371999038929433,
+				"generation": 2,
+				"guidance_revision": 1,
+				"pending": {
+					"encounter_id": -9223371999038929433,
+					"generation": 2,
+					"guidance_revision": 1,
+					"guidance_type": "NONE",
+					"issuer_player_id": "player",
+					"preferred_target_id": "",
+					"round_id": 3
+				},
+				"profiles": {
+					"npc_01": {
+						"actor_id": "npc_01",
+						"compassion": "ORDINARY",
+						"courage": "BOLD",
+						"discipline": "PLAN_ORIENTED",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "ESTABLISHED"
+					},
+					"npc_02": {
+						"actor_id": "npc_02",
+						"compassion": "HIGH",
+						"courage": "CAUTIOUS",
+						"discipline": "FLEXIBLE",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "ESTABLISHED"
+					},
+					"npc_03": {
+						"actor_id": "npc_03",
+						"compassion": "ORDINARY",
+						"courage": "BOLD",
+						"discipline": "FLEXIBLE",
+						"player_id": "player",
+						"schema_version": 1,
+						"trust": "CAUTIOUS"
+					}
+				},
+				"round_id": 3,
+				"schema_version": 1
+			},
+			"expected": "Next command-ready round starts NONE; old round requests rejected",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D21": {
+			"actual": "PASS",
+			"checks": 26,
+			"evidence": {},
+			"expected": "Victory/defeat reject Guidance and clear active immediately without blocking completion",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D22": {
+			"actual": "PASS",
+			"checks": 402,
+			"evidence": {
+				"scenarios": 12
+			},
+			"expected": "Restart before/after effect at all six actors rejects delayed old requests/tokens; fresh round works",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D23": {
+			"actual": "PASS",
+			"checks": 17,
+			"evidence": {},
+			"expected": "Failed Restart preserves pending/frozen Guidance, profiles, generation and all combat state",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D24": {
+			"actual": "PASS",
+			"checks": 212,
+			"evidence": {},
+			"expected": "NONE is identical across normal/HELP/self-defense/dead fixtures; Resolver schema and 30% threshold preserved",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D25": {
+			"actual": "PASS",
+			"checks": 65600,
+			"evidence": {
+				"commands": [
+					"ATTACK",
+					"DEFEND"
+				],
+				"enemies": [
+					[
+						15,
+						12
+					],
+					[
+						5,
+						12
+					],
+					[
+						15,
+						5
+					],
+					[
+						0,
+						12
+					],
+					[
+						15,
+						0
+					]
+				],
+				"guidance_types": [
+					"NONE",
+					"ATTACK",
+					"DEFEND",
+					"HELP",
+					"FOCUS_TARGET"
+				],
+				"npc_hp": [
+					0,
+					3,
+					4,
+					10
+				],
+				"player_hp": [
+					1,
+					6,
+					9,
+					10,
+					12,
+					15,
+					16,
+					30
+				],
+				"round_pairs": 1600
+			},
+			"expected": "Every Guidance type preserves complete decisions/effects/queue/terminal across the Cartesian fixture matrix",
+			"failed_assertions": [],
+			"failures": 0
+		},
+		"D26": {
+			"actual": "PASS",
+			"checks": 13,
+			"evidence": {},
+			"expected": "Data submission never changes HP/HELP/guards/queue/token; HP0 known target valid; removed target clears preference",
+			"failed_assertions": [],
+			"failures": 0
+		}
+	},
+	"checks": 66641,
+	"external_gates": {
+		"D27": "gameplay / invalid-actions / presentation-proof",
+		"D28": "all inherited proofs / main-cutover-proof / cutover-release-gates"
+	},
+	"failures": 0
+}

@@ -1,0 +1,110 @@
+[
+  {
+    "source": "/tmp/wanderer-m404-canonical-20261108-2/presentation-traces.json",
+    "archive": "logs.zip",
+    "entry": "canonical/presentation-traces.json",
+    "sha256": "cf1b4874c4538b96af5976e11a0431a7ae5308c09eebdafaacc5a11ece37cba6"
+  },
+  {
+    "source": "/tmp/wanderer-m404-canonical-20261108-2/guidance-main-scenarios.json",
+    "archive": "logs.zip",
+    "entry": "canonical/guidance-main-scenarios.json",
+    "sha256": "159c808bc495c577a972ced1f04a108529e6f6ef2e496a2a734728cc1f016152"
+  },
+  {
+    "source": "/tmp/wanderer-m404-canonical-20261108-2/m4-02-scenarios.json",
+    "archive": "logs.zip",
+    "entry": "canonical/m4-02-scenarios.json",
+    "sha256": "8c98ac0f637c9335cf10f20dc6f29868efe6bbe9f7ca9b3aff0a846172ea32c5"
+  },
+  {
+    "source": "/tmp/wanderer-m404-canonical-20261108-2/m4-03a-scenarios.json",
+    "archive": "logs.zip",
+    "entry": "canonical/m4-03a-scenarios.json",
+    "sha256": "7c97860ee3d56ce6902ce2c3f1e78c40ef8590f3359971ae07f3292bcc044161"
+  },
+  {
+    "source": "/tmp/wanderer-m404-canonical-20261108-2/m4-03c-scenarios.json",
+    "archive": "logs.zip",
+    "entry": "canonical/m4-03c-scenarios.json",
+    "sha256": "128e225773079a7dd6786d1138d9a11a00d62fbd94e036ca522f75caafdd8997"
+  },
+  {
+    "source": "/tmp/wanderer-m404-canonical-20261108-2/m4-03b-scenarios.json",
+    "archive": "logs.zip",
+    "entry": "canonical/m4-03b-scenarios.json",
+    "sha256": "138010d4308df01a2e077408b4b17daf6fbf18b12f8c8564e6de66dcb90d3a91"
+  },
+  {
+    "source": "/tmp/wanderer-m404-canonical-20261108-2/party-playable-scenarios.json",
+    "archive": "logs.zip",
+    "entry": "canonical/party-playable-scenarios.json",
+    "sha256": "3bf1dc72eefb666b1ec2da5ea097979bc802d641fb0869fe619040f1d0f0fac1"
+  },
+  {
+    "source": "/tmp/wanderer-m404-canonical-20261108-2/autonomous-main-scenarios.json",
+    "archive": "logs.zip",
+    "entry": "canonical/autonomous-main-scenarios.json",
+    "sha256": "face18e3eb2e84d911b39e264f476db6e8db579ce7d97c18e665afd4587ccafa"
+  },
+  {
+    "source": "/tmp/wanderer-m404-canonical-20261108-2/main-cutover-scenarios.json",
+    "archive": "logs.zip",
+    "entry": "canonical/main-cutover-scenarios.json",
+    "sha256": "bbf5c3ccf20a71a0083cb9ff4e61df12929525fc39a5d74afcdd0179e768798b"
+  },
+  {
+    "source": "/tmp/wanderer-m404-final-20261108-3/presentation-traces.json",
+    "archive": "logs.zip",
+    "entry": "final/presentation-traces.json",
+    "sha256": "cf1b4874c4538b96af5976e11a0431a7ae5308c09eebdafaacc5a11ece37cba6"
+  },
+  {
+    "source": "/tmp/wanderer-m404-final-20261108-3/guidance-main-scenarios.json",
+    "archive": "logs.zip",
+    "entry": "final/guidance-main-scenarios.json",
+    "sha256": "159c808bc495c577a972ced1f04a108529e6f6ef2e496a2a734728cc1f016152"
+  },
+  {
+    "source": "/tmp/wanderer-m404-final-20261108-3/m4-02-scenarios.json",
+    "archive": "logs.zip",
+    "entry": "final/m4-02-scenarios.json",
+    "sha256": "8c98ac0f637c9335cf10f20dc6f29868efe6bbe9f7ca9b3aff0a846172ea32c5"
+  },
+  {
+    "source": "/tmp/wanderer-m404-final-20261108-3/m4-03a-scenarios.json",
+    "archive": "logs.zip",
+    "entry": "final/m4-03a-scenarios.json",
+    "sha256": "7c97860ee3d56ce6902ce2c3f1e78c40ef8590f3359971ae07f3292bcc044161"
+  },
+  {
+    "source": "/tmp/wanderer-m404-final-20261108-3/m4-03c-scenarios.json",
+    "archive": "logs.zip",
+    "entry": "final/m4-03c-scenarios.json",
+    "sha256": "128e225773079a7dd6786d1138d9a11a00d62fbd94e036ca522f75caafdd8997"
+  },
+  {
+    "source": "/tmp/wanderer-m404-final-20261108-3/m4-03b-scenarios.json",
+    "archive": "logs.zip",
+    "entry": "final/m4-03b-scenarios.json",
+    "sha256": "138010d4308df01a2e077408b4b17daf6fbf18b12f8c8564e6de66dcb90d3a91"
+  },
+  {
+    "source": "/tmp/wanderer-m404-final-20261108-3/party-playable-scenarios.json",
+    "archive": "logs.zip",
+    "entry": "final/party-playable-scenarios.json",
+    "sha256": "3bf1dc72eefb666b1ec2da5ea097979bc802d641fb0869fe619040f1d0f0fac1"
+  },
+  {
+    "source": "/tmp/wanderer-m404-final-20261108-3/autonomous-main-scenarios.json",
+    "archive": "logs.zip",
+    "entry": "final/autonomous-main-scenarios.json",
+    "sha256": "face18e3eb2e84d911b39e264f476db6e8db579ce7d97c18e665afd4587ccafa"
+  },
+  {
+    "source": "/tmp/wanderer-m404-final-20261108-3/main-cutover-scenarios.json",
+    "archive": "logs.zip",
+    "entry": "final/main-cutover-scenarios.json",
+    "sha256": "bbf5c3ccf20a71a0083cb9ff4e61df12929525fc39a5d74afcdd0179e768798b"
+  }
+]

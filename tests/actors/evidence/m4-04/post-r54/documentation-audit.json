@@ -1,0 +1,22 @@
+{
+  "files": [
+    "README.md",
+    "docs/README.md",
+    "docs/M4_04_Autonomous_Decision_Contract.md",
+    "tests/actors/README.md",
+    "tests/combat/README.md"
+  ],
+  "local_links": 409,
+  "fragments": 91,
+  "external_references": 57,
+  "external_HTTP": "not exhaustively checked; relevant PR states read through GitHub connector",
+  "errors": [],
+  "approved_section_2_1_byte_identical": true,
+  "approved_section_2_1_sha256": "c37ed05cb2fdb9563ffe11de8a195ddd5e7b39ddb6fe2e890be34116bf242fa1",
+  "architecture_byte_identical": true,
+  "architecture_sha256": "6aa94215cf9cb25a0d3501cb954904b4b15e481202517ba7d5349ac679640fb8",
+  "conflict_markers": 0,
+  "current_authority_sections": "one current implementation status and one canonical approved register; historical checkpoints labelled",
+  "additional_21_23_mapping": "executed slices only, M404-22 explicitly PARTIAL",
+  "runtime_review": "O1/O2/O3/O5 inspected; no runtime/test changes; no new O4/trait/Compassion/production behavior"
+}

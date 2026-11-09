@@ -1,0 +1,898 @@
+[
+  {
+    "id": "M404-001",
+    "expected": "Safety first versus urgent rescue; no active recipient refusal",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 15
+  },
+  {
+    "id": "M404-002",
+    "expected": "First valid hit, never aggregate or forecast",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 13
+  },
+  {
+    "id": "M404-003",
+    "expected": "Lethal-hit Safety reason when not low HP",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 9
+  },
+  {
+    "id": "M404-004",
+    "expected": "Urgent vs HELP vs nonurgent changes one budget",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 18
+  },
+  {
+    "id": "M404-005",
+    "expected": "Grace boundary [1, 2, \"M404_URGENT_RESCUE\"]",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 10
+  },
+  {
+    "id": "M404-006",
+    "expected": "Grace boundary [2, 2, \"M404_NONURGENT_RESCUE\"]",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 10
+  },
+  {
+    "id": "M404-007",
+    "expected": "Grace boundary [2, 3, \"M404_NONURGENT_RESCUE\"]",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 10
+  },
+  {
+    "id": "M404-008",
+    "expected": "Grace boundary [1, 3, \"INVALID\"]",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 7
+  },
+  {
+    "id": "M404-009",
+    "expected": "Multiple DOWN budget/age/stable comparator, no Player favoritism",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 16
+  },
+  {
+    "id": "M404-010",
+    "expected": "No resource is inability, not helper or recipient refusal",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 10
+  },
+  {
+    "id": "M404-011",
+    "expected": "O3 exact threshold 30",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 10
+  },
+  {
+    "id": "M404-012",
+    "expected": "O3 exact threshold 31",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 10
+  },
+  {
+    "id": "M404-013",
+    "expected": "RETREAT loses to every higher priority",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 23
+  },
+  {
+    "id": "M404-014",
+    "expected": "Acquire schema test context",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 7
+  },
+  {
+    "id": "M404-015",
+    "expected": "Top schema schema_version missing",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-016",
+    "expected": "Top schema schema_version wrong_type",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-017",
+    "expected": "Top schema identity missing",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-018",
+    "expected": "Top schema identity wrong_type",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-019",
+    "expected": "Top schema source missing",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-020",
+    "expected": "Top schema source wrong_type",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-021",
+    "expected": "Top schema actor_id missing",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-022",
+    "expected": "Top schema actor_id wrong_type",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-023",
+    "expected": "Top schema player_id missing",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-024",
+    "expected": "Top schema player_id wrong_type",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-025",
+    "expected": "Top schema party missing",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-026",
+    "expected": "Top schema party wrong_type",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-027",
+    "expected": "Top schema enemies missing",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-028",
+    "expected": "Top schema enemies wrong_type",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-029",
+    "expected": "Top schema queue missing",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-030",
+    "expected": "Top schema queue wrong_type",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-031",
+    "expected": "Top schema declared_hits missing",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-032",
+    "expected": "Top schema declared_hits wrong_type",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-033",
+    "expected": "Top schema frozen_guidance missing",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-034",
+    "expected": "Top schema frozen_guidance wrong_type",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-035",
+    "expected": "Top schema profile missing",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-036",
+    "expected": "Top schema profile wrong_type",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-037",
+    "expected": "Top schema boundary missing",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-038",
+    "expected": "Top schema boundary wrong_type",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-039",
+    "expected": "Nested exact schema identity session",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-040",
+    "expected": "Nested exact schema identity generation",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-041",
+    "expected": "Nested exact schema identity round_id",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-042",
+    "expected": "Nested exact schema identity snapshot_revision",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-043",
+    "expected": "Nested exact schema identity extra",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-044",
+    "expected": "Nested exact schema source adapter_version",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-045",
+    "expected": "Nested exact schema source owner_kind",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-046",
+    "expected": "Nested exact schema source owner_revision",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-047",
+    "expected": "Nested exact schema source observation_id",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-048",
+    "expected": "Nested exact schema source extra",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-049",
+    "expected": "Nested exact schema queue queue_id",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-050",
+    "expected": "Nested exact schema queue slot_id",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-051",
+    "expected": "Nested exact schema queue opportunity_id",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-052",
+    "expected": "Nested exact schema queue slot_actor_id",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-053",
+    "expected": "Nested exact schema queue cursor",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-054",
+    "expected": "Nested exact schema queue round_phase",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-055",
+    "expected": "Nested exact schema queue queue_phase",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-056",
+    "expected": "Nested exact schema queue extra",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-057",
+    "expected": "Nested exact schema party actor_id",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-058",
+    "expected": "Nested exact schema party role",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-059",
+    "expected": "Nested exact schema party current_hp",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-060",
+    "expected": "Nested exact schema party max_hp",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-061",
+    "expected": "Nested exact schema party life_state",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-062",
+    "expected": "Nested exact schema party participation",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-063",
+    "expected": "Nested exact schema party eligible",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-064",
+    "expected": "Nested exact schema party help_uses",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-065",
+    "expected": "Nested exact schema party rescue_uses",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-066",
+    "expected": "Nested exact schema party episode",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-067",
+    "expected": "Nested exact schema party extra",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-068",
+    "expected": "Nested exact schema enemies actor_id",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-069",
+    "expected": "Nested exact schema enemies current_hp",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-070",
+    "expected": "Nested exact schema enemies max_hp",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-071",
+    "expected": "Nested exact schema enemies available",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-072",
+    "expected": "Nested exact schema enemies extra",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-073",
+    "expected": "Nested exact schema declared_hits actor_id",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-074",
+    "expected": "Nested exact schema declared_hits target_id",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-075",
+    "expected": "Nested exact schema declared_hits damage",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-076",
+    "expected": "Nested exact schema declared_hits extra",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-077",
+    "expected": "Strict type/consent/identity adversary float",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-078",
+    "expected": "Strict type/consent/identity adversary bool",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-079",
+    "expected": "Strict type/consent/identity adversary consent",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-080",
+    "expected": "Strict type/consent/identity adversary episode",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-081",
+    "expected": "Strict type/consent/identity adversary profile",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-082",
+    "expected": "Strict type/consent/identity adversary frozen",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-083",
+    "expected": "Prepare episode/frozen exact nested fixtures",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 7
+  },
+  {
+    "id": "M404-084",
+    "expected": "Exact nested episode/episode_id",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-085",
+    "expected": "Exact nested episode/entry_round",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-086",
+    "expected": "Exact nested episode/budget",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-087",
+    "expected": "Exact nested episode/active",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-088",
+    "expected": "Exact nested episode/entry_order",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-089",
+    "expected": "Exact nested episode/extra",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-090",
+    "expected": "Exact nested binding/identity",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-091",
+    "expected": "Exact nested binding/record",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-092",
+    "expected": "Exact nested binding/extra",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-093",
+    "expected": "Exact nested guidance_identity/encounter_id",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-094",
+    "expected": "Exact nested guidance_identity/generation",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-095",
+    "expected": "Exact nested guidance_identity/round_id",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-096",
+    "expected": "Exact nested guidance_identity/guidance_revision",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-097",
+    "expected": "Exact nested guidance_identity/snapshot_revision",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-098",
+    "expected": "Exact nested guidance_identity/extra",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-099",
+    "expected": "Exact nested frozen_record/guidance_type",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-100",
+    "expected": "Exact nested frozen_record/issuer_player_id",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-101",
+    "expected": "Exact nested frozen_record/preferred_target_id",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-102",
+    "expected": "Exact nested frozen_record/encounter_id",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-103",
+    "expected": "Exact nested frozen_record/generation",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-104",
+    "expected": "Exact nested frozen_record/round_id",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-105",
+    "expected": "Exact nested frozen_record/guidance_revision",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-106",
+    "expected": "Exact nested frozen_record/extra",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-107",
+    "expected": "Exact nested profile/schema_version",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-108",
+    "expected": "Exact nested profile/actor_id",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-109",
+    "expected": "Exact nested profile/player_id",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-110",
+    "expected": "Exact nested profile/discipline",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-111",
+    "expected": "Exact nested profile/trust",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-112",
+    "expected": "Exact nested profile/compassion",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-113",
+    "expected": "Exact nested profile/courage",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-114",
+    "expected": "Exact nested profile/extra",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 1
+  },
+  {
+    "id": "M404-115",
+    "expected": "Owner compares full context, not an observation label",
+    "classification": "EXECUTABLE OWNED TRANSACTION",
+    "actual": "PASS",
+    "assertion_count": 19
+  },
+  {
+    "id": "M404-116",
+    "expected": "Frozen suggestion during Player DOWN NONE",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 11
+  },
+  {
+    "id": "M404-117",
+    "expected": "Frozen suggestion during Player DOWN ATTACK",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 11
+  },
+  {
+    "id": "M404-118",
+    "expected": "Frozen suggestion during Player DOWN HELP",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 11
+  },
+  {
+    "id": "M404-119",
+    "expected": "Frozen suggestion during Player DOWN FOCUS_TARGET",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 11
+  },
+  {
+    "id": "M404-120",
+    "expected": "Genuine existing Layer causality focus a",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 9
+  },
+  {
+    "id": "M404-121",
+    "expected": "Genuine existing Layer causality focus b",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 9
+  },
+  {
+    "id": "M404-122",
+    "expected": "Unsupported Player DOWN context does not delegate into v1",
+    "classification": "EXECUTABLE PURE POLICY",
+    "actual": "PASS",
+    "assertion_count": 11
+  },
+  {
+    "id": "M404-123",
+    "expected": "D09 exceptional boundary has no executable action",
+    "classification": "DIAGNOSTIC-ONLY",
+    "actual": "PASS",
+    "assertion_count": 7
+  },
+  {
+    "id": "M404-124",
+    "expected": "Real ATTACK, owner binding and forged/stale input",
+    "classification": "EXECUTABLE OWNED TRANSACTION",
+    "actual": "PASS",
+    "assertion_count": 20
+  },
+  {
+    "id": "M404-125",
+    "expected": "Real urgent rescue and next NPC fresh target, resource exactly once",
+    "classification": "EXECUTABLE OWNED TRANSACTION",
+    "actual": "PASS",
+    "assertion_count": 13
+  },
+  {
+    "id": "M404-126",
+    "expected": "Real O3 RETREAT and immutable owned completion",
+    "classification": "EXECUTABLE OWNED TRANSACTION",
+    "actual": "PASS",
+    "assertion_count": 12
+  },
+  {
+    "id": "M404-127",
+    "expected": "HELP absent authority blocks rather than spending fake resource",
+    "classification": "BLOCKED DEPENDENCY",
+    "actual": "PASS",
+    "assertion_count": 7
+  },
+  {
+    "id": "M404-128",
+    "expected": "Seed/journal projection and Restart stale authority",
+    "classification": "EXECUTABLE OWNED TRANSACTION",
+    "actual": "PASS",
+    "assertion_count": 33
+  }
+]
