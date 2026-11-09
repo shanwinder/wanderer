@@ -508,6 +508,8 @@ Allow explicit Exit→fresh opt-in Session through factory bootstrap: cancel/cle
 
 ## 25. E6 recursive schema audit and explicit corrections
 
+**Later amendment proposal:** [§28 Option A](#28-effect-and-response-reason-matrix--proposed-amendment) makes the nested Effect reason/status binding explicit. It is PROPOSED TECHNICAL CLARIFICATION / INDEPENDENT REVIEW PENDING; the historical records below are preserved. B1 runtime remains HOLD.
+
 **DELEGATED TECHNICAL CHOICE / INDEPENDENT REVIEW PENDING.** Owner T05-06 A selects the separate versioned architecture; it does not personally author these corrections. §19 is preserved as the PR #57 schema baseline. The correction rows below supersede only named fields/operations in that **unimplemented** draft. Wire domain/version remain `M4_PLAYABLE`/1 because no released runtime protocol exists; record this documentation revision as `contract_revision=2` in the catalog/evidence manifest (not a field injected into Guidance v1). Material corrections require Independent Technical Contract Review **before any B runtime**. No existing production/isolated schema is widened.
 
 | Finding | Explicit correction to draft §19 | Compatibility / required review |
@@ -541,6 +543,8 @@ Allow explicit Exit→fresh opt-in Session through factory bootstrap: cancel/cle
 Resource/Guard/lifecycle projections are derived, never mutable input. Guard consumption then DOWN or terminal removal in one impact yields one row per actor from pre-root to final-root; cause precedence TERMINAL>DEAD>DOWN>RETREATED>CONSUME>GRANT. Under cleared-on-DOWN A, RESCUE has no grant row. Boundary reset event does not claim guards were earned or HP healed; previous generation reset may be displayed but never imported. Outcome/summary retains actual frozen Party and Enemy rows as §19; guards are live control state and excluded from frozen survivor rows. View phase TERMINAL may coexist with active_token only for the actual causal token settling completion; all other work stops. No new live owner in event projection.
 
 ### 25.1 Request / status / reason / authority matrix
+
+For the proposed exact relation between the IMPACT row below and nested Effect, see [§28](#28-effect-and-response-reason-matrix--proposed-amendment). The outer catalog alone did not explicitly declare that nested relation.
 
 Corrected external Request exact keys are §19 plus queue_id; issuer enum `INPUT/DRIVER/PRESENTER`, checked against actual nonserialized bound capability. Bootstrap factory is separate; internal SEAL/COMMIT_CLOSE never appear as external Request.operation. No generic fixture mutation, roster remove, Player RESCUE/RETREAT or public Abort operation is exposed by this bounded version. View additionally requires `queue_id:S or N,has_accepted_fresh_command:B`; its existing command_ready is defined independently in §27. Both booleans and nullable queue ID are derived from Authority, not caller flags or extra mutable root state. Response shape otherwise remains §19, except corrected Receipt/Effect/View types; every rejected response has token/effect/receipt/view=N and current real owner identity. Read-only detached accessor has no request journal or revision change.
 
@@ -648,3 +652,60 @@ ADMIT decision order after ordinary protocol/identity/authority/revision validat
 Future B proof must cover Queue-present and Queue-absent RESTART in every legal PREPARED/CLOSED/TERMINAL representation; reject wrong-null/wrong-ID/stale Q and preserve SEALED rejection even with correctly bound ID. Validate View.queue_id against actual Root.queue. Include seeded terminal-before-Queue and terminal-during-action-with-retained-Queue, plus close6 with retained Q. A pure table case for an optional absent CLOSED representation is not an executed legal producer; label unsupported representations honestly until an authorized implementation supplies one.
 
 Verify real sequence GUIDANCE accepted→COMMAND accepted (false/true)→ADMIT success (false/false); eligible Player/no command rejection; COMMAND rejection leaves Pending/selection ready; stale ADMIT rejection preserves accepted command and valid fresh retry; absent Player continuation (false/false) creates no fake action; next boundary/reset removes old command; rescue never reopens same-round selection or stale Pending. All rejected protocol/identity/queue/command cases leave root/journal/HP/resources/Guidance revision unchanged. These are **PROPOSED / NOT RUN** future checks; no source/tests/runner changes in this fix. Documentation audit results and current delivery SHA are recorded in the updated Draft PR. Godot/runtime/GUI NOT RUN. Stop for Independent Technical Contract Review.
+
+
+## 28. Effect and Response reason matrix — proposed amendment
+
+**Option A — PROPOSED TECHNICAL CLARIFICATION / INDEPENDENT REVIEW PENDING.** Source: Owner task “WANDERER — M4-05B B1 Effect Reason Contract Amendment”, 10 November 2026 (Asia/Bangkok). The task authorizes this documentation proposal and a Draft PR only. It does not approve the mapping, release B1 runtime HOLD, or authorize B2–B5. Original G05/T05 approvals and historical §§19/25–27 remain intact. Once independently reviewed and merged under separate Owner direction, this exact binding would supersede only the ambiguous `Effect.reason:S` membership and Effect/Response relation in §§19/25; the other record keys and approved rules remain unchanged.
+
+### 28.1 Gap, preflight and source attribution
+
+Required/fetched/live canonical and this worktree's initial HEAD/merge-base are `df04052cc8bf0d17510b55e75f3b357e7da9c00f`. [PR #58](https://github.com/shanwinder/wanderer/pull/58) is MERGED at that SHA. Preflight found only unrelated open PRs #2/#17 and no duplicate amendment branch/PR. Branch `codex/m4-05b-b1-effect-reason-contract-amendment` is created in a separate worktree from that exact base; the original `codex/m4-05b-b1-single-authority-proof` worktree retains its uncommitted drafts/evidence. It is not switched, stashed, committed or edited for this task.
+
+§19 and corrected §25 specify Effect.reason as nonempty string; §25.1 closes outer IMPACT status/reason combinations and requires rejection of unknown reasons generally, but does not explicitly enumerate the nested Effect catalog or require equality between the records. §25.2's recursive replay obligations and §27's queue/fresh-command correction do not supply that missing relation. This proposal makes it explicit; the mapping is not inferred as already approved.
+
+Inspected **local uncommitted B1 draft**, not canonical runtime or protocol approval:
+
+- `scripts/m4/playable_contract.gd:48` declares Effect.reason as `S`; lines159–170 validate outer Response pairing without nested equality.
+- `scripts/m4/playable_rules.gd:241,259` currently produce matching inner/outer values for APPLIED/EFFECT_APPLIED and SKIPPED/TARGET_UNAVAILABLE. Producer behavior is implementation evidence only, not authority to define the protocol or prove all six cases.
+- `tests/actors/m4_05_playable_authority_proof.gd:105–107` replaces a copied genuine IMPACT Effect.reason with an unknown string; the pure validator accepts it. This is a detached schema test, not a forged effect published to the live root.
+
+Original local reports are `/Applications/wanderer/tests/actors/evidence/m4-05b/b1/recovery-03/contract-gap.md` and `recovery-02/results.json`, with commands/logs/source manifests in recovery-02. These uncommitted files are **not included in this documentation PR and are not durable GitHub links**. Prior recovery-02 recorded Godot `4.7.2.stable.official.ed1daf0bf`, clean smoke86/86 and expanded96/97, exit1 for the failed assertion; this task only inspected that evidence, did not rerun it, and makes no B1 PASS claim. Recovery-03 correctly identifies a contract gap rather than treating an explicit nested catalog as already approved. Source SHA-256 values and the documentation audit are recorded in this Draft PR's description.
+
+### 28.2 Exact proposed IMPACT matrix
+
+The six reason names below already occur in the §25.1 outer IMPACT catalog. **Their assignment to nested Effect and the equality requirements are the proposed clarification**, not a new Owner approval or an implementation. Reason membership must be checked together with status; merely finding a string in the union of six names is insufficient.
+
+| Response.status | Effect.status | Required Response.reason and Effect.reason |
+|---|---|---|
+| `APPLIED` | `APPLIED` | `M405_EFFECT_APPLIED` |
+| `SKIPPED` | `SKIPPED` | `M405_ACTOR_UNAVAILABLE` |
+| `SKIPPED` | `SKIPPED` | `M405_TARGET_UNAVAILABLE` |
+| `SKIPPED` | `SKIPPED` | `M405_EPISODE_CHANGED` |
+| `SKIPPED` | `SKIPPED` | `M405_RESOURCE_UNAVAILABLE` |
+| `SKIPPED` | `SKIPPED` | `M405_HELP_NO_HEAL` |
+| `REJECTED` | Effect is `null` | Response.reason uses the existing §25.1 rejection catalog; no Effect.reason exists |
+
+For a successful IMPACT (APPLIED or SKIPPED), require a nonnull exact Effect with `Response.status == Effect.status` and `Response.reason == Effect.reason`. Each reason is a strict string in its row's catalog: unknown, empty, null, wrong-type values and valid names paired with the wrong status reject candidate validation. Rejected IMPACT retains the existing null token/effect/receipt/view response rule and current owner identity, with full-root equality and no publication. A well-formed SKIPPED result is a successful one-shot settlement, distinct from REJECTED.
+
+Validate recursively wherever an Effect appears: successful IMPACT response, stored ActionGrant.effect, PresentationEvent.effect, and the effect reconstructed from authenticated journal operations. Each nonnull Effect uses this same status/reason catalog and the exact corrected §25 keys/types. For an IMPACT PresentationEvent, nested Effect and its committed operation result agree; do not extend this equality to administrative or completion events with null Effect. This does not add a caller Effect import API or a new serialized record field.
+
+### 28.3 Actual effects, receipts and replay
+
+`SKIPPED` requires hp_delta=0 and empty resources/guards/lifecycle arrays, including no cleanup disguised as a skip. `APPLIED` requires an actual authorized effect according to the existing action rules, with target, signed HP delta and all ResourceChange/GuardChange/LifeChange rows equal to the committed before/after roots. A valid reason string alone does not prove an effect: ATTACK uses the approved damage policy and actual legal HP change; HELP/RESCUE retain their existing positive HP/resource rules; DEFEND has hp_delta=0 with an actual Guard grant; RETREAT retains its actual participation transition. Existing terminal cleanup and causal completion rules remain. No new damage, action, resource effect or gameplay rule is introduced, and this clarification does not authorize B2–B5 implementation.
+
+IMPACT never returns or creates a Receipt. Only successful COMPLETE creates the existing genuine Receipt once, including after a legitimate SKIPPED impact. COMPLETE keeps outer `COMPLETED/M405_ACTION_COMPLETED` and response.effect=null; it preserves the stored impact Effect and binds Receipt.effect_status to that actual stored result. Do not compare COMPLETE.reason with the stored Effect.reason, rewrite the old impact reason or add a reason field to Receipt.
+
+Journal entries retain their existing request/internal records; the caller supplies neither an Effect nor a Receipt as journal authority. Deterministic replay reconstructs the exact status/reason/effect from immutable seed and authenticated operations, checks the same nested rules and compares the full candidate root before atomic publication. Invalid generated Effect or inconsistent Response rejects the entire candidate with no journal, receipt, revision, resource or HP partial write; it must not be converted to an apparently valid SKIPPED effect. Existing rejection precedence/reasons apply; no additional rejection code is proposed here.
+
+### 28.4 Domain separation and compatibility
+
+This matrix applies only to the new M4Playable Response/Effect domain. Do not union it with M4-04 Decision reason codes, Guidance v1/R1 validation reasons, or M403/M404 isolated reason catalogs. Preserve existing references for Decision, Response.guidance_reason and Outcome.reason; their strings do not become legal Effect reasons by association. Shared names in outer rejection and effect catalogs retain their separate context and status constraints.
+
+Wire `domain=M4_PLAYABLE`/version1 and exact record fields remain as drafted for an unreleased runtime. This proposal records the precise semantic validation delta, without changing the existing catalog/contract revision fields or fixture content in this documentation task. No released runtime compatibility is claimed and no existing Main/Legacy/isolated validator is widened. Reviewers must confirm the six rows, equality, effect invariants and replay/receipt boundaries before any runtime fix. No conflict with the six existing outer names or the two inspected producer cases was found by static inspection; the other cases remain unverified. Any further material correction requires explicit review.
+
+### 28.5 Future proof and mandatory stop
+
+Future separately authorized B1 recovery must exercise all six permitted pairs; arbitrary/empty/null/wrong-type reasons; valid names with wrong Effect.status; valid Effect with incompatible outer status/reason; invalid HP/resource/Guard/lifecycle deltas; nested-copy mutation isolation; and rejection of invalid effects in candidate/journal/receipt/replay validation with full-root equality. Separate pure schema cases from actual legal transactions; B2–B5 paths remain deferred until authorized, without fake effects/receipts or test-only root mutation. Retain the original failed test expectation and history; do not relabel96/97 as PASS.
+
+**This task: documentation verification only. Godot/import/parse, schema runtime tests, smoke/adversarial proof, combat regression/negative tests, GUI/visual and benchmarks are NOT RUN.** Check local Markdown links/anchors, table widths, exact enumeration, historical approval preservation, all26 unchanged P05 rows and the two-file allowlist; report actual audit and hashes in the Draft PR. Stop at **Independent Technical Contract Review**. No merge/auto-merge/branch deletion/B1 validator fix or B2–B5/M4-05C. After Independent Review and explicit Owner merge, a separate B1 recovery task must recheck the new canonical SHA and safely bring the merged contract into B1 without losing its uncommitted work.
