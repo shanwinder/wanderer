@@ -1,0 +1,68 @@
+{
+  "status": "B1 AUTOMATED GATES PASS / INDEPENDENT REVIEW PENDING",
+  "canonical": "295dac9211486a4c2d3c5c5fa43baf065398e6a7",
+  "branch": "codex/m4-05b-b1-single-authority-proof",
+  "tested_git_base": "295dac9211486a4c2d3c5c5fa43baf065398e6a7",
+  "tested_state": "Uncommitted B1 drafts at execution; exact content manifests map to delivery implementation commit",
+  "source_sha256": {
+    "scripts/m4/playable_contract.gd": "9cc99fb39a69059e0481dbbccb4e3ebfc2bf8b04c433cc4e8bc0e8c728c49234",
+    "scripts/m4/playable_decision_adapter.gd": "94bee85e2b8558d9d43f55f41d45617446dc382338464c3a5c2f929de47bdc38",
+    "scripts/m4/playable_encounter.gd": "b3f1ba31d05702445594d8d940c2990acb1e0fae4d43415ba34fa7181405ff57",
+    "scripts/m4/playable_rules.gd": "97e652a3526891c56bd950ad80dd4403f881ea93b1817fa29526eed82ff1597b",
+    "scripts/m4/playable_fixture_catalog.gd": "5a5ad2eb5ec1691966fbd065bca86d30202a2c6740754aac436eda02247632d4",
+    "tests/actors/m4_05_playable_authority_proof.gd": "9f0cba84653472339a8632cbe047c4f3a938e219798ff66eb0638f0b5c627410"
+  },
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "gates": {
+    "A": "PASS import and parse five scripts, exits0/unexpected errors0",
+    "B": {
+      "checks": 86,
+      "failures": 0,
+      "exit": 0
+    },
+    "C": {
+      "checks": 97,
+      "failures": 0,
+      "exit": 0,
+      "SC09_unchanged": true
+    },
+    "D": {
+      "checks": 1846,
+      "failures": 0,
+      "exit": 0,
+      "record_shapes": 58,
+      "classification": "55 M4Playable records + 3 unchanged imported record shapes; types/keys/enums, not all deferred semantics"
+    },
+    "E": {
+      "checks": 354,
+      "failures": 0,
+      "exit": 0,
+      "classification": "Actual B1 transactions + detached validator/fault probes separately labelled"
+    },
+    "F": {
+      "reference": 44,
+      "canonical": 94,
+      "candidate": 94,
+      "all_exits": 0,
+      "unexpected_errors": 0,
+      "expected_negative_errors_per_run": 5,
+      "legacy_cases": 6,
+      "legacy_frames": 5892
+    }
+  },
+  "failures_preserved": [
+    "Original parse failure",
+    "Recovery-01/02/03",
+    "Recovery-04 Gate F invocation failure",
+    "Recovery-05 DIAG102 checks,5 expected negative assertions failed before correction"
+  ],
+  "not_claimed": [
+    "B2-B5 runtime acceptance",
+    "M4-05C",
+    "GUI/F5/F6 visual/keyboard acceptance",
+    "Performance benchmark",
+    "Independent review or Owner acceptance"
+  ],
+  "authorization": "Owner follow-up explicitly requests diagnosis and correction to completion; B1-only scope retained.",
+  "implementation_commit": "a07bca91ca7b01651010c8733ea3e0eee0e76b84"
+}

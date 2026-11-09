@@ -1,0 +1,14 @@
+{
+  "backup": "/private/tmp/wanderer-b1-pre59-preservation-bcstuzsp",
+  "manifest_sha256": "78766b6cd68115bc6c725f1fd790ebcb77285abd52b7e9d48418b2807a359684",
+  "files": 631,
+  "categories": {
+    "tracked": 471,
+    "untracked": 120,
+    "ignored": 40,
+    "other": 0
+  },
+  "historical_checks": 122,
+  "mismatches": [],
+  "backup_hash_verification": "PASS"
+}

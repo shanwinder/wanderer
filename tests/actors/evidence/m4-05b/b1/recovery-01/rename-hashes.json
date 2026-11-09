@@ -1,0 +1,10 @@
+{
+  "scripts/m4/playable_fixture_catalog.gd": {
+    "before": "92413ec271ebe2e909b099cb5565a02a008c7dbe105ff08bbb23f8d0d9efff48",
+    "after": "5a5ad2eb5ec1691966fbd065bca86d30202a2c6740754aac436eda02247632d4"
+  },
+  "scripts/m4/playable_rules.gd": {
+    "before": "5dabb6ca926346679a18f71d136ffa6b61e8f2301e0cc1a17851ec7ffddb0506",
+    "after": "62a50cf90f45aa6c6a5983817d64662dbdb51b5a7311ed4bbfe23c8413c85b7e"
+  }
+}

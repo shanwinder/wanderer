@@ -1,0 +1,10 @@
+{
+  "head": "295dac9211486a4c2d3c5c5fa43baf065398e6a7",
+  "merge_base": "295dac9211486a4c2d3c5c5fa43baf065398e6a7",
+  "compared_files": 629,
+  "mismatches": [],
+  "incoming_files": [
+    "docs/M4_05_Playable_Integration_Contract.md",
+    "docs/README.md"
+  ]
+}

@@ -1,0 +1,856 @@
+[
+  {
+    "manifest": "recovery-02/before-after-hashes.json",
+    "path": "scripts/m4/playable_contract.gd",
+    "expected": "2e4031a946ed09ca2d25aa8d47e96514f65a2ce7acd475c3a6888137d5f3fbb5",
+    "actual": "2e4031a946ed09ca2d25aa8d47e96514f65a2ce7acd475c3a6888137d5f3fbb5",
+    "match": true
+  },
+  {
+    "manifest": "recovery-02/before-after-hashes.json",
+    "path": "scripts/m4/playable_decision_adapter.gd",
+    "expected": "94bee85e2b8558d9d43f55f41d45617446dc382338464c3a5c2f929de47bdc38",
+    "actual": "94bee85e2b8558d9d43f55f41d45617446dc382338464c3a5c2f929de47bdc38",
+    "match": true
+  },
+  {
+    "manifest": "recovery-02/before-after-hashes.json",
+    "path": "scripts/m4/playable_encounter.gd",
+    "expected": "fba7e5be45d0afad5456e223e66fbd77fca6ea459a93a782da42a48e79c74825",
+    "actual": "fba7e5be45d0afad5456e223e66fbd77fca6ea459a93a782da42a48e79c74825",
+    "match": true
+  },
+  {
+    "manifest": "recovery-02/before-after-hashes.json",
+    "path": "scripts/m4/playable_fixture_catalog.gd",
+    "expected": "5a5ad2eb5ec1691966fbd065bca86d30202a2c6740754aac436eda02247632d4",
+    "actual": "5a5ad2eb5ec1691966fbd065bca86d30202a2c6740754aac436eda02247632d4",
+    "match": true
+  },
+  {
+    "manifest": "recovery-02/before-after-hashes.json",
+    "path": "scripts/m4/playable_rules.gd",
+    "expected": "62a50cf90f45aa6c6a5983817d64662dbdb51b5a7311ed4bbfe23c8413c85b7e",
+    "actual": "62a50cf90f45aa6c6a5983817d64662dbdb51b5a7311ed4bbfe23c8413c85b7e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-02/before-after-hashes.json",
+    "path": "tests/actors/m4_05_playable_authority_proof.gd",
+    "expected": "1b92b710c777259bee9ed56a0180e82f9744cabbe3e18e6646ec06389232b2b7",
+    "actual": "1b92b710c777259bee9ed56a0180e82f9744cabbe3e18e6646ec06389232b2b7",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/source-hashes.json",
+    "path": "scripts/m4/playable_contract.gd",
+    "expected": "2e4031a946ed09ca2d25aa8d47e96514f65a2ce7acd475c3a6888137d5f3fbb5",
+    "actual": "2e4031a946ed09ca2d25aa8d47e96514f65a2ce7acd475c3a6888137d5f3fbb5",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/source-hashes.json",
+    "path": "scripts/m4/playable_decision_adapter.gd",
+    "expected": "94bee85e2b8558d9d43f55f41d45617446dc382338464c3a5c2f929de47bdc38",
+    "actual": "94bee85e2b8558d9d43f55f41d45617446dc382338464c3a5c2f929de47bdc38",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/source-hashes.json",
+    "path": "scripts/m4/playable_encounter.gd",
+    "expected": "fba7e5be45d0afad5456e223e66fbd77fca6ea459a93a782da42a48e79c74825",
+    "actual": "fba7e5be45d0afad5456e223e66fbd77fca6ea459a93a782da42a48e79c74825",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/source-hashes.json",
+    "path": "scripts/m4/playable_fixture_catalog.gd",
+    "expected": "5a5ad2eb5ec1691966fbd065bca86d30202a2c6740754aac436eda02247632d4",
+    "actual": "5a5ad2eb5ec1691966fbd065bca86d30202a2c6740754aac436eda02247632d4",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/source-hashes.json",
+    "path": "scripts/m4/playable_rules.gd",
+    "expected": "62a50cf90f45aa6c6a5983817d64662dbdb51b5a7311ed4bbfe23c8413c85b7e",
+    "actual": "62a50cf90f45aa6c6a5983817d64662dbdb51b5a7311ed4bbfe23c8413c85b7e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/source-hashes.json",
+    "path": "tests/actors/m4_05_playable_authority_proof.gd",
+    "expected": "1b92b710c777259bee9ed56a0180e82f9744cabbe3e18e6646ec06389232b2b7",
+    "actual": "1b92b710c777259bee9ed56a0180e82f9744cabbe3e18e6646ec06389232b2b7",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/first-parse-failure.log",
+    "expected": "083e459d456c1101746c2fe6cb04c7c5ad65ada7197393a4a851bab15ef7f852",
+    "actual": "083e459d456c1101746c2fe6cb04c7c5ad65ada7197393a4a851bab15ef7f852",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/tested-source-sha256.json",
+    "expected": "39cfbcd412ff67fc97616cdc00b0bbcefefb64595468a088f4d0eadcdb61ba4b",
+    "actual": "39cfbcd412ff67fc97616cdc00b0bbcefefb64595468a088f4d0eadcdb61ba4b",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/results.json",
+    "expected": "63f49de570acb85b7931cf66dea9d8220e080dbf860d1ea6241a4b86762026f8",
+    "actual": "63f49de570acb85b7931cf66dea9d8220e080dbf860d1ea6241a4b86762026f8",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/failed-source.zip",
+    "expected": "8b2f9113c820852dd5c3d4df50bd962471420615fa3c688b3807e38118bd0e5c",
+    "actual": "8b2f9113c820852dd5c3d4df50bd962471420615fa3c688b3807e38118bd0e5c",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/environment-probe.py",
+    "expected": "d4b0a6530fc7dfd1868e8ca391a1c812d81d4511ceb398598572ca1160ca487b",
+    "actual": "d4b0a6530fc7dfd1868e8ca391a1c812d81d4511ceb398598572ca1160ca487b",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/REPORT.md",
+    "expected": "1a77121620e39f7a54c20fa5c227a8fabf2be47996520d9401758cfc7a237824",
+    "actual": "1a77121620e39f7a54c20fa5c227a8fabf2be47996520d9401758cfc7a237824",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/tested-source.zip",
+    "expected": "7b36a0ac3ff963a46f1b9beaf8f8cc87565f39cfbe0639a9dc890a88f105083b",
+    "actual": "7b36a0ac3ff963a46f1b9beaf8f8cc87565f39cfbe0639a9dc890a88f105083b",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/results.json",
+    "expected": "c79bbd5cdf56b9626e7b57de02296f7675986b28c438406fb886e561b2db2b43",
+    "actual": "c79bbd5cdf56b9626e7b57de02296f7675986b28c438406fb886e561b2db2b43",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/before-after-hashes.json",
+    "expected": "1777c0f4bb8a971041d3fc89ba719aa163749e1ec6a17ec87574319986042086",
+    "actual": "1777c0f4bb8a971041d3fc89ba719aa163749e1ec6a17ec87574319986042086",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/version.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_rules.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_encounter.engine.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_fixture_catalog.stdout.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_decision_adapter.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/results.json",
+    "expected": "fd98dcccde1d717bd5e3c6c099db5720c5ec457187a0818280c9ad0f9247c805",
+    "actual": "fd98dcccde1d717bd5e3c6c099db5720c5ec457187a0818280c9ad0f9247c805",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_fixture_catalog.engine.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_contract.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/source-sha256.json",
+    "expected": "1e49e21f48d1c4fbc3136d0d9ca12e4e3dd69a2cdcff3228837cfa4d93c25f28",
+    "actual": "1e49e21f48d1c4fbc3136d0d9ca12e4e3dd69a2cdcff3228837cfa4d93c25f28",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/focused.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_encounter.stdout.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/version.stdout.log",
+    "expected": "edff16c1721dd4ae989cadf29a01f574ae8d51b118221f664725bd6980bbba5d",
+    "actual": "edff16c1721dd4ae989cadf29a01f574ae8d51b118221f664725bd6980bbba5d",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_decision_adapter.engine.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_fixture_catalog.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_rules.stdout.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.stdout.log",
+    "expected": "cb4cf760e90dc9dd74dbc4f5aa3d30cccd869e4739577d17e45e7e3919200b4d",
+    "actual": "cb4cf760e90dc9dd74dbc4f5aa3d30cccd869e4739577d17e45e7e3919200b4d",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_contract.engine.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/focused.engine.log",
+    "expected": "518b3ddc5dc140dfe83c6ccdd2dcf4fbf4d4f713be3154b1461b872e76e5019b",
+    "actual": "518b3ddc5dc140dfe83c6ccdd2dcf4fbf4d4f713be3154b1461b872e76e5019b",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_decision_adapter.stdout.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/focused-report.json",
+    "expected": "9d3d7f367a47fc92ca1b532b66949adfd0d606d51319fba9ce3c77414a7c84b2",
+    "actual": "9d3d7f367a47fc92ca1b532b66949adfd0d606d51319fba9ce3c77414a7c84b2",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_encounter.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_contract.stdout.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+    "expected": "b391daa384fe606e17c28376bed8b0d75313edb9b407fbff3ad854300037e415",
+    "actual": "b391daa384fe606e17c28376bed8b0d75313edb9b407fbff3ad854300037e415",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/focused.stdout.log",
+    "expected": "518b3ddc5dc140dfe83c6ccdd2dcf4fbf4d4f713be3154b1461b872e76e5019b",
+    "actual": "518b3ddc5dc140dfe83c6ccdd2dcf4fbf4d4f713be3154b1461b872e76e5019b",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_rules.engine.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/version.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_rules.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_encounter.engine.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_fixture_catalog.stdout.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_decision_adapter.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/results.json",
+    "expected": "6a277e289c8fafe5b4f3cdfab0bf91b9b80690d7096fba485b2b7fa9b3986859",
+    "actual": "6a277e289c8fafe5b4f3cdfab0bf91b9b80690d7096fba485b2b7fa9b3986859",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_fixture_catalog.engine.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_contract.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/source-sha256.json",
+    "expected": "bbf3ed929c8f4ba66bf38f3fedb69d9abad8b1cf4e3c5c80d957ff04cb521ad8",
+    "actual": "bbf3ed929c8f4ba66bf38f3fedb69d9abad8b1cf4e3c5c80d957ff04cb521ad8",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/focused.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_encounter.stdout.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/version.stdout.log",
+    "expected": "edff16c1721dd4ae989cadf29a01f574ae8d51b118221f664725bd6980bbba5d",
+    "actual": "edff16c1721dd4ae989cadf29a01f574ae8d51b118221f664725bd6980bbba5d",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_decision_adapter.engine.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_fixture_catalog.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_rules.stdout.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.stdout.log",
+    "expected": "cb4cf760e90dc9dd74dbc4f5aa3d30cccd869e4739577d17e45e7e3919200b4d",
+    "actual": "cb4cf760e90dc9dd74dbc4f5aa3d30cccd869e4739577d17e45e7e3919200b4d",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_contract.engine.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/focused.engine.log",
+    "expected": "a4f04a6285f2d96b39ff90b3a6dd05d2998ff74e4d2b113a748536cf72a1a13b",
+    "actual": "a4f04a6285f2d96b39ff90b3a6dd05d2998ff74e4d2b113a748536cf72a1a13b",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_decision_adapter.stdout.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/focused-report.json",
+    "expected": "971428ca61eff2fc4ebdcec10a9ef3969ead0f0ccde3248cfa0ef9a67d25127b",
+    "actual": "971428ca61eff2fc4ebdcec10a9ef3969ead0f0ccde3248cfa0ef9a67d25127b",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_encounter.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_contract.stdout.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+    "expected": "b391daa384fe606e17c28376bed8b0d75313edb9b407fbff3ad854300037e415",
+    "actual": "b391daa384fe606e17c28376bed8b0d75313edb9b407fbff3ad854300037e415",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/focused.stdout.log",
+    "expected": "a4f04a6285f2d96b39ff90b3a6dd05d2998ff74e4d2b113a748536cf72a1a13b",
+    "actual": "a4f04a6285f2d96b39ff90b3a6dd05d2998ff74e4d2b113a748536cf72a1a13b",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_rules.engine.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/environment/unsandboxed/minimal.stdout.log",
+    "expected": "9fed3b073fa3c7939dcb1c356c82d7205a00f0b1aa20efcedacdef2c6c41e5dc",
+    "actual": "9fed3b073fa3c7939dcb1c356c82d7205a00f0b1aa20efcedacdef2c6c41e5dc",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/environment/unsandboxed/minimal.engine.log",
+    "expected": "9fed3b073fa3c7939dcb1c356c82d7205a00f0b1aa20efcedacdef2c6c41e5dc",
+    "actual": "9fed3b073fa3c7939dcb1c356c82d7205a00f0b1aa20efcedacdef2c6c41e5dc",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/environment/unsandboxed/results.json",
+    "expected": "8382b47af4e13dbf9214935efd9240da13d6bd6d23b9541c70d522d1de1989eb",
+    "actual": "8382b47af4e13dbf9214935efd9240da13d6bd6d23b9541c70d522d1de1989eb",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/environment/unsandboxed/minimal.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/environment/minimal/probe.gd",
+    "expected": "b1e4b0f1dbd49e94628f15ba698258960530bc742b627289d3b43e3ca4bc68c6",
+    "actual": "b1e4b0f1dbd49e94628f15ba698258960530bc742b627289d3b43e3ca4bc68c6",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/environment/minimal/project.godot",
+    "expected": "325bd7431e959ed43b1f1d5468895529ed5374897866bf17a52c4cb36cb79e3f",
+    "actual": "325bd7431e959ed43b1f1d5468895529ed5374897866bf17a52c4cb36cb79e3f",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/environment/sandbox/minimal.stdout.log",
+    "expected": "9fed3b073fa3c7939dcb1c356c82d7205a00f0b1aa20efcedacdef2c6c41e5dc",
+    "actual": "9fed3b073fa3c7939dcb1c356c82d7205a00f0b1aa20efcedacdef2c6c41e5dc",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/environment/sandbox/minimal.engine.log",
+    "expected": "8041a740d3c85c8a6c50dacf277ec1ea6a768d33dec4d6e5d776cc82fe49bb5c",
+    "actual": "8041a740d3c85c8a6c50dacf277ec1ea6a768d33dec4d6e5d776cc82fe49bb5c",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/environment/sandbox/results.json",
+    "expected": "6e64312b8187e7756d6d59b87073a223d75c21d249b57c0f9e50b6d6f93f03b7",
+    "actual": "6e64312b8187e7756d6d59b87073a223d75c21d249b57c0f9e50b6d6f93f03b7",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-02/environment/sandbox/minimal.stderr.log",
+    "expected": "460dfd94f069243c033ec27866bc840f3efc9b8061028257bf5798e53404b353",
+    "actual": "460dfd94f069243c033ec27866bc840f3efc9b8061028257bf5798e53404b353",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/output-directory.txt",
+    "expected": "e129c6db7a344f9e3bbbd78da76fdccac7cc82ed8e335a1c43440e51e7e6e2a8",
+    "actual": "e129c6db7a344f9e3bbbd78da76fdccac7cc82ed8e335a1c43440e51e7e6e2a8",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/version.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename-hashes.json",
+    "expected": "3848dc8ce9d82a9ebcad3bc62c73c9ed56b363cbc21585a84a3f04c747e84baf",
+    "actual": "3848dc8ce9d82a9ebcad3bc62c73c9ed56b363cbc21585a84a3f04c747e84baf",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_encounter.exit",
+    "expected": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "actual": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_rules.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/focused-run.json",
+    "expected": "7053411d3c36ca63e4c4c9d920092ce34e72bb92c49e89823ae161976308e8f4",
+    "actual": "7053411d3c36ca63e4c4c9d920092ce34e72bb92c49e89823ae161976308e8f4",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_encounter.engine.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_fixture_catalog.stdout.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/version.exit",
+    "expected": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "actual": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_rules.exit",
+    "expected": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "actual": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/tested-source.zip",
+    "expected": "d58492f84e58a1f12011a8e876e3cd43c33c8a654f78665adb914baf0f9f740e",
+    "actual": "d58492f84e58a1f12011a8e876e3cd43c33c8a654f78665adb914baf0f9f740e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_decision_adapter.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/results.json",
+    "expected": "337bfccdd9313244b8d4131afefa9a9ef05b604a099657c09e310f794f11163a",
+    "actual": "337bfccdd9313244b8d4131afefa9a9ef05b604a099657c09e310f794f11163a",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_fixture_catalog.engine.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_contract.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/source-sha256.json",
+    "expected": "412bbdb5547fb890302a590f475235df5c3e03665d43f659b7ceb422deb8f6e3",
+    "actual": "412bbdb5547fb890302a590f475235df5c3e03665d43f659b7ceb422deb8f6e3",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.exit",
+    "expected": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "actual": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/focused.stderr.log",
+    "expected": "b44d1484f324204d488884405aedead024c019bb75f70f0852bf5b1c19905174",
+    "actual": "b44d1484f324204d488884405aedead024c019bb75f70f0852bf5b1c19905174",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_encounter.stdout.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/version.stdout.log",
+    "expected": "edff16c1721dd4ae989cadf29a01f574ae8d51b118221f664725bd6980bbba5d",
+    "actual": "edff16c1721dd4ae989cadf29a01f574ae8d51b118221f664725bd6980bbba5d",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_decision_adapter.engine.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename.patch",
+    "expected": "262709888cdd2842e34d988f16c0adf7c78b280d7fa357d3b83427daada20e60",
+    "actual": "262709888cdd2842e34d988f16c0adf7c78b280d7fa357d3b83427daada20e60",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_fixture_catalog.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_decision_adapter.exit",
+    "expected": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "actual": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_contract.exit",
+    "expected": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "actual": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_rules.stdout.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.stdout.log",
+    "expected": "655a792762b0d1ed42000f25090bd37099307b7f8b02ade920373866bcff4d9c",
+    "actual": "655a792762b0d1ed42000f25090bd37099307b7f8b02ade920373866bcff4d9c",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_contract.engine.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/focused.engine.log",
+    "expected": "bdf04731197dc4ecf3507a907f664dbc01ff5e5382515e509656ec3c97290975",
+    "actual": "bdf04731197dc4ecf3507a907f664dbc01ff5e5382515e509656ec3c97290975",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_decision_adapter.stdout.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/focused-report.json",
+    "expected": "1b940089ab4c9442e2301478e7c8e9c26f695d98df843f377257e5316259ce66",
+    "actual": "1b940089ab4c9442e2301478e7c8e9c26f695d98df843f377257e5316259ce66",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_encounter.stderr.log",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_contract.stdout.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+    "expected": "128165fd6e83c9c35560c3a2dfac885b9d5549f7fce253bd0e1c83507b6a52b7",
+    "actual": "128165fd6e83c9c35560c3a2dfac885b9d5549f7fce253bd0e1c83507b6a52b7",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/focused.stdout.log",
+    "expected": "a4f04a6285f2d96b39ff90b3a6dd05d2998ff74e4d2b113a748536cf72a1a13b",
+    "actual": "a4f04a6285f2d96b39ff90b3a6dd05d2998ff74e4d2b113a748536cf72a1a13b",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_fixture_catalog.exit",
+    "expected": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "actual": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/parse-results.json",
+    "expected": "0429225338832cb7da4ebc86dc76ac618dbdb04959fc37ebfd51dfdf5ab24c54",
+    "actual": "0429225338832cb7da4ebc86dc76ac618dbdb04959fc37ebfd51dfdf5ab24c54",
+    "match": true
+  },
+  {
+    "manifest": "recovery-03/preserved-evidence-sha256.json",
+    "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_rules.engine.log",
+    "expected": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "actual": "6d1c065383a27c36804949b6ffa4b09714470b112e5dacc0bd5aeb7b9c147c4e",
+    "match": true
+  }
+]

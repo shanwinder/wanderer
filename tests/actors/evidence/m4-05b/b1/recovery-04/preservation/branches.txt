@@ -1,0 +1,20 @@
+  codex/m4-05-owner-approval-technical-gate                       0d77ab1 [origin/codex/m4-05-owner-approval-technical-gate] docs(m4): record M4-05 owner approvals and implementation gates
+  codex/m4-05-t05-e-owner-decision-gate                           b070581 [origin/codex/m4-05-t05-e-owner-decision-gate] docs(m4): clarify queue absence and accepted command admission
+  codex/m4-05a-playable-integration-design                        f3bca22 [origin/codex/m4-05a-playable-integration-design] docs(m4): M4-05A playable integration contract and owner gates
++ codex/m4-05b-b1-effect-reason-contract-amendment                f6d78e9 (/private/tmp/wanderer-m405-effect-reason-contract-amendment) [origin/codex/m4-05b-b1-effect-reason-contract-amendment] docs(m4): propose exact Effect and Response reason binding
+* codex/m4-05b-b1-single-authority-proof                          df04052 docs(m4): record T05 approvals and delegated E contract resolutions (#58)
+  docs/thailand-worldbuilding-v0-1                                fac99aa [origin/docs/thailand-worldbuilding-v0-1] docs(world): retain legacy Starstone material-testing and localized ecology as bounded proposals
+  feat/m1-5d-static-enemy-hit-target                              b732a1e [origin/feat/m1-5d-static-enemy-hit-target] tune(combat): keep Enemy A in formation while taking allied hits
+  feat/m1-5e-attack-projectile-prototype                          c162d63 [origin/feat/m1-5e-attack-projectile-prototype] feat(combat): add subtle pixel attack projectile with hit on arrival
+  main                                                            81e2e48 [origin/main] Add imported game assets
+  visual-combat-test-1                                            df04052 [origin/visual-combat-test-1] docs(m4): record T05 approvals and delegated E contract resolutions (#58)
+  remotes/origin/HEAD                                             -> origin/main
+  remotes/origin/codex/m4-05-owner-approval-technical-gate        0d77ab1 docs(m4): record M4-05 owner approvals and implementation gates
+  remotes/origin/codex/m4-05-t05-e-owner-decision-gate            b070581 docs(m4): clarify queue absence and accepted command admission
+  remotes/origin/codex/m4-05a-playable-integration-design         f3bca22 docs(m4): M4-05A playable integration contract and owner gates
+  remotes/origin/codex/m4-05b-b1-effect-reason-contract-amendment f6d78e9 docs(m4): propose exact Effect and Response reason binding
+  remotes/origin/docs/thailand-worldbuilding-v0-1                 fac99aa docs(world): retain legacy Starstone material-testing and localized ecology as bounded proposals
+  remotes/origin/feat/m1-5d-static-enemy-hit-target               b732a1e tune(combat): keep Enemy A in formation while taking allied hits
+  remotes/origin/feat/m1-5e-attack-projectile-prototype           c162d63 feat(combat): add subtle pixel attack projectile with hit on arrival
+  remotes/origin/main                                             81e2e48 Add imported game assets
+  remotes/origin/visual-combat-test-1                             df04052 docs(m4): record T05 approvals and delegated E contract resolutions (#58)

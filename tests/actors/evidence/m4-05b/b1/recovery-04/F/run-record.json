@@ -1,0 +1,27 @@
+[
+  {
+    "stage": "canonical44",
+    "command": [
+      "python3",
+      "/private/tmp/wanderer-b1-r04-F-yl1bth0g/canonical/tests/combat/verify.py",
+      "--godot",
+      "/Applications/Godot.app/Contents/MacOS/Godot",
+      "--output",
+      "/private/tmp/wanderer-b1-r04-F-yl1bth0g/canonical44",
+      "--npc-proof",
+      "--actor-proof",
+      "--ownership-proof",
+      "--party-foundation-proof",
+      "--party-turn-proof",
+      "--party-playable-proof",
+      "--presentation-proof",
+      "--autonomous-main-proof"
+    ],
+    "cwd": "/private/tmp/wanderer-b1-r04-F-yl1bth0g/canonical",
+    "tested_base_sha": "295dac9211486a4c2d3c5c5fa43baf065398e6a7",
+    "exit": -15,
+    "stages": 11,
+    "status": "FAIL",
+    "results": "/private/tmp/wanderer-b1-r04-F-yl1bth0g/canonical44/results.json"
+  }
+]

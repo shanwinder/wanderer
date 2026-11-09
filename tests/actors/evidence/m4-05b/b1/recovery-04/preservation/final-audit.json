@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "backup": "/private/tmp/wanderer-b1-pre59-preservation-bcstuzsp",
+  "original_inventory": 631,
+  "original_evidence_files_unchanged": 114,
+  "ignored_files_unchanged": 40,
+  "missing": [],
+  "changed_since_backup": [
+    "docs/M4_05_Playable_Integration_Contract.md",
+    "docs/README.md",
+    "scripts/m4/playable_contract.gd",
+    "scripts/m4/playable_encounter.gd",
+    "scripts/m4/playable_rules.gd",
+    "tests/actors/m4_05_playable_authority_proof.gd"
+  ],
+  "canonical_incoming_only": [
+    "docs/M4_05_Playable_Integration_Contract.md",
+    "docs/README.md"
+  ],
+  "deliberate_recovery_source_edits": [
+    "scripts/m4/playable_contract.gd",
+    "scripts/m4/playable_encounter.gd",
+    "scripts/m4/playable_rules.gd",
+    "tests/actors/m4_05_playable_authority_proof.gd"
+  ],
+  "tracked_diff_against_new_canonical": [],
+  "protected_diff": [],
+  "current_source_sha256": {
+    "scripts/m4/playable_contract.gd": "ad764367b21bde36c56be4a31d26fe7227c867046d0afc074f75e498eb83b5ba",
+    "scripts/m4/playable_decision_adapter.gd": "94bee85e2b8558d9d43f55f41d45617446dc382338464c3a5c2f929de47bdc38",
+    "scripts/m4/playable_encounter.gd": "b3f1ba31d05702445594d8d940c2990acb1e0fae4d43415ba34fa7181405ff57",
+    "scripts/m4/playable_fixture_catalog.gd": "5a5ad2eb5ec1691966fbd065bca86d30202a2c6740754aac436eda02247632d4",
+    "scripts/m4/playable_rules.gd": "a61877e480583f490da45f6cd30fd084d48ba473b52c2ad67be57c2b0aa1563f",
+    "tests/actors/m4_05_playable_authority_proof.gd": "07e705ab203562a51729e89627c998230140803dce7f52976478606d563674bb"
+  },
+  "final_source_matches_tested": [
+    "ABC-final",
+    "D",
+    "E"
+  ],
+  "original_expanded_adversarial_function": "byte-identical; SC09 unchanged",
+  "branch": "codex/m4-05b-b1-single-authority-proof",
+  "head": "295dac9211486a4c2d3c5c5fa43baf065398e6a7",
+  "merge_base": "295dac9211486a4c2d3c5c5fa43baf065398e6a7"
+}

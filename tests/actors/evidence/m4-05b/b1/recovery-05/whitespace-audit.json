@@ -1,0 +1,4217 @@
+{
+  "raw_staged_check_exit": 2,
+  "warnings": [
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 14,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 16,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 17,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 18,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 19,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 20,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 21,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 22,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 23,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 25,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 26,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 27,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 28,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 29,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 30,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 31,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 32,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 33,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 34,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 35,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 36,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 37,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 38,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 39,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 40,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 41,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 42,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 43,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 44,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 45,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 46,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 47,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 48,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 49,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 50,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 51,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 52,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 53,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 54,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 55,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 56,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 57,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 58,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 59,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 60,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 61,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 62,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 63,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 64,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 65,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 66,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 67,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 68,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 69,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 70,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 71,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/import.engine.log",
+      "line": 111,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_contract.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_contract.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_decision_adapter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_decision_adapter.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_encounter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_encounter.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_fixture_catalog.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_fixture_catalog.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_rules.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/playable_rules.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename.patch",
+      "line": 4,
+      "warning": "space before tab in indent."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename.patch",
+      "line": 5,
+      "warning": "space before tab in indent."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename.patch",
+      "line": 6,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename.patch",
+      "line": 9,
+      "warning": "space before tab in indent."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename.patch",
+      "line": 10,
+      "warning": "space before tab in indent."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename.patch",
+      "line": 11,
+      "warning": "space before tab in indent."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename.patch",
+      "line": 16,
+      "warning": "space before tab in indent."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename.patch",
+      "line": 17,
+      "warning": "space before tab in indent."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename.patch",
+      "line": 20,
+      "warning": "space before tab in indent."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename.patch",
+      "line": 21,
+      "warning": "space before tab in indent."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename.patch",
+      "line": 22,
+      "warning": "space before tab in indent."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename.patch",
+      "line": 24,
+      "warning": "space before tab in indent."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename.patch",
+      "line": 25,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename.patch",
+      "line": 29,
+      "warning": "space before tab in indent."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename.patch",
+      "line": 30,
+      "warning": "space before tab in indent."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename.patch",
+      "line": 31,
+      "warning": "space before tab in indent."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename.patch",
+      "line": 33,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename.patch",
+      "line": 35,
+      "warning": "space before tab in indent."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename.patch",
+      "line": 38,
+      "warning": "space before tab in indent."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename.patch",
+      "line": 39,
+      "warning": "space before tab in indent."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-01/rename.patch",
+      "line": 40,
+      "warning": "space before tab in indent."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 14,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 16,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 17,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 18,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 19,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 20,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 21,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 22,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 23,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 25,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 26,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 27,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 28,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 29,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 30,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 31,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 32,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 33,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 34,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 35,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 36,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 37,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 38,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 39,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 40,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 41,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 42,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 43,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 44,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 45,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 46,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 47,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 48,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 49,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 50,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 51,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 52,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 53,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 54,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 55,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 56,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 57,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 58,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 59,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 60,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 61,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 62,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 63,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 64,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 65,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 66,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 67,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 68,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 69,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 70,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 71,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 72,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/import.engine.log",
+      "line": 112,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_contract.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_contract.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_decision_adapter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_decision_adapter.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_encounter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_encounter.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_fixture_catalog.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_fixture_catalog.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_rules.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/adversarial/playable_rules.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 14,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 16,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 17,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 18,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 19,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 20,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 21,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 22,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 23,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 25,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 26,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 27,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 28,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 29,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 30,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 31,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 32,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 33,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 34,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 35,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 36,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 37,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 38,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 39,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 40,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 41,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 42,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 43,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 44,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 45,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 46,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 47,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 48,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 49,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 50,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 51,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 52,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 53,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 54,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 55,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 56,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 57,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 58,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 59,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 60,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 61,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 62,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 63,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 64,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 65,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 66,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 67,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 68,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 69,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 70,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 71,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 72,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/import.engine.log",
+      "line": 112,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_contract.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_contract.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_decision_adapter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_decision_adapter.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_encounter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_encounter.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_fixture_catalog.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_fixture_catalog.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_rules.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-02/clean-smoke/playable_rules.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 14,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 16,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 17,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 18,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 19,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 20,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 21,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 22,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 23,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 25,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 26,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 27,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 28,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 29,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 30,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 31,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 32,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 33,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 34,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 35,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 36,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 37,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 38,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 39,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 40,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 41,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 42,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 43,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 44,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 45,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 46,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 47,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 48,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 49,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 50,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 51,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 52,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 53,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 54,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 55,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 56,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 57,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 58,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 59,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 60,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 61,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 62,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 63,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 64,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 65,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 66,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 67,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 68,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 69,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 70,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 71,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 72,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/import.engine.log",
+      "line": 112,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/playable_contract.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/playable_contract.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/playable_decision_adapter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/playable_decision_adapter.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/playable_encounter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/playable_encounter.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/playable_fixture_catalog.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/playable_fixture_catalog.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/playable_rules.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC-final/playable_rules.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 14,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 16,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 17,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 18,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 19,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 20,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 21,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 22,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 23,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 25,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 26,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 27,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 28,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 29,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 30,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 31,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 32,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 33,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 34,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 35,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 36,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 37,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 38,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 39,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 40,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 41,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 42,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 43,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 44,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 45,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 46,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 47,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 48,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 49,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 50,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 51,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 52,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 53,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 54,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 55,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 56,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 57,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 58,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 59,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 60,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 61,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 62,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 63,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 64,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 65,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 66,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 67,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 68,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 69,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 70,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 71,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 72,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/import.engine.log",
+      "line": 112,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/playable_contract.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/playable_contract.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/playable_decision_adapter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/playable_decision_adapter.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/playable_encounter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/playable_encounter.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/playable_fixture_catalog.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/playable_fixture_catalog.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/playable_rules.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/ABC/playable_rules.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 14,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 16,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 17,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 18,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 19,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 20,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 21,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 22,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 23,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 25,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 26,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 27,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 28,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 29,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 30,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 31,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 32,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 33,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 34,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 35,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 36,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 37,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 38,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 39,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 40,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 41,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 42,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 43,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 44,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 45,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 46,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 47,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 48,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 49,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 50,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 51,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 52,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 53,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 54,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 55,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 56,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 57,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 58,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 59,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 60,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 61,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 62,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 63,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 64,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 65,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 66,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 67,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 68,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 69,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 70,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 71,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 72,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/import.engine.log",
+      "line": 112,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/playable_contract.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/playable_contract.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/playable_decision_adapter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/playable_decision_adapter.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/playable_encounter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/playable_encounter.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/playable_fixture_catalog.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/playable_fixture_catalog.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/playable_rules.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/D/playable_rules.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 14,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 16,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 17,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 18,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 19,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 20,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 21,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 22,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 23,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 25,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 26,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 27,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 28,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 29,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 30,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 31,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 32,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 33,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 34,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 35,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 36,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 37,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 38,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 39,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 40,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 41,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 42,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 43,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 44,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 45,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 46,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 47,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 48,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 49,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 50,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 51,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 52,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 53,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 54,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 55,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 56,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 57,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 58,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 59,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 60,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 61,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 62,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 63,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 64,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 65,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 66,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 67,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 68,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 69,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 70,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 71,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 72,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/import.engine.log",
+      "line": 112,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/playable_contract.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/playable_contract.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/playable_decision_adapter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/playable_decision_adapter.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/playable_encounter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/playable_encounter.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/playable_fixture_catalog.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/playable_fixture_catalog.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/playable_rules.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/E/playable_rules.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44.stdout.log",
+      "line": 63,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/autonomous-main-startup.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/autonomous-main-startup.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/autonomous-parse-autonomous_main_integration.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/autonomous-parse-autonomous_main_integration.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/autonomous-parse-combat_presentation_adapter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/autonomous-parse-combat_presentation_adapter.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 14,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 16,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 17,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 18,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 19,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 20,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 21,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 22,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 23,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 25,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 26,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 27,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 28,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 29,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 30,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 31,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 32,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 33,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 34,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 35,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 36,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 37,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 38,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 39,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 40,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 41,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 42,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 43,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 44,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 45,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 46,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 47,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 48,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 49,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 50,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 51,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 52,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 53,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 54,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 55,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 56,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 57,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 58,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 59,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 60,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 61,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 62,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 63,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 64,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 65,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 66,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/import.engine.log",
+      "line": 106,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/parse-combat_prototype.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/parse-combat_prototype.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/parse-combat_targets.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/parse-combat_targets.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/parse-combat_turn_flow.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/parse-combat_turn_flow.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/parse-queue_regression.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/parse-queue_regression.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/startup.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/F/canonical44/startup.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-04/preservation/worktrees.txt",
+      "line": 16,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 14,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 16,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 17,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 18,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 19,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 20,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 21,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 22,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 23,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 25,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 26,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 27,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 28,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 29,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 30,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 31,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 32,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 33,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 34,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 35,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 36,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 37,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 38,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 39,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 40,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 41,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 42,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 43,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 44,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 45,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 46,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 47,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 48,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 49,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 50,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 51,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 52,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 53,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 54,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 55,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 56,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 57,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 58,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 59,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 60,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 61,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 62,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 63,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 64,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 65,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 66,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 67,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 68,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 69,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 70,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 71,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 72,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/import.engine.log",
+      "line": 112,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/playable_contract.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/playable_contract.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/playable_decision_adapter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/playable_decision_adapter.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/playable_encounter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/playable_encounter.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/playable_fixture_catalog.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/playable_fixture_catalog.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/playable_rules.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/ABC/playable_rules.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 14,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 16,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 17,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 18,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 19,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 20,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 21,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 22,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 23,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 25,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 26,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 27,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 28,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 29,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 30,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 31,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 32,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 33,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 34,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 35,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 36,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 37,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 38,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 39,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 40,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 41,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 42,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 43,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 44,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 45,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 46,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 47,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 48,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 49,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 50,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 51,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 52,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 53,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 54,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 55,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 56,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 57,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 58,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 59,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 60,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 61,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 62,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 63,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 64,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 65,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 66,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 67,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 68,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 69,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 70,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 71,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 72,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/import.engine.log",
+      "line": 112,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/playable_contract.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/playable_contract.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/playable_decision_adapter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/playable_decision_adapter.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/playable_encounter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/playable_encounter.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/playable_fixture_catalog.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/playable_fixture_catalog.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/playable_rules.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/D/playable_rules.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 14,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 16,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 17,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 18,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 19,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 20,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 21,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 22,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 23,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 25,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 26,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 27,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 28,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 29,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 30,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 31,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 32,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 33,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 34,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 35,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 36,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 37,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 38,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 39,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 40,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 41,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 42,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 43,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 44,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 45,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 46,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 47,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 48,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 49,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 50,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 51,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 52,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 53,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 54,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 55,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 56,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 57,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 58,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 59,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 60,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 61,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 62,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 63,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 64,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 65,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 66,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 67,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 68,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 69,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 70,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 71,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 72,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/import.engine.log",
+      "line": 112,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/playable_contract.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/playable_contract.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/playable_decision_adapter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/playable_decision_adapter.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/playable_encounter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/playable_encounter.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/playable_fixture_catalog.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/playable_fixture_catalog.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/playable_rules.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/DIAG/playable_rules.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 14,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 16,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 17,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 18,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 19,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 20,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 21,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 22,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 23,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 25,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 26,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 27,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 28,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 29,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 30,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 31,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 32,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 33,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 34,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 35,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 36,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 37,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 38,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 39,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 40,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 41,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 42,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 43,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 44,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 45,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 46,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 47,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 48,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 49,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 50,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 51,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 52,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 53,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 54,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 55,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 56,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 57,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 58,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 59,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 60,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 61,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 62,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 63,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 64,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 65,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 66,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 67,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 68,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 69,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 70,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 71,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 72,
+      "warning": "trailing whitespace."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/import.engine.log",
+      "line": 112,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/playable_contract.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/playable_contract.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/playable_decision_adapter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/playable_decision_adapter.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/playable_encounter.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/playable_encounter.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/playable_fixture_catalog.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/playable_fixture_catalog.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/playable_rules.engine.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b1/recovery-05/E/playable_rules.stdout.log",
+      "line": 2,
+      "warning": "new blank line at EOF."
+    }
+  ],
+  "scope": "All warnings confined to captured evidence. Preserve original bytes/hashes rather than rewriting engine output or historical patches.",
+  "authored_source_docs_check": {
+    "command": [
+      "git",
+      "diff",
+      "--check",
+      "295dac9211486a4c2d3c5c5fa43baf065398e6a7",
+      "--",
+      "scripts/m4/playable_contract.gd",
+      "scripts/m4/playable_encounter.gd",
+      "scripts/m4/playable_rules.gd",
+      "scripts/m4/playable_decision_adapter.gd",
+      "scripts/m4/playable_fixture_catalog.gd",
+      "tests/actors/m4_05_playable_authority_proof.gd",
+      "README.md",
+      "docs/README.md",
+      "tests/actors/README.md"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  "runtime_relevance": "none; engine errors independently checked by A-F runners"
+}

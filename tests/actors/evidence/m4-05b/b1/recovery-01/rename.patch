@@ -1,0 +1,40 @@
+--- scripts/m4/playable_fixture_catalog.gd
++++ scripts/m4/playable_fixture_catalog.gd
+@@ -27,7 +27,7 @@
+ 		"party": PARTY.duplicate(), "enemies": ENEMIES.duplicate(), "max_hp": MAX_HP.duplicate(),
+ 		"profiles": profiles, "fixtures": fixtures}
+ 
+-static func reference(id: String) -> Dictionary:
++static func seed_reference_snapshot(id: String) -> Dictionary:
+ 	return {"fixture_id": id, "fixture_version": 1, "contract_revision": 2,
+ 		"catalog_sha256": canonical(content()).sha256_text(), "damage_policy": "MAIN_5_1_3",
+ 		"enemy_policy": "WEAKEST_RATIO_HP_ORDER_V1", "capacity": 6}
+--- scripts/m4/playable_rules.gd
++++ scripts/m4/playable_rules.gd
+@@ -15,7 +15,7 @@
+ static func initial(fixture_id: String, session: int, generation: int = 1) -> Dictionary:
+ 	if session == 0 or generation < 1 or Catalog.fixture(fixture_id, 1).is_empty(): return {}
+ 	return {"domain": "M4_PLAYABLE", "version": 1, "session": session, "generation": generation,
+-		"revision": 0, "seed": Catalog.reference(fixture_id), "phase": "PREPARED", "round_id": 1,
++		"revision": 0, "seed": Catalog.seed_reference_snapshot(fixture_id), "phase": "PREPARED", "round_id": 1,
+ 		"closed_rounds": 0, "party": Catalog.initial_party(fixture_id, session, generation),
+ 		"enemies": Catalog.initial_enemies(fixture_id), "guidance": {"encounter_id": session,
+ 			"generation": generation, "round_id": 1, "guidance_revision": 0, "pending": null,
+@@ -291,7 +291,7 @@
+ 	return {"root": candidate, "response": reply}
+ 
+ static func replay(seed: Dictionary, session: int, generation: int, journal: Variant) -> Dictionary:
+-	if seed != Catalog.reference(seed.get("fixture_id", "")) or not C.valid("[]JournalEntry", journal): return {}
++	if seed != Catalog.seed_reference_snapshot(seed.get("fixture_id", "")) or not C.valid("[]JournalEntry", journal): return {}
+ 	var r: Dictionary = initial(seed.fixture_id, session, generation)
+ 	if r.is_empty(): return {}
+ 	for entry in journal:
+@@ -305,7 +305,7 @@
+ 
+ static func root_valid(r: Variant) -> bool:
+ 	if not C.valid("Root", r) or r.round_id > 6 or r.closed_rounds > 6 or r.revision != r.journal.size(): return false
+-	if r.seed != Catalog.reference(r.seed.fixture_id) or Catalog.fixture(r.seed.fixture_id, 1).is_empty(): return false
++	if r.seed != Catalog.seed_reference_snapshot(r.seed.fixture_id) or Catalog.fixture(r.seed.fixture_id, 1).is_empty(): return false
+ 	if r.party.size() != 4 or r.enemies.size() != 2: return false
+ 	var orders: Array = []
+ 	var episodes: Array = []

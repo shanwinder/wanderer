@@ -1,0 +1,20 @@
+{
+  "status": "HOLD — contract clarification required",
+  "canonical_live_fetched_HEAD": "df04052cc8bf0d17510b55e75f3b357e7da9c00f",
+  "branch": "codex/m4-05b-b1-single-authority-proof",
+  "protected_diff": [],
+  "working_tree": "Six existing untracked source/test drafts plus existing B1 evidence; unchanged from recovery-02 before new recovery-03 evidence",
+  "source_matches_recovery02": true,
+  "contract_matches_canonical": true,
+  "contract_sha256": "3a47092dadd31b6d067f612f0f5afd2e9a1ba4fd738b616c0af9a18a9099f534",
+  "finding": "Effect.reason is S in sections 19/25. Section 25.1 closes outer IMPACT status/reason combinations and broadly requires unknown reasons to reject, but does not explicitly bind nested Effect.reason/status to Response.reason/status or independently enumerate Effect reasons. Section 25.2 requires review of completeness; section27 does not resolve this gap.",
+  "correction_to_prior_report": "recovery-02 demonstrates acceptance of an arbitrary nested string; labeling it solely a defect against an explicitly approved nested closed catalog was too strong. Preserve original failure evidence; clarify contract before choosing a validator fix.",
+  "producer": "playable_rules.gd:241 and :259 currently emit matching inner and outer IMPACT status/reason; implementation convention is not approval.",
+  "validator": "playable_contract.gd:48 uses S; :159-170 checks outer pairing only.",
+  "failed_test": "m4_05_playable_authority_proof.gd:105-107; prior 96/97 exit1 retained, not rerun or relabelled",
+  "this_turn_runtime": "NOT RUN — halted at contract gate before changes",
+  "source_contract_test_changes": [],
+  "new_files": "recovery-03 evidence only",
+  "commit_push_pr": "NOT DONE",
+  "remaining": "All ten requested focused recovery cases, complete B1 adversarial matrix and full regression remain blocked/not run in this recovery. B2-B5 remain unauthorized."
+}

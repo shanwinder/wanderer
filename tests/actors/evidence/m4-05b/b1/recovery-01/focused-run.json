@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/Applications/Godot.app/Contents/MacOS/Godot",
+    "--headless",
+    "--path",
+    "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b1-recovery-7jby9n1w/snapshot",
+    "--log-file",
+    "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b1-recovery-7jby9n1w/focused.engine.log",
+    "--script",
+    "res://tests/actors/m4_05_playable_authority_proof.gd",
+    "--",
+    "--report=/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b1-recovery-7jby9n1w/focused-report.json"
+  ],
+  "exit": 0
+}

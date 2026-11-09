@@ -1,0 +1,23 @@
+{
+  "context": "sandboxed-exec",
+  "macOS": "27.0.1",
+  "architecture": "arm64",
+  "binary": "/Applications/Godot.app/Contents/MacOS/Godot",
+  "binary_sha256": "c7cccbf8fb143e34e02fd6521e09be2c2b974f0d5db080b19071c9c570718ccf",
+  "command": [
+    "/Applications/Godot.app/Contents/MacOS/Godot",
+    "--headless",
+    "--path",
+    "/tmp/wanderer-b1-env-02/minimal",
+    "--log-file",
+    "/tmp/wanderer-b1-env-02/sandbox/minimal.engine.log",
+    "--script",
+    "res://probe.gd"
+  ],
+  "exit": 0,
+  "SecTrustCopyAnchorCertificates_OSStatus": -50,
+  "anchor_count_only": null,
+  "stdout": "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org\n\nMINIMAL_PROBE_OK\n",
+  "stderr": "ERROR: Could not create directory: '/Users/depa/Library/Application Support/Godot/app_userdata/B1 environment probe'.\n   at: make_dir_recursive (core/io/dir_access.cpp:179)\nERROR: Error attempting to create data dir: /Users/depa/Library/Application Support/Godot/app_userdata/B1 environment probe.\n   at: ensure_user_data_dir (core/os/os.cpp:442)\nERROR: Condition \"ret != noErr\" is true. Returning: \"\"\n   at: get_system_ca_certificates (platform/macos/os_macos.mm:1035)\n",
+  "privacy": "No certificate contents, private keys, passwords, or environment variables collected."
+}

@@ -1,0 +1,52 @@
+{
+  "status": "HOLD",
+  "environment_classification": "A — resolved using unsandboxed execution with explicit engine log paths",
+  "confirmed_environment_cause": "Failure depends on sandbox launch context: minimal project and direct read-only Security API reproduce OSStatus -50 in sandbox; same binary/API unsandboxed yield status 0, anchor count 157, clean Godot process. Exact underlying macOS sandbox policy rule not identified.",
+  "macOS": "27.0.1 (26A434)",
+  "architecture": "arm64",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "binary": "/Applications/Godot.app/Contents/MacOS/Godot",
+  "base_head": "df04052cc8bf0d17510b55e75f3b357e7da9c00f",
+  "branch": "codex/m4-05b-b1-single-authority-proof",
+  "source_state": "Uncommitted drafts; exact tested sources in tested-source.zip and manifests, not base SHA alone.",
+  "clean_verification": {
+    "import": "PASS",
+    "five_parse_checks": "PASS",
+    "unchanged_smoke": "86/86 PASS",
+    "exit": 0,
+    "engine_errors": 0
+  },
+  "adversarial": {
+    "checks": 97,
+    "passed": 96,
+    "failed": 1,
+    "exit": 1,
+    "engine_errors": 0,
+    "status": "FAIL; partial adversarial coverage, not full B1 acceptance"
+  },
+  "blocker": "SC09 unknown nested Effect.reason accepted: schemas().Effect.reason is S (any nonempty string), response_valid checks only outer reason/status compatibility.",
+  "reproduction": "Copy genuine successful IMPACT response; replace only effect.reason with M405_FORGED_UNKNOWN_REASON; C.response_valid(IMPACT,response) returns true; expected false.",
+  "security_boundary": "Detached validator test only. No unauthorized live publication, fake action, fake receipt or test-only root mutation was performed.",
+  "changed_source_this_recovery": [
+    "tests/actors/m4_05_playable_authority_proof.gd"
+  ],
+  "protected_tracked_diff": [],
+  "not_run": [
+    "Full remaining adversarial matrix",
+    "Existing combat regression",
+    "Negative suite",
+    "GUI/visual",
+    "Performance benchmarks"
+  ],
+  "deferred": [
+    "B2 HELP/Guard",
+    "B3 full Guidance/close lifecycle",
+    "B4 reset/terminal/events",
+    "B5 scene",
+    "M4-05C"
+  ],
+  "contract_deviation": "Implementation validator lacks required nested closed-reason validation; no contract amendment applied.",
+  "owner_action": "Review new schema failure and authorize correction/resumption under existing B1 scope if desired.",
+  "commit_push_draft_pr": "NOT DONE — mandatory schema-error HOLD",
+  "prior_evidence": "Preserved without overwrites; recovery-02 is additive."
+}

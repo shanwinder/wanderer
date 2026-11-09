@@ -1,0 +1,21 @@
+{
+  "pr": {
+    "url": "https://github.com/shanwinder/wanderer/pull/59",
+    "merged": true,
+    "merge_commit_sha": "295dac9211486a4c2d3c5c5fa43baf065398e6a7",
+    "merged_at": "2026-11-09T19:28:33Z",
+    "head_sha": "f6d78e9e6f3d52c7d3b2a11999156e3128c3577f",
+    "base": "visual-combat-test-1",
+    "changed_files": 2
+  },
+  "existing_b1_pr_search": {
+    "issues": []
+  },
+  "reviews": [
+    {
+      "url": "https://github.com/shanwinder/wanderer/pull/59#pullrequestreview-5831002311",
+      "body": "## Independent Technical Contract Review — PR #59 / Effect Reason Amendment\n\n**VERDICT: PASS — DOCUMENTATION-ONLY CONTRACT AMENDMENT; GO for Owner consideration of Squash Merge, not runtime authorization.**\n\nReviewed exact PR HEAD `f6d78e9e6f3d52c7d3b2a11999156e3128c3577f` against live canonical `df04052cc8bf0d17510b55e75f3b357e7da9c00f` (`visual-combat-test-1`). GitHub reports OPEN/DRAFT/UNMERGED, mergeable, branch ahead 1/behind 0; only `docs/M4_05_Playable_Integration_Contract.md` and `docs/README.md` are changed. This submission is a **COMMENT** review, not GitHub APPROVE or a merge.\n\n### Independent evidence\n- Retrieved full PR patch and both HEAD/canonical document versions. Exact P05-01–26 rows compared **26/26 unchanged**. §28 matrix contains **seven rows**: six specific successful pairs (1 APPLIED and 5 SKIPPED) and one REJECTED/null-Effect case. The six names match the prior §25.1 outer IMPACT catalog. §25/§25.1 links refer to the new proposal.\n- Confirmed `Response.status==Effect.status` and `Response.reason==Effect.reason` are required only for **successful IMPACT**, not arbitrary operations. Every nonnull stored ActionGrant/PresentationEvent/replayed Effect uses the same closed nested status/reason catalog. Unknown/wrong-type/empty/mismatched values are rejected; no arbitrary nonempty-string acceptance.\n- `SKIPPED` requires zero HP delta and no resource/Guard/lifecycle mutation; `APPLIED` requires actual authorized effect and full before/after-root projection, not a reason-string-only success. `REJECTED` has null Effect and no publication. The proposal correctly distinguishes a genuine SKIPPED impact from a protocol rejection.\n- `IMPACT` never fabricates a Receipt. `COMPLETE` has its own `COMPLETED/M405_ACTION_COMPLETED` response, preserves prior impact Effect and binds the one legitimate receipt to its stored effect_status; it is **not** subject to an incorrect COMPLETE.reason == Effect.reason check.\n- No additional Action/Reason/HP/Guard/resource mechanics, wire fields, released-version claims, old-source validator changes, or merged approvals. M4-04 Decision, Guidance v1/R1, M403/M404, and existing Outcome/Guidance reason domains remain separate.\n- §28 and the docs index clearly mark **PROPOSED / REVIEW PENDING**, not an Owner mapping approval or B1 PASS. Local B1 uncommitted source references and 120-file preservation, source hashes, Markdown link/anchor/table checks and `git diff --check` are **author-reported** and not independently rerun here; the GitHub diff does independently establish that this PR does not change tracked runtime/test files. Godot, B1 schema tests, 96/97 adversarial failure, full matrix, regression, GUI and benchmarks are **NOT RUN** by this review.\n\n### Decision and next gate\n**PASS the semantic contract clarification and GO for the Owner to consider a documentation-only Squash Merge of PR #59.** No new blocking contract inconsistency detected in the reviewed diff.\n\n**B1 runtime remains HOLD** until (a) a separately authorized Owner merge makes §28 canonical, (b) the resulting live canonical SHA is verified, (c) a new, separately authorized B1 recovery task safely integrates the amendment into the existing uncommitted B1 worktree without destructive checkout/reset, (d) validators and original negative assertion are fixed without weakening tests, and (e) all actual B1 adversarial and regression gates are executed and evidenced. The previous **96/97 FAIL** and all NOT RUN statuses remain unchanged. B2–B5, M4-05C, F5 cutover and branch deletion are not authorized. No merge or auto-merge performed by this review.",
+      "review": "COMMENTED"
+    }
+  ]
+}

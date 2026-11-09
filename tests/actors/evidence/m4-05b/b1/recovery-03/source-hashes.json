@@ -1,0 +1,26 @@
+{
+  "scripts/m4/playable_contract.gd": {
+    "before": "2e4031a946ed09ca2d25aa8d47e96514f65a2ce7acd475c3a6888137d5f3fbb5",
+    "after": "2e4031a946ed09ca2d25aa8d47e96514f65a2ce7acd475c3a6888137d5f3fbb5"
+  },
+  "scripts/m4/playable_decision_adapter.gd": {
+    "before": "94bee85e2b8558d9d43f55f41d45617446dc382338464c3a5c2f929de47bdc38",
+    "after": "94bee85e2b8558d9d43f55f41d45617446dc382338464c3a5c2f929de47bdc38"
+  },
+  "scripts/m4/playable_encounter.gd": {
+    "before": "fba7e5be45d0afad5456e223e66fbd77fca6ea459a93a782da42a48e79c74825",
+    "after": "fba7e5be45d0afad5456e223e66fbd77fca6ea459a93a782da42a48e79c74825"
+  },
+  "scripts/m4/playable_fixture_catalog.gd": {
+    "before": "5a5ad2eb5ec1691966fbd065bca86d30202a2c6740754aac436eda02247632d4",
+    "after": "5a5ad2eb5ec1691966fbd065bca86d30202a2c6740754aac436eda02247632d4"
+  },
+  "scripts/m4/playable_rules.gd": {
+    "before": "62a50cf90f45aa6c6a5983817d64662dbdb51b5a7311ed4bbfe23c8413c85b7e",
+    "after": "62a50cf90f45aa6c6a5983817d64662dbdb51b5a7311ed4bbfe23c8413c85b7e"
+  },
+  "tests/actors/m4_05_playable_authority_proof.gd": {
+    "before": "1b92b710c777259bee9ed56a0180e82f9744cabbe3e18e6646ec06389232b2b7",
+    "after": "1b92b710c777259bee9ed56a0180e82f9744cabbe3e18e6646ec06389232b2b7"
+  }
+}
