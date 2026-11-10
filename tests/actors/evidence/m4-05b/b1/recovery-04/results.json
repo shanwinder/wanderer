@@ -1,0 +1,74 @@
+{
+  "status": "HOLD",
+  "reason": "Gate F regression invocation failed on canonical: autonomous-main-proof expected Legacy default because --expect-autonomous-default was absent. This is an execution-plan error, not demonstrated B1 gameplay regression. No retry after mandatory stop.",
+  "required_canonical": "295dac9211486a4c2d3c5c5fa43baf065398e6a7",
+  "branch": "codex/m4-05b-b1-single-authority-proof",
+  "b1_head": "295dac9211486a4c2d3c5c5fa43baf065398e6a7",
+  "merge_base": "295dac9211486a4c2d3c5c5fa43baf065398e6a7",
+  "tested_source": "uncommitted drafts on canonical; exact source hashes in preservation/final-audit.json and per-gate manifests/archives",
+  "gates": {
+    "A": {
+      "status": "PASS",
+      "scripts": 5,
+      "unexpected_errors": 0,
+      "process_exits": 0
+    },
+    "B": {
+      "status": "PASS",
+      "assertions": 86,
+      "failed": 0,
+      "exit": 0
+    },
+    "C": {
+      "status": "PASS",
+      "assertions": 97,
+      "failed": 0,
+      "exit": 0,
+      "original_SC09_expectation_unchanged": true
+    },
+    "D": {
+      "status": "PASS scoped executed matrix",
+      "assertions": 777,
+      "additional_to_original_97": 680,
+      "record_shapes": 34,
+      "failed": 0,
+      "exit": 0,
+      "full_B1_acceptance": false
+    },
+    "E": {
+      "status": "PASS scoped executed matrix",
+      "assertions": 262,
+      "additional_to_original_97": 165,
+      "failed": 0,
+      "exit": 0
+    },
+    "F": {
+      "status": "FAIL / INCOMPLETE",
+      "canonical_completed_stages": 11,
+      "passed_stages": 10,
+      "failed_stage": "autonomous-main-proof",
+      "stage_exit": 1,
+      "stage_checks": 787617,
+      "stage_assertion_failures": 1,
+      "unexpected_engine_errors": 0,
+      "wrapper_exit": 1,
+      "verifier_exit": -15,
+      "verifier_termination": "stop-on-first-failure wrapper; next gameplay engine log exists without completed report",
+      "candidate_suite": "NOT RUN",
+      "negative_suite": "NOT RUN"
+    }
+  },
+  "additional_unverified_finding": "Bootstrap/RestartPayload fixture_version validator uses positive whereas corrected contract says I=1. Static review concern only; no runtime probe after HOLD. Do not claim all private schemas exhaustively accepted.",
+  "source_changes": [
+    "scripts/m4/playable_contract.gd",
+    "scripts/m4/playable_encounter.gd",
+    "scripts/m4/playable_rules.gd",
+    "tests/actors/m4_05_playable_authority_proof.gd"
+  ],
+  "protected_diff": [],
+  "preserved_original_evidence_files": 114,
+  "backup": "/private/tmp/wanderer-b1-pre59-preservation-bcstuzsp",
+  "commit_push_pr": "NOT DONE",
+  "B2_B5_M405C": "NOT STARTED",
+  "gui_visual_performance": "NOT RUN"
+}

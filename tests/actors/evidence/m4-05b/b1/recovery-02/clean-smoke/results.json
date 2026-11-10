@@ -1,0 +1,136 @@
+[
+  {
+    "name": "version",
+    "command": [
+      "/Applications/Godot.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b1-clean-j2kzziba/snapshot",
+      "--log-file",
+      "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b1-clean-j2kzziba/version.engine.log",
+      "--version"
+    ],
+    "exit": 0,
+    "errors": [],
+    "status": "PASS"
+  },
+  {
+    "name": "import",
+    "command": [
+      "/Applications/Godot.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b1-clean-j2kzziba/snapshot",
+      "--log-file",
+      "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b1-clean-j2kzziba/import.engine.log",
+      "--editor",
+      "--import"
+    ],
+    "exit": 0,
+    "errors": [],
+    "status": "PASS"
+  },
+  {
+    "name": "playable_contract",
+    "command": [
+      "/Applications/Godot.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b1-clean-j2kzziba/snapshot",
+      "--log-file",
+      "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b1-clean-j2kzziba/playable_contract.engine.log",
+      "--check-only",
+      "--script",
+      "res://scripts/m4/playable_contract.gd"
+    ],
+    "exit": 0,
+    "errors": [],
+    "status": "PASS"
+  },
+  {
+    "name": "playable_decision_adapter",
+    "command": [
+      "/Applications/Godot.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b1-clean-j2kzziba/snapshot",
+      "--log-file",
+      "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b1-clean-j2kzziba/playable_decision_adapter.engine.log",
+      "--check-only",
+      "--script",
+      "res://scripts/m4/playable_decision_adapter.gd"
+    ],
+    "exit": 0,
+    "errors": [],
+    "status": "PASS"
+  },
+  {
+    "name": "playable_encounter",
+    "command": [
+      "/Applications/Godot.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b1-clean-j2kzziba/snapshot",
+      "--log-file",
+      "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b1-clean-j2kzziba/playable_encounter.engine.log",
+      "--check-only",
+      "--script",
+      "res://scripts/m4/playable_encounter.gd"
+    ],
+    "exit": 0,
+    "errors": [],
+    "status": "PASS"
+  },
+  {
+    "name": "playable_fixture_catalog",
+    "command": [
+      "/Applications/Godot.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b1-clean-j2kzziba/snapshot",
+      "--log-file",
+      "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b1-clean-j2kzziba/playable_fixture_catalog.engine.log",
+      "--check-only",
+      "--script",
+      "res://scripts/m4/playable_fixture_catalog.gd"
+    ],
+    "exit": 0,
+    "errors": [],
+    "status": "PASS"
+  },
+  {
+    "name": "playable_rules",
+    "command": [
+      "/Applications/Godot.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b1-clean-j2kzziba/snapshot",
+      "--log-file",
+      "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b1-clean-j2kzziba/playable_rules.engine.log",
+      "--check-only",
+      "--script",
+      "res://scripts/m4/playable_rules.gd"
+    ],
+    "exit": 0,
+    "errors": [],
+    "status": "PASS"
+  },
+  {
+    "name": "focused",
+    "command": [
+      "/Applications/Godot.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b1-clean-j2kzziba/snapshot",
+      "--log-file",
+      "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b1-clean-j2kzziba/focused.engine.log",
+      "--script",
+      "res://tests/actors/m4_05_playable_authority_proof.gd",
+      "--",
+      "--report=/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b1-clean-j2kzziba/focused-report.json"
+    ],
+    "exit": 0,
+    "errors": [],
+    "status": "PASS"
+  }
+]

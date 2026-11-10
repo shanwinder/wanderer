@@ -1,0 +1,16 @@
+worktree /Applications/wanderer
+HEAD df04052cc8bf0d17510b55e75f3b357e7da9c00f
+branch refs/heads/codex/m4-05b-b1-single-authority-proof
+
+worktree /private/tmp/wanderer-g55-canonical-source
+HEAD 6cd7b842c07e308203f61bbaaff6339233567c68
+detached
+
+worktree /private/tmp/wanderer-m405-effect-reason-contract-amendment
+HEAD f6d78e9e6f3d52c7d3b2a11999156e3128c3577f
+branch refs/heads/codex/m4-05b-b1-effect-reason-contract-amendment
+
+worktree /private/tmp/wanderer-r52-canonical-source
+HEAD 2c59e8d8e27c92c92344adcba9eded0d297cc547
+detached
+

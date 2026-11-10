@@ -1,0 +1,15 @@
+{
+  "implementation_commit": "a07bca91ca7b01651010c8733ea3e0eee0e76b84",
+  "tested_git_base": "295dac9211486a4c2d3c5c5fa43baf065398e6a7",
+  "merge_base": "295dac9211486a4c2d3c5c5fa43baf065398e6a7",
+  "execution_attribution": "A-F ran on uncommitted drafts based on canonical. All six committed source/test blobs are byte-identical to ABC/D/E/F manifests. No claim of a runtime rerun after commit. Later delivery commit contains documentation/evidence only.",
+  "source_hash_matches": {
+    "scripts/m4/playable_contract.gd": "9cc99fb39a69059e0481dbbccb4e3ebfc2bf8b04c433cc4e8bc0e8c728c49234",
+    "scripts/m4/playable_decision_adapter.gd": "94bee85e2b8558d9d43f55f41d45617446dc382338464c3a5c2f929de47bdc38",
+    "scripts/m4/playable_encounter.gd": "b3f1ba31d05702445594d8d940c2990acb1e0fae4d43415ba34fa7181405ff57",
+    "scripts/m4/playable_rules.gd": "97e652a3526891c56bd950ad80dd4403f881ea93b1817fa29526eed82ff1597b",
+    "scripts/m4/playable_fixture_catalog.gd": "5a5ad2eb5ec1691966fbd065bca86d30202a2c6740754aac436eda02247632d4",
+    "tests/actors/m4_05_playable_authority_proof.gd": "9f0cba84653472339a8632cbe047c4f3a938e219798ff66eb0638f0b5c627410"
+  },
+  "all_six_match": true
+}

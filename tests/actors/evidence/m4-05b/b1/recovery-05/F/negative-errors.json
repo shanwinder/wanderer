@@ -1,0 +1,38 @@
+[
+  {
+    "run": "reference44",
+    "exit": 0,
+    "errors": [
+      "Combat Turn Flow: ไม่มี Action ถัดไปหลัง NPC",
+      "Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง",
+      "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+      "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+      "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action"
+    ],
+    "status": "PASS"
+  },
+  {
+    "run": "canonical94",
+    "exit": 0,
+    "errors": [
+      "Combat Turn Flow: ไม่มี Action ถัดไปหลัง NPC",
+      "Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง",
+      "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+      "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+      "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action"
+    ],
+    "status": "PASS"
+  },
+  {
+    "run": "candidate94",
+    "exit": 0,
+    "errors": [
+      "Combat Turn Flow: ไม่มี Action ถัดไปหลัง NPC",
+      "Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง",
+      "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+      "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+      "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action"
+    ],
+    "status": "PASS"
+  }
+]

@@ -34,9 +34,9 @@ project.godot            Godot project configuration
 
 The canonical `visual-combat-test-1` defaults to Autonomous. Open `res://scenes/combat/combat_prototype.tscn` with **F6** for the preserved Legacy entry.
 
-Current status (9 November 2026):
+Current status (10 November 2026):
 
-**M4-05 T05 approval record / delegated technical review gate:** [PR #57](https://github.com/shanwinder/wanderer/pull/57) squash merged at canonical `91e05050dff8246b456463c7a5d75b14c77ce13d`. G05 directions and **T05-01–06 Option A are OWNER APPROVED** (9 November 2026). [Exact selections, E1–E6 package and schema corrections](docs/M4_05_Playable_Integration_Contract.md#22-t05-owner-selections-and-current-task-preflight) distinguish delegated technical details and Owner-proposed weakest-target direction from personal approvals; **Independent Technical Contract Review pending**. B1–B5 need separate explicit runtime authorization after review. [Milestone authority/evidence limits](docs/README.md#current-status-and-next-roadmap). No new Godot/GUI/benchmark run in this documentation task.
+**M4-05B B1 — implemented candidate; automated gates PASS; Independent Code, Schema & Evidence Review pending.** PR #59's Effect/Response clarification is merged at canonical `295dac9211486a4c2d3c5c5fa43baf065398e6a7`. The separately authorized B1 recovery adds a single isolated authority, exact schemas, bound tokens/receipts and deterministic replay. Fresh Godot 4.7.2: original smoke86/expanded97, schema1846 and transaction354 checks pass; canonical94/candidate94 regression stages pass. [Current milestone status and limits](docs/README.md#current-status-and-next-roadmap), [B1 API and evidence](tests/actors/README.md#m4-05b-b1--single-authorityapi-and-schema-proof). This does not enable a playable M4 scene or change F5/Legacy. B2–B5 and M4-05C remain unauthorized; stop at Draft PR, no automatic merge.
 
 - **Implemented:** Player + NPC1/2/3 versus Enemy A (15 HP) and Enemy B (12 HP), target selection, surviving-target fallback, queued actions, victory/defeat and Restart.
 - **Legacy F6:** NPCs take real actions under deterministic prototype rules: after Player Attack, NPC1/3 attack and NPC2 guards Player; after Player Defend, all three attack. These rules are **not an autonomous NPC decision system**.

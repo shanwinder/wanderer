@@ -1,0 +1,10 @@
+{
+  "backup": "/private/tmp/wanderer-b1-r05-preservation-f2sbjopj",
+  "files": 843,
+  "initial_recovery04_manifest_checks": 211,
+  "initial_source_checks": 6,
+  "live_canonical": "295dac9211486a4c2d3c5c5fa43baf065398e6a7",
+  "branch": "codex/m4-05b-b1-single-authority-proof",
+  "existing_runtime_prs": [],
+  "authorization": "Owner follow-up: analyze, diagnose and fix B1 to pass; subsequent instruction to continue to completion. B2-B5 remain excluded."
+}

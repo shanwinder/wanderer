@@ -1,0 +1,63 @@
+Evidence: /private/tmp/wanderer-b1-r04-F-yl1bth0g/canonical44
+PASS: version (exit 0)
+PASS: import (exit 0)
+PASS: parse-combat_prototype (exit 0)
+PASS: parse-combat_turn_flow (exit 0)
+PASS: parse-combat_targets (exit 0)
+PASS: parse-queue_regression (exit 0)
+PASS: startup (exit 0)
+PASS: autonomous-parse-combat_presentation_adapter (exit 0)
+PASS: autonomous-parse-autonomous_main_integration (exit 0)
+PASS: autonomous-main-startup (exit 0)
+FAIL: autonomous-main-proof (exit 1)
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+CASE: S01 opt-in startup / S22 Main presentation structure / PASS
+FAIL: explicit expected project default
+CASE: S02 default Main scene / S20 isolation / FAIL
+CASE: S03/S04/S05/S21 differential ATTACK enemy_a / PASS
+CASE: S03/S04/S05/S21 differential ATTACK enemy_b / PASS
+CASE: S03/S04/S05/S21 differential DEFEND enemy_a / PASS
+CASE: S06/S07/S08/S09 decision fixture 1 / PASS
+CASE: S06/S07/S08/S09 decision fixture 2 / PASS
+CASE: S06/S07/S08/S09 decision fixture 3 / PASS
+CASE: S10/S11/S12/S14/S15 fixture 4 / PASS
+CASE: S10/S11/S12/S14/S15 fixture 9 / PASS
+CASE: S10/S11/S12/S14/S15 fixture 7 / PASS
+CASE: S10/S11/S12/S14/S15 fixture 5 / PASS
+CASE: S10/S11/S12/S14/S15 fixture 6 / PASS
+CASE: S14 full kill order enemy_a / PASS
+CASE: S14 full kill order enemy_b / PASS
+CASE: S13 effect-boundary race target_dead / PASS
+CASE: S13 effect-boundary race actor_dead / PASS
+CASE: S13 effect-boundary race enemy_dead / PASS
+CASE: S13 effect-boundary race enemy_target_dead / PASS
+CASE: S13 effect-boundary race help_threshold / PASS
+CASE: S13 effect-boundary race help_full / PASS
+CASE: S13 effect-boundary race help_clamp / PASS
+CASE: S13 effect-boundary race help_player_dead / PASS
+CASE: S18 stale/forged/early/duplicate callbacks / PASS
+CASE: S16/S17 Restart player / WINDUP / PASS
+CASE: S16/S17 Restart player / IMPACT / PASS
+CASE: S16/S17 Restart player / RETURN / PASS
+CASE: S16/S17 Restart npc_01 / WINDUP / PASS
+CASE: S16/S17 Restart npc_01 / IMPACT / PASS
+CASE: S16/S17 Restart npc_01 / RETURN / PASS
+CASE: S16/S17 Restart npc_02 / WINDUP / PASS
+CASE: S16/S17 Restart npc_02 / IMPACT / PASS
+CASE: S16/S17 Restart npc_02 / RETURN / PASS
+CASE: S16/S17 Restart npc_03 / WINDUP / PASS
+CASE: S16/S17 Restart npc_03 / IMPACT / PASS
+CASE: S16/S17 Restart npc_03 / RETURN / PASS
+CASE: S16/S17 Restart enemy_a / WINDUP / PASS
+CASE: S16/S17 Restart enemy_a / IMPACT / PASS
+CASE: S16/S17 Restart enemy_a / RETURN / PASS
+CASE: S16/S17 Restart enemy_b / WINDUP / PASS
+CASE: S16/S17 Restart enemy_b / IMPACT / PASS
+CASE: S16/S17 Restart enemy_b / RETURN / PASS
+CASE: S16/S17 reentrant/terminal Restart 0 / PASS
+CASE: S16/S17 reentrant/terminal Restart 5 / PASS
+CASE: S16/S17 reentrant/terminal Restart 6 / PASS
+CASE: S19 HUD / S20 HP ownership / PASS
+RESULT: 787617 checks, 1 failures
+

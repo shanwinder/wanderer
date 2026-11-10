@@ -1,0 +1,197 @@
+[
+  {
+    "gate": "D",
+    "stage": "version",
+    "command": [
+      "/Applications/Godot.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/private/tmp/wanderer-b1-r05-D-8mk0iaye/snapshot",
+      "--log-file",
+      "/private/tmp/wanderer-b1-r05-D-8mk0iaye/version.engine.log",
+      "--version"
+    ],
+    "exit": 0,
+    "expected": {
+      "exit": 0,
+      "unexpected_errors": 0,
+      "checks": null
+    },
+    "actual": {},
+    "errors": [],
+    "status": "PASS"
+  },
+  {
+    "gate": "D",
+    "stage": "import",
+    "command": [
+      "/Applications/Godot.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/private/tmp/wanderer-b1-r05-D-8mk0iaye/snapshot",
+      "--log-file",
+      "/private/tmp/wanderer-b1-r05-D-8mk0iaye/import.engine.log",
+      "--editor",
+      "--import"
+    ],
+    "exit": 0,
+    "expected": {
+      "exit": 0,
+      "unexpected_errors": 0,
+      "checks": null
+    },
+    "actual": {},
+    "errors": [],
+    "status": "PASS"
+  },
+  {
+    "gate": "D",
+    "stage": "playable_contract",
+    "command": [
+      "/Applications/Godot.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/private/tmp/wanderer-b1-r05-D-8mk0iaye/snapshot",
+      "--log-file",
+      "/private/tmp/wanderer-b1-r05-D-8mk0iaye/playable_contract.engine.log",
+      "--check-only",
+      "--script",
+      "res://scripts/m4/playable_contract.gd"
+    ],
+    "exit": 0,
+    "expected": {
+      "exit": 0,
+      "unexpected_errors": 0,
+      "checks": null
+    },
+    "actual": {},
+    "errors": [],
+    "status": "PASS"
+  },
+  {
+    "gate": "D",
+    "stage": "playable_decision_adapter",
+    "command": [
+      "/Applications/Godot.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/private/tmp/wanderer-b1-r05-D-8mk0iaye/snapshot",
+      "--log-file",
+      "/private/tmp/wanderer-b1-r05-D-8mk0iaye/playable_decision_adapter.engine.log",
+      "--check-only",
+      "--script",
+      "res://scripts/m4/playable_decision_adapter.gd"
+    ],
+    "exit": 0,
+    "expected": {
+      "exit": 0,
+      "unexpected_errors": 0,
+      "checks": null
+    },
+    "actual": {},
+    "errors": [],
+    "status": "PASS"
+  },
+  {
+    "gate": "D",
+    "stage": "playable_encounter",
+    "command": [
+      "/Applications/Godot.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/private/tmp/wanderer-b1-r05-D-8mk0iaye/snapshot",
+      "--log-file",
+      "/private/tmp/wanderer-b1-r05-D-8mk0iaye/playable_encounter.engine.log",
+      "--check-only",
+      "--script",
+      "res://scripts/m4/playable_encounter.gd"
+    ],
+    "exit": 0,
+    "expected": {
+      "exit": 0,
+      "unexpected_errors": 0,
+      "checks": null
+    },
+    "actual": {},
+    "errors": [],
+    "status": "PASS"
+  },
+  {
+    "gate": "D",
+    "stage": "playable_fixture_catalog",
+    "command": [
+      "/Applications/Godot.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/private/tmp/wanderer-b1-r05-D-8mk0iaye/snapshot",
+      "--log-file",
+      "/private/tmp/wanderer-b1-r05-D-8mk0iaye/playable_fixture_catalog.engine.log",
+      "--check-only",
+      "--script",
+      "res://scripts/m4/playable_fixture_catalog.gd"
+    ],
+    "exit": 0,
+    "expected": {
+      "exit": 0,
+      "unexpected_errors": 0,
+      "checks": null
+    },
+    "actual": {},
+    "errors": [],
+    "status": "PASS"
+  },
+  {
+    "gate": "D",
+    "stage": "playable_rules",
+    "command": [
+      "/Applications/Godot.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/private/tmp/wanderer-b1-r05-D-8mk0iaye/snapshot",
+      "--log-file",
+      "/private/tmp/wanderer-b1-r05-D-8mk0iaye/playable_rules.engine.log",
+      "--check-only",
+      "--script",
+      "res://scripts/m4/playable_rules.gd"
+    ],
+    "exit": 0,
+    "expected": {
+      "exit": 0,
+      "unexpected_errors": 0,
+      "checks": null
+    },
+    "actual": {},
+    "errors": [],
+    "status": "PASS"
+  },
+  {
+    "gate": "D",
+    "stage": "D",
+    "command": [
+      "/Applications/Godot.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      "/private/tmp/wanderer-b1-r05-D-8mk0iaye/snapshot",
+      "--log-file",
+      "/private/tmp/wanderer-b1-r05-D-8mk0iaye/D.engine.log",
+      "--script",
+      "res://tests/actors/m4_05_playable_authority_proof.gd",
+      "--",
+      "--gate=D",
+      "--report=/private/tmp/wanderer-b1-r05-D-8mk0iaye/D-report.json"
+    ],
+    "exit": 0,
+    "expected": {
+      "exit": 0,
+      "unexpected_errors": 0,
+      "checks": -1
+    },
+    "actual": {
+      "checks": 1846,
+      "failed": 0,
+      "status": "PASS"
+    },
+    "errors": [],
+    "status": "PASS"
+  }
+]

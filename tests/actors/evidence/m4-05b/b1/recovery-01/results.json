@@ -1,0 +1,45 @@
+{
+  "status": "HOLD",
+  "base_head_merge_base": "df04052cc8bf0d17510b55e75f3b357e7da9c00f",
+  "branch": "codex/m4-05b-b1-single-authority-proof",
+  "engine": "4.7.2.stable.official.ed1daf0bf",
+  "tested_source": "Uncommitted source manifest and tested-source.zip; base SHA alone is not the tested source.",
+  "fix": {
+    "definition": "scripts/m4/playable_fixture_catalog.gd:30",
+    "old": "reference",
+    "new": "seed_reference_snapshot",
+    "calls": [
+      "scripts/m4/playable_rules.gd:18",
+      "scripts/m4/playable_rules.gd:294",
+      "scripts/m4/playable_rules.gd:308"
+    ],
+    "semantic_change": "Name only; exact patch in rename.patch"
+  },
+  "parse_result": "PASS: fresh snapshot import and all five source parse checks; exit 0 and no errors in stdout/stderr/engine logs",
+  "focused_result": "FAIL overall despite 86 successful smoke assertions and exit 0: unexpected engine certificate error",
+  "new_blocker": {
+    "message": "Condition ret != noErr; get_system_ca_certificates at platform/macos/os_macos.mm:1035",
+    "classification": "Engine/platform certificate retrieval failure",
+    "cause_limit": "Occurred in sandboxed focused process; sandbox restriction is a hypothesis, not verified root cause. No further execution after HOLD."
+  },
+  "engine_errors": [
+    {
+      "file": "focused.engine.log",
+      "line": "ERROR: Condition \"ret != noErr\" is true. Returning: \"\""
+    }
+  ],
+  "smoke_assertions": 86,
+  "failed_assertions": 0,
+  "actual_transaction_evidence": "focused-report.json contains actual requests, responses, pre/post roots, tokens, impact deltas, receipts, journal and final root. Each smoke operation checked full replay equality.",
+  "not_run": [
+    "Complete adversarial matrix",
+    "Existing combat regression and negative suite",
+    "B2-B5",
+    "GUI/visual",
+    "E4 performance"
+  ],
+  "first_failure_evidence": "Preserved without modification in parent directory, including original results.json and source hashes.",
+  "protected_tracked_diff": [],
+  "commit_push_pr": "NOT DONE; mandatory HOLD before B1 acceptance",
+  "owner_action": "Authorize resolving the certificate/environment error and resuming B1 verification on this same branch; B2-B5 remain deferred."
+}

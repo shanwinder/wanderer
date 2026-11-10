@@ -1,0 +1,87 @@
+{
+  "status": "HOLD",
+  "task_date": "2026-11-10",
+  "task_timezone": "Asia/Bangkok",
+  "hold_source": "Owner authorization section 9: Unexpected Engine Error requires HOLD; no further code edits after observed failure.",
+  "repository": "shanwinder/wanderer",
+  "canonical": "visual-combat-test-1",
+  "required_base": "df04052cc8bf0d17510b55e75f3b357e7da9c00f",
+  "initial_branch": "codex/m4-05-t05-e-owner-decision-gate",
+  "initial_head": "b070581e47dffa913a011a7bc7636d1632416e8c",
+  "initial_local_and_cached_canonical": "91e05050dff8246b456463c7a5d75b14c77ce13d",
+  "fetched_and_live_canonical": "df04052cc8bf0d17510b55e75f3b357e7da9c00f",
+  "branch": "codex/m4-05b-b1-single-authority-proof",
+  "head_and_merge_base": "df04052cc8bf0d17510b55e75f3b357e7da9c00f",
+  "tested_commit": null,
+  "source_attribution": "Uncommitted B1 draft over required base; tested bytes identified by tested-source-sha256.json and failed-source.zip. Base commit alone is NOT the tested source.",
+  "preflight": {
+    "initial_working_tree": "clean",
+    "pr58": "MERGED, squash matches required base",
+    "duplicate_branch": "absent in local/fetched/live branch inventories before creation",
+    "open_prs": [
+      2,
+      17
+    ],
+    "unrelated_prs_modified": false,
+    "fetch_initial_attempt": "sandbox denied .git/FETCH_HEAD; elevated fetch succeeded, not an automatic approval rejection"
+  },
+  "engine": {
+    "path": "/Applications/Godot.app/Contents/MacOS/Godot",
+    "version": "4.7.2.stable.official.ed1daf0bf",
+    "binary_sha256": "c7cccbf8fb143e34e02fd6521e09be2c2b974f0d5db080b19071c9c570718ccf",
+    "version_command": "/Applications/Godot.app/Contents/MacOS/Godot --version",
+    "version_exit": 0
+  },
+  "runs": [
+    {
+      "command": "/Applications/Godot.app/Contents/MacOS/Godot --headless --path . --check-only --script res://scripts/m4/playable_encounter.gd",
+      "cwd": "/Applications/wanderer",
+      "process_exit": 0,
+      "expected": "No unexpected engine/script errors; all new modules parse",
+      "actual": "FAIL: catalog reference() conflicts with native RefCounted.reference(); cascading compile/load errors; user:// log write errors",
+      "log": "first-parse-failure.log",
+      "engine_log": "NOT AVAILABLE: user:// log write failed",
+      "runtime_executed": false
+    }
+  ],
+  "draft_source_files": [
+    "scripts/m4/playable_contract.gd",
+    "scripts/m4/playable_decision_adapter.gd",
+    "scripts/m4/playable_encounter.gd",
+    "scripts/m4/playable_fixture_catalog.gd",
+    "scripts/m4/playable_rules.gd"
+  ],
+  "protected_tracked_diff": [],
+  "verification_claims": {
+    "B1": "INCOMPLETE / UNVERIFIED",
+    "schema": "UNVERIFIED",
+    "bootstrap": "NOT RUN",
+    "attack": "NOT RUN",
+    "receipt_ids": [],
+    "journal_replay": "NOT RUN",
+    "adversarial_proof": "NOT WRITTEN / NOT RUN",
+    "combat_regression": "NOT RUN due mandatory HOLD",
+    "negative_suite": "NOT RUN; no five expected negative errors used to excuse this parse failure",
+    "GUI_visual_keyboard": "NOT RUN",
+    "performance_E4": "NOT RUN"
+  },
+  "deferred": [
+    "B2 HELP/Guard effects",
+    "B3 full Guidance and round close lifecycle",
+    "B4 terminal settlement/reset/events",
+    "B5 playable scene",
+    "M4-05C and F5 cutover"
+  ],
+  "known_draft_limitations": [
+    "No focused test harness yet; no B1 completion claim",
+    "GUIDANCE/CLOSE_ROUND/RESTART deliberately unavailable; no fake successful publication",
+    "Non-ATTACK impact unavailable; policy-selected non-ATTACK lock/cancel intended only",
+    "Natural action-caused terminal impact deferred; no executed terminal transaction claim",
+    "Exact schemas and relational/replay validation require code review and actual executable adversarial proof"
+  ],
+  "next_owner_action": "Authorize correction of the reported parse/log failures and resumption of the same B1 branch; no B2-B5 authorization is requested.",
+  "rollback": "If requested, remove only the five uncommitted scripts/m4/playable*.gd drafts and this B1 evidence; existing tracked files are unchanged. No branch/session state migration.",
+  "draft_pr": null,
+  "commit_created": false,
+  "merge_or_auto_merge": false
+}

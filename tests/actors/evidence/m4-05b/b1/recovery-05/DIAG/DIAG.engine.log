@@ -1,0 +1,8 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+FAIL: R05 Bootstrap unsupported fixture version rejects/2
+FAIL: R05 RestartPayload unsupported fixture version rejects/2
+FAIL: R05 Bootstrap unsupported fixture version rejects/999
+FAIL: R05 RestartPayload unsupported fixture version rejects/999
+FAIL: R05 forged outbound COMPLETE receipt rejects before publication
+B1 INITIAL PROOF: FAIL checks=102

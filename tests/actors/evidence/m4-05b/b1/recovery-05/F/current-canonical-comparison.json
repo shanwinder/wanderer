@@ -1,0 +1,6 @@
+{
+  "result": "PASS",
+  "cases": 6,
+  "frames": 5892,
+  "expected": "Exact candidate/current canonical Legacy trace equality; separate from historical cutover reference"
+}

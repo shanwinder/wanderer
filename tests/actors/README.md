@@ -1624,3 +1624,31 @@ Learning: context describes “what this NPC knows now”; candidate describes �
 ### G55-DOC-01 — Canonical rebase and approval reconciliation
 
 PR #54 merged at canonical `6cd7b842c07e308203f61bbaaff6339233567c68`. Existing Draft PR #55 is rebased onto this canonical; the full [approved §2.1 register](../../docs/M4_04_Autonomous_Decision_Contract.md#21-owner-subdecision-approval--current-authority) and canonical Architecture remain intact. Above is the original delivery record, including its then-unmerged #54 relationship; it is not the current ancestry. [Separate fresh post-rebase source/hashes/commands/results and validator audit](evidence/m4-04/post-r54-rebase.json) preserve original evidence attribution. Additional approved design groups21–23 map to executed slices and explicit remaining gaps in [contract §7.1](../../docs/M4_04_Autonomous_Decision_Contract.md#71-implemented-candidate-coverage-mapping). Runtime, focused test, runner and original evidence bytes are unchanged by reconciliation. IMPLEMENTED CANDIDATE / DRAFT / Awaiting Independent Follow-up Code & Evidence Review. O4/O6/O7 and manual GUI/visual limitations above remain; no Production Integration or M4-05.
+
+
+## M4-05B B1 — Single Authority/API and Schema Proof
+
+**Implemented candidate / automated gates PASS / Independent Review pending.** This is the isolated B1 proof, not the B2–B5 playable integration. Authority is the merged [M4-05 contract §§19/25–28](../../docs/M4_05_Playable_Integration_Contract.md#28-effect-and-response-reason-matrix--proposed-amendment) plus the Owner's separate B1 recovery instructions. [Current milestone status](../../docs/README.md#current-status-and-next-roadmap) owns authorization/status; the [Thai recovery report](evidence/m4-05b/b1/recovery-05/REPORT.md) records diagnosis, exact execution context, preservation, commands, results and limitations.
+
+`playable_encounter.gd` owns the only live root and factory/input/driver/presenter object capabilities. Bootstrap selects immutable catalog ID/version1; no caller seed/HP import. Snapshot/view/observation accessors return detached values. Requests require exact current session/generation/round/revision/queue and correct capability; NPC observations must equal the owner-derived observation and policy is recomputed. Minimal command/admission exists to authorize real B1 ATTACKs. Non-ATTACK tokens may be cancelled without fake receipts; their effects remain deferred. No new scene, autoload or Main hook is installed.
+
+`playable_contract.gd` validates all named records recursively, including closed Effect status/reason pairs at every location. `playable_rules.gd` independently checks actual effect projections, binds the entire generated result (including outbound tokens/receipts) to the authorized operation, reconstructs the journal from immutable seed and compares the full root before publication. IMPACT creates no receipt. COMPLETE preserves its stored effect and issues one receipt; duplicates reject. A correct reason string cannot authorize a false delta or receipt.
+
+Learning: distinguish **intent** (issued token), **what happened** (committed IMPACT effect), and **settlement** (COMPLETE receipt). A schema fixture can show that a reason is well-formed; only a genuine owner transaction proves an effect occurred. The fault subclass corrupts detached candidates before validation, never the live root. Underscore fields/capabilities are trusted in-process API boundaries, not a security sandbox for hostile scripts.
+
+### Running the B1 proof
+
+Use a fresh project snapshot and fresh output directory, with Godot `4.7.2.stable.official.ed1daf0bf` in a clean execution context. Import first. The proof modes are:
+
+```sh
+/path/to/Godot --headless --path /path/to/fresh-snapshot --editor --import
+/path/to/Godot --headless --path /path/to/fresh-snapshot --script res://tests/actors/m4_05_playable_authority_proof.gd -- --report=/fresh-output/original.json
+/path/to/Godot --headless --path /path/to/fresh-snapshot --script res://tests/actors/m4_05_playable_authority_proof.gd -- --gate=D --report=/fresh-output/schema.json
+/path/to/Godot --headless --path /path/to/fresh-snapshot --script res://tests/actors/m4_05_playable_authority_proof.gd -- --gate=E --report=/fresh-output/transactions.json
+```
+
+Default mode retains the original expanded97 assertions. D1846 and E354 each include those97; totals are not independent case counts. D tests55 M4Playable named records plus3 inherited shapes, including missing/extra/wrong-type/closed-enum mutations. E adds real transaction, capability, token/receipt, fault, full-root and replay checks. The earlier smoke86 harness is preserved in its source archive and rerun separately; its expectations were not changed. Four SKIPPED reasons beyond actual TARGET_UNAVAILABLE are schema-only; B2–B5 deferred structures are pure shape fixtures, not live feature acceptance.
+
+[Fresh A–F results](evidence/m4-05b/b1/recovery-05/results.json), [source mapping](evidence/m4-05b/b1/recovery-05/delivery-head-resolution.json), [all combat commands](evidence/m4-05b/b1/recovery-05/F/run-record.json). Existing verifier/tests are unchanged. For current Autonomous canonical/candidate runs use `--main-cutover-proof` with its required flags and the provenanced **pre-cutover**44-stage reference; do not use current canonical as the old Legacy-default reference (the preserved Recovery-04 failure demonstrates this mismatch). Recovery-05 reran reference44 and current canonical94/candidate94 in fresh snapshots, all PASS; Legacy6cases/5892frames identical and five expected negative errors separate. Logs/exit codes/reports are preserved in the verified archive linked by the report.
+
+GUI/keyboard/visual acceptance, performance benchmarks, HELP/Guard effects, full Guidance/round integration, action-terminal/Restart/event projection and the playable scene remain deferred. Do not interpret B1 PASS as B2–B5 authorization, full M4 completion or permission to merge.
