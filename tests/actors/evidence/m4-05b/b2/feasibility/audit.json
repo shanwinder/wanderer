@@ -1,0 +1,45 @@
+{
+  "classification": "DOCUMENTATION / STATIC FEASIBILITY AUDIT; NOT RUNTIME TEST PASS",
+  "checked_at_utc": "2026-11-10T01:50:53.115393+00:00",
+  "canonical": "7898b9b0fd69068eb0798c11bd4b7cb0ebb23e77",
+  "feature_head": "7898b9b0fd69068eb0798c11bd4b7cb0ebb23e77",
+  "merge_base": "7898b9b0fd69068eb0798c11bd4b7cb0ebb23e77",
+  "branch": "codex/m4-05b-b2-help-guard-effect-bridge",
+  "changed_tracked_files": [
+    "README.md",
+    "docs/README.md",
+    "tests/actors/README.md"
+  ],
+  "new_evidence_files": [
+    "tests/actors/evidence/m4-05b/b2/feasibility/REPORT.md",
+    "tests/actors/evidence/m4-05b/b2/feasibility/audit.json",
+    "tests/actors/evidence/m4-05b/b2/feasibility/preflight.json",
+    "tests/actors/evidence/m4-05b/b2/feasibility/source-manifest.json"
+  ],
+  "allowlist_pass": true,
+  "protected_files_checked": 979,
+  "all_protected_files_byte_equal_canonical": true,
+  "unchanged_b1_evidence_files": 505,
+  "source_manifest_count": 123,
+  "local_links_checked": 290,
+  "fragments_checked": 83,
+  "link_errors": [],
+  "tracked_docs_whitespace": {
+    "command": "git diff --check 7898b9b0fd69068eb0798c11bd4b7cb0ebb23e77 -- README.md docs/README.md tests/actors/README.md",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "new_evidence_whitespace_errors": [],
+  "audit_harness_note": "Initial link audit flagged its not-yet-created audit.json and dropped Thai combining marks in old anchors; generated audit artifact and corrected Unicode slug handling, then reran without changing historical links.",
+  "runtime_import_parse_B1_B2_combat_GUI_tests": "NOT RUN",
+  "git_commit_push_pr": "NOT PERFORMED",
+  "artifact_sha256_excluding_audit_self": {
+    "README.md": "246d770901e88aaf030cf6e615d4bc8f72cda607c6f72993dca311bfa53fde52",
+    "docs/README.md": "844f84be38db3bc53386073e2686687f8f273d456d8f41892c6e50eec7c7557b",
+    "tests/actors/README.md": "6c37122392ab2a62e5878a10087d94cc5d7606303c8de6196c728843951ad46f",
+    "tests/actors/evidence/m4-05b/b2/feasibility/REPORT.md": "09b9907ec74ab05a2be6d7f85a0c9894ce2db064c2088bde4a5f9f506a693649",
+    "tests/actors/evidence/m4-05b/b2/feasibility/preflight.json": "40cf458791a9b55607bf6a8a667139c1dd3719ab2970c900dfcea7c9f344f3d5",
+    "tests/actors/evidence/m4-05b/b2/feasibility/source-manifest.json": "dfc03e3ae2fbb7dd8c20f3d8f66374d41b4bb6b1eb44be9ef4e1563307f81918"
+  }
+}

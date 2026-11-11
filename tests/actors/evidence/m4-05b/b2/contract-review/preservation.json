@@ -1,0 +1,37 @@
+{
+  "backup": "/private/tmp/wanderer-b2-before-contract-6m8i3vm4",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "246d770901e88aaf030cf6e615d4bc8f72cda607c6f72993dca311bfa53fde52"
+    },
+    {
+      "path": "docs/README.md",
+      "sha256": "844f84be38db3bc53386073e2686687f8f273d456d8f41892c6e50eec7c7557b"
+    },
+    {
+      "path": "tests/actors/README.md",
+      "sha256": "6c37122392ab2a62e5878a10087d94cc5d7606303c8de6196c728843951ad46f"
+    },
+    {
+      "path": "docs/M4_05_Playable_Integration_Contract.md",
+      "sha256": "d4a0b9df35515aa594cd745048bbbf10d4cab5b0a5da0565f814098f1193075c"
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b2/feasibility/source-manifest.json",
+      "sha256": "dfc03e3ae2fbb7dd8c20f3d8f66374d41b4bb6b1eb44be9ef4e1563307f81918"
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b2/feasibility/audit.json",
+      "sha256": "d13e0eb45e8dbece2f320eed46808b21887347657ef960e60e381a897d31a73e"
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b2/feasibility/REPORT.md",
+      "sha256": "09b9907ec74ab05a2be6d7f85a0c9894ce2db064c2088bde4a5f9f506a693649"
+    },
+    {
+      "path": "tests/actors/evidence/m4-05b/b2/feasibility/preflight.json",
+      "sha256": "40cf458791a9b55607bf6a8a667139c1dd3719ab2970c900dfcea7c9f344f3d5"
+    }
+  ]
+}

@@ -709,3 +709,70 @@ Wire `domain=M4_PLAYABLE`/version1 and exact record fields remain as drafted for
 Future separately authorized B1 recovery must exercise all six permitted pairs; arbitrary/empty/null/wrong-type reasons; valid names with wrong Effect.status; valid Effect with incompatible outer status/reason; invalid HP/resource/Guard/lifecycle deltas; nested-copy mutation isolation; and rejection of invalid effects in candidate/journal/receipt/replay validation with full-root equality. Separate pure schema cases from actual legal transactions; B2–B5 paths remain deferred until authorized, without fake effects/receipts or test-only root mutation. Retain the original failed test expectation and history; do not relabel96/97 as PASS.
 
 **This task: documentation verification only. Godot/import/parse, schema runtime tests, smoke/adversarial proof, combat regression/negative tests, GUI/visual and benchmarks are NOT RUN.** Check local Markdown links/anchors, table widths, exact enumeration, historical approval preservation, all26 unchanged P05 rows and the two-file allowlist; report actual audit and hashes in the Draft PR. Stop at **Independent Technical Contract Review**. No merge/auto-merge/branch deletion/B1 validator fix or B2–B5/M4-05C. After Independent Review and explicit Owner merge, a separate B1 recovery task must recheck the new canonical SHA and safely bring the merged contract into B1 without losing its uncommitted work.
+
+## 29. B2 fixture feasibility correction — proposed for independent review
+
+**12 November 2026, Asia/Bangkok — PROPOSED CONTRACT AMENDMENT / NOT IMPLEMENTED.** After the B2 feasibility HOLD, Owner instructed “แก้ไขปัญหาที่เกิดขึ้นให้สำเร็จให้จงได้”. This authorizes continuing the dependency resolution and preparing this concrete correction for review; it is not recorded as personal approval of every technical choice below or waiver of the original mandatory Independent Contract Review. The existing B2 branch carries this documentation-only Draft. Runtime remains gated by the original authorization §§3/12; B3–B5/M4-05C remain outside scope. [Current status](README.md#current-status-and-next-roadmap), [preserved feasibility proof and B2-01–20 map](../tests/actors/evidence/m4-05b/b2/feasibility/REPORT.md).
+
+### 29.1 Problem and exact additive seed package
+
+Merged B1 at `7898b9b0fd69068eb0798c11bd4b7cb0ebb23e77` has five v1 fixtures, Player HP30 or DOWN0, weakest-target declarations at admission, and no natural round close. NPC slots precede Enemy hits. No legal B2 producer can supply living Player HP1–9 for HELP; v1 also cannot exercise Player guarded hits or NPC Guard consumption+DOWN in one hit. This is a reachability defect in the proof package, not evidence that the implemented B1 ATTACK path failed.
+
+Propose two **new IDs with fixture_version2**, in a separate immutable catalog partition. Existing five IDs are version1 only; they are not copied into version2. Keep MaxHP `[30,10,10,10,15,12]`, stable IDs/order, fixed profiles, capacity6, damage5/1/3, `WEAKEST_RATIO_HP_ORDER_V1`, NPC HELP1, Party RESCUE1 and initial Guard=null. All actors in the new seeds are ALIVE/PRESENT; no seeded episode, token, effect, receipt or spent resource.
+
+| Exact new fixture ID | Version | Party HP: Player/NPC1/NPC2/NPC3 | Enemy HP: A/B | Purpose |
+|---|---|---|---|---|
+| `m405-demo/b2-player-low` | 2 | 2/10/7/3 | 15/12 | Real HELP and Player Guard qualifying hits |
+| `m405-demo/b2-npc-guard-down` | 2 | 30/10/7/1 | 15/12 | NPC safety DEFEND; consume+DOWN cause precedence |
+
+No target-policy adjustment or external damage/heal API is proposed. New seeds are selected only by the existing factory capability plus Bootstrap, never imported from a caller snapshot. The catalog remains a pure immutable value provider, not a second state owner.
+
+### 29.2 Version, digest and recursive schema compatibility
+
+Preserve the **exact canonical serialized v1 content and its SHA-256**, including the original five fixtures, fixture_version1 and contract_revision2. Adding new rows to the old global `content()` result is forbidden because it changes every old SeedReference digest. Default v1 helper calls must retain their old values. V2 serialization uses the same canonical serializer and content keys, contains only the two new rows in table order, fixture_version2 and **contract_revision3**. Existing wire domain/version remains M4_PLAYABLE/1; no new field/reason is added. Fixture and contract revisions are existing seed fields, not Guidance or session generation changes.
+
+Bootstrap/RestartPayload retain their exact field sets. Version is a strict integer, not bool/float/string. Preserve the old v1 structural schema and unknown-ID rejection path. Introduce a constrained v2 branch: **version2 is structurally valid only with one of the two new IDs**. New IDs with version1 reject INVALID_SCHEMA; old IDs with version2 reject INVALID_SCHEMA. Unknown ID/version1 retains the old structural acceptance then factory UNKNOWN_FIXTURE; unknown ID/version2 rejects INVALID_SCHEMA. Unsupported versions reject INVALID_SCHEMA. The runtime catalog accepts only the seven specified pairs; accepting a shape is never a grant.
+
+SeedReference keeps its exact keys. Old valid references retain fixture_version1/contract_revision2/v1 digest; new references require the new ID/version2/contract_revision3/v2 digest. Recursive validation must reject cross-partition ID/version/revision combinations; full root validation/replay additionally compares the complete selected canonical SeedReference including its digest, damage policy, enemy policy and capacity. Unknown/digest-substituted seeds never reconstruct a live root. No permissive global `fixture_version in [1,2]` check may replace these bindings.
+
+| Input | Required compatibility result after implementation |
+|---|---|
+| Each original ID / int1 | Same bootstrap state, declarations, resources and seed digest as B1 |
+| Original `main` / int2, including nested RestartPayload and SeedReference substitutions | Existing B1 rejection expectations retained; INVALID_SCHEMA at Bootstrap/request boundary |
+| Either new ID / int2 | Valid shape; owner factory builds the exact immutable new seed |
+| Either new ID / int1; unknown ID / int2 | INVALID_SCHEMA; no owner publication |
+| Unknown ID / int1 | Preserve old shape/factory UNKNOWN_FIXTURE behavior |
+| Version bool, float, string, null, 0, negative, 999 | Recursive schema rejection; no mutation |
+| New SeedReference with old digest/revision, or old reference with new digest/revision | Reject schema where identity/revision mismatches; full canonical seed equality rejects digest mismatch before publication/replay |
+
+Pass the selected version explicitly through factory bootstrap → initial root → party/enemy construction → seed snapshot → root validation → deterministic replay. A helper defaulting to v1 must not reinterpret a v2 request. Immutable profiles/order/policy checks use the selected partition. RestartPayload gains only schema compatibility here; this does **not** implement RESTART, which remains B4. Existing `main/version2` Restart requests still fail schema before the deferred phase gate. No replay-history migration or root import is introduced.
+
+Original B1 tests remain byte-identical. In particular, `m4_05_playable_authority_proof.gd` checks main/version2 invalid in diagnostics, schema closure and actual bootstrap/restart requests. Add new positive/new-ID cross-pair checks in the separately authorized B2 proof, rather than editing those expectations. Preserve unknown-v1 behavior so this amendment does not silently tighten an unrelated old API path.
+
+### 29.3 Expected legal action histories — not executed evidence
+
+All scenarios below require the subsequently reviewed B2 effect implementation. Each command/lock/impact/complete uses current owner identity and actual object capability; every token comes from the owner. CANCEL is the existing pre-impact driver transaction, disposes its slot and creates no effect/receipt. It cannot refund an applied effect. No test chooses an NPC action or alters its observation.
+
+| Scenario | Expected legitimate sequence and outcome |
+|---|---|
+| Positive HELP | New Player-low seed; accepted Player ATTACK on EnemyA, admit, own lock→impact→complete. Both Enemy declarations target Player2/30. NPC1 independently HELP: Player2→6 and HELP1→0 atomically, then COMPLETE receipt. NPC2 independently HELP6→10/use1→0 and completes. NPC3 chooses unsupported RETREAT under its current policy; cancel that actual token to finish the bounded B2 history without implementing B3 |
+| Player Guard across two nonlethal hits | Same seed; Player DEFEND grant→complete, then both actual NPC HELP actions as above; cancel NPC3 RETREAT. Player HP10→9→8 on the two Enemy hits; ROUND Guard remains after both. Each Enemy completes once; no round close claimed |
+| Player Guard cleanup on DOWN | Fresh same seed; Player DEFEND→complete; cancel each independently locked NPC HELP before impact. EnemyA HP2→1 with Guard retained; EnemyB HP1→0/DOWN with Guard cleared. NPCs remain alive, so this needs no B4 terminal. Lifecycle/Guard/HP publish together |
+| NPC consume+DOWN | New NPC-guard-down seed; Player/NPC1/NPC2 normal ATTACKs leave both enemies alive. NPC3 independently DEFEND at HP1 against declared self-hit. EnemyA guarded damage1 causes HP1→0/DOWN; one final GuardChange cause DOWN, not separate CONSUME and DOWN rows. EnemyB retains that target and settles genuine TARGET_UNAVAILABLE SKIPPED→COMPLETE |
+| NPC one-use Guard and later unguarded hit | Original main v1: NPC3 HP3 DEFEND; EnemyA damage1 leavesHP2 and consumes Guard; EnemyB damage3 causes DOWN. No v1 seed or target policy change |
+
+These histories show why the proposed seeds address B2-01/05–09/11. They are source-based feasibility reasoning, not generated token IDs, runtime receipts, replay proof or visual acceptance. Tests must retain actual request/response/root journals and verify the predicted results rather than copy this table into a PASS record.
+
+### 29.4 Remaining acceptance dependencies and review decision
+
+The fixture correction does not make every B2 row reachable. Positive spend permits genuine duplicate IMPACT/COMPLETE and forged-token reuse rejection, but a **fresh legitimate second opportunity** after resource exhaustion requires B3. The same limitation applies to a second same-actor DEFEND grant. Serial lock→impact has no legal external mutation producer: post-lock target unavailability and threshold changes remain O7 deferred. With maxHP30 and lock HP≤9, +4 cannot reach the cap; clamping can have pure arithmetic/policy coverage, not actual capped-heal acceptance. DEAD/RETREATED/RESCUE integration, round-close expiry, terminal and Restart cleanup remain their named B3/B4 dependencies.
+
+**Required Owner/reviewer disposition:** approve the exact two fixtures, identity/version/digest schema delta and the above explicit partial/deferred classifications, or specify a separately scoped dependency task. This document does not silently relax the original acceptance criteria. If complete runtime coverage of those unreachable cases is required for B2 acceptance, B2 remains HOLD even after this seed proposal is accepted. No fake close/terminal/receipt, arbitrary root mutation, altered damage, lower maxHP or new mid-action producer may substitute for that decision.
+
+Upon approval, the necessary catalog source addition to the original B2 allowlist is `scripts/m4/playable_fixture_catalog.gd`; existing authorized B1 Owner/Rules/Contract/Adapter and proposed B2 Effect Rules/Proof remain the implementation boundary. No code change is made by this document. Review must confirm version propagation and original v1 compatibility before source implementation.
+
+### 29.5 Validation and delivery gate
+
+Current delivery: documentation and preservation/audit evidence only on the existing B2 branch. Preserve the 10 November feasibility record verbatim as historical evidence. Check links/anchors, all unchanged §§1–28 and P05 rows, exact diff allowlist, source/test/B1 evidence hashes, and compare proposed seed arithmetic/target selection with the actual B1 policy. No new Godot/import/parse/B1/B2/combat/GUI test or benchmark is claimed. Prior PR #60 results remain inherited and attributed in the Actor guide.
+
+After review and Owner disposition, future implementation must run the untouched B1 smoke86/expanded97/schema/transaction suites, focused legal HELP/Guard and adversarial full-root/replay/fault checks, and fresh full combat regression using the historical44-stage reference and current cutover flags. Record new version-specific canonical seed digests, source manifests and expected/actual traces. Five expected negative errors stay separate; any unexpected engine error or regression is HOLD. No automatic merge or B3–B5/M4-05C work follows this Draft contract PR.
