@@ -1,0 +1,18 @@
+{
+  "base_sha": "6b68bf563833fb31fbb8df4b15034f3fd26f60da",
+  "execution": "pre-commit candidate sources",
+  "changed_files_and_protected_comparison": {
+    "scripts/m4/playable_contract.gd": "c9a645db3ba4fee73696693dafc9496a2201aba78775d0f168652830b6e1b94c",
+    "scripts/m4/playable_effect_rules.gd": "60a08c135fb977da82bbedbb2e2b0ce0cefca192ea81b407499d91da854f02b9",
+    "scripts/m4/playable_effect_rules.gd.uid": "d211b1880f87140f10623027d2be089fa1f27572874f70112fedeaa3b9cd435c",
+    "scripts/m4/playable_encounter.gd": "401227301646145dc99c6a33bafeb9b355b15d4eb8ee707386ccc115bb8a00a7",
+    "scripts/m4/playable_fixture_catalog.gd": "bd52aa436295f25e6dcc2c399e380d8f4ca53ceb6c1b5b0ad399fa348da46c30",
+    "scripts/m4/playable_rules.gd": "d8f55b46c64c9c772f0585111c4d3f67bb3db4f3a0ab8789e87f1b8d5f69b494",
+    "tests/actors/m4_05_playable_effect_proof.gd": "3059a8d457755fbd99ea5e812c4b5481cc0958e3133318a231472f73d2322295",
+    "tests/actors/m4_05_playable_effect_proof.gd.uid": "3f5819139a38b826b6017499506c2c0289000bbc771d368e86fea3238abbf6f1",
+    "scripts/m4/playable_decision_adapter.gd": "94bee85e2b8558d9d43f55f41d45617446dc382338464c3a5c2f929de47bdc38",
+    "tests/actors/m4_05_playable_authority_proof.gd": "9f0cba84653472339a8632cbe047c4f3a938e219798ff66eb0638f0b5c627410"
+  },
+  "focused_uid_provenance": "Two new UIDs emitted by this import and copied byte-for-byte from the focused snapshot before full combat regression.",
+  "archived_smoke_sha256": "d3110f88a368f048a8500fc57cf8e6a015fa8744e23cfb169ab881a3a7b3bdfe"
+}
