@@ -1,0 +1,132 @@
+{
+  "classification": "STATIC FEASIBILITY / NOT A RUNTIME TEST",
+  "status": "HOLD",
+  "observed_date": "2026-11-10",
+  "timezone": "Asia/Bangkok",
+  "required_canonical": "7898b9b0fd69068eb0798c11bd4b7cb0ebb23e77",
+  "initial": {
+    "branch": "codex/m4-05b-b1-single-authority-proof",
+    "head": "57bf127a37d159ba4968955c0252718b9c16d667",
+    "merge_base": "295dac9211486a4c2d3c5c5fa43baf065398e6a7",
+    "working_tree": "clean including untracked inventory"
+  },
+  "pr60": {
+    "number": 60,
+    "url": "https://github.com/shanwinder/wanderer/pull/60",
+    "state": "closed",
+    "merged": true,
+    "merge_commit_sha": "7898b9b0fd69068eb0798c11bd4b7cb0ebb23e77",
+    "merged_at": "2026-11-10T00:54:41Z",
+    "head_sha": "57bf127a37d159ba4968955c0252718b9c16d667"
+  },
+  "review": [
+    {
+      "url": "https://github.com/shanwinder/wanderer/pull/60#pullrequestreview-5834090129",
+      "id": 5834090129,
+      "created_at": "2026-11-09T23:02:30Z",
+      "body": "## Independent M4-05B B1 Code, Schema & Evidence Review — HEAD `57bf127a37d159ba4968955c0252718b9c16d667`\n\n**VERDICT: B1 TECHNICAL REVIEW PASS / GO for Owner consideration of SQUASH MERGE PR #60 (B1 only).** This is a **COMMENT review**, not a GitHub APPROVE, not a merge, and **not authorization** to implement B2–B5, M4-05C or to change the F5 production entry.\n\n### 1. Live canonical and changed-file scope\n- Verified PR **OPEN/DRAFT/UNMERGED**, HEAD `57bf127a37d159ba4968955c0252718b9c16d667`, base + current live canonical `295dac9211486a4c2d3c5c5fa43baf065398e6a7`, merge base exact, ahead2/behind0.\n- Independently classified **all 514 changed filenames**: five new `scripts/m4/playable_*.gd`, one new `tests/actors/m4_05_playable_authority_proof.gd`, three documentation/index files (`README.md`, `docs/README.md`, `tests/actors/README.md`), and **505** paths under `tests/actors/evidence/m4-05b/b1/`. No tracked changes to Main F5, Legacy F6, Guidance v1/R1, M403/M404, old combat tests, scene files, config or gameplay constants.\n- Independently fetched all six source/test files from PR HEAD and calculated **SHA-256 using a separately implemented and known-vector-checked hasher**; **6/6 byte hashes exactly match** the committed `recovery-05/results.json` manifest. Implementation commit `a07bca91...` and evidence/doc delivery commit are distinguished in the PR; actual Godot runs were made on pre-commit working bytes, not falsely claimed as post-commit execution.\n\n### 2. B1 code review (§§19,25–28)\n- `playable_contract.gd`: Bootstrap/RestartPayload/SeedReference `fixture_version` is exact typed integer **1**, including rejecting bool/float/string/null. Strict recursive records; valid `Effect` status/reason combinations are one APPLIED `M405_EFFECT_APPLIED` and five SKIPPED reasons; SKIPPED has zero delta/empty change lists; successful IMPACT outer/inner equality, while COMPLETE keeps its distinct `ACTION_COMPLETED` reason with no Response.effect.\n- `playable_encounter.gd`: private live `_root`, real per-role object capability comparisons, detached snapshots/views, synchronous single publication seam; invalid candidate or injected pre-publication fault returns REJECTED without publishing. This is a trusted in-process boundary, not a security sandbox from arbitrary hostile GDScript.\n- `playable_rules.gd`: immutable catalog bootstrap, real Player command freshness via authenticated journal, queue/slot/Q/Token identity, real ATTACK impact and actual HP/episode projection, authentic one-time COMPLETE receipts, genuine TARGET_UNAVAILABLE SKIPPED settlement and duplicate/stale handling. `candidate_valid` compares **both root and outbound response** to a deterministic `step(prior,req)`; `root_valid` reconstructs from immutable seed and journal before swap. No Root/Effect/Receipt external import or shadow live encounter was found in this B1 scope.\n- `playable_decision_adapter.gd`: role-bound observation, no caller-selected NPC action and no fake v1 HP/support data. Guidance/HELP/Guard/full lifecycle remain future gates, not B1 playable claims.\n- No new blocking code/contract issue found in the **B1 paths and legal transactions actually implemented**. Non-ATTACK effects, natural round-close, action-caused terminal, Restart and full Guidance integration are intentionally rejected/deferred rather than fabricated.\n\n### 3. Independent examination of committed evidence (not new execution)\n- Successfully opened the large D/E evidence blobs and parsed their individual check arrays: **D=1,846 checks, all passed**; **E=354 checks, all passed**. Source/test code distinguishes pure 58-record schema shapes from actual accepted transactions. Real APPLIED and serial Enemy TARGET_UNAVAILABLE SKIPPED are supported; other four SKIPPED reasons are **pure schema only**. Original smoke **86/86** and expanded **97/97** are supported by the submitted result/engine records.\n- Read F `run-record.json`: **historical pre-cutover ref `1728c5e` 44/44**, current canonical 94/94, candidate 94/94. Current/candidate commands both include `--main-cutover-proof` and the *historical passing reference* `--cutover-baseline`, not the earlier incorrect expectation mode. Independently parsed current/candidate `results.json`: all **94 stage names, statuses, exit codes and expected-error arrays match**; all 94 PASS. Each F run has the exact **five expected negative errors**, not suppressed unexpected errors. Candidate C01–C22 release coverage 22/22 PASS and 11 inherited count gates PASS in report; `current-canonical-comparison.json` asserts six Legacy traces/5,892 frames match. The raw trace archive was **not independently rerun or reconstructed frame by frame**.\n- Archive manifest contains **749 named entry hashes**. The archive ZIP bytes/entries and developer's local 843-file backup / 326 unchanged historical files were not independently rehashed in this review; those are source-attributed. No external F5/F6 manual test, keyboard/GUI acceptance, speed video or performance p95 benchmark was run by this reviewer. No GitHub CI status checks were reported for the HEAD; these are locally-produced, committed engine records, not independently rerun CI.\n- The PR has a large evidence footprint (505 files / ~1M additions); original raw evidence files are preserved with **838 whitespace warnings in 141 evidence files** per author audit. Authored source/docs have their own clean whitespace check. Do not describe the entire PR `git diff --check` as passing. This is a repository-maintenance consideration for Owner; it does not indicate an unexpected Godot runtime regression in the reviewed B1 implementation.\n\n### 4. Gate result and scope boundary\n**B1 CODE/SCHEMA/EVIDENCE — PASS for Owner to consider documentation/evidence+new B1 source Squash Merge of PR #60.** The actual implemented B1 path passes the inspected proof and submitted regression evidence at tested source hashes. This is not full M4Playable runtime acceptance.\n\n**HOLD B2–B5 and M4-05C** until a *separate explicit Owner task* after Owner decides on PR #60 merge and verifies the new canonical SHA. B2 effect bridge, B3 full Guidance/round admission, B4 terminal/Restart/presentation, B5 opt-in scene/GUI, p95 and Owner F5/F6 visual review remain NOT DONE in this PR. Do not alter production default or auto-merge/delete branches based on this review.",
+      "review": "COMMENTED"
+    }
+  ],
+  "open_prs": [
+    {
+      "number": 17,
+      "url": "https://github.com/shanwinder/wanderer/pull/17",
+      "title": "feat(combat): M1.5E-01 compact attack projectile timed to impact"
+    },
+    {
+      "number": 2,
+      "url": "https://github.com/shanwinder/wanderer/pull/2",
+      "title": "docs: consolidate Wanderer design, RPG management and learning roadmap"
+    }
+  ],
+  "fetch_and_remote_inventory": {
+    "chunk_id": "31bb83",
+    "wall_time_seconds": 1.441582875,
+    "exit_code": 0,
+    "original_token_count": 216,
+    "output": "0d77ab17b37980d68fd1329c6cf65c5bac8fadc9\trefs/heads/codex/m4-05-owner-approval-technical-gate\nb070581e47dffa913a011a7bc7636d1632416e8c\trefs/heads/codex/m4-05-t05-e-owner-decision-gate\nf3bca2213f096905cae12498777fba79723cec7f\trefs/heads/codex/m4-05a-playable-integration-design\nf6d78e9e6f3d52c7d3b2a11999156e3128c3577f\trefs/heads/codex/m4-05b-b1-effect-reason-contract-amendment\n57bf127a37d159ba4968955c0252718b9c16d667\trefs/heads/codex/m4-05b-b1-single-authority-proof\nfac99aa96c08b3e53a9d8db74a0025b4153503bd\trefs/heads/docs/thailand-worldbuilding-v0-1\nb732a1e860665fcb040ca2d51b1d0adb794c835b\trefs/heads/feat/m1-5d-static-enemy-hit-target\nc162d63385ca8d6dd03a6b5cc5c0dbce2afda694\trefs/heads/feat/m1-5e-attack-projectile-prototype\n81e2e48aa1ede1e21136a5714f15257991a67dcf\trefs/heads/main\n7898b9b0fd69068eb0798c11bd4b7cb0ebb23e77\trefs/heads/visual-combat-test-1\n"
+  },
+  "branch_creation": {
+    "branch": "codex/m4-05b-b2-help-guard-effect-bridge",
+    "base": "7898b9b0fd69068eb0798c11bd4b7cb0ebb23e77",
+    "head_and_merge_base": "7898b9b0fd69068eb0798c11bd4b7cb0ebb23e77",
+    "duplicate_found": false,
+    "commit_created": false,
+    "pushed": false,
+    "pr_opened": false
+  },
+  "engine": {
+    "executable": "/Applications/Godot.app/Contents/MacOS/Godot",
+    "command": "/Applications/Godot.app/Contents/MacOS/Godot --version",
+    "exit_code": 0,
+    "stdout": "4.7.2.stable.official.ed1daf0bf\n",
+    "runtime_test_run": false
+  },
+  "environment_events": [
+    {
+      "command": "git ls-remote --heads origin (sandbox)",
+      "exit_code": 128,
+      "result": "DNS unavailable in restricted network; succeeded after authorized escalation"
+    },
+    {
+      "command": "git switch -c codex/m4-05b-b2-help-guard-effect-bridge visual-combat-test-1 (sandbox)",
+      "exit_code": 128,
+      "result": ".git/index.lock write restricted; succeeded after authorized escalation"
+    }
+  ],
+  "runtime_gates": "NOT RUN — mandatory fixture gate HOLD before implementation",
+  "source_changes": false,
+  "final_canonical_check": {
+    "command": "git ls-remote origin refs/heads/visual-combat-test-1",
+    "exit_code": 0,
+    "stdout": "7898b9b0fd69068eb0798c11bd4b7cb0ebb23e77\trefs/heads/visual-combat-test-1\n"
+  },
+  "existing_b2_pr_search": {
+    "query": "repo:shanwinder/wanderer B2",
+    "state": "all",
+    "results": [
+      {
+        "number": 60,
+        "title": "feat(m4): B1 single-authority schema and replay proof",
+        "url": "https://github.com/shanwinder/wanderer/pull/60"
+      },
+      {
+        "number": 59,
+        "title": "docs(m4): propose exact Effect/Response reason contract",
+        "url": "https://github.com/shanwinder/wanderer/pull/59"
+      },
+      {
+        "number": 47,
+        "title": "docs(m4): M4-02 rescue clock death contract and owner decision gate",
+        "url": "https://github.com/shanwinder/wanderer/pull/47"
+      },
+      {
+        "number": 56,
+        "title": "docs(m4): M4-05A playable integration contract and owner gates",
+        "url": "https://github.com/shanwinder/wanderer/pull/56"
+      },
+      {
+        "number": 55,
+        "title": "feat(m4): M4-04 isolated autonomous decision policy proof",
+        "url": "https://github.com/shanwinder/wanderer/pull/55"
+      },
+      {
+        "number": 45,
+        "title": "docs: close M4 architecture review and record D01/D02/D12 owner approval",
+        "url": "https://github.com/shanwinder/wanderer/pull/45"
+      },
+      {
+        "number": 48,
+        "title": "feat(m4): isolated atomic rescue and clock proof candidate",
+        "url": "https://github.com/shanwinder/wanderer/pull/48"
+      },
+      {
+        "number": 46,
+        "title": "feat(m4): M4-01 isolated data/state proof candidate",
+        "url": "https://github.com/shanwinder/wanderer/pull/46"
+      }
+    ],
+    "finding": "Only prior milestones/B1 returned; no duplicate B2 implementation PR found."
+  }
+}

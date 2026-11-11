@@ -1,0 +1,23 @@
+{
+  "fetch": {
+    "chunk_id": "1d0576",
+    "wall_time_seconds": 1.336721334,
+    "exit_code": 0,
+    "original_token_count": 216,
+    "output": "0d77ab17b37980d68fd1329c6cf65c5bac8fadc9\trefs/heads/codex/m4-05-owner-approval-technical-gate\nb070581e47dffa913a011a7bc7636d1632416e8c\trefs/heads/codex/m4-05-t05-e-owner-decision-gate\nf3bca2213f096905cae12498777fba79723cec7f\trefs/heads/codex/m4-05a-playable-integration-design\nf6d78e9e6f3d52c7d3b2a11999156e3128c3577f\trefs/heads/codex/m4-05b-b1-effect-reason-contract-amendment\n57bf127a37d159ba4968955c0252718b9c16d667\trefs/heads/codex/m4-05b-b1-single-authority-proof\nfac99aa96c08b3e53a9d8db74a0025b4153503bd\trefs/heads/docs/thailand-worldbuilding-v0-1\nb732a1e860665fcb040ca2d51b1d0adb794c835b\trefs/heads/feat/m1-5d-static-enemy-hit-target\nc162d63385ca8d6dd03a6b5cc5c0dbce2afda694\trefs/heads/feat/m1-5e-attack-projectile-prototype\n81e2e48aa1ede1e21136a5714f15257991a67dcf\trefs/heads/main\n7898b9b0fd69068eb0798c11bd4b7cb0ebb23e77\trefs/heads/visual-combat-test-1\n"
+  },
+  "open_prs": [
+    {
+      "number": 17,
+      "title": "feat(combat): M1.5E-01 compact attack projectile timed to impact",
+      "url": "https://github.com/shanwinder/wanderer/pull/17"
+    },
+    {
+      "number": 2,
+      "title": "docs: consolidate Wanderer design, RPG management and learning roadmap",
+      "url": "https://github.com/shanwinder/wanderer/pull/2"
+    }
+  ],
+  "source": "live tools 12 November 2026",
+  "required_base": "7898b9b0fd69068eb0798c11bd4b7cb0ebb23e77"
+}
