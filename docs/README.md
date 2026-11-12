@@ -332,6 +332,19 @@ The following C delivery/fix checkpoints preserve their original pre-merge gates
 - **การอัปเดต** ระบุ upstream repository และ commit SHA ที่จะใช้ ตรวจ diff ของ `SKILL.md`, ไฟล์ประกอบ, dependencies และสคริปต์ก่อนนำมาใช้ บันทึก SHA คู่กับ `skills-lock.json` ของชุดที่ตรวจแล้ว เพราะ `computedHash` ใน lockfile บอกข้อมูลที่ installer บันทึกไว้ แต่ไม่ได้ระบุ upstream commit หากจะนำชุด Skills เข้า Git หรือ CI ให้เสนอแยกเพื่อทบทวนที่มา ไลเซนส์และประกาศที่เกี่ยวข้อง รวมถึงขอบเขตการรันก่อน
 - **การใช้สคริปต์** ตัวตรวจ scene/resource ของ Python อ่านไฟล์และอาจตาม symlink ส่วนตัวตรวจ compile ของ GDScript โหลดสคริปต์ของโปรเจกต์ ซึ่งอาจรัน static initializers ตรวจผลกระทบของคำสั่งก่อนรันและจำกัดขอบเขตไว้ที่สำเนางานที่เกี่ยวข้อง ใช้ [Combat Regression Tests ของ Wanderer](../tests/combat/README.md) ตามเกณฑ์เดิม
 
+**ซ่อนชุดติดตั้งจาก Git เฉพาะในเครื่อง** จากรากของ checkout ใช้ `git rev-parse --git-path info/exclude` เพื่อหาไฟล์ `.git/info/exclude` แล้วเพิ่มสองบรรทัดนี้ต่อจากกฎเดิม Linked worktrees ของ clone เดียวกันใช้ไฟล์นี้ร่วมกัน
+
+```gitignore
+/.agents/skills/
+/skills-lock.json
+```
+
+ตรวจจากรากของ checkout ด้วยคำสั่งนี้ ผลที่คาดหวังคือสองบรรทัด โดยแต่ละบรรทัดแสดงไฟล์ `info/exclude` และกฎที่ตรงกับ path นั้น กฎนี้มีผลกับไฟล์ที่ Git ยังไม่ได้ติดตาม
+
+```sh
+git check-ignore -v -- .agents/skills/ skills-lock.json
+```
+
 ## Maintenance policy
 
 - เก็บเอกสารเก่าไว้เพื่อย้อนดูเหตุผลการตัดสินใจ ไม่รีไรต์ประวัติให้ดูเหมือนเคยตกลง v0.5 ตั้งแต่แรก
