@@ -776,3 +776,97 @@ Upon approval, the necessary catalog source addition to the original B2 allowlis
 Current delivery: documentation and preservation/audit evidence only on the existing B2 branch. Preserve the 10 November feasibility record verbatim as historical evidence. Check links/anchors, all unchanged §§1–28 and P05 rows, exact diff allowlist, source/test/B1 evidence hashes, and compare proposed seed arithmetic/target selection with the actual B1 policy. No new Godot/import/parse/B1/B2/combat/GUI test or benchmark is claimed. Prior PR #60 results remain inherited and attributed in the Actor guide.
 
 After review and Owner disposition, future implementation must run the untouched B1 smoke86/expanded97/schema/transaction suites, focused legal HELP/Guard and adversarial full-root/replay/fault checks, and fresh full combat regression using the historical44-stage reference and current cutover flags. Record new version-specific canonical seed digests, source manifests and expected/actual traces. Five expected negative errors stay separate; any unexpected engine error or regression is HOLD. No automatic merge or B3–B5/M4-05C work follows this Draft contract PR.
+
+## 30. B3 terminal dependency correction — proposed for independent review
+
+**12 November 2026 · PROPOSED / INDEPENDENT CONTRACT REVIEW AND OWNER DECISION PENDING.** The Owner follow-up asks to diagnose and fix the B3 HOLD. This section supplies a concrete correction for review. Approval of the exact package below remains pending under the original task's material-contract-change gate. §§1–29 retain their historical wording. [Feasibility evidence and recorded baseline runs](../tests/actors/evidence/m4-05b/b3/REPORT.md) were produced on canonical `6bb7fddf787199fcd43f2759743c65b40670a51a`.
+
+### 30.1 Diagnosis and proposed allocation
+
+The fixture catalog supports both a six-natural-close history and a history that reaches terminal before close6. With V1 `main`, fresh Player ATTACK A in rounds1–3 and ATTACK B in rounds4–6, plus legally locked pre-impact cancellations of other eligible opportunities, leave Enemy HP pairs 10/12, 5/12, 0/12, 0/7, 0/2 and finally 0/0. Rounds1–5 have real Player completion receipts and active sides. The last impact must obey §7. The first-round prefix has executed evidence. The later rounds are a source-backed reachability derivation pending the round producer.
+
+The dependency comes from §20 assigning action-caused terminal settlement to B4 after B3 introduces multiple rounds. The existing B2 `INVALID_PHASE` rejection preserves state within its implemented boundary. Extending that rejection to the new B3 history would leave a valid last-Enemy attack uncommitted. The recommended correction places the required atomic terminal state transition and causal completion in B3 and leaves B4 responsible for presentation-event projection and Restart.
+
+| Package | Proposed responsibility after approval |
+|---|---|
+| B3 | Command, Guidance, real RESCUE/RETREAT, natural round close/clock, six-round bound, and atomic terminal settlement reached by those authorized transactions. Terminal settlement includes frozen Outcome, Guard/Guidance cleanup, queue accounting and causal COMPLETE using the existing owner, schemas and replay. |
+| B4 | Complete presentation-event projection, Restart/new-generation lifecycle, visual callback handling and reset/terminal presentation integration, consuming the committed B3 state. |
+| B5 / M4-05C | Opt-in scene and the separately authorized scene/GUI acceptance work. |
+
+Approval changes this work allocation in §20 and resolves the corresponding B3/B4 boundary in the task. Existing §7 classifier precedence, damage, roster, fixtures, policy and six-round capacity continue to govern all effects. The implementation uses the existing `playable_*` modules and the proposed B3 adapters/proof. The required wire shapes fit the existing `Outcome`, `Effect`, `Disposition`, `ActionGrant`, `Receipt`, `QueueState`, `Root` and `JournalEntry` records. Catalog content, versions and digests remain the immutable source of initial state.
+
+### 30.2 Atomic impact and terminal queue accounting
+
+A valid IMPACT computes its detached authorized effect, then classifies the resulting roster using §7. If ACTIVE, the ordinary transaction applies. If terminal, the same publication commits the effect and all terminal state below. Pre-publication validation/fault failure rejects with whole-root equality, leaving the genuine token LOCKED and usable for a valid retry or existing pre-impact CANCEL.
+
+1. Commit the real HP/resource/participation/episode changes. Clear all remaining active Guard, coalescing each actor's GuardChange from pre-root to final-root with TERMINAL precedence under §25. Clear Pending and Active Guidance with no R1 increment. Retain accepted command as immutable running-round provenance until Restart.
+2. Freeze the exact Outcome and Party/Enemy summary at the impact post_revision. Set Root.phase to TERMINAL. The actual causal ActionGrant becomes APPLIED with that effect and impact_revision. Response remains APPLIED/M405_EFFECT_APPLIED with its real Effect and no receipt.
+3. Keep the existing queue and cursor at the causal opportunity. Queue.phase remains WAIT_ACTION while that one token awaits COMPLETE. Preserve earlier dispositions. For every later scheduled opportunity, publish exactly one TERMINAL_STOP disposition with action_id=null and observed_revision equal to the terminal impact revision. Preserve canonical opportunity order in the disposition array, with the causal opportunity absent until completion. Future UNAVAILABLE actors receive TERMINAL_STOP because the terminal boundary has stopped their opportunities before traversal.
+4. This terminal WAIT_ACTION representation requires a relational validation rule distinct from the ordinary serial prefix rule. Earlier opportunities each have their real disposition, the cursor names the only undisposed causal opportunity, every later opportunity has TERMINAL_STOP, and exactly one APPLIED causal grant remains active. The current B2 check `dispositions.size() == cursor` must be restricted to ordinary nonterminal traversal. Replay must derive all terminal dispositions from the actual impact.
+5. Only the matching causal COMPLETE may settle that terminal action. It issues one genuine receipt, inserts the causal COMPLETED disposition at its canonical opportunity position, preserves prior TERMINAL_STOP observed revisions, sets cursor to the number of opportunities and queue.phase to STOPPED. Root remains TERMINAL. The frozen outcome, freeze_revision, HP/resources/episodes, closed_rounds and round_id remain fixed. View.active_token becomes null.
+
+A terminal impact and completion retain the current terminal queue in Root.queue. RoundHistory contains naturally closed prior rounds. Terminal work never creates SEAL, COMMIT_CLOSE, CloseEvent, close consumption or clock ticks. Seeded terminal ADMIT retains its existing queue-less representation and has no causal action to settle.
+
+### 30.3 Rejection and recovery boundaries
+
+Apply the existing schema, session/generation, capability/token, duplicate, round/queue and phase validation precedence. After those checks, a terminal root rejects fresh COMMAND, GUIDANCE, ADMIT, ADVANCE, PLAYER_LOCK, ENEMY_LOCK, DECIDE_LOCK, IMPACT, CANCEL and CLOSE_ROUND with M405_TERMINAL. A duplicate completed token retains INVALID_TOKEN_PHASE precedence. COMPLETE additionally requires the unique genuine causal grant described above. Foreign or forged tokens retain their existing rejection precedence and never acquire terminal authority.
+
+B3 keeps RESTART outside its implemented operation set, with the existing INVALID_PHASE rejection except that a correctly bound direct SEALED request retains SEALED_RESTART. B4 supplies the approved Restart behavior. For an interrupted terminal COMPLETE, retain the frozen root and retry with a fresh external request ID/current identity and the same exact causal token. A pre-publication failure creates no receipt and preserves the entire terminal root. E5 continues to govern a failed natural COMMIT_CLOSE in SEALED.
+
+This proposal supplies all terminal classifications arising from authorized effects, including last-Enemy ATTACK, last-active-Party DOWN and last-active-Party RETREAT, according to §7. RESCUE requires a still-active encounter and an eligible helper. Natural close remains restricted to ACTIVE sides and legitimate progressed/drained queues. Demo exhaustion after close6 uses CLOSED/DEMO_LIMIT_REACHED and outcome=null.
+
+### 30.4 Required proof and reachability limits
+
+| Proof | Required evidence before B3 delivery |
+|---|---|
+| Last Enemy | Execute the six-round attack history above using real commands, owner locks, cancellations, five natural closes and the terminal impact. Confirm terminal receipt only at causal COMPLETE and closed_rounds=5. |
+| Six natural closes | Execute a separate legal history with active sides after each round and real completed actions. Confirm twelve internal journal entries, one SEAL and COMMIT_CLOSE per round, close6 exhaustion and rejected round7 admission. |
+| Other terminal effects | Derive legal last-Party DOWN and RETREAT histories from the immutable fixtures and independently selected NPC actions before claiming coverage. Any unreachable required case returns to the feasibility gate. Pure classifier rows remain separately labelled. |
+| Queue and frozen summary | Verify both terminal WAIT_ACTION and settled STOPPED roots, ordered dispositions, no receipt for stopped slots, exact causal token/receipt binding, immutable outcome and replay equality. Reject forged, missing or duplicate dispositions and receipts. |
+| Failure atomicity | Inject faults before terminal IMPACT publication and before causal COMPLETE publication. Assert whole-root equality on rejection, then retry legally and confirm one effect and one receipt. |
+| Guidance and Guard | Confirm terminal cleanup occurs in the impact publication, prior decision observations remain in authenticated history, R1 revision stays fixed, Guard cleanup is coalesced and later actions cannot run. |
+| Player absent/rescued | Execute Player UNAVAILABLE disposition before NPC RESCUE, restore HP1/eligibility, preserve the consumed slot and resume Player selection only at the next prepared round. |
+
+The Player-first queue and Strict Boundary A make an eligible rescued Player with an undisposed first slot unreachable through current legal producers. Under §18.2 the actual Player-DOWN continuation uses UNAVAILABLE with action_id=null. Treat the `NO_PLAYER_COMMAND` variant as a defensive rule without a positive live-producer claim. Existing R1 preferred-target unregister coverage stays in the unchanged production suite because M4Playable exposes no roster-removal operation. These limits need explicit reviewer/Owner acceptance alongside the proposal.
+
+Run the original B1/B2 suites unchanged, the focused B3 positive/adversarial matrix, full-history replay, historical44/current94 combat regressions with their correct flags, and exact Legacy 6-case/5,892-frame comparison. Existing performance and GUI gates retain their separate evidence requirements.
+
+### 30.5 Review and execution gate
+
+Review the allocation in §30.1, the terminal queue relationship in §30.2, rejection precedence/recovery in §30.3 and the coverage dispositions in §30.4 as one proposal. Owner acceptance must identify this package or an explicit correction. The follow-up request authorizes preparation of the fix, while the original requirement for Independent Contract Review before a material runtime amendment remains in force.
+
+This correction changes documentation only. Prior B3 preflight Godot results remain recorded evidence on the canonical SHA. B3 terminal/round/Guidance runtime and GUI acceptance remain NOT IMPLEMENTED / NOT RUN. After review and Owner decision, continue the B3 implementation task against the accepted contract and exact current canonical. Stop at its requested Draft PR for Independent Code, Contract & Evidence Review.
+
+### 30.6 Owner adoption and retained feasibility gate — 12 November 2026
+
+**OWNER APPROVED.** Source is the Owner's four-point follow-up in this chat on 12 November 2026 (Asia/Bangkok). The Owner adopts the necessary terminal settlement allocation to B3, the terminal queue and exactly-once causal COMPLETE rules, and the unreachable `NO_PLAYER_COMMAND` positive-history disposition. Presentation and Restart remain B4. Last-Party DOWN and RETREAT retain the feasibility gate and require authentic transaction evidence before acceptance.
+
+Independent Contract Review on PR #64 reviewed HEAD `425196f01ec95f069dae96a077e5819aeacd5862` and returned **TECHNICAL CONTRACT PASS** on 12 November 2026. It covered §§30.1–30.4, the terminal WAIT_ACTION relational exception, causal completion, atomicity/retry and coverage limits. The review did not execute B3 runtime. The earlier proposal/decision-pending labels above describe the original review submission and are superseded for Owner adoption by this record. [Review record](https://github.com/shanwinder/wanderer/pull/64#pullrequestreview-5871551022).
+
+| Owner point | Adopted decision | Evidence obligation |
+|---|---|---|
+| 1 | Necessary atomic terminal settlement belongs to B3. Presentation and Restart belong to B4. | Actual terminal effects and frozen Outcome through the single owner. |
+| 2 | Adopt terminal queue rules and exactly-once COMPLETE of the causal action. | Terminal WAIT_ACTION and STOPPED roots, authenticated dispositions/receipt, replay, rejection and fault/retry tests. |
+| 3 | A rescued eligible Player before its still-unused slot has no legal producer under current ordering. | Use real UNAVAILABLE-before-RESCUE history. No fabricated `NO_PLAYER_COMMAND` positive transaction is required. |
+| 4 | Keep the feasibility gate for other terminal effects, especially Last-Party DOWN and RETREAT. | Report unreachable histories. Schema validation alone cannot establish acceptance. |
+
+Follow-up source analysis finds Last-Party RETREAT unreachable under fixed same-target Enemy declarations, Party-before-Enemy order and the approved safety-first NPC policy. Last-Party DOWN has a candidate six-round history using V2 Player-low and legal pre-impact cancellation, still awaiting runtime execution. [Derivation and required disposition](../tests/actors/evidence/m4-05b/b3/REPORT.md#owner-approval-follow-up--terminal-feasibility).
+
+The accepted `NO_PLAYER_COMMAND` exception does not waive Last-Party RETREAT coverage. That affected acceptance remains HOLD pending Independent Contract Review and an explicit Owner disposition of the unreachable case. Owner adoption does not authorize merging PR #64. Its documentation merge still requires the explicit instruction required by AGENTS.md.
+
+### 30.7 Narrow Last-Party RETREAT coverage deferral — 13 November 2026
+
+**OWNER APPROVED.** Source is the Owner's follow-up in this chat on 13 November 2026 (Asia/Bangkok). The Owner defers only the positive Last-Party RETREAT proof through real transactions. Terminal Classifier, Schema and rejection tests remain required. Ordinary NPC RETREAT still requires real owned transactions. Changing Enemy Targeting, NPC Safety Priority or fixtures to manufacture the unreachable situation is outside this authorization.
+
+The [Independent Contract Review follow-up](https://github.com/shanwinder/wanderer/pull/64#pullrequestreview-5875146473) reviewed `8b9228ee534a07332fe1606343b1d171d1d1af10` and returned SOURCE/CONTRACT ANALYSIS PASS. It supported the unreachability derivation and recommended this narrow deferral, retaining classifier/schema, negative replay and ordinary NPC RETREAT proofs. The Owner now supplies that requested coverage decision. Earlier Last-Party RETREAT HOLD/pending-disposition wording in §30.6 and the feasibility report is superseded only for this acceptance obligation.
+
+| Coverage | Current requirement |
+|---|---|
+| Positive Last-Party RETREAT through real transactions | DEFERRED — OWNER APPROVED, because the current targeting/order/safety model has no legal producer. B3 acceptance does not require manufacturing this history. Report it as deferred in coverage and result manifests. |
+| Terminal Classifier and Schema | Required, including the general §7 outcome precedence and valid/invalid terminal records. Label pure data tests with their actual scope. |
+| Rejection and negative replay cases | Required, including forged/unowned RETREAT tokens, inconsistent terminal records and duplicate completion/receipt rejection, with whole-root equality where a transaction is rejected. |
+| Ordinary NPC RETREAT | Required real owner decision → LOCK → IMPACT → COMPLETE, actual participation change, retained actor identity, slot consumption and one receipt. |
+| Last-Party DOWN | Required authentic transaction history and causal terminal completion. The six-round plan still awaits runtime execution and remains subject to feasibility/regression gates. |
+| All other B3 proof obligations | Retained, including terminal settlement, Command/Guidance, RESCUE, Guard, natural close/clock, six-round exhaustion, replay/fault/forgery checks and B1/B2/combat/Legacy regression. |
+
+Enemy Targeting, NPC Safety Priority and fixture contents/digests remain governed by their existing approved contracts. Any future producer or gameplay change requires its own separately approved task and renewed reachability assessment. This decision closes the specific Last-Party RETREAT coverage HOLD and records no runtime PASS. Presentation and Restart remain B4. PR #64 remains subject to explicit merge authorization under AGENTS.md.
