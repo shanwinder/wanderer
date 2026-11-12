@@ -1,0 +1,34 @@
+{
+  "candidate_branch": "codex/m4-05b-b2-runtime-help-guard",
+  "base_and_merge_base": "6b68bf563833fb31fbb8df4b15034f3fd26f60da",
+  "prior_branch_head": "2c579289b3afa175d0e617efa9f86f3cc35e1895",
+  "prior_merge_base": "7898b9b0fd69068eb0798c11bd4b7cb0ebb23e77",
+  "prior_tree_identical_to_squash": true,
+  "live_base_verification": "GitHub compare status identical, ahead 0 / behind 0. Fetched local origin/visual-combat-test-1 resolves to the same SHA.",
+  "merged_prs": {
+    "60": "7898b9b0fd69068eb0798c11bd4b7cb0ebb23e77",
+    "61": "6b68bf563833fb31fbb8df4b15034f3fd26f60da"
+  },
+  "open_prs_at_preflight": [
+    2,
+    17
+  ],
+  "baseline_tracked_paths": 989,
+  "protected_tracked_paths": 982,
+  "protected_evidence_paths": 796,
+  "existing_evidence_modified": 0,
+  "changed_source_and_docs": [
+    "README.md",
+    "docs/README.md",
+    "scripts/m4/playable_contract.gd",
+    "scripts/m4/playable_effect_rules.gd",
+    "scripts/m4/playable_effect_rules.gd.uid",
+    "scripts/m4/playable_encounter.gd",
+    "scripts/m4/playable_fixture_catalog.gd",
+    "scripts/m4/playable_rules.gd",
+    "tests/actors/README.md",
+    "tests/actors/m4_05_playable_effect_proof.gd",
+    "tests/actors/m4_05_playable_effect_proof.gd.uid"
+  ],
+  "new_evidence_prefix": "tests/actors/evidence/m4-05b/b2/runtime/"
+}

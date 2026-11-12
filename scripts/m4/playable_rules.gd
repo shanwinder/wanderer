@@ -4,6 +4,7 @@ extends RefCounted
 const C = preload("res://scripts/m4/playable_contract.gd")
 const Catalog = preload("res://scripts/m4/playable_fixture_catalog.gd")
 const Adapter = preload("res://scripts/m4/playable_decision_adapter.gd")
+const EffectRules = preload("res://scripts/m4/playable_effect_rules.gd")
 const MAX_COUNTER: int = 9223372036854775807
 
 static func identity(r: Dictionary) -> Dictionary:
@@ -12,14 +13,14 @@ static func identity(r: Dictionary) -> Dictionary:
 static func prefix(r: Dictionary) -> String:
 	return "m405/%s/%s" % [r.session, r.generation]
 
-static func initial(fixture_id: String, session: int, generation: int = 1) -> Dictionary:
-	if session == 0 or generation < 1 or Catalog.fixture(fixture_id, 1).is_empty(): return {}
+static func initial(fixture_id: String, session: int, generation: int = 1, fixture_version: int = 1) -> Dictionary:
+	if session == 0 or generation < 1 or Catalog.fixture(fixture_id, fixture_version).is_empty(): return {}
 	return {"domain": "M4_PLAYABLE", "version": 1, "session": session, "generation": generation,
-		"revision": 0, "seed": Catalog.seed_reference_snapshot(fixture_id), "phase": "PREPARED", "round_id": 1,
-		"closed_rounds": 0, "party": Catalog.initial_party(fixture_id, session, generation),
-		"enemies": Catalog.initial_enemies(fixture_id), "guidance": {"encounter_id": session,
+		"revision": 0, "seed": Catalog.seed_reference_snapshot(fixture_id, fixture_version), "phase": "PREPARED", "round_id": 1,
+		"closed_rounds": 0, "party": Catalog.initial_party(fixture_id, session, generation, fixture_version),
+		"enemies": Catalog.initial_enemies(fixture_id, fixture_version), "guidance": {"encounter_id": session,
 			"generation": generation, "round_id": 1, "guidance_revision": 0, "pending": null,
-			"active": null, "profiles": Catalog.content().profiles},
+			"active": null, "profiles": Catalog.content(fixture_version).profiles},
 		"command": null, "queue": null, "declarations": [], "actions": [], "receipts": [],
 		"requests": [], "close": null, "round_history": [], "outcome": null, "diagnostic": null, "journal": []}
 
@@ -235,28 +236,21 @@ static func apply(r: Dictionary, req: Dictionary) -> Dictionary:
 		var a: Dictionary = active_grant(r)
 		token = a.token
 		if op == "IMPACT":
-			if token.kind != "ATTACK": return response(r, "REJECTED", "INVALID_PHASE") # B2/B3
-			var target: Dictionary = actor(r, token.target_id)
-			var available: bool = target.get("eligible", target.get("available", false))
-			effect = {"status": "APPLIED" if available else "SKIPPED", "reason": "M405_EFFECT_APPLIED" if available else "M405_TARGET_UNAVAILABLE",
-				"hp_delta": 0, "target_id": token.target_id, "resources": [], "guards": [], "lifecycle": []}
-			if available:
-				var before: int = target.hp
-				target.hp = maxi(0, before - token.amount)
-				effect.hp_delta = target.hp - before
-				if target.has("life"):
-					if target.hp == 0:
-						var ordinal: int = 1
-						for p in r.party:
-							if p.episode != null: ordinal = maxi(ordinal, p.episode.entry_order + 1)
-						target.life = "DOWN"; target.eligible = false
-						target.episode = {"episode_id": "%s/episode/%s" % [prefix(r), ordinal], "entry_round": r.round_id, "budget": 2, "active": true, "entry_order": ordinal}
-						effect.lifecycle.append({"actor_id": target.actor_id, "before_life": "ALIVE", "after_life": "DOWN", "before_participation": "PRESENT", "after_participation": "PRESENT"})
-				else: target.available = target.hp > 0
-				# Real action-caused terminal closure/Guard cleanup belongs to B4.
-				if classify(r).result != "ACTIVE": return response(r, "REJECTED", "INVALID_PHASE")
-			a.phase = effect.status; a.effect = effect.duplicate(true); a.impact_revision = r.revision + 1
-			status = effect.status; reason = "EFFECT_APPLIED" if available else "TARGET_UNAVAILABLE"
+			if token.kind not in ["ATTACK", "HELP", "DEFEND"]:
+				return response(r, "REJECTED", "INVALID_PHASE")
+			var projection: Dictionary = EffectRules.project(r, token)
+			if projection.is_empty(): return response(r, "REJECTED", "INVALID_TARGET")
+			r.party = projection.party
+			r.enemies = projection.enemies
+			effect = projection.effect
+			# Action-caused terminal settlement remains outside this proof.
+			if effect.status == "APPLIED" and classify(r).result != "ACTIVE":
+				return response(r, "REJECTED", "INVALID_PHASE")
+			a.phase = effect.status
+			a.effect = effect.duplicate(true)
+			a.impact_revision = r.revision + 1
+			status = effect.status
+			reason = effect.reason.trim_prefix("M405_")
 			token = null
 		elif op == "COMPLETE":
 			receipt = {"receipt_id": "%s/receipt/%s" % [prefix(r), token.action_id], "action_id": token.action_id,
@@ -291,35 +285,23 @@ static func step(prior: Dictionary, req: Variant) -> Dictionary:
 	return {"root": candidate, "response": reply}
 
 static func impact_projection_valid(prior: Dictionary, candidate: Dictionary, req: Dictionary, reply: Dictionary) -> bool:
-	# B1 publishes only ATTACK effects. B2-B5 effects remain unavailable.
-	# Independently derive the actual actor projection; a valid reason is not proof.
+	# Validate the authorized effect against the pre-impact root and the actual
+	# published HP, resources, Guard, lifecycle and grant. Full reply binding
+	# and replay cover the remaining root and journal fields.
+	if req.get("operation") != "IMPACT" or not gate(prior, req).is_empty(): return false
 	if not C.response_valid("IMPACT", reply) or not C.valid("Root", candidate): return false
-	var grant: Dictionary = active_grant(prior)
-	if grant.is_empty() or grant.phase != "LOCKED" or grant.token != req.payload.token or grant.token.kind != "ATTACK": return false
-	var token: Dictionary = grant.token
-	var target: Dictionary = actor(prior, token.target_id)
-	if target.is_empty() or token.amount != damage(token.actor_id): return false
-	var expected_party: Array = prior.party.duplicate(true)
-	var expected_enemies: Array = prior.enemies.duplicate(true)
-	var projected: Dictionary = {"party": expected_party, "enemies": expected_enemies}
-	var changed: Dictionary = actor(projected, token.target_id)
-	var available: bool = target.get("eligible", target.get("available", false))
-	var expected: Dictionary = {"status": "APPLIED" if available else "SKIPPED", "reason": "M405_EFFECT_APPLIED" if available else "M405_TARGET_UNAVAILABLE",
-		"hp_delta": 0, "target_id": token.target_id, "resources": [], "guards": [], "lifecycle": []}
-	if available:
-		changed.hp = maxi(0, target.hp - token.amount)
-		expected.hp_delta = changed.hp - target.hp
-		if changed.has("life"):
-			if changed.hp == 0:
-				var ordinal: int = 1
-				for p in prior.party:
-					if p.episode != null: ordinal = maxi(ordinal, p.episode.entry_order + 1)
-				changed.life = "DOWN"; changed.eligible = false
-				changed.episode = {"episode_id": "%s/episode/%s" % [prefix(prior), ordinal], "entry_round": prior.round_id, "budget": 2, "active": true, "entry_order": ordinal}
-				expected.lifecycle.append({"actor_id": target.actor_id, "before_life": "ALIVE", "after_life": "DOWN", "before_participation": "PRESENT", "after_participation": "PRESENT"})
-		else: changed.available = changed.hp > 0
+	var token: Dictionary = req.payload.token
+	var opportunity: Dictionary = slot(prior)
+	if opportunity.is_empty() or token.actor_id != opportunity.actor_id or token.slot_id != opportunity.slot_id or token.opportunity_id != opportunity.opportunity_id: return false
+	if token.identity.session != prior.session or token.identity.generation != prior.generation or token.identity.round_id != prior.round_id or token.identity.state_revision != prior.revision or token.queue_id != prior.queue.queue_id: return false
+	if token.kind == "ATTACK" and token.amount != damage(token.actor_id): return false
+	var expected: Dictionary = EffectRules.project(prior, token)
+	if expected.is_empty(): return false
 	var published: Dictionary = active_grant(candidate)
-	return reply.effect == expected and candidate.party == expected_party and candidate.enemies == expected_enemies and candidate.receipts == prior.receipts and not published.is_empty() and published.token == token and published.effect == expected and published.phase == expected.status and published.impact_revision == candidate.revision
+	return (reply.effect == expected.effect and candidate.party == expected.party
+		and candidate.enemies == expected.enemies and candidate.receipts == prior.receipts
+		and not published.is_empty() and published.token == token and published.effect == expected.effect
+		and published.phase == expected.effect.status and published.impact_revision == candidate.revision)
 
 static func candidate_valid(prior: Dictionary, req: Dictionary, result: Dictionary) -> bool:
 	if not C.exact(result, ["root", "response"]): return false
@@ -332,8 +314,9 @@ static func candidate_valid(prior: Dictionary, req: Dictionary, result: Dictiona
 	return result == step(prior, req)
 
 static func replay(seed: Dictionary, session: int, generation: int, journal: Variant) -> Dictionary:
-	if seed != Catalog.seed_reference_snapshot(seed.get("fixture_id", "")) or not C.valid("[]JournalEntry", journal): return {}
-	var r: Dictionary = initial(seed.fixture_id, session, generation)
+	if not C.valid("SeedReference", seed) or not C.valid("[]JournalEntry", journal): return {}
+	if seed != Catalog.seed_reference_snapshot(seed.fixture_id, seed.fixture_version): return {}
+	var r: Dictionary = initial(seed.fixture_id, session, generation, seed.fixture_version)
 	if r.is_empty(): return {}
 	for entry in journal:
 		# Internal SEAL/COMMIT_CLOSE are distinct reserved history kinds, deferred B3/B4.
@@ -346,7 +329,7 @@ static func replay(seed: Dictionary, session: int, generation: int, journal: Var
 
 static func root_valid(r: Variant) -> bool:
 	if not C.valid("Root", r) or r.round_id > 6 or r.closed_rounds > 6 or r.revision != r.journal.size(): return false
-	if r.seed != Catalog.seed_reference_snapshot(r.seed.fixture_id) or Catalog.fixture(r.seed.fixture_id, 1).is_empty(): return false
+	if r.seed != Catalog.seed_reference_snapshot(r.seed.fixture_id, r.seed.fixture_version) or Catalog.fixture(r.seed.fixture_id, r.seed.fixture_version).is_empty(): return false
 	if r.party.size() != 4 or r.enemies.size() != 2: return false
 	var orders: Array = []
 	var episodes: Array = []
@@ -359,7 +342,7 @@ static func root_valid(r: Variant) -> bool:
 	for i in range(2):
 		var e: Dictionary = r.enemies[i]
 		if e.actor_id != Catalog.ENEMIES[i] or e.max_hp != Catalog.MAX_HP[i + 4] or e.hp > e.max_hp or e.available != (e.hp > 0): return false
-	if r.guidance.encounter_id != r.session or r.guidance.generation != r.generation or r.guidance.round_id != r.round_id or r.guidance.profiles != Catalog.content().profiles: return false
+	if r.guidance.encounter_id != r.session or r.guidance.generation != r.generation or r.guidance.round_id != r.round_id or r.guidance.profiles != Catalog.content(r.seed.fixture_version).profiles: return false
 	if r.phase in ["OPEN", "SEALED"] and r.queue == null: return false
 	if r.queue != null:
 		if r.queue.opportunities.size() != 6 or r.queue.cursor > 6 or r.queue.dispositions.size() != r.queue.cursor: return false

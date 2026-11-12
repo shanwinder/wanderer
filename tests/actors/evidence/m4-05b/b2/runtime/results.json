@@ -1,0 +1,604 @@
+{
+  "context": {
+    "base_sha": "6b68bf563833fb31fbb8df4b15034f3fd26f60da",
+    "project": "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/source",
+    "output": "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d",
+    "godot": "/Applications/Godot.app/Contents/MacOS/Godot",
+    "godot_sha256": "c7cccbf8fb143e34e02fd6521e09be2c2b974f0d5db080b19071c9c570718ccf",
+    "smoke_source_sha256": "d3110f88a368f048a8500fc57cf8e6a015fa8744e23cfb169ab881a3a7b3bdfe",
+    "expanded_source_sha256": "9f0cba84653472339a8632cbe047c4f3a938e219798ff66eb0638f0b5c627410",
+    "manifest": "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/source-sha256.json"
+  },
+  "focused": [
+    {
+      "stage": "version",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/source",
+        "--log-file",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/version.engine.log",
+        "--version"
+      ],
+      "expected": {
+        "exit": 0,
+        "unexpected_errors": 0,
+        "checks": null
+      },
+      "actual": {
+        "exit": 0,
+        "unexpected_errors": [],
+        "checks": null,
+        "failures": null,
+        "report_status": null
+      },
+      "status": "PASS"
+    },
+    {
+      "stage": "import",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/source",
+        "--log-file",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/import.engine.log",
+        "--editor",
+        "--import"
+      ],
+      "expected": {
+        "exit": 0,
+        "unexpected_errors": 0,
+        "checks": null
+      },
+      "actual": {
+        "exit": 0,
+        "unexpected_errors": [],
+        "checks": null,
+        "failures": null,
+        "report_status": null
+      },
+      "status": "PASS"
+    },
+    {
+      "stage": "parse-playable_contract",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/source",
+        "--log-file",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/parse-playable_contract.engine.log",
+        "--check-only",
+        "--script",
+        "res://scripts/m4/playable_contract.gd"
+      ],
+      "expected": {
+        "exit": 0,
+        "unexpected_errors": 0,
+        "checks": null
+      },
+      "actual": {
+        "exit": 0,
+        "unexpected_errors": [],
+        "checks": null,
+        "failures": null,
+        "report_status": null
+      },
+      "status": "PASS"
+    },
+    {
+      "stage": "parse-playable_decision_adapter",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/source",
+        "--log-file",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/parse-playable_decision_adapter.engine.log",
+        "--check-only",
+        "--script",
+        "res://scripts/m4/playable_decision_adapter.gd"
+      ],
+      "expected": {
+        "exit": 0,
+        "unexpected_errors": 0,
+        "checks": null
+      },
+      "actual": {
+        "exit": 0,
+        "unexpected_errors": [],
+        "checks": null,
+        "failures": null,
+        "report_status": null
+      },
+      "status": "PASS"
+    },
+    {
+      "stage": "parse-playable_effect_rules",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/source",
+        "--log-file",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/parse-playable_effect_rules.engine.log",
+        "--check-only",
+        "--script",
+        "res://scripts/m4/playable_effect_rules.gd"
+      ],
+      "expected": {
+        "exit": 0,
+        "unexpected_errors": 0,
+        "checks": null
+      },
+      "actual": {
+        "exit": 0,
+        "unexpected_errors": [],
+        "checks": null,
+        "failures": null,
+        "report_status": null
+      },
+      "status": "PASS"
+    },
+    {
+      "stage": "parse-playable_encounter",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/source",
+        "--log-file",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/parse-playable_encounter.engine.log",
+        "--check-only",
+        "--script",
+        "res://scripts/m4/playable_encounter.gd"
+      ],
+      "expected": {
+        "exit": 0,
+        "unexpected_errors": 0,
+        "checks": null
+      },
+      "actual": {
+        "exit": 0,
+        "unexpected_errors": [],
+        "checks": null,
+        "failures": null,
+        "report_status": null
+      },
+      "status": "PASS"
+    },
+    {
+      "stage": "parse-playable_fixture_catalog",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/source",
+        "--log-file",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/parse-playable_fixture_catalog.engine.log",
+        "--check-only",
+        "--script",
+        "res://scripts/m4/playable_fixture_catalog.gd"
+      ],
+      "expected": {
+        "exit": 0,
+        "unexpected_errors": 0,
+        "checks": null
+      },
+      "actual": {
+        "exit": 0,
+        "unexpected_errors": [],
+        "checks": null,
+        "failures": null,
+        "report_status": null
+      },
+      "status": "PASS"
+    },
+    {
+      "stage": "parse-playable_rules",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/source",
+        "--log-file",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/parse-playable_rules.engine.log",
+        "--check-only",
+        "--script",
+        "res://scripts/m4/playable_rules.gd"
+      ],
+      "expected": {
+        "exit": 0,
+        "unexpected_errors": 0,
+        "checks": null
+      },
+      "actual": {
+        "exit": 0,
+        "unexpected_errors": [],
+        "checks": null,
+        "failures": null,
+        "report_status": null
+      },
+      "status": "PASS"
+    },
+    {
+      "stage": "parse-m4_05_playable_authority_proof",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/source",
+        "--log-file",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/parse-m4_05_playable_authority_proof.engine.log",
+        "--check-only",
+        "--script",
+        "res://tests/actors/m4_05_playable_authority_proof.gd"
+      ],
+      "expected": {
+        "exit": 0,
+        "unexpected_errors": 0,
+        "checks": null
+      },
+      "actual": {
+        "exit": 0,
+        "unexpected_errors": [],
+        "checks": null,
+        "failures": null,
+        "report_status": null
+      },
+      "status": "PASS"
+    },
+    {
+      "stage": "parse-m4_05_playable_effect_proof",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/source",
+        "--log-file",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/parse-m4_05_playable_effect_proof.engine.log",
+        "--check-only",
+        "--script",
+        "res://tests/actors/m4_05_playable_effect_proof.gd"
+      ],
+      "expected": {
+        "exit": 0,
+        "unexpected_errors": 0,
+        "checks": null
+      },
+      "actual": {
+        "exit": 0,
+        "unexpected_errors": [],
+        "checks": null,
+        "failures": null,
+        "report_status": null
+      },
+      "status": "PASS"
+    },
+    {
+      "stage": "B-smoke",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/source",
+        "--log-file",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/B-smoke.engine.log",
+        "--script",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/original-smoke.gd",
+        "--",
+        "--report=/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/B-smoke-report.json"
+      ],
+      "expected": {
+        "exit": 0,
+        "unexpected_errors": 0,
+        "checks": 86
+      },
+      "actual": {
+        "exit": 0,
+        "unexpected_errors": [],
+        "checks": 86,
+        "failures": 0,
+        "report_status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "stage": "C-expanded",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/source",
+        "--log-file",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/C-expanded.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_authority_proof.gd",
+        "--",
+        "--report=/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/C-expanded-report.json"
+      ],
+      "expected": {
+        "exit": 0,
+        "unexpected_errors": 0,
+        "checks": 97
+      },
+      "actual": {
+        "exit": 0,
+        "unexpected_errors": [],
+        "checks": 97,
+        "failures": 0,
+        "report_status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "stage": "D",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/source",
+        "--log-file",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/D.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_authority_proof.gd",
+        "--",
+        "--report=/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/D-report.json",
+        "--gate=D"
+      ],
+      "expected": {
+        "exit": 0,
+        "unexpected_errors": 0,
+        "checks": 1846
+      },
+      "actual": {
+        "exit": 0,
+        "unexpected_errors": [],
+        "checks": 1846,
+        "failures": 0,
+        "report_status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "stage": "E",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/source",
+        "--log-file",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/E.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_authority_proof.gd",
+        "--",
+        "--report=/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/E-report.json",
+        "--gate=E"
+      ],
+      "expected": {
+        "exit": 0,
+        "unexpected_errors": 0,
+        "checks": 354
+      },
+      "actual": {
+        "exit": 0,
+        "unexpected_errors": [],
+        "checks": 354,
+        "failures": 0,
+        "report_status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "stage": "B2",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/source",
+        "--log-file",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/B2.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_effect_proof.gd",
+        "--",
+        "--report=/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-focused-pb6iuf4d/B2-report.json"
+      ],
+      "expected": {
+        "exit": 0,
+        "unexpected_errors": 0,
+        "checks": "B2 matrix"
+      },
+      "actual": {
+        "exit": 0,
+        "unexpected_errors": [],
+        "checks": 1010,
+        "failures": 0,
+        "report_status": "PASS",
+        "classifications": {
+          "PURE SCHEMA / POLICY": 331,
+          "REAL LEGAL TRANSACTION": 502,
+          "ADVERSARIAL REJECTION": 177
+        },
+        "deferred_dependencies": 7
+      },
+      "status": "PASS"
+    }
+  ],
+  "combat": [
+    {
+      "stage": "reference44",
+      "base_sha": "1728c5e678c5065278d1251d50449a8820eb5dae",
+      "expected_stages": 44,
+      "cwd": "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-combat-bq292llw/reference44-source",
+      "command": [
+        "python3",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-combat-bq292llw/reference44-source/tests/combat/verify.py",
+        "--godot",
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--output",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-combat-bq292llw/reference44",
+        "--npc-proof",
+        "--actor-proof",
+        "--ownership-proof",
+        "--party-foundation-proof",
+        "--party-turn-proof",
+        "--party-playable-proof",
+        "--presentation-proof",
+        "--autonomous-main-proof"
+      ],
+      "exit": 0,
+      "results": "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-combat-bq292llw/reference44/results.json",
+      "actual_stages": 44,
+      "timeouts": 0,
+      "unexpected_errors": 0,
+      "negative_stage": "invalid-actions",
+      "expected_and_actual_negative_errors": [
+        "Combat Turn Flow: ไม่มี Action ถัดไปหลัง NPC",
+        "Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง",
+        "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+        "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+        "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action"
+      ]
+    },
+    {
+      "stage": "canonical94",
+      "base_sha": "6b68bf563833fb31fbb8df4b15034f3fd26f60da",
+      "expected_stages": 94,
+      "cwd": "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-combat-bq292llw/canonical94-source",
+      "command": [
+        "python3",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-combat-bq292llw/canonical94-source/tests/combat/verify.py",
+        "--godot",
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--output",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-combat-bq292llw/canonical94",
+        "--npc-proof",
+        "--actor-proof",
+        "--ownership-proof",
+        "--party-foundation-proof",
+        "--party-turn-proof",
+        "--party-playable-proof",
+        "--presentation-proof",
+        "--autonomous-main-proof",
+        "--guidance-data-proof",
+        "--guidance-decision-proof",
+        "--guidance-main-proof",
+        "--m4-data-proof",
+        "--m4-atomic-clock-proof",
+        "--m4-queue-foundation-proof",
+        "--m4-retreat-transaction-proof",
+        "--m4-outcome-summary-proof",
+        "--m4-autonomous-decision-proof",
+        "--main-cutover-proof",
+        "--cutover-baseline",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-combat-bq292llw/reference44"
+      ],
+      "exit": 0,
+      "results": "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-combat-bq292llw/canonical94/results.json",
+      "actual_stages": 94,
+      "timeouts": 0,
+      "unexpected_errors": 0,
+      "negative_stage": "invalid-actions",
+      "expected_and_actual_negative_errors": [
+        "Combat Turn Flow: ไม่มี Action ถัดไปหลัง NPC",
+        "Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง",
+        "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+        "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+        "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action"
+      ]
+    },
+    {
+      "stage": "candidate94",
+      "base_sha": "6b68bf563833fb31fbb8df4b15034f3fd26f60da",
+      "expected_stages": 94,
+      "cwd": "/private/tmp/wanderer-m405-b2-runtime",
+      "command": [
+        "python3",
+        "/private/tmp/wanderer-m405-b2-runtime/tests/combat/verify.py",
+        "--godot",
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--output",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-combat-bq292llw/candidate94",
+        "--npc-proof",
+        "--actor-proof",
+        "--ownership-proof",
+        "--party-foundation-proof",
+        "--party-turn-proof",
+        "--party-playable-proof",
+        "--presentation-proof",
+        "--autonomous-main-proof",
+        "--guidance-data-proof",
+        "--guidance-decision-proof",
+        "--guidance-main-proof",
+        "--m4-data-proof",
+        "--m4-atomic-clock-proof",
+        "--m4-queue-foundation-proof",
+        "--m4-retreat-transaction-proof",
+        "--m4-outcome-summary-proof",
+        "--m4-autonomous-decision-proof",
+        "--main-cutover-proof",
+        "--cutover-baseline",
+        "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-combat-bq292llw/reference44"
+      ],
+      "exit": 0,
+      "results": "/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-combat-bq292llw/candidate94/results.json",
+      "actual_stages": 94,
+      "timeouts": 0,
+      "unexpected_errors": 0,
+      "negative_stage": "invalid-actions",
+      "expected_and_actual_negative_errors": [
+        "Combat Turn Flow: ไม่มี Action ถัดไปหลัง NPC",
+        "Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง",
+        "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+        "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+        "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action"
+      ]
+    }
+  ],
+  "legacy_exact_equality": {
+    "cases": 6,
+    "frames": 5892,
+    "reference_canonical_candidate_match": true
+  },
+  "focused_v1_sha256": "09f773cd96f7bb61bfd42226f1324b863a3eec484a684b88e85709bf5afeb28c",
+  "focused_v2_sha256": "f797cf7d11e20a0070eec3de7f2bb776e70ff36c1b95afed6192079703e7077e",
+  "focused_deferred": [
+    {
+      "classification": "DEFERRED DEPENDENCY",
+      "dependency": "B3",
+      "scenario": "later-slot HELP exhaustion"
+    },
+    {
+      "classification": "DEFERRED DEPENDENCY",
+      "dependency": "B3",
+      "scenario": "later-slot DEFEND replacement/nonstacking"
+    },
+    {
+      "classification": "DEFERRED DEPENDENCY",
+      "dependency": "O7",
+      "scenario": "post-lock external target change"
+    },
+    {
+      "classification": "DEFERRED DEPENDENCY",
+      "dependency": "no legal B2 producer",
+      "scenario": "real capped HELP near MaxHP"
+    },
+    {
+      "classification": "DEFERRED DEPENDENCY",
+      "dependency": "later lifecycle gates",
+      "scenario": "DEAD/RETREATED and actual RESCUE"
+    },
+    {
+      "classification": "DEFERRED DEPENDENCY",
+      "dependency": "B3",
+      "scenario": "round-close Guard expiry"
+    },
+    {
+      "classification": "DEFERRED DEPENDENCY",
+      "dependency": "B4",
+      "scenario": "terminal/Restart cleanup"
+    }
+  ]
+}

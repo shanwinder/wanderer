@@ -23,7 +23,7 @@ const RELATION_REASONS = ["NO_GUIDANCE", "M404_SITUATION_PRIORITY", "M404_GUIDAN
 
 static func schemas() -> Dictionary:
 	return {
-	"Bootstrap": {"domain": ["M4_PLAYABLE"], "version": [1], "fixture_id": "S", "fixture_version": [1]},
+	"Bootstrap": {"domain": ["M4_PLAYABLE"], "version": [1], "fixture_id": "S", "fixture_version": [1, 2]},
 	"BootstrapReply": {"status": ["CREATED", "REJECTED"], "reason": "S", "view": "?View"},
 	"Identity": {"session": "session", "generation": "positive", "round_id": "positive", "state_revision": "nonneg"},
 	"DecisionIdentity": {"session": "session", "generation": "positive", "round_id": "positive", "snapshot_revision": "nonneg"},
@@ -31,7 +31,7 @@ static func schemas() -> Dictionary:
 	"CommandPayload": {"actor_id": "S", "action": ["ATTACK", "DEFEND"], "target_id": "S"},
 	"GuidancePayload": {"request": "GuidanceRequest"}, "DecisionPayload": {"observation": "Observation"},
 	"SlotPayload": {"slot_id": "S"}, "TokenPayload": {"token": "Token"},
-	"RestartPayload": {"fixture_id": "S", "fixture_version": [1]}, "Empty": {},
+	"RestartPayload": {"fixture_id": "S", "fixture_version": [1, 2]}, "Empty": {},
 	"Observation": {"domain": ["M4_PLAYABLE"], "version": [1], "identity": "Identity", "source": "Source", "slot": "Slot", "party": "[]Party", "enemies": "[]Enemy", "hits": "[]Hit", "guidance": "GuidanceView"},
 	"Source": {"owner_id": "S", "owner_revision": "nonneg", "observation_id": "S"},
 	"Slot": {"queue_id": "S", "slot_id": "S", "opportunity_id": "S", "actor_id": "S", "cursor": "nonneg", "phase": ["READY"]},
@@ -66,7 +66,7 @@ static func schemas() -> Dictionary:
 	"Witness": {"session": "session", "generation": "positive", "round_id": "positive", "queue_id": "S", "witness_id": "S", "expected_opportunities": "[]S", "receipt_ids": "[]S", "dispositions": "[]Disposition", "outstanding": [0], "sealed_revision": "positive"},
 	"Disposition": {"opportunity_id": "S", "slot_id": "S", "actor_id": "S", "kind": ["COMPLETED", "CANCELLED", "UNAVAILABLE", "NO_PLAYER_COMMAND", "TERMINAL_STOP"], "action_id": "?positive", "observed_revision": "nonneg"},
 	"CloseEvent": {"domain": ["M4_PLAYABLE"], "version": [1], "session": "session", "generation": "positive", "round_id": "positive", "queue_id": "S", "event_id": "S", "witness_id": "S", "sealed_revision": "positive", "authorization_id": "S"},
-	"SeedReference": {"fixture_id": "S", "fixture_version": [1], "contract_revision": [2], "catalog_sha256": "S", "damage_policy": ["MAIN_5_1_3"], "enemy_policy": ["WEAKEST_RATIO_HP_ORDER_V1"], "capacity": [6]},
+	"SeedReference": {"fixture_id": "S", "fixture_version": [1, 2], "contract_revision": [2, 3], "catalog_sha256": "S", "damage_policy": ["MAIN_5_1_3"], "enemy_policy": ["WEAKEST_RATIO_HP_ORDER_V1"], "capacity": [6]},
 	"CommandState": {"request_id": "S", "actor_id": "S", "action": ["ATTACK", "DEFEND"], "target_id": "S", "accepted_round": "positive", "accepted_revision": "positive"},
 	"QueueState": {"queue_id": "S", "phase": QPHASES, "cursor": "nonneg", "opportunities": "[]Opportunity", "dispositions": "[]Disposition"},
 	"Opportunity": {"opportunity_id": "S", "slot_id": "S", "actor_id": "S"},
@@ -120,6 +120,9 @@ static func valid(spec: Variant, value: Variant) -> bool:
 	var all: Dictionary = schemas()
 	if not all.has(spec) or not valid(all[spec], value): return false
 	# Named recursive records share these invariants at every nesting depth.
+	if spec in ["Bootstrap", "RestartPayload", "SeedReference"]:
+		if not Catalog.fixture_pair_valid(value.fixture_id, value.fixture_version): return false
+		return spec != "SeedReference" or value.contract_revision == Catalog.contract_revision(value.fixture_version)
 	if spec == "BootstrapReply":
 		if value.status == "CREATED": return value.reason == "M405_CREATED" and value.view != null
 		return value.view == null and value.reason in ["M405_INVALID_SCHEMA", "M405_UNAUTHORIZED", "M405_UNKNOWN_FIXTURE", "M405_INVALID_SEED", "M405_INVALID_CANDIDATE"]

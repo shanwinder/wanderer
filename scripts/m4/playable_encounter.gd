@@ -24,7 +24,7 @@ func bootstrap(request: Variant, capability: Variant) -> Dictionary:
 	elif capability == null or capability != _factory_capability or not _root.is_empty(): reason = "UNAUTHORIZED"
 	elif Catalog.fixture(request.fixture_id, request.fixture_version).is_empty(): reason = "UNKNOWN_FIXTURE"
 	if not reason.is_empty(): return {"status": "REJECTED", "reason": "M405_" + reason, "view": null}
-	var candidate: Dictionary = Rules.initial(request.fixture_id, get_instance_id())
+	var candidate: Dictionary = Rules.initial(request.fixture_id, get_instance_id(), 1, request.fixture_version)
 	if not Rules.root_valid(candidate): return {"status": "REJECTED", "reason": "M405_INVALID_SEED", "view": null}
 	if _fail_before_publish:
 		_fail_before_publish = false
