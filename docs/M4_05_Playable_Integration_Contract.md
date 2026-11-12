@@ -836,3 +836,20 @@ Run the original B1/B2 suites unchanged, the focused B3 positive/adversarial mat
 Review the allocation in §30.1, the terminal queue relationship in §30.2, rejection precedence/recovery in §30.3 and the coverage dispositions in §30.4 as one proposal. Owner acceptance must identify this package or an explicit correction. The follow-up request authorizes preparation of the fix, while the original requirement for Independent Contract Review before a material runtime amendment remains in force.
 
 This correction changes documentation only. Prior B3 preflight Godot results remain recorded evidence on the canonical SHA. B3 terminal/round/Guidance runtime and GUI acceptance remain NOT IMPLEMENTED / NOT RUN. After review and Owner decision, continue the B3 implementation task against the accepted contract and exact current canonical. Stop at its requested Draft PR for Independent Code, Contract & Evidence Review.
+
+### 30.6 Owner adoption and retained feasibility gate — 12 November 2026
+
+**OWNER APPROVED.** Source is the Owner's four-point follow-up in this chat on 12 November 2026 (Asia/Bangkok). The Owner adopts the necessary terminal settlement allocation to B3, the terminal queue and exactly-once causal COMPLETE rules, and the unreachable `NO_PLAYER_COMMAND` positive-history disposition. Presentation and Restart remain B4. Last-Party DOWN and RETREAT retain the feasibility gate and require authentic transaction evidence before acceptance.
+
+Independent Contract Review on PR #64 reviewed HEAD `425196f01ec95f069dae96a077e5819aeacd5862` and returned **TECHNICAL CONTRACT PASS** on 12 November 2026. It covered §§30.1–30.4, the terminal WAIT_ACTION relational exception, causal completion, atomicity/retry and coverage limits. The review did not execute B3 runtime. The earlier proposal/decision-pending labels above describe the original review submission and are superseded for Owner adoption by this record. [Review record](https://github.com/shanwinder/wanderer/pull/64#pullrequestreview-5871551022).
+
+| Owner point | Adopted decision | Evidence obligation |
+|---|---|---|
+| 1 | Necessary atomic terminal settlement belongs to B3. Presentation and Restart belong to B4. | Actual terminal effects and frozen Outcome through the single owner. |
+| 2 | Adopt terminal queue rules and exactly-once COMPLETE of the causal action. | Terminal WAIT_ACTION and STOPPED roots, authenticated dispositions/receipt, replay, rejection and fault/retry tests. |
+| 3 | A rescued eligible Player before its still-unused slot has no legal producer under current ordering. | Use real UNAVAILABLE-before-RESCUE history. No fabricated `NO_PLAYER_COMMAND` positive transaction is required. |
+| 4 | Keep the feasibility gate for other terminal effects, especially Last-Party DOWN and RETREAT. | Report unreachable histories. Schema validation alone cannot establish acceptance. |
+
+Follow-up source analysis finds Last-Party RETREAT unreachable under fixed same-target Enemy declarations, Party-before-Enemy order and the approved safety-first NPC policy. Last-Party DOWN has a candidate six-round history using V2 Player-low and legal pre-impact cancellation, still awaiting runtime execution. [Derivation and required disposition](../tests/actors/evidence/m4-05b/b3/REPORT.md#owner-approval-follow-up--terminal-feasibility).
+
+The accepted `NO_PLAYER_COMMAND` exception does not waive Last-Party RETREAT coverage. That affected acceptance remains HOLD pending Independent Contract Review and an explicit Owner disposition of the unreachable case. Owner adoption does not authorize merging PR #64. Its documentation merge still requires the explicit instruction required by AGENTS.md.

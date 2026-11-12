@@ -36,7 +36,7 @@ The canonical `visual-combat-test-1` defaults to Autonomous. Open `res://scenes/
 
 Current status (12 November 2026):
 
-**M4-05B B2 — isolated HELP/Guard runtime merged in [PR #62](https://github.com/shanwinder/wanderer/pull/62).** Godot 4.7.2 verification covers genuine HELP, DEFEND and guarded hits with replay-bound receipts. **B3 has a proposed contract correction** placing required terminal settlement and causal completion alongside its round lifecycle, pending Independent Contract Review and Owner Decision. [Current milestone status](docs/README.md#current-status-and-next-roadmap), [B3 feasibility evidence](tests/actors/evidence/m4-05b/b3/REPORT.md).
+**M4-05B B2 — isolated HELP/Guard runtime merged in [PR #62](https://github.com/shanwinder/wanderer/pull/62).** Godot 4.7.2 verification covers genuine HELP, DEFEND and guarded hits with replay-bound receipts. **B3 terminal contract passed Independent Review and received Owner approval.** Last-Party RETREAT remains on the retained feasibility gate following a source-backed unreachability finding. [Current milestone status](docs/README.md#current-status-and-next-roadmap), [B3 feasibility evidence](tests/actors/evidence/m4-05b/b3/REPORT.md).
 
 - **Implemented:** Player + NPC1/2/3 versus Enemy A (15 HP) and Enemy B (12 HP), target selection, surviving-target fallback, queued actions, victory/defeat and Restart.
 - **Legacy F6:** NPCs take real actions under deterministic prototype rules: after Player Attack, NPC1/3 attack and NPC2 guards Player; after Player Defend, all three attack. These rules are **not an autonomous NPC decision system**.

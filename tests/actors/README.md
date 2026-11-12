@@ -1672,7 +1672,7 @@ The focused proof records full before/after roots, the owner requests and respon
 
 ## M4-05B B3 — Lifecycle Feasibility HOLD
 
-B2 merged in [PR #62](https://github.com/shanwinder/wanderer/pull/62). B3 preflight verified the unchanged B1/B2 and combat baselines and captured a legal prefix on the merged source. Enabling later rounds exposes an action-caused terminal impact in V1 that requires a B3/B4 contract decision before implementation. [Proposed correction](../../docs/M4_05_Playable_Integration_Contract.md#30-b3-terminal-dependency-correction--proposed-for-independent-review) specifies terminal publication, causal completion and queue invariants. [Reachability, exact commands and evidence](evidence/m4-05b/b3/REPORT.md).
+B2 merged in [PR #62](https://github.com/shanwinder/wanderer/pull/62). B3 preflight verified the unchanged B1/B2 and combat baselines and captured a legal prefix on the merged source. Enabling later rounds exposes an action-caused terminal impact in V1 that requires a B3/B4 contract decision before implementation. [Owner-approved correction](../../docs/M4_05_Playable_Integration_Contract.md#306-owner-adoption-and-retained-feasibility-gate--12-november-2026) specifies terminal publication, causal completion and queue invariants. Last-Party RETREAT remains UNREACHABLE/HOLD under the retained feasibility gate. [Reachability, exact commands and evidence](evidence/m4-05b/b3/REPORT.md).
 
 ## M4-05B B2 — Fixture Feasibility HOLD
 

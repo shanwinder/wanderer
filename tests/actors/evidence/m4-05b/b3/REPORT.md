@@ -1,5 +1,7 @@
 # M4-05B B3 — Feasibility HOLD
 
+**สถานะล่าสุดหลัง Owner approval** — Independent Contract Review ของ §30 ผ่านบน `425196f` และ Owner รับรองทั้งสี่ข้อแล้ว ผลวิเคราะห์ Last-Party RETREAT เป็น UNREACHABLE/HOLD ตาม gate ที่คงไว้ ดูข้อพิสูจน์และ Last-Party DOWN candidate ในหัวข้อท้ายรายงาน ส่วนข้อความก่อนหน้านั้นเก็บสถานะและผลรันของ checkpoint เดิม.
+
 **บันทึก feasibility วันที่ 12 พฤศจิกายน 2026 (Asia/Bangkok)**
 
 ข้อแก้ไขจากคำสั่งติดตามของ Owner อยู่ใน [Contract §30](../../../../../docs/M4_05_Playable_Integration_Contract.md#30-b3-terminal-dependency-correction--proposed-for-independent-review) โดยเสนอให้ B3 รับผิดชอบ atomic terminal settlement และ causal COMPLETE พร้อมข้อกำหนด queue/replay ที่ชัดเจน สถานะข้อเสนอยังรอ Independent Contract Review และ Owner Decision. ผลรันด้านล่างเป็นหลักฐาน preflight เดิม ไม่มี Godot run เพิ่มในขั้นแก้สัญญา.
@@ -55,3 +57,36 @@ B3 IMPACT สำหรับ RESCUE/RETREAT, natural close, clock, Pending/Froze
 ## สถานะส่งมอบ
 
 ณ checkpoint preflight เดิม งานหยุดก่อน runtime, commit, push และ PR. คำสั่งติดตามให้วินิจฉัยและแก้ไขนำไปสู่ข้อเสนอ Contract §30 เพื่อส่ง Draft documentation PR บน branch เดิม. รอ Independent Contract Review และ Owner Decision ของข้อเสนอ ก่อนดำเนิน B3 runtime ต่อ.
+
+## Owner approval follow-up — terminal feasibility
+
+**12 November 2026.** Independent Contract Review on PR #64 at `425196f01ec95f069dae96a077e5819aeacd5862` returned TECHNICAL CONTRACT PASS. The Owner subsequently adopted the four points recorded in [§30.6](../../../../../docs/M4_05_Playable_Integration_Contract.md#306-owner-adoption-and-retained-feasibility-gate--12-november-2026). This follow-up performs source analysis and documentation checks. It adds no Godot run, runtime producer or transaction PASS.
+
+### Last-Party RETREAT — unreachable under current rules
+
+The proof uses the existing [Enemy declarations and slot order](../../../../../scripts/m4/playable_rules.gd), [NPC safety/RETREAT selection](../../../../../scripts/m4/playable_decision_adapter.gd), and Contract §§7, 19, 23.2–23.3 and 30.2.
+
+1. Every ACTIVE admission has at least one eligible Party actor and one available Enemy. All available Enemies declare the same eligible Party target T. The declarations remain fixed throughout the round.
+2. Party opportunities precede every Enemy opportunity. During this portion, authorized ATTACKs hit Enemies, HELP/RESCUE only improve Party HP/eligibility, DEFEND grants Guard and CANCEL consumes an opportunity without changing Party eligibility. Clocks run only at natural close. The bounded API has no external damage/removal producer. Thus T cannot become DOWN or DEAD before the Party portion ends.
+3. If T is Player, Player's command choices ATTACK/DEFEND cannot make T retreat. If T is NPC and still has HP above 30%, the RETREAT predicate is false. At HP≤30%, at least one still-available Enemy's declared hit sets incoming>0, and the higher-priority safety rule selects DEFEND before RETREAT. Higher-priority RESCUE/HELP and Guidance delegation also cannot produce a RETREAT for T.
+4. Every Enemy still available during the Party portion was available at admission, since the rules have no Enemy resurrection. If all declaring Enemies are eliminated, that earlier impact freezes terminal and stops later slots before a RETREAT could execute.
+5. Consequently T remains eligible throughout every nonterminal Party portion. Any other NPC's RETREAT leaves T active. This remains true if another Party actor was rescued earlier in the round. Serial LOCK→IMPACT has no external actor-state mutation, so a RETREAT cannot lose its remaining eligible companion between selection and impact.
+
+Therefore no policy-issued RETREAT token can become the last-active-Party exit in any V1/V2 fixture history under these rules, irrespective of the six-round cap. A larger fixture catalog alone with the same targeting/order/policy does not remove this invariant. Ordinary nonterminal NPC RETREAT remains reachable, as the V2 Player-low B2 lock evidence already shows.
+
+**Disposition required under Owner point 4.** Classify positive Last-Party RETREAT runtime coverage as UNREACHABLE/HOLD. Independent Contract Review and Owner must explicitly accept its deferral while retaining the general terminal invariant, or authorize a separate producer/policy change. The approval for the Player `NO_PLAYER_COMMAND` case does not supply that waiver. Pure classifier/schema cases and a caller-created RETREAT token cannot replace the missing owned history.
+
+### Last-Party DOWN — candidate legal history, runtime NOT RUN
+
+V2 `m405-demo/b2-player-low` starts Party HP 2/10/7/3 and Enemy HP 15/12. In round1 submit a real Player command, admit, lock and CANCEL it. In every round lock each eligible NPC's independently selected action and CANCEL before impact. Traverse unavailable actors through real dispositions. Execute both Enemy opportunities through actual IMPACT and COMPLETE, including the legitimate second-hit TARGET_UNAVAILABLE skips. This leaves both Enemy HP values intact and provides real Enemy receipts for natural close1–5.
+
+| Round | Admission target | Target HP at Enemy impacts | Natural-close consequence |
+|---|---|---|---|
+| 1 | Player | 2→0, then second hit SKIPPED | Player DOWN episode entry1 receives grace. |
+| 2 | NPC3 | 3→0, then second hit SKIPPED | Player budget2→1; NPC3 entry2 receives grace. |
+| 3 | NPC2 | 7→4→1 | Player budget1→0/DEAD; NPC3 budget2→1. |
+| 4 | NPC2 | 1→0, then second hit SKIPPED | NPC3 budget1→0/DEAD; NPC2 entry4 receives grace. |
+| 5 | NPC1 | 10→7→4 | NPC2 budget2→1. NPC1 remains the sole eligible Party actor. |
+| 6 | NPC1 | 4→1→0 | Enemy B's last-Party DOWN impact must freeze DEFEAT/NO_ACTIVE_PARTY. Causal COMPLETE follows once; closed_rounds stays5 and NPC2 clock remains budget1. |
+
+NPC actions in this derivation are selected by the owner, including HELP, RESCUE and safety DEFEND as applicable, then legitimately cancelled. No Guard is applied and no HELP/RESCUE is spent. All DOWN episodes except the final NPC1 episode receive the listed real-boundary ticks only after B3 supplies its close producer. The table is a source-backed feasibility plan. It is not an executed B3 trace, and all receipt/episode/witness IDs must be obtained from the implementation during the required proof.
