@@ -1670,6 +1670,10 @@ Use a fresh source snapshot, import, and run with the same Godot 4.7.2 binary as
 
 The focused proof records full before/after roots, the owner requests and responses, and exact replay. It classifies actual operations, pure schema/policy assertions and adversarial rejection assertions. Seven dependent cases have separate deferred records. [Fresh runs, engine logs, counts, hashes, and review checklist](evidence/m4-05b/b2/runtime/REPORT.md).
 
+## M4-05B B3 — Lifecycle Feasibility HOLD
+
+B2 merged in [PR #62](https://github.com/shanwinder/wanderer/pull/62). B3 preflight verified the unchanged B1/B2 and combat baselines and captured a legal prefix on the merged source. Enabling later rounds exposes an action-caused terminal impact in V1 that requires a B3/B4 contract decision before implementation. [Proposed correction](../../docs/M4_05_Playable_Integration_Contract.md#30-b3-terminal-dependency-correction--proposed-for-independent-review) specifies terminal publication, causal completion and queue invariants. [Reachability, exact commands and evidence](evidence/m4-05b/b3/REPORT.md).
+
 ## M4-05B B2 — Fixture Feasibility HOLD
 
 **Historical 12 November proposal:** Owner requested resolution; [contract §29](../../docs/M4_05_Playable_Integration_Contract.md#29-b2-fixture-feasibility-correction--proposed-for-independent-review) now proposes exact additive fixture/version/digest compatibility and legal action histories for Independent Contract Review. This documentation-only Draft preserves all original B1 tests and the four feasibility artifacts. [Current validation](evidence/m4-05b/b2/contract-review/validation.json). Runtime and acceptance decisions were still gated at that checkpoint. The following 10 November record describes the earlier local HOLD, including its historical no-commit/no-PR status.

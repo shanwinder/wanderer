@@ -1,0 +1,502 @@
+{
+  "commit": "6bb7fddf787199fcd43f2759743c65b40670a51a",
+  "godot_sha256": "c7cccbf8fb143e34e02fd6521e09be2c2b974f0d5db080b19071c9c570718ccf",
+  "stages": [
+    {
+      "stage": "import",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-b3.8yMTNX/focused-source",
+        "--log-file",
+        "/private/tmp/wanderer-b3.8yMTNX/baseline-clean/import.engine.log",
+        "--editor",
+        "--import"
+      ],
+      "exit": 0,
+      "unexpected_errors": [],
+      "expected_checks": null,
+      "actual_checks": null,
+      "status": null,
+      "summary": [
+        "\u001b[92m[ DONE ]\u001b[39m \u001b[1mloading_editor_layout\u001b[22m",
+        "\u001b[0m"
+      ],
+      "passed": true
+    },
+    {
+      "stage": "version",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-b3.8yMTNX/focused-source",
+        "--log-file",
+        "/private/tmp/wanderer-b3.8yMTNX/baseline-clean/version.engine.log",
+        "--version"
+      ],
+      "exit": 0,
+      "unexpected_errors": [],
+      "expected_checks": null,
+      "actual_checks": null,
+      "status": null,
+      "summary": [
+        "4.7.2.stable.official.ed1daf0bf"
+      ],
+      "passed": true
+    },
+    {
+      "stage": "smoke",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-b3.8yMTNX/focused-source",
+        "--log-file",
+        "/private/tmp/wanderer-b3.8yMTNX/baseline-clean/smoke.engine.log",
+        "--script",
+        "/private/tmp/wanderer-b3.8yMTNX/baseline/original-smoke.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b3.8yMTNX/baseline-clean/smoke.json"
+      ],
+      "exit": 0,
+      "unexpected_errors": [],
+      "expected_checks": 86,
+      "actual_checks": 86,
+      "status": "PASS",
+      "summary": [
+        "",
+        "B1 INITIAL PROOF: PASS checks=86"
+      ],
+      "passed": true
+    },
+    {
+      "stage": "expanded",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-b3.8yMTNX/focused-source",
+        "--log-file",
+        "/private/tmp/wanderer-b3.8yMTNX/baseline-clean/expanded.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_authority_proof.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b3.8yMTNX/baseline-clean/expanded.json"
+      ],
+      "exit": 0,
+      "unexpected_errors": [],
+      "expected_checks": 97,
+      "actual_checks": 97,
+      "status": "PASS",
+      "summary": [
+        "",
+        "B1 INITIAL PROOF: PASS checks=97"
+      ],
+      "passed": true
+    },
+    {
+      "stage": "schema",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-b3.8yMTNX/focused-source",
+        "--log-file",
+        "/private/tmp/wanderer-b3.8yMTNX/baseline-clean/schema.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_authority_proof.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b3.8yMTNX/baseline-clean/schema.json",
+        "--gate=D"
+      ],
+      "exit": 0,
+      "unexpected_errors": [],
+      "expected_checks": 1846,
+      "actual_checks": 1846,
+      "status": "PASS",
+      "summary": [
+        "",
+        "B1 INITIAL PROOF: PASS checks=1846"
+      ],
+      "passed": true
+    },
+    {
+      "stage": "transactions",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-b3.8yMTNX/focused-source",
+        "--log-file",
+        "/private/tmp/wanderer-b3.8yMTNX/baseline-clean/transactions.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_authority_proof.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b3.8yMTNX/baseline-clean/transactions.json",
+        "--gate=E"
+      ],
+      "exit": 0,
+      "unexpected_errors": [],
+      "expected_checks": 354,
+      "actual_checks": 354,
+      "status": "PASS",
+      "summary": [
+        "",
+        "B1 INITIAL PROOF: PASS checks=354"
+      ],
+      "passed": true
+    },
+    {
+      "stage": "effects",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-b3.8yMTNX/focused-source",
+        "--log-file",
+        "/private/tmp/wanderer-b3.8yMTNX/baseline-clean/effects.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_effect_proof.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b3.8yMTNX/baseline-clean/effects.json"
+      ],
+      "exit": 0,
+      "unexpected_errors": [],
+      "expected_checks": 1010,
+      "actual_checks": 1010,
+      "status": "PASS",
+      "summary": [
+        "",
+        "B2 EFFECT PROOF: PASS checks=1010 failures=0 deferred=7"
+      ],
+      "passed": true
+    },
+    {
+      "stage": "parse-playable_contract",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-b3.8yMTNX/focused-source",
+        "--log-file",
+        "/private/tmp/wanderer-b3.8yMTNX/baseline-clean/parse-playable_contract.engine.log",
+        "--check-only",
+        "--script",
+        "res://scripts/m4/playable_contract.gd"
+      ],
+      "exit": 0,
+      "unexpected_errors": [],
+      "expected_checks": null,
+      "actual_checks": null,
+      "status": null,
+      "summary": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        ""
+      ],
+      "passed": true
+    },
+    {
+      "stage": "parse-playable_decision_adapter",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-b3.8yMTNX/focused-source",
+        "--log-file",
+        "/private/tmp/wanderer-b3.8yMTNX/baseline-clean/parse-playable_decision_adapter.engine.log",
+        "--check-only",
+        "--script",
+        "res://scripts/m4/playable_decision_adapter.gd"
+      ],
+      "exit": 0,
+      "unexpected_errors": [],
+      "expected_checks": null,
+      "actual_checks": null,
+      "status": null,
+      "summary": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        ""
+      ],
+      "passed": true
+    },
+    {
+      "stage": "parse-playable_effect_rules",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-b3.8yMTNX/focused-source",
+        "--log-file",
+        "/private/tmp/wanderer-b3.8yMTNX/baseline-clean/parse-playable_effect_rules.engine.log",
+        "--check-only",
+        "--script",
+        "res://scripts/m4/playable_effect_rules.gd"
+      ],
+      "exit": 0,
+      "unexpected_errors": [],
+      "expected_checks": null,
+      "actual_checks": null,
+      "status": null,
+      "summary": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        ""
+      ],
+      "passed": true
+    },
+    {
+      "stage": "parse-playable_encounter",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-b3.8yMTNX/focused-source",
+        "--log-file",
+        "/private/tmp/wanderer-b3.8yMTNX/baseline-clean/parse-playable_encounter.engine.log",
+        "--check-only",
+        "--script",
+        "res://scripts/m4/playable_encounter.gd"
+      ],
+      "exit": 0,
+      "unexpected_errors": [],
+      "expected_checks": null,
+      "actual_checks": null,
+      "status": null,
+      "summary": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        ""
+      ],
+      "passed": true
+    },
+    {
+      "stage": "parse-playable_fixture_catalog",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-b3.8yMTNX/focused-source",
+        "--log-file",
+        "/private/tmp/wanderer-b3.8yMTNX/baseline-clean/parse-playable_fixture_catalog.engine.log",
+        "--check-only",
+        "--script",
+        "res://scripts/m4/playable_fixture_catalog.gd"
+      ],
+      "exit": 0,
+      "unexpected_errors": [],
+      "expected_checks": null,
+      "actual_checks": null,
+      "status": null,
+      "summary": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        ""
+      ],
+      "passed": true
+    },
+    {
+      "stage": "parse-playable_rules",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-b3.8yMTNX/focused-source",
+        "--log-file",
+        "/private/tmp/wanderer-b3.8yMTNX/baseline-clean/parse-playable_rules.engine.log",
+        "--check-only",
+        "--script",
+        "res://scripts/m4/playable_rules.gd"
+      ],
+      "exit": 0,
+      "unexpected_errors": [],
+      "expected_checks": null,
+      "actual_checks": null,
+      "status": null,
+      "summary": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        ""
+      ],
+      "passed": true
+    },
+    {
+      "stage": "parse-m4_05_playable_authority_proof",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-b3.8yMTNX/focused-source",
+        "--log-file",
+        "/private/tmp/wanderer-b3.8yMTNX/baseline-clean/parse-m4_05_playable_authority_proof.engine.log",
+        "--check-only",
+        "--script",
+        "res://tests/actors/m4_05_playable_authority_proof.gd"
+      ],
+      "exit": 0,
+      "unexpected_errors": [],
+      "expected_checks": null,
+      "actual_checks": null,
+      "status": null,
+      "summary": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        ""
+      ],
+      "passed": true
+    },
+    {
+      "stage": "parse-m4_05_playable_effect_proof",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-b3.8yMTNX/focused-source",
+        "--log-file",
+        "/private/tmp/wanderer-b3.8yMTNX/baseline-clean/parse-m4_05_playable_effect_proof.engine.log",
+        "--check-only",
+        "--script",
+        "res://tests/actors/m4_05_playable_effect_proof.gd"
+      ],
+      "exit": 0,
+      "unexpected_errors": [],
+      "expected_checks": null,
+      "actual_checks": null,
+      "status": null,
+      "summary": [
+        "Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org",
+        ""
+      ],
+      "passed": true
+    },
+    {
+      "stage": "feasibility-prefix",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-b3.8yMTNX/focused-source",
+        "--log-file",
+        "/private/tmp/wanderer-b3.8yMTNX/baseline-clean-clean/feasibility-prefix.engine.log",
+        "--script",
+        "/private/tmp/wanderer-b3.8yMTNX/feasibility_prefix.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b3.8yMTNX/baseline-clean-clean/feasibility-prefix.json"
+      ],
+      "exit": 0,
+      "unexpected_errors": [],
+      "expected_checks": null,
+      "actual_checks": null,
+      "status": null,
+      "summary": [
+        "",
+        "B3 FEASIBILITY PREFIX: 22 transactions, 0 failures"
+      ],
+      "passed": true,
+      "transaction_count": 22,
+      "rejected_equal_root_count": 4,
+      "artifact_audit": "The wrapper looked in baseline-clean; the recorded command wrote to baseline-clean-clean. The raw artifacts at the actual paths were audited."
+    }
+  ],
+  "probe_sha256": "a81df3a9c6b1612d0f2e1f2d2315327362c30d562bf386de68fc427346339856",
+  "initial_sandbox_attempt": "macOS certificate and Godot editor settings access failed in the sandbox. Clean tests ran outside the sandbox against disposable checkouts/snapshots.",
+  "focused_source_manifest_entries": 124,
+  "fixture_catalog_sha256": [
+    "09f773cd96f7bb61bfd42226f1324b863a3eec484a684b88e85709bf5afeb28c",
+    "f797cf7d11e20a0070eec3de7f2bb776e70ff36c1b95afed6192079703e7077e"
+  ],
+  "combat": [
+    {
+      "name": "reference44",
+      "command": [
+        "/opt/homebrew/bin/python3.12",
+        "/private/tmp/wanderer-b3.8yMTNX/reference-source/tests/combat/verify.py",
+        "--godot",
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--output",
+        "/private/tmp/wanderer-b3.8yMTNX/reference44-clean",
+        "--npc-proof",
+        "--actor-proof",
+        "--ownership-proof",
+        "--party-foundation-proof",
+        "--party-turn-proof",
+        "--party-playable-proof",
+        "--presentation-proof",
+        "--autonomous-main-proof"
+      ],
+      "cwd": "/private/tmp/wanderer-b3.8yMTNX/reference-source",
+      "exit": 0,
+      "expected_stages": 44,
+      "actual_stages": 44,
+      "timeouts": 0,
+      "unexpected_errors": 0,
+      "negative_errors": [
+        "Combat Turn Flow: ไม่มี Action ถัดไปหลัง NPC",
+        "Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง",
+        "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+        "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+        "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action"
+      ],
+      "tracked_source_manifest_sha256": "97f1746fee5ca22d9d63f9e9b77382046616ed5a0ac666f51099a2f5573c6bf9"
+    },
+    {
+      "name": "canonical94",
+      "command": [
+        "/opt/homebrew/bin/python3.12",
+        "/private/tmp/wanderer-b3.8yMTNX/source/tests/combat/verify.py",
+        "--godot",
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--output",
+        "/private/tmp/wanderer-b3.8yMTNX/canonical94-clean",
+        "--npc-proof",
+        "--actor-proof",
+        "--ownership-proof",
+        "--party-foundation-proof",
+        "--party-turn-proof",
+        "--party-playable-proof",
+        "--presentation-proof",
+        "--autonomous-main-proof",
+        "--guidance-data-proof",
+        "--guidance-decision-proof",
+        "--guidance-main-proof",
+        "--m4-data-proof",
+        "--m4-atomic-clock-proof",
+        "--m4-queue-foundation-proof",
+        "--m4-retreat-transaction-proof",
+        "--m4-outcome-summary-proof",
+        "--m4-autonomous-decision-proof",
+        "--main-cutover-proof",
+        "--cutover-baseline",
+        "/private/tmp/wanderer-b3.8yMTNX/reference44-clean"
+      ],
+      "cwd": "/private/tmp/wanderer-b3.8yMTNX/source",
+      "exit": 0,
+      "expected_stages": 94,
+      "actual_stages": 94,
+      "timeouts": 0,
+      "unexpected_errors": 0,
+      "negative_errors": [
+        "Combat Turn Flow: ไม่มี Action ถัดไปหลัง NPC",
+        "Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง",
+        "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+        "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+        "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action"
+      ],
+      "tracked_source_manifest_sha256": "8923f818d0e16f3470a5074dd8960f907db6d1720f14ef3018233974c24f33ed"
+    }
+  ],
+  "legacy": {
+    "cases": 6,
+    "frames": 5892,
+    "exact_equality": true
+  },
+  "live_canonical_head": "6bb7fddf787199fcd43f2759743c65b40670a51a",
+  "historical_reference_head": "1728c5e678c5065278d1251d50449a8820eb5dae",
+  "proof_scope": {
+    "executed": "Merged B2 authority and historical/canonical baselines",
+    "source_analysis": "B3 legal reachability beyond first round",
+    "not_run": [
+      "B3 implementation proofs",
+      "GUI",
+      "keyboard",
+      "visual",
+      "benchmarks"
+    ]
+  }
+}
