@@ -1670,9 +1670,9 @@ Use a fresh source snapshot, import, and run with the same Godot 4.7.2 binary as
 
 The focused proof records full before/after roots, the owner requests and responses, and exact replay. It classifies actual operations, pure schema/policy assertions and adversarial rejection assertions. Seven dependent cases have separate deferred records. [Fresh runs, engine logs, counts, hashes, and review checklist](evidence/m4-05b/b2/runtime/REPORT.md).
 
-## M4-05B B3 — Lifecycle Feasibility HOLD
+## M4-05B B3 — Approved Terminal Proof Boundary
 
-B2 merged in [PR #62](https://github.com/shanwinder/wanderer/pull/62). B3 preflight verified the unchanged B1/B2 and combat baselines and captured a legal prefix on the merged source. Enabling later rounds exposes an action-caused terminal impact in V1 that requires a B3/B4 contract decision before implementation. [Owner-approved correction](../../docs/M4_05_Playable_Integration_Contract.md#306-owner-adoption-and-retained-feasibility-gate--12-november-2026) specifies terminal publication, causal completion and queue invariants. Last-Party RETREAT remains UNREACHABLE/HOLD under the retained feasibility gate. [Reachability, exact commands and evidence](evidence/m4-05b/b3/REPORT.md).
+B2 merged in [PR #62](https://github.com/shanwinder/wanderer/pull/62). B3 preflight verified the unchanged B1/B2 and combat baselines and captured a legal prefix on the merged source. Independent Contract Review passed the terminal allocation and subsequent reachability analysis. The Owner [approved deferring only positive Last-Party RETREAT transaction coverage](../../docs/M4_05_Playable_Integration_Contract.md#307-narrow-last-party-retreat-coverage-deferral--13-november-2026). Terminal Classifier, Schema, rejection/negative replay, ordinary NPC RETREAT and Last-Party DOWN transaction proofs remain required. Targeting, safety priority and fixtures retain their approved rules. B3 runtime is unimplemented. [Reachability, recorded commands and evidence](evidence/m4-05b/b3/REPORT.md).
 
 ## M4-05B B2 — Fixture Feasibility HOLD
 

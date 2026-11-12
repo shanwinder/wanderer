@@ -1,6 +1,6 @@
 # M4-05B B3 — Feasibility HOLD
 
-**สถานะล่าสุดหลัง Owner approval** — Independent Contract Review ของ §30 ผ่านบน `425196f` และ Owner รับรองทั้งสี่ข้อแล้ว ผลวิเคราะห์ Last-Party RETREAT เป็น UNREACHABLE/HOLD ตาม gate ที่คงไว้ ดูข้อพิสูจน์และ Last-Party DOWN candidate ในหัวข้อท้ายรายงาน ส่วนข้อความก่อนหน้านั้นเก็บสถานะและผลรันของ checkpoint เดิม.
+**สถานะล่าสุดวันที่ 13 พฤศจิกายน 2026** — Owner อนุมัติเลื่อนเฉพาะ positive Last-Party RETREAT transaction proof ตาม [§30.7](../../../../../docs/M4_05_Playable_Integration_Contract.md#307-narrow-last-party-retreat-coverage-deferral--13-november-2026). HOLD เฉพาะ coverage นี้ปิดด้วยสถานะ DEFERRED. Classifier, Schema, rejection/negative replay, NPC RETREAT ปกติและ Last-Party DOWN ยังต้องทดสอบครบ ข้อความ HOLD และรอ Owner disposition ในบันทึกด้านล่างเป็นสถานะก่อนการตัดสินครั้งนี้.
 
 **บันทึก feasibility วันที่ 12 พฤศจิกายน 2026 (Asia/Bangkok)**
 
@@ -90,3 +90,11 @@ V2 `m405-demo/b2-player-low` starts Party HP 2/10/7/3 and Enemy HP 15/12. In rou
 | 6 | NPC1 | 4→1→0 | Enemy B's last-Party DOWN impact must freeze DEFEAT/NO_ACTIVE_PARTY. Causal COMPLETE follows once; closed_rounds stays5 and NPC2 clock remains budget1. |
 
 NPC actions in this derivation are selected by the owner, including HELP, RESCUE and safety DEFEND as applicable, then legitimately cancelled. No Guard is applied and no HELP/RESCUE is spent. All DOWN episodes except the final NPC1 episode receive the listed real-boundary ticks only after B3 supplies its close producer. The table is a source-backed feasibility plan. It is not an executed B3 trace, and all receipt/episode/witness IDs must be obtained from the implementation during the required proof.
+
+## Owner coverage deferral — 13 November 2026
+
+Owner อนุมัติเลื่อนเฉพาะการพิสูจน์ Last-Party RETREAT ด้วยธุรกรรมจริง หลัง Independent Contract Review follow-up บน `8b9228e` รับรองการวิเคราะห์จาก source. Coverage ต้องลง DEFERRED — OWNER APPROVED; ไม่บันทึก runtime PASS สำหรับกรณีนี้.
+
+Terminal Classifier, Schema, rejection/negative replay และ ordinary NPC RETREAT ผ่าน owner LOCK/IMPACT/COMPLETE ยังคงเป็นข้อบังคับ. Last-Party DOWN ยังต้องพิสูจน์ประวัติจริงตามแผนข้างต้น. ไม่มี authorization ให้เปลี่ยน Enemy Targeting, NPC Safety Priority หรือ Fixture เพื่อสร้างสถานการณ์ที่เกิดไม่ได้ตามกฎปัจจุบัน. [Owner decision และขอบเขตเต็ม](../../../../../docs/M4_05_Playable_Integration_Contract.md#307-narrow-last-party-retreat-coverage-deferral--13-november-2026).
+
+ขั้นบันทึกนี้แก้ Markdown เท่านั้น ไม่มี Godot/import/parse/runtime/GUI หรือ benchmark run เพิ่ม ผลรันและ audit เดิมเก็บตาม checkpoint ที่ระบุในไฟล์. B3 runtime ยังไม่ implement และ PR #64 ยังรอคำสั่ง merge โดยชัดแจ้ง.

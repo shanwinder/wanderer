@@ -853,3 +853,20 @@ Independent Contract Review on PR #64 reviewed HEAD `425196f01ec95f069dae96a077e
 Follow-up source analysis finds Last-Party RETREAT unreachable under fixed same-target Enemy declarations, Party-before-Enemy order and the approved safety-first NPC policy. Last-Party DOWN has a candidate six-round history using V2 Player-low and legal pre-impact cancellation, still awaiting runtime execution. [Derivation and required disposition](../tests/actors/evidence/m4-05b/b3/REPORT.md#owner-approval-follow-up--terminal-feasibility).
 
 The accepted `NO_PLAYER_COMMAND` exception does not waive Last-Party RETREAT coverage. That affected acceptance remains HOLD pending Independent Contract Review and an explicit Owner disposition of the unreachable case. Owner adoption does not authorize merging PR #64. Its documentation merge still requires the explicit instruction required by AGENTS.md.
+
+### 30.7 Narrow Last-Party RETREAT coverage deferral — 13 November 2026
+
+**OWNER APPROVED.** Source is the Owner's follow-up in this chat on 13 November 2026 (Asia/Bangkok). The Owner defers only the positive Last-Party RETREAT proof through real transactions. Terminal Classifier, Schema and rejection tests remain required. Ordinary NPC RETREAT still requires real owned transactions. Changing Enemy Targeting, NPC Safety Priority or fixtures to manufacture the unreachable situation is outside this authorization.
+
+The [Independent Contract Review follow-up](https://github.com/shanwinder/wanderer/pull/64#pullrequestreview-5875146473) reviewed `8b9228ee534a07332fe1606343b1d171d1d1af10` and returned SOURCE/CONTRACT ANALYSIS PASS. It supported the unreachability derivation and recommended this narrow deferral, retaining classifier/schema, negative replay and ordinary NPC RETREAT proofs. The Owner now supplies that requested coverage decision. Earlier Last-Party RETREAT HOLD/pending-disposition wording in §30.6 and the feasibility report is superseded only for this acceptance obligation.
+
+| Coverage | Current requirement |
+|---|---|
+| Positive Last-Party RETREAT through real transactions | DEFERRED — OWNER APPROVED, because the current targeting/order/safety model has no legal producer. B3 acceptance does not require manufacturing this history. Report it as deferred in coverage and result manifests. |
+| Terminal Classifier and Schema | Required, including the general §7 outcome precedence and valid/invalid terminal records. Label pure data tests with their actual scope. |
+| Rejection and negative replay cases | Required, including forged/unowned RETREAT tokens, inconsistent terminal records and duplicate completion/receipt rejection, with whole-root equality where a transaction is rejected. |
+| Ordinary NPC RETREAT | Required real owner decision → LOCK → IMPACT → COMPLETE, actual participation change, retained actor identity, slot consumption and one receipt. |
+| Last-Party DOWN | Required authentic transaction history and causal terminal completion. The six-round plan still awaits runtime execution and remains subject to feasibility/regression gates. |
+| All other B3 proof obligations | Retained, including terminal settlement, Command/Guidance, RESCUE, Guard, natural close/clock, six-round exhaustion, replay/fault/forgery checks and B1/B2/combat/Legacy regression. |
+
+Enemy Targeting, NPC Safety Priority and fixture contents/digests remain governed by their existing approved contracts. Any future producer or gameplay change requires its own separately approved task and renewed reachability assessment. This decision closes the specific Last-Party RETREAT coverage HOLD and records no runtime PASS. Presentation and Restart remain B4. PR #64 remains subject to explicit merge authorization under AGENTS.md.
