@@ -314,6 +314,24 @@ The following C delivery/fix checkpoints preserve their original pre-merge gates
 - Git diff และข้อผิดพลาดเป็นส่วนหนึ่งของการเรียนรู้
 - งานภาพเล็ก ๆ เพื่อเสริมแรงจูงใจทำได้ โดยไม่ขยาย asset production จนกินเวลาออกแบบระบบ
 
+### Hybrid Development with AI Skills
+
+เริ่มจาก milestone, acceptance criteria และ Approved Contracts ของ Wanderer แล้วใช้ Skill เสริมเฉพาะเรื่องที่ต้องการ ตาม [AI Skills Integration Policy](../AGENTS.md#ai-skills-integration-policy) และ [Learning Workflow v0.4](04_Wanderer_Learning_Development_Workflow_v0.4.md)
+
+| Skill | ใช้เมื่อ |
+|---|---|
+| `router` | งาน Godot คร่อมหลายเรื่องหรือยังไม่แน่ใจว่าควรเลือก Skill ใด |
+| `godot-gdscript` | ตรวจ type, parse error, `@onready` หรือ `await` |
+| `godot-nodes-scenes` | ตรวจ Scene Tree, การสร้าง instance, NodePath หรือ UID ของ resource |
+| `godot-ui-control` | ตรวจ layout, anchor, Container หรือ focus ของ UI |
+| `godot-gdscript-headless-testing` | วิเคราะห์ headless test, exit code หรือ log ของ Godot |
+
+เรียกด้วยชื่อ Skill เช่น `$godot-gdscript` หาก Codex แสดง Skill นั้น หรือเปิด `.agents/skills/<name>/SKILL.md` โดยตรงเมื่อมีสำเนาใน checkout ปัจจุบัน ให้ Codex อธิบายแนวคิด เหตุผล ผลที่คาดหวัง และวิธีตรวจทีละขั้น เช่น ให้ผู้พัฒนาดู error กับชนิดข้อมูลในบรรทัดที่เกี่ยวข้องก่อนลองแก้ หาก Skill ที่อ้างถึงยังไม่มี ให้ใช้โค้ดและคู่มือของโครงการตามขอบเขตที่ได้รับอนุมัติ
+
+- **การเก็บไฟล์ในเครื่อง** ใช้ `.agents/skills/` และ `skills-lock.json` เป็นชุดติดตั้งเสริมประจำ checkout และเก็บไว้นอก Git แต่ละ worktree ต้องมีชุดติดตั้งของตนเองหากจะใช้สำเนา project-local
+- **การอัปเดต** ระบุ upstream repository และ commit SHA ที่จะใช้ ตรวจ diff ของ `SKILL.md`, ไฟล์ประกอบ, dependencies และสคริปต์ก่อนนำมาใช้ บันทึก SHA คู่กับ `skills-lock.json` ของชุดที่ตรวจแล้ว เพราะ `computedHash` ใน lockfile บอกข้อมูลที่ installer บันทึกไว้ แต่ไม่ได้ระบุ upstream commit หากจะนำชุด Skills เข้า Git หรือ CI ให้เสนอแยกเพื่อทบทวนที่มา ไลเซนส์และประกาศที่เกี่ยวข้อง รวมถึงขอบเขตการรันก่อน
+- **การใช้สคริปต์** ตัวตรวจ scene/resource ของ Python อ่านไฟล์และอาจตาม symlink ส่วนตัวตรวจ compile ของ GDScript โหลดสคริปต์ของโปรเจกต์ ซึ่งอาจรัน static initializers ตรวจผลกระทบของคำสั่งก่อนรันและจำกัดขอบเขตไว้ที่สำเนางานที่เกี่ยวข้อง ใช้ [Combat Regression Tests ของ Wanderer](../tests/combat/README.md) ตามเกณฑ์เดิม
+
 ## Maintenance policy
 
 - เก็บเอกสารเก่าไว้เพื่อย้อนดูเหตุผลการตัดสินใจ ไม่รีไรต์ประวัติให้ดูเหมือนเคยตกลง v0.5 ตั้งแต่แรก
