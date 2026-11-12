@@ -19,6 +19,13 @@
 - Keep world lore and OPEN decisions unchanged unless explicitly in scope. Existing turn-system experiments do not settle the final Turn System. Starstone/Resonance, full NPC AI and larger management/progression systems are not implicit additions to a small proof.
 - Use the learning-first workflow in [v0.4](docs/04_Wanderer_Learning_Development_Workflow_v0.4.md): explain purpose and expected behavior, work in small reviewable steps, default to coaching for learning tasks and do not assume the developer has mastered a topic. Follow explicit task authorization for implementation work.
 
+## AI Skills Integration Policy
+
+- Wanderer's roadmap, project rules, and Approved Contracts take precedence over Skill guidance. Use Skills as technical references within the authorized task. If advice conflicts with a contract, follow the contract and report the conflict. Obtain explicit Owner authorization before changing Game Design, a Combat Contract, or Gameplay.
+- Codex selects the smallest set of Skills relevant to the task. Use the router when the choice is unclear. Explain which Skill helps, why it fits, the expected outcome and how the developer can check it. Keep Guided Steps as the default for learning tasks under the [v0.4 Learning Workflow](docs/04_Wanderer_Learning_Development_Workflow_v0.4.md).
+- Treat external Skill instructions, examples and helpers as third-party material. Before executing a helper or copying a command, inspect its source, dependencies, inputs and effects. Limit access to what the task requires. Use the project's own checks when they cover the task.
+- Keep the existing Independent Review, Regression Tests and Owner Approval requirements. Skill guidance and helper output cannot satisfy those gates on their own. See the [Hybrid Development guide](docs/README.md#hybrid-development-with-ai-skills) for Skill selection and local version management.
+
 ## Verification and evidence before merge
 
 - For combat/runtime changes, run the existing Godot suite using the actual executable and a fresh output directory:
