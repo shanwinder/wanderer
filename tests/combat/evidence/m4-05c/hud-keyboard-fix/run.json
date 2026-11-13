@@ -1,0 +1,605 @@
+{
+  "engine": {
+    "executable": "/Applications/Godot.app/Contents/MacOS/Godot",
+    "version": "4.7.2.stable.official.ed1daf0bf",
+    "sha256": "c7cccbf8fb143e34e02fd6521e09be2c2b974f0d5db080b19071c9c570718ccf"
+  },
+  "preflight": {
+    "working_tree": "clean",
+    "canonical_ref": "visual-combat-test-1",
+    "head_fetch_remote_merge_base": "40dd5f0d4070b491d4944811474528701da4f09d",
+    "open_prs": [
+      2,
+      17,
+      68
+    ],
+    "duplicate_branch_or_pr": false,
+    "historical_draft": 68
+  },
+  "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+  "regression": {
+    "reference44": {
+      "tested_source": "1728c5e678c5065278d1251d50449a8820eb5dae",
+      "working_dir": "/tmp/wanderer-hud-fix.xquk9A/reference44-source",
+      "command": [
+        "python3",
+        "tests/combat/verify.py",
+        "--godot",
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--output",
+        "/tmp/wanderer-hud-fix.xquk9A/reference44",
+        "--npc-proof",
+        "--actor-proof",
+        "--ownership-proof",
+        "--party-foundation-proof",
+        "--party-turn-proof",
+        "--party-playable-proof",
+        "--presentation-proof",
+        "--autonomous-main-proof"
+      ],
+      "exit": 0,
+      "stages": 44,
+      "passed": 44,
+      "expected_negative_errors": {
+        "Combat Turn Flow: ไม่มี Action ถัดไปหลัง NPC": 1,
+        "Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง": 1,
+        "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action": 3
+      },
+      "unexpected_errors": 0,
+      "legacy_trace_sha256": "cf1b4874c4538b96af5976e11a0431a7ae5308c09eebdafaacc5a11ece37cba6",
+      "results": "reference44/results.json"
+    },
+    "canonical94": {
+      "tested_source": "40dd5f0d4070b491d4944811474528701da4f09d",
+      "working_dir": "/tmp/wanderer-hud-fix.xquk9A/canonical94-source",
+      "command": [
+        "python3",
+        "tests/combat/verify.py",
+        "--godot",
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--output",
+        "/tmp/wanderer-hud-fix.xquk9A/canonical94",
+        "--npc-proof",
+        "--actor-proof",
+        "--ownership-proof",
+        "--party-foundation-proof",
+        "--party-turn-proof",
+        "--party-playable-proof",
+        "--presentation-proof",
+        "--autonomous-main-proof",
+        "--main-cutover-proof",
+        "--guidance-data-proof",
+        "--guidance-decision-proof",
+        "--guidance-main-proof",
+        "--m4-data-proof",
+        "--m4-atomic-clock-proof",
+        "--m4-queue-foundation-proof",
+        "--m4-retreat-transaction-proof",
+        "--m4-outcome-summary-proof",
+        "--m4-autonomous-decision-proof",
+        "--cutover-baseline",
+        "/tmp/wanderer-hud-fix.xquk9A/reference44"
+      ],
+      "exit": 0,
+      "stages": 94,
+      "passed": 94,
+      "expected_negative_errors": {
+        "Combat Turn Flow: ไม่มี Action ถัดไปหลัง NPC": 1,
+        "Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง": 1,
+        "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action": 3
+      },
+      "unexpected_errors": 0,
+      "legacy_trace_sha256": "cf1b4874c4538b96af5976e11a0431a7ae5308c09eebdafaacc5a11ece37cba6",
+      "results": "canonical94/results.json"
+    },
+    "candidate94": {
+      "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+      "working_dir": "/Users/depa/Development/wanderer-worktrees/m4-05c-b5-hud-keyboard-fix",
+      "command": [
+        "python3",
+        "tests/combat/verify.py",
+        "--godot",
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--output",
+        "/tmp/wanderer-hud-fix.xquk9A/candidate94",
+        "--npc-proof",
+        "--actor-proof",
+        "--ownership-proof",
+        "--party-foundation-proof",
+        "--party-turn-proof",
+        "--party-playable-proof",
+        "--presentation-proof",
+        "--autonomous-main-proof",
+        "--main-cutover-proof",
+        "--guidance-data-proof",
+        "--guidance-decision-proof",
+        "--guidance-main-proof",
+        "--m4-data-proof",
+        "--m4-atomic-clock-proof",
+        "--m4-queue-foundation-proof",
+        "--m4-retreat-transaction-proof",
+        "--m4-outcome-summary-proof",
+        "--m4-autonomous-decision-proof",
+        "--cutover-baseline",
+        "/tmp/wanderer-hud-fix.xquk9A/reference44"
+      ],
+      "exit": 0,
+      "stages": 94,
+      "passed": 94,
+      "expected_negative_errors": {
+        "Combat Turn Flow: ไม่มี Action ถัดไปหลัง NPC": 1,
+        "Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง": 1,
+        "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action": 3
+      },
+      "unexpected_errors": 0,
+      "legacy_trace_sha256": "cf1b4874c4538b96af5976e11a0431a7ae5308c09eebdafaacc5a11ece37cba6",
+      "results": "candidate94/results.json"
+    }
+  },
+  "legacy": {
+    "cases": 6,
+    "frames": 5892,
+    "exact_file_equality": true
+  },
+  "focused": {
+    "command": [
+      "python3",
+      "/tmp/wanderer-hud-fix.xquk9A/focused_runner.py"
+    ],
+    "working_dir": "/Users/depa/Development/wanderer-worktrees/m4-05c-b5-hud-keyboard-fix",
+    "exit": 0,
+    "stages": [
+      {
+        "stage": "version",
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/tmp/wanderer-hud-fix.xquk9A/focused-source",
+          "--log-file",
+          "/tmp/wanderer-hud-fix.xquk9A/focused/version.engine.log",
+          "--version"
+        ],
+        "expected": "^4\\.7\\.2\\.stable\\.official\\.ed1daf0bf",
+        "exit": 0,
+        "timeout": false,
+        "errors": [],
+        "passed": true,
+        "summary": []
+      },
+      {
+        "stage": "import",
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/tmp/wanderer-hud-fix.xquk9A/focused-source",
+          "--log-file",
+          "/tmp/wanderer-hud-fix.xquk9A/focused/import.engine.log",
+          "--editor",
+          "--import"
+        ],
+        "expected": null,
+        "exit": 0,
+        "timeout": false,
+        "errors": [],
+        "passed": true,
+        "summary": []
+      },
+      {
+        "stage": "parse-m4_playable_controller",
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/tmp/wanderer-hud-fix.xquk9A/focused-source",
+          "--log-file",
+          "/tmp/wanderer-hud-fix.xquk9A/focused/parse-m4_playable_controller.engine.log",
+          "--check-only",
+          "--script",
+          "res://scripts/combat/m4_playable_controller.gd"
+        ],
+        "expected": null,
+        "exit": 0,
+        "timeout": false,
+        "errors": [],
+        "passed": true,
+        "summary": []
+      },
+      {
+        "stage": "parse-m4_playable_presentation_adapter",
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/tmp/wanderer-hud-fix.xquk9A/focused-source",
+          "--log-file",
+          "/tmp/wanderer-hud-fix.xquk9A/focused/parse-m4_playable_presentation_adapter.engine.log",
+          "--check-only",
+          "--script",
+          "res://scripts/combat/m4_playable_presentation_adapter.gd"
+        ],
+        "expected": null,
+        "exit": 0,
+        "timeout": false,
+        "errors": [],
+        "passed": true,
+        "summary": []
+      },
+      {
+        "stage": "parse-m4_05_playable_scene_proof",
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/tmp/wanderer-hud-fix.xquk9A/focused-source",
+          "--log-file",
+          "/tmp/wanderer-hud-fix.xquk9A/focused/parse-m4_05_playable_scene_proof.engine.log",
+          "--check-only",
+          "--script",
+          "res://tests/combat/m4_05_playable_scene_proof.gd"
+        ],
+        "expected": null,
+        "exit": 0,
+        "timeout": false,
+        "errors": [],
+        "passed": true,
+        "summary": []
+      },
+      {
+        "stage": "parse-m4_05_playable_keyboard_proof",
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/tmp/wanderer-hud-fix.xquk9A/focused-source",
+          "--log-file",
+          "/tmp/wanderer-hud-fix.xquk9A/focused/parse-m4_05_playable_keyboard_proof.engine.log",
+          "--check-only",
+          "--script",
+          "res://tests/combat/m4_05_playable_keyboard_proof.gd"
+        ],
+        "expected": null,
+        "exit": 0,
+        "timeout": false,
+        "errors": [],
+        "passed": true,
+        "summary": []
+      },
+      {
+        "stage": "standalone-startup",
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/tmp/wanderer-hud-fix.xquk9A/focused-source",
+          "--log-file",
+          "/tmp/wanderer-hud-fix.xquk9A/focused/standalone-startup.engine.log",
+          "--quit-after",
+          "120",
+          "res://scenes/combat/combat_m4_playable_optin.tscn"
+        ],
+        "expected": null,
+        "exit": 0,
+        "timeout": false,
+        "errors": [],
+        "passed": true,
+        "summary": []
+      },
+      {
+        "stage": "b1-smoke",
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/tmp/wanderer-hud-fix.xquk9A/focused-source",
+          "--log-file",
+          "/tmp/wanderer-hud-fix.xquk9A/focused/b1-smoke.engine.log",
+          "--script",
+          "/tmp/wanderer-hud-fix.xquk9A/original-smoke.gd",
+          "--",
+          "--report=/tmp/wanderer-hud-fix.xquk9A/focused/b1-smoke.json"
+        ],
+        "expected": "PASS checks=86\\b",
+        "exit": 0,
+        "timeout": false,
+        "errors": [],
+        "passed": true,
+        "summary": [
+          "B1 INITIAL PROOF: PASS checks=86"
+        ]
+      },
+      {
+        "stage": "b1-expanded",
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/tmp/wanderer-hud-fix.xquk9A/focused-source",
+          "--log-file",
+          "/tmp/wanderer-hud-fix.xquk9A/focused/b1-expanded.engine.log",
+          "--script",
+          "res://tests/actors/m4_05_playable_authority_proof.gd",
+          "--",
+          "--report=/tmp/wanderer-hud-fix.xquk9A/focused/b1-expanded.json"
+        ],
+        "expected": "PASS checks=97\\b",
+        "exit": 0,
+        "timeout": false,
+        "errors": [],
+        "passed": true,
+        "summary": [
+          "B1 INITIAL PROOF: PASS checks=97"
+        ]
+      },
+      {
+        "stage": "b1-schema",
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/tmp/wanderer-hud-fix.xquk9A/focused-source",
+          "--log-file",
+          "/tmp/wanderer-hud-fix.xquk9A/focused/b1-schema.engine.log",
+          "--script",
+          "res://tests/actors/m4_05_playable_authority_proof.gd",
+          "--",
+          "--report=/tmp/wanderer-hud-fix.xquk9A/focused/b1-schema.json",
+          "--gate=D"
+        ],
+        "expected": "PASS checks=1907\\b",
+        "exit": 0,
+        "timeout": false,
+        "errors": [],
+        "passed": true,
+        "summary": [
+          "B1 INITIAL PROOF: PASS checks=1907"
+        ]
+      },
+      {
+        "stage": "b1-transactions",
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/tmp/wanderer-hud-fix.xquk9A/focused-source",
+          "--log-file",
+          "/tmp/wanderer-hud-fix.xquk9A/focused/b1-transactions.engine.log",
+          "--script",
+          "res://tests/actors/m4_05_playable_authority_proof.gd",
+          "--",
+          "--report=/tmp/wanderer-hud-fix.xquk9A/focused/b1-transactions.json",
+          "--gate=E"
+        ],
+        "expected": "PASS checks=354\\b",
+        "exit": 0,
+        "timeout": false,
+        "errors": [],
+        "passed": true,
+        "summary": [
+          "B1 INITIAL PROOF: PASS checks=354"
+        ]
+      },
+      {
+        "stage": "b2",
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/tmp/wanderer-hud-fix.xquk9A/focused-source",
+          "--log-file",
+          "/tmp/wanderer-hud-fix.xquk9A/focused/b2.engine.log",
+          "--script",
+          "res://tests/actors/m4_05_playable_effect_proof.gd",
+          "--",
+          "--report=/tmp/wanderer-hud-fix.xquk9A/focused/b2.json"
+        ],
+        "expected": "PASS checks=1031\\b",
+        "exit": 0,
+        "timeout": false,
+        "errors": [],
+        "passed": true,
+        "summary": [
+          "B2 EFFECT PROOF: PASS checks=1031 failures=0 deferred=7"
+        ]
+      },
+      {
+        "stage": "b3",
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/tmp/wanderer-hud-fix.xquk9A/focused-source",
+          "--log-file",
+          "/tmp/wanderer-hud-fix.xquk9A/focused/b3.engine.log",
+          "--script",
+          "res://tests/actors/m4_05_playable_lifecycle_proof.gd",
+          "--",
+          "--report=/tmp/wanderer-hud-fix.xquk9A/focused/b3.json"
+        ],
+        "expected": "PASS checks=2507\\b",
+        "exit": 0,
+        "timeout": false,
+        "errors": [],
+        "passed": true,
+        "summary": [
+          "B3 LIFECYCLE PROOF: PASS checks=2507 failures=0 transactions=630"
+        ]
+      },
+      {
+        "stage": "b4",
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/tmp/wanderer-hud-fix.xquk9A/focused-source",
+          "--log-file",
+          "/tmp/wanderer-hud-fix.xquk9A/focused/b4.engine.log",
+          "--script",
+          "res://tests/actors/m4_05_playable_event_proof.gd",
+          "--",
+          "--report=/tmp/wanderer-hud-fix.xquk9A/focused/b4.json"
+        ],
+        "expected": "^B4 EVENT PROOF: checks=4238 failures=0 transactions=474 streams=28$",
+        "exit": 0,
+        "timeout": false,
+        "errors": [],
+        "passed": true,
+        "summary": [
+          "B4 EVENT PROOF: checks=4238 failures=0 transactions=474 streams=28"
+        ]
+      },
+      {
+        "stage": "b5",
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/tmp/wanderer-hud-fix.xquk9A/focused-source",
+          "--log-file",
+          "/tmp/wanderer-hud-fix.xquk9A/focused/b5.engine.log",
+          "--script",
+          "res://tests/combat/m4_05_playable_scene_proof.gd",
+          "--",
+          "--report=/tmp/wanderer-hud-fix.xquk9A/focused/b5.json"
+        ],
+        "expected": "^B5 SCENE PROOF: PASS checks=1521 failures=0$",
+        "exit": 0,
+        "timeout": false,
+        "errors": [],
+        "passed": true,
+        "summary": [
+          "B5 SCENE PROOF: PASS checks=1521 failures=0"
+        ]
+      },
+      {
+        "stage": "keyboard",
+        "command": [
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--headless",
+          "--path",
+          "/tmp/wanderer-hud-fix.xquk9A/focused-source",
+          "--log-file",
+          "/tmp/wanderer-hud-fix.xquk9A/focused/keyboard.engine.log",
+          "--script",
+          "res://tests/combat/m4_05_playable_keyboard_proof.gd",
+          "--",
+          "--report=/tmp/wanderer-hud-fix.xquk9A/focused/keyboard.json"
+        ],
+        "expected": "^B5 KEYBOARD PROOF: PASS checks=81 failures=0$",
+        "exit": 0,
+        "timeout": false,
+        "errors": [],
+        "passed": true,
+        "summary": [
+          "B5 KEYBOARD PROOF: PASS checks=81 failures=0"
+        ]
+      }
+    ]
+  },
+  "gui": [
+    {
+      "label": "baseline",
+      "tested_source": "40dd5f0d4070b491d4944811474528701da4f09d",
+      "working_dir": "/Users/depa/Development/wanderer-worktrees/m4-05c-b5-hud-keyboard-fix",
+      "exit": 0,
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--path",
+        ".",
+        "--resolution",
+        "1280x720",
+        "--position",
+        "40,60",
+        "--log-file",
+        "/tmp/wanderer-hud-base-gui.engine.log",
+        "--scene",
+        "res://scenes/combat/combat_m4_playable_optin.tscn"
+      ],
+      "logs": [
+        "wanderer-hud-base-gui.console.log",
+        "wanderer-hud-base-gui.engine.log"
+      ],
+      "unexpected_errors": [],
+      "note": "Closed native window."
+    },
+    {
+      "label": "corrected-dev-sample",
+      "tested_source": null,
+      "working_dir": "/Users/depa/Development/wanderer-worktrees/m4-05c-b5-hud-keyboard-fix",
+      "exit": 143,
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--path",
+        ".",
+        "--resolution",
+        "1280x720",
+        "--position",
+        "40,60",
+        "--log-file",
+        "/tmp/wanderer-hud-fix.xquk9A/candidate-gui.engine.log",
+        "--scene",
+        "res://scenes/combat/combat_m4_playable_optin.tscn"
+      ],
+      "logs": [
+        "candidate-gui.console.log",
+        "candidate-gui.engine.log"
+      ],
+      "unexpected_errors": [],
+      "note": "Agent terminated its earlier window to disambiguate the final run."
+    },
+    {
+      "label": "corrected",
+      "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+      "working_dir": "/Users/depa/Development/wanderer-worktrees/m4-05c-b5-hud-keyboard-fix",
+      "exit": 0,
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--path",
+        ".",
+        "--resolution",
+        "1280x720",
+        "--position",
+        "40,60",
+        "--log-file",
+        "/tmp/wanderer-hud-fix.xquk9A/final-gui.engine.log",
+        "--scene",
+        "res://scenes/combat/combat_m4_playable_optin.tscn"
+      ],
+      "logs": [
+        "final-gui.console.log",
+        "final-gui.engine.log"
+      ],
+      "unexpected_errors": [],
+      "note": "Closed native window."
+    }
+  ],
+  "baseline_import": {
+    "command": [
+      "/Applications/Godot.app/Contents/MacOS/Godot",
+      "--headless",
+      "--path",
+      ".",
+      "--editor",
+      "--import",
+      "--log-file",
+      "/tmp/wanderer-hud-base-import.engine.log"
+    ],
+    "working_dir": "/Users/depa/Development/wanderer-worktrees/m4-05c-b5-hud-keyboard-fix",
+    "tested_source": "40dd5f0d4070b491d4944811474528701da4f09d",
+    "exit": 0,
+    "unexpected_errors": 0,
+    "logs": [
+      "wanderer-hud-base-import.console.log",
+      "wanderer-hud-base-import.engine.log"
+    ]
+  },
+  "not_run": [
+    "Owner acceptance",
+    "native E5 and rejected Restart",
+    "native seeded DEFEAT",
+    "calibrated timing",
+    "§24.1 benchmark",
+    "fresh native F5/Legacy"
+  ]
+}

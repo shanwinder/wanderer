@@ -1,0 +1,227 @@
+[
+  {
+    "file": "screens/before-layout.jpg",
+    "sha256": "98a33d4911d52208238fb4fdc45f2225c0d92973a4dc10146fcd0b12ee271b85",
+    "call_id": "call_41aafdca4e474d7cb6095c080f8b5191",
+    "image_index": 0,
+    "timestamp_utc": "2026-11-13T22:49:22.749Z",
+    "tested_source": "40dd5f0d4070b491d4944811474528701da4f09d",
+    "native_input_and_capture": "let beforeStart = (await godot.getScreenshot({emit:false})); await nodeRepl.emitImage(beforeStart);"
+  },
+  {
+    "file": "screens/before-double-enter-reset.jpg",
+    "sha256": "a20a000fa24b1024199ed7b70061899720be0ac3ef28fa94c07058eeba3a4f1f",
+    "call_id": "call_be9b3db933f9458ba0384dff62803b59",
+    "image_index": 0,
+    "timestamp_utc": "2026-11-13T22:49:39.675Z",
+    "tested_source": "40dd5f0d4070b491d4944811474528701da4f09d",
+    "native_input_and_capture": "await godot.pressKey('Tab'); await godot.pressKey('Return'); await godot.pressKey('Return'); await godot.getAXState(); let beforeReset = await godot.getScreenshot({emit:false}); await nodeRepl.emitImage(beforeReset);"
+  },
+  {
+    "file": "screens/before-tab-trap.jpg",
+    "sha256": "ba044ca27bcf566696e797b7045bdf0345eb655106ef0339aec1032fabc607d6",
+    "call_id": "call_1519bbd0293b4434b0b3a03999b7ac3c",
+    "image_index": 0,
+    "timestamp_utc": "2026-11-13T22:49:46.790Z",
+    "tested_source": "40dd5f0d4070b491d4944811474528701da4f09d",
+    "native_input_and_capture": "await godot.pressKey('shift+Tab'); await godot.pressKey('shift+Tab'); await godot.pressKey('shift+Tab'); await godot.pressKey('shift+Tab'); await godot.pressKey('Page_Up'); await godot.pressKey('Tab'); await godot.getAXState(); let beforeTrap = await godot.getScreenshot({emit:false}); await nodeRepl.emitImage(beforeTrap);"
+  },
+  {
+    "file": "screens/before-reverse-tab-escape-trap.jpg",
+    "sha256": "e87a50b475dc0f77aee742468a3bf6316553b2f84471ac63bd2f28445d7e624e",
+    "call_id": "call_4390b373e77e45c8bc93e5cc0ee46f30",
+    "image_index": 0,
+    "timestamp_utc": "2026-11-13T22:50:03.173Z",
+    "tested_source": "40dd5f0d4070b491d4944811474528701da4f09d",
+    "native_input_and_capture": "await godot.getAXState(); await godot.pressKey('shift+Tab'); await godot.pressKey('Escape'); await godot.getAXState(); let beforeReverse = await godot.getScreenshot({emit:false}); await nodeRepl.emitImage(beforeReverse);"
+  },
+  {
+    "file": "screens/after-default.jpg",
+    "sha256": "5882bc99d91173987c41d19c8c027a769e66e92d5716045e63327f973936c462",
+    "call_id": "call_89f38e5159974ccb8634b962f2a7cd55",
+    "image_index": 0,
+    "timestamp_utc": "2026-11-13T23:01:23.120Z",
+    "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+    "native_input_and_capture": "await godot.getScreenshot();"
+  },
+  {
+    "file": "screens/after-double-enter.jpg",
+    "sha256": "5008b4a5228deabdfc23f05ca9a9ddcf4f516d889291d0d0771eb361fac6346a",
+    "call_id": "call_ea3609deeb5b4d688d49af353aae400a",
+    "image_index": 0,
+    "timestamp_utc": "2026-11-13T23:01:30.391Z",
+    "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+    "native_input_and_capture": "await godot.getAXState(); await godot.pressKey('Tab'); await godot.pressKey('Return'); await godot.pressKey('Return'); await godot.getAXState(); await godot.getScreenshot();"
+  },
+  {
+    "file": "screens/after-round2-down-target-focus.jpg",
+    "sha256": "61b79943877a38ffeb3b0301ede30b3452c7399e85a32576fc208ba93a68bcd4",
+    "call_id": "call_fcb03a51a89a4c89b1f71169ed58505c",
+    "image_index": 0,
+    "timestamp_utc": "2026-11-13T23:01:43.763Z",
+    "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+    "native_input_and_capture": "await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('l'); await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('Page_Up'); await godot.getAXState(); await godot.getScreenshot();"
+  },
+  {
+    "file": "screens/after-log-reader-focus.jpg",
+    "sha256": "d6262978d46820ccf9345c5dec33dbbc7984fcd677f37a913c343003db485be8",
+    "call_id": "call_fcb03a51a89a4c89b1f71169ed58505c",
+    "image_index": 1,
+    "timestamp_utc": "2026-11-13T23:01:43.763Z",
+    "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+    "native_input_and_capture": "await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('l'); await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('Page_Up'); await godot.getAXState(); await godot.getScreenshot();"
+  },
+  {
+    "file": "screens/after-page-up.jpg",
+    "sha256": "bb3acdc3289e1362746e6b01e34d03874bd1f5b132bcb9aa7cf9f7648522b872",
+    "call_id": "call_fcb03a51a89a4c89b1f71169ed58505c",
+    "image_index": 2,
+    "timestamp_utc": "2026-11-13T23:01:43.763Z",
+    "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+    "native_input_and_capture": "await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('l'); await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('Page_Up'); await godot.getAXState(); await godot.getScreenshot();"
+  },
+  {
+    "file": "screens/after-page-down-tab-guidance.jpg",
+    "sha256": "e8a24a1195cc1f15814e1f3fb09040ab14b1d21c547795c4185ff85e41347e79",
+    "call_id": "call_5d1358126ef2457b86b0f391e15d4a1f",
+    "image_index": 0,
+    "timestamp_utc": "2026-11-13T23:02:00.426Z",
+    "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+    "native_input_and_capture": "await godot.getAXState(); await godot.pressKey('Page_Down'); await godot.pressKey('Tab'); await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('shift+Tab'); await godot.pressKey('shift+Tab'); await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('Escape'); await godot.getAXState(); await godot.getScreenshot();"
+  },
+  {
+    "file": "screens/after-reverse-tab-toggle.jpg",
+    "sha256": "156145c3f163d9da0e8822235a92d38d4c3e5e5112d5cc2958071e3dd2ea5eeb",
+    "call_id": "call_5d1358126ef2457b86b0f391e15d4a1f",
+    "image_index": 1,
+    "timestamp_utc": "2026-11-13T23:02:00.426Z",
+    "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+    "native_input_and_capture": "await godot.getAXState(); await godot.pressKey('Page_Down'); await godot.pressKey('Tab'); await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('shift+Tab'); await godot.pressKey('shift+Tab'); await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('Escape'); await godot.getAXState(); await godot.getScreenshot();"
+  },
+  {
+    "file": "screens/after-escape-target.jpg",
+    "sha256": "992c1aa073bcd3bd1eed68f5082f3acdb8f7061f3422ea62f9a1c1ed803a7004",
+    "call_id": "call_5d1358126ef2457b86b0f391e15d4a1f",
+    "image_index": 2,
+    "timestamp_utc": "2026-11-13T23:02:00.426Z",
+    "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+    "native_input_and_capture": "await godot.getAXState(); await godot.pressKey('Page_Down'); await godot.pressKey('Tab'); await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('shift+Tab'); await godot.pressKey('shift+Tab'); await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('Escape'); await godot.getAXState(); await godot.getScreenshot();"
+  },
+  {
+    "file": "screens/after-double-space-rescue.jpg",
+    "sha256": "14703a6275a0f2e3027546d718a2059c9005f0795a5e50ecd1538b86a5b59d5b",
+    "call_id": "call_efa81fe74c71422caccd766bff28ad4c",
+    "image_index": 0,
+    "timestamp_utc": "2026-11-13T23:02:12.015Z",
+    "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+    "native_input_and_capture": "await godot.getAXState(); await godot.pressKey('Tab'); await godot.pressKey('space'); await godot.pressKey('space'); await godot.getAXState(); await godot.getScreenshot();"
+  },
+  {
+    "file": "screens/after-mouse-open.jpg",
+    "sha256": "b3dfa3b96b0c0a8f42a749780998aca215e5736998a8f467859580775e981277",
+    "call_id": "call_57b01f9fdd714b33926bcfeedc0e96e3",
+    "image_index": 0,
+    "timestamp_utc": "2026-11-13T23:02:28.899Z",
+    "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+    "native_input_and_capture": "await godot.getAXState(); await godot.click([1164,104]); await godot.getAXState(); await godot.getScreenshot(); await godot.click([1164,104]); await godot.getAXState(); await godot.getScreenshot();"
+  },
+  {
+    "file": "screens/after-mouse-close.jpg",
+    "sha256": "704f1071c64a16e89766645d03d1d70040e53ee6d5c2f3a99421e4da82a084e8",
+    "call_id": "call_57b01f9fdd714b33926bcfeedc0e96e3",
+    "image_index": 1,
+    "timestamp_utc": "2026-11-13T23:02:28.899Z",
+    "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+    "native_input_and_capture": "await godot.getAXState(); await godot.click([1164,104]); await godot.getAXState(); await godot.getScreenshot(); await godot.click([1164,104]); await godot.getAXState(); await godot.getScreenshot();"
+  },
+  {
+    "file": "screens/after-victory.jpg",
+    "sha256": "44fdd1fd549c859920dcbf12058724bffb6c48485180d64bbac13f8f116815c6",
+    "call_id": "call_1a3a302ba3c44f8690650f0639223204",
+    "image_index": 0,
+    "timestamp_utc": "2026-11-13T23:03:41.881Z",
+    "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+    "native_input_and_capture": "await godot.getAXState(); await godot.pressKey('Tab'); await godot.pressKey('Return'); await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('l'); await godot.getAXState(); await godot.getScreenshot();"
+  },
+  {
+    "file": "screens/after-victory-log-reason.jpg",
+    "sha256": "5d12162b2dde0cee698295d3caf137d363287c94d22da724cee569fc1223ced7",
+    "call_id": "call_1a3a302ba3c44f8690650f0639223204",
+    "image_index": 1,
+    "timestamp_utc": "2026-11-13T23:03:41.881Z",
+    "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+    "native_input_and_capture": "await godot.getAXState(); await godot.pressKey('Tab'); await godot.pressKey('Return'); await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('l'); await godot.getAXState(); await godot.getScreenshot();"
+  },
+  {
+    "file": "screens/after-victory-tab-restart.jpg",
+    "sha256": "652e9594715239d4b44ceed8ec9b647e0a4a299835f848c3421198de8724ad3b",
+    "call_id": "call_abebcadac53c463aa26f6c18dede4ecf",
+    "image_index": 0,
+    "timestamp_utc": "2026-11-13T23:03:58.074Z",
+    "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+    "native_input_and_capture": "await godot.getAXState(); await godot.pressKey('Tab'); await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('shift+Tab'); await godot.pressKey('Escape'); await godot.pressKey('shift+Tab'); await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('Return'); await godot.getAXState(); await godot.getScreenshot();"
+  },
+  {
+    "file": "screens/after-victory-closed-log-restart-focus.jpg",
+    "sha256": "54e1f5a951315fdc4088550f678957887f312315ee8dd324697f97aa2b42c7e3",
+    "call_id": "call_abebcadac53c463aa26f6c18dede4ecf",
+    "image_index": 1,
+    "timestamp_utc": "2026-11-13T23:03:58.074Z",
+    "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+    "native_input_and_capture": "await godot.getAXState(); await godot.pressKey('Tab'); await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('shift+Tab'); await godot.pressKey('Escape'); await godot.pressKey('shift+Tab'); await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('Return'); await godot.getAXState(); await godot.getScreenshot();"
+  },
+  {
+    "file": "screens/after-victory-restart-generation2.jpg",
+    "sha256": "b85b1fbc3293503b664d840f6725ce7049adf50300ee82584aac91cbb82688a5",
+    "call_id": "call_abebcadac53c463aa26f6c18dede4ecf",
+    "image_index": 2,
+    "timestamp_utc": "2026-11-13T23:03:58.074Z",
+    "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+    "native_input_and_capture": "await godot.getAXState(); await godot.pressKey('Tab'); await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('shift+Tab'); await godot.pressKey('Escape'); await godot.pressKey('shift+Tab'); await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('Return'); await godot.getAXState(); await godot.getScreenshot();"
+  },
+  {
+    "file": "screens/after-defend-guard.jpg",
+    "sha256": "c29f6e6280e372c49771516ff84d8ea2a522c3aa8d3c6fe6176e1400f2877d18",
+    "call_id": "call_b456462665c2492197d4520663ec3354",
+    "image_index": 0,
+    "timestamp_utc": "2026-11-13T23:04:52.551Z",
+    "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+    "native_input_and_capture": "await godot.getAXState(); await godot.pressKey('Tab'); await godot.pressKey('Tab'); await godot.pressKey('space'); await godot.getAXState(); await godot.getScreenshot();"
+  },
+  {
+    "file": "screens/after-guard-mitigation.jpg",
+    "sha256": "64af8a6b4dceb8fd3970f69bb176202742c23697033d23115be80f36a3263413",
+    "call_id": "call_e99a3ff27361416e9fc64ee993632163",
+    "image_index": 0,
+    "timestamp_utc": "2026-11-13T23:07:07.516Z",
+    "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+    "native_input_and_capture": "await defendRound(); await godot.getScreenshot();"
+  },
+  {
+    "file": "screens/after-exhaustion.jpg",
+    "sha256": "22a69bb785dbb72d257c097c52f921006cea72a3dd71c3eae99ab47c4933085d",
+    "call_id": "call_9b10d569299d4796aaf7bf103bbcbdba",
+    "image_index": 0,
+    "timestamp_utc": "2026-11-13T23:07:26.647Z",
+    "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+    "native_input_and_capture": "await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('l'); await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('Escape'); await godot.pressKey('shift+Tab'); await godot.pressKey('space'); await godot.getAXState(); await godot.getScreenshot();"
+  },
+  {
+    "file": "screens/after-exhaustion-log.jpg",
+    "sha256": "633727bb71b018d35e86e4d8388f52f0d0c3f105de587789af0974f0a5046e26",
+    "call_id": "call_9b10d569299d4796aaf7bf103bbcbdba",
+    "image_index": 1,
+    "timestamp_utc": "2026-11-13T23:07:26.647Z",
+    "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+    "native_input_and_capture": "await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('l'); await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('Escape'); await godot.pressKey('shift+Tab'); await godot.pressKey('space'); await godot.getAXState(); await godot.getScreenshot();"
+  },
+  {
+    "file": "screens/after-exhaustion-restart-generation3.jpg",
+    "sha256": "10a09807a475a670f7f8d41faa2809d5fd9d0088b62dc104f95f2975deb102f9",
+    "call_id": "call_9b10d569299d4796aaf7bf103bbcbdba",
+    "image_index": 2,
+    "timestamp_utc": "2026-11-13T23:07:26.647Z",
+    "tested_source": "4c99aa0172bab5bfde6bde9ad20178835b470c19",
+    "native_input_and_capture": "await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('l'); await godot.getAXState(); await godot.getScreenshot(); await godot.pressKey('Escape'); await godot.pressKey('shift+Tab'); await godot.pressKey('space'); await godot.getAXState(); await godot.getScreenshot();"
+  }
+]
