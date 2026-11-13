@@ -64,10 +64,19 @@ var _actors: Dictionary = {}
 var _cards: Dictionary = {}
 var _input_identity: Dictionary = {}
 var _status: Label
-var _log: TextEdit
+var _intent: Label
+var _feedback: Label
+var _log: Label
+var _log_panel: Control
+var _log_scroll: ScrollContainer
+var _log_toggle: Button
+var _log_return_focus: Control
+var _follow_log: bool = true
+var _shown_diagnostic: String = ""
 var _commands: HBoxContainer
 var _guidance_row: HBoxContainer
 var _attack: Button
+var _defend: Button
 var _restart: Button
 var _exit: Button
 var _target: OptionButton
@@ -88,22 +97,25 @@ func setup(nodes: Dictionary) -> void:
 
 
 func _build_hud() -> void:
-	var header := _panel(Rect2(26, 18, 1228, 210))
-	_label(header, "WANDERER  /  M4 PLAYABLE", 24, GOLD)
-	_status = _label(header, "", 19, MINT)
-	_log = TextEdit.new()
-	_log.name = "BattleLog"
-	_log.editable = false
-	_log.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
-	_log.custom_minimum_size.y = 115
-	_log.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	_log.add_theme_font_size_override("font_size", 15)
-	_log.add_theme_color_override("font_readonly_color", Color("#d5dfd9"))
-	header.add_child(_log)
+	var header := _panel(Rect2(26, 18, 1228, 124))
+	header.add_theme_constant_override("separation", 3)
+	var title_row := HBoxContainer.new()
+	header.add_child(title_row)
+	var title := _label(title_row, "WANDERER  /  M4 PLAYABLE", 20, GOLD)
+	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_log_toggle = _button(title_row, "BattleLogToggle", "บันทึกการต่อสู้ [L]", _toggle_log)
+	_status = _label(header, "", 17, MINT)
+	_status.name = "BattleStatus"
+	_status.focus_mode = Control.FOCUS_ALL
+	_status.focus_entered.connect(_status.queue_redraw)
+	_status.focus_exited.connect(_status.queue_redraw)
+	_status.draw.connect(_draw_status_focus)
+	_intent = _label(header, "", 16, GOLD)
+	_feedback = _label(header, "", 16, Color.WHITE)
 
 	var roster := HBoxContainer.new()
 	roster.add_theme_constant_override("separation", 8)
-	_place(roster, Rect2(26, 239, 1228, 84))
+	_place(roster, Rect2(26, 152, 1228, 84))
 	for id in _actors:
 		var card := PanelContainer.new()
 		card.add_theme_stylebox_override("panel", _panel_style())
@@ -136,7 +148,9 @@ func _build_hud() -> void:
 	for kind in Guidance.TYPES:
 		_guidance.add_item(Messages.message(kind))
 		_guidance.set_item_metadata(_guidance.item_count - 1, kind)
-	_guidance.item_selected.connect(func(_index: int) -> void: _update_focus_target())
+	_guidance.item_selected.connect(func(_index: int) -> void:
+		_update_focus_target()
+		_update_tab_order())
 	_focus_target = OptionButton.new()
 	_focus_target.name = "GuidanceTarget"
 	_guidance_row.add_child(_focus_target)
@@ -149,8 +163,117 @@ func _build_hud() -> void:
 	_target.name = "PlayerTarget"
 	_commands.add_child(_target)
 	_attack = _button(_commands, "Attack", "โจมตี", func() -> void: _emit_command("ATTACK", _selected(_target)))
-	_button(_commands, "Defend", "ตั้งรับ", func() -> void: _emit_command("DEFEND", "player"))
+	_defend = _button(_commands, "Defend", "ตั้งรับ", func() -> void: _emit_command("DEFEND", "player"))
 	_label(_commands, "Tab เลือกปุ่ม · Enter/Space ยืนยัน", 14, MUTED)
+
+	_build_log()
+
+
+func _build_log() -> void:
+	var body := _panel(Rect2(26, 246, 1228, 232))
+	_log_panel = body.get_parent() as Control
+	_log_panel.name = "BattleLogPanel"
+	_log_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+	_label(body, "บันทึกการต่อสู้  ·  Page Up/Down เลื่อน  ·  Tab ออกจากบันทึก  ·  L / Esc ปิด", 16, GOLD)
+
+	_log_scroll = ScrollContainer.new()
+	_log_scroll.name = "BattleLogReader"
+	_log_scroll.accessibility_name = "ประวัติการต่อสู้"
+	_log_scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	_log_scroll.focus_mode = Control.FOCUS_ALL
+	_log_scroll.draw_focus_border = true
+	var focus_style := StyleBoxFlat.new()
+	focus_style.draw_center = false
+	focus_style.border_color = GOLD
+	focus_style.set_border_width_all(1)
+	_log_scroll.add_theme_stylebox_override("focus", focus_style)
+	_log_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	_log_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_RESERVE
+	_log_scroll.gui_input.connect(_read_log_key)
+	body.add_child(_log_scroll)
+	_log = _label(_log_scroll, "", 16, Color("#d5dfd9"))
+	_log.name = "BattleLog"
+	_log.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	_log.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	var bar := _log_scroll.get_v_scroll_bar()
+	bar.focus_mode = Control.FOCUS_NONE
+	bar.changed.connect(_scroll_to_latest)
+	bar.value_changed.connect(func(value: float) -> void:
+		_follow_log = value >= bar.max_value - bar.page - 1.0)
+	_log_panel.hide()
+
+
+func _draw_status_focus() -> void:
+	if _status.has_focus():
+		_status.draw_rect(Rect2(Vector2(-4, 0), _status.size + Vector2(8, 0)), GOLD, false, 1.0)
+
+
+func _read_log_key(event: InputEvent) -> void:
+	if event is not InputEventKey or not event.pressed:
+		return
+	if event.keycode not in [KEY_PAGEUP, KEY_PAGEDOWN]:
+		return
+	var page := int(_log_scroll.get_v_scroll_bar().page)
+	_log_scroll.scroll_vertical += -page if event.keycode == KEY_PAGEUP else page
+	_log_scroll.accept_event()
+
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event is not InputEventKey or not event.pressed or event.ctrl_pressed or event.alt_pressed or event.meta_pressed:
+		return
+	# The OptionButton popup owns its input while open, including Escape.
+	for picker in [_target, _guidance, _focus_target]:
+		if picker.get_popup().visible:
+			return
+	var focus := get_viewport().gui_get_focus_owner()
+	if focus != null and (not is_ancestor_of(focus) or focus is LineEdit or focus is TextEdit):
+		return
+	if event.keycode == KEY_L or (event.keycode == KEY_ESCAPE and _log_panel.visible):
+		get_viewport().set_input_as_handled()
+		if not event.is_echo():
+			_toggle_log()
+
+
+func _toggle_log() -> void:
+	var focus := get_viewport().gui_get_focus_owner()
+	if _log_panel.visible:
+		_log_panel.hide()
+		_log_toggle.text = "บันทึกการต่อสู้ [L]"
+		_update_tab_order()
+		# Keep focus outside the reader and never hand activation to Restart or Exit.
+		var restore := focus if focus != null and not _log_panel.is_ancestor_of(focus) and focus != _log_toggle else _log_return_focus
+		if not _is_tab_stop(restore) or restore in [_restart, _exit]:
+			restore = _status
+		restore.grab_focus()
+		_log_return_focus = null
+	else:
+		_log_return_focus = focus
+		_log_panel.show()
+		_log_toggle.text = "ปิดบันทึก [L / Esc]"
+		_update_tab_order()
+		_follow_log = true
+		_scroll_to_latest()
+		_log_scroll.grab_focus()
+
+
+func _scroll_to_latest() -> void:
+	if _follow_log and _log_panel.visible:
+		_log_scroll.scroll_vertical = int(_log_scroll.get_v_scroll_bar().max_value)
+
+
+func _is_tab_stop(control: Control) -> bool:
+	return is_instance_valid(control) and control.is_visible_in_tree() and not (control is BaseButton and control.disabled)
+
+
+func _update_tab_order() -> void:
+	var stops: Array[Control] = []
+	for control in [_status, _log_toggle, _log_scroll, _guidance, _focus_target, _send_guidance,
+			_target, _attack, _defend, _restart, _exit]:
+		if _is_tab_stop(control):
+			stops.append(control)
+	for i in stops.size():
+		stops[i].focus_next = stops[i].get_path_to(stops[(i + 1) % stops.size()])
+		stops[i].focus_previous = stops[i].get_path_to(stops[posmod(i - 1, stops.size())])
 
 
 func render(view: Dictionary, driver_error: String, diagnostic: Dictionary) -> void:
@@ -169,11 +292,15 @@ func render(view: Dictionary, driver_error: String, diagnostic: Dictionary) -> v
 		_update_targets(_focus_target, view.enemies)
 		if became_ready:
 			_guidance.select(0)
-			_target.grab_focus()
 		_attack.disabled = _target.selected == -1
 		_update_focus_target()
-	elif get_viewport().gui_get_focus_owner() == null:
-		(_exit if _exit.visible else _restart).grab_focus()
+	_update_tab_order()
+	var focus := get_viewport().gui_get_focus_owner()
+	if became_ready and not _log_panel.visible:
+		_target.grab_focus()
+	elif not _is_tab_stop(focus):
+		# A hidden command row or disabled Restart must leave a safe focus anchor.
+		_status.grab_focus()
 
 	var advice: Variant = view.guidance.pending if view.phase == "PREPARED" else view.guidance.active
 	var advice_text: String = Messages.message(advice.guidance_type) if advice != null else Messages.message("NONE")
@@ -194,6 +321,9 @@ func render(view: Dictionary, driver_error: String, diagnostic: Dictionary) -> v
 	elif view.phase == "PREPARED" and not view.has_accepted_fresh_command:
 		status = "Player ไม่พร้อม · เพื่อนร่วมทีมดำเนินการตามคิว"
 	_status.text = "รอบ %d / 6  ·  %s" % [view.identity.round_id, status]
+	if not diagnostic.is_empty() and _shown_diagnostic != status:
+		_shown_diagnostic = status
+		_append(status)
 
 
 func _render_actor(row: Dictionary) -> void:
@@ -234,7 +364,8 @@ func present(events: Array) -> Dictionary:
 		match event.kind:
 			"INTENT":
 				var token: Dictionary = event.token
-				_append("%s  ·  %s → %s" % [NAMES[token.actor_id], ACTIONS[token.kind], NAMES[token.target_id]])
+				_intent.text = "%s  ·  %s → %s" % [NAMES[token.actor_id], ACTIONS[token.kind], NAMES[token.target_id]]
+				_append(_intent.text)
 				if event.view.decision != null:
 					_report_decision(event.view.decision)
 			"IMPACT":
@@ -245,14 +376,18 @@ func present(events: Array) -> Dictionary:
 				_append("%s · จบการกระทำ #%d" % [NAMES[event.token.actor_id], event.receipt.action_id])
 			"ROUND_CLOSED":
 				var exhausted: bool = event.view.diagnostic == "DEMO_LIMIT_REACHED"
-				_append("ปิดรอบ %d%s" % [event.identity.round_id - int(not exhausted),
-					" · ครบ 6 รอบ" if exhausted else ""])
+				var closed := "ปิดรอบ %d%s" % [event.identity.round_id - int(not exhausted),
+					" · ครบ 6 รอบ" if exhausted else ""]
+				_append(closed)
 				var changes: Dictionary = event.view.boundary_changes
-				_report_changes(changes)
+				var results := _report_changes(changes)
+				if not results.is_empty():
+					_show_feedback("  |  ".join(results))
+				_intent.text = closed
 				for clock in changes.clocks:
 					_append("%s · เวลาช่วยให้ลุก %d → %d" % [NAMES[clock.actor_id], clock.before_budget, clock.after_budget])
 			"RESET":
-				_append("เริ่มใหม่ · รุ่นที่ %d" % event.identity.generation)
+				_record_feedback("เริ่มใหม่ · รุ่นที่ %d" % event.identity.generation)
 	return reaction
 
 
@@ -278,7 +413,7 @@ func _report_effect(event: Dictionary) -> Dictionary:
 		var reason: String = Messages.message(code)
 		if code == "HELP_NO_HEAL":
 			reason = "HP เต็มแล้ว"
-		_append("ข้ามผล · %s [%s]" % [reason, code])
+		_record_feedback("ข้ามผล · %s [%s]" % [reason, code])
 		return {}
 	var guarded: bool = false
 	if effect.hp_delta < 0:
@@ -288,24 +423,33 @@ func _report_effect(event: Dictionary) -> Dictionary:
 		for change in effect.guards:
 			if change.actor_id == effect.target_id and change.before != null:
 				guarded = true
+	var results: Array[String] = []
 	if effect.hp_delta != 0:
-		_append("%s · HP %+d%s" % [NAMES[effect.target_id], effect.hp_delta, " · การ์ดลดแรงโจมตี" if guarded else ""])
+		var hp := "%s · HP %+d%s" % [NAMES[effect.target_id], effect.hp_delta, " · การ์ดลดแรงโจมตี" if guarded else ""]
+		_append(hp)
+		results.append(hp)
 	for resource in effect.resources:
 		_append("%s · ใช้ %s (%d → %d)" % [NAMES[resource.actor_id], resource.resource, resource.before, resource.after])
-	_report_changes(effect)
+	results.append_array(_report_changes(effect))
+	if not results.is_empty():
+		_show_feedback("  |  ".join(results))
 	return {"hit": effect.hp_delta < 0, "guarded": guarded}
 
 
-func _report_changes(changes: Dictionary) -> void:
+func _report_changes(changes: Dictionary) -> Array[String]:
+	var results: Array[String] = []
 	for guard in changes.guards:
-		_append("%s · %s" % [NAMES[guard.actor_id], GUARD_CAUSES[guard.cause]])
+		results.append("%s · %s" % [NAMES[guard.actor_id], GUARD_CAUSES[guard.cause]])
 	for change in changes.lifecycle:
 		var state: String
 		match change.after_life:
 			"DOWN": state = "ล้ม"
 			"DEAD": state = "เสียชีวิต"
 			_: state = "ถอนตัว" if change.after_participation == "RETREATED" else "ลุกขึ้นแล้ว"
-		_append("%s · %s" % [NAMES[change.actor_id], state])
+		results.append("%s · %s" % [NAMES[change.actor_id], state])
+	for message in results:
+		_append(message)
+	return results
 
 
 func play(token: Dictionary, impact: Callable, complete: Callable) -> void:
@@ -318,8 +462,15 @@ func play(token: Dictionary, impact: Callable, complete: Callable) -> void:
 func reset() -> void:
 	_motion.cancel()
 	_input_identity = {}
-	_log.clear()
+	_log.text = ""
+	_log_panel.hide()
+	_log_toggle.text = "บันทึกการต่อสู้ [L]"
+	_log_return_focus = null
+	_follow_log = true
+	_shown_diagnostic = ""
 	_status.text = ""
+	_intent.text = "พร้อมเริ่มการต่อสู้"
+	_feedback.text = ""
 	_commands.hide()
 	_guidance_row.hide()
 	_exit.hide()
@@ -334,21 +485,29 @@ func reset() -> void:
 
 
 func report_command(action: String, target: String) -> void:
-	_append("Player เลือก %s → %s" % [ACTIONS[action], NAMES[target]])
+	_intent.text = "Player เลือก %s → %s" % [ACTIONS[action], NAMES[target]]
+	_append(_intent.text)
 
 
 func report_unavailable(actor_id: String) -> void:
-	_append("%s · ข้ามคิว ผู้กระทำไม่พร้อม" % NAMES[actor_id])
+	_record_feedback("%s · ข้ามคิว ผู้กระทำไม่พร้อม" % NAMES[actor_id])
 
 
 func report_error(reason: String) -> void:
-	_append("คำขอถูกปฏิเสธ [%s]" % reason)
+	_record_feedback("คำขอถูกปฏิเสธ [%s]" % reason)
+
+
+func _record_feedback(message: String) -> void:
+	_append(message)
+	_show_feedback(message)
+
+
+func _show_feedback(message: String) -> void:
+	_feedback.text = "ล่าสุด  ·  " + message
 
 
 func _append(message: String) -> void:
-	# Keep the text navigable by Tab and scroll keys between actions.
 	_log.text += ("\n" if not _log.text.is_empty() else "") + message
-	_log.scroll_vertical = _log.get_line_count()
 
 
 func _emit_command(action: String, target: String) -> void:

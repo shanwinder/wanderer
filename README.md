@@ -34,9 +34,9 @@ project.godot            Godot project configuration
 
 The canonical `visual-combat-test-1` defaults to Autonomous. Open `res://scenes/combat/combat_prototype.tscn` with **F6** for the preserved Legacy entry.
 
-Current status (13 November 2026):
+Current status (14 November 2026):
 
-**M4-05B B4 — IMPLEMENTED / MERGED via [PR #66](https://github.com/shanwinder/wanderer/pull/66). B5 — OPT-IN SCENE CANDIDATE.** Open `res://scenes/combat/combat_m4_playable_optin.tscn` and press **F6 / Run Current Scene** to play the B5 battle. Use Tab or Shift+Tab to move focus and Enter or Space to activate a control. Submit any NPC Guidance before choosing Player Attack or Defend. [Milestone status](docs/README.md#current-status-and-next-roadmap) · [Controls and proof](tests/combat/README.md#m4-05b-b5--opt-in-playable-scene).
+**M4-05B B5 — MERGED as an opt-in scene via [PR #67](https://github.com/shanwinder/wanderer/pull/67). B5 HUD correction — INDEPENDENT REVIEW PENDING.** Open `res://scenes/combat/combat_m4_playable_optin.tscn` and press **F6 / Run Current Scene**. In the HUD correction, press **L** to open or close battle history, **Page Up/Down** to scroll, and **Esc** to close. Use **Tab / Shift+Tab** to move focus and **Enter / Space** to activate a control. Submit NPC Guidance before choosing Player Attack or Defend. [Milestone status](docs/README.md#current-status-and-next-roadmap) · [Controls and proof](tests/combat/README.md#m4-05b-b5--opt-in-playable-scene).
 
 - **Implemented:** Player + NPC1/2/3 versus Enemy A (15 HP) and Enemy B (12 HP), target selection, surviving-target fallback, queued actions, victory/defeat and Restart.
 - **Legacy F6:** NPCs take real actions under deterministic prototype rules: after Player Attack, NPC1/3 attack and NPC2 guards Player; after Player Defend, all three attack. These rules are **not an autonomous NPC decision system**.
