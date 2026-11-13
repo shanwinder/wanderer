@@ -1704,3 +1704,14 @@ Owner's separate B2 implementation authorization requires proving legal fixture 
 [Thai feasibility report](evidence/m4-05b/b2/feasibility/REPORT.md) separates static reachability from runtime verification, maps all B2-01–20 rows, and proposes two new versioned seeds for Owner/Independent Contract Review. It also records blocked cap/interleaving/later-slot exhaustion cases, v1 digest preservation and original B1 version-rejection compatibility. At that checkpoint the proposal still awaited approval. [Preflight](evidence/m4-05b/b2/feasibility/preflight.json), [canonical source manifest](evidence/m4-05b/b2/feasibility/source-manifest.json), [documentation/protected-file audit](evidence/m4-05b/b2/feasibility/audit.json).
 
 This task checked actual Godot version `4.7.2.stable.official.ed1daf0bf`; no import/parse/runtime, B1 suite, combat regression, GUI/keyboard/visual or benchmark run. Prior B1 smoke86/expanded97/schema1846/transaction354 and reference44/canonical94/candidate94 remain inherited from PR #60, not post-merge reruns. No new B2 proof script, runtime module, scene or UID was created. No commit/push/Draft implementation PR; stop for Owner decision and Independent Contract Review. B3–B5/M4-05C are not authorized.
+
+
+## M4-05B B4 — presentation events and Restart
+
+Run the isolated B4 proof on Godot 4.7.2 after editor import.
+
+```sh
+godot --headless --script res://tests/actors/m4_05_playable_event_proof.gd -- --report=/tmp/wanderer-b4-events.json
+```
+
+The proof reuses legal B3 histories and checks the projected event sequence, exact token and Effect/Receipt bindings, current-generation replay, Restart across phases, stale callbacks and E5. The original B2/B3 proofs still assert disabled Restart where B4 now accepts it. See the complete results and candidate failure attribution. [Contract §31](../../docs/M4_05_Playable_Integration_Contract.md#31-b4-presentation-projection-and-restart) · [Verification report](evidence/m4-05b/b4/REPORT.md).

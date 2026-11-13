@@ -6,6 +6,7 @@ const Catalog = preload("res://scripts/m4/playable_fixture_catalog.gd")
 const Adapter = preload("res://scripts/m4/playable_decision_adapter.gd")
 const EffectRules = preload("res://scripts/m4/playable_effect_rules.gd")
 const Guidance = preload("res://scripts/m4/playable_guidance_adapter.gd")
+const Presentation = preload("res://scripts/m4/playable_presentation_projection.gd")
 const MAX_COUNTER: int = 9223372036854775807
 
 static func identity(r: Dictionary) -> Dictionary:
@@ -133,7 +134,7 @@ static func gate(r: Dictionary, req: Variant) -> String:
 		if r.queue == null or r.queue.phase != "WAIT_ACTION" or active_grant(r) != grant: return "INVALID_TOKEN"
 		if r.phase == "TERMINAL" and req.operation != "COMPLETE": return "TERMINAL"
 	if req.identity.state_revision != r.revision: return "STALE_REVISION"
-	if r.revision == MAX_COUNTER: return "COUNTER_OVERFLOW"
+	if (r.generation if req.operation == "RESTART" else r.revision) == MAX_COUNTER: return "COUNTER_OVERFLOW"
 	return ""
 
 static func freeze(r: Dictionary) -> void:
@@ -174,7 +175,7 @@ static func apply(r: Dictionary, req: Dictionary) -> Dictionary:
 	var status: String = "APPLIED"
 	var reason: String = ""
 	if op in ["CLOSE_ROUND", "RESTART"]:
-		# Close uses two internal publications; Restart remains B4.
+		# Boundary operations have dedicated publication paths.
 		return response(r, "REJECTED", "INVALID_PHASE")
 	if op == "GUIDANCE":
 		var invalid: String = Guidance.rejection(r, req.payload.request)
@@ -333,11 +334,21 @@ static func candidate_valid(prior: Dictionary, req: Dictionary, result: Dictiona
 	# step() is pure and does not call candidate_valid(), so replay stays finite.
 	return result == step(prior, req)
 
-static func replay(seed: Dictionary, session: int, generation: int, journal: Variant) -> Dictionary:
+static func restart(prior: Dictionary, request: Dictionary) -> Dictionary:
+	var rejection: String = gate(prior, request)
+	if not rejection.is_empty():
+		return {"root": {}, "response": response(prior, "REJECTED", rejection)}
+	var candidate: Dictionary = initial(request.payload.fixture_id, prior.session, prior.generation + 1, request.payload.fixture_version)
+	if candidate.is_empty():
+		return {"root": {}, "response": response(prior, "REJECTED", "UNKNOWN_FIXTURE")}
+	return {"root": candidate, "response": response(candidate, "APPLIED", "RESTARTED")}
+
+static func replay(seed: Dictionary, session: int, generation: int, journal: Variant, events: Variant = null) -> Dictionary:
 	if not C.valid("SeedReference", seed) or not C.valid("[]JournalEntry", journal): return {}
 	if seed != Catalog.seed_reference_snapshot(seed.fixture_id, seed.fixture_version): return {}
 	var r: Dictionary = initial(seed.fixture_id, session, generation, seed.fixture_version)
 	if r.is_empty(): return {}
+	var projected: Array = []
 	for entry in journal:
 		var next: Dictionary
 		if entry.internal != null:
@@ -348,7 +359,11 @@ static func replay(seed: Dictionary, session: int, generation: int, journal: Var
 			next = step(r, entry.request)
 			if next.root.is_empty() or not candidate_valid(r, entry.request, next): return {}
 		if next.root.journal.back() != entry: return {}
+		if events != null:
+			projected.append_array(Presentation.project(entry.operation, next.response, entry.request))
 		r = next.root
+	if events != null:
+		events.append_array(projected)
 	return r
 
 static func root_valid(r: Variant) -> bool:

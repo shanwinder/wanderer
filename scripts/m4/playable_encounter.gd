@@ -4,8 +4,10 @@ extends RefCounted
 # never strings in a Request. The trusted composition root retains these handles.
 const C = preload("res://scripts/m4/playable_contract.gd")
 const Catalog = preload("res://scripts/m4/playable_fixture_catalog.gd")
+const Presentation = preload("res://scripts/m4/playable_presentation_projection.gd")
 const Rules = preload("res://scripts/m4/playable_rules.gd")
 var _root: Dictionary = {}
+var _restart_history: Array[Dictionary] = []
 var _factory_capability: RefCounted
 var _input_capability: RefCounted
 var _driver_capability: RefCounted
@@ -61,6 +63,7 @@ func transact(request: Variant, capability: Variant) -> Dictionary:
 	var expected: Variant = {"INPUT": _input_capability, "DRIVER": _driver_capability, "PRESENTER": _presenter_capability}[request.issuer]
 	if capability == null or capability != expected: return Rules.response(_root, "REJECTED", "UNAUTHORIZED")
 	if request.operation == "CLOSE_ROUND": return _close_round(request)
+	if request.operation == "RESTART": return _restart(request)
 	var prior_revision: int = _root.revision
 	var result: Dictionary = Rules.step(_root, request)
 	if result.root.is_empty(): return result.response.duplicate(true)
@@ -73,6 +76,36 @@ func transact(request: Variant, capability: Variant) -> Dictionary:
 		_fail_before_publish = false
 		return Rules.response(_root, "REJECTED", "INVALID_CANDIDATE")
 	_root = candidate # The only successful transaction publication seam. No await.
+	return result.response.duplicate(true)
+
+# All records here are detached exports. No external record can be imported.
+func restart_audit() -> Array[Dictionary]:
+	return _restart_history.duplicate(true)
+
+func read_presentation_events() -> Array:
+	if _root.is_empty(): return []
+	var events: Array = []
+	if not _restart_history.is_empty():
+		var audit: Dictionary = _restart_history.back()
+		var reset: Dictionary = Rules.restart(audit.root, audit.request)
+		if reset.root.is_empty() or reset.response.identity != audit.identity or reset.root.seed != _root.seed:
+			return []
+		events.append_array(Presentation.project("RESTART", reset.response))
+	if Rules.replay(_root.seed, _root.session, _root.generation, _root.journal, events) != _root:
+		return []
+	return events
+
+func _restart(request: Dictionary) -> Dictionary:
+	var result: Dictionary = Rules.restart(_root, request)
+	if result.root.is_empty(): return result.response
+	if not C.response_valid("RESTART", result.response) or not Rules.root_valid(result.root):
+		return Rules.response(_root, "REJECTED", "INVALID_CANDIDATE")
+	if _fail_before_publish:
+		_fail_before_publish = false
+		return Rules.response(_root, "REJECTED", "INVALID_CANDIDATE")
+	_restart_history.append({"root": snapshot(), "request": request.duplicate(true),
+		"identity": result.response.identity.duplicate(true)})
+	_root = result.root
 	return result.response.duplicate(true)
 
 func _candidate_valid(request: Dictionary, result: Dictionary) -> bool:

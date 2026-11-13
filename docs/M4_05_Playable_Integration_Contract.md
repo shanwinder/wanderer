@@ -870,3 +870,50 @@ The [Independent Contract Review follow-up](https://github.com/shanwinder/wander
 | All other B3 proof obligations | Retained, including terminal settlement, Command/Guidance, RESCUE, Guard, natural close/clock, six-round exhaustion, replay/fault/forgery checks and B1/B2/combat/Legacy regression. |
 
 Enemy Targeting, NPC Safety Priority and fixture contents/digests remain governed by their existing approved contracts. Any future producer or gameplay change requires its own separately approved task and renewed reachability assessment. This decision closes the specific Last-Party RETREAT coverage HOLD and records no runtime PASS. Presentation and Restart remain B4. PR #64 remains subject to explicit merge authorization under AGENTS.md.
+
+
+## 31. B4 presentation projection and Restart
+
+**IMPLEMENTATION CANDIDATE / INDEPENDENT REVIEW PENDING — 13 November 2026.** The Owner delegated resolution of the B4 feasibility findings and instructed Codex to complete B4. This section records the selected protocol for the candidate. Base is PR #65 squash `9ae5df61a31083e5d55cba324f9ecd0189ca34b5`. [Preflight, source findings and limits](../tests/actors/evidence/m4-05b/b4/REPORT.md).
+
+### 31.1 Material gap and existing authority
+
+§25 specifies the exact PresentationEvent envelope; §28 requires Effect only on IMPACT and no Effect on completion/administrative events. §§7/30 require Outcome to freeze at the real terminal IMPACT, with one later causal COMPLETE. They do not specify the presentation stream's TERMINAL emission point or ordering relative to IMPACT/COMPLETION. Both immediate notification at frozen IMPACT and notification after causal COMPLETE can display the same frozen outcome, but produce different observable streams, especially if a legal Restart interrupts the causal lane. This is a material event protocol decision, not a choice of private helper names.
+
+The merged schema validator additionally enforces event.identity == event.view.identity and receipt iff COMPLETION. It does not determine per-kind token nullability, TERMINAL cardinality or event ordering. The proposal below closes those relations without adding record keys or changing B3 effects, terminal classification, receipts or queue rules. Deterministic event ID spelling and private epoch storage are technical details; absence of their spelling alone is not a gameplay blocker.
+
+Restart authority is already sufficiently specified by §§25.1/25.2/27: same session, G+1/revision0, immutable catalog seed, old journal detached for audit, exact nullable queue binding, no SEALED bypass. E5 already specifies fresh factory session with distinct session ID and G1. Those rules are retained; no new capability, Abort, state import or reset authority is proposed.
+
+### 31.2 Exact projection matrix
+
+Projection consumes only authenticated, successfully published owner history. Each row uses the exact committed post-publication View and Identity. Token entries below mean the full genuine token from the committed lock/action history, with its original lock Identity unchanged; they are not reconstructed from a later active_token. N means explicit null. Each event retains the exact existing §25 envelope.
+
+| Committed producer | Ordered event kinds | token | effect | receipt |
+|---|---|---|---|---|
+| PLAYER_LOCK / ENEMY_LOCK / DECIDE_LOCK, AUTHORIZED | INTENT | Issued token | N | N |
+| IMPACT, APPLIED or genuine SKIPPED, no new Outcome | IMPACT | Causal token | Actual committed Effect | N |
+| IMPACT that first freezes Outcome | IMPACT, then TERMINAL in the same projection batch | Causal token on both | Actual Effect on IMPACT; N on TERMINAL | N on both |
+| COMPLETE, including terminal causal lane | COMPLETION only | Completed token | N | Actual newly issued Receipt |
+| ADMIT that first freezes seeded terminal before Queue creation | TERMINAL | N | N | N |
+| COMMIT_CLOSE, including close6 exhaustion | ROUND_CLOSED | N | N | N |
+| Successful RESTART | RESET | N | N | N |
+
+COMMAND, GUIDANCE, ordinary ADMIT, ADVANCE, CANCEL, SEAL, bootstrap, reads and rejected operations produce no PresentationEvent. A failed COMMIT_CLOSE produces no ROUND_CLOSED or TERMINAL event. Bootstrap returns its seed View; it is not RESTART. DOWN/DEAD/RESCUE/RETREAT/Guard feedback is contained in the real Effect or View.boundary_changes, not new event kinds. Exhaustion has outcome=N and never emits TERMINAL.
+
+Emit TERMINAL once at the publication that first freezes Outcome. Later causal COMPLETE emits only COMPLETION and preserves the frozen Outcome. For a terminal impact both events share the impact post-publication View/Identity; TERMINAL carries neither Effect nor Receipt. Legal Restart before COMPLETE may therefore yield INTENT → IMPACT → TERMINAL → RESET with no COMPLETION for the abandoned old-generation action. No synthetic receipt fills that gap.
+
+ROUND_CLOSED uses the post-close View: after closes1–5 its identity is the next prepared round and queue_id=N. BoundaryChanges comes from the authenticated close just committed, even though its clock rows refer to the closed round. After close6 retain the actual CLOSED View and final Queue. Do not rewrite event.identity to the old round while retaining a next-round View. Source close identity remains in authenticated RoundHistory/CloseEvent; no extra wire field is proposed.
+
+### 31.3 Deterministic identity, reset provenance and callbacks
+
+Use event_id `m405/<session>/<generation>/presentation/<post_revision>/<kind>` with strict base-10 integer formatting and the exact uppercase kind. Within one session/generation a committed revision has at most one event of each kind; the matrix defines order for the two-event terminal impact. RESET uses the successfully published new-generation identity at revision0. Re-projecting the same authenticated history produces identical IDs/payloads/order, not new gameplay transactions. Consumer deduplication is visual bookkeeping only.
+
+A revision0 seed alone does not prove RESTART: bootstrap and restarted roots can have the same seed shape. The owner must retain a detached audit of the validated old-generation root and accepted Restart Request, bound to the new seed/identity, at the successful publication boundary. A trusted owner accessor supplies that provenance to projection; caller-created dictionaries are never a grant. Do not insert an ordinary incrementing JournalEntry into new G revision0, import the old journal into the new root, or expose a root-import API. The exact private audit representation is an implementation detail; all public records stay unchanged.
+
+Keep visual epoch private to an isolated consumer/adapter, outside exact Request/Token/PresentationEvent records. Bind callbacks to the actual owner/session, generation, full issued token and local epoch captured at scheduling. Successful Restart invalidates the old epoch before callbacks can run again; rejected Restart leaves the epoch and pending action usable. E5 explicit exit invalidates/detaches the old consumer before fresh factory construction, including when construction fails. Local stale callbacks produce no owner transaction or success event; forwarded callbacks still require the real PRESENTER capability and owner token validation. Duplicate effects/receipts remain owner-rejected. Visual cancellation after impact cannot refund it. No new serialized error reason or gameplay capability is introduced.
+
+### 31.4 Verification and review
+
+The owner exposes a detached replay of the current generation through `read_presentation_events()`. The first event is RESET if that generation was created by Restart. Prior generations remain in `restart_audit()` as detached evidence. The host calls `Callbacks.detach()` on explicit E5 exit and uses the existing Bootstrap factory path for a new opt-in session.
+
+The B2 and B3 proof sources are preserved. Their original assertions about disabled Restart apply to the PR #65 base. On B4 these checks encounter the intended new acceptance behavior. The B4 proof exercises both accepted and rejected Restart, plus the affected terminal and close paths. The [B4 evidence report](../tests/actors/evidence/m4-05b/b4/REPORT.md) records both sets of results and the independent review gate.
