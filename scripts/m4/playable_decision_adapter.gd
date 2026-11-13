@@ -119,14 +119,14 @@ static func decide(c: Variant) -> Dictionary:
 		var uses: Dictionary = {}
 		for p in c.party:
 			actors[p.actor_id] = {"actor_id": p.actor_id, "display_name": p.actor_id, "role": p.role,
-				"base_max_hp": p.max_hp, "hp": p.hp, "max_hp": p.max_hp, "can_act": p.eligible, "membership": "PARTY"}
+				"base_max_hp": p.max_hp, "current_hp": p.hp, "max_hp": p.max_hp, "can_act": p.eligible, "membership": "PARTY"}
 			if p.role == "NPC":
 				party_order.append(p.actor_id)
 				uses[p.actor_id] = p.help_uses
 		for e in c.enemies:
 			enemy_order.append(e.actor_id)
 			actors[e.actor_id] = {"actor_id": e.actor_id, "display_name": e.actor_id, "role": "ENEMY",
-				"base_max_hp": e.max_hp, "hp": e.hp, "max_hp": e.max_hp, "can_act": e.available, "membership": "ENEMY"}
+				"base_max_hp": e.max_hp, "current_hp": e.hp, "max_hp": e.max_hp, "can_act": e.available, "membership": "ENEMY"}
 		var reply: Dictionary = Layer.new().decide_with_guidance(c.slot.actor_id, {"schema_version": 1,
 			"base_context": {"actors": actors, "player_id": "player", "party_order": party_order, "enemy_order": enemy_order,
 				"help_uses": uses, "declared_hits": c.hits.duplicate(true), "snapshot_revision": c.identity.state_revision},

@@ -1,0 +1,9 @@
+{
+  "tested_source_commit": "858a7a8bb02dd170bd8bae32adc1a38fa310b455",
+  "base_commit": "7f2e3807f18c91416c8380c5b3369711c65cdc5a",
+  "manifest": "tested-source-sha256.json",
+  "git_blob_sha256_matches": 163,
+  "mismatches": [],
+  "execution": "Tests executed on a fresh snapshot before commit; every tested source content hash equals the committed Git blob. No claim of a second engine run after commit.",
+  "followup": "This resolution and final evidence metadata are committed separately; runtime source remains exactly this tested source commit."
+}
