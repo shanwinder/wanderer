@@ -1,0 +1,194 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/combat/m4_playable_controller.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/combat/m4_playable_presentation_adapter.gd" id="8_hud"]
+[ext_resource type="Texture2D" uid="uid://n7y2opnapgil" path="res://assets/sprites/characters/player/battle/idle/player_idle_01.png" id="2_player_1"]
+[ext_resource type="Texture2D" uid="uid://xudhfk22w6ri" path="res://assets/sprites/characters/player/battle/idle/player_idle_02.png" id="3_player_2"]
+[ext_resource type="Texture2D" uid="uid://bfdny3yfcj6qy" path="res://assets/sprites/characters/npc_01/battle/idle/npc_01_idle.png" id="4_npc1"]
+[ext_resource type="Texture2D" uid="uid://b0rwuiq5wpcqi" path="res://assets/sprites/characters/npc_02/battle/idle/npc_02_idle.png" id="5_npc2"]
+[ext_resource type="Texture2D" uid="uid://bd8sdrl26cb24" path="res://assets/sprites/characters/npc_03/battle/idle/npc_03_idle.png" id="6_npc3"]
+[ext_resource type="Texture2D" uid="uid://1rgylruffx45" path="res://assets/sprites/enemies/enemy_01/battle/idle/enemy_01_idle.png" id="7_enemy1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_player"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_player_1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_player_2")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 3.0
+}]
+
+[node name="M4PlayableOptIn" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.1, 0.12, 0.14, 1)
+
+[node name="SkyBand" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 430.0
+mouse_filter = 2
+color = Color(0.2, 0.25, 0.25, 1)
+
+[node name="FarGround" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 143.0
+offset_right = 1280.0
+offset_bottom = 343.0
+mouse_filter = 2
+color = Color(0.16, 0.19, 0.16, 1)
+
+[node name="DistantRidge" type="Polygon2D" parent="."]
+color = Color(0.137, 0.163, 0.156, 1)
+polygon = PackedVector2Array(0, 297, 80, 281, 175, 291, 272, 269, 358, 285, 457, 263, 552, 277, 660, 256, 753, 273, 846, 252, 946, 269, 1050, 251, 1150, 284, 1230, 272, 1280, 288, 1280, 343, 0, 343)
+
+[node name="MidgroundShelf" type="Polygon2D" parent="."]
+color = Color(0.125, 0.149, 0.136, 1)
+polygon = PackedVector2Array(0, 331, 100, 320, 215, 327, 314, 311, 435, 320, 535, 312, 655, 329, 764, 314, 883, 324, 993, 309, 1114, 324, 1200, 316, 1280, 324, 1280, 343, 0, 343)
+
+[node name="Ground" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 343.0
+offset_right = 1280.0
+offset_bottom = 543.0
+mouse_filter = 2
+color = Color(0.19, 0.16, 0.13, 1)
+
+[node name="StageFloor" type="Polygon2D" parent="."]
+color = Color(0.208, 0.177, 0.146, 1)
+polygon = PackedVector2Array(100, 361, 1180, 361, 1280, 535, 0, 535)
+
+[node name="GroundRim" type="Polygon2D" parent="."]
+color = Color(0.151, 0.148, 0.124, 1)
+polygon = PackedVector2Array(0, 343, 1280, 343, 1280, 350, 0, 350)
+
+[node name="Battlefield" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Npc1Root" type="Node2D" parent="Battlefield"]
+position = Vector2(320, 480)
+
+[node name="Npc1Shadow" type="Polygon2D" parent="Battlefield/Npc1Root"]
+position = Vector2(0, -4)
+color = Color(0.035, 0.029, 0.023, 0.42)
+polygon = PackedVector2Array(-34, 0, -28.56, -4.2, -15.3, -6.3, 0, -7, 15.3, -6.3, 28.56, -4.2, 34, 0, 28.56, 4.2, 15.3, 6.3, 0, 7, -15.3, 6.3, -28.56, 4.2)
+
+[node name="Npc1" type="Sprite2D" parent="Battlefield/Npc1Root"]
+texture_filter = 1
+position = Vector2(0, -52.5)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_npc1")
+
+[node name="PlayerRoot" type="Node2D" parent="Battlefield"]
+position = Vector2(570, 465)
+
+
+[node name="PlayerShadow" type="Polygon2D" parent="Battlefield/PlayerRoot"]
+position = Vector2(0, -4)
+color = Color(0.035, 0.029, 0.023, 0.42)
+polygon = PackedVector2Array(-36, 0, -30.24, -4.2, -16.2, -6.3, 0, -7, 16.2, -6.3, 30.24, -4.2, 36, 0, 30.24, 4.2, 16.2, 6.3, 0, 7, -16.2, 6.3, -30.24, 4.2)
+
+[node name="Player" type="AnimatedSprite2D" parent="Battlefield/PlayerRoot"]
+texture_filter = 1
+position = Vector2(0, -54)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_player")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Npc2Root" type="Node2D" parent="Battlefield"]
+position = Vector2(405, 435)
+
+
+[node name="Npc2Shadow" type="Polygon2D" parent="Battlefield/Npc2Root"]
+position = Vector2(0, -4)
+color = Color(0.035, 0.029, 0.023, 0.42)
+polygon = PackedVector2Array(-34, 0, -28.56, -4.2, -15.3, -6.3, 0, -7, 15.3, -6.3, 28.56, -4.2, 34, 0, 28.56, 4.2, 15.3, 6.3, 0, 7, -15.3, 6.3, -28.56, 4.2)
+
+[node name="Npc2" type="Sprite2D" parent="Battlefield/Npc2Root"]
+texture_filter = 1
+position = Vector2(0, -58)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("5_npc2")
+
+[node name="Npc3Root" type="Node2D" parent="Battlefield"]
+position = Vector2(475, 509)
+
+
+[node name="Npc3Shadow" type="Polygon2D" parent="Battlefield/Npc3Root"]
+position = Vector2(0, -4)
+color = Color(0.035, 0.029, 0.023, 0.42)
+polygon = PackedVector2Array(-34, 0, -28.56, -4.2, -15.3, -6.3, 0, -7, 15.3, -6.3, 28.56, -4.2, 34, 0, 28.56, 4.2, 15.3, 6.3, 0, 7, -15.3, 6.3, -28.56, 4.2)
+
+[node name="Npc3" type="Sprite2D" parent="Battlefield/Npc3Root"]
+texture_filter = 1
+position = Vector2(0, -58)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("6_npc3")
+
+[node name="EnemyARoot" type="Node2D" parent="Battlefield"]
+position = Vector2(970, 506)
+
+
+[node name="EnemyAShadow" type="Polygon2D" parent="Battlefield/EnemyARoot"]
+position = Vector2(0, -4)
+color = Color(0.035, 0.029, 0.023, 0.42)
+polygon = PackedVector2Array(-68, 0, -57.12, -6, -30.6, -9, 0, -10, 30.6, -9, 57.12, -6, 68, 0, 57.12, 6, 30.6, 9, 0, 10, -30.6, 9, -57.12, 6)
+
+[node name="EnemyA" type="Sprite2D" parent="Battlefield/EnemyARoot"]
+texture_filter = 1
+position = Vector2(0, -53)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("7_enemy1")
+
+[node name="EnemyBRoot" type="Node2D" parent="Battlefield"]
+position = Vector2(1100, 424)
+
+[node name="EnemyBShadow" type="Polygon2D" parent="Battlefield/EnemyBRoot"]
+position = Vector2(0, -4)
+color = Color(0.035, 0.029, 0.023, 0.42)
+polygon = PackedVector2Array(-50, 0, -42, -4, -23, -7, 0, -8, 23, -7, 42, -4, 50, 0, 42, 4, 23, 7, 0, 8, -23, 7, -42, 4)
+
+[node name="EnemyB" type="Sprite2D" parent="Battlefield/EnemyBRoot"]
+texture_filter = 1
+position = Vector2(0, -48)
+scale = Vector2(2.1, 2.1)
+modulate = Color(0.80, 0.88, 1.0, 1)
+texture = ExtResource("7_enemy1")
+
+[node name="ForegroundLeft" type="Polygon2D" parent="."]
+color = Color(0.143, 0.129, 0.114, 1)
+polygon = PackedVector2Array(0, 478, 23, 468, 52, 476, 69, 492, 55, 509, 84, 535, 0, 535)
+
+[node name="ForegroundRight" type="Polygon2D" parent="."]
+color = Color(0.143, 0.129, 0.114, 1)
+polygon = PackedVector2Array(1280, 470, 1261, 462, 1237, 478, 1222, 493, 1242, 507, 1203, 535, 1280, 535)
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("8_hud")
