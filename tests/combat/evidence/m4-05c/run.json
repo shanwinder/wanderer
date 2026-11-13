@@ -1,0 +1,249 @@
+{
+  "record_date": "2026-11-14",
+  "timezone": "Asia/Bangkok",
+  "repository": "shanwinder/wanderer",
+  "required_tested_sha": "fd1d00d7a63603d637f900730927a6a59e01f675",
+  "merge_pr": 67,
+  "canonical_ref": "refs/heads/visual-combat-test-1",
+  "local_tip": "40dd5f0d4070b491d4944811474528701da4f09d",
+  "fetched_tip": "40dd5f0d4070b491d4944811474528701da4f09d",
+  "live_tip": "40dd5f0d4070b491d4944811474528701da4f09d",
+  "canonical_ahead_by": 1,
+  "intervening_metadata_files": [
+    "scripts/m4/playable_contract.gd.uid",
+    "scripts/m4/playable_decision_adapter.gd.uid",
+    "scripts/m4/playable_encounter.gd.uid",
+    "scripts/m4/playable_fixture_catalog.gd.uid",
+    "scripts/m4/playable_rules.gd.uid",
+    "tests/actors/m4_05_playable_authority_proof.gd.uid",
+    "tests/combat/evidence/m4-05b/b5/startup-1280x720.png.import"
+  ],
+  "open_prs_on_canonical_at_preflight": [
+    2
+  ],
+  "worktree": "/Users/depa/Development/wanderer-worktrees/m4-05c-acceptance",
+  "evidence_branch": "codex/m4-05c-acceptance",
+  "os": "macOS 27.0.1 (26A434) arm64",
+  "gpu": "Apple M1",
+  "renderer": "OpenGL API 4.1 Metal - 91.7 - Compatibility",
+  "version": "4.7.2.stable.official.ed1daf0bf",
+  "executable": "/Applications/Godot.app/Contents/MacOS/Godot",
+  "executable_sha256": "c7cccbf8fb143e34e02fd6521e09be2c2b974f0d5db080b19071c9c570718ccf",
+  "window_content_pixels": [
+    1280,
+    720
+  ],
+  "native_capture_pixels": [
+    1280,
+    784
+  ],
+  "native_capture_count": 46,
+  "source_file_count": 155,
+  "skills_sha256": {
+    "godot-ui-control": "aaca3aa929d5889de1ef2b4bfe807522726f49939b1e932b8910526c93462f14",
+    "godot-nodes-scenes": "4ac964c1351db1ea29d05ab72891e6ca02e044026edf92f63a98198770a192d4",
+    "godot-gdscript": "a8b29cb9d2fb66ca96e822d4c95e828806d18829d6fd04213059459c70bd45e4",
+    "godot-gdscript-headless-testing": "8f817a05c6e3c3f34c2c64271dae2acb0465f50c6b173c1f836393c532f1efb5"
+  },
+  "runs": {
+    "main": {
+      "argv": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--path",
+        ".",
+        "--resolution",
+        "1280x720",
+        "--position",
+        "40,60",
+        "--log-file",
+        "tests/combat/evidence/m4-05c/logs/main.log"
+      ],
+      "log": "logs/main.log",
+      "exit": 0,
+      "expected": "Native 1280x720 launch and clean close",
+      "observed": "Real game window, exercised with native input and exited normally",
+      "logs": {
+        "logs/main.log": {
+          "sha256": "5ccef46b7aa53432f7943a1fa84179f72562874df70aaf9af24dff9d0ede9ba8",
+          "unexpected_errors": 0,
+          "warnings": []
+        }
+      }
+    },
+    "legacy": {
+      "argv": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--path",
+        ".",
+        "--resolution",
+        "1280x720",
+        "--position",
+        "40,60",
+        "--log-file",
+        "tests/combat/evidence/m4-05c/logs/legacy.log",
+        "--scene",
+        "res://scenes/combat/combat_prototype.tscn"
+      ],
+      "log": "logs/legacy.log",
+      "exit": 0,
+      "expected": "Native 1280x720 launch and clean close",
+      "observed": "Real game window, exercised with native input and exited normally",
+      "logs": {
+        "logs/legacy.log": {
+          "sha256": "5ccef46b7aa53432f7943a1fa84179f72562874df70aaf9af24dff9d0ede9ba8",
+          "unexpected_errors": 0,
+          "warnings": []
+        }
+      }
+    },
+    "b5": {
+      "argv": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--path",
+        ".",
+        "--resolution",
+        "1280x720",
+        "--position",
+        "40,60",
+        "--log-file",
+        "tests/combat/evidence/m4-05c/logs/b5.log",
+        "--scene",
+        "res://scenes/combat/combat_m4_playable_optin.tscn"
+      ],
+      "log": "logs/b5.log",
+      "exit": 0,
+      "expected": "Native 1280x720 launch and clean close",
+      "observed": "Real game window, exercised with native input and exited normally",
+      "logs": {
+        "logs/b5.log": {
+          "sha256": "5ccef46b7aa53432f7943a1fa84179f72562874df70aaf9af24dff9d0ede9ba8",
+          "unexpected_errors": 0,
+          "warnings": []
+        }
+      }
+    },
+    "b5-retry": {
+      "argv": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--path",
+        ".",
+        "--resolution",
+        "1280x720",
+        "--position",
+        "40,60",
+        "--log-file",
+        "tests/combat/evidence/m4-05c/logs/b5-retry.log",
+        "--scene",
+        "res://scenes/combat/combat_m4_playable_optin.tscn"
+      ],
+      "log": "logs/b5-retry.log",
+      "exit": 0,
+      "expected": "Native 1280x720 launch and clean close",
+      "observed": "Real game window, exercised with native input and exited normally",
+      "logs": {
+        "logs/b5-retry.log": {
+          "sha256": "5ccef46b7aa53432f7943a1fa84179f72562874df70aaf9af24dff9d0ede9ba8",
+          "unexpected_errors": 0,
+          "warnings": []
+        }
+      }
+    },
+    "b5-guided": {
+      "argv": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--path",
+        ".",
+        "--resolution",
+        "1280x720",
+        "--position",
+        "40,60",
+        "--log-file",
+        "tests/combat/evidence/m4-05c/logs/b5-guided.log",
+        "--scene",
+        "res://scenes/combat/combat_m4_playable_optin.tscn"
+      ],
+      "log": "logs/b5-guided.log",
+      "exit": 0,
+      "expected": "Native 1280x720 launch and clean close",
+      "observed": "Real game window, exercised with native input and exited normally",
+      "logs": {
+        "logs/b5-guided.log": {
+          "sha256": "5ccef46b7aa53432f7943a1fa84179f72562874df70aaf9af24dff9d0ede9ba8",
+          "unexpected_errors": 0,
+          "warnings": []
+        }
+      }
+    },
+    "import": {
+      "argv": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        ".",
+        "--import",
+        "--log-file",
+        "tests/combat/evidence/m4-05c/logs/import.log"
+      ],
+      "console": "logs/import-console.log",
+      "log": "logs/import.log",
+      "exit": 0,
+      "expected": "Successful resource import",
+      "observed": "Successful, with warning for archived nested project; generated seven untracked metadata sidecars, removed from the evidence checkout after testing.",
+      "logs": {
+        "logs/import.log": {
+          "sha256": "fef9c0be319343762825206ffc433695c1d252ed53e86bfb51c03c18c7d3a87c",
+          "unexpected_errors": 0,
+          "warnings": [
+            "WARNING: Detected another project.godot at res://tests/actors/evidence/m4-05b/b1/recovery-02/environment/minimal. The folder will be ignored."
+          ]
+        },
+        "logs/import-console.log": {
+          "sha256": "ae08e0419752721cef42d49aa0e2e148f1b56d57b3b5fbc99a7e1cd11c8e2251",
+          "unexpected_errors": 0,
+          "warnings": [
+            "WARNING: Detected another project.godot at res://tests/actors/evidence/m4-05b/b1/recovery-02/environment/minimal. The folder will be ignored."
+          ]
+        }
+      }
+    },
+    "b5_proof": {
+      "argv": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        ".",
+        "--log-file",
+        "tests/combat/evidence/m4-05c/logs/b5-proof-engine.log",
+        "--script",
+        "res://tests/combat/m4_05_playable_scene_proof.gd",
+        "--",
+        "--report=tests/combat/evidence/m4-05c/b5-proof.json"
+      ],
+      "console": "logs/b5-proof-console.log",
+      "log": "logs/b5-proof-engine.log",
+      "exit": 0,
+      "expected": "1,521 passing checks and no unexpected errors",
+      "observed": "1,521 passed, 0 failed; 18 traces",
+      "logs": {
+        "logs/b5-proof-engine.log": {
+          "sha256": "cbe1aeade1c87639f79653fb5110f190d093e4b86aa00c6e70149146f8f3493a",
+          "unexpected_errors": 0,
+          "warnings": []
+        },
+        "logs/b5-proof-console.log": {
+          "sha256": "cbe1aeade1c87639f79653fb5110f190d093e4b86aa00c6e70149146f8f3493a",
+          "unexpected_errors": 0,
+          "warnings": []
+        }
+      }
+    }
+  },
+  "proof_report_sha256": "c369a6bf126eec6a9622d0eebaaebd0d75569a065c34ba8cb33c3d581b934abd",
+  "proof_archive_sha256": "7a84aeea838c56200a3fae93dcd84049529b26443111b7dbc5d67c66d0bdf937",
+  "full_combat_regression": "INHERITED from PR #67 tested source 6df88c3d8c6dc7d730ffe2e61befefe9f8681439; no fresh full regression",
+  "manual_e5": "NOT RUN",
+  "performance_e4": "NOT RUN",
+  "owner_acceptance": "PENDING",
+  "engine_logs_archive": "engine-logs.zip",
+  "engine_logs_archive_sha256": "4d348bfb183681af44373c648f96e469533aed3753e4c44f2d167b518955100a"
+}

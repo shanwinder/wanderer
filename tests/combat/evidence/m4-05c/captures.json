@@ -1,0 +1,232 @@
+{
+  "screens/b5-after-exhaustion.jpg": {
+    "call_id": "call_76aaa0aac2cb4a45a4f77b617b7f3023",
+    "captured_at": "2026-11-13T21:25:18.218Z",
+    "sha256": "4b77a85673864f68f495ec855de58838d6921942c1208f4fad898a7ad5e25b1e"
+  },
+  "screens/b5-after-in-action-restart.jpg": {
+    "call_id": "call_76aaa0aac2cb4a45a4f77b617b7f3023",
+    "captured_at": "2026-11-13T21:25:18.218Z",
+    "sha256": "74347f85b6bb17ea1a183a8def27fbb59a649ae9593574956893f5c5bb4a7336"
+  },
+  "screens/b5-after-victory-restart.jpg": {
+    "call_id": "call_8c191baae0624ea9bf22a25d5daecb11",
+    "captured_at": "2026-11-13T21:16:36.766Z",
+    "sha256": "a3bd8ca6f45436eaf7d03136be3f2ddd6150910b57caff4e9a65dedf8eff81db"
+  },
+  "screens/b5-attack-pending.jpg": {
+    "call_id": "call_e5beb12e32a44654a05e3ef1fdc24867",
+    "captured_at": "2026-11-13T21:17:16.690Z",
+    "sha256": "4d0316bce31d5bf6284d00680b82abed8d6c90cb3c4841b596bcc834c76c8680"
+  },
+  "screens/b5-attack-ready.jpg": {
+    "call_id": "call_3913ee671c344534b1c1f4ec28d08f89",
+    "captured_at": "2026-11-13T21:11:47.164Z",
+    "sha256": "7453439294e6991ec36131002fe55305ae1b413862a73977f26b7924d630936d"
+  },
+  "screens/b5-before-in-action-restart.jpg": {
+    "call_id": "call_76aaa0aac2cb4a45a4f77b617b7f3023",
+    "captured_at": "2026-11-13T21:25:18.218Z",
+    "sha256": "d18c86e41e7333518134c581ad007d8b1446ef9414424f94643e4c565d3c75cd"
+  },
+  "screens/b5-clock-tick-target-b.jpg": {
+    "call_id": "call_d79c698005b14a9fbe0d238b353bb103",
+    "captured_at": "2026-11-13T21:15:03.616Z",
+    "sha256": "d609dd1be363080b2820cdc10617bf46c3e236539e06ed1e3562abf8f6d73e86"
+  },
+  "screens/b5-defend-pending.jpg": {
+    "call_id": "call_e5beb12e32a44654a05e3ef1fdc24867",
+    "captured_at": "2026-11-13T21:17:16.690Z",
+    "sha256": "681a1f3a827ed33b74a76166b72782d13bc8c8a06a0435d9137d00fff986945c"
+  },
+  "screens/b5-double-enter-first.jpg": {
+    "call_id": "call_2ec9e1d35bd14a398a2167fa4e46cf4a",
+    "captured_at": "2026-11-13T21:11:50.964Z",
+    "sha256": "bb527d246d21614dbc22f18381124ed934ccbf99681187c97ff910e35b259cb1"
+  },
+  "screens/b5-double-enter-repeat.jpg": {
+    "call_id": "call_0c728a671c5c4d4fa63fe65c6c7bc1cc",
+    "captured_at": "2026-11-13T21:16:49.496Z",
+    "sha256": "e6de79642e6002fea12f8bd3311b1919527fdcaafdadc50b503b204cb23a0a53"
+  },
+  "screens/b5-down-restart-focus.jpg": {
+    "call_id": "call_0a015914d639433cb51e421b0f556a7c",
+    "captured_at": "2026-11-13T21:22:54.427Z",
+    "sha256": "d9387d4cae08a17483d41afa0a9fdbe4f05d0c3a19f76df96aed4912b555cbc3"
+  },
+  "screens/b5-down-restart.jpg": {
+    "call_id": "call_0a015914d639433cb51e421b0f556a7c",
+    "captured_at": "2026-11-13T21:22:54.427Z",
+    "sha256": "4fa4f573a1e060e7a263569df41f46420e7ff7c7fc39cfee134d31e182f949c9"
+  },
+  "screens/b5-enemy-b-intent.jpg": {
+    "call_id": "call_9d3731c4fcf248ce91fee7e95ede6b56",
+    "captured_at": "2026-11-13T21:25:07.865Z",
+    "sha256": "dcb5c9b8821c8f9ba617f1f808790dbf29052cc47fc245cd1d23eb5afb6baa3c"
+  },
+  "screens/b5-exhaustion.jpg": {
+    "call_id": "call_9d3731c4fcf248ce91fee7e95ede6b56",
+    "captured_at": "2026-11-13T21:25:07.865Z",
+    "sha256": "3e8fd6e02eeceaab83154e616d3f5fd714e4113c3fa86bf7014fd4b88fe849f1"
+  },
+  "screens/b5-focus-b-pending.jpg": {
+    "call_id": "call_06450dd764324850b9fa41f76b31dbd6",
+    "captured_at": "2026-11-13T21:11:35.434Z",
+    "sha256": "709c609ca41dda85d71199e3f9d6dab3b5ce8d6cf7df269161833bd5565c273c"
+  },
+  "screens/b5-guidance-menu.jpg": {
+    "call_id": "call_a651a069ff2b4858b868a38dae084a88",
+    "captured_at": "2026-11-13T21:11:18.871Z",
+    "sha256": "bfd030ef5bcc41260b8407b1731ea7e4b83a294f0846d72f8abf837614345646"
+  },
+  "screens/b5-guided-impact.jpg": {
+    "call_id": "call_9befbcbf93df4c8f97c9225a1026312d",
+    "captured_at": "2026-11-13T21:22:34.258Z",
+    "sha256": "1dcdefb79f5617aa3a38f2e2dff30469da27e2938c392e794d4b2c8f5063b043"
+  },
+  "screens/b5-guided-npc3-down.jpg": {
+    "call_id": "call_f0cde72cc439497bb00db317ac57fbf5",
+    "captured_at": "2026-11-13T21:22:44.501Z",
+    "sha256": "befd81009c2be353f28bad04c323a3ea24f47472cf1bbf969d2fc16400474941"
+  },
+  "screens/b5-guided-safety-refusal.jpg": {
+    "call_id": "call_f0cde72cc439497bb00db317ac57fbf5",
+    "captured_at": "2026-11-13T21:22:44.501Z",
+    "sha256": "4d16bdcaf2490a6a5865728a6c89c4c3dd685397c74300344ea53a625586ea8f"
+  },
+  "screens/b5-help-pending.jpg": {
+    "call_id": "call_9ab1f51b91ad457baa7653836456290e",
+    "captured_at": "2026-11-13T21:17:07.443Z",
+    "sha256": "3f8f9c33d06025f35030f0ea98a8f51edce726df058ccaf9e07925a8be94c35c"
+  },
+  "screens/b5-impact.jpg": {
+    "call_id": "call_283a1d97d8fc42d09d93bd0a8d8a8c5e",
+    "captured_at": "2026-11-13T21:14:01.714Z",
+    "sha256": "10a8ae844b929ef92841693519bb7c945a0227657573f2faecfb2dd38df4bdec"
+  },
+  "screens/b5-log-page-up.jpg": {
+    "call_id": "call_f60927bc4cf8426f937825e3555e4a02",
+    "captured_at": "2026-11-13T21:15:55.041Z",
+    "sha256": "2c016ce0190f5beabe0666e50cdf5a5e73cbfdad316b315c50e3ccf284944bba"
+  },
+  "screens/b5-log-shift-tab-trapped.jpg": {
+    "call_id": "call_dd1de652f9b6426ba7467d498d82dace",
+    "captured_at": "2026-11-13T21:16:20.161Z",
+    "sha256": "f1aba7124131ccf4c92afd357cb0fd19607c6107a93ec2800fd435f23e0c0294"
+  },
+  "screens/b5-log-tab-trapped.jpg": {
+    "call_id": "call_80c9eaf424b848f1aa54415d8f5868df",
+    "captured_at": "2026-11-13T21:16:04.191Z",
+    "sha256": "2e7896c53e8eac08eb5b0098bcac58ee40d7444375096af1ea47349ae05e466a"
+  },
+  "screens/b5-none-pending.jpg": {
+    "call_id": "call_e5beb12e32a44654a05e3ef1fdc24867",
+    "captured_at": "2026-11-13T21:17:16.690Z",
+    "sha256": "27af7f33ecde9f20bec12674e043bcc97985e124f01cdcbdfcdbf86de79b0821"
+  },
+  "screens/b5-npc2-dead.jpg": {
+    "call_id": "call_ea67c101e904496bb2f01f3bf67b3cba",
+    "captured_at": "2026-11-13T21:15:24.627Z",
+    "sha256": "bb23b077ed63c0789c023f55c168eea378d3cae7818f16cd40613c1ae60bcbdb"
+  },
+  "screens/b5-npc3-down.jpg": {
+    "call_id": "call_386c3f74a89444c889f1415bf63996d9",
+    "captured_at": "2026-11-13T21:14:09.197Z",
+    "sha256": "f7d571935afa4a00151615065b2d71d603c8ac3bfe86bd452c4c00fbfa737a96"
+  },
+  "screens/b5-npc3-rescue.jpg": {
+    "call_id": "call_75fa748fa9354905a44fed5767bc2d56",
+    "captured_at": "2026-11-13T21:14:18.127Z",
+    "sha256": "fb9e16aa5f44f191e3687a0908c1a5d6bb7b406122cd048deb12731eef05bcc1"
+  },
+  "screens/b5-npc3-retreat.jpg": {
+    "call_id": "call_441fb2b58a1248c0abffae40286799c1",
+    "captured_at": "2026-11-13T21:14:23.277Z",
+    "sha256": "557a7a6a6c1cdb34b1c8e1512406bfe05c624ac7420dc8e7ca809873ac97e665"
+  },
+  "screens/b5-player-guard-first-hit.jpg": {
+    "call_id": "call_9d3731c4fcf248ce91fee7e95ede6b56",
+    "captured_at": "2026-11-13T21:25:07.865Z",
+    "sha256": "76c7c0ec9d451f4bbc12948fba5c729fc35c7f9d194c7a35c61cbe4b20e92fc6"
+  },
+  "screens/b5-round2.jpg": {
+    "call_id": "call_120bf2ae100d4a3b8978706bfd5193cc",
+    "captured_at": "2026-11-13T21:14:12.599Z",
+    "sha256": "f76faf191e66a392730c3fc18385b78e01bd9688460781ef92374e77354bbfcd"
+  },
+  "screens/b5-skipped-clock-grace.jpg": {
+    "call_id": "call_dba0e8d76d2142fa9e9aa4f511a28d3c",
+    "captured_at": "2026-11-13T21:14:44.047Z",
+    "sha256": "caaa634037b39d8f7b96977781a18856ba0f2a6699b0e358a17c93bec131a2d6"
+  },
+  "screens/b5-start.jpg": {
+    "call_id": "call_4a9217201a7948fe9483eaa2d6968837",
+    "captured_at": "2026-11-13T21:11:01.933Z",
+    "sha256": "a83c503d8739af4ba00d76fa80f62fc31daa4be5008ff25568f4362936a8e239"
+  },
+  "screens/b5-victory-complete.jpg": {
+    "call_id": "call_de297638fc59435da8dc50d8d165fdae",
+    "captured_at": "2026-11-13T21:15:46.910Z",
+    "sha256": "d8fdc28c61f33dd6c890a616d6e613b9edd66b240b5c2eaba7c3167fea0fceab"
+  },
+  "screens/b5-victory-impact.jpg": {
+    "call_id": "call_804ea42c554f4bcfa8ed887baf7c4fad",
+    "captured_at": "2026-11-13T21:15:43.631Z",
+    "sha256": "9288a9ef7f777f17e34e1b156e5ee8dab78c64d55dccfed3e2bbd58ab98b1f5e"
+  },
+  "screens/legacy-defend.jpg": {
+    "call_id": "call_a689c4a0d28f49158a076bbf7cfc8570",
+    "captured_at": "2026-11-13T21:21:36.395Z",
+    "sha256": "2da9c5b3007d7f2a565b72644b2fa6387192ccc453912578d1e5e4b30fb3bfc5"
+  },
+  "screens/legacy-impact.jpg": {
+    "call_id": "call_5f6ce813018a4f16814d5a8db7e5422a",
+    "captured_at": "2026-11-13T21:21:20.886Z",
+    "sha256": "e4affa50325dffda096f3b9d0e97bd868039f667b6463299835c47e43cfba2c1"
+  },
+  "screens/legacy-intent.jpg": {
+    "call_id": "call_6116d952fae24256a93da29be0887fed",
+    "captured_at": "2026-11-13T21:22:01.730Z",
+    "sha256": "52dd615f00aeb70522c701174276de563d7fbe9cb8265d249bcf5bd9dcdc71a8"
+  },
+  "screens/legacy-npc2-guard.jpg": {
+    "call_id": "call_6116d952fae24256a93da29be0887fed",
+    "captured_at": "2026-11-13T21:22:01.730Z",
+    "sha256": "58e0c886f5dd531785ac29abbdc0c0ce27ac5b007c38934180c6c8dc8e92e3a6"
+  },
+  "screens/legacy-reset.jpg": {
+    "call_id": "call_961644ec5a154f1981e8d3f5f02db21d",
+    "captured_at": "2026-11-13T21:21:47.458Z",
+    "sha256": "7ed2ff6de4ff788a4a273a8e591fe8e3e0eb3f14768d5b2d788818b111203e9e"
+  },
+  "screens/legacy-round2.jpg": {
+    "call_id": "call_a689c4a0d28f49158a076bbf7cfc8570",
+    "captured_at": "2026-11-13T21:21:36.395Z",
+    "sha256": "277bd079106675f32d109c1e6ccf1bfe88002f165e647c42880276d79c65440e"
+  },
+  "screens/legacy-start.jpg": {
+    "call_id": "call_df76665cb17a4d9baf5587318cc55405",
+    "captured_at": "2026-11-13T21:21:15.833Z",
+    "sha256": "2c09817fdd9b7e8406a9c3fb3b3a2eb59c015d2e51409fa6f81b38e000258d9a"
+  },
+  "screens/main-impact.jpg": {
+    "call_id": "call_92536448035947a99d9f2efb1a9d7708",
+    "captured_at": "2026-11-13T21:20:38.957Z",
+    "sha256": "a9d06c76a82874ad312bf2dcb875240d8890c640418f723d007d211fae4f68d4"
+  },
+  "screens/main-reset.jpg": {
+    "call_id": "call_84c2e5cf192d473e85053d0255353eef",
+    "captured_at": "2026-11-13T21:20:55.414Z",
+    "sha256": "23d343a45d6ba3d04b0b80bf780de0464efe6852a93b5b37bea3ed3577803027"
+  },
+  "screens/main-round2.jpg": {
+    "call_id": "call_84c2e5cf192d473e85053d0255353eef",
+    "captured_at": "2026-11-13T21:20:55.414Z",
+    "sha256": "2bdcba41a53ef2728dc350cb1fc00e2d5c7c64402b7b3107219473a7f4f6aa9a"
+  },
+  "screens/main-start.jpg": {
+    "call_id": "call_e20cab188afd4adf8cf4c88625212c61",
+    "captured_at": "2026-11-13T21:20:28.941Z",
+    "sha256": "b3d14348338ad43bb2236d3460d501778246abc04eb4b4abdaf36c789c32e921"
+  }
+}
