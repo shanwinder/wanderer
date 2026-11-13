@@ -17,6 +17,7 @@ var roots: Dictionary = {}
 var failures: int = 0
 var sequence: int = 0
 var scenario: String = ""
+var terminal_owners: Array[RefCounted] = []
 
 func _initialize() -> void:
 	var selected: String = ""
@@ -27,13 +28,16 @@ func _initialize() -> void:
 		scenario = test
 		print("B3 START ", test)
 		check(call("_" + test) == true, "scenario reached its end")
+		for terminal_owner in terminal_owners:
+			verify_terminal_restart(terminal_owner)
+		terminal_owners.clear()
 	check(not checks.is_empty(), "at least one selected scenario ran", "HARNESS")
 	var report: Dictionary = {"selected_scenario": selected, "status": "PASS" if failures == 0 else "FAIL", "failures": failures,
 		"checks": checks, "traces": traces, "final_roots": roots,
 		"coverage_limits": [
 			{"case": "Positive Last-Party RETREAT through real transactions", "status": "DEFERRED — OWNER APPROVED", "authority": "30.7"},
 			{"case": "Positive NO_PLAYER_COMMAND after rescue before Player slot", "status": "DEFERRED — OWNER APPROVED", "authority": "30.6; real UNAVAILABLE-before-RESCUE tested"},
-			{"case": "GUI/keyboard/visual/performance/Restart", "status": "NOT RUN", "scope": "B4/B5 or separate acceptance"}]}
+			{"case": "GUI/keyboard/visual/performance", "status": "NOT RUN", "scope": "B4/B5 or separate acceptance"}]}
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--report="):
 			var file := FileAccess.open(arg.substr(9), FileAccess.WRITE)
@@ -189,11 +193,26 @@ func terminal_settle(owner: RefCounted, token: Dictionary, outcome: String) -> v
 	journal = settled.journal.duplicate(true)
 	journal[-1].result_digest = "forged"
 	check(Rules.replay(settled.seed, settled.session, settled.generation, journal).is_empty(), "tampered terminal result digest rejected", "NEGATIVE REPLAY")
-	tx(owner, "RESTART", {"fixture_id": MAIN, "fixture_version": 1}, "REJECTED")
+	var stale_restart: Dictionary = request(owner, "RESTART", {"fixture_id": MAIN, "fixture_version": 1})
+	stale_restart.identity.state_revision -= 1
+	check(send(owner, stale_restart, "REJECTED").reason == "M405_STALE_REVISION",
+		"stale terminal Restart preserves frozen root")
+	terminal_owners.append(owner)
 	tx(owner, "IMPACT", {"token": token}, "REJECTED")
 	tx(owner, "CANCEL", {"token": token}, "REJECTED")
 	roots[scenario + "-frozen"] = frozen
 	roots[scenario] = settled
+
+# Complete every terminal-specific scenario assertion before changing generation.
+func verify_terminal_restart(owner: RefCounted) -> void:
+	var before: Dictionary = owner.snapshot()
+	var reply: Dictionary = tx(owner, "RESTART", {"fixture_id": MAIN, "fixture_version": 1})
+	check(reply.reason == "M405_RESTARTED"
+		and owner.snapshot() == Rules.initial(MAIN, before.session, before.generation + 1),
+		"settled terminal Restart creates exact fresh generation")
+	check(owner.restart_audit().back().root == before, "terminal history retained in audit")
+	check(owner.read_presentation_events().size() == 1
+		and owner.read_presentation_events()[0].kind == "RESET", "fresh generation projects RESET only")
 
 func _victory() -> bool:
 	var owner: RefCounted = boot()

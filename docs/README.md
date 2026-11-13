@@ -7,7 +7,7 @@
 | เอกสาร | เนื้อหา | อำนาจ/ขอบเขต |
 |---|---|---|
 | [AGENTS.md](../AGENTS.md) | กติกาสำหรับ Codex/agents, ขอบเขต, tests และ PR | อ่านก่อนทำงานใน repository |
-| [Current status and next roadmap](#current-status-and-next-roadmap) | B3 runtime candidate; automated proof recorded; Independent Review pending | จุดอ้างอิงสถานะปัจจุบัน; ไม่สร้างแผนฉบับซ้ำ |
+| [Current status and next roadmap](#current-status-and-next-roadmap) | B3 merged PR #65; B4 implementation candidate pending independent review | จุดอ้างอิงสถานะปัจจุบัน; ไม่สร้างแผนฉบับซ้ำ |
 | [01 — Game Development Plan v0.1](01_Wanderer_Game_Development_Plan_v0.1.md) | วิสัยทัศน์, โลก, gameplay loop, NPC autonomy, death, milestones | **ฐานเกมเดิม**; เก็บประวัติการออกแบบ |
 | [02 — Visual Combat v0.2](02_Wanderer_Visual_Combat_Prototype_Update_v0.2.md) | Functional + visual prototype | ปรับ v0.1 เฉพาะงานภาพ/ต้นแบบ |
 | [03 — Combat Presentation v0.3](03_Wanderer_Combat_Presentation_Direction_Update_v0.3.md) | Staging, depth, UI, M1.5B–D | เจตนา presentation และประวัติแผน; สถานะงานถัดไปในฉบับนี้ล้าสมัย |
@@ -37,7 +37,13 @@
 
 ## Current status and next roadmap
 
-**Current runtime checkpoint — 13 November 2026 (Asia/Bangkok): M4-05B B3 IMPLEMENTED CANDIDATE / AUTOMATED GATES PASS / INDEPENDENT CODE, CONTRACT & EVIDENCE REVIEW PENDING.** Owner authorized B3 runtime against canonical `7f2e3807f18c91416c8380c5b3369711c65cdc5a`. Local and live GitHub canonical matched; PR #62/#63/#64 are merged. New branch `codex/m4-05b-b3-runtime` uses its own worktree; unrelated open PRs #2/#17 and prior worktrees were preserved. §30's earlier proposal and unmerged labels are historical; the merged contract and §§30.6–30.7 govern this candidate.
+**Current checkpoint — 13 November 2026 (Asia/Bangkok): B3 IMPLEMENTED / MERGED PR #65. B4 IMPLEMENTED CANDIDATE / INDEPENDENT REVIEW PENDING.** On the Owner's instruction to resolve the feasibility findings, [Contract §31](M4_05_Playable_Integration_Contract.md#31-b4-presentation-projection-and-restart) places TERMINAL immediately after the committed IMPACT and before any causal COMPLETE. The isolated owner projects authentic events, accepts legal Restart into a new generation, rejects stale callbacks and keeps E5 failed-close recovery on the fresh Bootstrap path.
+
+[Verification and limits](../tests/actors/evidence/m4-05b/b4/REPORT.md) record the B2/B3 test migration to the approved Restart contract. Fresh focused suites pass with B2 1,031 / B3 2,507 / B4 4,238 assertions and zero engine errors. GUI/performance remain NOT RUN. Positive Last-Party RETREAT remains DEFERRED — OWNER APPROVED. B5 and M4-05C remain separate.
+
+The following B3 delivery checkpoint is historical; its review-pending wording is superseded by the current checkpoint above.
+
+**Historical B3 runtime delivery checkpoint — 13 November 2026 (Asia/Bangkok): M4-05B B3 IMPLEMENTED CANDIDATE / AUTOMATED GATES PASS / INDEPENDENT CODE, CONTRACT & EVIDENCE REVIEW PENDING.** Owner authorized B3 runtime against canonical `7f2e3807f18c91416c8380c5b3369711c65cdc5a`. Local and live GitHub canonical matched; PR #62/#63/#64 are merged. New branch `codex/m4-05b-b3-runtime` uses its own worktree; unrelated open PRs #2/#17 and prior worktrees were preserved. §30's earlier proposal and unmerged labels are historical; the merged contract and §§30.6–30.7 govern this candidate.
 
 **IMPLEMENTED:** the same single M4Playable owner accepts actual Player commands and exact8 Guidance, freezes Pending at admission, derives real NPC decisions/observations, commits RESCUE/RETREAT, closes progressed rounds through genuine internal SEAL→COMMIT_CLOSE, and applies grace/tick/death up to six closes. A terminal IMPACT publishes its effect, Guard/Guidance cleanup, frozen Outcome and terminal WAIT_ACTION together; only its causal COMPLETE produces one receipt and STOPPED. Presentation-event projection, Restart/new generation and scenes remain outside B3. Production Guidance and original M403/M404 are unchanged. [API / learning guide](../tests/actors/README.md#m4-05b-b3--command-guidance-and-lifecycle-runtime-candidate).
 

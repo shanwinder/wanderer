@@ -1,0 +1,5088 @@
+{
+  "canonical_sha": "9ae5df61a31083e5d55cba324f9ecd0189ca34b5",
+  "godot_version": "4.7.2.stable.official.ed1daf0bf",
+  "godot_binary": "/Applications/Godot.app/Contents/MacOS/Godot",
+  "godot_sha256": "c7cccbf8fb143e34e02fd6521e09be2c2b974f0d5db080b19071c9c570718ccf",
+  "fixtures": {
+    "v1": "09f773cd96f7bb61bfd42226f1324b863a3eec484a684b88e85709bf5afeb28c",
+    "v2": "f797cf7d11e20a0070eec3de7f2bb776e70ff36c1b95afed6192079703e7077e"
+  },
+  "b4": {
+    "status": "PASS",
+    "assertions": 4238,
+    "requests": 474,
+    "streams": 28
+  },
+  "inherited_suites": {
+    "base-smoke": {
+      "status": "PASS",
+      "assertions": 86,
+      "failures": [],
+      "exit": 0
+    },
+    "base-expanded": {
+      "status": "PASS",
+      "assertions": 97,
+      "failures": [],
+      "exit": 0
+    },
+    "base-schema": {
+      "status": "PASS",
+      "assertions": 1907,
+      "failures": [],
+      "exit": 0
+    },
+    "base-transactions": {
+      "status": "PASS",
+      "assertions": 354,
+      "failures": [],
+      "exit": 0
+    },
+    "base-effects": {
+      "status": "PASS",
+      "assertions": 1010,
+      "failures": [],
+      "exit": 0
+    },
+    "base-lifecycle": {
+      "status": "PASS",
+      "assertions": 2486,
+      "failures": [],
+      "exit": 0
+    },
+    "candidate-smoke": {
+      "status": "PASS",
+      "assertions": 86,
+      "failures": [],
+      "exit": 0
+    },
+    "candidate-expanded": {
+      "status": "PASS",
+      "assertions": 97,
+      "failures": [],
+      "exit": 0
+    },
+    "candidate-schema": {
+      "status": "PASS",
+      "assertions": 1907,
+      "failures": [],
+      "exit": 0
+    },
+    "candidate-transactions": {
+      "status": "PASS",
+      "assertions": 354,
+      "failures": [],
+      "exit": 0
+    },
+    "candidate-effects": {
+      "status": "FAIL",
+      "assertions": 1017,
+      "failures": [
+        {
+          "classification": "REAL LEGAL TRANSACTION",
+          "label": "RESTART authenticated journal publication",
+          "passed": false,
+          "scenario": "catalog"
+        },
+        {
+          "classification": "ADVERSARIAL REJECTION",
+          "label": "RESTART M405_INVALID_PHASE preserves full root",
+          "passed": false,
+          "scenario": "catalog"
+        },
+        {
+          "classification": "REAL LEGAL TRANSACTION",
+          "label": "RESTART authenticated journal publication",
+          "passed": false,
+          "scenario": "catalog"
+        },
+        {
+          "classification": "ADVERSARIAL REJECTION",
+          "label": "RESTART M405_INVALID_PHASE preserves full root",
+          "passed": false,
+          "scenario": "catalog"
+        },
+        {
+          "classification": "REAL LEGAL TRANSACTION",
+          "label": "RESTART authenticated journal publication",
+          "passed": false,
+          "scenario": "catalog"
+        },
+        {
+          "classification": "ADVERSARIAL REJECTION",
+          "label": "RESTART M405_INVALID_PHASE preserves full root",
+          "passed": false,
+          "scenario": "catalog"
+        },
+        {
+          "classification": "REAL LEGAL TRANSACTION",
+          "label": "RESTART authenticated journal publication",
+          "passed": false,
+          "scenario": "catalog"
+        },
+        {
+          "classification": "ADVERSARIAL REJECTION",
+          "label": "RESTART M405_INVALID_PHASE preserves full root",
+          "passed": false,
+          "scenario": "catalog"
+        },
+        {
+          "classification": "REAL LEGAL TRANSACTION",
+          "label": "RESTART authenticated journal publication",
+          "passed": false,
+          "scenario": "catalog"
+        },
+        {
+          "classification": "ADVERSARIAL REJECTION",
+          "label": "RESTART M405_INVALID_PHASE preserves full root",
+          "passed": false,
+          "scenario": "catalog"
+        },
+        {
+          "classification": "REAL LEGAL TRANSACTION",
+          "label": "RESTART authenticated journal publication",
+          "passed": false,
+          "scenario": "catalog"
+        },
+        {
+          "classification": "ADVERSARIAL REJECTION",
+          "label": "RESTART M405_INVALID_PHASE preserves full root",
+          "passed": false,
+          "scenario": "catalog"
+        },
+        {
+          "classification": "REAL LEGAL TRANSACTION",
+          "label": "RESTART authenticated journal publication",
+          "passed": false,
+          "scenario": "catalog"
+        },
+        {
+          "classification": "ADVERSARIAL REJECTION",
+          "label": "RESTART M405_INVALID_PHASE preserves full root",
+          "passed": false,
+          "scenario": "catalog"
+        }
+      ],
+      "exit": 1
+    },
+    "candidate-lifecycle": {
+      "status": "FAIL",
+      "assertions": 2481,
+      "failures": [
+        {
+          "category": "REAL TRANSACTION",
+          "label": "RESTART expected REJECTED actual APPLIED/M405_RESTARTED",
+          "passed": false,
+          "scenario": "victory"
+        },
+        {
+          "category": "REAL TRANSACTION",
+          "label": "RESTART expected REJECTED actual APPLIED/M405_RESTARTED",
+          "passed": false,
+          "scenario": "guard_terminal"
+        },
+        {
+          "category": "REAL TRANSACTION",
+          "label": "scenario reached its end",
+          "passed": false,
+          "scenario": "guard_terminal"
+        },
+        {
+          "category": "REAL TRANSACTION",
+          "label": "RESTART expected REJECTED actual APPLIED/M405_RESTARTED",
+          "passed": false,
+          "scenario": "last_party_down"
+        },
+        {
+          "category": "REAL TRANSACTION",
+          "label": "final DOWN episode never ticks terminal clocks",
+          "passed": false,
+          "scenario": "last_party_down"
+        },
+        {
+          "category": "REAL TRANSACTION",
+          "label": "scenario reached its end",
+          "passed": false,
+          "scenario": "last_party_down"
+        }
+      ],
+      "exit": 1
+    }
+  },
+  "schema_audit": {
+    "baseline_b3": 1907,
+    "candidate": 1907,
+    "identical_label_multiset": true,
+    "original_1846_plus_61_source": "../b3/runtime/schema-count-audit.json"
+  },
+  "focused_commands": [
+    {
+      "stage": "base-smoke",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/Applications/wanderer",
+        "--log-file",
+        "/private/tmp/wanderer-b4-verification/base-smoke.engine.log",
+        "--script",
+        "/private/tmp/wanderer-b3-focused-final2/original-smoke.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b4-verification/base-smoke.report.json"
+      ],
+      "exit": 0
+    },
+    {
+      "stage": "candidate-smoke",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-m4-05b-b4-events-restart",
+        "--log-file",
+        "/private/tmp/wanderer-b4-verification/candidate-smoke.engine.log",
+        "--script",
+        "/private/tmp/wanderer-b3-focused-final2/original-smoke.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b4-verification/candidate-smoke.report.json"
+      ],
+      "exit": 0
+    },
+    {
+      "stage": "base-expanded",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/Applications/wanderer",
+        "--log-file",
+        "/private/tmp/wanderer-b4-verification/base-expanded.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_authority_proof.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b4-verification/base-expanded.report.json"
+      ],
+      "exit": 0
+    },
+    {
+      "stage": "candidate-expanded",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-m4-05b-b4-events-restart",
+        "--log-file",
+        "/private/tmp/wanderer-b4-verification/candidate-expanded.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_authority_proof.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b4-verification/candidate-expanded.report.json"
+      ],
+      "exit": 0
+    },
+    {
+      "stage": "base-schema",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/Applications/wanderer",
+        "--log-file",
+        "/private/tmp/wanderer-b4-verification/base-schema.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_authority_proof.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b4-verification/base-schema.report.json",
+        "--gate=D"
+      ],
+      "exit": 0
+    },
+    {
+      "stage": "candidate-schema",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-m4-05b-b4-events-restart",
+        "--log-file",
+        "/private/tmp/wanderer-b4-verification/candidate-schema.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_authority_proof.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b4-verification/candidate-schema.report.json",
+        "--gate=D"
+      ],
+      "exit": 0
+    },
+    {
+      "stage": "base-transactions",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/Applications/wanderer",
+        "--log-file",
+        "/private/tmp/wanderer-b4-verification/base-transactions.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_authority_proof.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b4-verification/base-transactions.report.json",
+        "--gate=E"
+      ],
+      "exit": 0
+    },
+    {
+      "stage": "candidate-transactions",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-m4-05b-b4-events-restart",
+        "--log-file",
+        "/private/tmp/wanderer-b4-verification/candidate-transactions.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_authority_proof.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b4-verification/candidate-transactions.report.json",
+        "--gate=E"
+      ],
+      "exit": 0
+    },
+    {
+      "stage": "base-effects",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/Applications/wanderer",
+        "--log-file",
+        "/private/tmp/wanderer-b4-verification/base-effects.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_effect_proof.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b4-verification/base-effects.report.json"
+      ],
+      "exit": 0
+    },
+    {
+      "stage": "candidate-effects",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-m4-05b-b4-events-restart",
+        "--log-file",
+        "/private/tmp/wanderer-b4-verification/candidate-effects.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_effect_proof.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b4-verification/candidate-effects.report.json"
+      ],
+      "exit": 1
+    },
+    {
+      "stage": "base-lifecycle",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/Applications/wanderer",
+        "--log-file",
+        "/private/tmp/wanderer-b4-verification/base-lifecycle.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_lifecycle_proof.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b4-verification/base-lifecycle.report.json"
+      ],
+      "exit": 0
+    },
+    {
+      "stage": "candidate-lifecycle",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-m4-05b-b4-events-restart",
+        "--log-file",
+        "/private/tmp/wanderer-b4-verification/candidate-lifecycle.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_lifecycle_proof.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b4-verification/candidate-lifecycle.report.json"
+      ],
+      "exit": 1
+    },
+    {
+      "stage": "b4-final",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--log-file",
+        "/private/tmp/wanderer-b4-verification/b4-final.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_event_proof.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b4-verification/b4-final.report.json"
+      ],
+      "exit": 0,
+      "cwd": "/private/tmp/wanderer-m4-05b-b4-events-restart"
+    }
+  ],
+  "focused_engine_errors": {
+    "candidate-lifecycle": [
+      "ERROR: Can't take value from empty array.",
+      "SCRIPT ERROR: Invalid access to property or key 'effect' on a base object of type 'Nil'.",
+      "SCRIPT ERROR: Invalid access to property or key 'reason' on a base object of type 'Nil'."
+    ]
+  },
+  "combat": {
+    "reference44": {
+      "execution": {
+        "command": [
+          "python3",
+          "tests/combat/verify.py",
+          "--godot",
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--output",
+          "/private/tmp/wanderer-b4-verification/reference44",
+          "--npc-proof",
+          "--actor-proof",
+          "--ownership-proof",
+          "--party-foundation-proof",
+          "--party-turn-proof",
+          "--party-playable-proof",
+          "--presentation-proof",
+          "--autonomous-main-proof"
+        ],
+        "cwd": "/private/tmp/wanderer-b3-reference44-source",
+        "exit": 0
+      },
+      "stage_count": 44,
+      "stages": [
+        {
+          "step": "version",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/version.engine.log",
+            "--version"
+          ],
+          "errors": [],
+          "log": "version.log"
+        },
+        {
+          "step": "import",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/import.engine.log",
+            "--editor",
+            "--import"
+          ],
+          "errors": [],
+          "log": "import.log"
+        },
+        {
+          "step": "parse-combat_prototype",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/parse-combat_prototype.engine.log",
+            "--script",
+            "res://scripts/combat/combat_prototype.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-combat_prototype.log"
+        },
+        {
+          "step": "parse-combat_turn_flow",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/parse-combat_turn_flow.engine.log",
+            "--script",
+            "res://scripts/combat/combat_turn_flow.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-combat_turn_flow.log"
+        },
+        {
+          "step": "parse-combat_targets",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/parse-combat_targets.engine.log",
+            "--script",
+            "res://scripts/combat/combat_targets.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-combat_targets.log"
+        },
+        {
+          "step": "parse-queue_regression",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/parse-queue_regression.engine.log",
+            "--script",
+            "res://tests/combat/queue_regression.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-queue_regression.log"
+        },
+        {
+          "step": "startup",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/startup.engine.log",
+            "--quit-after",
+            "120"
+          ],
+          "errors": [],
+          "log": "startup.log"
+        },
+        {
+          "step": "autonomous-parse-combat_presentation_adapter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/autonomous-parse-combat_presentation_adapter.engine.log",
+            "--script",
+            "res://scripts/combat/combat_presentation_adapter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "autonomous-parse-combat_presentation_adapter.log"
+        },
+        {
+          "step": "autonomous-parse-autonomous_main_integration",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/autonomous-parse-autonomous_main_integration.engine.log",
+            "--script",
+            "res://tests/combat/autonomous_main_integration.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "autonomous-parse-autonomous_main_integration.log"
+        },
+        {
+          "step": "autonomous-main-startup",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/autonomous-main-startup.engine.log",
+            "res://scenes/combat/combat_autonomous_optin.tscn",
+            "--quit-after",
+            "120"
+          ],
+          "errors": [],
+          "log": "autonomous-main-startup.log"
+        },
+        {
+          "step": "autonomous-main-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/autonomous-main-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/combat/autonomous_main_integration.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/reference44/autonomous-main-scenarios.json"
+          ],
+          "errors": [],
+          "log": "autonomous-main-proof.log"
+        },
+        {
+          "step": "gameplay",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/gameplay.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/combat/queue_regression.gd"
+          ],
+          "errors": [],
+          "log": "gameplay.log"
+        },
+        {
+          "step": "invalid-actions",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/invalid-actions.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/combat/queue_regression.gd",
+            "--",
+            "--invalid-actions"
+          ],
+          "errors": [
+            "Combat Turn Flow: ไม่มี Action ถัดไปหลัง NPC",
+            "Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง",
+            "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+            "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+            "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action"
+          ],
+          "log": "invalid-actions.log"
+        },
+        {
+          "step": "presentation-parse-combat_presentation_adapter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/presentation-parse-combat_presentation_adapter.engine.log",
+            "--script",
+            "res://scripts/combat/combat_presentation_adapter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "presentation-parse-combat_presentation_adapter.log"
+        },
+        {
+          "step": "presentation-parse-presentation_boundary",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/presentation-parse-presentation_boundary.engine.log",
+            "--script",
+            "res://tests/combat/presentation_boundary.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "presentation-parse-presentation_boundary.log"
+        },
+        {
+          "step": "presentation-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/presentation-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/combat/presentation_boundary.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/reference44/presentation-traces.json"
+          ],
+          "errors": [],
+          "log": "presentation-proof.log"
+        },
+        {
+          "step": "parse-npc_decision_resolver",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/parse-npc_decision_resolver.engine.log",
+            "--script",
+            "res://scripts/npc/npc_decision_resolver.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-npc_decision_resolver.log"
+        },
+        {
+          "step": "parse-npc_proof_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/parse-npc_proof_encounter.engine.log",
+            "--script",
+            "res://scripts/npc/npc_proof_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-npc_proof_encounter.log"
+        },
+        {
+          "step": "parse-decision_effect_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/parse-decision_effect_proof.engine.log",
+            "--script",
+            "res://tests/npc/decision_effect_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-decision_effect_proof.log"
+        },
+        {
+          "step": "parse-npc_autonomy_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/parse-npc_autonomy_proof.engine.log",
+            "--script",
+            "res://scripts/npc/npc_autonomy_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-npc_autonomy_proof.log"
+        },
+        {
+          "step": "parse-playable_integration",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/parse-playable_integration.engine.log",
+            "--script",
+            "res://tests/npc/playable_integration.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-playable_integration.log"
+        },
+        {
+          "step": "npc-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/npc-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/npc/decision_effect_proof.gd"
+          ],
+          "errors": [],
+          "log": "npc-proof.log"
+        },
+        {
+          "step": "npc-playable-startup",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/npc-playable-startup.engine.log",
+            "res://scenes/npc/npc_autonomy_proof.tscn",
+            "--quit-after",
+            "120"
+          ],
+          "errors": [],
+          "log": "npc-playable-startup.log"
+        },
+        {
+          "step": "npc-playable",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/npc-playable.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/npc/playable_integration.gd"
+          ],
+          "errors": [],
+          "log": "npc-playable.log"
+        },
+        {
+          "step": "parse-actor_definition",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/parse-actor_definition.engine.log",
+            "--script",
+            "res://scripts/actors/actor_definition.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-actor_definition.log"
+        },
+        {
+          "step": "parse-actor_runtime_state",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/parse-actor_runtime_state.engine.log",
+            "--script",
+            "res://scripts/actors/actor_runtime_state.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-actor_runtime_state.log"
+        },
+        {
+          "step": "parse-actor_data_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/parse-actor_data_proof.engine.log",
+            "--script",
+            "res://tests/actors/actor_data_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-actor_data_proof.log"
+        },
+        {
+          "step": "actor-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/actor-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/actor_data_proof.gd"
+          ],
+          "errors": [],
+          "log": "actor-proof.log"
+        },
+        {
+          "step": "parse-actor_ownership_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/parse-actor_ownership_proof.engine.log",
+            "--script",
+            "res://tests/actors/actor_ownership_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-actor_ownership_proof.log"
+        },
+        {
+          "step": "ownership-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/ownership-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/actor_ownership_proof.gd"
+          ],
+          "errors": [],
+          "log": "ownership-proof.log"
+        },
+        {
+          "step": "party-parse-actor_definition",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/party-parse-actor_definition.engine.log",
+            "--script",
+            "res://scripts/actors/actor_definition.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "party-parse-actor_definition.log"
+        },
+        {
+          "step": "party-parse-actor_runtime_state",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/party-parse-actor_runtime_state.engine.log",
+            "--script",
+            "res://scripts/actors/actor_runtime_state.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "party-parse-actor_runtime_state.log"
+        },
+        {
+          "step": "party-parse-actor_registry",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/party-parse-actor_registry.engine.log",
+            "--script",
+            "res://scripts/actors/actor_registry.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "party-parse-actor_registry.log"
+        },
+        {
+          "step": "party-parse-full_party_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/party-parse-full_party_encounter.engine.log",
+            "--script",
+            "res://scripts/combat/full_party_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "party-parse-full_party_encounter.log"
+        },
+        {
+          "step": "party-parse-party_foundation_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/party-parse-party_foundation_proof.engine.log",
+            "--script",
+            "res://tests/actors/party_foundation_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "party-parse-party_foundation_proof.log"
+        },
+        {
+          "step": "party-foundation-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/party-foundation-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/party_foundation_proof.gd"
+          ],
+          "errors": [],
+          "log": "party-foundation-proof.log"
+        },
+        {
+          "step": "turn-parse-npc_decision_resolver",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/turn-parse-npc_decision_resolver.engine.log",
+            "--script",
+            "res://scripts/npc/npc_decision_resolver.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "turn-parse-npc_decision_resolver.log"
+        },
+        {
+          "step": "turn-parse-full_party_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/turn-parse-full_party_encounter.engine.log",
+            "--script",
+            "res://scripts/combat/full_party_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "turn-parse-full_party_encounter.log"
+        },
+        {
+          "step": "turn-parse-party_turn_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/turn-parse-party_turn_proof.engine.log",
+            "--script",
+            "res://tests/actors/party_turn_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "turn-parse-party_turn_proof.log"
+        },
+        {
+          "step": "party-turn-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/party-turn-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/party_turn_proof.gd"
+          ],
+          "errors": [],
+          "log": "party-turn-proof.log"
+        },
+        {
+          "step": "playable-parse-full_party_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/playable-parse-full_party_proof.engine.log",
+            "--script",
+            "res://scripts/combat/full_party_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "playable-parse-full_party_proof.log"
+        },
+        {
+          "step": "playable-parse-party_playable_integration",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/playable-parse-party_playable_integration.engine.log",
+            "--script",
+            "res://tests/combat/party_playable_integration.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "playable-parse-party_playable_integration.log"
+        },
+        {
+          "step": "party-playable-startup",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/party-playable-startup.engine.log",
+            "res://scenes/combat/full_party_proof.tscn",
+            "--quit-after",
+            "120"
+          ],
+          "errors": [],
+          "log": "party-playable-startup.log"
+        },
+        {
+          "step": "party-playable-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/reference44/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/reference44/party-playable-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/combat/party_playable_integration.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/reference44/party-playable-scenarios.json"
+          ],
+          "errors": [],
+          "log": "party-playable-proof.log"
+        }
+      ]
+    },
+    "canonical94": {
+      "execution": {
+        "command": [
+          "python3",
+          "tests/combat/verify.py",
+          "--godot",
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--output",
+          "/private/tmp/wanderer-b4-verification/canonical94",
+          "--npc-proof",
+          "--actor-proof",
+          "--ownership-proof",
+          "--party-foundation-proof",
+          "--party-turn-proof",
+          "--party-playable-proof",
+          "--presentation-proof",
+          "--autonomous-main-proof",
+          "--main-cutover-proof",
+          "--guidance-data-proof",
+          "--guidance-decision-proof",
+          "--guidance-main-proof",
+          "--m4-data-proof",
+          "--m4-atomic-clock-proof",
+          "--m4-queue-foundation-proof",
+          "--m4-retreat-transaction-proof",
+          "--m4-outcome-summary-proof",
+          "--m4-autonomous-decision-proof",
+          "--cutover-baseline",
+          "/private/tmp/wanderer-b4-verification/reference44"
+        ],
+        "cwd": "/Applications/wanderer",
+        "exit": 0
+      },
+      "stage_count": 94,
+      "stages": [
+        {
+          "step": "version",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/version.engine.log",
+            "--version"
+          ],
+          "errors": [],
+          "log": "version.log"
+        },
+        {
+          "step": "import",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/import.engine.log",
+            "--editor",
+            "--import"
+          ],
+          "errors": [],
+          "log": "import.log"
+        },
+        {
+          "step": "parse-combat_prototype",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/parse-combat_prototype.engine.log",
+            "--script",
+            "res://scripts/combat/combat_prototype.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-combat_prototype.log"
+        },
+        {
+          "step": "parse-combat_turn_flow",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/parse-combat_turn_flow.engine.log",
+            "--script",
+            "res://scripts/combat/combat_turn_flow.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-combat_turn_flow.log"
+        },
+        {
+          "step": "parse-combat_targets",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/parse-combat_targets.engine.log",
+            "--script",
+            "res://scripts/combat/combat_targets.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-combat_targets.log"
+        },
+        {
+          "step": "parse-queue_regression",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/parse-queue_regression.engine.log",
+            "--script",
+            "res://tests/combat/queue_regression.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-queue_regression.log"
+        },
+        {
+          "step": "startup",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/startup.engine.log",
+            "--quit-after",
+            "120"
+          ],
+          "errors": [],
+          "log": "startup.log"
+        },
+        {
+          "step": "autonomous-parse-combat_presentation_adapter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/autonomous-parse-combat_presentation_adapter.engine.log",
+            "--script",
+            "res://scripts/combat/combat_presentation_adapter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "autonomous-parse-combat_presentation_adapter.log"
+        },
+        {
+          "step": "autonomous-parse-autonomous_main_integration",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/autonomous-parse-autonomous_main_integration.engine.log",
+            "--script",
+            "res://tests/combat/autonomous_main_integration.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "autonomous-parse-autonomous_main_integration.log"
+        },
+        {
+          "step": "autonomous-main-startup",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/autonomous-main-startup.engine.log",
+            "res://scenes/combat/combat_autonomous_optin.tscn",
+            "--quit-after",
+            "120"
+          ],
+          "errors": [],
+          "log": "autonomous-main-startup.log"
+        },
+        {
+          "step": "autonomous-main-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/autonomous-main-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/combat/autonomous_main_integration.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/canonical94/autonomous-main-scenarios.json",
+            "--expect-autonomous-default"
+          ],
+          "errors": [],
+          "log": "autonomous-main-proof.log"
+        },
+        {
+          "step": "gameplay",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/gameplay.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/combat/queue_regression.gd"
+          ],
+          "errors": [],
+          "log": "gameplay.log"
+        },
+        {
+          "step": "invalid-actions",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/invalid-actions.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/combat/queue_regression.gd",
+            "--",
+            "--invalid-actions"
+          ],
+          "errors": [
+            "Combat Turn Flow: ไม่มี Action ถัดไปหลัง NPC",
+            "Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง",
+            "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+            "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+            "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action"
+          ],
+          "log": "invalid-actions.log"
+        },
+        {
+          "step": "presentation-parse-combat_presentation_adapter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/presentation-parse-combat_presentation_adapter.engine.log",
+            "--script",
+            "res://scripts/combat/combat_presentation_adapter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "presentation-parse-combat_presentation_adapter.log"
+        },
+        {
+          "step": "presentation-parse-presentation_boundary",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/presentation-parse-presentation_boundary.engine.log",
+            "--script",
+            "res://tests/combat/presentation_boundary.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "presentation-parse-presentation_boundary.log"
+        },
+        {
+          "step": "presentation-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/presentation-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/combat/presentation_boundary.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/canonical94/presentation-traces.json"
+          ],
+          "errors": [],
+          "log": "presentation-proof.log"
+        },
+        {
+          "step": "parse-npc_decision_resolver",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/parse-npc_decision_resolver.engine.log",
+            "--script",
+            "res://scripts/npc/npc_decision_resolver.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-npc_decision_resolver.log"
+        },
+        {
+          "step": "parse-npc_proof_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/parse-npc_proof_encounter.engine.log",
+            "--script",
+            "res://scripts/npc/npc_proof_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-npc_proof_encounter.log"
+        },
+        {
+          "step": "parse-decision_effect_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/parse-decision_effect_proof.engine.log",
+            "--script",
+            "res://tests/npc/decision_effect_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-decision_effect_proof.log"
+        },
+        {
+          "step": "parse-npc_autonomy_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/parse-npc_autonomy_proof.engine.log",
+            "--script",
+            "res://scripts/npc/npc_autonomy_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-npc_autonomy_proof.log"
+        },
+        {
+          "step": "parse-playable_integration",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/parse-playable_integration.engine.log",
+            "--script",
+            "res://tests/npc/playable_integration.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-playable_integration.log"
+        },
+        {
+          "step": "npc-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/npc-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/npc/decision_effect_proof.gd"
+          ],
+          "errors": [],
+          "log": "npc-proof.log"
+        },
+        {
+          "step": "npc-playable-startup",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/npc-playable-startup.engine.log",
+            "res://scenes/npc/npc_autonomy_proof.tscn",
+            "--quit-after",
+            "120"
+          ],
+          "errors": [],
+          "log": "npc-playable-startup.log"
+        },
+        {
+          "step": "npc-playable",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/npc-playable.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/npc/playable_integration.gd"
+          ],
+          "errors": [],
+          "log": "npc-playable.log"
+        },
+        {
+          "step": "parse-actor_definition",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/parse-actor_definition.engine.log",
+            "--script",
+            "res://scripts/actors/actor_definition.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-actor_definition.log"
+        },
+        {
+          "step": "parse-actor_runtime_state",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/parse-actor_runtime_state.engine.log",
+            "--script",
+            "res://scripts/actors/actor_runtime_state.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-actor_runtime_state.log"
+        },
+        {
+          "step": "parse-actor_data_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/parse-actor_data_proof.engine.log",
+            "--script",
+            "res://tests/actors/actor_data_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-actor_data_proof.log"
+        },
+        {
+          "step": "actor-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/actor-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/actor_data_proof.gd"
+          ],
+          "errors": [],
+          "log": "actor-proof.log"
+        },
+        {
+          "step": "parse-actor_ownership_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/parse-actor_ownership_proof.engine.log",
+            "--script",
+            "res://tests/actors/actor_ownership_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-actor_ownership_proof.log"
+        },
+        {
+          "step": "ownership-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/ownership-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/actor_ownership_proof.gd"
+          ],
+          "errors": [],
+          "log": "ownership-proof.log"
+        },
+        {
+          "step": "party-parse-actor_definition",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/party-parse-actor_definition.engine.log",
+            "--script",
+            "res://scripts/actors/actor_definition.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "party-parse-actor_definition.log"
+        },
+        {
+          "step": "party-parse-actor_runtime_state",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/party-parse-actor_runtime_state.engine.log",
+            "--script",
+            "res://scripts/actors/actor_runtime_state.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "party-parse-actor_runtime_state.log"
+        },
+        {
+          "step": "party-parse-actor_registry",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/party-parse-actor_registry.engine.log",
+            "--script",
+            "res://scripts/actors/actor_registry.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "party-parse-actor_registry.log"
+        },
+        {
+          "step": "party-parse-full_party_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/party-parse-full_party_encounter.engine.log",
+            "--script",
+            "res://scripts/combat/full_party_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "party-parse-full_party_encounter.log"
+        },
+        {
+          "step": "party-parse-party_foundation_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/party-parse-party_foundation_proof.engine.log",
+            "--script",
+            "res://tests/actors/party_foundation_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "party-parse-party_foundation_proof.log"
+        },
+        {
+          "step": "party-foundation-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/party-foundation-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/party_foundation_proof.gd"
+          ],
+          "errors": [],
+          "log": "party-foundation-proof.log"
+        },
+        {
+          "step": "turn-parse-npc_decision_resolver",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/turn-parse-npc_decision_resolver.engine.log",
+            "--script",
+            "res://scripts/npc/npc_decision_resolver.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "turn-parse-npc_decision_resolver.log"
+        },
+        {
+          "step": "turn-parse-full_party_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/turn-parse-full_party_encounter.engine.log",
+            "--script",
+            "res://scripts/combat/full_party_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "turn-parse-full_party_encounter.log"
+        },
+        {
+          "step": "turn-parse-party_turn_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/turn-parse-party_turn_proof.engine.log",
+            "--script",
+            "res://tests/actors/party_turn_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "turn-parse-party_turn_proof.log"
+        },
+        {
+          "step": "party-turn-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/party-turn-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/party_turn_proof.gd"
+          ],
+          "errors": [],
+          "log": "party-turn-proof.log"
+        },
+        {
+          "step": "playable-parse-full_party_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/playable-parse-full_party_proof.engine.log",
+            "--script",
+            "res://scripts/combat/full_party_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "playable-parse-full_party_proof.log"
+        },
+        {
+          "step": "playable-parse-party_playable_integration",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/playable-parse-party_playable_integration.engine.log",
+            "--script",
+            "res://tests/combat/party_playable_integration.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "playable-parse-party_playable_integration.log"
+        },
+        {
+          "step": "party-playable-startup",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/party-playable-startup.engine.log",
+            "res://scenes/combat/full_party_proof.tscn",
+            "--quit-after",
+            "120"
+          ],
+          "errors": [],
+          "log": "party-playable-startup.log"
+        },
+        {
+          "step": "party-playable-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/party-playable-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/combat/party_playable_integration.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/canonical94/party-playable-scenarios.json"
+          ],
+          "errors": [],
+          "log": "party-playable-proof.log"
+        },
+        {
+          "step": "guidance-parse-guidance_data_contract",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/guidance-parse-guidance_data_contract.engine.log",
+            "--script",
+            "res://scripts/npc/guidance_data_contract.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "guidance-parse-guidance_data_contract.log"
+        },
+        {
+          "step": "guidance-parse-full_party_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/guidance-parse-full_party_encounter.engine.log",
+            "--script",
+            "res://scripts/combat/full_party_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "guidance-parse-full_party_encounter.log"
+        },
+        {
+          "step": "guidance-parse-guidance_data_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/guidance-parse-guidance_data_proof.engine.log",
+            "--script",
+            "res://tests/npc/guidance_data_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "guidance-parse-guidance_data_proof.log"
+        },
+        {
+          "step": "guidance-data-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/guidance-data-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/npc/guidance_data_proof.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/canonical94/guidance-data-scenarios.json"
+          ],
+          "errors": [],
+          "log": "guidance-data-proof.log"
+        },
+        {
+          "step": "guided-parse-guidance_decision_layer",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/guided-parse-guidance_decision_layer.engine.log",
+            "--script",
+            "res://scripts/npc/guidance_decision_layer.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "guided-parse-guidance_decision_layer.log"
+        },
+        {
+          "step": "guided-parse-guided_decision_proof_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/guided-parse-guided_decision_proof_encounter.engine.log",
+            "--script",
+            "res://scripts/npc/guided_decision_proof_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "guided-parse-guided_decision_proof_encounter.log"
+        },
+        {
+          "step": "guided-parse-guidance_decision_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/guided-parse-guidance_decision_proof.engine.log",
+            "--script",
+            "res://tests/npc/guidance_decision_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "guided-parse-guidance_decision_proof.log"
+        },
+        {
+          "step": "guidance-decision-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/guidance-decision-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/npc/guidance_decision_proof.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/canonical94/guidance-decision-scenarios.json"
+          ],
+          "errors": [],
+          "log": "guidance-decision-proof.log"
+        },
+        {
+          "step": "guidance-main-parse-guided_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/guidance-main-parse-guided_encounter.engine.log",
+            "--script",
+            "res://scripts/combat/guided_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "guidance-main-parse-guided_encounter.log"
+        },
+        {
+          "step": "guidance-main-parse-guidance_messages",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/guidance-main-parse-guidance_messages.engine.log",
+            "--script",
+            "res://scripts/combat/guidance_messages.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "guidance-main-parse-guidance_messages.log"
+        },
+        {
+          "step": "guidance-main-parse-guidance_main_integration",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/guidance-main-parse-guidance_main_integration.engine.log",
+            "--script",
+            "res://tests/combat/guidance_main_integration.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "guidance-main-parse-guidance_main_integration.log"
+        },
+        {
+          "step": "guidance-main-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/guidance-main-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/combat/guidance_main_integration.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/canonical94/guidance-main-scenarios.json"
+          ],
+          "errors": [],
+          "log": "guidance-main-proof.log"
+        },
+        {
+          "step": "m4-parse-isolated_actor_state",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m4-parse-isolated_actor_state.engine.log",
+            "--script",
+            "res://scripts/m4/isolated_actor_state.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m4-parse-isolated_actor_state.log"
+        },
+        {
+          "step": "m4-parse-isolated_registry",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m4-parse-isolated_registry.engine.log",
+            "--script",
+            "res://scripts/m4/isolated_registry.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m4-parse-isolated_registry.log"
+        },
+        {
+          "step": "m4-parse-isolated_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m4-parse-isolated_encounter.engine.log",
+            "--script",
+            "res://scripts/m4/isolated_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m4-parse-isolated_encounter.log"
+        },
+        {
+          "step": "m4-parse-m4_data_state_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m4-parse-m4_data_state_proof.engine.log",
+            "--script",
+            "res://tests/actors/m4_data_state_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m4-parse-m4_data_state_proof.log"
+        },
+        {
+          "step": "m4-data-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m4-data-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/m4_data_state_proof.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/canonical94/m4-data-scenarios.json"
+          ],
+          "errors": [],
+          "log": "m4-data-proof.log"
+        },
+        {
+          "step": "m402-parse-isolated_rescue_clock_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m402-parse-isolated_rescue_clock_encounter.engine.log",
+            "--script",
+            "res://scripts/m4/isolated_rescue_clock_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m402-parse-isolated_rescue_clock_encounter.log"
+        },
+        {
+          "step": "m402-parse-m4_02_diagnostic_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m402-parse-m4_02_diagnostic_encounter.engine.log",
+            "--script",
+            "res://tests/actors/m4_02_diagnostic_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m402-parse-m4_02_diagnostic_encounter.log"
+        },
+        {
+          "step": "m402-parse-m4_02_atomic_effect_clock_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m402-parse-m4_02_atomic_effect_clock_proof.engine.log",
+            "--script",
+            "res://tests/actors/m4_02_atomic_effect_clock_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m402-parse-m4_02_atomic_effect_clock_proof.log"
+        },
+        {
+          "step": "m4-atomic-clock-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m4-atomic-clock-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/m4_02_atomic_effect_clock_proof.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/canonical94/m4-02-scenarios.json"
+          ],
+          "errors": [],
+          "log": "m4-atomic-clock-proof.log"
+        },
+        {
+          "step": "m403a-parse-m403_queue_adapter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m403a-parse-m403_queue_adapter.engine.log",
+            "--script",
+            "res://scripts/m4/m403_queue_adapter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403a-parse-m403_queue_adapter.log"
+        },
+        {
+          "step": "m403a-parse-isolated_queue_outcome_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m403a-parse-isolated_queue_outcome_encounter.engine.log",
+            "--script",
+            "res://scripts/m4/isolated_queue_outcome_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403a-parse-isolated_queue_outcome_encounter.log"
+        },
+        {
+          "step": "m403a-parse-m4_03_queue_foundation_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m403a-parse-m4_03_queue_foundation_proof.engine.log",
+            "--script",
+            "res://tests/actors/m4_03_queue_foundation_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403a-parse-m4_03_queue_foundation_proof.log"
+        },
+        {
+          "step": "m4-queue-foundation-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m4-queue-foundation-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/m4_03_queue_foundation_proof.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/canonical94/m4-03a-scenarios.json"
+          ],
+          "errors": [],
+          "log": "m4-queue-foundation-proof.log"
+        },
+        {
+          "step": "m403b-parse-m403_effect_candidates",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m403b-parse-m403_effect_candidates.engine.log",
+            "--script",
+            "res://scripts/m4/m403_effect_candidates.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403b-parse-m403_effect_candidates.log"
+        },
+        {
+          "step": "m403b-parse-m403_queue_adapter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m403b-parse-m403_queue_adapter.engine.log",
+            "--script",
+            "res://scripts/m4/m403_queue_adapter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403b-parse-m403_queue_adapter.log"
+        },
+        {
+          "step": "m403b-parse-isolated_queue_outcome_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m403b-parse-isolated_queue_outcome_encounter.engine.log",
+            "--script",
+            "res://scripts/m4/isolated_queue_outcome_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403b-parse-isolated_queue_outcome_encounter.log"
+        },
+        {
+          "step": "m403b-parse-m4_03_retreat_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m403b-parse-m4_03_retreat_proof.engine.log",
+            "--script",
+            "res://tests/actors/m4_03_retreat_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403b-parse-m4_03_retreat_proof.log"
+        },
+        {
+          "step": "m4-retreat-transaction-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m4-retreat-transaction-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/m4_03_retreat_proof.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/canonical94/m4-03b-scenarios.json"
+          ],
+          "errors": [],
+          "log": "m4-retreat-transaction-proof.log"
+        },
+        {
+          "step": "m403c-parse-m403_outcome_classifier",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m403c-parse-m403_outcome_classifier.engine.log",
+            "--script",
+            "res://scripts/m4/m403_outcome_classifier.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403c-parse-m403_outcome_classifier.log"
+        },
+        {
+          "step": "m403c-parse-m403_summary",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m403c-parse-m403_summary.engine.log",
+            "--script",
+            "res://scripts/m4/m403_summary.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403c-parse-m403_summary.log"
+        },
+        {
+          "step": "m403c-parse-m403_terminal_rules",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m403c-parse-m403_terminal_rules.engine.log",
+            "--script",
+            "res://scripts/m4/m403_terminal_rules.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403c-parse-m403_terminal_rules.log"
+        },
+        {
+          "step": "m403c-parse-m403_terminal_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m403c-parse-m403_terminal_encounter.engine.log",
+            "--script",
+            "res://scripts/m4/m403_terminal_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403c-parse-m403_terminal_encounter.log"
+        },
+        {
+          "step": "m403c-parse-m4_03_outcome_summary_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m403c-parse-m4_03_outcome_summary_proof.engine.log",
+            "--script",
+            "res://tests/actors/m4_03_outcome_summary_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403c-parse-m4_03_outcome_summary_proof.log"
+        },
+        {
+          "step": "m4-outcome-summary-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m4-outcome-summary-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/m4_03_outcome_summary_proof.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/canonical94/m4-03c-scenarios.json"
+          ],
+          "errors": [],
+          "log": "m4-outcome-summary-proof.log"
+        },
+        {
+          "step": "m404-parse-m404_decision_context",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m404-parse-m404_decision_context.engine.log",
+            "--script",
+            "res://scripts/m4/m404_decision_context.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m404-parse-m404_decision_context.log"
+        },
+        {
+          "step": "m404-parse-m404_episode_order_projection",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m404-parse-m404_episode_order_projection.engine.log",
+            "--script",
+            "res://scripts/m4/m404_episode_order_projection.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m404-parse-m404_episode_order_projection.log"
+        },
+        {
+          "step": "m404-parse-m404_autonomous_decision_policy",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m404-parse-m404_autonomous_decision_policy.engine.log",
+            "--script",
+            "res://scripts/m4/m404_autonomous_decision_policy.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m404-parse-m404_autonomous_decision_policy.log"
+        },
+        {
+          "step": "m404-parse-m404_decision_facade",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m404-parse-m404_decision_facade.engine.log",
+            "--script",
+            "res://scripts/m4/m404_decision_facade.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m404-parse-m404_decision_facade.log"
+        },
+        {
+          "step": "m404-parse-m4_04_autonomous_decision_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m404-parse-m4_04_autonomous_decision_proof.engine.log",
+            "--script",
+            "res://tests/actors/m4_04_autonomous_decision_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m404-parse-m4_04_autonomous_decision_proof.log"
+        },
+        {
+          "step": "m4-autonomous-decision-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/m4-autonomous-decision-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/m4_04_autonomous_decision_proof.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/canonical94/m4-04-scenarios.json"
+          ],
+          "errors": [],
+          "log": "m4-autonomous-decision-proof.log"
+        },
+        {
+          "step": "cutover-parse-main_cutover_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/cutover-parse-main_cutover_proof.engine.log",
+            "--script",
+            "res://tests/combat/main_cutover_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "cutover-parse-main_cutover_proof.log"
+        },
+        {
+          "step": "cutover-parse-main_cutover_startup_probe",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/cutover-parse-main_cutover_startup_probe.engine.log",
+            "--script",
+            "res://tests/combat/main_cutover_startup_probe.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "cutover-parse-main_cutover_startup_probe.log"
+        },
+        {
+          "step": "main-cutover-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/main-cutover-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/combat/main_cutover_proof.gd",
+            "--",
+            "--expect-autonomous-default",
+            "--report=/private/tmp/wanderer-b4-verification/canonical94/main-cutover-scenarios.json"
+          ],
+          "errors": [],
+          "log": "main-cutover-proof.log"
+        },
+        {
+          "step": "main-cutover-f5-startup",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/main-cutover-f5-startup.engine.log",
+            "--fixed-fps",
+            "60",
+            "--quit-after",
+            "120",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/canonical94/main-cutover-f5-startup.json"
+          ],
+          "errors": [],
+          "log": "main-cutover-f5-startup.log"
+        },
+        {
+          "step": "rollback-import",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/rollback-snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/rollback-import.engine.log",
+            "--editor",
+            "--import"
+          ],
+          "errors": [],
+          "log": "rollback-import.log"
+        },
+        {
+          "step": "rollback-f5-startup",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/rollback-snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/rollback-f5-startup.engine.log",
+            "--fixed-fps",
+            "60",
+            "--quit-after",
+            "120",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/canonical94/rollback-f5-startup.json",
+            "--expect-legacy"
+          ],
+          "errors": [],
+          "log": "rollback-f5-startup.log"
+        },
+        {
+          "step": "rollback-gameplay",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/canonical94/rollback-snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/canonical94/rollback-gameplay.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/combat/queue_regression.gd"
+          ],
+          "errors": [],
+          "log": "rollback-gameplay.log"
+        },
+        {
+          "step": "cutover-release-gates",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "errors": [],
+          "command": [
+            "python:verify_cutover",
+            "/private/tmp/wanderer-b4-verification/reference44",
+            "/private/tmp/wanderer-b4-verification/canonical94"
+          ],
+          "log": "cutover-release-gates.log"
+        }
+      ]
+    },
+    "candidate94": {
+      "execution": {
+        "command": [
+          "python3",
+          "tests/combat/verify.py",
+          "--godot",
+          "/Applications/Godot.app/Contents/MacOS/Godot",
+          "--output",
+          "/private/tmp/wanderer-b4-verification/candidate94",
+          "--npc-proof",
+          "--actor-proof",
+          "--ownership-proof",
+          "--party-foundation-proof",
+          "--party-turn-proof",
+          "--party-playable-proof",
+          "--presentation-proof",
+          "--autonomous-main-proof",
+          "--main-cutover-proof",
+          "--guidance-data-proof",
+          "--guidance-decision-proof",
+          "--guidance-main-proof",
+          "--m4-data-proof",
+          "--m4-atomic-clock-proof",
+          "--m4-queue-foundation-proof",
+          "--m4-retreat-transaction-proof",
+          "--m4-outcome-summary-proof",
+          "--m4-autonomous-decision-proof",
+          "--cutover-baseline",
+          "/private/tmp/wanderer-b4-verification/reference44"
+        ],
+        "cwd": "/private/tmp/wanderer-m4-05b-b4-events-restart",
+        "exit": 0
+      },
+      "stage_count": 94,
+      "stages": [
+        {
+          "step": "version",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/version.engine.log",
+            "--version"
+          ],
+          "errors": [],
+          "log": "version.log"
+        },
+        {
+          "step": "import",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/import.engine.log",
+            "--editor",
+            "--import"
+          ],
+          "errors": [],
+          "log": "import.log"
+        },
+        {
+          "step": "parse-combat_prototype",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/parse-combat_prototype.engine.log",
+            "--script",
+            "res://scripts/combat/combat_prototype.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-combat_prototype.log"
+        },
+        {
+          "step": "parse-combat_turn_flow",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/parse-combat_turn_flow.engine.log",
+            "--script",
+            "res://scripts/combat/combat_turn_flow.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-combat_turn_flow.log"
+        },
+        {
+          "step": "parse-combat_targets",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/parse-combat_targets.engine.log",
+            "--script",
+            "res://scripts/combat/combat_targets.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-combat_targets.log"
+        },
+        {
+          "step": "parse-queue_regression",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/parse-queue_regression.engine.log",
+            "--script",
+            "res://tests/combat/queue_regression.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-queue_regression.log"
+        },
+        {
+          "step": "startup",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/startup.engine.log",
+            "--quit-after",
+            "120"
+          ],
+          "errors": [],
+          "log": "startup.log"
+        },
+        {
+          "step": "autonomous-parse-combat_presentation_adapter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/autonomous-parse-combat_presentation_adapter.engine.log",
+            "--script",
+            "res://scripts/combat/combat_presentation_adapter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "autonomous-parse-combat_presentation_adapter.log"
+        },
+        {
+          "step": "autonomous-parse-autonomous_main_integration",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/autonomous-parse-autonomous_main_integration.engine.log",
+            "--script",
+            "res://tests/combat/autonomous_main_integration.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "autonomous-parse-autonomous_main_integration.log"
+        },
+        {
+          "step": "autonomous-main-startup",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/autonomous-main-startup.engine.log",
+            "res://scenes/combat/combat_autonomous_optin.tscn",
+            "--quit-after",
+            "120"
+          ],
+          "errors": [],
+          "log": "autonomous-main-startup.log"
+        },
+        {
+          "step": "autonomous-main-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/autonomous-main-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/combat/autonomous_main_integration.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/candidate94/autonomous-main-scenarios.json",
+            "--expect-autonomous-default"
+          ],
+          "errors": [],
+          "log": "autonomous-main-proof.log"
+        },
+        {
+          "step": "gameplay",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/gameplay.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/combat/queue_regression.gd"
+          ],
+          "errors": [],
+          "log": "gameplay.log"
+        },
+        {
+          "step": "invalid-actions",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/invalid-actions.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/combat/queue_regression.gd",
+            "--",
+            "--invalid-actions"
+          ],
+          "errors": [
+            "Combat Turn Flow: ไม่มี Action ถัดไปหลัง NPC",
+            "Combat Turn Flow: ลำดับ Action ไม่ถูกต้อง",
+            "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+            "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action",
+            "Combat Turn Flow: ยังไม่พร้อมเปลี่ยน Action"
+          ],
+          "log": "invalid-actions.log"
+        },
+        {
+          "step": "presentation-parse-combat_presentation_adapter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/presentation-parse-combat_presentation_adapter.engine.log",
+            "--script",
+            "res://scripts/combat/combat_presentation_adapter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "presentation-parse-combat_presentation_adapter.log"
+        },
+        {
+          "step": "presentation-parse-presentation_boundary",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/presentation-parse-presentation_boundary.engine.log",
+            "--script",
+            "res://tests/combat/presentation_boundary.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "presentation-parse-presentation_boundary.log"
+        },
+        {
+          "step": "presentation-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/presentation-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/combat/presentation_boundary.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/candidate94/presentation-traces.json"
+          ],
+          "errors": [],
+          "log": "presentation-proof.log"
+        },
+        {
+          "step": "parse-npc_decision_resolver",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/parse-npc_decision_resolver.engine.log",
+            "--script",
+            "res://scripts/npc/npc_decision_resolver.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-npc_decision_resolver.log"
+        },
+        {
+          "step": "parse-npc_proof_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/parse-npc_proof_encounter.engine.log",
+            "--script",
+            "res://scripts/npc/npc_proof_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-npc_proof_encounter.log"
+        },
+        {
+          "step": "parse-decision_effect_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/parse-decision_effect_proof.engine.log",
+            "--script",
+            "res://tests/npc/decision_effect_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-decision_effect_proof.log"
+        },
+        {
+          "step": "parse-npc_autonomy_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/parse-npc_autonomy_proof.engine.log",
+            "--script",
+            "res://scripts/npc/npc_autonomy_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-npc_autonomy_proof.log"
+        },
+        {
+          "step": "parse-playable_integration",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/parse-playable_integration.engine.log",
+            "--script",
+            "res://tests/npc/playable_integration.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-playable_integration.log"
+        },
+        {
+          "step": "npc-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/npc-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/npc/decision_effect_proof.gd"
+          ],
+          "errors": [],
+          "log": "npc-proof.log"
+        },
+        {
+          "step": "npc-playable-startup",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/npc-playable-startup.engine.log",
+            "res://scenes/npc/npc_autonomy_proof.tscn",
+            "--quit-after",
+            "120"
+          ],
+          "errors": [],
+          "log": "npc-playable-startup.log"
+        },
+        {
+          "step": "npc-playable",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/npc-playable.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/npc/playable_integration.gd"
+          ],
+          "errors": [],
+          "log": "npc-playable.log"
+        },
+        {
+          "step": "parse-actor_definition",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/parse-actor_definition.engine.log",
+            "--script",
+            "res://scripts/actors/actor_definition.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-actor_definition.log"
+        },
+        {
+          "step": "parse-actor_runtime_state",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/parse-actor_runtime_state.engine.log",
+            "--script",
+            "res://scripts/actors/actor_runtime_state.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-actor_runtime_state.log"
+        },
+        {
+          "step": "parse-actor_data_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/parse-actor_data_proof.engine.log",
+            "--script",
+            "res://tests/actors/actor_data_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-actor_data_proof.log"
+        },
+        {
+          "step": "actor-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/actor-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/actor_data_proof.gd"
+          ],
+          "errors": [],
+          "log": "actor-proof.log"
+        },
+        {
+          "step": "parse-actor_ownership_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/parse-actor_ownership_proof.engine.log",
+            "--script",
+            "res://tests/actors/actor_ownership_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "parse-actor_ownership_proof.log"
+        },
+        {
+          "step": "ownership-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/ownership-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/actor_ownership_proof.gd"
+          ],
+          "errors": [],
+          "log": "ownership-proof.log"
+        },
+        {
+          "step": "party-parse-actor_definition",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/party-parse-actor_definition.engine.log",
+            "--script",
+            "res://scripts/actors/actor_definition.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "party-parse-actor_definition.log"
+        },
+        {
+          "step": "party-parse-actor_runtime_state",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/party-parse-actor_runtime_state.engine.log",
+            "--script",
+            "res://scripts/actors/actor_runtime_state.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "party-parse-actor_runtime_state.log"
+        },
+        {
+          "step": "party-parse-actor_registry",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/party-parse-actor_registry.engine.log",
+            "--script",
+            "res://scripts/actors/actor_registry.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "party-parse-actor_registry.log"
+        },
+        {
+          "step": "party-parse-full_party_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/party-parse-full_party_encounter.engine.log",
+            "--script",
+            "res://scripts/combat/full_party_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "party-parse-full_party_encounter.log"
+        },
+        {
+          "step": "party-parse-party_foundation_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/party-parse-party_foundation_proof.engine.log",
+            "--script",
+            "res://tests/actors/party_foundation_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "party-parse-party_foundation_proof.log"
+        },
+        {
+          "step": "party-foundation-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/party-foundation-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/party_foundation_proof.gd"
+          ],
+          "errors": [],
+          "log": "party-foundation-proof.log"
+        },
+        {
+          "step": "turn-parse-npc_decision_resolver",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/turn-parse-npc_decision_resolver.engine.log",
+            "--script",
+            "res://scripts/npc/npc_decision_resolver.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "turn-parse-npc_decision_resolver.log"
+        },
+        {
+          "step": "turn-parse-full_party_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/turn-parse-full_party_encounter.engine.log",
+            "--script",
+            "res://scripts/combat/full_party_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "turn-parse-full_party_encounter.log"
+        },
+        {
+          "step": "turn-parse-party_turn_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/turn-parse-party_turn_proof.engine.log",
+            "--script",
+            "res://tests/actors/party_turn_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "turn-parse-party_turn_proof.log"
+        },
+        {
+          "step": "party-turn-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/party-turn-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/party_turn_proof.gd"
+          ],
+          "errors": [],
+          "log": "party-turn-proof.log"
+        },
+        {
+          "step": "playable-parse-full_party_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/playable-parse-full_party_proof.engine.log",
+            "--script",
+            "res://scripts/combat/full_party_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "playable-parse-full_party_proof.log"
+        },
+        {
+          "step": "playable-parse-party_playable_integration",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/playable-parse-party_playable_integration.engine.log",
+            "--script",
+            "res://tests/combat/party_playable_integration.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "playable-parse-party_playable_integration.log"
+        },
+        {
+          "step": "party-playable-startup",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/party-playable-startup.engine.log",
+            "res://scenes/combat/full_party_proof.tscn",
+            "--quit-after",
+            "120"
+          ],
+          "errors": [],
+          "log": "party-playable-startup.log"
+        },
+        {
+          "step": "party-playable-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/party-playable-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/combat/party_playable_integration.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/candidate94/party-playable-scenarios.json"
+          ],
+          "errors": [],
+          "log": "party-playable-proof.log"
+        },
+        {
+          "step": "guidance-parse-guidance_data_contract",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/guidance-parse-guidance_data_contract.engine.log",
+            "--script",
+            "res://scripts/npc/guidance_data_contract.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "guidance-parse-guidance_data_contract.log"
+        },
+        {
+          "step": "guidance-parse-full_party_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/guidance-parse-full_party_encounter.engine.log",
+            "--script",
+            "res://scripts/combat/full_party_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "guidance-parse-full_party_encounter.log"
+        },
+        {
+          "step": "guidance-parse-guidance_data_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/guidance-parse-guidance_data_proof.engine.log",
+            "--script",
+            "res://tests/npc/guidance_data_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "guidance-parse-guidance_data_proof.log"
+        },
+        {
+          "step": "guidance-data-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/guidance-data-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/npc/guidance_data_proof.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/candidate94/guidance-data-scenarios.json"
+          ],
+          "errors": [],
+          "log": "guidance-data-proof.log"
+        },
+        {
+          "step": "guided-parse-guidance_decision_layer",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/guided-parse-guidance_decision_layer.engine.log",
+            "--script",
+            "res://scripts/npc/guidance_decision_layer.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "guided-parse-guidance_decision_layer.log"
+        },
+        {
+          "step": "guided-parse-guided_decision_proof_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/guided-parse-guided_decision_proof_encounter.engine.log",
+            "--script",
+            "res://scripts/npc/guided_decision_proof_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "guided-parse-guided_decision_proof_encounter.log"
+        },
+        {
+          "step": "guided-parse-guidance_decision_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/guided-parse-guidance_decision_proof.engine.log",
+            "--script",
+            "res://tests/npc/guidance_decision_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "guided-parse-guidance_decision_proof.log"
+        },
+        {
+          "step": "guidance-decision-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/guidance-decision-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/npc/guidance_decision_proof.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/candidate94/guidance-decision-scenarios.json"
+          ],
+          "errors": [],
+          "log": "guidance-decision-proof.log"
+        },
+        {
+          "step": "guidance-main-parse-guided_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/guidance-main-parse-guided_encounter.engine.log",
+            "--script",
+            "res://scripts/combat/guided_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "guidance-main-parse-guided_encounter.log"
+        },
+        {
+          "step": "guidance-main-parse-guidance_messages",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/guidance-main-parse-guidance_messages.engine.log",
+            "--script",
+            "res://scripts/combat/guidance_messages.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "guidance-main-parse-guidance_messages.log"
+        },
+        {
+          "step": "guidance-main-parse-guidance_main_integration",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/guidance-main-parse-guidance_main_integration.engine.log",
+            "--script",
+            "res://tests/combat/guidance_main_integration.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "guidance-main-parse-guidance_main_integration.log"
+        },
+        {
+          "step": "guidance-main-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/guidance-main-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/combat/guidance_main_integration.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/candidate94/guidance-main-scenarios.json"
+          ],
+          "errors": [],
+          "log": "guidance-main-proof.log"
+        },
+        {
+          "step": "m4-parse-isolated_actor_state",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m4-parse-isolated_actor_state.engine.log",
+            "--script",
+            "res://scripts/m4/isolated_actor_state.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m4-parse-isolated_actor_state.log"
+        },
+        {
+          "step": "m4-parse-isolated_registry",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m4-parse-isolated_registry.engine.log",
+            "--script",
+            "res://scripts/m4/isolated_registry.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m4-parse-isolated_registry.log"
+        },
+        {
+          "step": "m4-parse-isolated_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m4-parse-isolated_encounter.engine.log",
+            "--script",
+            "res://scripts/m4/isolated_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m4-parse-isolated_encounter.log"
+        },
+        {
+          "step": "m4-parse-m4_data_state_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m4-parse-m4_data_state_proof.engine.log",
+            "--script",
+            "res://tests/actors/m4_data_state_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m4-parse-m4_data_state_proof.log"
+        },
+        {
+          "step": "m4-data-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m4-data-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/m4_data_state_proof.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/candidate94/m4-data-scenarios.json"
+          ],
+          "errors": [],
+          "log": "m4-data-proof.log"
+        },
+        {
+          "step": "m402-parse-isolated_rescue_clock_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m402-parse-isolated_rescue_clock_encounter.engine.log",
+            "--script",
+            "res://scripts/m4/isolated_rescue_clock_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m402-parse-isolated_rescue_clock_encounter.log"
+        },
+        {
+          "step": "m402-parse-m4_02_diagnostic_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m402-parse-m4_02_diagnostic_encounter.engine.log",
+            "--script",
+            "res://tests/actors/m4_02_diagnostic_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m402-parse-m4_02_diagnostic_encounter.log"
+        },
+        {
+          "step": "m402-parse-m4_02_atomic_effect_clock_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m402-parse-m4_02_atomic_effect_clock_proof.engine.log",
+            "--script",
+            "res://tests/actors/m4_02_atomic_effect_clock_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m402-parse-m4_02_atomic_effect_clock_proof.log"
+        },
+        {
+          "step": "m4-atomic-clock-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m4-atomic-clock-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/m4_02_atomic_effect_clock_proof.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/candidate94/m4-02-scenarios.json"
+          ],
+          "errors": [],
+          "log": "m4-atomic-clock-proof.log"
+        },
+        {
+          "step": "m403a-parse-m403_queue_adapter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m403a-parse-m403_queue_adapter.engine.log",
+            "--script",
+            "res://scripts/m4/m403_queue_adapter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403a-parse-m403_queue_adapter.log"
+        },
+        {
+          "step": "m403a-parse-isolated_queue_outcome_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m403a-parse-isolated_queue_outcome_encounter.engine.log",
+            "--script",
+            "res://scripts/m4/isolated_queue_outcome_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403a-parse-isolated_queue_outcome_encounter.log"
+        },
+        {
+          "step": "m403a-parse-m4_03_queue_foundation_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m403a-parse-m4_03_queue_foundation_proof.engine.log",
+            "--script",
+            "res://tests/actors/m4_03_queue_foundation_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403a-parse-m4_03_queue_foundation_proof.log"
+        },
+        {
+          "step": "m4-queue-foundation-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m4-queue-foundation-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/m4_03_queue_foundation_proof.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/candidate94/m4-03a-scenarios.json"
+          ],
+          "errors": [],
+          "log": "m4-queue-foundation-proof.log"
+        },
+        {
+          "step": "m403b-parse-m403_effect_candidates",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m403b-parse-m403_effect_candidates.engine.log",
+            "--script",
+            "res://scripts/m4/m403_effect_candidates.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403b-parse-m403_effect_candidates.log"
+        },
+        {
+          "step": "m403b-parse-m403_queue_adapter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m403b-parse-m403_queue_adapter.engine.log",
+            "--script",
+            "res://scripts/m4/m403_queue_adapter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403b-parse-m403_queue_adapter.log"
+        },
+        {
+          "step": "m403b-parse-isolated_queue_outcome_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m403b-parse-isolated_queue_outcome_encounter.engine.log",
+            "--script",
+            "res://scripts/m4/isolated_queue_outcome_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403b-parse-isolated_queue_outcome_encounter.log"
+        },
+        {
+          "step": "m403b-parse-m4_03_retreat_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m403b-parse-m4_03_retreat_proof.engine.log",
+            "--script",
+            "res://tests/actors/m4_03_retreat_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403b-parse-m4_03_retreat_proof.log"
+        },
+        {
+          "step": "m4-retreat-transaction-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m4-retreat-transaction-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/m4_03_retreat_proof.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/candidate94/m4-03b-scenarios.json"
+          ],
+          "errors": [],
+          "log": "m4-retreat-transaction-proof.log"
+        },
+        {
+          "step": "m403c-parse-m403_outcome_classifier",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m403c-parse-m403_outcome_classifier.engine.log",
+            "--script",
+            "res://scripts/m4/m403_outcome_classifier.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403c-parse-m403_outcome_classifier.log"
+        },
+        {
+          "step": "m403c-parse-m403_summary",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m403c-parse-m403_summary.engine.log",
+            "--script",
+            "res://scripts/m4/m403_summary.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403c-parse-m403_summary.log"
+        },
+        {
+          "step": "m403c-parse-m403_terminal_rules",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m403c-parse-m403_terminal_rules.engine.log",
+            "--script",
+            "res://scripts/m4/m403_terminal_rules.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403c-parse-m403_terminal_rules.log"
+        },
+        {
+          "step": "m403c-parse-m403_terminal_encounter",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m403c-parse-m403_terminal_encounter.engine.log",
+            "--script",
+            "res://scripts/m4/m403_terminal_encounter.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403c-parse-m403_terminal_encounter.log"
+        },
+        {
+          "step": "m403c-parse-m4_03_outcome_summary_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m403c-parse-m4_03_outcome_summary_proof.engine.log",
+            "--script",
+            "res://tests/actors/m4_03_outcome_summary_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m403c-parse-m4_03_outcome_summary_proof.log"
+        },
+        {
+          "step": "m4-outcome-summary-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m4-outcome-summary-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/m4_03_outcome_summary_proof.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/candidate94/m4-03c-scenarios.json"
+          ],
+          "errors": [],
+          "log": "m4-outcome-summary-proof.log"
+        },
+        {
+          "step": "m404-parse-m404_decision_context",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m404-parse-m404_decision_context.engine.log",
+            "--script",
+            "res://scripts/m4/m404_decision_context.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m404-parse-m404_decision_context.log"
+        },
+        {
+          "step": "m404-parse-m404_episode_order_projection",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m404-parse-m404_episode_order_projection.engine.log",
+            "--script",
+            "res://scripts/m4/m404_episode_order_projection.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m404-parse-m404_episode_order_projection.log"
+        },
+        {
+          "step": "m404-parse-m404_autonomous_decision_policy",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m404-parse-m404_autonomous_decision_policy.engine.log",
+            "--script",
+            "res://scripts/m4/m404_autonomous_decision_policy.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m404-parse-m404_autonomous_decision_policy.log"
+        },
+        {
+          "step": "m404-parse-m404_decision_facade",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m404-parse-m404_decision_facade.engine.log",
+            "--script",
+            "res://scripts/m4/m404_decision_facade.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m404-parse-m404_decision_facade.log"
+        },
+        {
+          "step": "m404-parse-m4_04_autonomous_decision_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m404-parse-m4_04_autonomous_decision_proof.engine.log",
+            "--script",
+            "res://tests/actors/m4_04_autonomous_decision_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "m404-parse-m4_04_autonomous_decision_proof.log"
+        },
+        {
+          "step": "m4-autonomous-decision-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/m4-autonomous-decision-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/actors/m4_04_autonomous_decision_proof.gd",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/candidate94/m4-04-scenarios.json"
+          ],
+          "errors": [],
+          "log": "m4-autonomous-decision-proof.log"
+        },
+        {
+          "step": "cutover-parse-main_cutover_proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/cutover-parse-main_cutover_proof.engine.log",
+            "--script",
+            "res://tests/combat/main_cutover_proof.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "cutover-parse-main_cutover_proof.log"
+        },
+        {
+          "step": "cutover-parse-main_cutover_startup_probe",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/cutover-parse-main_cutover_startup_probe.engine.log",
+            "--script",
+            "res://tests/combat/main_cutover_startup_probe.gd",
+            "--check-only"
+          ],
+          "errors": [],
+          "log": "cutover-parse-main_cutover_startup_probe.log"
+        },
+        {
+          "step": "main-cutover-proof",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/main-cutover-proof.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/combat/main_cutover_proof.gd",
+            "--",
+            "--expect-autonomous-default",
+            "--report=/private/tmp/wanderer-b4-verification/candidate94/main-cutover-scenarios.json"
+          ],
+          "errors": [],
+          "log": "main-cutover-proof.log"
+        },
+        {
+          "step": "main-cutover-f5-startup",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/main-cutover-f5-startup.engine.log",
+            "--fixed-fps",
+            "60",
+            "--quit-after",
+            "120",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/candidate94/main-cutover-f5-startup.json"
+          ],
+          "errors": [],
+          "log": "main-cutover-f5-startup.log"
+        },
+        {
+          "step": "rollback-import",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/rollback-snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/rollback-import.engine.log",
+            "--editor",
+            "--import"
+          ],
+          "errors": [],
+          "log": "rollback-import.log"
+        },
+        {
+          "step": "rollback-f5-startup",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/rollback-snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/rollback-f5-startup.engine.log",
+            "--fixed-fps",
+            "60",
+            "--quit-after",
+            "120",
+            "--",
+            "--report=/private/tmp/wanderer-b4-verification/candidate94/rollback-f5-startup.json",
+            "--expect-legacy"
+          ],
+          "errors": [],
+          "log": "rollback-f5-startup.log"
+        },
+        {
+          "step": "rollback-gameplay",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "command": [
+            "/Applications/Godot.app/Contents/MacOS/Godot",
+            "--headless",
+            "--path",
+            "/private/tmp/wanderer-b4-verification/candidate94/rollback-snapshot",
+            "--log-file",
+            "/private/tmp/wanderer-b4-verification/candidate94/rollback-gameplay.engine.log",
+            "--fixed-fps",
+            "60",
+            "--script",
+            "res://tests/combat/queue_regression.gd"
+          ],
+          "errors": [],
+          "log": "rollback-gameplay.log"
+        },
+        {
+          "step": "cutover-release-gates",
+          "status": "PASS",
+          "exit_code": 0,
+          "timed_out": false,
+          "errors": [],
+          "command": [
+            "python:verify_cutover",
+            "/private/tmp/wanderer-b4-verification/reference44",
+            "/private/tmp/wanderer-b4-verification/candidate94"
+          ],
+          "log": "cutover-release-gates.log"
+        }
+      ]
+    }
+  },
+  "legacy": {
+    "cases": 6,
+    "frames": 5892,
+    "exact": true
+  },
+  "not_run": [
+    "GUI",
+    "keyboard",
+    "visual timing",
+    "performance §24.1",
+    "independent review"
+  ]
+}

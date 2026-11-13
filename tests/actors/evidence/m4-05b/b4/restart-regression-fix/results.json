@@ -1,0 +1,232 @@
+{
+  "godot_sha256": "c7cccbf8fb143e34e02fd6521e09be2c2b974f0d5db080b19071c9c570718ccf",
+  "stages": [
+    {
+      "stage": "version",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-m4-05b-b4-events-restart",
+        "--log-file",
+        "/private/tmp/wanderer-b4-fix-verification/version.engine.log",
+        "--version"
+      ],
+      "exit": 0,
+      "summary": "4.7.2.stable.official.ed1daf0bf",
+      "engine_errors": []
+    },
+    {
+      "stage": "import-candidate",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-m4-05b-b4-events-restart",
+        "--log-file",
+        "/private/tmp/wanderer-b4-fix-verification/import-candidate.engine.log",
+        "--editor",
+        "--import"
+      ],
+      "exit": 0,
+      "summary": "\u001b[0m",
+      "engine_errors": []
+    },
+    {
+      "stage": "candidate-smoke",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-m4-05b-b4-events-restart",
+        "--log-file",
+        "/private/tmp/wanderer-b4-fix-verification/candidate-smoke.engine.log",
+        "--script",
+        "/private/tmp/wanderer-b3-focused-final2/original-smoke.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b4-fix-verification/candidate-smoke.report.json"
+      ],
+      "exit": 0,
+      "summary": "B1 INITIAL PROOF: PASS checks=86",
+      "engine_errors": []
+    },
+    {
+      "stage": "candidate-expanded",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-m4-05b-b4-events-restart",
+        "--log-file",
+        "/private/tmp/wanderer-b4-fix-verification/candidate-expanded.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_authority_proof.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b4-fix-verification/candidate-expanded.report.json"
+      ],
+      "exit": 0,
+      "summary": "B1 INITIAL PROOF: PASS checks=97",
+      "engine_errors": []
+    },
+    {
+      "stage": "candidate-schema",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-m4-05b-b4-events-restart",
+        "--log-file",
+        "/private/tmp/wanderer-b4-fix-verification/candidate-schema.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_authority_proof.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b4-fix-verification/candidate-schema.report.json",
+        "--gate=D"
+      ],
+      "exit": 0,
+      "summary": "B1 INITIAL PROOF: PASS checks=1907",
+      "engine_errors": []
+    },
+    {
+      "stage": "candidate-transactions",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-m4-05b-b4-events-restart",
+        "--log-file",
+        "/private/tmp/wanderer-b4-fix-verification/candidate-transactions.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_authority_proof.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b4-fix-verification/candidate-transactions.report.json",
+        "--gate=E"
+      ],
+      "exit": 0,
+      "summary": "B1 INITIAL PROOF: PASS checks=354",
+      "engine_errors": []
+    },
+    {
+      "stage": "candidate-effects",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-m4-05b-b4-events-restart",
+        "--log-file",
+        "/private/tmp/wanderer-b4-fix-verification/candidate-effects.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_effect_proof.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b4-fix-verification/candidate-effects.report.json"
+      ],
+      "exit": 0,
+      "summary": "B2 EFFECT PROOF: PASS checks=1031 failures=0 deferred=7",
+      "engine_errors": []
+    },
+    {
+      "stage": "candidate-lifecycle",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-m4-05b-b4-events-restart",
+        "--log-file",
+        "/private/tmp/wanderer-b4-fix-verification/candidate-lifecycle.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_lifecycle_proof.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b4-fix-verification/candidate-lifecycle.report.json"
+      ],
+      "exit": 0,
+      "summary": "B3 LIFECYCLE PROOF: PASS checks=2507 failures=0 transactions=630",
+      "engine_errors": []
+    },
+    {
+      "stage": "parse-playable_encounter",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-m4-05b-b4-events-restart",
+        "--log-file",
+        "/private/tmp/wanderer-b4-fix-verification/parse-playable_encounter.engine.log",
+        "--check-only",
+        "--script",
+        "res://scripts/m4/playable_encounter.gd"
+      ],
+      "exit": 0,
+      "summary": "",
+      "engine_errors": []
+    },
+    {
+      "stage": "parse-playable_rules",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-m4-05b-b4-events-restart",
+        "--log-file",
+        "/private/tmp/wanderer-b4-fix-verification/parse-playable_rules.engine.log",
+        "--check-only",
+        "--script",
+        "res://scripts/m4/playable_rules.gd"
+      ],
+      "exit": 0,
+      "summary": "",
+      "engine_errors": []
+    },
+    {
+      "stage": "parse-playable_input_adapter",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-m4-05b-b4-events-restart",
+        "--log-file",
+        "/private/tmp/wanderer-b4-fix-verification/parse-playable_input_adapter.engine.log",
+        "--check-only",
+        "--script",
+        "res://scripts/m4/playable_input_adapter.gd"
+      ],
+      "exit": 0,
+      "summary": "",
+      "engine_errors": []
+    },
+    {
+      "stage": "parse-playable_presentation_projection",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-m4-05b-b4-events-restart",
+        "--log-file",
+        "/private/tmp/wanderer-b4-fix-verification/parse-playable_presentation_projection.engine.log",
+        "--check-only",
+        "--script",
+        "res://scripts/m4/playable_presentation_projection.gd"
+      ],
+      "exit": 0,
+      "summary": "",
+      "engine_errors": []
+    },
+    {
+      "stage": "b4-event",
+      "command": [
+        "/Applications/Godot.app/Contents/MacOS/Godot",
+        "--headless",
+        "--path",
+        "/private/tmp/wanderer-m4-05b-b4-events-restart",
+        "--log-file",
+        "/private/tmp/wanderer-b4-fix-verification/b4-event.engine.log",
+        "--script",
+        "res://tests/actors/m4_05_playable_event_proof.gd",
+        "--",
+        "--report=/private/tmp/wanderer-b4-fix-verification/b4-event.report.json"
+      ],
+      "exit": 0,
+      "summary": "B4 EVENT PROOF: checks=4238 failures=0 transactions=474 streams=28",
+      "engine_errors": []
+    }
+  ]
+}

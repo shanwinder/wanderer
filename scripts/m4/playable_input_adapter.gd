@@ -14,6 +14,9 @@ func command(request_id: String, action: String, target_id: String) -> Dictionar
 func guidance(request_id: String, request: Dictionary) -> Dictionary:
 	return _submit(request_id, "GUIDANCE", {"request": request.duplicate(true)})
 
+func restart(request_id: String, fixture_id: String, fixture_version: int) -> Dictionary:
+	return _submit(request_id, "RESTART", {"fixture_id": fixture_id, "fixture_version": fixture_version})
+
 func _submit(request_id: String, operation: String, payload: Dictionary) -> Dictionary:
 	var current: Dictionary = _owner.read_view()
 	if current.is_empty(): return {}
