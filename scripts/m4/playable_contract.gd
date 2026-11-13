@@ -77,6 +77,10 @@ static func schemas() -> Dictionary:
 	"Root": {"domain": ["M4_PLAYABLE"], "version": [1], "session": "session", "generation": "positive", "revision": "nonneg", "seed": "SeedReference", "phase": PHASES, "round_id": "positive", "closed_rounds": "nonneg", "party": "[]Party", "enemies": "[]Enemy", "guidance": "GuidanceView", "command": "?CommandState", "queue": "?QueueState", "declarations": "[]Hit", "actions": "[]ActionGrant", "receipts": "[]Receipt", "requests": "[]RequestRecord", "close": "?CloseHistory", "round_history": "[]RoundHistory", "outcome": "?Outcome", "diagnostic": "?S", "journal": "[]JournalEntry"}
 	}
 
+# Internal immutable schema table avoids rebuilding every record for every nested value.
+# schemas() still returns a fresh detached table to callers.
+static var _record_schemas: Dictionary = schemas()
+
 static func exact(value: Variant, fields: Array) -> bool:
 	return Data._fields(value, fields)
 
@@ -117,7 +121,7 @@ static func valid(spec: Variant, value: Variant) -> bool:
 			request.expected_guidance_revision = request.guidance_revision
 			request.erase("guidance_revision")
 			return Data.validate_request(request).is_empty()
-	var all: Dictionary = schemas()
+	var all: Dictionary = _record_schemas
 	if not all.has(spec) or not valid(all[spec], value): return false
 	# Named recursive records share these invariants at every nesting depth.
 	if spec in ["Bootstrap", "RestartPayload", "SeedReference"]:

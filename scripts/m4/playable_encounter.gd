@@ -10,6 +10,8 @@ var _factory_capability: RefCounted
 var _input_capability: RefCounted
 var _driver_capability: RefCounted
 var _presenter_capability: RefCounted
+var _fail_close_commit: bool = false
+var _close_failure: Dictionary = {} # E5 host diagnostic, never combat state.
 var _fail_before_publish: bool = false # Host fault probe; never combat state/import.
 
 func _init(factory: RefCounted, input: RefCounted, driver: RefCounted, presenter: RefCounted) -> void:
@@ -58,6 +60,7 @@ func transact(request: Variant, capability: Variant) -> Dictionary:
 	if request.identity.generation != _root.generation: return Rules.response(_root, "REJECTED", "STALE_GENERATION")
 	var expected: Variant = {"INPUT": _input_capability, "DRIVER": _driver_capability, "PRESENTER": _presenter_capability}[request.issuer]
 	if capability == null or capability != expected: return Rules.response(_root, "REJECTED", "UNAUTHORIZED")
+	if request.operation == "CLOSE_ROUND": return _close_round(request)
 	var prior_revision: int = _root.revision
 	var result: Dictionary = Rules.step(_root, request)
 	if result.root.is_empty(): return result.response.duplicate(true)
@@ -74,3 +77,33 @@ func transact(request: Variant, capability: Variant) -> Dictionary:
 
 func _candidate_valid(request: Dictionary, result: Dictionary) -> bool:
 	return Rules.candidate_valid(_root, request, result) and Rules.root_valid(result.root)
+
+func inject_failure_before_close_commit(capability: Variant) -> bool:
+	if capability == null or capability != _driver_capability: return false
+	_fail_close_commit = true
+	return true
+
+func close_failure_diagnostic() -> Dictionary:
+	return _close_failure.duplicate(true)
+
+func _close_round(request: Dictionary) -> Dictionary:
+	for kind in ["SEAL", "COMMIT_CLOSE"]:
+		var prior_revision: int = _root.revision
+		var result: Dictionary = Rules.close_step(_root, request, kind)
+		if result.root.is_empty():
+			if kind == "COMMIT_CLOSE":
+				_close_failure = {"stage": kind, "reason": result.response.reason, "root": snapshot()}
+			return result.response.duplicate(true)
+		var valid: bool = (C.response_valid(kind, result.response) and result == Rules.close_step(_root, request, kind)
+			and Rules.root_valid(result.root) and _root.revision == prior_revision)
+		var fault: bool = _fail_before_publish or (kind == "COMMIT_CLOSE" and _fail_close_commit)
+		if fault:
+			_fail_before_publish = false
+			if kind == "COMMIT_CLOSE": _fail_close_commit = false
+		if not valid or fault:
+			if kind == "COMMIT_CLOSE":
+				_close_failure = {"stage": kind, "reason": "M405_CLOSE_FAILED", "root": snapshot()}
+			return Rules.response(_root, "REJECTED", "CLOSE_FAILED" if kind == "COMMIT_CLOSE" else "INVALID_CANDIDATE")
+		_root = result.root # Same single authority; each genuine internal revision publishes once.
+		if kind == "COMMIT_CLOSE": return result.response.duplicate(true)
+	return Rules.response(_root, "REJECTED", "CLOSE_FAILED")

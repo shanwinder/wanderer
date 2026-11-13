@@ -1,0 +1,40 @@
+[
+  {
+    "number": 62,
+    "merged": true,
+    "merge_commit_sha": "144d93bbba4f6a054b2a2189d29a01fcd5fce926",
+    "head": "codex/m4-05b-b2-runtime-help-guard",
+    "head_sha": "7794c526883f29d7ed54cf41f58105b51936d8d1",
+    "url": "https://github.com/shanwinder/wanderer/pull/62"
+  },
+  {
+    "number": 63,
+    "merged": true,
+    "merge_commit_sha": "6bb7fddf787199fcd43f2759743c65b40670a51a",
+    "head": "codex/hybrid-ai-skills-integration",
+    "head_sha": "360bf123e50ffa5de5ac0244c18d100470d9fb45",
+    "url": "https://github.com/shanwinder/wanderer/pull/63"
+  },
+  {
+    "number": 64,
+    "merged": true,
+    "merge_commit_sha": "7f2e3807f18c91416c8380c5b3369711c65cdc5a",
+    "head": "codex/m4-05b-b3-command-guidance-lifecycle",
+    "head_sha": "e58afcfef4828b2a08a647ec58afed67dbc5ee9e",
+    "url": "https://github.com/shanwinder/wanderer/pull/64"
+  },
+  {
+    "open_prs": [
+      {
+        "number": 17,
+        "url": "https://github.com/shanwinder/wanderer/pull/17",
+        "title": "feat(combat): M1.5E-01 compact attack projectile timed to impact"
+      },
+      {
+        "number": 2,
+        "url": "https://github.com/shanwinder/wanderer/pull/2",
+        "title": "docs: consolidate Wanderer design, RPG management and learning roadmap"
+      }
+    ]
+  }
+]

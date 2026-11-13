@@ -5,6 +5,7 @@ const C = preload("res://scripts/m4/playable_contract.gd")
 const Catalog = preload("res://scripts/m4/playable_fixture_catalog.gd")
 const Adapter = preload("res://scripts/m4/playable_decision_adapter.gd")
 const EffectRules = preload("res://scripts/m4/playable_effect_rules.gd")
+const Guidance = preload("res://scripts/m4/playable_guidance_adapter.gd")
 const MAX_COUNTER: int = 9223372036854775807
 
 static func identity(r: Dictionary) -> Dictionary:
@@ -58,8 +59,8 @@ static func view(r: Dictionary) -> Dictionary:
 		"queue_id": null if r.queue == null else r.queue.queue_id,
 		"command_ready": r.phase == "PREPARED" and r.outcome == null and r.closed_rounds < 6 and classify(r).result == "ACTIVE" and r.party[0].eligible and not accepted,
 		"has_accepted_fresh_command": accepted, "guidance": r.guidance.duplicate(true), "party": r.party.duplicate(true),
-		"enemies": r.enemies.duplicate(true), "decision": null, "outcome": r.outcome.duplicate(true) if r.outcome != null else null,
-		"diagnostic": r.diagnostic, "active_token": a.token.duplicate(true) if not a.is_empty() else null, "boundary_changes": null}
+		"enemies": r.enemies.duplicate(true), "decision": locked_decision(r), "outcome": r.outcome.duplicate(true) if r.outcome != null else null,
+		"diagnostic": r.diagnostic, "active_token": a.token.duplicate(true) if not a.is_empty() else null, "boundary_changes": boundary_changes(r)}
 
 static func response(r: Dictionary, status: String, reason: String, token: Variant = null, effect: Variant = null, receipt: Variant = null) -> Dictionary:
 	return {"domain": "M4_PLAYABLE", "version": 1, "status": status, "reason": "M405_" + reason,
@@ -117,6 +118,10 @@ static func gate(r: Dictionary, req: Variant) -> String:
 	if req.identity.round_id != r.round_id: return "WRONG_ROUND"
 	if req.queue_id != (null if r.queue == null else r.queue.queue_id): return "WRONG_QUEUE"
 	if r.phase == "SEALED" and req.operation == "RESTART": return "SEALED_RESTART"
+	if r.phase == "TERMINAL" and req.operation not in ["COMPLETE", "RESTART"]: return "TERMINAL"
+	if req.operation == "CLOSE_ROUND":
+		if r.phase != "OPEN" or r.queue == null or r.queue.phase != "DRAINED" or not active_grant(r).is_empty(): return "INVALID_PHASE"
+		if classify(r).result != "ACTIVE": return "TERMINAL"
 	if req.operation in ["COMMAND", "GUIDANCE"]:
 		if r.phase != "PREPARED" or not view(r).command_ready: return "COMMAND_LOCKED"
 	elif req.operation == "ADMIT":
@@ -142,12 +147,21 @@ static func freeze(r: Dictionary) -> void:
 	r.outcome = {"outcome_id": "%s/outcome/%s" % [prefix(r), r.revision], "freeze_revision": r.revision,
 		"result": result.result, "reason": result.reason, "party": party, "enemies": enemies}
 	r.phase = "TERMINAL"
-	# B1 terminal seeds have no queue. Action-caused full terminal settlement is B4.
+	r.guidance.pending = null
+	r.guidance.active = null
+	if r.queue != null:
+		for i in range(r.queue.cursor + 1, r.queue.opportunities.size()):
+			r.queue.dispositions.append(disposition(r.queue.opportunities[i], "TERMINAL_STOP", null, r.revision))
 
 static func dispose(r: Dictionary, kind: String, action_id: Variant) -> void:
 	var s: Dictionary = slot(r)
-	r.queue.dispositions.append({"opportunity_id": s.opportunity_id, "slot_id": s.slot_id, "actor_id": s.actor_id,
-		"kind": kind, "action_id": action_id, "observed_revision": r.revision})
+	var row: Dictionary = disposition(s, kind, action_id, r.revision)
+	if r.phase == "TERMINAL":
+		r.queue.dispositions.insert(r.queue.cursor, row)
+		r.queue.cursor = r.queue.opportunities.size()
+		r.queue.phase = "STOPPED"
+		return
+	r.queue.dispositions.append(row)
 	r.queue.cursor += 1
 	r.queue.phase = "DRAINED" if r.queue.cursor == r.queue.opportunities.size() else "READY"
 
@@ -159,10 +173,20 @@ static func apply(r: Dictionary, req: Dictionary) -> Dictionary:
 	var receipt: Variant = null
 	var status: String = "APPLIED"
 	var reason: String = ""
-	if op in ["GUIDANCE", "CLOSE_ROUND", "RESTART"]:
-		# B3/B4 explicit boundary. No imitation lifecycle publication or receipt.
+	if op in ["CLOSE_ROUND", "RESTART"]:
+		# Close uses two internal publications; Restart remains B4.
 		return response(r, "REJECTED", "INVALID_PHASE")
-	if op == "COMMAND":
+	if op == "GUIDANCE":
+		var invalid: String = Guidance.rejection(r, req.payload.request)
+		if not invalid.is_empty():
+			var rejected: Dictionary = response(r, "REJECTED", "GUIDANCE_REJECTED")
+			rejected.guidance_reason = invalid
+			return rejected
+		if r.guidance.guidance_revision == MAX_COUNTER: return response(r, "REJECTED", "COUNTER_OVERFLOW")
+		r.guidance.guidance_revision += 1
+		r.guidance.pending = Guidance.record(r, req.payload.request.guidance_type, req.payload.request.preferred_target_id)
+		status = "ACCEPTED"; reason = "GUIDANCE_ACCEPTED"
+	elif op == "COMMAND":
 		var p: Dictionary = req.payload
 		if p.actor_id != "player": return response(r, "REJECTED", "UNAUTHORIZED")
 		if (p.action == "DEFEND" and p.target_id != "player") or (p.action == "ATTACK" and p.target_id not in Catalog.ENEMIES): return response(r, "REJECTED", "INVALID_TARGET")
@@ -184,17 +208,17 @@ static func apply(r: Dictionary, req: Dictionary) -> Dictionary:
 		r.phase = "OPEN"
 		for e in r.enemies:
 			if e.available: r.declarations.append({"actor_id": e.actor_id, "target_id": weakest(r), "damage": 3})
-		r.guidance.active = {"guidance_type": "NONE", "issuer_player_id": "player", "preferred_target_id": "",
-			"encounter_id": r.session, "generation": r.generation, "round_id": r.round_id, "guidance_revision": 0}
+		r.guidance.active = r.guidance.pending.duplicate(true) if r.party[0].eligible and r.guidance.pending != null else Guidance.record(r)
 		r.guidance.pending = null
 		reason = "ROUND_ADMITTED"
 	elif op == "ADVANCE":
 		var s: Dictionary = slot(r)
 		var p: Dictionary = actor(r, s.actor_id)
-		if p.get("eligible", p.get("available", false)):
+		var eligible: bool = p.get("eligible", p.get("available", false))
+		if eligible and not (s.actor_id == "player" and r.command == null):
 			return response(r, "READY", "SLOT_READY")
 		r.revision += 1
-		dispose(r, "UNAVAILABLE", null)
+		dispose(r, "NO_PLAYER_COMMAND" if eligible else "UNAVAILABLE", null)
 		return response(r, "APPLIED", "SLOT_DISPOSED")
 	elif op in ["PLAYER_LOCK", "ENEMY_LOCK", "DECIDE_LOCK"]:
 		var s: Dictionary = slot(r)
@@ -236,16 +260,11 @@ static func apply(r: Dictionary, req: Dictionary) -> Dictionary:
 		var a: Dictionary = active_grant(r)
 		token = a.token
 		if op == "IMPACT":
-			if token.kind not in ["ATTACK", "HELP", "DEFEND"]:
-				return response(r, "REJECTED", "INVALID_PHASE")
 			var projection: Dictionary = EffectRules.project(r, token)
 			if projection.is_empty(): return response(r, "REJECTED", "INVALID_TARGET")
 			r.party = projection.party
 			r.enemies = projection.enemies
 			effect = projection.effect
-			# Action-caused terminal settlement remains outside this proof.
-			if effect.status == "APPLIED" and classify(r).result != "ACTIVE":
-				return response(r, "REJECTED", "INVALID_PHASE")
 			a.phase = effect.status
 			a.effect = effect.duplicate(true)
 			a.impact_revision = r.revision + 1
@@ -266,6 +285,7 @@ static func apply(r: Dictionary, req: Dictionary) -> Dictionary:
 			return response(r, "APPLIED", "ACTION_CANCELLED")
 	else: return response(r, "REJECTED", "INVALID_PHASE")
 	r.revision += 1
+	if op == "IMPACT" and effect.status == "APPLIED": freeze(r)
 	return response(r, status, reason, token, effect, receipt)
 
 static func step(prior: Dictionary, req: Variant) -> Dictionary:
@@ -319,11 +339,15 @@ static func replay(seed: Dictionary, session: int, generation: int, journal: Var
 	var r: Dictionary = initial(seed.fixture_id, session, generation, seed.fixture_version)
 	if r.is_empty(): return {}
 	for entry in journal:
-		# Internal SEAL/COMMIT_CLOSE are distinct reserved history kinds, deferred B3/B4.
-		# Never turn them into external Request or fabricate close progress.
-		if entry.internal != null or entry.request == null or entry.operation != entry.request.operation: return {}
-		var next: Dictionary = step(r, entry.request)
-		if next.root.is_empty() or not candidate_valid(r, entry.request, next) or next.root.journal.back() != entry: return {}
+		var next: Dictionary
+		if entry.internal != null:
+			next = close_step(r, entry.internal.origin, entry.operation)
+			if next.root.is_empty() or not C.response_valid(entry.operation, next.response): return {}
+		else:
+			if entry.request == null or entry.operation != entry.request.operation: return {}
+			next = step(r, entry.request)
+			if next.root.is_empty() or not candidate_valid(r, entry.request, next): return {}
+		if next.root.journal.back() != entry: return {}
 		r = next.root
 	return r
 
@@ -345,8 +369,137 @@ static func root_valid(r: Variant) -> bool:
 	if r.guidance.encounter_id != r.session or r.guidance.generation != r.generation or r.guidance.round_id != r.round_id or r.guidance.profiles != Catalog.content(r.seed.fixture_version).profiles: return false
 	if r.phase in ["OPEN", "SEALED"] and r.queue == null: return false
 	if r.queue != null:
-		if r.queue.opportunities.size() != 6 or r.queue.cursor > 6 or r.queue.dispositions.size() != r.queue.cursor: return false
+		if r.queue.opportunities.size() != 6 or r.queue.cursor > 6: return false
+		if not queue_relation_valid(r): return false
 		for i in range(6):
 			if r.queue.opportunities[i].actor_id != (Catalog.PARTY + Catalog.ENEMIES)[i]: return false
 	var rebuilt: Dictionary = replay(r.seed, r.session, r.generation, r.journal)
 	return not rebuilt.is_empty() and rebuilt == r
+
+static func disposition(opportunity: Dictionary, kind: String, action_id: Variant, revision: int) -> Dictionary:
+	return {"opportunity_id": opportunity.opportunity_id, "slot_id": opportunity.slot_id,
+		"actor_id": opportunity.actor_id, "kind": kind, "action_id": action_id, "observed_revision": revision}
+
+static func locked_decision(r: Dictionary) -> Variant:
+	var grant: Dictionary = active_grant(r)
+	if grant.is_empty(): return null
+	for entry in r.journal:
+		if entry.operation == "DECIDE_LOCK" and entry.request.request_id == grant.token.request_id:
+			return Adapter.decide(entry.request.payload.observation)
+	return null
+
+static func boundary_changes(r: Dictionary) -> Variant:
+	if r.journal.is_empty() or r.journal.back().operation != "COMMIT_CLOSE": return null
+	return r.round_history.back().close.changes.duplicate(true)
+
+static func queue_relation_valid(r: Dictionary) -> bool:
+	var q: Dictionary = r.queue
+	var grant: Dictionary = active_grant(r)
+	if r.phase == "TERMINAL" and q.phase == "WAIT_ACTION":
+		if r.outcome == null or grant.is_empty() or grant.phase != "APPLIED": return false
+		if grant.impact_revision != r.outcome.freeze_revision or q.cursor >= 6 or q.dispositions.size() != 5: return false
+		if grant.token.opportunity_id != q.opportunities[q.cursor].opportunity_id: return false
+		for i in range(6):
+			if i == q.cursor: continue
+			var d: Dictionary = q.dispositions[i if i < q.cursor else i - 1]
+			var opportunity: Dictionary = q.opportunities[i]
+			if d.opportunity_id != opportunity.opportunity_id or d.actor_id != opportunity.actor_id or d.slot_id != opportunity.slot_id: return false
+			if i > q.cursor and d != disposition(opportunity, "TERMINAL_STOP", null, r.outcome.freeze_revision): return false
+		return true
+	if r.phase == "TERMINAL" and (q.phase != "STOPPED" or q.cursor != 6 or not grant.is_empty()): return false
+	if q.dispositions.size() != q.cursor: return false
+	for i in range(q.cursor):
+		var d: Dictionary = q.dispositions[i]
+		var opportunity: Dictionary = q.opportunities[i]
+		if d.opportunity_id != opportunity.opportunity_id or d.actor_id != opportunity.actor_id or d.slot_id != opportunity.slot_id: return false
+		if r.phase != "TERMINAL" and d.kind == "TERMINAL_STOP": return false
+	return true
+
+static func close_step(prior: Dictionary, origin: Dictionary, kind: String) -> Dictionary:
+	# Pure internal producer. External callers cannot submit SEAL/COMMIT_CLOSE.
+	var rejection: String = ""
+	if kind == "SEAL":
+		rejection = gate(prior, origin)
+		if rejection.is_empty() and origin.operation != "CLOSE_ROUND": rejection = "INVALID_PHASE"
+		if rejection.is_empty():
+			var progress: bool = false
+			for receipt in prior.receipts:
+				if receipt.queue_id == prior.queue.queue_id: progress = true
+			if not progress: rejection = "NO_REAL_PROGRESS"
+	elif kind == "COMMIT_CLOSE":
+		if prior.phase != "SEALED" or prior.close == null or prior.close.consumed or prior.journal.is_empty(): rejection = "INVALID_PHASE"
+		elif prior.journal.back().operation != "SEAL" or prior.journal.back().internal.origin != origin: rejection = "INVALID_BINDING"
+	else: rejection = "INVALID_PHASE"
+	if not rejection.is_empty(): return {"root": {}, "response": response(prior, "REJECTED", rejection)}
+	if prior.revision == MAX_COUNTER: return {"root": {}, "response": response(prior, "REJECTED", "COUNTER_OVERFLOW")}
+	var r: Dictionary = prior.duplicate(true)
+	r.revision += 1
+	var status: String = "AUTHORIZED"
+	var reason: String = "ROUND_SEALED"
+	var internal: Dictionary
+	if kind == "SEAL":
+		var expected: Array = []
+		var receipt_ids: Array = []
+		for opportunity in r.queue.opportunities: expected.append(opportunity.opportunity_id)
+		for receipt in r.receipts:
+			if receipt.queue_id == r.queue.queue_id: receipt_ids.append(receipt.receipt_id)
+		var witness: Dictionary = {"session": r.session, "generation": r.generation, "round_id": r.round_id,
+			"queue_id": r.queue.queue_id, "witness_id": r.queue.queue_id + "/witness", "expected_opportunities": expected,
+			"receipt_ids": receipt_ids, "dispositions": r.queue.dispositions.duplicate(true), "outstanding": 0, "sealed_revision": r.revision}
+		var event: Dictionary = {"domain": "M4_PLAYABLE", "version": 1, "session": r.session, "generation": r.generation,
+			"round_id": r.round_id, "queue_id": r.queue.queue_id, "event_id": r.queue.queue_id + "/close",
+			"witness_id": witness.witness_id, "sealed_revision": r.revision, "authorization_id": r.queue.queue_id + "/close-authorization"}
+		r.close = {"witness": witness, "event": event, "consumed": false, "close_revision": null, "changes": null}
+		r.phase = "SEALED"
+		r.requests.append({"request_id": origin.request_id, "operation": "CLOSE_ROUND", "accepted_revision": r.revision, "result_status": "AUTHORIZED"})
+		internal = {"kind": kind, "witness": witness.duplicate(true), "event": event.duplicate(true), "origin": origin.duplicate(true)}
+	else:
+		internal = {"kind": kind, "witness": r.close.witness.duplicate(true), "event": r.close.event.duplicate(true), "origin": origin.duplicate(true)}
+		var changes: Dictionary = {"guards": [], "lifecycle": [], "clocks": []}
+		for p in r.party:
+			if p.guard != null:
+				changes.guards.append({"actor_id": p.actor_id, "before": p.guard.duplicate(true), "after": null, "cause": "ROUND_CLOSE"})
+				p.guard = null
+			if p.life != "DOWN": continue
+			var before: int = p.episode.budget
+			var clock_reason: String = "GRACE"
+			if p.episode.entry_round < r.round_id:
+				p.episode.budget -= 1
+				clock_reason = "TICK"
+				if p.episode.budget == 0:
+					clock_reason = "BLED_OUT"
+					p.life = "DEAD"
+					p.episode.active = false
+					changes.lifecycle.append({"actor_id": p.actor_id, "before_life": "DOWN", "after_life": "DEAD",
+						"before_participation": "PRESENT", "after_participation": "PRESENT"})
+			changes.clocks.append({"actor_id": p.actor_id, "episode_id": p.episode.episode_id,
+				"before_budget": before, "after_budget": p.episode.budget, "reason": clock_reason})
+		if classify(r).result != "ACTIVE": return {"root": {}, "response": response(prior, "REJECTED", "CLOSE_FAILED")}
+		r.close.consumed = true
+		r.close.close_revision = r.revision
+		r.close.changes = changes
+		r.round_history.append({"round_id": r.round_id, "queue": r.queue.duplicate(true),
+			"declarations": r.declarations.duplicate(true), "close": r.close.duplicate(true)})
+		r.closed_rounds += 1
+		r.command = null
+		r.guidance.active = null
+		if r.closed_rounds == r.seed.capacity:
+			r.phase = "CLOSED"
+			r.guidance.pending = null
+			r.diagnostic = "DEMO_LIMIT_REACHED"
+			status = "STOPPED"; reason = "DEMO_LIMIT_REACHED"
+		else:
+			r.phase = "PREPARED"
+			r.round_id += 1
+			r.queue = null
+			r.close = null
+			r.declarations.clear()
+			r.guidance.round_id = r.round_id
+			r.guidance.pending = Guidance.record(r)
+			status = "APPLIED"; reason = "ROUND_CLOSED"
+	var entry: Dictionary = {"sequence": r.journal.size() + 1, "operation": kind, "request": null,
+		"internal": internal, "pre_revision": prior.revision, "post_revision": r.revision, "result_digest": "pending"}
+	r.journal.append(entry)
+	var reply: Dictionary = response(r, status, reason)
+	entry.result_digest = Catalog.canonical(reply).sha256_text()
+	return {"root": r, "response": reply}

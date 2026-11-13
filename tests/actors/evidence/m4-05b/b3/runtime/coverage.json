@@ -1,0 +1,134 @@
+{
+  "status": "PASS",
+  "assertions": 2486,
+  "external_requests": 627,
+  "scenario_count": 8,
+  "scenarios": {
+    "victory": {
+      "assertions": 394,
+      "all_passed": true,
+      "categories": {
+        "REAL TRANSACTION": 354,
+        "REJECTION / READ": 15,
+        "REJECTION": 10,
+        "NEGATIVE REPLAY": 9,
+        "PURE SCHEMA": 6
+      }
+    },
+    "guard_terminal": {
+      "assertions": 410,
+      "all_passed": true,
+      "categories": {
+        "REAL TRANSACTION": 370,
+        "REJECTION / READ": 15,
+        "REJECTION": 10,
+        "NEGATIVE REPLAY": 9,
+        "PURE SCHEMA": 6
+      }
+    },
+    "six_closes": {
+      "assertions": 349,
+      "all_passed": true,
+      "categories": {
+        "REAL TRANSACTION": 347,
+        "REJECTION / READ": 2
+      }
+    },
+    "last_party_down": {
+      "assertions": 471,
+      "all_passed": true,
+      "categories": {
+        "REAL TRANSACTION": 431,
+        "REJECTION / READ": 15,
+        "REJECTION": 10,
+        "NEGATIVE REPLAY": 9,
+        "PURE SCHEMA": 6
+      }
+    },
+    "rescue_retreat": {
+      "assertions": 236,
+      "all_passed": true,
+      "categories": {
+        "REAL TRANSACTION": 235,
+        "REJECTION / READ": 1
+      }
+    },
+    "guidance": {
+      "assertions": 494,
+      "all_passed": true,
+      "categories": {
+        "REAL TRANSACTION": 452,
+        "REJECTION / READ": 32,
+        "REJECTION": 10
+      }
+    },
+    "failed_close": {
+      "assertions": 122,
+      "all_passed": true,
+      "categories": {
+        "REAL TRANSACTION": 117,
+        "REJECTION / READ": 4,
+        "FAILED COMPOUND CLOSE": 1
+      }
+    },
+    "classifier": {
+      "assertions": 10,
+      "all_passed": true,
+      "categories": {
+        "PURE CLASSIFIER DATA ONLY": 8,
+        "REAL TRANSACTION": 1,
+        "HARNESS": 1
+      }
+    }
+  },
+  "coverage_limits": [
+    {
+      "authority": "30.7",
+      "case": "Positive Last-Party RETREAT through real transactions",
+      "status": "DEFERRED — OWNER APPROVED"
+    },
+    {
+      "authority": "30.6; real UNAVAILABLE-before-RESCUE tested",
+      "case": "Positive NO_PLAYER_COMMAND after rescue before Player slot",
+      "status": "DEFERRED — OWNER APPROVED"
+    },
+    {
+      "case": "GUI/keyboard/visual/performance/Restart",
+      "scope": "B4/B5 or separate acceptance",
+      "status": "NOT RUN"
+    }
+  ],
+  "evidence": "logs-and-reports.zip: focused-final2/lifecycle.json; complete journals, frozen/settled roots, requests/responses, root digests and assertion labels",
+  "terminal_results": {
+    "victory": {
+      "outcome": "VICTORY",
+      "freeze_revision": 86,
+      "closed_rounds": 5,
+      "impact_queue": "WAIT_ACTION",
+      "complete_queue": "STOPPED",
+      "impact_receipts": 5,
+      "completion_receipts": 6,
+      "frozen_outcome_unchanged": true
+    },
+    "guard_terminal": {
+      "outcome": "VICTORY",
+      "freeze_revision": 91,
+      "closed_rounds": 5,
+      "impact_queue": "WAIT_ACTION",
+      "complete_queue": "STOPPED",
+      "impact_receipts": 7,
+      "completion_receipts": 8,
+      "frozen_outcome_unchanged": true
+    },
+    "last_party_down": {
+      "outcome": "DEFEAT",
+      "freeze_revision": 89,
+      "closed_rounds": 5,
+      "impact_queue": "WAIT_ACTION",
+      "complete_queue": "STOPPED",
+      "impact_receipts": 11,
+      "completion_receipts": 12,
+      "frozen_outcome_unchanged": true
+    }
+  }
+}
