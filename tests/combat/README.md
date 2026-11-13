@@ -1320,3 +1320,27 @@ R52-01 refresh: same Draft PR #52, tested source above, **115 C cases /6,054 ass
 Use `--m4-autonomous-decision-proof` for additive exact-schema/provenance/pure-policy/supported C transaction verification. [API, coverage and Thai learning notes](../actors/README.md#m4-04--isolated-autonomous-decision-proof), [actual engine/commits/complete commands/results/failure history](../actors/evidence/m4-04/run-record.json). Fresh canonical88/candidate94 stages; M404128cases/458assertions. Runner requires 128 unique sequential case IDs, boolean assertions and exact totals/stdout, matching expected/actual step reasons, case classification, strict JSON and matching source hashes; nonzero exit/unexpected errors/timeouts reject. Malformed-report/stdout tests are archived separately. Original proofs/Legacy semantics unchanged. O4 deferred; HELP/DEFEND effects BLOCKED DEPENDENCY, live HELP source unknown; no fake effects/receipts. O7 mid-action producers diagnostic/deferred; manual GUI/visual NOT RUN. Stop at Draft PR for independent code/evidence review.
 
 G55-DOC-01: existing Draft PR #55 is now based on merged PR #54 canonical `6cd7b842c07e308203f61bbaaff6339233567c68`. [Fresh post-rebase regression, exact source and full commands](../actors/evidence/m4-04/post-r54-rebase.json) are separate from the original run record above; original evidence remains unchanged. Godot4.7.2 required; Manual GUI/Visual Acceptance NOT RUN. Await Independent Follow-up Review; no merge/auto-merge/branch deletion/replacement PR/M4-05/Production Integration.
+
+## M4-05B B5 — Opt-in Playable Scene
+
+ใช้ Godot 4.7.2 เปิด `res://scenes/combat/combat_m4_playable_optin.tscn` แล้วกด **F6 / Run Current Scene**. อีกทางหนึ่งเปิดฉากจาก root ของ B5 worktree ด้วยคำสั่งนี้
+
+```sh
+godot --path . --resolution 1280x720 res://scenes/combat/combat_m4_playable_optin.tscn
+```
+
+1. เมื่อขึ้น “เลือกคำสั่ง Player” ให้เลือกศัตรูที่ช่อง “คำสั่ง Player” แล้วกด “โจมตี” หรือกด “ตั้งรับ” เพื่อให้ Player ป้องกันตัวเอง ใช้ Tab / Shift+Tab ย้าย focus, Enter / Space ยืนยัน และลูกศรเลือกตัวเลือกเมื่อเปิดเมนู
+2. หากต้องการส่งคำชี้นำ ให้เลือก “ไม่มีคำชี้นำ”, “เน้นโจมตี”, “เน้นตั้งรับ”, “ช่วย Player” หรือ “เน้นเป้าหมาย” แล้วกด “ส่งคำชี้นำ” **ก่อน** สั่ง Player. “เน้นเป้าหมาย” มีช่องเลือกศัตรูแยก
+3. หลังรับคำสั่ง คิวเดินตาม Player → NPC 1 → NPC 2 → NPC 3 → ศัตรู A → ศัตรู B. NPC เลือกเองเมื่อถึงคิว อ่านเหตุผลและผลจริงในบันทึกการต่อสู้ ผู้เล่นที่ถูกช่วยให้ลุกจะรอถึงรอบถัดไปจึงสั่งได้อีก
+4. กด “เริ่มใหม่” ระหว่างแอ็กชันหรือหลังผลการต่อสู้ ตรวจว่าตัวละครกลับตำแหน่งเดิม HP ตรง seed บันทึกเริ่มด้วยรุ่นใหม่ และคำสั่งกลับมาให้เลือก ในกรณี SEALED close ล้มเหลว ให้กด “ออกและเปิดเซสชันใหม่” จากหน้าพักเซสชัน
+5. ฉากทดลองปิดได้สูงสุดหกรอบ ผลชนะ พ่ายแพ้ หรือถอนตัวมาจาก frozen Outcome. ค่า `fixture_id` และ `fixture_version` ที่ Inspector ใช้คู่จาก [catalog](../../scripts/m4/playable_fixture_catalog.gd) เพื่อทดสอบ seed อื่น
+
+รัน scene proof โดยใช้ path ของ Godot 4.7.2 ที่ติดตั้งและเลือกไฟล์ report ใหม่ ตรวจทั้ง exit code, บรรทัด `B5 SCENE PROOF: PASS` และ engine log สำหรับ `SCRIPT ERROR:` / `ERROR:`.
+
+```sh
+godot --headless --path . --editor --import
+godot --headless --path . --quit-after 120 res://scenes/combat/combat_m4_playable_optin.tscn
+godot --headless --path . --script res://tests/combat/m4_05_playable_scene_proof.gd -- --report=/tmp/wanderer-b5-scene-proof.json
+```
+
+B5 ทดสอบ input signals และ Tween ของฉากจริงแยกจาก `verify.py`. กรณี Last-Party DOWN และการปิดครบหกรอบใช้ DRIVER CANCEL ก่อน IMPACT ตาม history ที่ได้รับอนุญาต คู่ fixture, HP, priority และ root มาจาก owner เดิม. [ผลทดสอบ คำสั่ง GUI และข้อจำกัด](evidence/m4-05b/b5/REPORT.md).
