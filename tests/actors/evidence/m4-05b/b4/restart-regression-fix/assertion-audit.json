@@ -1,0 +1,56 @@
+{
+  "smoke": {
+    "before_checks": 86,
+    "after_checks": 86,
+    "removed_labels": {},
+    "added_labels": {}
+  },
+  "expanded": {
+    "before_checks": 97,
+    "after_checks": 97,
+    "removed_labels": {},
+    "added_labels": {}
+  },
+  "schema": {
+    "before_checks": 1907,
+    "after_checks": 1907,
+    "removed_labels": {},
+    "added_labels": {}
+  },
+  "transactions": {
+    "before_checks": 354,
+    "after_checks": 354,
+    "removed_labels": {},
+    "added_labels": {}
+  },
+  "effects": {
+    "before_checks": 1010,
+    "after_checks": 1031,
+    "removed_labels": {
+      "RESTART M405_INVALID_PHASE preserves full root": 7
+    },
+    "added_labels": {
+      "RESTART authenticated generation publication": 7,
+      "Restart returns new View without combat Effect or Receipt": 7,
+      "Restart reconstructs exact selected catalog seed": 7,
+      "old-generation Restart preserves complete new root": 7
+    }
+  },
+  "lifecycle": {
+    "before_checks": 2486,
+    "after_checks": 2507,
+    "removed_labels": {
+      "RESTART expected REJECTED actual REJECTED/M405_INVALID_PHASE": 3
+    },
+    "added_labels": {
+      "RESTART expected REJECTED actual REJECTED/M405_STALE_REVISION": 3,
+      "exact Response RESTART": 3,
+      "whole-root replay RESTART": 3,
+      "stale terminal Restart preserves frozen root": 3,
+      "RESTART expected APPLIED actual APPLIED/M405_RESTARTED": 3,
+      "settled terminal Restart creates exact fresh generation": 3,
+      "terminal history retained in audit": 3,
+      "fresh generation projects RESET only": 3
+    }
+  }
+}

@@ -7,7 +7,22 @@
 - Callback adapter ผูก epoch กับ session, generation และ Token จริง คำขอที่ส่งถึง owner ยังต้องผ่าน capability และ token validation
 - E5 คง SEALED และ diagnostic เดิม เมื่อออกให้ detach callback แล้ว bootstrap opt-in session ใหม่ เงื่อนไขนี้ตรวจผ่าน harness แบบ headless
 
-## ผลตรวจ Godot 4.7.2
+## Restart regression follow-up
+
+Tested source commit `22b070d3f7c382ab7cd4402ce91d3ce002d30222` ตรง tested SHA-256 ทั้ง189ไฟล์ [Commit resolution](restart-regression-fix/commit-resolution.json)
+
+**PASS on Godot 4.7.2.stable.official.ed1daf0bf.** B1 smoke86 / expanded97 / schema1,907 / transaction354, B2 **1,031**, B3 **2,507 assertions /630 requests**, B4 **4,238 assertions /474 requests /28 streams** ผ่านทั้งหมด exit0 และ engine errors0. Binary SHA-256 ตรงกับ initial run และบันทึกใน results ด้านล่าง
+
+
+Owner ขอให้แก้ปัญหาที่พบให้เสร็จสมบูรณ์ จึงปรับเฉพาะ expectations และลำดับทดสอบที่ผูกกับ Restart ตาม Contract §25.1/§31 ใน B2/B3 โดยเก็บผลรันและ failures ครั้งแรกไว้ในหัวข้อ Historical ด้านล่าง
+
+B2 ตรวจ generation +1/revision0, seed จาก catalog, detached audit และ request generation เก่าที่ต้องถูกปฏิเสธ ครบทั้ง 7 fixture pairs ส่วน B3 ใช้ stale revision เพื่อทดสอบ rejection ขณะยังต้องตรวจ terminal root แล้วค่อยทดสอบ successful Restart หลังตรวจ last-Enemy, Guard cleanup และ Last-Party DOWN ครบ วิธีนี้ทำให้ frozen Outcome และ causal receipt ถูกตรวจจนจบก่อนเปลี่ยน generation
+
+[Follow-up commands, exits and engine errors](restart-regression-fix/results.json) · [Assertion migration audit](restart-regression-fix/assertion-audit.json) · [Raw logs and reports](restart-regression-fix/logs-and-reports.zip) · [Source SHA-256](restart-regression-fix/tested-source-sha256.json)
+
+Combat 44/94/94 และ Legacy 6 cases/5,892 frames ใช้ผลรันที่บันทึกไว้ก่อนการแก้ tests ครั้งนี้ โดยตรวจ hash ของ runtime, scenes และ dependency sources ว่าตรงเดิมทั้งหมด รอบนี้รัน focused B1/B2/B3/B4 ใหม่ ส่วน GUI/visual/performance และ Independent Review ยัง NOT RUN/PENDING ตามขอบเขตเดิม
+
+## Historical initial candidate verification
 
 Tested source commit `8ac140c2ca2b0a081533f2972dc79ac46ad14a69` ตรง SHA-256 ของไฟล์ที่บันทึก 189 รายการ [Git blob audit](commit-resolution.json)
 
