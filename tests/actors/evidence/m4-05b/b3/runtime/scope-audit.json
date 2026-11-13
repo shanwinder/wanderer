@@ -18,6 +18,7 @@
     "tests/actors/evidence/m4-05b/b3/runtime/REPORT.md",
     "tests/actors/evidence/m4-05b/b3/runtime/archive-sha256.json",
     "tests/actors/evidence/m4-05b/b3/runtime/coverage.json",
+    "tests/actors/evidence/m4-05b/b3/runtime/delivery-head-resolution.json",
     "tests/actors/evidence/m4-05b/b3/runtime/logs-and-reports.zip",
     "tests/actors/evidence/m4-05b/b3/runtime/preflight-github.json",
     "tests/actors/evidence/m4-05b/b3/runtime/results.json",
@@ -33,7 +34,7 @@
   "protected_mismatches": [],
   "protected_hashes": "logs-and-reports.zip/development-and-audit/b3-protected-sha256.json",
   "skill_installation_files_changed": false,
-  "current_worktrees": "worktree /Applications/wanderer\nHEAD 7f2e3807f18c91416c8380c5b3369711c65cdc5a\nbranch refs/heads/visual-combat-test-1\n\nworktree /private/tmp/wanderer-b3-canonical-source\nHEAD 7f2e3807f18c91416c8380c5b3369711c65cdc5a\ndetached\n\nworktree /private/tmp/wanderer-b3-reference44-source\nHEAD 1728c5e678c5065278d1251d50449a8820eb5dae\ndetached\n\nworktree /private/tmp/wanderer-g55-canonical-source\nHEAD 6cd7b842c07e308203f61bbaaff6339233567c68\ndetached\nprunable gitdir file points to non-existent location\n\nworktree /private/tmp/wanderer-m4-05b-b3-runtime\nHEAD 7f2e3807f18c91416c8380c5b3369711c65cdc5a\nbranch refs/heads/codex/m4-05b-b3-runtime\n\nworktree /private/tmp/wanderer-r52-canonical-source\nHEAD 2c59e8d8e27c92c92344adcba9eded0d297cc547\ndetached\nprunable gitdir file points to non-existent location\n\nworktree /private/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-combat-bq292llw/canonical94-source\nHEAD 6b68bf563833fb31fbb8df4b15034f3fd26f60da\ndetached\n\nworktree /private/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-combat-bq292llw/reference44-source\nHEAD 1728c5e678c5065278d1251d50449a8820eb5dae\ndetached\n\n",
+  "current_worktrees": "worktree /Applications/wanderer\nHEAD 7f2e3807f18c91416c8380c5b3369711c65cdc5a\nbranch refs/heads/visual-combat-test-1\n\nworktree /private/tmp/wanderer-b3-canonical-source\nHEAD 7f2e3807f18c91416c8380c5b3369711c65cdc5a\ndetached\n\nworktree /private/tmp/wanderer-b3-reference44-source\nHEAD 1728c5e678c5065278d1251d50449a8820eb5dae\ndetached\n\nworktree /private/tmp/wanderer-g55-canonical-source\nHEAD 6cd7b842c07e308203f61bbaaff6339233567c68\ndetached\nprunable gitdir file points to non-existent location\n\nworktree /private/tmp/wanderer-m4-05b-b3-runtime\nHEAD 858a7a8bb02dd170bd8bae32adc1a38fa310b455\nbranch refs/heads/codex/m4-05b-b3-runtime\n\nworktree /private/tmp/wanderer-r52-canonical-source\nHEAD 2c59e8d8e27c92c92344adcba9eded0d297cc547\ndetached\nprunable gitdir file points to non-existent location\n\nworktree /private/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-combat-bq292llw/canonical94-source\nHEAD 6b68bf563833fb31fbb8df4b15034f3fd26f60da\ndetached\n\nworktree /private/var/folders/y4/2lffpqds6571pyrszqv9jht00000gn/T/wanderer-b2-combat-bq292llw/reference44-source\nHEAD 1728c5e678c5065278d1251d50449a8820eb5dae\ndetached\n\n",
   "initial_main_checkout": "clean visual-combat-test-1 at required SHA; retained untouched",
   "live_canonical_recheck": "7f2e3807f18c91416c8380c5b3369711c65cdc5a",
   "markdown": {
@@ -43,7 +44,7 @@
       "tests/actors/README.md",
       "tests/actors/evidence/m4-05b/b3/runtime/REPORT.md"
     ],
-    "local_links": 306,
+    "local_links": 307,
     "fragments": 89,
     "errors": []
   },

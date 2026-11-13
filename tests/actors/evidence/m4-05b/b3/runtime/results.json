@@ -5,7 +5,7 @@
   "base_commit": "7f2e3807f18c91416c8380c5b3369711c65cdc5a",
   "branch": "codex/m4-05b-b3-runtime",
   "worktree": "/private/tmp/wanderer-m4-05b-b3-runtime",
-  "tested_source": "Exact contents in tested-source-sha256.json and tested-source.zip. Commit resolution follows after commit and is linked from the Draft PR.",
+  "tested_source": "Exact committed Git blobs verified against163 tested-source SHA-256 entries; see delivery-head-resolution.json",
   "godot_binary": "/Applications/Godot.app/Contents/MacOS/Godot",
   "godot_version": "4.7.2.stable.official.ed1daf0bf",
   "godot_sha256": "c7cccbf8fb143e34e02fd6521e09be2c2b974f0d5db080b19071c9c570718ccf",
@@ -5158,5 +5158,6 @@
     "assertions": 1846,
     "status": "PASS"
   },
-  "final_focused_wrapper_exit": 0
+  "final_focused_wrapper_exit": 0,
+  "tested_source_commit": "858a7a8bb02dd170bd8bae32adc1a38fa310b455"
 }
