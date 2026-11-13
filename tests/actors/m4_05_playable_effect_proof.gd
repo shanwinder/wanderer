@@ -135,7 +135,17 @@ func _catalog_proof() -> void:
 			tampered.seed = seed.duplicate(true)
 			tampered.seed.catalog_sha256 = V1_DIGEST if version == 2 else Catalog.canonical(v2).sha256_text()
 			_check(not Rules.root_valid(tampered) and Rules.replay(tampered.seed, root.session, root.generation, []).is_empty(), "wrong partition digest rejects replay " + id, REJECTION)
-			_reject(e, "RESTART", payload, "M405_INVALID_PHASE", "INPUT")
+			var restarted: Dictionary = _transact(e, "RESTART", payload, "INPUT")
+			_check(restarted.status == "APPLIED" and restarted.reason == "M405_RESTARTED"
+				and restarted.effect == null and restarted.receipt == null and restarted.token == null,
+				"Restart returns new View without combat Effect or Receipt")
+			_check(e.snapshot() == Rules.initial(id, root.session, root.generation + 1, version),
+				"Restart reconstructs exact selected catalog seed")
+			var stale: Dictionary = _request(e, "RESTART", payload, "INPUT")
+			stale.identity.generation = root.generation
+			var fresh: Dictionary = e.snapshot()
+			_check(e.transact(stale, input_cap).reason == "M405_STALE_GENERATION"
+				and e.snapshot() == fresh, "old-generation Restart preserves complete new root", REJECTION)
 			_reject(e, "RESTART", {"fixture_id": id, "fixture_version": 3 - version}, "M405_INVALID_SCHEMA", "INPUT")
 	var detached: Dictionary = Catalog.content(2)
 	detached.fixtures[0].hp[0] = 30
@@ -160,7 +170,13 @@ func _transact(e: Owner, op: String, payload: Dictionary = {}, issuer: String = 
 	history.append({"scenario": scenario, "classification": classification, "request": request,
 		"response": reply, "before": before, "after": after})
 	_check(Contract.response_valid(op, reply), op + " exact response", classification)
-	if classification == LEGAL:
+	if classification == LEGAL and op == "RESTART":
+		var audit: Dictionary = e.restart_audit().back()
+		_check(after.session == before.session and after.generation == before.generation + 1
+			and after.revision == 0 and after.journal.is_empty()
+			and audit.root == before and audit.request == request and audit.identity == reply.identity,
+			"RESTART authenticated generation publication")
+	elif classification == LEGAL:
 		_check(after.revision == before.revision + 1 and after.journal.size() == before.journal.size() + 1
 			and after.journal.back().request == request
 			and after.journal.back().result_digest == Catalog.canonical(reply).sha256_text(), op + " authenticated journal publication")

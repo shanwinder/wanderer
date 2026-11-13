@@ -36,7 +36,7 @@ The canonical `visual-combat-test-1` defaults to Autonomous. Open `res://scenes/
 
 Current status (13 November 2026):
 
-**M4-05B B3 — IMPLEMENTED / MERGED via [PR #65](https://github.com/shanwinder/wanderer/pull/65). B4 — IMPLEMENTED CANDIDATE / INDEPENDENT REVIEW PENDING.** The isolated owner projects presentation events from authenticated history and accepts legal Restart into a fresh generation. [Milestone status](docs/README.md#current-status-and-next-roadmap) · [B4 verification and limits](tests/actors/evidence/m4-05b/b4/REPORT.md).
+**M4-05B B3 — IMPLEMENTED / MERGED via [PR #65](https://github.com/shanwinder/wanderer/pull/65). B4 — IMPLEMENTED CANDIDATE / INDEPENDENT REVIEW PENDING.** The isolated owner projects presentation events from authenticated history and accepts legal Restart into a fresh generation. The B2/B3 Restart regression follow-up passes on Godot 4.7.2. [Milestone status](docs/README.md#current-status-and-next-roadmap) · [B4 verification and limits](tests/actors/evidence/m4-05b/b4/REPORT.md).
 
 - **Implemented:** Player + NPC1/2/3 versus Enemy A (15 HP) and Enemy B (12 HP), target selection, surviving-target fallback, queued actions, victory/defeat and Restart.
 - **Legacy F6:** NPCs take real actions under deterministic prototype rules: after Player Attack, NPC1/3 attack and NPC2 guards Player; after Player Defend, all three attack. These rules are **not an autonomous NPC decision system**.

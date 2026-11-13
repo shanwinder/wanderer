@@ -39,7 +39,7 @@
 
 **Current checkpoint — 13 November 2026 (Asia/Bangkok): B3 IMPLEMENTED / MERGED PR #65. B4 IMPLEMENTED CANDIDATE / INDEPENDENT REVIEW PENDING.** On the Owner's instruction to resolve the feasibility findings, [Contract §31](M4_05_Playable_Integration_Contract.md#31-b4-presentation-projection-and-restart) places TERMINAL immediately after the committed IMPACT and before any causal COMPLETE. The isolated owner projects authentic events, accepts legal Restart into a new generation, rejects stale callbacks and keeps E5 failed-close recovery on the fresh Bootstrap path.
 
-[Verification and limits](../tests/actors/evidence/m4-05b/b4/REPORT.md) distinguish fresh Godot runs, prior-version Restart expectations and untested GUI/performance. Positive Last-Party RETREAT remains DEFERRED — OWNER APPROVED. B5 and M4-05C remain separate.
+[Verification and limits](../tests/actors/evidence/m4-05b/b4/REPORT.md) record the B2/B3 test migration to the approved Restart contract. Fresh focused suites pass with B2 1,031 / B3 2,507 / B4 4,238 assertions and zero engine errors. GUI/performance remain NOT RUN. Positive Last-Party RETREAT remains DEFERRED — OWNER APPROVED. B5 and M4-05C remain separate.
 
 The following B3 delivery checkpoint is historical; its review-pending wording is superseded by the current checkpoint above.
 
