@@ -1,0 +1,97 @@
+extends SceneTree
+
+const Owner = preload("res://scripts/m4/playable_encounter.gd")
+const Rules = preload("res://scripts/m4/playable_rules.gd")
+const Catalog = preload("res://scripts/m4/playable_fixture_catalog.gd")
+
+var failed := false
+var serial := 0
+var args := OS.get_cmdline_user_args()
+var process_label: String
+var destination: String
+var file: FileAccess
+
+func _initialize() -> void:
+	call_deferred("run")
+
+func guard(ok: bool, label: String) -> bool:
+	if not ok:
+		failed = true
+		push_error(label)
+	return ok
+
+func tx(owner: RefCounted, cap: RefCounted, issuer: String, op: String, payload: Dictionary, expected: Array, times: Array) -> Dictionary:
+	serial += 1
+	var v: Dictionary = owner.read_view()
+	var req := {"domain":"M4_PLAYABLE", "version":1, "identity":v.identity, "queue_id":v.queue_id, "issuer":issuer, "operation":op, "request_id":("ui/" if issuer == "INPUT" else "driver/")+"bench-"+str(serial), "payload":payload}
+	var t := Time.get_ticks_usec()
+	var reply: Dictionary = owner.transact(req, cap)
+	var elapsed := Time.get_ticks_usec() - t
+	times.append({"operation":op, "duration_us":elapsed, "status":reply.get("status"), "reason":reply.get("reason"), "revision":v.identity.state_revision})
+	guard(reply.get("status") in expected, "Rejected benchmark operation %s %s" % [op,reply.get("reason")])
+	return reply
+
+func counters() -> Dictionary:
+	return {"static_bytes": OS.get_static_memory_usage(), "peak_static_bytes": OS.get_static_memory_peak_usage(), "object_count": int(Performance.get_monitor(Performance.OBJECT_COUNT))}
+
+func play(fixture: String) -> Dictionary:
+	var times: Array = []
+	var start := Time.get_ticks_usec()
+	var factory := RefCounted.new()
+	var input := RefCounted.new()
+	var driver := RefCounted.new()
+	var owner := Owner.new(factory, input, driver, RefCounted.new())
+	var boot: Dictionary = owner.bootstrap({"domain":"M4_PLAYABLE","version":1,"fixture_id":fixture,"fixture_version":1},factory)
+	if not guard(boot.get("status") == "CREATED", "Catalog bootstrap failed"):
+		return {}
+	for _r in range(6):
+		var v: Dictionary = owner.read_view()
+		if v.command_ready:
+			tx(owner,input,"INPUT","COMMAND",{"actor_id":"player","action":"DEFEND","target_id":"player"},["ACCEPTED"],times)
+		tx(owner,driver,"DRIVER","ADMIT",{},["APPLIED","STOPPED"],times)
+		for _slot in range(6):
+			v = owner.read_view()
+			if failed or v.phase != "OPEN" or v.queue_phase == "DRAINED": break
+			var slot: Dictionary = Rules.slot(owner.snapshot())
+			var advanced := tx(owner,driver,"DRIVER","ADVANCE",{},["READY","APPLIED"],times)
+			if failed or advanced.status == "APPLIED": continue
+			var a: String = slot.actor_id
+			var op := "DECIDE_LOCK" if a.begins_with("npc_") else ("PLAYER_LOCK" if a == "player" else "ENEMY_LOCK")
+			var payload := {"observation":owner.read_observation()} if op == "DECIDE_LOCK" else {"slot_id":slot.slot_id}
+			var lock := tx(owner,driver,"DRIVER",op,payload,["AUTHORIZED"],times)
+			if failed: break
+			tx(owner,driver,"DRIVER","IMPACT",{"token":lock.token},["APPLIED","SKIPPED"],times)
+			tx(owner,driver,"DRIVER","COMPLETE",{"token":lock.token},["COMPLETED"],times)
+		v = owner.read_view()
+		if failed or v.phase == "TERMINAL": break
+		if not guard(v.phase == "OPEN" and v.queue_phase == "DRAINED", "Expected a drained round"): break
+		tx(owner,driver,"DRIVER","CLOSE_ROUND",{},["APPLIED","STOPPED"],times)
+	var actual: Dictionary = owner.snapshot()
+	var replay_start := Time.get_ticks_usec()
+	var reconstructed := Rules.replay(actual.seed,actual.session,actual.generation,actual.journal)
+	var replay_us := Time.get_ticks_usec() - replay_start
+	var equal := reconstructed == actual
+	var elapsed := Time.get_ticks_usec() - start
+	guard(equal and (actual.phase == "TERMINAL" or actual.closed_rounds == 6), "Incomplete catalog session or replay mismatch")
+	return {"fixture":fixture, "session":actual.session,"generation":actual.generation,"closed_rounds":actual.closed_rounds,"outcome":actual.outcome,"phase":actual.phase,"early_terminal":actual.phase == "TERMINAL" and actual.closed_rounds < 6,"seed":actual.seed,"journal":actual.journal,"root_sha256":Catalog.canonical(actual).sha256_text(),"replay_equal":equal,"replay_us":replay_us,"session_us":elapsed,"transactions":times}
+
+func run() -> void:
+	process_label = args[0]
+	destination = args[1]
+	var count := int(args[2])
+	file = FileAccess.open(destination, FileAccess.WRITE)
+	if not guard(file != null,"Could not open evidence file"):
+		quit(1)
+		return
+	var order: Array = Catalog.FIXTURES
+	for i in range(count + 10):
+		var before := counters()
+		var result := play("m405-demo/" + order[i % order.size()])
+		await process_frame
+		if failed: break
+		if i == 0 or i >= 10:
+			result.merge({"process":process_label,"cycle":i - 9,"cold":i == 0,"before":before,"after":counters()})
+			file.store_line(JSON.stringify(result,"",true,true))
+			file.flush()
+	file.close()
+	quit(int(failed))

@@ -7,7 +7,7 @@
 | เอกสาร | เนื้อหา | อำนาจ/ขอบเขต |
 |---|---|---|
 | [AGENTS.md](../AGENTS.md) | กติกาสำหรับ Codex/agents, ขอบเขต, tests และ PR | อ่านก่อนทำงานใน repository |
-| [Current status and next roadmap](#current-status-and-next-roadmap) | B5 merged PR #67; M4-05C GUI evidence and keyboard blockers | จุดอ้างอิงสถานะปัจจุบัน; ไม่สร้างแผนฉบับซ้ำ |
+| [Current status and next roadmap](#current-status-and-next-roadmap) | B5 merged via PR #67; HUD correction awaiting independent review | จุดอ้างอิงสถานะปัจจุบัน; ไม่สร้างแผนฉบับซ้ำ |
 | [01 — Game Development Plan v0.1](01_Wanderer_Game_Development_Plan_v0.1.md) | วิสัยทัศน์, โลก, gameplay loop, NPC autonomy, death, milestones | **ฐานเกมเดิม**; เก็บประวัติการออกแบบ |
 | [02 — Visual Combat v0.2](02_Wanderer_Visual_Combat_Prototype_Update_v0.2.md) | Functional + visual prototype | ปรับ v0.1 เฉพาะงานภาพ/ต้นแบบ |
 | [03 — Combat Presentation v0.3](03_Wanderer_Combat_Presentation_Direction_Update_v0.3.md) | Staging, depth, UI, M1.5B–D | เจตนา presentation และประวัติแผน; สถานะงานถัดไปในฉบับนี้ล้าสมัย |
@@ -18,7 +18,7 @@
 | [M4-02 — Rescue / Clock / Death Contract](M4_02_Rescue_Clock_Death_Contract.md) | Owner decision package, atomic effects/events, future M402 matrix และ Thai learning notes | **Reviewed/merged design**; isolated proof merged via PR #48; recorded evidence ตามสถานะด้านล่าง |
 | [M4-03 — Queue / Retreat / Outcome Contract](M4_03_Queue_Retreat_Outcome_Contract.md) | Five owner decisions, isolated adapter/state machines, M403 matrix และแผน PR ย่อย | **Design merged PR #49**; M4-03A/B/C merged ตาม current status |
 | [M4-04 — Autonomous Decision Contract](M4_04_Autonomous_Decision_Contract.md) | D08/D16/D09 register, proposed exact input/output, priority, refusal and paired cases | **O1-A/O2-A/O3-A/O5-A approved; IMPLEMENTED / MERGED PR #55**; isolated scope |
-| [M4-05A — Playable Integration Contract](M4_05_Playable_Integration_Contract.md) | Single-authority proposal, G05-01–06, adapter/lifecycle contracts and future acceptance matrix | **G05/T05 A approved**; B1–B5 merged; M4-05C evidence below |
+| [M4-05A — Playable Integration Contract](M4_05_Playable_Integration_Contract.md) | Single-authority proposal, G05-01–06, adapter/lifecycle contracts and future acceptance matrix | **G05/T05 A approved**; B1–B5 merged |
 | [Pixelorama Handoff](Wanderer_Pixelorama_Training_Handoff.md) | บันทึกทักษะวาดและ asset | อ้างอิงการเรียนรู้/ประวัติ |
 
 ### Conflict resolution (ต้องอ่าน)
@@ -37,13 +37,11 @@
 
 ## Current status and next roadmap
 
-**B4 IMPLEMENTED / MERGED** via [PR #66](https://github.com/shanwinder/wanderer/pull/66) at `0148a31f37baad9dcd5c9524604d6d8270fbbdb5`. [Contract §31](M4_05_Playable_Integration_Contract.md#31-b4-presentation-projection-and-restart) governs the committed IMPACT → TERMINAL publication, later causal COMPLETE, Restart generations and E5 fresh-session exit. [B4 historical evidence](../tests/actors/evidence/m4-05b/b4/REPORT.md).
+**Current checkpoint — 14 November 2026 (Asia/Bangkok).** B5 opt-in implementation [PR #67](https://github.com/shanwinder/wanderer/pull/67) **MERGED** at `fd1d00d7a63603d637f900730927a6a59e01f675`; B5 HUD correction [PR #69](https://github.com/shanwinder/wanderer/pull/69) **MERGED** at canonical `09506a822a7e6e600727f7bec70119bc2153f2a7`. [Contract §31](M4_05_Playable_Integration_Contract.md#31-b4-presentation-projection-and-restart) governs presentation event order, Restart generations and E5 exit. [Original B5 evidence](../tests/combat/evidence/m4-05b/b5/REPORT.md).
 
-**Current checkpoint — 14 November 2026 (Asia/Bangkok). B5 IMPLEMENTED / MERGED** via [PR #67](https://github.com/shanwinder/wanderer/pull/67) at `fd1d00d7a63603d637f900730927a6a59e01f675`. The isolated F6 scene uses the merged B1–B4 owner. F5 launches production Guided Autonomous. Legacy F6 retains scripted ATK/GUARD. [B5 implementation evidence](../tests/combat/evidence/m4-05b/b5/REPORT.md).
+**C-01/C-02 — TECHNICAL REVIEW PASS.** [PR #69 review](https://github.com/shanwinder/wanderer/pull/69#pullrequestreview-5899421295) assessed the submitted correction. Fresh tests on merged canonical separately verified the native log and repeated-activation flows; E5 Exit and receipt counts are controlled proof. [Original pre-fix failures](../tests/combat/evidence/m4-05c/FINDINGS.md) · [PR #69 evidence](../tests/combat/evidence/m4-05c/hud-keyboard-fix/REPORT.md) · [Post-fix acceptance and Owner checklist](../tests/combat/evidence/m4-05c/post-fix-09506a8/REPORT.md).
 
-**M4-05C — GUI verification recorded; agent recommends HOLD for two B5 keyboard blockers.** Actual Godot 4.7.2 at 1280×720 showed normal B5 play, NPC lifecycle, victory, exhaustion and Restart. Repeated Enter can reset an active battle, and Tab/Shift+Tab fail to exit the focused battle log at victory. The unchanged focused B5 proof passed 1,521 checks on the exact merge SHA. Owner acceptance and independent evidence review are pending. [Evidence](../tests/combat/evidence/m4-05c/README.md) · [Thai Owner playtest and decision form](../tests/combat/evidence/m4-05c/OWNER.md).
-
-**Next decision** is Owner authorization for any B5 HUD correction, followed by keyboard and comprehension retest. The §30.6 and §30.7 deferrals remain in force. Manual E5 and performance §24.1 are **NOT RUN**. Production cutover requires separate authorization.
+**M4-05C — OWNER ACCEPTANCE PENDING; recommend HOLD for performance closure.** Draft [PR #68](https://github.com/shanwinder/wanderer/pull/68) is for Independent Evidence & GUI Review. C-03 is a minor presentation issue awaiting an Owner decision. §24.1 discovery produced a replay-equal legal six-round history; the full benchmark gate remains open without a reviewed worst-legal workload and complete sample campaign. Manual E5 is **NOT RUN**; §§30.6–30.7 remain **DEFERRED — OWNER APPROVED**. Production F5 cutover is **NOT AUTHORIZED**. Default F5 Guided Autonomous and Legacy F6 remain unchanged.
 
 The following B3 delivery checkpoint is historical; its review-pending wording is superseded by the current checkpoint above.
 
@@ -247,9 +245,8 @@ The following C delivery/fix checkpoints preserve their original pre-merge gates
 | M4-03 — Queue / Retreat / Outcome | **A/B/C Implemented / Merged**, PR #52 / `5b870953` | [Historical approved design contract](M4_03_Queue_Retreat_Outcome_Contract.md), [C implementation / coverage / evidence](../tests/actors/README.md#m4-03c--isolated-terminal--summary--continuation-proof); recorded independent R52-01 follow-up PASS; no new run |
 | M4-04 — Autonomous Decision Extension | **OWNER APPROVED isolated rules / IMPLEMENTED / MERGED PR #55** at `7ce51cd` | [Approved contract and historical coverage](M4_04_Autonomous_Decision_Contract.md); inherited proof only, no production/GUI acceptance |
 | M4-05A / Owner approval technical gate | **Design MERGED PR #56; G05 directions / T05-01–06 A OWNER APPROVED** | [T05 approvals and technical resolutions](M4_05_Playable_Integration_Contract.md#22-t05-owner-selections-and-current-task-preflight) |
-| M4-05B | **B1–B5 IMPLEMENTED / MERGED** | [B5 scope and verification](../tests/combat/evidence/m4-05b/b5/REPORT.md) |
-| M4-05C | **GUI evidence recorded / keyboard blockers / Owner decision pending** | [Acceptance evidence](../tests/combat/evidence/m4-05c/README.md) |
-| Production cutover | **NOT AUTHORIZED** | Separate Owner decision after playable verification and reviewed rollback |
+| M4-05B | **B1–B5 IMPLEMENTED / MERGED; HUD correction MERGED via PR #69** | [B5 scope, verification and remaining gates](../tests/combat/evidence/m4-05b/b5/REPORT.md) |
+| M4-05C / production cutover | **OWNER ACCEPTANCE PENDING / NOT AUTHORIZED** | [Post-fix review and open gates](../tests/combat/evidence/m4-05c/post-fix-09506a8/REPORT.md) |
 
 แหล่งตรวจโค้ด: [scene](../scenes/combat/combat_prototype.tscn), [combat controller](../scripts/combat/combat_prototype.gd), [turn flow](../scripts/combat/combat_turn_flow.gd), [targets](../scripts/combat/combat_targets.gd)
 

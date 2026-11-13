@@ -1,0 +1,1651 @@
+{
+	"checks": [
+		{
+			"label": "PREPARED: reader hidden; target focused",
+			"passed": true
+		},
+		{
+			"label": "L opens history and focuses its reader",
+			"passed": true
+		},
+		{
+			"label": "held L does not toggle a second time",
+			"passed": true
+		},
+		{
+			"label": "Tab leaves reader for Guidance",
+			"passed": true
+		},
+		{
+			"label": "Shift+Tab leaves reader for log toggle",
+			"passed": true
+		},
+		{
+			"label": "Escape restores target and full owner snapshot is unchanged",
+			"passed": true
+		},
+		{
+			"label": "L closes and restores focus",
+			"passed": true
+		},
+		{
+			"label": "keyboard opens the real target popup",
+			"passed": true
+		},
+		{
+			"label": "target popup owns its keys",
+			"passed": true
+		},
+		{
+			"label": "select target B by keyboard",
+			"passed": true
+		},
+		{
+			"label": "guidance popup opens while history remains open",
+			"passed": true
+		},
+		{
+			"label": "popup Escape does not close history",
+			"passed": true
+		},
+		{
+			"label": "Focus Target advice inserts its own keyboard target",
+			"passed": true
+		},
+		{
+			"label": "Tab reaches send advice",
+			"passed": true
+		},
+		{
+			"label": "keyboard submits genuine pending guidance",
+			"passed": true
+		},
+		{
+			"label": "closing from a legal control keeps context",
+			"passed": true
+		},
+		{
+			"label": "Enter/Enter starts with deliberate Attack focus",
+			"passed": true
+		},
+		{
+			"label": "Enter/Enter one real command, status focus, no new receipt",
+			"passed": true
+		},
+		{
+			"label": "Enter/Enter rapid press and echo leave generation, revision, journal and receipts unchanged",
+			"passed": true
+		},
+		{
+			"label": "Enter/Enter accepted attack completes once with real damage",
+			"passed": true
+		},
+		{
+			"label": "Space/Space starts with deliberate Attack focus",
+			"passed": true
+		},
+		{
+			"label": "Space/Space one real command, status focus, no new receipt",
+			"passed": true
+		},
+		{
+			"label": "Space/Space rapid press and echo leave generation, revision, journal and receipts unchanged",
+			"passed": true
+		},
+		{
+			"label": "Space/Space accepted attack completes once with real damage",
+			"passed": true
+		},
+		{
+			"label": "Enter/Space starts with deliberate Attack focus",
+			"passed": true
+		},
+		{
+			"label": "Enter/Space one real command, status focus, no new receipt",
+			"passed": true
+		},
+		{
+			"label": "Enter/Space rapid press and echo leave generation, revision, journal and receipts unchanged",
+			"passed": true
+		},
+		{
+			"label": "Enter/Space accepted attack completes once with real damage",
+			"passed": true
+		},
+		{
+			"label": "Space/Enter starts with deliberate Attack focus",
+			"passed": true
+		},
+		{
+			"label": "Space/Enter one real command, status focus, no new receipt",
+			"passed": true
+		},
+		{
+			"label": "Space/Enter rapid press and echo leave generation, revision, journal and receipts unchanged",
+			"passed": true
+		},
+		{
+			"label": "Space/Enter accepted attack completes once with real damage",
+			"passed": true
+		},
+		{
+			"label": "deliberate Shift+Tab reaches Restart from active status",
+			"passed": true
+		},
+		{
+			"label": "active Restart genuine same-session Restart",
+			"passed": true
+		},
+		{
+			"label": "active Restart restores Player target",
+			"passed": true
+		},
+		{
+			"label": "stale impact changes neither new-generation root nor log",
+			"passed": true
+		},
+		{
+			"label": "accepted Restart clears old visible history",
+			"passed": true
+		},
+		{
+			"label": "prepared attack starts at target",
+			"passed": true
+		},
+		{
+			"label": "real round 1 close: DOWN feedback visible and target focus restored",
+			"passed": true
+		},
+		{
+			"label": "Page Up scrolls authentic history back",
+			"passed": true
+		},
+		{
+			"label": "Page Down returns to the bottom",
+			"passed": true
+		},
+		{
+			"label": "open, scroll and close preserve full history and owner state",
+			"passed": true
+		},
+		{
+			"label": "real Defend visibly accepted",
+			"passed": true
+		},
+		{
+			"label": "committed Guard and NPC RESCUE shown while history hidden",
+			"passed": true
+		},
+		{
+			"label": "round close restores target with history hidden",
+			"passed": true
+		},
+		{
+			"label": "next round does not steal active reading focus",
+			"passed": true
+		},
+		{
+			"label": "hidden old command context falls back to status",
+			"passed": true
+		},
+		{
+			"label": "prepared attack starts at target",
+			"passed": true
+		},
+		{
+			"label": "prepared attack starts at target",
+			"passed": true
+		},
+		{
+			"label": "prepared attack starts at target",
+			"passed": true
+		},
+		{
+			"label": "prepared attack starts at target",
+			"passed": true
+		},
+		{
+			"label": "prepared attack starts at target",
+			"passed": true
+		},
+		{
+			"label": "normal commands reach VICTORY",
+			"passed": true
+		},
+		{
+			"label": "VICTORY visible without reader",
+			"passed": true
+		},
+		{
+			"label": "VICTORY keyboard opens full history",
+			"passed": true
+		},
+		{
+			"label": "VICTORY reader exits to legal Restart",
+			"passed": true
+		},
+		{
+			"label": "VICTORY Escape returns to status",
+			"passed": true
+		},
+		{
+			"label": "VICTORY deliberate navigation focuses Restart",
+			"passed": true
+		},
+		{
+			"label": "VICTORY genuine same-session Restart",
+			"passed": true
+		},
+		{
+			"label": "VICTORY restores Player target",
+			"passed": true
+		},
+		{
+			"label": "DEFEAT visible without reader",
+			"passed": true
+		},
+		{
+			"label": "DEFEAT keyboard opens full history",
+			"passed": true
+		},
+		{
+			"label": "DEFEAT reader exits to legal Restart",
+			"passed": true
+		},
+		{
+			"label": "DEFEAT Escape returns to status",
+			"passed": true
+		},
+		{
+			"label": "DEFEAT deliberate navigation focuses Restart",
+			"passed": true
+		},
+		{
+			"label": "DEFEAT genuine same-session Restart",
+			"passed": true
+		},
+		{
+			"label": "six real Defend rounds reach exhaustion",
+			"passed": true
+		},
+		{
+			"label": "ครบ 6 รอบ visible without reader",
+			"passed": true
+		},
+		{
+			"label": "ครบ 6 รอบ keyboard opens full history",
+			"passed": true
+		},
+		{
+			"label": "ครบ 6 รอบ reader exits to legal Restart",
+			"passed": true
+		},
+		{
+			"label": "ครบ 6 รอบ Escape returns to status",
+			"passed": true
+		},
+		{
+			"label": "ครบ 6 รอบ deliberate navigation focuses Restart",
+			"passed": true
+		},
+		{
+			"label": "ครบ 6 รอบ genuine same-session Restart",
+			"passed": true
+		},
+		{
+			"label": "ครบ 6 รอบ restores Player target",
+			"passed": true
+		},
+		{
+			"label": "genuine E5 SEALED HOLD shows diagnostics in status and history",
+			"passed": true
+		},
+		{
+			"label": "rejected Restart retains held root and reports failure",
+			"passed": true
+		},
+		{
+			"label": "E5 reader Tab skips disabled Restart and reaches Exit",
+			"passed": true
+		},
+		{
+			"label": "E5 Escape restores safe focus without mutating held session",
+			"passed": true
+		},
+		{
+			"label": "E5 explicit reverse navigation focuses Exit",
+			"passed": true
+		},
+		{
+			"label": "keyboard Exit creates a fresh factory session and detaches stale callback",
+			"passed": true
+		},
+		{
+			"label": "write proof report",
+			"passed": true
+		}
+	],
+	"failures": 0,
+	"observations": [
+		{
+			"focus": "BattleLogReader",
+			"generation": 1,
+			"journal": 0,
+			"key": "L",
+			"log_open": true,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 23,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "Guidance",
+			"generation": 1,
+			"journal": 0,
+			"key": "Tab",
+			"log_open": true,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 23,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "BattleLogReader",
+			"generation": 1,
+			"journal": 0,
+			"key": "Tab",
+			"log_open": true,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 23,
+			"session": -9223371995817703646,
+			"shift": true
+		},
+		{
+			"focus": "BattleLogToggle",
+			"generation": 1,
+			"journal": 0,
+			"key": "Tab",
+			"log_open": true,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 23,
+			"session": -9223371995817703646,
+			"shift": true
+		},
+		{
+			"focus": "PlayerTarget",
+			"generation": 1,
+			"journal": 0,
+			"key": "Escape",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 23,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "BattleLogReader",
+			"generation": 1,
+			"journal": 0,
+			"key": "L",
+			"log_open": true,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 23,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "PlayerTarget",
+			"generation": 1,
+			"journal": 0,
+			"key": "L",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 23,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "PlayerTarget",
+			"generation": 1,
+			"journal": 0,
+			"key": "Enter",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 23,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "PlayerTarget",
+			"generation": 1,
+			"journal": 0,
+			"key": "L",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 23,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "PlayerTarget",
+			"generation": 1,
+			"journal": 0,
+			"key": "Down",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 23,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "PlayerTarget",
+			"generation": 1,
+			"journal": 0,
+			"key": "Enter",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 23,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "BattleLogReader",
+			"generation": 1,
+			"journal": 0,
+			"key": "L",
+			"log_open": true,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 23,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "Guidance",
+			"generation": 1,
+			"journal": 0,
+			"key": "Tab",
+			"log_open": true,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 23,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "Guidance",
+			"generation": 1,
+			"journal": 0,
+			"key": "Enter",
+			"log_open": true,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 23,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "Guidance",
+			"generation": 1,
+			"journal": 0,
+			"key": "Escape",
+			"log_open": true,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "Guidance",
+			"generation": 1,
+			"journal": 0,
+			"key": "Enter",
+			"log_open": true,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "Guidance",
+			"generation": 1,
+			"journal": 0,
+			"key": "Down",
+			"log_open": true,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "Guidance",
+			"generation": 1,
+			"journal": 0,
+			"key": "Down",
+			"log_open": true,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "Guidance",
+			"generation": 1,
+			"journal": 0,
+			"key": "Down",
+			"log_open": true,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "Guidance",
+			"generation": 1,
+			"journal": 0,
+			"key": "Down",
+			"log_open": true,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "Guidance",
+			"generation": 1,
+			"journal": 0,
+			"key": "Enter",
+			"log_open": true,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "GuidanceTarget",
+			"generation": 1,
+			"journal": 0,
+			"key": "Tab",
+			"log_open": true,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "SendGuidance",
+			"generation": 1,
+			"journal": 0,
+			"key": "Tab",
+			"log_open": true,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "SendGuidance",
+			"generation": 1,
+			"journal": 1,
+			"key": "Space",
+			"log_open": true,
+			"receipts": 0,
+			"revision": 1,
+			"scroll": 0,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "SendGuidance",
+			"generation": 1,
+			"journal": 1,
+			"key": "L",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 1,
+			"scroll": 0,
+			"session": -9223371995817703646,
+			"shift": false
+		},
+		{
+			"focus": "Attack",
+			"generation": 1,
+			"journal": 0,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371988620277991,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 1,
+			"key": "Enter",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 1,
+			"scroll": 0,
+			"session": -9223371988620277991,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 1,
+			"key": "Enter",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 1,
+			"scroll": 0,
+			"session": -9223371988620277991,
+			"shift": false
+		},
+		{
+			"focus": "Attack",
+			"generation": 1,
+			"journal": 0,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371982697920752,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 1,
+			"key": "Space",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 1,
+			"scroll": 0,
+			"session": -9223371982697920752,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 1,
+			"key": "Space",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 1,
+			"scroll": 0,
+			"session": -9223371982697920752,
+			"shift": false
+		},
+		{
+			"focus": "Attack",
+			"generation": 1,
+			"journal": 0,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371976859449592,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 1,
+			"key": "Enter",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 1,
+			"scroll": 0,
+			"session": -9223371976859449592,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 1,
+			"key": "Space",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 1,
+			"scroll": 0,
+			"session": -9223371976859449592,
+			"shift": false
+		},
+		{
+			"focus": "Attack",
+			"generation": 1,
+			"journal": 0,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371971020978434,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 1,
+			"key": "Space",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 1,
+			"scroll": 0,
+			"session": -9223371971020978434,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 1,
+			"key": "Enter",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 1,
+			"scroll": 0,
+			"session": -9223371971020978434,
+			"shift": false
+		},
+		{
+			"focus": "Attack",
+			"generation": 1,
+			"journal": 0,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371965182507275,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 1,
+			"key": "Enter",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 1,
+			"scroll": 0,
+			"session": -9223371965182507275,
+			"shift": false
+		},
+		{
+			"focus": "Restart",
+			"generation": 1,
+			"journal": 3,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 3,
+			"scroll": 0,
+			"session": -9223371965182507275,
+			"shift": true
+		},
+		{
+			"focus": "PlayerTarget",
+			"generation": 2,
+			"journal": 0,
+			"key": "Enter",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371965182507275,
+			"shift": false
+		},
+		{
+			"focus": "Attack",
+			"generation": 1,
+			"journal": 0,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371959360813330,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 1,
+			"key": "Enter",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 1,
+			"scroll": 0,
+			"session": -9223371959360813330,
+			"shift": false
+		},
+		{
+			"focus": "BattleLogReader",
+			"generation": 1,
+			"journal": 22,
+			"key": "L",
+			"log_open": true,
+			"receipts": 6,
+			"revision": 22,
+			"scroll": 0,
+			"session": -9223371959360813330,
+			"shift": false
+		},
+		{
+			"focus": "BattleLogReader",
+			"generation": 1,
+			"journal": 22,
+			"key": "PageUp",
+			"log_open": true,
+			"receipts": 6,
+			"revision": 22,
+			"scroll": 295,
+			"session": -9223371959360813330,
+			"shift": false
+		},
+		{
+			"focus": "BattleLogReader",
+			"generation": 1,
+			"journal": 22,
+			"key": "PageDown",
+			"log_open": true,
+			"receipts": 6,
+			"revision": 22,
+			"scroll": 484,
+			"session": -9223371959360813330,
+			"shift": false
+		},
+		{
+			"focus": "PlayerTarget",
+			"generation": 1,
+			"journal": 22,
+			"key": "Escape",
+			"log_open": false,
+			"receipts": 6,
+			"revision": 22,
+			"scroll": 484,
+			"session": -9223371959360813330,
+			"shift": false
+		},
+		{
+			"focus": "BattleLogReader",
+			"generation": 1,
+			"journal": 22,
+			"key": "L",
+			"log_open": true,
+			"receipts": 6,
+			"revision": 22,
+			"scroll": 484,
+			"session": -9223371959360813330,
+			"shift": false
+		},
+		{
+			"focus": "PlayerTarget",
+			"generation": 1,
+			"journal": 22,
+			"key": "Escape",
+			"log_open": false,
+			"receipts": 6,
+			"revision": 22,
+			"scroll": 484,
+			"session": -9223371959360813330,
+			"shift": false
+		},
+		{
+			"focus": "Attack",
+			"generation": 1,
+			"journal": 22,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 6,
+			"revision": 22,
+			"scroll": 484,
+			"session": -9223371959360813330,
+			"shift": false
+		},
+		{
+			"focus": "Defend",
+			"generation": 1,
+			"journal": 22,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 6,
+			"revision": 22,
+			"scroll": 484,
+			"session": -9223371959360813330,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 23,
+			"key": "Space",
+			"log_open": false,
+			"receipts": 6,
+			"revision": 23,
+			"scroll": 484,
+			"session": -9223371959360813330,
+			"shift": false
+		},
+		{
+			"focus": "Attack",
+			"generation": 1,
+			"journal": 44,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 12,
+			"revision": 44,
+			"scroll": 484,
+			"session": -9223371959360813330,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 45,
+			"key": "Enter",
+			"log_open": false,
+			"receipts": 12,
+			"revision": 45,
+			"scroll": 484,
+			"session": -9223371959360813330,
+			"shift": false
+		},
+		{
+			"focus": "BattleLogReader",
+			"generation": 1,
+			"journal": 45,
+			"key": "L",
+			"log_open": true,
+			"receipts": 12,
+			"revision": 45,
+			"scroll": 484,
+			"session": -9223371959360813330,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 64,
+			"key": "Escape",
+			"log_open": false,
+			"receipts": 17,
+			"revision": 64,
+			"scroll": 484,
+			"session": -9223371959360813330,
+			"shift": false
+		},
+		{
+			"focus": "Attack",
+			"generation": 1,
+			"journal": 0,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371948371736848,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 1,
+			"key": "Enter",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 1,
+			"scroll": 0,
+			"session": -9223371948371736848,
+			"shift": false
+		},
+		{
+			"focus": "Attack",
+			"generation": 1,
+			"journal": 22,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 6,
+			"revision": 22,
+			"scroll": 0,
+			"session": -9223371948371736848,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 23,
+			"key": "Enter",
+			"log_open": false,
+			"receipts": 6,
+			"revision": 23,
+			"scroll": 0,
+			"session": -9223371948371736848,
+			"shift": false
+		},
+		{
+			"focus": "Attack",
+			"generation": 1,
+			"journal": 44,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 12,
+			"revision": 44,
+			"scroll": 0,
+			"session": -9223371948371736848,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 45,
+			"key": "Enter",
+			"log_open": false,
+			"receipts": 12,
+			"revision": 45,
+			"scroll": 0,
+			"session": -9223371948371736848,
+			"shift": false
+		},
+		{
+			"focus": "Attack",
+			"generation": 1,
+			"journal": 62,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 16,
+			"revision": 62,
+			"scroll": 0,
+			"session": -9223371948371736848,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 63,
+			"key": "Enter",
+			"log_open": false,
+			"receipts": 16,
+			"revision": 63,
+			"scroll": 0,
+			"session": -9223371948371736848,
+			"shift": false
+		},
+		{
+			"focus": "Attack",
+			"generation": 1,
+			"journal": 78,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 19,
+			"revision": 78,
+			"scroll": 0,
+			"session": -9223371948371736848,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 79,
+			"key": "Enter",
+			"log_open": false,
+			"receipts": 19,
+			"revision": 79,
+			"scroll": 0,
+			"session": -9223371948371736848,
+			"shift": false
+		},
+		{
+			"focus": "BattleLogReader",
+			"generation": 1,
+			"journal": 83,
+			"key": "L",
+			"log_open": true,
+			"receipts": 20,
+			"revision": 83,
+			"scroll": 0,
+			"session": -9223371948371736848,
+			"shift": false
+		},
+		{
+			"focus": "Restart",
+			"generation": 1,
+			"journal": 83,
+			"key": "Tab",
+			"log_open": true,
+			"receipts": 20,
+			"revision": 83,
+			"scroll": 0,
+			"session": -9223371948371736848,
+			"shift": false
+		},
+		{
+			"focus": "BattleLogReader",
+			"generation": 1,
+			"journal": 83,
+			"key": "Tab",
+			"log_open": true,
+			"receipts": 20,
+			"revision": 83,
+			"scroll": 0,
+			"session": -9223371948371736848,
+			"shift": true
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 83,
+			"key": "Escape",
+			"log_open": false,
+			"receipts": 20,
+			"revision": 83,
+			"scroll": 0,
+			"session": -9223371948371736848,
+			"shift": false
+		},
+		{
+			"focus": "Restart",
+			"generation": 1,
+			"journal": 83,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 20,
+			"revision": 83,
+			"scroll": 0,
+			"session": -9223371948371736848,
+			"shift": true
+		},
+		{
+			"focus": "PlayerTarget",
+			"generation": 2,
+			"journal": 0,
+			"key": "Space",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371948371736848,
+			"shift": false
+		},
+		{
+			"focus": "BattleLogReader",
+			"generation": 1,
+			"journal": 1,
+			"key": "L",
+			"log_open": true,
+			"receipts": 0,
+			"revision": 1,
+			"scroll": 0,
+			"session": -9223371936191478045,
+			"shift": false
+		},
+		{
+			"focus": "Restart",
+			"generation": 1,
+			"journal": 1,
+			"key": "Tab",
+			"log_open": true,
+			"receipts": 0,
+			"revision": 1,
+			"scroll": 0,
+			"session": -9223371936191478045,
+			"shift": false
+		},
+		{
+			"focus": "BattleLogReader",
+			"generation": 1,
+			"journal": 1,
+			"key": "Tab",
+			"log_open": true,
+			"receipts": 0,
+			"revision": 1,
+			"scroll": 0,
+			"session": -9223371936191478045,
+			"shift": true
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 1,
+			"key": "Escape",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 1,
+			"scroll": 0,
+			"session": -9223371936191478045,
+			"shift": false
+		},
+		{
+			"focus": "Restart",
+			"generation": 1,
+			"journal": 1,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 1,
+			"scroll": 0,
+			"session": -9223371936191478045,
+			"shift": true
+		},
+		{
+			"focus": "Restart",
+			"generation": 2,
+			"journal": 0,
+			"key": "Space",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371936191478045,
+			"shift": false
+		},
+		{
+			"focus": "Attack",
+			"generation": 1,
+			"journal": 0,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": false
+		},
+		{
+			"focus": "Defend",
+			"generation": 1,
+			"journal": 0,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 1,
+			"key": "Space",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 1,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": false
+		},
+		{
+			"focus": "Attack",
+			"generation": 1,
+			"journal": 22,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 6,
+			"revision": 22,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": false
+		},
+		{
+			"focus": "Defend",
+			"generation": 1,
+			"journal": 22,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 6,
+			"revision": 22,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 23,
+			"key": "Space",
+			"log_open": false,
+			"receipts": 6,
+			"revision": 23,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": false
+		},
+		{
+			"focus": "Attack",
+			"generation": 1,
+			"journal": 44,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 12,
+			"revision": 44,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": false
+		},
+		{
+			"focus": "Defend",
+			"generation": 1,
+			"journal": 44,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 12,
+			"revision": 44,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 45,
+			"key": "Space",
+			"log_open": false,
+			"receipts": 12,
+			"revision": 45,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": false
+		},
+		{
+			"focus": "Attack",
+			"generation": 1,
+			"journal": 64,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 17,
+			"revision": 64,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": false
+		},
+		{
+			"focus": "Defend",
+			"generation": 1,
+			"journal": 64,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 17,
+			"revision": 64,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 65,
+			"key": "Space",
+			"log_open": false,
+			"receipts": 17,
+			"revision": 65,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": false
+		},
+		{
+			"focus": "Attack",
+			"generation": 1,
+			"journal": 82,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 21,
+			"revision": 82,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": false
+		},
+		{
+			"focus": "Defend",
+			"generation": 1,
+			"journal": 82,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 21,
+			"revision": 82,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 83,
+			"key": "Space",
+			"log_open": false,
+			"receipts": 21,
+			"revision": 83,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": false
+		},
+		{
+			"focus": "Attack",
+			"generation": 1,
+			"journal": 100,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 25,
+			"revision": 100,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": false
+		},
+		{
+			"focus": "Defend",
+			"generation": 1,
+			"journal": 100,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 25,
+			"revision": 100,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 101,
+			"key": "Space",
+			"log_open": false,
+			"receipts": 25,
+			"revision": 101,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": false
+		},
+		{
+			"focus": "BattleLogReader",
+			"generation": 1,
+			"journal": 116,
+			"key": "L",
+			"log_open": true,
+			"receipts": 28,
+			"revision": 116,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": false
+		},
+		{
+			"focus": "Restart",
+			"generation": 1,
+			"journal": 116,
+			"key": "Tab",
+			"log_open": true,
+			"receipts": 28,
+			"revision": 116,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": false
+		},
+		{
+			"focus": "BattleLogReader",
+			"generation": 1,
+			"journal": 116,
+			"key": "Tab",
+			"log_open": true,
+			"receipts": 28,
+			"revision": 116,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": true
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 116,
+			"key": "Escape",
+			"log_open": false,
+			"receipts": 28,
+			"revision": 116,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": false
+		},
+		{
+			"focus": "Restart",
+			"generation": 1,
+			"journal": 116,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 28,
+			"revision": 116,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": true
+		},
+		{
+			"focus": "PlayerTarget",
+			"generation": 2,
+			"journal": 0,
+			"key": "Space",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371930906654983,
+			"shift": false
+		},
+		{
+			"focus": "Attack",
+			"generation": 1,
+			"journal": 0,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 0,
+			"scroll": 0,
+			"session": -9223371916545358060,
+			"shift": false
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 1,
+			"key": "Enter",
+			"log_open": false,
+			"receipts": 0,
+			"revision": 1,
+			"scroll": 0,
+			"session": -9223371916545358060,
+			"shift": false
+		},
+		{
+			"focus": "BattleLogReader",
+			"generation": 1,
+			"journal": 21,
+			"key": "L",
+			"log_open": true,
+			"receipts": 6,
+			"revision": 21,
+			"scroll": 0,
+			"session": -9223371916545358060,
+			"shift": false
+		},
+		{
+			"focus": "ExitHeldSession",
+			"generation": 1,
+			"journal": 21,
+			"key": "Tab",
+			"log_open": true,
+			"receipts": 6,
+			"revision": 21,
+			"scroll": 0,
+			"session": -9223371916545358060,
+			"shift": false
+		},
+		{
+			"focus": "BattleLogReader",
+			"generation": 1,
+			"journal": 21,
+			"key": "Tab",
+			"log_open": true,
+			"receipts": 6,
+			"revision": 21,
+			"scroll": 0,
+			"session": -9223371916545358060,
+			"shift": true
+		},
+		{
+			"focus": "BattleStatus",
+			"generation": 1,
+			"journal": 21,
+			"key": "Escape",
+			"log_open": false,
+			"receipts": 6,
+			"revision": 21,
+			"scroll": 0,
+			"session": -9223371916545358060,
+			"shift": false
+		},
+		{
+			"focus": "ExitHeldSession",
+			"generation": 1,
+			"journal": 21,
+			"key": "Tab",
+			"log_open": false,
+			"receipts": 6,
+			"revision": 21,
+			"scroll": 0,
+			"session": -9223371916545358060,
+			"shift": true
+		},
+		{
+			"focus": "PlayerTarget",
+			"generation": 1,
+			"journal": 21,
+			"key": "Space",
+			"log_open": false,
+			"receipts": 6,
+			"revision": 21,
+			"scroll": 0,
+			"session": -9223371916545358060,
+			"shift": false
+		}
+	]
+}

@@ -1331,8 +1331,8 @@ godot --path . --resolution 1280x720 res://scenes/combat/combat_m4_playable_opti
 
 1. เมื่อขึ้น “เลือกคำสั่ง Player” ให้เลือกศัตรูที่ช่อง “คำสั่ง Player” แล้วกด “โจมตี” หรือกด “ตั้งรับ” เพื่อให้ Player ป้องกันตัวเอง ใช้ Tab / Shift+Tab ย้าย focus, Enter / Space ยืนยัน และลูกศรเลือกตัวเลือกเมื่อเปิดเมนู
 2. หากต้องการส่งคำชี้นำ ให้เลือก “ไม่มีคำชี้นำ”, “เน้นโจมตี”, “เน้นตั้งรับ”, “ช่วย Player” หรือ “เน้นเป้าหมาย” แล้วกด “ส่งคำชี้นำ” **ก่อน** สั่ง Player. “เน้นเป้าหมาย” มีช่องเลือกศัตรูแยก
-3. หลังรับคำสั่ง คิวเดินตาม Player → NPC 1 → NPC 2 → NPC 3 → ศัตรู A → ศัตรู B. NPC เลือกเองเมื่อถึงคิว อ่านเหตุผลและผลจริงในบันทึกการต่อสู้ ผู้เล่นที่ถูกช่วยให้ลุกจะรอถึงรอบถัดไปจึงสั่งได้อีก
-4. กด “เริ่มใหม่” ระหว่างแอ็กชันหรือหลังผลการต่อสู้ ตรวจว่าตัวละครกลับตำแหน่งเดิม HP ตรง seed บันทึกเริ่มด้วยรุ่นใหม่ และคำสั่งกลับมาให้เลือก ในกรณี SEALED close ล้มเหลว ให้กด “ออกและเปิดเซสชันใหม่” จากหน้าพักเซสชัน
+3. หลังรับคำสั่ง คิวเดินตาม Player → NPC 1 → NPC 2 → NPC 3 → ศัตรู A → ศัตรู B. NPC เลือกเองเมื่อถึงคิว ดูเจตนาและผลล่าสุดใน HUD; กด **L** หรือคลิก “บันทึกการต่อสู้ [L]” เพื่ออ่านประวัติเต็ม. กด **Page Up / Page Down** เพื่อเลื่อน, **Tab / Shift+Tab** เพื่อออกจากตัวอ่าน และ **L / Esc** เพื่อปิดโดยเก็บประวัติไว้ ผู้เล่นที่ถูกช่วยให้ลุกจะรอถึงรอบถัดไปจึงสั่งได้อีก
+4. หลังรับคำสั่ง โฟกัสไปที่สถานะการต่อสู้ ซึ่ง Enter / Space ไม่เปิดใช้คำสั่ง. เมื่อต้องการ “เริ่มใหม่” ให้เลื่อนโฟกัสไปที่ปุ่มหรือคลิก ระหว่างแอ็กชันหรือหลังผลการต่อสู้ ตรวจว่าตัวละครกลับตำแหน่งเดิม HP ตรง seed บันทึกเริ่มด้วยรุ่นใหม่ และคำสั่งกลับมาให้เลือก ในกรณี SEALED close ล้มเหลว ให้กด “ออกและเปิดเซสชันใหม่” จากหน้าพักเซสชัน
 5. ฉากทดลองปิดได้สูงสุดหกรอบ ผลชนะ พ่ายแพ้ หรือถอนตัวมาจาก frozen Outcome. ค่า `fixture_id` และ `fixture_version` ที่ Inspector ใช้คู่จาก [catalog](../../scripts/m4/playable_fixture_catalog.gd) เพื่อทดสอบ seed อื่น
 
 รัน scene proof โดยใช้ path ของ Godot 4.7.2 ที่ติดตั้งและเลือกไฟล์ report ใหม่ ตรวจทั้ง exit code, บรรทัด `B5 SCENE PROOF: PASS` และ engine log สำหรับ `SCRIPT ERROR:` / `ERROR:`.
@@ -1341,6 +1341,7 @@ godot --path . --resolution 1280x720 res://scenes/combat/combat_m4_playable_opti
 godot --headless --path . --editor --import
 godot --headless --path . --quit-after 120 res://scenes/combat/combat_m4_playable_optin.tscn
 godot --headless --path . --script res://tests/combat/m4_05_playable_scene_proof.gd -- --report=/tmp/wanderer-b5-scene-proof.json
+godot --headless --path . --script res://tests/combat/m4_05_playable_keyboard_proof.gd -- --report=/tmp/wanderer-b5-keyboard-proof.json
 ```
 
-B5 ทดสอบ input signals และ Tween ของฉากจริงแยกจาก `verify.py`. กรณี Last-Party DOWN และการปิดครบหกรอบใช้ DRIVER CANCEL ก่อน IMPACT ตาม history ที่ได้รับอนุญาต คู่ fixture, HP, priority และ root มาจาก owner เดิม. [ผลทดสอบ คำสั่ง GUI และข้อจำกัด](evidence/m4-05b/b5/REPORT.md).
+B5 ทดสอบ input signals และ Tween ของฉากจริงแยกจาก `verify.py`. กรณี Last-Party DOWN และการปิดครบหกรอบใช้ DRIVER CANCEL ก่อน IMPACT ตาม history ที่ได้รับอนุญาต คู่ fixture, HP, priority และ root มาจาก owner เดิม. [หลักฐานฉากเดิม](evidence/m4-05b/b5/REPORT.md). Keyboard proof ส่ง key events ผ่าน Window และตรวจโฟกัสกับ snapshot ของ owner; ตรวจผล `B5 KEYBOARD PROOF: PASS`, exit code และ engine log. [หลักฐาน HUD correction และการเล่น GUI](evidence/m4-05c/hud-keyboard-fix/REPORT.md).
